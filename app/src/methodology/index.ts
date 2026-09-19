@@ -5,12 +5,13 @@
  * number comes from (methodology config + observations + analyst seed data).
  * Analyst inputs (theses, milestones, assessments) live in versioned seed
  * files and are labeled MODELING DECISION wherever displayed.
+ *
+ * NOTE: seeds and methodology config are imported statically so they are
+ * bundled into serverless functions at build time (fs reads do not work
+ * in the Vercel runtime).
  */
-import { readFileSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+import methodologyV010 from "../../methodology/v0.1.0.json";
+import seedsDoc from "../../data/projects.json";
 
 export interface MethodologyConfig {
   version: string;
@@ -59,8 +60,8 @@ export interface ConfidenceDef {
 }
 
 export function loadMethodology(version: string): MethodologyConfig {
-  const raw = readFileSync(join(ROOT, "methodology", `v${version}.json`), "utf-8");
-  return JSON.parse(raw) as MethodologyConfig;
+  if (version !== "0.1.0") throw new Error(`Unknown methodology version: ${version}`);
+  return methodologyV010 as unknown as MethodologyConfig;
 }
 
 // ---------------------------------------------------------------------------
@@ -99,8 +100,7 @@ export interface SeedProject {
 }
 
 export function loadSeeds(): SeedProject[] {
-  const raw = readFileSync(join(ROOT, "data", "projects.json"), "utf-8");
-  return (JSON.parse(raw) as { projects: SeedProject[] }).projects;
+  return (seedsDoc as { projects: SeedProject[] }).projects;
 }
 
 // ---------------------------------------------------------------------------

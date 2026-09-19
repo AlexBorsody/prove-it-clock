@@ -1,17 +1,15 @@
 /**
  * Data-access layer: one interface, two implementations.
  *
- *  - JsonFileStore  — reads the pipeline's JSON snapshots from disk.
- *                      Works now, no database needed. Used for the demo.
+ *  - JsonFileStore  — reads the pipeline's JSON snapshots, imported
+ *                      statically so they bundle into serverless functions
+ *                      at build time. Works now, no database needed.
  *  - SupabaseStore  — reads the same shape from Postgres (schema in
  *                      db/migrations/001_initial.sql). Activates when
  *                      SUPABASE_URL and SUPABASE_ANON_KEY are set.
  *
  * The frontend never touches providers or vendor APIs — only snapshots.
  */
-import { readFileSync, readdirSync, existsSync } from "node:fs";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import {
   loadMethodology,
   loadSeeds,
@@ -19,9 +17,8 @@ import {
   type ProjectSnapshot,
   type SeedProject,
 } from "@/methodology/index";
-
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const SNAP_DIR = join(ROOT, "data", "snapshots");
+import scoresDocJson from "../../data/snapshots/scores_2026-09-19.json";
+import metricsDocJson from "../../data/snapshots/metrics_2026-09-19.json";
 
 export interface ProjectMeta {
   slug: string;
@@ -56,6 +53,25 @@ export interface DataStore {
 // JSON snapshot files (works today)
 // ---------------------------------------------------------------------------
 
+interface SnapshotMetricRow {
+  projectSlug: string;
+  metricCode: string;
+  value: number | null;
+  observedAt: string;
+  source: { provider: string; endpoint: string };
+}
+
+// Static snapshot imports — bundled at build time, no fs reads at runtime.
+const SCORES: ProjectSnapshot[] = (
+  scoresDocJson as { snapshots: ProjectSnapshot[] }
+).snapshots;
+const SNAPSHOT_DATE: string = (scoresDocJson as { snapshot_date: string })
+  .snapshot_date;
+const METRICS_DOC = metricsDocJson as {
+  metrics: SnapshotMetricRow[];
+  unavailable: { projectSlug: string; metricCode: string; reason: string }[];
+};
+
 class JsonFileStore implements DataStore {
   private seeds(): SeedProject[] {
     return loadSeeds();
@@ -76,33 +92,14 @@ class JsonFileStore implements DataStore {
     return this.seeds().find((s) => s.slug === slug) ?? null;
   }
 
-  private scoresFiles(): string[] {
-    if (!existsSync(SNAP_DIR)) return [];
-    return readdirSync(SNAP_DIR).filter((f) => f.startsWith("scores_")).sort();
-  }
-
-  private readScores(file: string): ProjectSnapshot[] {
-    const doc = JSON.parse(readFileSync(join(SNAP_DIR, file), "utf-8")) as {
-      snapshots: ProjectSnapshot[];
-    };
-    return doc.snapshots;
-  }
-
   async getLatestScores(): Promise<Record<string, ProjectSnapshot>> {
-    const files = this.scoresFiles();
-    if (!files.length) return {};
     const out: Record<string, ProjectSnapshot> = {};
-    for (const s of this.readScores(files[files.length - 1])) out[s.project] = s;
+    for (const s of SCORES) out[s.project] = s;
     return out;
   }
 
   async getSnapshotHistory(slug: string): Promise<ProjectSnapshot[]> {
-    const out: ProjectSnapshot[] = [];
-    for (const f of this.scoresFiles()) {
-      const s = this.readScores(f).find((x) => x.project === slug);
-      if (s) out.push(s);
-    }
-    return out;
+    return SCORES.filter((x) => x.project === slug);
   }
 
   async getMethodology(version: string): Promise<MethodologyConfig> {
@@ -110,29 +107,16 @@ class JsonFileStore implements DataStore {
   }
 
   async getLatestSnapshotDate(): Promise<string> {
-    const files = this.scoresFiles();
-    if (!files.length) return "n/a";
-    const m = files[files.length - 1].match(/scores_(\d{4}-\d{2}-\d{2})\.json/);
-    return m ? m[1] : "n/a";
+    return SNAPSHOT_DATE;
   }
 
   async getMetricAvailability() {
-    const files = readdirSync(SNAP_DIR).filter((f) => f.startsWith("metrics_")).sort();
-    if (!files.length) return [];
-    const doc = JSON.parse(readFileSync(join(SNAP_DIR, files[files.length - 1]), "utf-8")) as {
-      unavailable: { projectSlug: string; metricCode: string; reason: string }[];
-    };
-    return doc.unavailable;
+    return METRICS_DOC.unavailable;
   }
 
   async getLatestMetrics(): Promise<Record<string, Record<string, number | null>>> {
-    const files = readdirSync(SNAP_DIR).filter((f) => f.startsWith("metrics_")).sort();
-    if (!files.length) return {};
-    const doc = JSON.parse(readFileSync(join(SNAP_DIR, files[files.length - 1]), "utf-8")) as {
-      metrics: { projectSlug: string; metricCode: string; value: number | null }[];
-    };
     const out: Record<string, Record<string, number | null>> = {};
-    for (const m of doc.metrics) {
+    for (const m of METRICS_DOC.metrics) {
       if (!out[m.projectSlug]) out[m.projectSlug] = {};
       out[m.projectSlug][m.metricCode] = m.value;
     }
@@ -140,18 +124,7 @@ class JsonFileStore implements DataStore {
   }
 
   async getMetricRows(slug: string) {
-    const files = readdirSync(SNAP_DIR).filter((f) => f.startsWith("metrics_")).sort();
-    if (!files.length) return [];
-    const doc = JSON.parse(readFileSync(join(SNAP_DIR, files[files.length - 1]), "utf-8")) as {
-      metrics: {
-        projectSlug: string;
-        metricCode: string;
-        value: number | null;
-        observedAt: string;
-        source: { provider: string; endpoint: string };
-      }[];
-    };
-    return doc.metrics
+    return METRICS_DOC.metrics
       .filter((m) => m.projectSlug === slug)
       .map((m) => ({
         metricCode: m.metricCode,
