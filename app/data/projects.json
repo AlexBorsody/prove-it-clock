@@ -1,0 +1,793 @@
+{
+  "methodology_version": "0.1.0",
+  "note": "Seed data: theses, analyst assessments (MODELING DECISIONS, not measured facts), milestone ladders, timeline events. Every assessment carries a rationale. Evidence URLs are included only where the source is stable and well-known; otherwise evidence_summary text is used.",
+  "milestone_ladders": {
+    "execution": [
+      {
+        "evidence_requirements": "Mainnet producing blocks and accepting contract deployments. Block explorer or client release notes.",
+        "level": 0,
+        "title": "Functional network exists"
+      },
+      {
+        "evidence_requirements": "Third-party developers deploying contracts; non-team user transactions visible onchain. DApp listings, explorer activity.",
+        "level": 1,
+        "title": "Independent developers and users"
+      },
+      {
+        "evidence_requirements": "Trailing-30d user-paid fees (DefiLlama or equivalent) at a level that would rank the chain among top fee-generating networks; fees paid by end users, not validator self-dealing.",
+        "level": 2,
+        "title": "Meaningful recurring fee revenue"
+      },
+      {
+        "evidence_requirements": "Onchain activity and fee revenue persist through a >12-month drawdown or after major incentive programs end, without collapsing >80%.",
+        "level": 3,
+        "title": "Usage persists without heavy incentives"
+      },
+      {
+        "evidence_requirements": "Named institutions running production workloads that depend on the chain (settlement, tokenized assets, enterprise apps) — live operations, not pilots or announcements.",
+        "level": 4,
+        "title": "External institutions operationally depend on it"
+      },
+      {
+        "evidence_requirements": "The chain is the default settlement/execution venue for its category by multiple independent measures (fees, developer share, tokenized value).",
+        "level": 5,
+        "title": "Dominant execution layer"
+      }
+    ],
+    "monetary": [
+      {
+        "evidence_requirements": "Genesis block / network launch; blocks propagating.",
+        "level": 0,
+        "title": "Functional network exists"
+      },
+      {
+        "evidence_requirements": "Non-trivial holder base, exchange listings, peer-to-peer transfers beyond the founding team.",
+        "level": 1,
+        "title": "Independent users hold and transact"
+      },
+      {
+        "evidence_requirements": "A >70% price drawdown occurs while onchain holder count, hash rate/security budget, and development do not collapse.",
+        "level": 2,
+        "title": "Survives a full market cycle intact"
+      },
+      {
+        "evidence_requirements": "Public companies, funds, or sovereigns disclose the asset on balance sheets or in regulated investment products.",
+        "level": 3,
+        "title": "Institutional allocation as treasury/reserve asset"
+      },
+      {
+        "evidence_requirements": "Priced and lent against broadly; used as a unit of account in real commerce beyond niche merchants.",
+        "level": 4,
+        "title": "Unit of account / widespread medium of exchange"
+      },
+      {
+        "evidence_requirements": "Central banks or sovereign wealth funds hold it as a reserve asset class alongside gold/FX reserves.",
+        "level": 5,
+        "title": "Global monetary asset"
+      }
+    ],
+    "oracle": [
+      {
+        "evidence_requirements": "Decentralized oracle network live, publishing price/data feeds consumed onchain.",
+        "level": 0,
+        "title": "Functional oracle network exists"
+      },
+      {
+        "evidence_requirements": "Third-party protocols integrating feeds for production use (lending, derivatives, stablecoins).",
+        "level": 1,
+        "title": "Independent protocols consume feeds"
+      },
+      {
+        "evidence_requirements": "Sustained fee payments from data consumers to node operators/stakers, visible in protocol economics disclosures.",
+        "level": 2,
+        "title": "Meaningful fee revenue from data consumers"
+      },
+      {
+        "evidence_requirements": "Clear majority share of oracle-secured onchain value across chains; competitors have not displaced it over a full cycle.",
+        "level": 3,
+        "title": "Dominant share of oracle-secured value"
+      },
+      {
+        "evidence_requirements": "Banks, market infrastructure, or enterprises using the feeds in production systems — live operations, not pilots.",
+        "level": 4,
+        "title": "Institutions operationally depend on the feeds"
+      },
+      {
+        "evidence_requirements": "The network is the default oracle layer for tokenized global finance across asset classes.",
+        "level": 5,
+        "title": "Standard oracle infrastructure"
+      }
+    ],
+    "payments": [
+      {
+        "evidence_requirements": "Ledger live and settling payment transactions.",
+        "level": 0,
+        "title": "Functional network exists"
+      },
+      {
+        "evidence_requirements": "Payments by users beyond the founding team; wallet/exchange support.",
+        "level": 1,
+        "title": "Independent users transact"
+      },
+      {
+        "evidence_requirements": "Recurring cross-border settlement volume attributable to the rail, disclosed by operators or visible onchain, sustained >6 months.",
+        "level": 2,
+        "title": "Meaningful recurring settlement volume"
+      },
+      {
+        "evidence_requirements": "Volume persists after issuer incentives, rebates, or subsidized corridors end.",
+        "level": 3,
+        "title": "Volume persists without issuer subsidies"
+      },
+      {
+        "evidence_requirements": "Named banks or payment institutions running production settlement flows on the rail — live operations, not pilots or MOUs.",
+        "level": 4,
+        "title": "Institutions operationally depend on the rail"
+      },
+      {
+        "evidence_requirements": "The rail handles a measurable share of addressable cross-border payment volume in its target corridors.",
+        "level": 5,
+        "title": "Meaningful market penetration"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token IS the monetary asset. There is no Bitcoin protocol without BTC; security, settlement, and the store-of-value thesis are all denominated in it.",
+          "value": 10
+        },
+        "token_value_capture": {
+          "rationale": "No cash flows, no burn, no staking. Capture is purely monetary premium on a credibly fixed 21M supply — works only if the SoV thesis holds.",
+          "value": 6.5
+        },
+        "world_impact_potential": {
+          "rationale": "A successful neutral global monetary asset would be among the most consequential financial developments in a century. Highest-impact category in the taxonomy.",
+          "value": 9
+        }
+      },
+      "coingecko_id": "bitcoin",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2009-01-03",
+          "description": "Satoshi Nakamoto mines the genesis block.",
+          "title": "Genesis block",
+          "type": "launch"
+        },
+        {
+          "date": "2010-05-22",
+          "description": "10,000 BTC exchanged for two pizzas — first real-world purchase; earliest price discovery.",
+          "title": "Bitcoin Pizza Day",
+          "type": "adoption"
+        },
+        {
+          "date": "2013-11-01",
+          "description": "Price exceeds $1,000 for the first time, then crashes ~80% — the first full boom/bust cycle.",
+          "title": "First $1k and crash",
+          "type": "setback"
+        },
+        {
+          "date": "2017-08-01",
+          "description": "Block-size dispute resolves via SegWit activation and the Bitcoin Cash fork. Thesis pivots decisively from payments to store of value.",
+          "title": "Block-size war resolved",
+          "type": "thesis_change"
+        },
+        {
+          "date": "2020-08-11",
+          "description": "MicroStrategy (now Strategy) adopts BTC as primary treasury reserve asset, starting corporate treasury adoption.",
+          "title": "Corporate treasury adoption begins",
+          "type": "adoption"
+        },
+        {
+          "date": "2021-09-07",
+          "description": "El Salvador adopts bitcoin as legal tender — first sovereign adoption.",
+          "title": "El Salvador legal tender",
+          "type": "adoption"
+        },
+        {
+          "date": "2024-01-10",
+          "description": "US spot bitcoin ETFs approved and launch; record ETF inflows follow.",
+          "title": "US spot ETFs launch",
+          "type": "integration"
+        }
+      ],
+      "launch_date": "2009-01-03",
+      "launch_notes": "Genesis block mined by Satoshi Nakamoto.",
+      "measurable_success": "Sustained demand as a long-duration store of value across cycles: growing holder base, deep liquid markets, institutional/sovereign allocation, and fee-paying settlement demand independent of speculation.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2009-01-03",
+          "evidence_summary": "Genesis block; network continuously producing blocks since.",
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2013-01-01",
+          "evidence_summary": "Exchange listings, merchant adoption (2013-2014), millions of addresses.",
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2018-12-01",
+          "evidence_summary": "Survived 2013-2015 and 2017-2018 >80% drawdowns with hash rate and holder base recovering to new highs.",
+          "level": 2
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2024-01-10",
+          "evidence_summary": "Corporate treasuries (Strategy et al.), US spot ETFs ($50B+ AUM within a year), El Salvador sovereign holding.",
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not a unit of account in real commerce; everyday payment use remains negligible.",
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No central bank holds BTC as a reserve asset class (as of 2026).",
+          "level": 5
+        }
+      ],
+      "name": "Bitcoin",
+      "slug": "btc",
+      "symbol": "BTC",
+      "thesis": "Become a globally held, politically neutral monetary asset — digital gold — that preserves purchasing power over long horizons and settles finality without trusted intermediaries.",
+      "thesis_category": "monetary"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "ETH is required to pay gas for all execution and to stake for network security. The protocol cannot function without a native fee/staking asset; only the ticker could theoretically change.",
+          "value": 9
+        },
+        "token_value_capture": {
+          "rationale": "EIP-1559 fee burn plus staking yield give direct value linkage, but L2s siphon execution and fee revenue is far below the 2021 peak. Capture is real but diluted versus the thesis.",
+          "value": 7.5
+        },
+        "world_impact_potential": {
+          "rationale": "The dominant programmable settlement layer for tokenized global finance would be foundational infrastructure — comparable to the early internet's TCP/IP layer.",
+          "value": 9
+        }
+      },
+      "coingecko_id": "ethereum",
+      "defillama_chain": "Ethereum",
+      "events": [
+        {
+          "date": "2015-07-30",
+          "description": "Frontier mainnet launch; first programmable smart-contract blockchain at scale.",
+          "title": "Frontier mainnet",
+          "type": "launch"
+        },
+        {
+          "date": "2016-06-17",
+          "description": "$60M DAO exploit; hard fork to recover funds. Tests the 'code is law' thesis — community chooses intervention.",
+          "title": "The DAO hack and fork",
+          "type": "setback"
+        },
+        {
+          "date": "2017-01-01",
+          "description": "ICO boom: Ethereum becomes the default fundraising and token-issuance platform.",
+          "title": "ICO boom",
+          "type": "adoption"
+        },
+        {
+          "date": "2020-11-01",
+          "description": "DeFi summer: lending, DEXes, and stablecoins make Ethereum the center of onchain finance; fee revenue explodes.",
+          "title": "DeFi summer",
+          "type": "adoption"
+        },
+        {
+          "date": "2021-08-05",
+          "description": "EIP-1559 activates fee burning, linking ETH value directly to network usage.",
+          "title": "EIP-1559 fee burn",
+          "type": "release"
+        },
+        {
+          "date": "2022-09-15",
+          "description": "The Merge: proof-of-stake transition after years of delays. Issuance drops ~90%.",
+          "title": "The Merge",
+          "type": "release"
+        },
+        {
+          "date": "2024-01-01",
+          "description": "Rollup-centric roadmap formalized; L2s (Arbitrum, Base, Optimism) absorb most user activity while settling to L1.",
+          "title": "Rollup-centric pivot",
+          "type": "thesis_change"
+        },
+        {
+          "date": "2024-03-20",
+          "description": "BlackRock launches BUIDL tokenized treasury fund on Ethereum — institutional production use.",
+          "title": "BlackRock BUIDL on Ethereum",
+          "type": "integration"
+        }
+      ],
+      "launch_date": "2015-07-30",
+      "launch_notes": "Frontier mainnet launch.",
+      "measurable_success": "Majority share of onchain economic activity (fees, DEX volume, stablecoin settlement); enterprises and institutions building on or settling via Ethereum; sustained developer dominance.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2015-07-30",
+          "evidence_summary": "Frontier mainnet live.",
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2016-01-01",
+          "evidence_summary": "Third-party dapps and the DAO; growing developer ecosystem.",
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-05-01",
+          "evidence_summary": "Annualized fee revenue exceeded $10B at peak (2021); still the highest-fee chain by a wide margin.",
+          "level": 2
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2023-01-01",
+          "evidence_summary": "Activity and fees persisted through the 2022-2023 bear market; no incentive collapse (Ethereum has no emission incentives for users).",
+          "level": 3
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2024-03-20",
+          "evidence_summary": "BlackRock BUIDL and other tokenized funds operating on Ethereum mainnet; US spot ETH ETFs launched July 2024.",
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Faces credible competition (Solana, L2s fragmenting activity); not yet the undisputed default venue.",
+          "level": 5
+        }
+      ],
+      "name": "Ethereum",
+      "slug": "eth",
+      "symbol": "ETH",
+      "thesis": "Become the dominant programmable settlement and execution layer for decentralized applications and tokenized value — the base layer others build financial infrastructure on.",
+      "thesis_category": "execution"
+    },
+    {
+      "slug": "sol",
+      "name": "Solana",
+      "symbol": "SOL",
+      "coingecko_id": "solana",
+      "defillama_chain": "Solana",
+      "thesis_category": "execution",
+      "launch_date": "2020-03-16",
+      "launch_notes": "Mainnet beta launch.",
+      "thesis": "Become the high-throughput execution layer for consumer-scale crypto applications — fast, cheap settlement for onchain trading, payments, and DePIN.",
+      "measurable_success": "Sustained high-retention consumer application usage (trading, payments, DePIN) with activity persisting independent of token incentives.",
+      "assessments": {
+        "world_impact_potential": {
+          "value": 7.5,
+          "rationale": "A successful consumer-scale execution layer would be major financial infrastructure, but the thesis is narrower than Ethereum's base-layer ambition."
+        },
+        "token_necessity": {
+          "value": 9,
+          "rationale": "SOL pays all transaction fees and secures the network via staking. No SOL, no Solana."
+        },
+        "token_value_capture": {
+          "value": 6.5,
+          "rationale": "Fees are intentionally tiny (a design goal), so capture leans on staking yield funded partly by issuance — dilutive. MEV adds some. Weaker direct linkage than ETH's burn."
+        }
+      },
+      "milestones": [
+        {
+          "level": 0,
+          "achieved": true,
+          "achieved_at": "2020-03-16",
+          "evidence_summary": "Mainnet beta live.",
+          "evidence_url": null
+        },
+        {
+          "level": 1,
+          "achieved": true,
+          "achieved_at": "2021-08-01",
+          "evidence_summary": "Serum, Raydium, Phantom wallet; 2021 bull-run user influx.",
+          "evidence_url": null
+        },
+        {
+          "level": 2,
+          "achieved": true,
+          "achieved_at": "2024-03-01",
+          "evidence_summary": "Trailing fee revenue in 2024 reached hundreds of millions annualized (meme-coin trading wave); top-3 fee chain.",
+          "evidence_url": null
+        },
+        {
+          "level": 3,
+          "achieved": true,
+          "achieved_at": "2023-06-01",
+          "evidence_summary": "Activity recovered and grew after the FTX collapse (Nov 2022) wiped out its largest backer — strong post-crisis retention without user incentives.",
+          "evidence_url": null
+        },
+        {
+          "level": 4,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Institutions experimenting (Visa USDC settlement pilots 2023); no broad operational dependence yet.",
+          "evidence_url": null
+        },
+        {
+          "level": 5,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not the default venue; competes with Ethereum/L2s.",
+          "evidence_url": null
+        }
+      ],
+      "events": [
+        {
+          "date": "2020-03-16",
+          "type": "launch",
+          "title": "Mainnet beta",
+          "description": "Solana mainnet beta launches with proof-of-history consensus.",
+          "evidence_url": null
+        },
+        {
+          "date": "2021-09-14",
+          "type": "setback",
+          "title": "17-hour outage",
+          "description": "First major network halt; several more outages follow through 2022-2023, denting reliability claims.",
+          "evidence_url": null
+        },
+        {
+          "date": "2022-11-08",
+          "type": "setback",
+          "title": "FTX collapse",
+          "description": "Largest ecosystem backer collapses; SOL falls >95% from ATH. Network and developers persist.",
+          "evidence_url": null
+        },
+        {
+          "date": "2023-10-01",
+          "type": "adoption",
+          "title": "Meme-coin trading wave",
+          "description": "Jupiter, Raydium, and pump.fun drive record DEX volumes and fee revenue; Phantom tops app-store finance charts.",
+          "evidence_url": null
+        },
+        {
+          "date": "2024-02-06",
+          "type": "setback",
+          "title": "5-hour outage",
+          "description": "Another network halt; reliability remains the open question on the thesis.",
+          "evidence_url": null
+        }
+      ]
+    },
+    {
+      "slug": "xrp",
+      "name": "XRP",
+      "symbol": "XRP",
+      "coingecko_id": "ripple",
+      "defillama_chain": null,
+      "thesis_category": "payments",
+      "launch_date": "2012-06-01",
+      "launch_notes": "XRP Ledger originates 2012 (first ledger closes June 2012); created by Ripple Labs founders.",
+      "thesis": "Become the bridge asset and settlement rail for cross-border institutional payments — the currency banks use to move value between corridors.",
+      "measurable_success": "Banks and payment providers using XRP itself (not just Ripple messaging software) for settlement at meaningful, recurring volume.",
+      "assessments": {
+        "world_impact_potential": {
+          "value": 7,
+          "rationale": "Capturing a share of global cross-border settlement would be highly consequential, but the thesis is narrower than a monetary asset or general execution layer."
+        },
+        "token_necessity": {
+          "value": 6,
+          "rationale": "XRP is the ledger's native bridge asset and spam deterrent, but Ripple's payment products have historically worked with minimal XRP usage; institutions can and do settle without it."
+        },
+        "token_value_capture": {
+          "value": 4,
+          "rationale": "Negligible fee burn, no staking, large escrow overhang (tens of billions XRP released programmatically). Capture is almost entirely speculative premium."
+        }
+      },
+      "milestones": [
+        {
+          "level": 0,
+          "achieved": true,
+          "achieved_at": "2012-06-01",
+          "evidence_summary": "XRP Ledger live.",
+          "evidence_url": null
+        },
+        {
+          "level": 1,
+          "achieved": true,
+          "achieved_at": "2014-01-01",
+          "evidence_summary": "Exchange listings and retail holder base established 2013-2014.",
+          "evidence_url": null
+        },
+        {
+          "level": 2,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Ripple's ODL corridors reported volume, but independently verifiable recurring XRP settlement volume at meaningful scale has not been demonstrated.",
+          "evidence_url": null
+        },
+        {
+          "level": 3,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No demonstrated incentive-independent settlement volume to evaluate.",
+          "evidence_url": null
+        },
+        {
+          "level": 4,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Bank partnerships announced for years (SBI, Santander pilots); production XRP settlement dependence not demonstrated.",
+          "evidence_url": null
+        },
+        {
+          "level": 5,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No measurable share of cross-border payment volume.",
+          "evidence_url": null
+        }
+      ],
+      "events": [
+        {
+          "date": "2012-06-01",
+          "type": "launch",
+          "title": "XRP Ledger live",
+          "description": "Ledger created by Arthur Britto, David Schwartz, Jed McCaleb.",
+          "evidence_url": null
+        },
+        {
+          "date": "2017-12-01",
+          "type": "adoption",
+          "title": "2017 retail mania",
+          "description": "XRP reaches top-3 market cap on speculation; settlement thesis unchanged.",
+          "evidence_url": null
+        },
+        {
+          "date": "2020-12-22",
+          "type": "setback",
+          "title": "SEC lawsuit",
+          "description": "SEC sues Ripple Labs alleging unregistered securities sales; US exchanges delist XRP.",
+          "evidence_url": null
+        },
+        {
+          "date": "2023-07-13",
+          "type": "release",
+          "title": "Partial legal victory",
+          "description": "Court rules programmatic XRP sales are not securities; overhang lifts partially.",
+          "evidence_url": null
+        },
+        {
+          "date": "2024-12-01",
+          "type": "adoption",
+          "title": "RLUSD stablecoin launch",
+          "description": "Ripple launches its own USD stablecoin — settlement can now route around XRP entirely.",
+          "evidence_url": null
+        }
+      ]
+    },
+    {
+      "slug": "link",
+      "name": "Chainlink",
+      "symbol": "LINK",
+      "coingecko_id": "chainlink",
+      "defillama_chain": null,
+      "thesis_category": "oracle",
+      "launch_date": "2017-06-01",
+      "launch_notes": "Whitepaper published June 2017; token sale September 2017; oracle mainnet May 2019.",
+      "thesis": "Become the standard decentralized oracle infrastructure that smart contracts depend on for market data and offchain computation.",
+      "measurable_success": "Dominant share of oracle-secured value across chains, with node operators earning sustainable fee revenue from data consumers and major enterprise integrations.",
+      "assessments": {
+        "world_impact_potential": {
+          "value": 6.5,
+          "rationale": "Critical middleware for tokenized finance, but middleware: the largest value accrues to the applications and assets above it, not the oracle layer."
+        },
+        "token_necessity": {
+          "value": 8,
+          "rationale": "Node operator payments, collateral, and staking are LINK-denominated by protocol design. A different token is conceivable but the cryptoeconomics are built around LINK."
+        },
+        "token_value_capture": {
+          "value": 5.5,
+          "rationale": "Staking and explicit fee payments exist (Economics 2.0, BUILD/SCALE), but realized fee revenue remains small relative to FDV; most historical node payment was subsidized."
+        }
+      },
+      "milestones": [
+        {
+          "level": 0,
+          "achieved": true,
+          "achieved_at": "2019-05-30",
+          "evidence_summary": "Oracle mainnet live on Ethereum.",
+          "evidence_url": null
+        },
+        {
+          "level": 1,
+          "achieved": true,
+          "achieved_at": "2020-08-01",
+          "evidence_summary": "DeFi summer: Aave, Synthetix, and dozens of protocols integrate Chainlink feeds.",
+          "evidence_url": null
+        },
+        {
+          "level": 2,
+          "achieved": true,
+          "achieved_at": "2023-01-01",
+          "evidence_summary": "Sustained fee payments from data consumers; staking v0.1/v0.2 and BUILD program formalize the economics.",
+          "evidence_url": null
+        },
+        {
+          "level": 3,
+          "achieved": true,
+          "achieved_at": "2022-01-01",
+          "evidence_summary": "Secures the large majority of DeFi oracle value; competitors (Pyth, API3) have not displaced it over a full cycle.",
+          "evidence_url": null
+        },
+        {
+          "level": 4,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "SWIFT/ANZ (2023) and DTCC pilots demonstrate interest, but pilots are not operational dependence per the evidence rules.",
+          "evidence_url": null
+        },
+        {
+          "level": 5,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not yet the default oracle layer beyond crypto-native DeFi.",
+          "evidence_url": null
+        }
+      ],
+      "events": [
+        {
+          "date": "2017-06-01",
+          "type": "launch",
+          "title": "Whitepaper",
+          "description": "Chainlink whitepaper by Sergey Nazarov and Steve Ellis.",
+          "evidence_url": null
+        },
+        {
+          "date": "2019-05-30",
+          "type": "release",
+          "title": "Mainnet launch",
+          "description": "Decentralized oracle network live on Ethereum mainnet.",
+          "evidence_url": null
+        },
+        {
+          "date": "2020-08-01",
+          "type": "adoption",
+          "title": "DeFi summer integrations",
+          "description": "Becomes the default price-feed oracle for Ethereum DeFi.",
+          "evidence_url": null
+        },
+        {
+          "date": "2022-12-06",
+          "type": "release",
+          "title": "Staking v0.1",
+          "description": "Staking launches in limited form after long delays — narrower than originally promised.",
+          "evidence_url": null
+        },
+        {
+          "date": "2023-08-01",
+          "type": "integration",
+          "title": "SWIFT/ANZ CCIP pilot",
+          "description": "Cross-chain interoperability pilot with major banks — pilot, not production.",
+          "evidence_url": null
+        },
+        {
+          "date": "2024-01-01",
+          "type": "release",
+          "title": "CCIP general availability",
+          "description": "Cross-Chain Interoperability Protocol opens to all developers.",
+          "evidence_url": null
+        }
+      ]
+    },
+    {
+      "slug": "ada",
+      "name": "Cardano",
+      "symbol": "ADA",
+      "coingecko_id": "cardano",
+      "defillama_chain": "Cardano",
+      "thesis_category": "execution",
+      "launch_date": "2017-09-29",
+      "launch_notes": "Mainnet launch September 2017.",
+      "thesis": "Become a peer-reviewed, formally-verified smart contract platform for global financial and identity infrastructure — the academically rigorous alternative.",
+      "measurable_success": "Meaningful developer and user adoption of Cardano smart contracts, with real-world identity or financial deployments operating at scale.",
+      "assessments": {
+        "world_impact_potential": {
+          "value": 7.5,
+          "rationale": "Same category as Ethereum/Solana (execution layer), so the ceiling is comparable — assessed slightly below ETH given later start and narrower differentiation."
+        },
+        "token_necessity": {
+          "value": 9,
+          "rationale": "ADA pays fees and secures the network via proof-of-stake delegation. No ADA, no Cardano."
+        },
+        "token_value_capture": {
+          "value": 5.5,
+          "rationale": "Staking yield exists but is funded substantially by reserves/issuance; user-paid fee demand is small, so the fee-driven linkage is weak."
+        }
+      },
+      "milestones": [
+        {
+          "level": 0,
+          "achieved": true,
+          "achieved_at": "2017-09-29",
+          "evidence_summary": "Mainnet live.",
+          "evidence_url": null
+        },
+        {
+          "level": 1,
+          "achieved": true,
+          "achieved_at": "2021-09-12",
+          "evidence_summary": "Alonzo upgrade enables smart contracts; third-party dapps deploy.",
+          "evidence_url": null
+        },
+        {
+          "level": 2,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Fee revenue remains modest versus peers; no sustained high-fee period demonstrated.",
+          "evidence_url": null
+        },
+        {
+          "level": 3,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Activity base is small; incentive-independence not demonstrated at scale.",
+          "evidence_url": null
+        },
+        {
+          "level": 4,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Ethiopia student-ID deal (2021) announced but never deployed at claimed scale; no operational institutional dependence.",
+          "evidence_url": null
+        },
+        {
+          "level": 5,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not a leading venue by any adoption measure.",
+          "evidence_url": null
+        }
+      ],
+      "events": [
+        {
+          "date": "2017-09-29",
+          "type": "launch",
+          "title": "Mainnet launch",
+          "description": "Cardano mainnet goes live after ICO-era development by IOHK.",
+          "evidence_url": null
+        },
+        {
+          "date": "2021-04-01",
+          "type": "integration",
+          "title": "Ethiopia deal announced",
+          "description": "5M student IDs on Cardano announced — the flagship real-world deal; deployment never materialized at claimed scale.",
+          "evidence_url": null
+        },
+        {
+          "date": "2021-09-12",
+          "type": "release",
+          "title": "Alonzo: smart contracts",
+          "description": "Plutus smart contracts activate, years after competitors.",
+          "evidence_url": null
+        },
+        {
+          "date": "2022-01-01",
+          "type": "setback",
+          "title": "DeFi struggles",
+          "description": "eUTXO model complicates DeFi; TVL and developer traction lag EVM chains.",
+          "evidence_url": null
+        },
+        {
+          "date": "2024-01-01",
+          "type": "thesis_change",
+          "title": "Governance era",
+          "description": "Voltaire governance rollout shifts emphasis toward onchain governance as differentiation.",
+          "evidence_url": null
+        }
+      ]
+    }
+  ]
+}

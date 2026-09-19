@@ -1,0 +1,1268 @@
+{
+  "methodology_version": "0.1.0",
+  "snapshot_date": "2026-09-19",
+  "generated_at": "2026-09-19T07:11:24.127Z",
+  "snapshots": [
+    {
+      "project": "btc",
+      "methodology_version": "0.1.0",
+      "snapshot_date": "2026-09-19",
+      "scores": {
+        "attention": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "No reliable attention data source in v0.1 (X/Reddit/Trends adapters are Phase 2). Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "development": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "unavailable_reason": "no component inputs available",
+          "epistemic": "measured"
+        },
+        "execution_evidence": {
+          "value": 7.1,
+          "status": "provisional",
+          "confidence": 67,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "milestone_velocity": {
+              "value": 5,
+              "weight": 0.4,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "setback_drag": {
+              "value": 10,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reality": {
+          "value": 6,
+          "status": "provisional",
+          "confidence": 67,
+          "components": {
+            "capital_committed": {
+              "value": null,
+              "weight": 0.1,
+              "weight_applied": 0,
+              "metrics": [
+                "tvl_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "developer_activity": {
+              "value": null,
+              "weight": 0.1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "economic_throughput": {
+              "value": 5.9,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "thesis_milestones": {
+              "value": 6,
+              "weight": 0.5,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reflexivity_risk": {
+          "value": 4,
+          "status": "provisional",
+          "confidence": 67,
+          "components": {
+            "incentive_dependence": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "unavailable_in_v0_1"
+            },
+            "necessity_inverse": {
+              "value": 0,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "supply_overhang": {
+              "value": 0,
+              "weight": 0.25,
+              "weight_applied": 0.3,
+              "metrics": [
+                "fdv_usd",
+                "market_cap_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "valuation_multiple": {
+              "value": 8.6,
+              "weight": 0.4,
+              "weight_applied": 0.5,
+              "metrics": [
+                "market_cap_usd",
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "subsidy_dependence": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "Post-incentive retention data has no reliable source in v0.1. Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "world_impact_potential": {
+          "value": 9,
+          "status": "final",
+          "confidence": 67,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_necessity": {
+          "value": 10,
+          "status": "final",
+          "confidence": 67,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_value_capture": {
+          "value": 6.5,
+          "status": "final",
+          "confidence": 67,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        }
+      },
+      "derived": {
+        "promise_gap": 3,
+        "build_gap": null,
+        "hype_gap": null,
+        "belief_gap": null
+      },
+      "prove_it_age_years": 17.7
+    },
+    {
+      "project": "eth",
+      "methodology_version": "0.1.0",
+      "snapshot_date": "2026-09-19",
+      "scores": {
+        "attention": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "No reliable attention data source in v0.1 (X/Reddit/Trends adapters are Phase 2). Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "development": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "unavailable_reason": "no component inputs available",
+          "epistemic": "measured"
+        },
+        "execution_evidence": {
+          "value": 7.1,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "milestone_velocity": {
+              "value": 5,
+              "weight": 0.4,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "setback_drag": {
+              "value": 10,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reality": {
+          "value": 8.8,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "capital_committed": {
+              "value": 9.3,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [
+                "tvl_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "developer_activity": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "economic_throughput": {
+              "value": 9.2,
+              "weight": 0.35,
+              "weight_applied": 0.4,
+              "metrics": [
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "thesis_milestones": {
+              "value": 8,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reflexivity_risk": {
+          "value": 2,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "incentive_dependence": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "unavailable_in_v0_1"
+            },
+            "necessity_inverse": {
+              "value": 1,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "supply_overhang": {
+              "value": 0,
+              "weight": 0.25,
+              "weight_applied": 0.3,
+              "metrics": [
+                "fdv_usd",
+                "market_cap_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "valuation_multiple": {
+              "value": 3.8,
+              "weight": 0.4,
+              "weight_applied": 0.5,
+              "metrics": [
+                "market_cap_usd",
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "subsidy_dependence": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "Post-incentive retention data has no reliable source in v0.1. Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "world_impact_potential": {
+          "value": 9,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_necessity": {
+          "value": 9,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_value_capture": {
+          "value": 7.5,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        }
+      },
+      "derived": {
+        "promise_gap": 0.2,
+        "build_gap": null,
+        "hype_gap": null,
+        "belief_gap": null
+      },
+      "prove_it_age_years": 11.1
+    },
+    {
+      "project": "sol",
+      "methodology_version": "0.1.0",
+      "snapshot_date": "2026-09-19",
+      "scores": {
+        "attention": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "No reliable attention data source in v0.1 (X/Reddit/Trends adapters are Phase 2). Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "development": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "unavailable_reason": "no component inputs available",
+          "epistemic": "measured"
+        },
+        "execution_evidence": {
+          "value": 5.9,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "milestone_velocity": {
+              "value": 5,
+              "weight": 0.4,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "setback_drag": {
+              "value": 7,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reality": {
+          "value": 7.6,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "capital_committed": {
+              "value": 7,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [
+                "tvl_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "developer_activity": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "economic_throughput": {
+              "value": 9.4,
+              "weight": 0.35,
+              "weight_applied": 0.4,
+              "metrics": [
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "thesis_milestones": {
+              "value": 6,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reflexivity_risk": {
+          "value": 1.5,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "incentive_dependence": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "unavailable_in_v0_1"
+            },
+            "necessity_inverse": {
+              "value": 1,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "supply_overhang": {
+              "value": 0.7,
+              "weight": 0.25,
+              "weight_applied": 0.3,
+              "metrics": [
+                "fdv_usd",
+                "market_cap_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "valuation_multiple": {
+              "value": 2.2,
+              "weight": 0.4,
+              "weight_applied": 0.5,
+              "metrics": [
+                "market_cap_usd",
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "subsidy_dependence": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "Post-incentive retention data has no reliable source in v0.1. Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "world_impact_potential": {
+          "value": 7.5,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_necessity": {
+          "value": 9,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_value_capture": {
+          "value": 6.5,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        }
+      },
+      "derived": {
+        "promise_gap": -0.1,
+        "build_gap": null,
+        "hype_gap": null,
+        "belief_gap": null
+      },
+      "prove_it_age_years": 6.5
+    },
+    {
+      "project": "xrp",
+      "methodology_version": "0.1.0",
+      "snapshot_date": "2026-09-19",
+      "scores": {
+        "attention": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "No reliable attention data source in v0.1 (X/Reddit/Trends adapters are Phase 2). Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "development": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "unavailable_reason": "no component inputs available",
+          "epistemic": "measured"
+        },
+        "execution_evidence": {
+          "value": 4.3,
+          "status": "provisional",
+          "confidence": 43,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "milestone_velocity": {
+              "value": 0,
+              "weight": 0.4,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "setback_drag": {
+              "value": 10,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reality": {
+          "value": 2,
+          "status": "provisional",
+          "confidence": 43,
+          "components": {
+            "capital_committed": {
+              "value": null,
+              "weight": 0.1,
+              "weight_applied": 0,
+              "metrics": [
+                "tvl_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "developer_activity": {
+              "value": null,
+              "weight": 0.1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "economic_throughput": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "thesis_milestones": {
+              "value": 2,
+              "weight": 0.5,
+              "weight_applied": 1,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reflexivity_risk": {
+          "value": 3.8,
+          "status": "provisional",
+          "confidence": 43,
+          "components": {
+            "incentive_dependence": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "unavailable_in_v0_1"
+            },
+            "necessity_inverse": {
+              "value": 4,
+              "weight": 0.2,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "supply_overhang": {
+              "value": 3.7,
+              "weight": 0.25,
+              "weight_applied": 0.6,
+              "metrics": [
+                "fdv_usd",
+                "market_cap_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "valuation_multiple": {
+              "value": null,
+              "weight": 0.4,
+              "weight_applied": 0,
+              "metrics": [
+                "market_cap_usd",
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "subsidy_dependence": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "Post-incentive retention data has no reliable source in v0.1. Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "world_impact_potential": {
+          "value": 7,
+          "status": "final",
+          "confidence": 43,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_necessity": {
+          "value": 6,
+          "status": "final",
+          "confidence": 43,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_value_capture": {
+          "value": 4,
+          "status": "final",
+          "confidence": 43,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        }
+      },
+      "derived": {
+        "promise_gap": 5,
+        "build_gap": null,
+        "hype_gap": null,
+        "belief_gap": null
+      },
+      "prove_it_age_years": 14.3
+    },
+    {
+      "project": "link",
+      "methodology_version": "0.1.0",
+      "snapshot_date": "2026-09-19",
+      "scores": {
+        "attention": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "No reliable attention data source in v0.1 (X/Reddit/Trends adapters are Phase 2). Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "development": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "unavailable_reason": "no component inputs available",
+          "epistemic": "measured"
+        },
+        "execution_evidence": {
+          "value": 4.3,
+          "status": "provisional",
+          "confidence": 45,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "milestone_velocity": {
+              "value": 0,
+              "weight": 0.4,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "setback_drag": {
+              "value": 10,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reality": {
+          "value": 6,
+          "status": "provisional",
+          "confidence": 45,
+          "components": {
+            "capital_committed": {
+              "value": null,
+              "weight": 0.05,
+              "weight_applied": 0,
+              "metrics": [
+                "tvl_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "developer_activity": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "economic_throughput": {
+              "value": null,
+              "weight": 0.25,
+              "weight_applied": 0,
+              "metrics": [
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "thesis_milestones": {
+              "value": 6,
+              "weight": 0.55,
+              "weight_applied": 1,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reflexivity_risk": {
+          "value": 2.3,
+          "status": "provisional",
+          "confidence": 45,
+          "components": {
+            "incentive_dependence": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "unavailable_in_v0_1"
+            },
+            "necessity_inverse": {
+              "value": 2,
+              "weight": 0.2,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "supply_overhang": {
+              "value": 2.5,
+              "weight": 0.25,
+              "weight_applied": 0.6,
+              "metrics": [
+                "fdv_usd",
+                "market_cap_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "valuation_multiple": {
+              "value": null,
+              "weight": 0.4,
+              "weight_applied": 0,
+              "metrics": [
+                "market_cap_usd",
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "subsidy_dependence": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "Post-incentive retention data has no reliable source in v0.1. Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "world_impact_potential": {
+          "value": 6.5,
+          "status": "final",
+          "confidence": 45,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_necessity": {
+          "value": 8,
+          "status": "final",
+          "confidence": 45,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_value_capture": {
+          "value": 5.5,
+          "status": "final",
+          "confidence": 45,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        }
+      },
+      "derived": {
+        "promise_gap": 0.5,
+        "build_gap": null,
+        "hype_gap": null,
+        "belief_gap": null
+      },
+      "prove_it_age_years": 9.3
+    },
+    {
+      "project": "ada",
+      "methodology_version": "0.1.0",
+      "snapshot_date": "2026-09-19",
+      "scores": {
+        "attention": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "No reliable attention data source in v0.1 (X/Reddit/Trends adapters are Phase 2). Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "development": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 1,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            }
+          },
+          "gates_applied": [],
+          "unavailable_reason": "no component inputs available",
+          "epistemic": "measured"
+        },
+        "execution_evidence": {
+          "value": 4.3,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "developer_activity": {
+              "value": null,
+              "weight": 0.3,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "milestone_velocity": {
+              "value": 0,
+              "weight": 0.4,
+              "weight_applied": 0.6,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "setback_drag": {
+              "value": 10,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reality": {
+          "value": 2.6,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "capital_committed": {
+              "value": 1.9,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [
+                "tvl_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "developer_activity": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [
+                "dev_commits_4w"
+              ],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "renormalize_weights_and_reduce_confidence"
+            },
+            "economic_throughput": {
+              "value": 3.5,
+              "weight": 0.35,
+              "weight_applied": 0.4,
+              "metrics": [
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "thesis_milestones": {
+              "value": 2,
+              "weight": 0.3,
+              "weight_applied": 0.4,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "reflexivity_risk": {
+          "value": 3.7,
+          "status": "provisional",
+          "confidence": 70,
+          "components": {
+            "incentive_dependence": {
+              "value": null,
+              "weight": 0.15,
+              "weight_applied": 0,
+              "metrics": [],
+              "epistemic": "measured",
+              "available": false,
+              "missing_note": "unavailable_in_v0_1"
+            },
+            "necessity_inverse": {
+              "value": 1,
+              "weight": 0.2,
+              "weight_applied": 0.2,
+              "metrics": [],
+              "epistemic": "modeling",
+              "available": true
+            },
+            "supply_overhang": {
+              "value": 1.7,
+              "weight": 0.25,
+              "weight_applied": 0.3,
+              "metrics": [
+                "fdv_usd",
+                "market_cap_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            },
+            "valuation_multiple": {
+              "value": 6.4,
+              "weight": 0.4,
+              "weight_applied": 0.5,
+              "metrics": [
+                "market_cap_usd",
+                "fees_annualized_usd"
+              ],
+              "epistemic": "measured",
+              "available": true
+            }
+          },
+          "gates_applied": [],
+          "epistemic": "mixed"
+        },
+        "subsidy_dependence": {
+          "value": null,
+          "status": "unavailable",
+          "confidence": null,
+          "components": {},
+          "gates_applied": [],
+          "unavailable_reason": "Post-incentive retention data has no reliable source in v0.1. Marked unavailable; reduces confidence.",
+          "epistemic": "measured"
+        },
+        "world_impact_potential": {
+          "value": 7.5,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_necessity": {
+          "value": 9,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        },
+        "token_value_capture": {
+          "value": 5.5,
+          "status": "final",
+          "confidence": 70,
+          "components": {},
+          "gates_applied": [],
+          "epistemic": "modeling"
+        }
+      },
+      "derived": {
+        "promise_gap": 4.9,
+        "build_gap": null,
+        "hype_gap": null,
+        "belief_gap": null
+      },
+      "prove_it_age_years": 9
+    }
+  ]
+}

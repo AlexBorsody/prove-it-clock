@@ -1,0 +1,1044 @@
+{
+  "snapshot_date": "2026-09-19",
+  "generated_at": "2026-09-19T07:11:23.500Z",
+  "project_count": 6,
+  "metric_count": 75,
+  "unavailable_count": 27,
+  "metrics": [
+    {
+      "projectSlug": "btc",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-19",
+      "value": 81056.35993630822,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-19",
+      "value": 1627907627149,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-19",
+      "value": 1627909167006,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-19",
+      "value": 42250535766,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-19",
+      "value": 20086431,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-19",
+      "value": 20086450,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-19",
+      "value": 21000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-19",
+      "value": 16.8,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "meta": {
+        "genesis_date": "2009-01-03",
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:02.469Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:02.469Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:02.469Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:02.469Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-19",
+      "value": 6019352.584904128,
+      "meta": {
+        "days": 26,
+        "btc_sum": 74.23975415000001,
+        "btc_usd": 81079.91
+      },
+      "source": {
+        "provider": "bitcoin",
+        "endpoint": "/charts/transaction-fees?timespan=30days&format=json",
+        "fetchedAt": "2026-09-19T07:11:22.580Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-19",
+      "value": 84502449.74961564,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 26
+      },
+      "source": {
+        "provider": "bitcoin",
+        "endpoint": "/charts/transaction-fees?timespan=30days&format=json",
+        "fetchedAt": "2026-09-19T07:11:22.580Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-19",
+      "value": 2626.0960386097017,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-19",
+      "value": 320466439307,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-19",
+      "value": 320466439307,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-19",
+      "value": 22118071729,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-19",
+      "value": 122061836.5153193,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-19",
+      "value": 122061836.5153193,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-19",
+      "value": 16.9,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "meta": {
+        "genesis_date": "2015-07-30",
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:05.205Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:05.205Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:05.205Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:05.205Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-19",
+      "value": 320733747.9499999,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Ethereum?dataType=dailyFees",
+        "fetchedAt": "2026-09-19T07:11:17.281Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-19",
+      "value": 3902260600.0583324,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Ethereum?dataType=dailyFees",
+        "fetchedAt": "2026-09-19T07:11:17.281Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-19",
+      "value": 52500463911,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Ethereum",
+        "fetchedAt": "2026-09-19T07:11:19.166Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-19",
+      "value": 111.90213569456193,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-19",
+      "value": 65670453454,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-19",
+      "value": 70926051359,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-19",
+      "value": 5823967285,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-19",
+      "value": 587296428.2100638,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-19",
+      "value": 634297680.9839708,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-19",
+      "value": 31.7,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "meta": {
+        "genesis_date": null,
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:07.998Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:07.998Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:07.998Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:07.998Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-19",
+      "value": 420539509.3599999,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Solana?dataType=dailyFees",
+        "fetchedAt": "2026-09-19T07:11:20.008Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-19",
+      "value": 5116564030.546665,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Solana?dataType=dailyFees",
+        "fetchedAt": "2026-09-19T07:11:20.008Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-19",
+      "value": 6290200525,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Solana",
+        "fetchedAt": "2026-09-19T07:11:21.068Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-19",
+      "value": 1.4183599949312784,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-19",
+      "value": 89127352517,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-19",
+      "value": 141723374396,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-19",
+      "value": 4459171368,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-19",
+      "value": 62879209849,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-19",
+      "value": 99985622230,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-19",
+      "value": 100000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-19",
+      "value": 28.8,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "meta": {
+        "genesis_date": null,
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:10.678Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:10.678Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:10.678Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-19",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-19T07:11:10.678Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-19",
+      "value": 12.331395361957647,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-19",
+      "value": 9220506028,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-19",
+      "value": 12325232446,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-19",
+      "value": 542139335,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-19",
+      "value": 748099970.424884,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-19",
+      "value": 1000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-19",
+      "value": 1000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-19",
+      "value": 18.1,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-19",
+      "value": 0.2231710028885131,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-19",
+      "value": 8366666772,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-19",
+      "value": 10033866538,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-19",
+      "value": 657986601,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-19",
+      "value": 37522923322.162025,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-19",
+      "value": 45000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-19",
+      "value": 45000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-19",
+      "value": 21.7,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-19T07:10:59.785Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-19",
+      "value": 449057.95999999996,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Cardano?dataType=dailyFees",
+        "fetchedAt": "2026-09-19T07:11:21.778Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-19",
+      "value": 5463538.513333333,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Cardano?dataType=dailyFees",
+        "fetchedAt": "2026-09-19T07:11:21.778Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-19",
+      "value": 59173968,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Cardano",
+        "fetchedAt": "2026-09-19T07:11:22.171Z"
+      }
+    }
+  ],
+  "unavailable": [
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/chainlink?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/chainlink?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/chainlink?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/cardano?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/cardano?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/cardano?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    }
+  ]
+}
