@@ -28,7 +28,7 @@ import type { NormalizedMetric } from "../providers/types.js";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const today = new Date().toISOString().slice(0, 10);
 const SNAP_DIR = join(ROOT, "data", "snapshots");
-const METHODOLOGY_VERSION = "0.1.0";
+const METHODOLOGY_VERSION = "0.2.0";
 
 function latestMetricsFile(): string {
   const files = readdirSync(SNAP_DIR).filter((f) => f.startsWith("metrics_")).sort();
@@ -137,7 +137,7 @@ async function main() {
   console.log(`[score] wrote ${explOut}`);
 
   // --- console summary (the "first calculated results") ---
-  console.log("\n=== FIRST RESULTS (methodology v0.1.0, unadjusted) ===");
+  console.log("\n=== RESULTS (methodology v0.2.0, unadjusted) ===");
   for (const snap of snapshots) {
     const s = snap.scores;
     const fmt = (v: number | null) => (v == null ? "n/a" : v.toFixed(1));
@@ -147,7 +147,7 @@ async function main() {
         `reflex=${fmt(s.reflexivity_risk.value)} dev=${fmt(s.development.value)} ` +
         `conf=${s.reality.confidence}% pot=${fmt(s.world_impact_potential.value)} ` +
         `tNec=${fmt(s.token_necessity.value)} tCap=${fmt(s.token_value_capture.value)} ` +
-        `promiseGap=${fmt(snap.derived.promise_gap)} buildGap=${fmt(snap.derived.build_gap)} ` +
+        `promiseGap=${fmt(snap.derived.promise_gap)} outlook=${fmt(snap.derived.potential_outlook)} ` +
         `status=${s.reality.status}`,
     );
   }

@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               prices and does not tell anyone what to buy or sell. Every score is traceable
               to its inputs; every methodology change is versioned.
             </p>
-            <p className="num">Methodology v0.1.0 · Scores are provisional while data coverage is incomplete.</p>
+            <p className="num">Methodology v0.2.0 · Scores are provisional while data coverage is incomplete.</p>
           </footer>
         </div>
       </body>

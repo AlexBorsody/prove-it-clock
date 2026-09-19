@@ -11,6 +11,7 @@
  * in the Vercel runtime).
  */
 import methodologyV010 from "../../methodology/v0.1.0.json";
+import methodologyV020 from "../../methodology/v0.2.0.json";
 import seedsDoc from "../../data/projects.json";
 
 export interface MethodologyConfig {
@@ -60,8 +61,9 @@ export interface ConfidenceDef {
 }
 
 export function loadMethodology(version: string): MethodologyConfig {
-  if (version !== "0.1.0") throw new Error(`Unknown methodology version: ${version}`);
-  return methodologyV010 as unknown as MethodologyConfig;
+  if (version === "0.2.0") return methodologyV020 as unknown as MethodologyConfig;
+  if (version === "0.1.0") return methodologyV010 as unknown as MethodologyConfig;
+  throw new Error(`Unknown methodology version: ${version}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -345,10 +347,20 @@ export function scoreProject(
   // --- derived gaps ---
   const derived: Record<string, number | null> = {};
   const rv = reality?.value, pv = scores["world_impact_potential"]?.value, dv = scores["development"]?.value;
+  const ev = scores["execution_evidence"]?.value;
   derived["promise_gap"] = rv != null && pv != null ? r1(pv - rv) : null;
   derived["build_gap"] = rv != null && dv != null ? r1(dv - rv) : null;
   derived["hype_gap"] = null; // attention unavailable in v0.1
   derived["belief_gap"] = null; // no community layer in v0.1
+  // v0.2.0: Potential Outlook — of the promise not yet realized, how much does
+  // current execution support capturing? NOT a probability, NOT a price
+  // prediction; uncalibrated until historical backtesting exists. Floored at 0:
+  // a negative promise gap means the thesis is already exceeded, leaving no
+  // unrealized promise to capture.
+  derived["potential_outlook"] =
+    derived["promise_gap"] != null && ev != null
+      ? r1(clamp(Math.max(0, derived["promise_gap"]!) * (ev / 10), 0, 10))
+      : null;
 
   return {
     project: seed.slug,

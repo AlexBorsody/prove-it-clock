@@ -91,7 +91,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     store.getSnapshotHistory(slug),
     store.getMetricRows(slug),
     store.getMetricAvailability(),
-    store.getMethodology("0.1.0"),
+    store.getMethodology("0.2.0"),
   ]);
   const snap = scores[slug];
   if (!snap) notFound();
@@ -118,7 +118,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ScoreCard label="Execution evidence" value={s.execution_evidence?.value} sub="evidence score, not a probability" status={s.execution_evidence?.status} />
         <ScoreCard label="Reflexivity risk" value={s.reflexivity_risk?.value} scale="risk" sub="dependence on belief" status={s.reflexivity_risk?.status} />
         <ScoreCard label="Promise gap" value={snap.derived.promise_gap} scale="gap" sub="potential − reality" />
+        <ScoreCard label="Potential outlook" value={snap.derived.potential_outlook} sub="speculative, uncalibrated — not a probability" />
         <ScoreCard label="Prove-It age" value={snap.prove_it_age_years} sub={`launched ${seed.launch_date}`} />
+      </div>
+
+      <div className="panel">
+        <h2>Potential outlook <EpistemicTag kind="mixed" /></h2>
+        <p className="panel-sub">
+          Forward-looking, but <b>not</b> a probability and <b>not</b> a price prediction — it is
+          uncalibrated until historical backtesting exists. Formula:{" "}
+          <span className="num">clamp(max(promise_gap, 0) × (execution_evidence / 10), 0, 10)</span>.
+          It reads as: of the promise not yet realized, how much does current execution support
+          capturing? A large promise gap with weak execution scores low — the thesis may be real,
+          but nothing is moving toward it. This is the closest the Clock comes to “potential,”
+          and it is deliberately built from evidence, not from narrative heat.
+        </p>
       </div>
 
       <div className="panel">

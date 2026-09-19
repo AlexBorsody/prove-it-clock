@@ -1,11 +1,11 @@
 {
-  "methodology_version": "0.2.0",
+  "methodology_version": "0.1.0",
   "snapshot_date": "2026-09-19",
-  "generated_at": "2026-09-19T17:56:14.107Z",
+  "generated_at": "2026-09-19T07:11:24.127Z",
   "snapshots": [
     {
       "project": "btc",
-      "methodology_version": "0.2.0",
+      "methodology_version": "0.1.0",
       "snapshot_date": "2026-09-19",
       "scores": {
         "attention": {
@@ -209,14 +209,13 @@
         "promise_gap": 3,
         "build_gap": null,
         "hype_gap": null,
-        "belief_gap": null,
-        "potential_outlook": 2.1
+        "belief_gap": null
       },
       "prove_it_age_years": 17.7
     },
     {
       "project": "eth",
-      "methodology_version": "0.2.0",
+      "methodology_version": "0.1.0",
       "snapshot_date": "2026-09-19",
       "scores": {
         "attention": {
@@ -419,14 +418,13 @@
         "promise_gap": 0.2,
         "build_gap": null,
         "hype_gap": null,
-        "belief_gap": null,
-        "potential_outlook": 0.1
+        "belief_gap": null
       },
       "prove_it_age_years": 11.1
     },
     {
       "project": "sol",
-      "methodology_version": "0.2.0",
+      "methodology_version": "0.1.0",
       "snapshot_date": "2026-09-19",
       "scores": {
         "attention": {
@@ -629,14 +627,13 @@
         "promise_gap": -0.1,
         "build_gap": null,
         "hype_gap": null,
-        "belief_gap": null,
-        "potential_outlook": 0
+        "belief_gap": null
       },
       "prove_it_age_years": 6.5
     },
     {
       "project": "xrp",
-      "methodology_version": "0.2.0",
+      "methodology_version": "0.1.0",
       "snapshot_date": "2026-09-19",
       "scores": {
         "attention": {
@@ -842,14 +839,13 @@
         "promise_gap": 5,
         "build_gap": null,
         "hype_gap": null,
-        "belief_gap": null,
-        "potential_outlook": 2.2
+        "belief_gap": null
       },
       "prove_it_age_years": 14.3
     },
     {
       "project": "link",
-      "methodology_version": "0.2.0",
+      "methodology_version": "0.1.0",
       "snapshot_date": "2026-09-19",
       "scores": {
         "attention": {
@@ -1055,14 +1051,13 @@
         "promise_gap": 0.5,
         "build_gap": null,
         "hype_gap": null,
-        "belief_gap": null,
-        "potential_outlook": 0.2
+        "belief_gap": null
       },
       "prove_it_age_years": 9.3
     },
     {
       "project": "ada",
-      "methodology_version": "0.2.0",
+      "methodology_version": "0.1.0",
       "snapshot_date": "2026-09-19",
       "scores": {
         "attention": {
@@ -1265,8 +1260,7 @@
         "promise_gap": 4.9,
         "build_gap": null,
         "hype_gap": null,
-        "belief_gap": null,
-        "potential_outlook": 2.1
+        "belief_gap": null
       },
       "prove_it_age_years": 9
     }

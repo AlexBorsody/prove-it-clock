@@ -2,14 +2,14 @@
   {
     "project": "btc",
     "snapshot_date": "2026-09-19",
-    "methodology_version": "0.2.0",
+    "methodology_version": "0.1.0",
     "entries": [
       {
         "score": "reality",
         "value": 6,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "economic_throughput",
@@ -33,7 +33,7 @@
         "value": 7.1,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "milestone_velocity",
@@ -56,7 +56,7 @@
         "value": 4,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "necessity_inverse",
@@ -84,7 +84,7 @@
         "value": null,
         "status": "unavailable",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [],
         "missing_components": [
           "developer_activity"
@@ -96,14 +96,14 @@
   {
     "project": "eth",
     "snapshot_date": "2026-09-19",
-    "methodology_version": "0.2.0",
+    "methodology_version": "0.1.0",
     "entries": [
       {
         "score": "reality",
         "value": 8.8,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "capital_committed",
@@ -131,7 +131,7 @@
         "value": 7.1,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "milestone_velocity",
@@ -154,7 +154,7 @@
         "value": 2,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "necessity_inverse",
@@ -182,7 +182,7 @@
         "value": null,
         "status": "unavailable",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [],
         "missing_components": [
           "developer_activity"
@@ -194,14 +194,14 @@
   {
     "project": "sol",
     "snapshot_date": "2026-09-19",
-    "methodology_version": "0.2.0",
+    "methodology_version": "0.1.0",
     "entries": [
       {
         "score": "reality",
         "value": 7.6,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "capital_committed",
@@ -229,7 +229,7 @@
         "value": 5.9,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "milestone_velocity",
@@ -252,7 +252,7 @@
         "value": 1.5,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "necessity_inverse",
@@ -280,7 +280,7 @@
         "value": null,
         "status": "unavailable",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [],
         "missing_components": [
           "developer_activity"
@@ -292,14 +292,14 @@
   {
     "project": "xrp",
     "snapshot_date": "2026-09-19",
-    "methodology_version": "0.2.0",
+    "methodology_version": "0.1.0",
     "entries": [
       {
         "score": "reality",
         "value": 2,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "thesis_milestones",
@@ -319,7 +319,7 @@
         "value": 4.3,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "milestone_velocity",
@@ -342,7 +342,7 @@
         "value": 3.8,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "necessity_inverse",
@@ -366,7 +366,7 @@
         "value": null,
         "status": "unavailable",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [],
         "missing_components": [
           "developer_activity"
@@ -378,14 +378,14 @@
   {
     "project": "link",
     "snapshot_date": "2026-09-19",
-    "methodology_version": "0.2.0",
+    "methodology_version": "0.1.0",
     "entries": [
       {
         "score": "reality",
         "value": 6,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "thesis_milestones",
@@ -405,7 +405,7 @@
         "value": 4.3,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "milestone_velocity",
@@ -428,7 +428,7 @@
         "value": 2.3,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "necessity_inverse",
@@ -452,7 +452,7 @@
         "value": null,
         "status": "unavailable",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [],
         "missing_components": [
           "developer_activity"
@@ -464,14 +464,14 @@
   {
     "project": "ada",
     "snapshot_date": "2026-09-19",
-    "methodology_version": "0.2.0",
+    "methodology_version": "0.1.0",
     "entries": [
       {
         "score": "reality",
         "value": 2.6,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "capital_committed",
@@ -499,7 +499,7 @@
         "value": 4.3,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "milestone_velocity",
@@ -522,7 +522,7 @@
         "value": 3.7,
         "status": "provisional",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [
           {
             "component": "necessity_inverse",
@@ -550,7 +550,7 @@
         "value": null,
         "status": "unavailable",
         "delta": null,
-        "summary": "First snapshot under methodology v0.2.0.",
+        "summary": "First snapshot under methodology v0.1.0.",
         "contributors": [],
         "missing_components": [
           "developer_activity"

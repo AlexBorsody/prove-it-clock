@@ -1,7 +1,22 @@
 import { getStore } from "@/lib/data";
 import { EpistemicTag } from "@/components/score";
+import disclosuresDoc from "../../../data/disclosures.json";
 
 export const dynamic = "force-dynamic";
+
+interface ObserverEffect {
+  statement: string;
+  goodharts_law: string;
+  safeguards: { id: string; text: string }[];
+}
+
+interface Disclosures {
+  publisher: string;
+  updated: string;
+  policy: string;
+  status_note: string;
+  entries: { symbol: string; name: string; status: string; scored_on_clock: boolean; detail: string }[];
+}
 
 function formulaText(code: string, norm: Record<string, unknown>): string {
   switch (norm.type) {
@@ -26,7 +41,9 @@ function formulaText(code: string, norm: Record<string, unknown>): string {
 
 export default async function MethodologyPage() {
   const store = getStore();
-  const cfg = await store.getMethodology("0.1.0");
+  const cfg = await store.getMethodology("0.2.0");
+  const observer = (cfg as unknown as { observer_effect?: ObserverEffect }).observer_effect;
+  const disclosures = disclosuresDoc as unknown as Disclosures;
 
   const scoreEntries = Object.entries(cfg.scores);
   const catEntries = Object.entries(cfg.categories);
@@ -154,6 +171,51 @@ export default async function MethodologyPage() {
           </div>
         ))}
       </div>
+
+      {observer && (
+        <>
+          <h2 style={{ fontSize: 18, margin: "28px 0 12px" }}>The observer effect — this site can move markets</h2>
+          <div className="panel">
+            <p className="panel-sub" style={{ marginBottom: 8 }}>{observer.statement}</p>
+            {observer.safeguards.map((s) => (
+              <div className="gate" key={s.id}>
+                <code>{s.id}</code>
+                <p style={{ margin: "6px 0 0", color: "var(--text-dim)", fontSize: 13 }}>{s.text}</p>
+              </div>
+            ))}
+            <p style={{ margin: "12px 0 0", color: "var(--text-faint)", fontSize: 13, fontStyle: "italic" }}>
+              {observer.goodharts_law}
+            </p>
+          </div>
+
+          <h2 style={{ fontSize: 18, margin: "28px 0 12px" }}>Publisher disclosures</h2>
+          <div className="panel">
+            <p className="panel-sub" style={{ marginBottom: 4 }}>
+              {disclosures.publisher} · updated {disclosures.updated}
+            </p>
+            <p className="panel-sub" style={{ marginBottom: 8 }}>{disclosures.policy}</p>
+            <p style={{ color: "var(--accent)", fontSize: 13, marginBottom: 12 }}>{disclosures.status_note}</p>
+            <table className="spec">
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Status</th>
+                  <th>Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                {disclosures.entries.map((e) => (
+                  <tr key={e.symbol}>
+                    <td><b className="num">{e.symbol}</b> <span style={{ color: "var(--text-faint)" }}>{e.name}</span>{e.scored_on_clock && <span className="tag" style={{ marginLeft: 6 }}>scored on the Clock</span>}</td>
+                    <td><span className="tag na">{e.status}</span></td>
+                    <td style={{ color: "var(--text-dim)", fontSize: 13 }}>{e.detail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </>
   );
 }
