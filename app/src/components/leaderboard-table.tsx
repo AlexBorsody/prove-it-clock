@@ -18,6 +18,7 @@ export interface BoardRow {
   marketCap: number | null;
   development: number | null;
   promiseGap: number | null;
+  potentialOutlook: number | null;
   status: string;
 }
 
@@ -34,6 +35,7 @@ const COLUMNS: { key: Key; label: string; hint?: string }[] = [
   { key: "trend", label: "Reality trend", hint: "Change since previous snapshot" },
   { key: "marketCap", label: "Market cap", hint: "For context only — never a score input" },
   { key: "promiseGap", label: "Promise gap", hint: "Potential − Reality" },
+  { key: "potentialOutlook", label: "Potential outlook", hint: "Of the unrealized promise, how much current execution supports capturing (0–10). NOT a probability, NOT a price prediction." },
 ];
 
 function fmtMcap(v: number | null): string {
@@ -123,6 +125,7 @@ export default function LeaderboardTable({ rows }: { rows: BoardRow[] }) {
               </td>
               <td><span className="num" style={{ color: "var(--text-dim)" }}>{fmtMcap(r.marketCap)}</span></td>
               <td><ScoreCell value={r.promiseGap} scale="gap" /></td>
+              <td><ScoreCell value={r.potentialOutlook} /></td>
             </tr>
           ))}
         </tbody>
