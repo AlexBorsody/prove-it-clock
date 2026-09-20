@@ -112,3 +112,58 @@ Every claim in `milestones` needs an `evidence_summary`; every seed gets a secon
 2. **Universe source:** CoinGecko ranks (recommended, no key) or CoinMarketCap API (needs a free key from you)?
 3. **Universe refresh cadence:** daily check with append-only membership (recommended), or a slower cadence (weekly/monthly reconstitution)?
 4. **Wrapped/staked variants** (e.g. stETH, WBTC if they appear in 2–21): treat as separate rows or fold into the underlying asset?
+
+## 10. Compounding-data strategy — the killer-app thesis (2026-09-20)
+
+Code is cheap; every crypto dashboard looks the same. The Clock's durable edge
+is not the page — it's the append-only history underneath it. Time moves one
+direction, and every snapshot we take is data no competitor can backfill, buy,
+or scrape retroactively.
+
+### 10.1 The moat: data that compounds
+
+- Each snapshot (scores, metrics, explanations, methodology version) accrues
+  permanently. A new entrant starts at zero history; we start at N years.
+- Methodology versions compound too: every dispute and every observed outcome
+  teaches the next version what to measure. The version log is itself a dataset.
+- Calibration becomes possible only with a long tape: did large promise gaps
+  precede collapses? Did high execution scores predict shipped milestones?
+  Backtesting needs history, and history needs someone to have recorded it.
+
+### 10.2 Per-coin timeline graphs — the product surface
+
+Every project gets a timeline chart: each scored metric plotted over time,
+with methodology-version markers on the axis and event annotations (mainnet
+launches, hacks, pivots, leadership exits, ETF approvals).
+
+- The graph is simultaneously the product people stare at and the dataset
+  nobody can replicate.
+- Annotated timelines are the shareable unit: "here's what they promised,
+  here's what happened" is what gets screenshotted. Every share drives
+  traffic back to the Clock.
+
+### 10.3 The flywheel
+
+Score → publish → observe real outcomes → feed outcomes back into methodology
+versions → scores get harder to game → dataset gets more valuable → repeat.
+Each loop widens the gap between the Clock and any copy.
+
+### 10.4 What makes the algorithm better
+
+It does not predict price. It measures one thing — the gap between promise and
+delivery — and gets sharper the longer the tape runs. Improvement comes from
+recorded outcomes, not from tuning weights to flatter anyone.
+
+### 10.5 Monetization: sell access, never scores
+
+- Free: the public Clock (distribution).
+- Paid: API access, full historical time-series, embeddable widgets for media
+  sites, promise-gap alerts.
+- Customers: funds, journalists, researchers, compliance teams.
+- Hard line (charter: trust never for sale): a rating is never for sale. The
+  day a score can be bought, the instrument is worthless.
+
+### 10.6 Distribution
+
+SEO target: every "is [coin] legit / safe / a scam" query should land on a
+Clock project page with its annotated timeline. The timeline is the landing page.
