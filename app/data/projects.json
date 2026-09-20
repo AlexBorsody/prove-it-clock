@@ -1056,7 +1056,115 @@
       "slug": "bnb",
       "symbol": "BNB",
       "thesis": "Be the gas and coordination token of the Binance ecosystem: BNB Chain's execution layer plus fee discounts and launchpad access on the world's largest exchange.",
-      "thesis_category": "execution"
+      "thesis_category": "execution",
+      "promises": [
+        {
+          "promise_type": "DeFi",
+          "source_name": "Binance 2017 whitepaper (quoted via Decrypt)",
+          "source_url": "https://decrypt.co/11327/the-inside-story-of-binance-explosive-rise-to-power",
+          "status": "kept",
+          "text": "With your help, Binance will build a world-class crypto exchange, powering the future of crypto finance."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Binance 2017 pitch deck (via StartupFundraising)",
+          "source_url": "https://startupfundraising.com/library/articles/binance-pitch-deck-teardown",
+          "status": "kept",
+          "text": "BNB could be used to pay for any fees on the platform (exchange, withdrawal, listing), with a sliding discount starting at 50% in the first year."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "BNB Chain blog: A Journey to Decentralization",
+          "source_url": "https://www.bnbchain.org/en/blog/a-journey-to-decentralization-validators-delegators",
+          "status": "partial",
+          "text": "BSC's goal is to develop an infrastructure for a DeFi ecosystem accessible to everyone anywhere worldwide with access to a computer or phone and internet connection."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "BNB Chain blog: A Journey to Decentralization",
+          "source_url": "https://www.bnbchain.org/en/blog/a-journey-to-decentralization-validators-delegators",
+          "status": "partial",
+          "text": "As the network grows, the ecosystem becomes more independent and decentralized, resistant to malicious attacks and attempts to control the network."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Binance (auto-burn announcement; exact blog URL not verified)",
+          "source_url": null,
+          "status": "kept",
+          "text": "Binance commits to burning BNB every quarter until the circulating supply is reduced to 100 million (the BNB auto-burn, replacing the profit-based burn in Dec 2021)."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-09-20",
+            "metric": "chain_tvl_usd",
+            "source_name": "DefiLlama",
+            "source_url": "https://defillama.com/chain/bsc",
+            "unit": "USD",
+            "value": 5669541369
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "fees_30d_usd",
+            "source_name": "DefiLlama",
+            "source_url": "https://defillama.com/fees/chain/bsc",
+            "unit": "USD",
+            "value": 21354697
+          }
+        ],
+        "notes": "Fee run-rate ~$260M annualized from user-paid gas; TVL and fees are real network usage, not Binance CEX activity.",
+        "unavailable": [
+          "daily_active_addresses",
+          "protocol_revenue",
+          "staking_participation"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "200M genesis supply (2017); quarterly BNB auto-burn (since Dec 2021) targets 100M circulating supply; BEP-95 real-time burn destroys a portion of BSC gas fees.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "Binance is a private company; no foundation treasury or burn disclosed. BSC gas fees accrue to validators, not BNB holders, except via the two burn mechanisms.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [
+          {
+            "date": "2023-11-21",
+            "name": "Changpeng Zhao",
+            "note": "Stepped down and pleaded guilty to a Bank Secrecy Act violation as part of a $4.3B DOJ settlement; replaced by Richard Teng.",
+            "role": "CEO, Binance"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Changpeng Zhao",
+            "pedigree": "Founded Binance 2017; prior: CTO of OKCoin, head of Bloomberg Tradebook Futures",
+            "role": "Founder, Binance (CEO 2017-2023)",
+            "source_url": "https://decrypt.co/11327/the-inside-story-of-binance-explosive-rise-to-power"
+          },
+          {
+            "name": "Yi He",
+            "pedigree": "Co-founded Binance 2017; prior: VP at Yixia Technology, OKCoin",
+            "role": "Co-founder and CMO, Binance",
+            "source_url": "https://medium.com/@decryptmedia/binance-the-inside-story-of-the-worlds-biggest-bitcoin-exchange-5478de49ced2"
+          },
+          {
+            "name": "Richard Teng",
+            "pedigree": "Ex-Monetary Authority of Singapore, SGX Chief Regulatory Officer, CEO of Abu Dhabi Global Market",
+            "role": "CEO, Binance (since Nov 2023)",
+            "source_url": "https://vulcanpost.com/845854/singaporean-richard-teng-replaces-cz-as-binance-ceo/"
+          }
+        ],
+        "notes": "BNB has no public foundation team; BNB Chain development is community-led with Binance as the dominant contributor."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "assessments": {
@@ -1265,7 +1373,104 @@
       "slug": "trx",
       "symbol": "TRX",
       "thesis": "Be the cheapest high-throughput settlement chain for dollar stablecoins: dominate USDT transfers with near-zero fees.",
-      "thesis_category": "execution"
+      "thesis_category": "execution",
+      "promises": [
+        {
+          "promise_type": "interoperability",
+          "source_name": "TRON Whitepaper v2.0",
+          "source_url": "https://tron.network/static/doc/white_paper_v_2_1.pdf",
+          "status": "partial",
+          "text": "TRON is an ambitious project dedicated to the establishment of a truly decentralized Internet and its infrastructure."
+        },
+        {
+          "promise_type": "interoperability",
+          "source_name": "TRON Whitepaper v2.0",
+          "source_url": "https://tron.network/static/doc/white_paper_v_2_1.pdf",
+          "status": "kept",
+          "text": "The TRON Protocol offers public blockchain support of high throughput, high scalability, and high availability for all Decentralized Applications (DApps) in the TRON ecosystem."
+        },
+        {
+          "promise_type": "gaming",
+          "source_name": "TRON original whitepaper (2017)",
+          "source_url": "https://tron.network/static/doc/white_paper_v_2_1.pdf",
+          "status": "partial",
+          "text": "To build 'the blockchain's entertainment system of free content' through six development phases spanning 2017 to 2027, from Exodus (data liberation) through Eternity (decentralized gaming ecosystem)."
+        },
+        {
+          "promise_type": "interoperability",
+          "source_name": "TRON developer docs",
+          "source_url": "https://developers.tron.network/v4.4.0/docs/getting-started",
+          "status": "partial",
+          "text": "TRON follows the philosophy of 'Decentralize the Web': the TRON public chain performs as the core of the TRON ecosystem."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "Justin Sun open letter to the TRON community (TRON DAO)",
+          "source_url": "https://trondao.medium.com/justin-suns-open-letter-to-the-community-on-tron-s-decentralization-and-his-personal-journey-853990c3d978",
+          "status": "partial",
+          "text": "A truly inclusive #financialinfrastructure that belongs to all mankind should be #unlimited, #decentralized, and #thresholdless."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-09-20",
+            "metric": "chain_tvl_usd",
+            "source_name": "DefiLlama",
+            "source_url": "https://defillama.com/chain/tron",
+            "unit": "USD",
+            "value": 5548229280
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "fees_30d_usd",
+            "source_name": "DefiLlama",
+            "source_url": "https://defillama.com/fees/chain/tron",
+            "unit": "USD",
+            "value": 24152500
+          }
+        ],
+        "notes": "Fee run-rate ~$294M annualized. TVL understates TRON's real utility: most usage is USDT transfers (payments), not DeFi TVL.",
+        "unavailable": [
+          "daily_active_addresses",
+          "usdt_supply_on_tron_usd",
+          "daily_settlement_volume_usd",
+          "protocol_revenue"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "No hard cap; TRON has been net deflationary since 2023 as fee burns exceed block/witness rewards, driven by surging USDT transfer fees.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "TRON DAO does not disclose a treasury or burn figure. TRX security is funded by transaction fees (energy/bandwidth model), not a disclosed budget.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [
+          {
+            "date": "2021-12-17",
+            "name": "Justin Sun",
+            "note": "Sun resigned as TRON Foundation CEO and announced the Foundation had dissolved (effective July 2021); governance transitioned to the community-run TRON DAO.",
+            "role": "CEO, TRON Foundation"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Justin Sun",
+            "pedigree": "Founded TRON 2017; prior: chief representative of Ripple Greater China, founder/CEO of Peiwo (10M+ users); first-millennial graduate of Jack Ma's Hupan University; appointed Grenada's WTO ambassador 2021",
+            "role": "Founder, TRON",
+            "source_url": "https://blockeden.xyz/blog/2025/10/02/tron-s-evolution-from-blockchain-experiment-to-global-payment-infrastructure/"
+          }
+        ],
+        "notes": "No single for-profit company behind the chain; development is attributed to the TRON DAO (27 community super representatives), with Sun as the public figurehead."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "assessments": {
@@ -1372,7 +1577,131 @@
       "slug": "zec",
       "symbol": "ZEC",
       "thesis": "Be private sound money: Bitcoin-like scarcity with shielded transactions that make every coin fungible.",
-      "thesis_category": "monetary"
+      "thesis_category": "monetary",
+      "promises": [
+        {
+          "promise_type": "monetary",
+          "source_name": "z.cash (official site)",
+          "source_url": "https://z.cash/",
+          "status": "kept",
+          "text": "Zcash is encrypted electronic cash. The first cryptocurrency to develop zero-knowledge encryption for private peer-to-peer payments."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "z.cash (official site)",
+          "source_url": "https://z.cash/",
+          "status": "kept",
+          "text": "Zcash employs end-to-end encryption to protect your right to privacy."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "z.cash (official site)",
+          "source_url": "https://z.cash/",
+          "status": "partial",
+          "text": "A decentralized ecosystem of developers are paid to add Zcash features and UX improvements."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "z.cash (official site)",
+          "source_url": "https://z.cash/",
+          "status": "partial",
+          "text": "Zcash is available in trusted digital wallets and listed on high-quality exchanges around the world, making it the best option for private everyday payments and long-term savings."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "Messari: Understanding Zcash",
+          "source_url": "https://messari.io/report/understanding-zcash-a-comprehensive-overview",
+          "status": "kept",
+          "text": "zk-SNARKs allow the network to verify transaction validity without exposing the sender, receiver, or amount."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-09-20",
+            "metric": "market_cap_usd",
+            "source_name": "CoinGecko",
+            "source_url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=zcash",
+            "unit": "USD",
+            "value": 24396506677
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "volume_24h_usd",
+            "source_name": "CoinGecko",
+            "source_url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=zcash",
+            "unit": "USD",
+            "value": 1081318146
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "shielded_zec",
+            "source_name": "z.cash",
+            "source_url": "https://z.cash/",
+            "unit": "ZEC",
+            "value": 4920000
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "circulating_supply_zec",
+            "source_name": "CoinGecko",
+            "source_url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=zcash",
+            "unit": "ZEC",
+            "value": 16942351.73
+          }
+        ],
+        "notes": "~29% of circulating ZEC sits in shielded pools (4.92M of 16.94M, per z.cash). Note: z.cash homepage shows two conflicting price widgets; CoinGecko values used as canonical.",
+        "unavailable": [
+          "daily_active_addresses",
+          "shielded_transaction_share",
+          "exchange_listings_count"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "21M hard cap, Bitcoin-style halvings: first halving Nov 18, 2020 (6.25 to 3.125 ZEC/block); second halving Nov 23, 2024 (3.125 to 1.5625 ZEC/block); next halving expected late 2028.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "The legacy 20% Dev Fund (ECC/Foundation/grants) expired at NU6 (Nov 2024); NU6.1 introduced a new community-directed funding model. No public treasury or burn disclosed.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [
+          {
+            "date": "2023-12-18",
+            "name": "Zooko Wilcox-O'Hearn",
+            "note": "Stepped down as ECC CEO, saying conflation of Zcash with himself personally was not healthy for him or Zcash; succeeded by Josh Swihart.",
+            "role": "CEO, Electric Coin Company"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Zooko Wilcox-O'Hearn",
+            "pedigree": "Founded the Zcash Company 2015; prior: founder of Least Authority, creator of Tahoe-LAFS, Mojo Nation contributor",
+            "role": "Founder, Zcash (ECC CEO 2016-2023)",
+            "source_url": "https://messari.io/report/understanding-zcash-a-comprehensive-overview"
+          },
+          {
+            "name": "Daira Emma Hopwood",
+            "pedigree": "Co-author of the Zerocash protocol paper; protocol designer at ECC",
+            "role": "Protocol designer/engineer, ECC",
+            "source_url": "https://messari.io/report/understanding-zcash-a-comprehensive-overview"
+          },
+          {
+            "name": "Josh Swihart",
+            "pedigree": "ECC VP of Growth 2018-2023 before promotion to CEO",
+            "role": "CEO, Electric Coin Company (since Dec 2023)",
+            "source_url": "https://supercoininsider.com/2023/12/18/zcash-founder-zooko-wilcox-steps-down-from-electric-coin-naming-new-ceo/?amp=1"
+          }
+        ],
+        "notes": "Protocol stewardship is split between the Electric Coin Company (zcashd) and the independent nonprofit Zcash Foundation (zebra)."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "assessments": {
@@ -1472,7 +1801,110 @@
       "slug": "hype",
       "symbol": "HYPE",
       "thesis": "Be the decentralized venue that takes perpetuals volume from centralized exchanges: CEX-grade performance with onchain settlement, plus a general L1 (HyperEVM).",
-      "thesis_category": "execution"
+      "thesis_category": "execution",
+      "promises": [
+        {
+          "promise_type": "DeFi",
+          "source_name": "Hyperliquid docs",
+          "source_url": "https://hyperliquid.gitbook.io/hyperliquid-docs",
+          "status": "partial",
+          "text": "Hyperliquid is a performant blockchain built with the vision of a fully onchain open financial system."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Hyperliquid docs",
+          "source_url": "https://hyperliquid.gitbook.io/hyperliquid-docs",
+          "status": "kept",
+          "text": "Every order, cancel, trade, and liquidation happens transparently with one-block finality inherited from HyperBFT. HyperCore currently supports 200k orders/second."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Hyperliquid docs",
+          "source_url": "https://hyperliquid.gitbook.io/hyperliquid-docs",
+          "status": "pending",
+          "text": "Liquidity, user applications, and trading activity synergize on a unified platform that will ultimately house all of finance."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Hyper Foundation / Jeff Yan (via Coinspeaker)",
+          "source_url": "https://www.coinspeaker.com/hyperliquids-hype-token-sees-1b-usdc-inflows-post-launch/",
+          "status": "kept",
+          "text": "The Hyperliquid genesis pays homage to the original ethos of Bitcoin: ownership goes to the believers and doers, not rent-seeking insiders."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Hyper Foundation genesis announcement (reported by Bitget)",
+          "source_url": "https://www.bitget.com/news/detail/12560604390337",
+          "status": "kept",
+          "text": "No allocations [of HYPE] for private investors, centralized exchanges, or market makers."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Hyper Foundation (via Datawallet)",
+          "source_url": "https://www.datawallet.com/news/hyperliquids-hyperevm-goes-live-on-mainnet",
+          "status": "kept",
+          "text": "The HyperEVM is live. This is a major step toward the vision of housing all finance by bringing general-purpose programmability to Hyperliquid's performant financial system."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-09-20",
+            "metric": "fees_30d_usd",
+            "source_name": "DefiLlama",
+            "source_url": "https://defillama.com/fees/hyperliquid",
+            "unit": "USD",
+            "value": 79897121
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "bridge_tvl_usd",
+            "source_name": "DefiLlama",
+            "source_url": "https://defillama.com/fees/hyperliquid",
+            "unit": "USD",
+            "value": 6897703831
+          }
+        ],
+        "notes": "Fee run-rate ~$972M annualized, overwhelmingly user-paid trading fees (not token emissions). Bridge TVL is USDC deposits for trading, not idle DeFi TVL.",
+        "unavailable": [
+          "daily_active_addresses",
+          "unique_traders",
+          "open_interest_usd",
+          "perp_volume_30d"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "1B max supply: 31% genesis airdrop (fully unlocked Nov 29, 2024); 38.888% future emissions and community rewards; 23.8% core contributors (1-yr lock, vesting through 2027-28); 6% Hyper Foundation; 0.3% community grants; 0.012% HIP-2. No private investors, CEXs, or market makers. Protocol trading fees fund an Assistance Fund that buys HYPE.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "Self-funded by the founder's trading profits; no VC. Hyper Foundation budget is 60M HYPE (6%). Treasury value in USD not disclosed; fee-funded buybacks are real but not a treasury.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [],
+        "key_people": [
+          {
+            "name": "Jeff Yan",
+            "pedigree": "Co-founded Hyperliquid 2022; prior: Hudson River Trading; Harvard. Self-funded the project from trading profits with no VC.",
+            "role": "Co-founder",
+            "source_url": "https://www.thetokendispatch.com/p/jeff-yan-bootstrap-to-billions"
+          },
+          {
+            "name": "iliensinc",
+            "pedigree": "Co-founded Hyperliquid 2022; pseudonymous",
+            "role": "Co-founder",
+            "source_url": "https://www.thetokendispatch.com/p/jeff-yan-bootstrap-to-billions"
+          }
+        ],
+        "notes": "Tiny lean team (~11 people, per interviews); no public departures. Decentralization and governance structure are the project's most-criticized areas (JELLY vote)."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "assessments": {
@@ -1579,7 +2011,124 @@
       "slug": "doge",
       "symbol": "DOGE",
       "thesis": "Be the internet's money by culture: a fun, cheap, inflationary coin that survives every cycle on community and memetic persistence.",
-      "thesis_category": "monetary"
+      "thesis_category": "monetary",
+      "promises": [
+        {
+          "promise_type": "monetary",
+          "source_name": "dogecoin.com (official site)",
+          "source_url": "https://dogecoin.com/",
+          "status": "kept",
+          "text": "An open-source peer-to-peer digital currency... at its heart, Dogecoin is the accidental crypto movement that makes people smile!"
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "dogecoin.com (official tagline, via Wikipedia)",
+          "source_url": "https://en.wikipedia.org/wiki/Dogecoin",
+          "status": "kept",
+          "text": "Dogecoin is the fun and friendly Internet currency."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "dogecoin.com (official site)",
+          "source_url": "https://dogecoin.com/",
+          "status": "partial",
+          "text": "Dogecoin's primary purpose has always been to be used as a currency."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "dogecoin.com (official site)",
+          "source_url": "https://dogecoin.com/",
+          "status": "kept",
+          "text": "Unlike a lot of other popular cryptocurrencies, the fees to send Dogecoin are extremely small."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "dogecoin.com (official site)",
+          "source_url": "https://dogecoin.com/",
+          "status": "kept",
+          "text": "Mining rewards — consisting of 10,000 Dogecoin per block — keep the chain secured with a fixed tail emission; Dogecoin does not need coin burning marketing mechanisms."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-09-20",
+            "metric": "market_cap_usd",
+            "source_name": "CoinGecko",
+            "source_url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dogecoin",
+            "unit": "USD",
+            "value": 13182403950
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "volume_24h_usd",
+            "source_name": "CoinGecko",
+            "source_url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dogecoin",
+            "unit": "USD",
+            "value": 1016369582
+          },
+          {
+            "as_of": "2026-09-20",
+            "metric": "circulating_supply_doge",
+            "source_name": "CoinGecko",
+            "source_url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=dogecoin",
+            "unit": "DOGE",
+            "value": 155990666383.71
+          }
+        ],
+        "notes": "No max supply (max_supply is null on CoinGecko). Market cap/volume show persistent liquidity; no DefiLlama TVL/fees exist for this L1.",
+        "unavailable": [
+          "daily_active_addresses",
+          "daily_transactions",
+          "miner_revenue",
+          "merchant_adoption_count"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "No max supply; fixed tail emission of 10,000 DOGE per block (~5.256B DOGE/year, ~3.4%/yr and falling). Early emission was fast (most of the first 100B mined by mid-2015); current supply ~156B DOGE.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "No foundation treasury of consequence; development is volunteer/community-funded. Mining is merge-mined with Litecoin (AuxPoW), so security cost is shared with LTC.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [
+          {
+            "date": "2015",
+            "name": "Jackson Palmer",
+            "note": "Stepped away from Dogecoin development; later publicly denounced the broader crypto industry as 'toxic' and predatory.",
+            "role": "Co-creator"
+          },
+          {
+            "date": "2015",
+            "name": "Billy Markus",
+            "note": "Sold his entire DOGE holdings (reportedly for enough to buy a used Honda Civic) after losing his job; stepped back from active development.",
+            "role": "Co-creator"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Billy Markus",
+            "pedigree": "Co-created Dogecoin 2013; software engineer, then at IBM; solo developer of the first four Dogecoin Core releases",
+            "role": "Co-creator",
+            "source_url": "https://dogecoin.com/zh-tw/dogepedia/articles/history-of-dogecoin/"
+          },
+          {
+            "name": "Jackson Palmer",
+            "pedigree": "Co-created Dogecoin 2013; product manager, then at Adobe; created dogecoin.com and was the project's public face",
+            "role": "Co-creator",
+            "source_url": "https://dogecoin.com/zh-tw/dogepedia/articles/history-of-dogecoin/"
+          }
+        ],
+        "notes": "Maintained since 2014 by the volunteer Dogecoin Core Development team; Dogecoin Foundation re-established in 2021 with a trailmap."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "assessments": {
@@ -1679,7 +2228,117 @@
       "slug": "xmr",
       "symbol": "XMR",
       "thesis": "Be fungible digital cash: private by default, so every coin is equal and censorship-resistant.",
-      "thesis_category": "monetary"
+      "thesis_category": "monetary",
+      "promises": [
+        {
+          "promise_type": "monetary",
+          "source_name": "Blokt Monero guide",
+          "source_url": "https://blokt.com/guides/a-beginners-guide-to-monero&?amp",
+          "status": "kept",
+          "text": "Monero's goal is beautifully simple: a usable cryptocurrency for everyday payments, that functions as users expect."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "Bitcoin Archive Monero currency overview (sourced to getmonero.org Moneropedia)",
+          "source_url": "https://github.com/cypher256/bitcoinarchive/blob/HEAD/src/data/entries/en/currency/2026-07-27-monero-currency-overview.md",
+          "status": "kept",
+          "text": "Private by default: ring signatures obscure the sender, stealth addresses obscure the recipient, and RingCT (mandatory since September 2017) hides the amount."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "CoinLaw Monero Statistics 2026",
+          "source_url": "https://coinlaw.io/monero-statistics/",
+          "status": "kept",
+          "text": "Fair launch: no premine, no instamine, no developer block-reward allocation."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "Monero Moneropedia: tail emission",
+          "source_url": "https://www.getmonero.org/resources/moneropedia/tail-emission.html",
+          "status": "kept",
+          "text": "Tail emission of 0.6 XMR per block forever, so miners always have an incentive and the network never depends solely on fees."
+        },
+        {
+          "promise_type": "monetary",
+          "source_name": "Monero Moneropedia: RandomX",
+          "source_url": "https://www.getmonero.org/resources/moneropedia/randomx.html",
+          "status": "partial",
+          "text": "Mining stays accessible to ordinary CPUs; RandomX was adopted so general-purpose hardware mines efficiently and dedicated ASICs cannot dominate."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-05-26",
+            "metric": "daily_transactions",
+            "source_name": "CoinLaw Monero Statistics 2026 (via LocalMonero)",
+            "source_url": "https://coinlaw.io/monero-statistics/",
+            "unit": "tx/day",
+            "value": 29677
+          },
+          {
+            "as_of": "2026-05-26",
+            "metric": "annual_transactions",
+            "source_name": "CoinLaw Monero Statistics 2026 (via LocalMonero)",
+            "source_url": "https://coinlaw.io/monero-statistics/",
+            "unit": "tx/year",
+            "value": 9110402
+          },
+          {
+            "as_of": "2026-05-26",
+            "metric": "circulating_supply",
+            "source_name": "CoinLaw Monero Statistics 2026",
+            "source_url": "https://coinlaw.io/monero-statistics/",
+            "unit": "XMR",
+            "value": 18446744
+          }
+        ],
+        "notes": "Privacy chain: holder counts are not reliably measurable; stats page refreshed circa May 2026.",
+        "unavailable": [
+          "daily_active_addresses",
+          "protocol_fee_revenue_usd",
+          "merchant_acceptance_count"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "No cap; main emission (~18.13M XMR) ended end of May 2022, then perpetual tail emission of 0.6 XMR per ~2-minute block (~157,680 XMR/yr, under 1% inflation trending toward zero). No premine, no foundation treasury, no dev tax; development funded by the Community Crowdfunding System (voluntary donations).",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "There is no company, treasury, or burn; disclosure is the emission schedule plus CCS donation funding.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [
+          {
+            "date": "2019-12-16",
+            "name": "Riccardo Spagni",
+            "note": "Stepped back from day-to-day leadership 'to further decentralise the project'; continued as backup maintainer.",
+            "role": "Lead maintainer"
+          }
+        ],
+        "key_people": [
+          {
+            "name": "Riccardo Spagni (fluffypony)",
+            "pedigree": "Co-founder of the group that forked BitMonero into Monero; lead maintainer for five years; later founder of Globee (2016) and Tari",
+            "role": "Former lead maintainer (2014-2019)",
+            "source_url": "https://www.coindesk.com/learn/riccardo-spagni"
+          },
+          {
+            "name": "Snipa",
+            "pedigree": "Longtime contributor; developer of widely used Monero pool software and network node operator",
+            "role": "Lead maintainer (from Dec 2019)",
+            "source_url": "https://www.coindesk.com/markets/2019/12/18/moneros-fluffypony-steps-down-as-lead-maintainer-of-privacy-coin-project"
+          }
+        ],
+        "notes": "No CEO, no foundation; development is decentralized via the Core Team and Community Crowdfunding System."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "assessments": {
@@ -1774,7 +2433,96 @@
       "slug": "rain",
       "symbol": "RAIN",
       "thesis": "Be permissionless infrastructure for prediction markets: anyone can create, trade, and resolve markets, with AI-assisted resolution and private markets.",
-      "thesis_category": "other"
+      "thesis_category": "other",
+      "promises": [
+        {
+          "promise_type": "DeFi",
+          "source_name": "EPIQ Trading Floor: Rain Protocol explainer",
+          "source_url": "https://epiqtradingfloor.com/blog/rain-protocol-rain-what-it-is-and-why-its-worth-watching-in-2025/",
+          "status": "unknown",
+          "text": "The 'Uniswap of prediction markets' — permissionless, open market creation with no gatekeepers deciding which markets are allowed."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "AMBCrypto: RAIN coin page",
+          "source_url": "https://ambcrypto.com/coins/rain/",
+          "status": "unknown",
+          "text": "Public markets are resolved using an AI oracle agent (Olympus AI/Delphi), while private markets allow creators to act as resolvers, with human escalation for disputes."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "AMBCrypto: RAIN coin page",
+          "source_url": "https://ambcrypto.com/coins/rain/",
+          "status": "unknown",
+          "text": "Deflationary token model: 2.5% of trading volume is allocated to buy and burn the RAIN token."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "AMBCrypto: RAIN coin page",
+          "source_url": "https://ambcrypto.com/coins/rain/",
+          "status": "unknown",
+          "text": "Governance of the protocol is carried out by token holders through a DAO."
+        },
+        {
+          "promise_type": "DeFi",
+          "source_name": "Cryptomaniaks: RAIN predictions market review",
+          "source_url": "https://cryptomaniaks.com/airdrops/rain-protocol",
+          "status": "unknown",
+          "text": "Rain charges 5% of a market's trading volume in fees: half to market creators, liquidity providers, and resolvers; the other 2.5% buys and burns RAIN."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-09-02",
+            "metric": "market_cap_usd",
+            "source_name": "AMBCrypto RAIN coin page",
+            "source_url": "https://ambcrypto.com/coins/rain/",
+            "unit": "USD",
+            "value": 11850000000
+          },
+          {
+            "as_of": "2026-09-02",
+            "metric": "daily_trading_volume_usd",
+            "source_name": "AMBCrypto RAIN coin page",
+            "source_url": "https://ambcrypto.com/coins/rain/",
+            "unit": "USD/day",
+            "value": 27390000
+          },
+          {
+            "as_of": "2026-09-02",
+            "metric": "circulating_supply",
+            "source_name": "AMBCrypto RAIN coin page",
+            "source_url": "https://ambcrypto.com/coins/rain/",
+            "unit": "RAIN",
+            "value": 709196859042
+          }
+        ],
+        "notes": "Token-market data only (third-party aggregator); no on-chain protocol usage metrics are publicly available.",
+        "unavailable": [
+          "protocol_fee_revenue_usd",
+          "daily_active_markets",
+          "total_value_locked_usd",
+          "third_party_sdk_integrations"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "Very large supply (~1.14-1.15 trillion RAIN max); per third-party reports, no team tokens were issued at launch and only ~1% went to a presale; tokens are both minted and burned, with 2.5% of market trading volume used to buy and burn RAIN. A reported $212M institutional treasury purchase was announced in early 2026 (date unverified).",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "Emission figures come from third-party summaries, not an official tokenomics document; treat as approximate.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [],
+        "key_people": [],
+        "notes": "No named founders surfaced in public sources; protocol is attributed to the Rain Foundation (founded 2024) with governance intended to transition to a Rain DAO."
+      }
     },
     {
       "assessments": {
@@ -1964,7 +2712,102 @@
       "slug": "leo",
       "symbol": "LEO",
       "thesis": "Be the fee token of the Bitfinex ecosystem: trading-fee discounts funded by a contractual monthly buyback-and-burn from iFinex revenue.",
-      "thesis_category": "other"
+      "thesis_category": "other",
+      "promises": [
+        {
+          "promise_type": "payments",
+          "source_name": "Crypto.news: Bitfinex Gives Details on Utility Token LEO",
+          "source_url": "https://crypto.news/bitfinex-cryptocurrency-exchange-gives-details-utility-token-leo/",
+          "status": "kept",
+          "text": "LEO is 'a utility token at the heart of the iFinex ecosystem', giving holders reduced trading fees, lending fee discounts, and withdrawal fee reductions on Bitfinex."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "Bitfinex PR: UNUS SED LEO Transparency Initiative",
+          "source_url": "https://www.prnewswire.co.uk/news-releases/bitfinex-presents-unus-sed-leo-transparency-initiative-826690241.html",
+          "status": "partial",
+          "text": "iFinex will use its revenues to buy back UNUS SED LEO from the market at market rates, equal to a minimum of 27% of consolidated gross revenues, 'until no more tokens are in commercial circulation'."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "Bitfinex PR: UNUS SED LEO Transparency Initiative",
+          "source_url": "https://www.prnewswire.co.uk/news-releases/bitfinex-presents-unus-sed-leo-transparency-initiative-826690241.html",
+          "status": "kept",
+          "text": "UNUS SED LEO tokens used to pay trading fees on Bitfinex may also be burned."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "AMBCrypto: Bitfinex completes redemption of LEO on EOS",
+          "source_url": "https://eng.ambcrypto.com/bitfinex-completes-redemption-of-leo-tokens-on-eos-blockchain-following-burn",
+          "status": "kept",
+          "text": "Unique dual protocol launch: 660 million Ethereum-based tokens issued together with 340 million EOS-based tokens, to give holders flexibility."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "The Cryptonomist: Bitfinex burning of LEO tokens has begun",
+          "source_url": "https://en.cryptonomist.ch/2019/06/14/bitfinex-leo-tokens/",
+          "status": "partial",
+          "text": "Recovered net funds from Crypto Capital, and at least 80% of recovered net funds from the 2016 Bitfinex hack, will be used to repurchase and burn LEO."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-04-21",
+            "metric": "circulating_supply",
+            "source_name": "Gate.com LEO price page",
+            "source_url": "http://www.gate.ac/price/unus-sed-leo-leo/ttd",
+            "unit": "LEO",
+            "value": 920790000
+          },
+          {
+            "as_of": "2022-06-01",
+            "metric": "leo_burned_total",
+            "source_name": "ByteTree: UNUS SED LEO research (via Bitfinex)",
+            "source_url": "https://www.bytetree.com/research/2022/06/unus-sed-leo-a-tokenised-iou/",
+            "unit": "LEO",
+            "value": 64270190
+          },
+          {
+            "as_of": "2026-04-21",
+            "metric": "price_usd",
+            "source_name": "Gate.com LEO price page",
+            "source_url": "http://www.gate.ac/price/unus-sed-leo-leo/ttd",
+            "unit": "USD",
+            "value": 10.33
+          }
+        ],
+        "notes": "Supply/burn tracked via the LEO Transparency Dashboard (leo.bitfinex.com); no official holder-benefit usage metrics.",
+        "unavailable": [
+          "monthly_buyback_usd",
+          "fee_discount_claim_rate",
+          "daily_trading_volume_usd"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "Fixed 1B initial supply, no new issuance. Buyback-and-burn funded by a minimum of 27% of iFinex consolidated gross revenues (monthly), LEO used for fee payments, plus recovered Crypto Capital funds and at least 80% of recovered 2016-hack funds — until 100% of tokens are redeemed. ~64.27M LEO burned by June 2022; ~920.79M circulating as of April 2026.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "The 'burn until zero' schedule is revenue-dependent and has no fixed end date; iFinex revenue figures are not published.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [],
+        "key_people": [
+          {
+            "name": "Paolo Ardoino",
+            "pedigree": "Announced the LEO buyback-and-burn program in 2019; has led Bitfinex/Tether engineering since 2014",
+            "role": "CTO, Bitfinex and Tether",
+            "source_url": "https://eng.ambcrypto.com/bitfinex-completes-redemption-of-leo-tokens-on-eos-blockchain-following-burn"
+          }
+        ],
+        "notes": "LEO was issued by Unus Sed Leo Limited, an iFinex subsidiary; value depends on the Bitfinex venue's continued operation."
+      }
     },
     {
       "assessments": {
@@ -2064,7 +2907,145 @@
       "slug": "xlm",
       "symbol": "XLM",
       "thesis": "Be the low-cost settlement rail for cross-border payments: near-free transfers with 5-second finality connecting banks, money transmitters, and wallets.",
-      "thesis_category": "payments"
+      "thesis_category": "payments",
+      "promises": [
+        {
+          "promise_type": "payments",
+          "source_name": "Messari: Stellar profile",
+          "source_url": "https://messari.io/project/stellar/profile",
+          "status": "kept",
+          "text": "A 'decentralized protocol for sending and receiving money in any pair of currencies.'"
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "BSCN: Stellar network transaction data",
+          "source_url": "https://bsc.news/news/stellar-network-11-million-daily-transactions",
+          "status": "kept",
+          "text": "Fast, cheap payments: 2-5 second settlement at a fraction of a cent per transaction."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "Messari: Stellar profile",
+          "source_url": "https://messari.io/project/stellar/profile",
+          "status": "kept",
+          "text": "The Stellar Consensus Protocol (SCP) provides secure decentralized consensus without energy-intensive proof-of-work."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "Cointelegraph: Stellar launches smart contracts",
+          "source_url": "https://cointelegraph.com/news/stellar-launches-smart-contract-soroban-bug-fix-delays",
+          "status": "partial",
+          "text": "Soroban smart contracts extend Stellar into programmable finance while keeping predictable fees and payments strengths."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "The Block: Denelle Dixon profile",
+          "source_url": "https://www.theblock.co/profile/347271/denelle-dixon",
+          "status": "partial",
+          "text": "Global financial inclusion: make money more fluid, markets more open, and people more empowered — especially the unbanked."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-06-30",
+            "metric": "daily_transactions",
+            "source_name": "Blockworks Advisory: Stellar Tokenholder Report Q2 2026",
+            "source_url": "https://blockworks.com/api/investor-report/stellar-token-holder-report-q2-2026/pdf",
+            "unit": "tx/day",
+            "value": 4890000
+          },
+          {
+            "as_of": "2026-06-30",
+            "metric": "quarterly_operations",
+            "source_name": "Blockworks Advisory: Stellar Tokenholder Report Q2 2026",
+            "source_url": "https://blockworks.com/api/investor-report/stellar-token-holder-report-q2-2026/pdf",
+            "unit": "ops/quarter",
+            "value": 1100000000
+          },
+          {
+            "as_of": "2026-06-30",
+            "metric": "daily_active_addresses",
+            "source_name": "Blockworks Advisory: Stellar Tokenholder Report Q2 2026",
+            "source_url": "https://blockworks.com/api/investor-report/stellar-token-holder-report-q2-2026/pdf",
+            "unit": "addresses/day",
+            "value": 63442
+          },
+          {
+            "as_of": "2026-03-01",
+            "metric": "network_accounts",
+            "source_name": "CoinLaw Stellar Statistics 2026",
+            "source_url": "https://coinlaw.io/stellar-xlm-statistics/",
+            "unit": "accounts",
+            "value": 9750000
+          },
+          {
+            "as_of": "2026-06-30",
+            "metric": "tokenized_rwa_value",
+            "source_name": "BSCN: Stellar network report (via Nansen)",
+            "source_url": "https://bsc.news/news/stellar-network-11-million-daily-transactions",
+            "unit": "USD",
+            "value": 3050000000
+          },
+          {
+            "as_of": "2026-09-07",
+            "metric": "record_stablecoin_transfers",
+            "source_name": "BSCN: Stellar network report (via Nansen)",
+            "source_url": "https://bsc.news/news/stellar-network-11-million-daily-transactions",
+            "unit": "USD",
+            "value": 11400000000
+          }
+        ],
+        "notes": "High tx counts include batching by institutional users; ~26% of transactions failed in Q2 2026 per Blockworks.",
+        "unavailable": [
+          "protocol_fee_revenue_usd",
+          "remittance_volume_via_moneygram_usd"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "No ongoing emission. Original 100B XLM + 1%/yr inflation; inflation deprecated by validator vote Oct 28, 2019; SDF burned ~55B XLM on Nov 4, 2019, reducing supply to ~50B. No new XLM can be created.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "Stellar has no mining, staking, or protocol revenue; SDF operating funds are corporate, not on-chain treasuries.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [],
+        "key_people": [
+          {
+            "name": "Jed McCaleb",
+            "pedigree": "Co-founded Ripple and Mt. Gox; left Ripple in 2013 over disagreements with fellow founders",
+            "role": "Co-founder",
+            "source_url": "https://messari.io/project/stellar/profile"
+          },
+          {
+            "name": "David Mazieres",
+            "pedigree": "Authored the Stellar Consensus Protocol whitepaper (2015); Stanford computer science professor",
+            "role": "Co-founder; Chief Scientist",
+            "source_url": "https://messari.io/project/stellar/profile"
+          },
+          {
+            "name": "Joyce Kim",
+            "pedigree": "Co-founded Stellar and the SDF in 2014; former lawyer",
+            "role": "Co-founder",
+            "source_url": "https://messari.io/project/stellar/profile"
+          },
+          {
+            "name": "Denelle Dixon",
+            "pedigree": "Former COO of Mozilla Corporation; testified before US Congress on crypto policy (Dec 2024)",
+            "role": "CEO and Executive Director, Stellar Development Foundation (since May 2019)",
+            "source_url": "https://cointelegraph.com/people/top-people-in-crypto-and-blockchain-2021/denelle-dixon/"
+          }
+        ],
+        "notes": "Non-profit foundation model; co-founders McCaleb and Mazieres remain associated; Dixon has led the SDF since 2019."
+      },
+      "provisional": false,
+      "provisional_reason": null
     },
     {
       "slug": "figr_heloc",
@@ -2226,7 +3207,108 @@
           "description": "Native utility token of the WhiteBIT exchange; later the primary asset of Whitechain.",
           "evidence_url": null
         }
-      ]
+      ],
+      "promises": [
+        {
+          "promise_type": "payments",
+          "source_name": "GlobeNewswire: WhiteBIT Launches Its Own Token",
+          "source_url": "https://Www.Globenewswire.com/news-release/2022/08/09/2495151/0/en/WhiteBIT-Launches-Its-Own-Token.html",
+          "status": "kept",
+          "text": "Reduced trading commissions and fee discounts for WBT holders on the WhiteBIT exchange."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "GlobeNewswire: WhiteBIT Launches Its Own Token",
+          "source_url": "https://Www.Globenewswire.com/news-release/2022/08/09/2495151/0/en/WhiteBIT-Launches-Its-Own-Token.html",
+          "status": "kept",
+          "text": "Increased referral rate of 40-50% for token holders."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "GlobeNewswire: WhiteBIT Launches Its Own Token",
+          "source_url": "https://Www.Globenewswire.com/news-release/2022/08/09/2495151/0/en/WhiteBIT-Launches-Its-Own-Token.html",
+          "status": "kept",
+          "text": "Free daily ERC20/ETH withdrawals and free AML checks for holders."
+        },
+        {
+          "promise_type": "payments",
+          "source_name": "GlobeNewswire: WhiteBIT Launches Its Own Token",
+          "source_url": "https://Www.Globenewswire.com/news-release/2022/08/09/2495151/0/en/WhiteBIT-Launches-Its-Own-Token.html",
+          "status": "partial",
+          "text": "Weekly buyback and burn: 33% of trading fees and 5% of other commissions used to buy back and burn WBT, until at least half of the 400M supply is destroyed."
+        }
+      ],
+      "utility": {
+        "metrics": [
+          {
+            "as_of": "2026-08-27",
+            "metric": "wbt_burned_total",
+            "source_name": "CoinStats WBT daily analysis",
+            "source_url": "https://coinstats.app/news/9e860c1c5e917de8030862febcf9439be32e19029222b71101919d7ed435b6f7_WhiteBIT-Coin-WBT-Daily-Market-Analysis-27-August-2026/",
+            "unit": "WBT",
+            "value": 81390000
+          },
+          {
+            "as_of": "2026-07-01",
+            "metric": "circulating_supply",
+            "source_name": "CoinStats WBT price potential",
+            "source_url": "https://coinstats.app/ai/a/price-potential-whitebit",
+            "unit": "WBT",
+            "value": 118180000
+          },
+          {
+            "as_of": "2026-08-27",
+            "metric": "price_usd",
+            "source_name": "CoinStats WBT daily analysis",
+            "source_url": "https://coinstats.app/news/9e860c1c5e917de8030862febcf9439be32e19029222b71101919d7ed435b6f7_WhiteBIT-Coin-WBT-Daily-Market-Analysis-27-August-2026/",
+            "unit": "USD",
+            "value": 73.01
+          }
+        ],
+        "notes": "No official usage/adoption metrics published; exchange-side numbers come from third-party aggregators.",
+        "unavailable": [
+          "daily_exchange_volume_usd",
+          "wbt_holder_count",
+          "fee_discount_redemption_rate",
+          "whitechain_daily_txns"
+        ]
+      },
+      "runway": {
+        "burn_annual_usd": null,
+        "emission_schedule": "Fixed max supply 400M WBT; no new tokens can be issued. Distribution: 54M private sale, 1M IEO launchpad, 25M burned at launch, 200M treasury unlocked over 3 years, 120M operational funds. Weekly buyback-burn of 33% of trading fees + 5% of other income targets destroying 200M WBT total; ~81.39M burned as of Aug 27, 2026. An 81.5M-token unlock occurred March 13, 2026 with little price impact.",
+        "missing": [
+          "treasury_usd",
+          "burn_annual_usd",
+          "protocol_revenue_annual_usd"
+        ],
+        "notes": "Disclose-only: fixed supply + buyback-burn is the entire 'runway' story; exchange revenue figures are not published.",
+        "protocol_revenue_annual_usd": null,
+        "treasury_usd": null
+      },
+      "team": {
+        "departures": [],
+        "key_people": [
+          {
+            "name": "Volodymyr Nosov",
+            "pedigree": "Founder/CEO of WhiteBIT, described as Europe's largest crypto exchange per company announcement",
+            "role": "CEO, WhiteBIT",
+            "source_url": "https://www.htx.com/en-us/tokens/WBT/"
+          },
+          {
+            "name": "Oleksii Kovalov",
+            "pedigree": "Former CTO of Next Chain; CEO of Miracle app",
+            "role": "VP, WhiteBIT",
+            "source_url": "https://www.htx.com/en-us/tokens/WBT/"
+          },
+          {
+            "name": "Alex Kozenko",
+            "pedigree": "Previously Managing Partner at UVO.Ventures; Business Strategy Consultant at Private Practice",
+            "role": "CMO, WhiteBIT",
+            "source_url": "https://www.htx.com/en-us/tokens/WBT/"
+          }
+        ],
+        "notes": "Centralized exchange team; token value depends on the venue's continued operation."
+      }
     }
   ]
 }
