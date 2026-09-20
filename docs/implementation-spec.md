@@ -146,6 +146,6 @@ free tier stays rate-limited and fully functional.
 
 1. Supabase read path from Vercel: service-role key server-side only — confirm
    key management approach with Alex (vault, not repo).
-2. Stripe account: exists? Which entity receives payouts?
-3. Telegram channel name/handle — Alex's call.
-4. History API rate limits: start conservative (60/min/IP), adjust on abuse.
+2. Stripe account: exists? Which entity receives payouts? (Phase 3 only.)
+3. History API rate limits: starting at 60/min/IP per spec; adjust on abuse —
+   no decision needed now.
