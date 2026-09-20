@@ -72,6 +72,17 @@ const METRICS_DOC = metricsDocJson as {
   unavailable: { projectSlug: string; metricCode: string; reason: string }[];
 };
 
+// Score codes computed from other scores, not measured directly.
+// Mirrors the `derived` section of the methodology config (v0.3.0.json)
+// and the kind='derived' rows in score_definitions.
+const DERIVED_SCORE_CODES = new Set([
+  "promise_gap",
+  "build_gap",
+  "hype_gap",
+  "belief_gap",
+  "potential_outlook",
+]);
+
 class JsonFileStore implements DataStore {
   private seeds(): SeedProject[] {
     return loadSeeds();
@@ -210,6 +221,10 @@ class SupabaseStore implements DataStore {
         });
       }
       const snap = byKey.get(key)!;
+      if (DERIVED_SCORE_CODES.has(r.score_code)) {
+        snap.derived[r.score_code] = r.value;
+        continue;
+      }
       snap.scores[r.score_code] = {
         value: r.value,
         status: r.status as ProjectSnapshot["scores"][string]["status"],
