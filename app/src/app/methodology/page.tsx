@@ -41,7 +41,7 @@ function formulaText(code: string, norm: Record<string, unknown>): string {
 
 export default async function MethodologyPage() {
   const store = getStore();
-  const cfg = await store.getMethodology("0.2.0");
+  const cfg = await store.getMethodology("0.3.0");
   const observer = (cfg as unknown as { observer_effect?: ObserverEffect }).observer_effect;
   const disclosures = disclosuresDoc as unknown as Disclosures;
 

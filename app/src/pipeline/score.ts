@@ -28,7 +28,7 @@ import type { NormalizedMetric } from "../providers/types.js";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const today = new Date().toISOString().slice(0, 10);
 const SNAP_DIR = join(ROOT, "data", "snapshots");
-const METHODOLOGY_VERSION = "0.2.0";
+const METHODOLOGY_VERSION = "0.3.0";
 
 function latestMetricsFile(): string {
   const files = readdirSync(SNAP_DIR).filter((f) => f.startsWith("metrics_")).sort();
@@ -137,7 +137,7 @@ async function main() {
   console.log(`[score] wrote ${explOut}`);
 
   // --- console summary (the "first calculated results") ---
-  console.log("\n=== RESULTS (methodology v0.2.0, unadjusted) ===");
+  console.log("\n=== RESULTS (methodology v0.3.0, unadjusted) ===");
   for (const snap of snapshots) {
     const s = snap.scores;
     const fmt = (v: number | null) => (v == null ? "n/a" : v.toFixed(1));

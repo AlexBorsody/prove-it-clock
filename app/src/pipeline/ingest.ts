@@ -13,7 +13,7 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { ingestCoinGecko } from "../providers/coingecko/index.js";
+import { ingestCoinGecko, fetchUniverseMarkets } from "../providers/coingecko/index.js";
 import { ingestDefiLlama } from "../providers/defillama/index.js";
 import { ingestBitcoinFees } from "../providers/bitcoin/index.js";
 import type { NormalizedMetric, ProjectIngest, RawFetch } from "../providers/types.js";
@@ -54,6 +54,52 @@ async function main() {
   const cache = cachedFetches();
   const useCache = [...cache.values()].some((v) => v.length > 0);
   if (useCache) console.log(`[ingest] reusing ${cache.size} project(s) from today's raw cache`);
+
+  // --- universe step: market-cap-ranked membership, append-only ---
+  // One batched CoinGecko call per day. New entrants without seeds are
+  // logged as NEEDS SEED and skipped (no phantom rows). Dropouts keep
+  // their full snapshot history (retired from universe, never deleted).
+  const UNIVERSE_SIZE = 20;
+  try {
+    const universe = await fetchUniverseMarkets(UNIVERSE_SIZE);
+    const seedIds = new Map(seeds.map((s) => [s.coingecko_id, s.slug]));
+    const universeIds = new Set(universe.map((u) => u.id));
+    for (const u of universe) {
+      if (!seedIds.has(u.id)) {
+        console.log(`[ingest] UNIVERSE rank=${u.market_cap_rank} ${u.id} (${u.symbol.toUpperCase()}) NEEDS SEED — skipped until seeded`);
+      }
+    }
+    for (const s of seeds) {
+      if (!universeIds.has(s.coingecko_id)) {
+        console.log(`[ingest] UNIVERSE ${s.slug} not in top ${UNIVERSE_SIZE} — retired from universe, history retained`);
+      }
+    }
+    const universeOut = join(SNAP_DIR, `universe_${today}.json`);
+    writeFileSync(
+      universeOut,
+      JSON.stringify(
+        {
+          snapshot_date: today,
+          generated_at: new Date().toISOString(),
+          size: UNIVERSE_SIZE,
+          source: "coingecko",
+          members: universe.map((u) => ({
+            market_cap_rank: u.market_cap_rank,
+            coingecko_id: u.id,
+            symbol: u.symbol.toUpperCase(),
+            name: u.name,
+            slug: seedIds.get(u.id) ?? null,
+            seeded: seedIds.has(u.id),
+          })),
+        },
+        null,
+        2,
+      ),
+    );
+    console.log(`[ingest] wrote ${universeOut}`);
+  } catch (err) {
+    console.log(`[ingest] UNIVERSE check failed (non-fatal): ${err instanceof Error ? err.message : String(err)}`);
+  }
 
   // Merge helper: combine per-provider ProjectIngest into one per slug.
   const merged = new Map<string, ProjectIngest>();

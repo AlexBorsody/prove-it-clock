@@ -25,6 +25,9 @@ export const CHAIN_MAP: Record<string, string> = {
   eth: "Ethereum",
   sol: "Solana",
   ada: "Cardano",
+  bnb: "BSC",
+  trx: "Tron",
+  hype: "Hyperliquid L1",
 };
 
 async function getJson(endpoint: string): Promise<{ fetch: RawFetch }> {

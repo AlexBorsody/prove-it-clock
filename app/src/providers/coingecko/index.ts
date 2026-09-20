@@ -84,6 +84,31 @@ function m(
   };
 }
 
+export interface UniverseRow {
+  market_cap_rank: number | null;
+  id: string;
+  symbol: string;
+  name: string;
+  current_price: number | null;
+  market_cap: number | null;
+  fully_diluted_valuation: number | null;
+  total_volume: number | null;
+  price_change_percentage_24h: number | null;
+  price_change_percentage_30d_in_currency: number | null;
+}
+
+/**
+ * Fetch the market-cap-ranked universe (one batched call). Used by the
+ * ingest universe step and by the /api/projects realtime endpoint.
+ */
+export async function fetchUniverseMarkets(size = 20): Promise<UniverseRow[]> {
+  const endpoint =
+    `/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${size}&page=1` +
+    `&price_change_percentage=24h,30d&precision=full`;
+  const { fetch } = await getJson(endpoint);
+  return fetch.payload as UniverseRow[];
+}
+
 /**
  * Fetch + normalize market + project-fact metrics for a batch of projects.
  * @param entries [{slug, coingeckoId}]

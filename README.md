@@ -124,12 +124,17 @@ db/migrations/001_initial.sql # full Postgres schema + RLS
 4. Methodology edits = new `methodology/vX.json` version; the pipeline tags
    every snapshot with the version that produced it.
 
-## Current state (v0.2.0, 2026-09-19)
+## Current state (v0.3.0, 2026-09-20)
 
-- 6 projects: BTC, ETH, SOL, XRP, LINK, ADA.
+- 20 projects: top 20 by CoinGecko market cap (BTC, ETH, USDT, BNB, XRP, USDC, SOL,
+  TRX, ZEC, FIGR_HELOC, HYPE, DOGE, XMR, WBT, RAIN, USDS, LINK, ADA, LEO, XLM).
+- v0.3.0 adds: the `other` thesis category (stablecoins, exchange/venue tokens,
+  RWA tokens — scored PROVISIONAL until category-specific rubrics exist),
+  `GET /api/projects` realtime API (live market overlay, pagination-ready envelope),
+  daily universe check (CoinGecko top 20, append-only membership).
 - v0.2.0 adds: Potential Outlook (forward-looking, uncalibrated — not a probability),
   observer-effect policy, publisher disclosures.
-- Unavailable in v0.2: Attention, Subsidy Dependence, Hype Gap, Belief Gap,
+- Unavailable in v0.3: Attention, Subsidy Dependence, Hype Gap, Belief Gap,
   Development (CoinGecko returned no developer data; dedicated GitHub adapter
   is Phase 2 work).
 ---

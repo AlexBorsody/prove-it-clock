@@ -1,0 +1,168 @@
+{
+  "snapshot_date": "2026-09-20",
+  "generated_at": "2026-09-20T03:16:00.066Z",
+  "size": 20,
+  "source": "coingecko",
+  "members": [
+    {
+      "market_cap_rank": 1,
+      "coingecko_id": "bitcoin",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "slug": "btc",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 2,
+      "coingecko_id": "ethereum",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "slug": "eth",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 3,
+      "coingecko_id": "tether",
+      "symbol": "USDT",
+      "name": "Tether",
+      "slug": "usdt",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 4,
+      "coingecko_id": "binancecoin",
+      "symbol": "BNB",
+      "name": "BNB",
+      "slug": "bnb",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 5,
+      "coingecko_id": "ripple",
+      "symbol": "XRP",
+      "name": "XRP",
+      "slug": "xrp",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 6,
+      "coingecko_id": "usd-coin",
+      "symbol": "USDC",
+      "name": "USDC",
+      "slug": "usdc",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 7,
+      "coingecko_id": "solana",
+      "symbol": "SOL",
+      "name": "Solana",
+      "slug": "sol",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 8,
+      "coingecko_id": "tron",
+      "symbol": "TRX",
+      "name": "TRON",
+      "slug": "trx",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 9,
+      "coingecko_id": "zcash",
+      "symbol": "ZEC",
+      "name": "Zcash",
+      "slug": "zec",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 10,
+      "coingecko_id": "figure-heloc",
+      "symbol": "FIGR_HELOC",
+      "name": "Figure Heloc",
+      "slug": "figr_heloc",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 11,
+      "coingecko_id": "hyperliquid",
+      "symbol": "HYPE",
+      "name": "Hyperliquid",
+      "slug": "hype",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 12,
+      "coingecko_id": "dogecoin",
+      "symbol": "DOGE",
+      "name": "Dogecoin",
+      "slug": "doge",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 13,
+      "coingecko_id": "monero",
+      "symbol": "XMR",
+      "name": "Monero",
+      "slug": "xmr",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 14,
+      "coingecko_id": "whitebit",
+      "symbol": "WBT",
+      "name": "WhiteBIT Coin",
+      "slug": "wbt",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 15,
+      "coingecko_id": "rain",
+      "symbol": "RAIN",
+      "name": "Rain",
+      "slug": "rain",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 16,
+      "coingecko_id": "usds",
+      "symbol": "USDS",
+      "name": "USDS",
+      "slug": "usds",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 17,
+      "coingecko_id": "chainlink",
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "slug": "link",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 18,
+      "coingecko_id": "cardano",
+      "symbol": "ADA",
+      "name": "Cardano",
+      "slug": "ada",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 19,
+      "coingecko_id": "leo-token",
+      "symbol": "LEO",
+      "name": "LEO Token",
+      "slug": "leo",
+      "seeded": true
+    },
+    {
+      "market_cap_rank": 20,
+      "coingecko_id": "stellar",
+      "symbol": "XLM",
+      "name": "Stellar",
+      "slug": "xlm",
+      "seeded": true
+    }
+  ]
+}

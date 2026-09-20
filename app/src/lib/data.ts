@@ -17,8 +17,8 @@ import {
   type ProjectSnapshot,
   type SeedProject,
 } from "@/methodology/index";
-import scoresDocJson from "../../data/snapshots/scores_2026-09-19.json";
-import metricsDocJson from "../../data/snapshots/metrics_2026-09-19.json";
+import scoresDocJson from "../../data/snapshots/scores_2026-09-20.json";
+import metricsDocJson from "../../data/snapshots/metrics_2026-09-20.json";
 
 export interface ProjectMeta {
   slug: string;

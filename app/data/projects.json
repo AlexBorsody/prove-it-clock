@@ -129,6 +129,38 @@
         "level": 5,
         "title": "Meaningful market penetration"
       }
+    ],
+    "other": [
+      {
+        "level": 0,
+        "title": "Instrument exists and functions",
+        "evidence_requirements": "Token live; transfers, redemptions, or utility working onchain or via the issuer. Contract/explorer or issuer docs."
+      },
+      {
+        "level": 1,
+        "title": "Independent users",
+        "evidence_requirements": "Holders/users beyond the issuer; exchange listings; third-party integrations."
+      },
+      {
+        "level": 2,
+        "title": "Meaningful recurring function",
+        "evidence_requirements": "The instrument's stated function used at scale: redemptions honored at par, fee-payment demand, debt serviced, markets resolved."
+      },
+      {
+        "level": 3,
+        "title": "Function survives stress",
+        "evidence_requirements": "Peg defended through market stress, or function persists through a full market cycle without breaking."
+      },
+      {
+        "level": 4,
+        "title": "External institutions operationally depend on it",
+        "evidence_requirements": "Named institutions (treasuries, corporates, regulated products) depend on the instrument in production."
+      },
+      {
+        "level": 5,
+        "title": "Dominant instrument in its niche",
+        "evidence_requirements": "Default instrument in its category by multiple independent measures."
+      }
     ]
   },
   "projects": [
@@ -785,6 +817,1413 @@
           "type": "thesis_change",
           "title": "Governance era",
           "description": "Voltaire governance rollout shifts emphasis toward onchain governance as differentiation.",
+          "evidence_url": null
+        }
+      ]
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token IS the product. There is no Tether without USDT; issuance, redemption, and settlement are all denominated in it.",
+          "value": 10
+        },
+        "token_value_capture": {
+          "rationale": "By design the token does not appreciate: 1 USDT targets $1. All economic value accrues to the issuer via reserve yield, not to holders.",
+          "value": 1
+        },
+        "world_impact_potential": {
+          "rationale": "If USDT becomes the default dollar rail for trade settlement outside the banking system, it is systemically consequential: a private dollar network at internet scale.",
+          "value": 7.5
+        }
+      },
+      "coingecko_id": "tether",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2014-10-06",
+          "description": "USD-backed token issued on the Omni Layer.",
+          "evidence_url": null,
+          "title": "Realcoin launches, later rebranded Tether",
+          "type": "launch"
+        },
+        {
+          "date": "2017-11-21",
+          "description": "Tether freezes the attacker address; funds never recovered.",
+          "evidence_url": null,
+          "title": "$31M USDT stolen in Omni hack",
+          "type": "setback"
+        },
+        {
+          "date": "2018-10-15",
+          "description": "Solvency rumors drive a sharp discount; recovers within days.",
+          "evidence_url": null,
+          "title": "Brief depeg to ~$0.85",
+          "type": "setback"
+        },
+        {
+          "date": "2019-04-25",
+          "description": "Alleges $850M shortfall covered with Tether reserves.",
+          "evidence_url": null,
+          "title": "NY Attorney General sues iFinex/Tether",
+          "type": "setback"
+        },
+        {
+          "date": "2021-02-23",
+          "description": "Settlement without admission; Tether ordered to report reserves quarterly.",
+          "evidence_url": null,
+          "title": "NYAG settlement: $18.5M",
+          "type": "setback"
+        },
+        {
+          "date": "2022-05-12",
+          "description": "Over $10B redeemed at par in weeks; the largest real-world stress test any stablecoin has survived.",
+          "evidence_url": null,
+          "title": "UST collapse triggers mass redemptions, all honored",
+          "type": "adoption"
+        },
+        {
+          "date": "2024-03-04",
+          "description": "Largest stablecoin by a wide margin; net profits among the highest of any crypto company.",
+          "evidence_url": null,
+          "title": "Supply crosses $100B",
+          "type": "adoption"
+        }
+      ],
+      "launch_date": "2014-10-06",
+      "launch_notes": "Launched as Realcoin in October 2014, rebranded to Tether; first tokens issued on Bitcoin via the Omni Layer.",
+      "measurable_success": "Peg holds through market stress with redemptions honored at par; supply grows across cycles; reserve attestations continue; settlement use extends beyond speculation.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2014-10-06",
+          "evidence_summary": "First USDT issued on Omni; transfers functional.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2017-12-01",
+          "evidence_summary": "Listed across major exchanges; dominant quote currency; millions of holder addresses.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-12-01",
+          "evidence_summary": "Dominant stablecoin for exchange settlement and DeFi; multi-billion daily onchain transfer volume.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2022-05-31",
+          "evidence_summary": "Terra-collapse stress: roughly $10B of redemptions honored at par within weeks; peg defended through the industry's worst stablecoin stress test.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2024-12-01",
+          "evidence_summary": "Cantor Fitzgerald custodies Tether reserves; USDT used at scale for trade settlement in emerging markets per company disclosures and onchain flows.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not the default dollar instrument beyond crypto; banking rails still dominate real-world commerce.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Tether",
+      "provisional": true,
+      "provisional_reason": "Stablecoin: the four core category rubrics were not designed for pegged instruments. Scored under the provisional 'other' category pending a dedicated stablecoin rubric.",
+      "slug": "usdt",
+      "symbol": "USDT",
+      "thesis": "Be the dominant dollar-settlement instrument of crypto: a token redeemable 1:1 for USD, trusted enough that exchanges, traders, and real-world users settle in it instead of banks.",
+      "thesis_category": "other"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "BNB Chain requires BNB for gas; the chain cannot run without it. Exchange-utility functions (discounts, launchpad) could in principle be cash-denominated.",
+          "value": 8
+        },
+        "token_value_capture": {
+          "rationale": "Auto-Burn destroys supply quarterly tied to chain activity; gas demand plus launchpad/venue demand create structural buy pressure.",
+          "value": 7.5
+        },
+        "world_impact_potential": {
+          "rationale": "A top-3 smart-contract chain plus the largest exchange's utility token; success means a parallel financial infrastructure at global scale.",
+          "value": 7.5
+        }
+      },
+      "coingecko_id": "binancecoin",
+      "defillama_chain": "BSC",
+      "events": [
+        {
+          "date": "2017-07-14",
+          "description": "ERC-20 token funding the exchange launch; fee-discount utility.",
+          "evidence_url": null,
+          "title": "BNB issued with Binance exchange",
+          "type": "launch"
+        },
+        {
+          "date": "2020-09-01",
+          "description": "EVM-compatible chain with 3-second blocks; BNB becomes gas.",
+          "evidence_url": null,
+          "title": "BNB Chain (BSC) mainnet",
+          "type": "release"
+        },
+        {
+          "date": "2022-10-06",
+          "description": "Attacker mints 2M BNB via cross-chain bridge bug; chain halted, funds frozen.",
+          "evidence_url": null,
+          "title": "$570M BNB Chain bridge exploit",
+          "type": "setback"
+        },
+        {
+          "date": "2023-06-05",
+          "description": "Alleges unregistered securities offerings and commingled funds.",
+          "evidence_url": null,
+          "title": "SEC sues Binance",
+          "type": "setback"
+        },
+        {
+          "date": "2023-08-16",
+          "description": "Optimistic-rollup L2 for BNB Chain goes live.",
+          "evidence_url": null,
+          "title": "opBNB mainnet",
+          "type": "release"
+        },
+        {
+          "date": "2023-11-21",
+          "description": "Binance settles DOJ charges; Zhao steps down as CEO.",
+          "evidence_url": null,
+          "title": "CZ pleads guilty; $4.3B settlement",
+          "type": "setback"
+        }
+      ],
+      "launch_date": "2017-07-14",
+      "launch_notes": "BNB token issued July 2017 alongside the Binance exchange launch; BNB Chain (BSC) mainnet followed September 2020.",
+      "measurable_success": "BNB Chain sustains top-tier fee revenue and active addresses across cycles; BNB demand tied to chain usage and venue utility rather than speculation alone.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2017-07-14",
+          "evidence_summary": "BNB issued; used for fee discounts on Binance from day one.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-09-01",
+          "evidence_summary": "BNB Chain (BSC) mainnet; third-party developers deploy; non-team transactions visible onchain.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-05-01",
+          "evidence_summary": "Top-3 chain by user-paid fees during 2021; fee revenue at a level ranking among the largest networks.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2023-12-01",
+          "evidence_summary": "Activity and fee revenue persisted through the 2022-2023 drawdown without collapsing.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No named institutions running production workloads dependent on BNB Chain.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Ethereum remains the default settlement layer by fees, developer share, and tokenized value.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "BNB",
+      "slug": "bnb",
+      "symbol": "BNB",
+      "thesis": "Be the gas and coordination token of the Binance ecosystem: BNB Chain's execution layer plus fee discounts and launchpad access on the world's largest exchange.",
+      "thesis_category": "execution"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token is the product. There is no USDC without the token; issuance, redemption, and settlement are all denominated in it.",
+          "value": 10
+        },
+        "token_value_capture": {
+          "rationale": "By design the token does not appreciate: 1 USDC targets $1. Economic value accrues to the issuer (Circle) via reserve yield, not to holders.",
+          "value": 1
+        },
+        "world_impact_potential": {
+          "rationale": "A regulated dollar rail could become default onchain cash for institutions and fintechs — the compliant counterpart to USDT's offshore dollar.",
+          "value": 7
+        }
+      },
+      "coingecko_id": "usd-coin",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2018-09-26",
+          "description": "Circle and Coinbase launch a regulated dollar token.",
+          "evidence_url": null,
+          "title": "USDC launches via Centre",
+          "type": "launch"
+        },
+        {
+          "date": "2021-08-23",
+          "description": "Centre commits to all-cash and short-duration Treasury backing.",
+          "evidence_url": null,
+          "title": "Reserves shifted to cash + short Treasuries",
+          "type": "thesis_change"
+        },
+        {
+          "date": "2023-03-11",
+          "description": "$3.3B of reserves stranded at Silicon Valley Bank; market prices in a haircut.",
+          "evidence_url": null,
+          "title": "Depegs to ~$0.87 on SVB exposure",
+          "type": "setback"
+        },
+        {
+          "date": "2023-03-13",
+          "description": "FDIC backstops SVB depositors; Circle redemptions resume and the peg restores.",
+          "evidence_url": null,
+          "title": "Returns to par",
+          "type": "adoption"
+        },
+        {
+          "date": "2024-03-20",
+          "description": "The largest tokenized Treasury fund settles distributions in USDC.",
+          "evidence_url": null,
+          "title": "BlackRock BUIDL pays dividends in USDC",
+          "type": "adoption"
+        }
+      ],
+      "launch_date": "2018-09-26",
+      "launch_notes": "Launched by the Centre consortium (Circle and Coinbase).",
+      "measurable_success": "Peg holds through stress; redemptions honored at par; monthly attestations continue; corporate and DeFi settlement share grows.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2018-09-26",
+          "evidence_summary": "USDC issued; redeemable 1:1 via Circle.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-06-01",
+          "evidence_summary": "Dominant stablecoin in DeFi; listed across exchanges; independent holders in the millions.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-12-01",
+          "evidence_summary": "Multi-billion supply; the default dollar of DeFi settlement; recurring mint/redeem flows.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2023-03-13",
+          "evidence_summary": "SVB collapse strands $3.3B of reserves; USDC depegs to ~$0.87, then returns to par within days as redemptions resume — peg mechanism survived a banking crisis.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2024-03-20",
+          "evidence_summary": "BlackRock's BUIDL fund pays dividends in USDC; corporate treasuries and fintechs settle in USDC in production.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "USDT remains larger; banking rails dominate real-world commerce.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "USD Coin",
+      "provisional": true,
+      "provisional_reason": "Stablecoin: scored under the provisional 'other' category pending a dedicated stablecoin rubric.",
+      "slug": "usdc",
+      "symbol": "USDC",
+      "thesis": "Be the regulated, redeemable dollar token: 1:1 USD redeemability with audited reserves, trusted for onchain settlement and corporate treasury use.",
+      "thesis_category": "other"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The bandwidth/energy resource model requires TRX; the chain cannot run without it. Most usage is USDT transfer, which could in principle move chains.",
+          "value": 8
+        },
+        "token_value_capture": {
+          "rationale": "Fee burns and staking rewards; value tied to stablecoin-transfer demand rather than speculation, but concentrated in one use case.",
+          "value": 6
+        },
+        "world_impact_potential": {
+          "rationale": "The dominant stablecoin-transfer chain is meaningful payment infrastructure, but a narrow moat: if fees rise or a cheaper rail wins, the thesis erodes.",
+          "value": 6
+        }
+      },
+      "coingecko_id": "tron",
+      "defillama_chain": "Tron",
+      "events": [
+        {
+          "date": "2018-06-25",
+          "description": "Token migrates from Ethereum; delegated proof-of-stake block production begins.",
+          "evidence_url": null,
+          "title": "TRON mainnet launches",
+          "type": "launch"
+        },
+        {
+          "date": "2019-04-01",
+          "description": "TRON becomes the cheapest USDT transfer venue; volume migrates from Ethereum and Omni.",
+          "evidence_url": null,
+          "title": "Tether launches USDT on TRON",
+          "type": "adoption"
+        },
+        {
+          "date": "2021-12-12",
+          "description": "Justin Sun steps back from day-to-day leadership; governance moves to the DAO.",
+          "evidence_url": null,
+          "title": "TRON declares itself a DAO",
+          "type": "thesis_change"
+        },
+        {
+          "date": "2023-03-22",
+          "description": "Alleges fraud, market manipulation, and unregistered securities offerings around TRX.",
+          "evidence_url": null,
+          "title": "SEC charges Justin Sun",
+          "type": "setback"
+        }
+      ],
+      "launch_date": "2018-06-25",
+      "launch_notes": "TRX token issued September 2017 (ERC-20); mainnet launched June 25, 2018 ('Independence Day').",
+      "measurable_success": "TRON carries the plurality of USDT transfer volume; chain fee revenue persists across cycles; usage is payments-driven, not speculative.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2018-06-25",
+          "evidence_summary": "Mainnet live; block production independent of Ethereum.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2019-12-01",
+          "evidence_summary": "Tether issues USDT on TRON; independent wallets and exchanges transact.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-12-01",
+          "evidence_summary": "Top-5 chain by user-paid fees; USDT-on-TRON becomes the dominant stablecoin transfer venue.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2023-12-01",
+          "evidence_summary": "Transfer activity and fee revenue persisted through the 2022-2023 drawdown.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Usage is retail/emerging-market transfers; no named institutions operationally dependent on the chain.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Ethereum remains the default settlement layer by economic weight.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "TRON",
+      "slug": "trx",
+      "symbol": "TRX",
+      "thesis": "Be the cheapest high-throughput settlement chain for dollar stablecoins: dominate USDT transfers with near-zero fees.",
+      "thesis_category": "execution"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token IS the monetary asset. There is no Zcash protocol without ZEC; privacy, settlement, and the SoV thesis are all denominated in it.",
+          "value": 10
+        },
+        "token_value_capture": {
+          "rationale": "Fixed 21M supply; capture is purely monetary premium on the privacy-SoV thesis, which competes with Monero and with transparent chains plus mixers.",
+          "value": 5
+        },
+        "world_impact_potential": {
+          "rationale": "Fungible private money is a deep human need; success means a parallel cash system that survives state-level pressure.",
+          "value": 6.5
+        }
+      },
+      "coingecko_id": "zcash",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2016-10-28",
+          "description": "First zk-SNARK shielded transactions on a public chain.",
+          "evidence_url": null,
+          "title": "Zcash launches",
+          "type": "launch"
+        },
+        {
+          "date": "2020-11-18",
+          "description": "20% founders' reward expires; new development fund begins.",
+          "evidence_url": null,
+          "title": "Canopy upgrade ends Founders' Reward",
+          "type": "release"
+        },
+        {
+          "date": "2022-05-31",
+          "description": "New shielded protocol with improved proving efficiency.",
+          "evidence_url": null,
+          "title": "NU5 activates Orchard",
+          "type": "release"
+        },
+        {
+          "date": "2023-05-27",
+          "description": "Founder departs day-to-day leadership; Josh Swihart takes over.",
+          "evidence_url": null,
+          "title": "Zooko Wilcox steps down as ECC CEO",
+          "type": "setback"
+        },
+        {
+          "date": "2024-06-10",
+          "description": "Major exchanges restrict or delist shielded-asset pairs under regulatory pressure.",
+          "evidence_url": null,
+          "title": "Exchange delisting waves for privacy coins",
+          "type": "setback"
+        }
+      ],
+      "launch_date": "2016-10-28",
+      "launch_notes": "Launched by the Zerocoin Electric Coin Company; zk-SNARK shielded transactions from genesis.",
+      "measurable_success": "Shielded pool grows; survives market cycles with development continuing; remains the reference privacy coin with real transaction demand.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2016-10-28",
+          "evidence_summary": "Genesis block; shielded transactions functional.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2017-12-01",
+          "evidence_summary": "Exchange listings; non-trivial holder base; peer-to-peer transfers beyond the founding team.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-12-01",
+          "evidence_summary": "Survived a >90% drawdown; development continued (Canopy, NU5); shielded pool kept growing.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No public-company or fund treasury allocation disclosed.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not used as a unit of account in real commerce beyond niche merchants.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No sovereign reserve adoption.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Zcash",
+      "slug": "zec",
+      "symbol": "ZEC",
+      "thesis": "Be private sound money: Bitcoin-like scarcity with shielded transactions that make every coin fungible.",
+      "thesis_category": "monetary"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "HYPE is gas for HyperEVM and staked for consensus; the chain cannot run without it. The perps DEX itself could settle in other collateral.",
+          "value": 8
+        },
+        "token_value_capture": {
+          "rationale": "The Assistance Fund uses protocol fees for HYPE buybacks; staking yields from fees. Capture is real but young and concentrated in perps volume.",
+          "value": 7
+        },
+        "world_impact_potential": {
+          "rationale": "Displacing centralized perps venues would be the largest DeFi value-capture event to date: the first onchain venue to beat CEXs at their own game.",
+          "value": 7.5
+        }
+      },
+      "coingecko_id": "hyperliquid",
+      "defillama_chain": "Hyperliquid L1",
+      "events": [
+        {
+          "date": "2023-01-01",
+          "description": "Onchain central-limit order book for perpetuals goes live.",
+          "evidence_url": null,
+          "title": "Hyperliquid perps mainnet",
+          "type": "launch"
+        },
+        {
+          "date": "2024-11-29",
+          "description": "Large airdrop to users; no VC allocation.",
+          "evidence_url": null,
+          "title": "HYPE token generation event",
+          "type": "launch"
+        },
+        {
+          "date": "2025-02-18",
+          "description": "General-purpose EVM execution layer launches on the Hyperliquid L1.",
+          "evidence_url": null,
+          "title": "HyperEVM mainnet",
+          "type": "release"
+        },
+        {
+          "date": "2025-03-26",
+          "description": "Validators vote to delist the JELLY perp after a suspected manipulation attack; critics cite centralization risk.",
+          "evidence_url": null,
+          "title": "JELLY market incident",
+          "type": "setback"
+        }
+      ],
+      "launch_date": "2024-11-29",
+      "launch_notes": "Hyperliquid perps DEX live since 2023; HYPE token generation event November 29, 2024; HyperEVM general-purpose chain 2025.",
+      "measurable_success": "Sustained top share of onchain perps volume; fee revenue competitive with centralized venues; HyperEVM attracts independent developers.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2023-01-01",
+          "evidence_summary": "Perps DEX mainnet live; order-book trading functional onchain.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2024-06-01",
+          "evidence_summary": "Independent traders and market makers active; non-team volume dominates.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2024-12-01",
+          "evidence_summary": "Top onchain perps venue by volume and fees; fee revenue at a level ranking among the largest protocols.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Too young for a full-cycle persistence test; the 2022-style drawdown predates the token.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No named institutions operationally dependent on the venue.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Centralized exchanges still dominate global perps volume.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Hyperliquid",
+      "slug": "hype",
+      "symbol": "HYPE",
+      "thesis": "Be the decentralized venue that takes perpetuals volume from centralized exchanges: CEX-grade performance with onchain settlement, plus a general L1 (HyperEVM).",
+      "thesis_category": "execution"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token IS the monetary asset. There is no Dogecoin protocol without DOGE.",
+          "value": 10
+        },
+        "token_value_capture": {
+          "rationale": "No supply cap and no burn; capture is purely monetary premium resting entirely on cultural persistence — the weakest monetary moat in the set.",
+          "value": 5
+        },
+        "world_impact_potential": {
+          "rationale": "A culturally-anchored global tipping currency is a real, if narrow, monetary success: proof that money can run on memes.",
+          "value": 6
+        }
+      },
+      "coingecko_id": "dogecoin",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2013-12-06",
+          "description": "Litecoin fork with Shiba Inu branding; intended as a joke.",
+          "evidence_url": null,
+          "title": "Dogecoin launches",
+          "type": "launch"
+        },
+        {
+          "date": "2015-06-15",
+          "description": "Palmer leaves and publicly denounces crypto culture; development stalls for years.",
+          "evidence_url": null,
+          "title": "Co-founder Jackson Palmer exits",
+          "type": "setback"
+        },
+        {
+          "date": "2021-05-08",
+          "description": "Elon Musk's SNL appearance marks the top of the 2021 cycle.",
+          "evidence_url": null,
+          "title": "Peak mania: $0.73 on SNL appearance",
+          "type": "adoption"
+        },
+        {
+          "date": "2022-01-14",
+          "description": "Largest merchant acceptance to date.",
+          "evidence_url": null,
+          "title": "Tesla accepts DOGE for merchandise",
+          "type": "adoption"
+        },
+        {
+          "date": "2025-01-21",
+          "description": "Bitwise and Grayscale file for DOGE ETFs, putting it in the regulated-product queue.",
+          "evidence_url": null,
+          "title": "Spot ETF filings enter the pipeline",
+          "type": "adoption"
+        }
+      ],
+      "launch_date": "2013-12-06",
+      "launch_notes": "Launched as a joke by Billy Markus and Jackson Palmer; merge-mined with Litecoin since 2014.",
+      "measurable_success": "Survives cycles with an active chain and holders; accepted for payments by major merchants; remains top-10 without a development roadmap.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2013-12-06",
+          "evidence_summary": "Genesis block; chain producing blocks.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2014-06-01",
+          "evidence_summary": "Tipping culture on Reddit/Twitter; exchange listings; holders far beyond the founders.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-12-01",
+          "evidence_summary": "Survived the 2018-2020 drawdown with the chain active and development continuing.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No public-company treasury allocation; merchant acceptance is not treasury allocation.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not a unit of account in real commerce.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No sovereign reserve adoption.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Dogecoin",
+      "slug": "doge",
+      "symbol": "DOGE",
+      "thesis": "Be the internet's money by culture: a fun, cheap, inflationary coin that survives every cycle on community and memetic persistence.",
+      "thesis_category": "monetary"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token IS the monetary asset. There is no Monero protocol without XMR.",
+          "value": 10
+        },
+        "token_value_capture": {
+          "rationale": "Tail emission funds security indefinitely; monetary premium tied to privacy demand, which persists but is capped by regulatory exclusion.",
+          "value": 5.5
+        },
+        "world_impact_potential": {
+          "rationale": "Private digital cash is a deep need; success means surviving state-level pressure as the hardest money to censor.",
+          "value": 6
+        }
+      },
+      "coingecko_id": "monero",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2014-04-18",
+          "description": "BitMonero fork; community takes over within weeks.",
+          "evidence_url": null,
+          "title": "Monero launches",
+          "type": "launch"
+        },
+        {
+          "date": "2024-02-06",
+          "description": "Largest exchange removes Monero under regulatory pressure.",
+          "evidence_url": null,
+          "title": "Binance delists XMR",
+          "type": "setback"
+        },
+        {
+          "date": "2024-10-18",
+          "description": "European delisting wave continues; peer-to-peer liquidity becomes the venue.",
+          "evidence_url": null,
+          "title": "Kraken delists XMR in the EEA",
+          "type": "setback"
+        },
+        {
+          "date": "2025-07-25",
+          "description": "Reports of a single pool exceeding 50% of hashrate spark 51%-attack fears; network continues operating.",
+          "evidence_url": null,
+          "title": "Qubic pool claims majority hashrate",
+          "type": "setback"
+        }
+      ],
+      "launch_date": "2014-04-18",
+      "launch_notes": "Launched as BitMonero, a Bytecoin fork; community takeover within weeks.",
+      "measurable_success": "Remains the most-used privacy coin; survives exchange delistings with peer-to-peer liquidity; development continues.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2014-04-18",
+          "evidence_summary": "Genesis block; CryptoNote ring signatures functional.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2016-12-01",
+          "evidence_summary": "Darknet-market adoption; exchange listings; holder base far beyond founders.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-12-01",
+          "evidence_summary": "Survived the 2018-2020 drawdown; hashrate and development persisted.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No institutional treasury allocation; regulatory exclusion blocks it.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not a unit of account in legal commerce.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No sovereign reserve adoption.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Monero",
+      "slug": "xmr",
+      "symbol": "XMR",
+      "thesis": "Be fungible digital cash: private by default, so every coin is equal and censorship-resistant.",
+      "thesis_category": "monetary"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "Governance plus fee/buyback utility; the protocol could resolve markets without the token, but tokenomics fund growth and align creators.",
+          "value": 6
+        },
+        "token_value_capture": {
+          "rationale": "Buyback-and-burn ties the token to protocol revenue per the whitepaper; unproven at scale and the DAO is not yet live.",
+          "value": 5
+        },
+        "world_impact_potential": {
+          "rationale": "Decentralized prediction markets are a large potential market; success means rivaling centralized incumbents (Polymarket, Kalshi) on neutral rails.",
+          "value": 6.5
+        }
+      },
+      "coingecko_id": "rain",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2023-11-01",
+          "description": "Permissionless market creation goes live.",
+          "evidence_url": null,
+          "title": "Public beta on Arbitrum",
+          "type": "launch"
+        },
+        {
+          "date": "2025-03-24",
+          "description": "Token launch per the protocol whitepaper v2.0.",
+          "evidence_url": null,
+          "title": "RAIN token admitted to trading",
+          "type": "launch"
+        },
+        {
+          "date": "2026-04-01",
+          "description": "Nasdaq-listed biopharma firm plans to become the largest corporate holder of RAIN.",
+          "evidence_url": null,
+          "title": "Enlivex announces $212M RAIN treasury plan",
+          "type": "adoption"
+        }
+      ],
+      "launch_date": "2025-03-24",
+      "launch_notes": "RAIN token admitted to trading 2025-03-24 per the protocol whitepaper (v2.0); Rain Protocol itself launched on Arbitrum in 2023.",
+      "measurable_success": "Sustained market-creation and trading volume independent of token incentives; resolution quality trusted by market creators; repeat enterprise/DAO users.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2023-11-01",
+          "evidence_summary": "Public beta on Arbitrum; market creation and trading functional.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2025-03-24",
+          "evidence_summary": "RAIN token admitted to trading; exchange listings; independent holders.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Volume is real but small relative to incumbents; incentive-dependence untested.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No full-cycle stress test yet.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No named institutions operationally dependent on the protocol.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Polymarket/Kalshi dominate prediction-market volume.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Rain",
+      "provisional": true,
+      "provisional_reason": "Thin history (token trading since March 2025); prediction-market thesis unproven at scale. Scored under the provisional 'other' category.",
+      "slug": "rain",
+      "symbol": "RAIN",
+      "thesis": "Be permissionless infrastructure for prediction markets: anyone can create, trade, and resolve markets, with AI-assisted resolution and private markets.",
+      "thesis_category": "other"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "The token is the product; governance is separated into SKY. There is no USDS system without the USDS token.",
+          "value": 9
+        },
+        "token_value_capture": {
+          "rationale": "By design the token does not appreciate: 1 USDS targets $1. Value accrues to SKY holders and the protocol, not USDS holders.",
+          "value": 1
+        },
+        "world_impact_potential": {
+          "rationale": "A decentralized dollar at scale is a major crypto-native achievement: censorship-resistant dollars without a bank.",
+          "value": 6.5
+        }
+      },
+      "coingecko_id": "usds",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2024-08-27",
+          "description": "MakerDAO rebrands to Sky; USDS replaces DAI, SKY replaces MKR.",
+          "evidence_url": null,
+          "title": "Sky launches USDS and SKY",
+          "type": "launch"
+        },
+        {
+          "date": "2024-08-27",
+          "description": "Full rebrand and token migration plan announced.",
+          "evidence_url": null,
+          "title": "Endgame: MakerDAO becomes Sky",
+          "type": "thesis_change"
+        },
+        {
+          "date": "2025-05-19",
+          "description": "Migration tooling complete; DAI supply winds down as holders convert to USDS.",
+          "evidence_url": null,
+          "title": "DAI wind-down accelerates",
+          "type": "release"
+        }
+      ],
+      "launch_date": "2024-08-27",
+      "launch_notes": "Launched as the upgraded successor to DAI under the Sky (ex-MakerDAO) Endgame plan; DAI migration ongoing.",
+      "measurable_success": "Peg holds through stress; DAI-to-USDS migration completes; the Sky Savings Rate attracts sticky deposits; decentralized collateral mix persists.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2024-08-27",
+          "evidence_summary": "USDS live; mint/redeem functional via Sky.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2025-03-01",
+          "evidence_summary": "Multi-billion supply; listed across exchanges; DAI holders migrating.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2025-09-01",
+          "evidence_summary": "Recurring Savings Rate usage; multi-billion circulating supply with real DeFi settlement flows.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No 2022-scale stress test yet as USDS (inherits DAI's 2020-2023 survival only indirectly).",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No named institutions operationally dependent on USDS specifically.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "USDT/USDC dominate stablecoin settlement.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "USDS",
+      "provisional": true,
+      "provisional_reason": "Stablecoin: scored under the provisional 'other' category pending a dedicated stablecoin rubric. Inherits DAI's history via the Sky/MakerDAO lineage.",
+      "slug": "usds",
+      "symbol": "USDS",
+      "thesis": "Be the decentralized dollar: a crypto-collateralized, redeemable stablecoin with no centralized issuer to seize or censor.",
+      "thesis_category": "other"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "A centralized exchange can discount fees in cash; LEO is a loyalty mechanism, not a protocol requirement. Triggers the token-necessity gate.",
+          "value": 3
+        },
+        "token_value_capture": {
+          "rationale": "Contractual buyback-and-burn from iFinex gross revenue is a real mechanism, but capture depends entirely on one venue's fortunes (and is gate-capped).",
+          "value": 4
+        },
+        "world_impact_potential": {
+          "rationale": "A successful exchange loyalty token is a business win for one venue, not world-changing infrastructure.",
+          "value": 3.5
+        }
+      },
+      "coingecko_id": "leo-token",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2019-05-20",
+          "description": "iFinex raises $1B in a private sale to recapitalize after the Crypto Capital shortfall.",
+          "evidence_url": null,
+          "title": "$1B UNUS SED LEO token sale",
+          "type": "launch"
+        },
+        {
+          "date": "2019-04-25",
+          "description": "$850M shortfall allegations; the context for LEO's issuance.",
+          "evidence_url": null,
+          "title": "NYAG action against iFinex/Tether",
+          "type": "setback"
+        },
+        {
+          "date": "2022-02-08",
+          "description": "US seizes stolen Bitfinex funds; whitepaper commits recovered funds to LEO buybacks.",
+          "evidence_url": null,
+          "title": "$3.6B in 2016-hack bitcoin seized",
+          "type": "adoption"
+        }
+      ],
+      "launch_date": "2019-05-20",
+      "launch_notes": "Issued by iFinex (Bitfinex parent) via a $1B private token sale, May 2019.",
+      "measurable_success": "Buybacks execute monthly from gross revenue; fee-payment demand persists in line with Bitfinex volume; supply declines per the whitepaper schedule.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2019-05-20",
+          "evidence_summary": "LEO issued; fee discounts live on Bitfinex.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2020-06-01",
+          "evidence_summary": "Adopted by Bitfinex traders; listed on affiliated venues.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-12-01",
+          "evidence_summary": "Monthly buyback-and-burn executed from iFinex revenue; circulating supply in steady decline.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Venue-dependent by construction; no independent stress test separable from Bitfinex itself.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No external institutions depend on LEO.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "BNB dominates the exchange-token category.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "LEO Token",
+      "provisional": true,
+      "provisional_reason": "Exchange/venue token: the four core rubrics were not designed for centralized-venue loyalty tokens. Scored under the provisional 'other' category.",
+      "slug": "leo",
+      "symbol": "LEO",
+      "thesis": "Be the fee token of the Bitfinex ecosystem: trading-fee discounts funded by a contractual monthly buyback-and-burn from iFinex revenue.",
+      "thesis_category": "other"
+    },
+    {
+      "assessments": {
+        "token_necessity": {
+          "rationale": "XLM is the bridge asset and anti-spam mechanism; the rail needs a native asset, though corridors increasingly settle in fiat-backed stablecoins.",
+          "value": 8
+        },
+        "token_value_capture": {
+          "rationale": "Minimal fee burn; value rests on bridge-asset demand and corridor growth, not on cash flows to holders.",
+          "value": 5
+        },
+        "world_impact_potential": {
+          "rationale": "Displacing correspondent banking in target corridors would be major financial infrastructure: cheaper remittances at global scale.",
+          "value": 6.5
+        }
+      },
+      "coingecko_id": "stellar",
+      "defillama_chain": null,
+      "events": [
+        {
+          "date": "2014-07-31",
+          "description": "Jed McCaleb's Ripple fork goes live.",
+          "evidence_url": null,
+          "title": "Stellar network launches",
+          "type": "launch"
+        },
+        {
+          "date": "2019-11-04",
+          "description": "Half the supply burned; foundation refocuses on development over giveaways.",
+          "evidence_url": null,
+          "title": "SDF burns 55B XLM",
+          "type": "thesis_change"
+        },
+        {
+          "date": "2021-10-06",
+          "description": "Cash on/off ramps on Stellar; the rail's flagship institutional integration.",
+          "evidence_url": null,
+          "title": "MoneyGram partnership goes live",
+          "type": "integration"
+        },
+        {
+          "date": "2023-09-13",
+          "description": "General-purpose smart contracts launch on Stellar.",
+          "evidence_url": null,
+          "title": "Soroban smart contracts on mainnet",
+          "type": "release"
+        }
+      ],
+      "launch_date": "2014-07-31",
+      "launch_notes": "Stellar network launched July 2014; upgraded to the Stellar Consensus Protocol November 2015.",
+      "measurable_success": "Production payment corridors with named institutions; recurring settlement volume independent of speculation; corridor count grows.",
+      "milestones": [
+        {
+          "achieved": true,
+          "achieved_at": "2014-07-31",
+          "evidence_summary": "Ledger live; payment transactions settling.",
+          "evidence_url": null,
+          "level": 0
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2017-12-01",
+          "evidence_summary": "Wallet and exchange support; payments by users beyond the founding team.",
+          "evidence_url": null,
+          "level": 1
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-12-01",
+          "evidence_summary": "MoneyGram corridors live; disclosed on/off-ramp volumes attributable to the rail.",
+          "evidence_url": null,
+          "level": 2
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "SDF grants and subsidies still support corridor development.",
+          "evidence_url": null,
+          "level": 3
+        },
+        {
+          "achieved": true,
+          "achieved_at": "2021-10-06",
+          "evidence_summary": "MoneyGram partnership: cash on/off ramps on Stellar in production — a named payment institution running settlement flows on the rail.",
+          "evidence_url": null,
+          "level": 4
+        },
+        {
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No measurable share of addressable cross-border volume; correspondent banking dominates.",
+          "evidence_url": null,
+          "level": 5
+        }
+      ],
+      "name": "Stellar",
+      "slug": "xlm",
+      "symbol": "XLM",
+      "thesis": "Be the low-cost settlement rail for cross-border payments: near-free transfers with 5-second finality connecting banks, money transmitters, and wallets.",
+      "thesis_category": "payments"
+    },
+    {
+      "slug": "figr_heloc",
+      "name": "Figure Heloc",
+      "symbol": "FIGR_HELOC",
+      "coingecko_id": "figure-heloc",
+      "defillama_chain": null,
+      "thesis_category": "other",
+      "launch_date": "2025-01-01",
+      "launch_notes": "Approximate. Figure's onchain lending products predate the token (Provenance-based HELOC origination since 2020); the FIGR_HELOC token's exact genesis is unverified and flagged for correction.",
+      "thesis": "Represent home-equity line-of-credit debt as onchain tokens: enforceable claims on real borrower payments, originated and serviced on blockchain rails (Provenance).",
+      "measurable_success": "Sustained origination volume; secondary liquidity for the tokens; loans perform (low defaults); legal enforceability of the onchain claim tested and upheld.",
+      "provisional": true,
+      "provisional_reason": "RWA token: thin public evidence on token mechanics and performance; launch date approximate. Scored under the provisional 'other' category.",
+      "assessments": {
+        "token_necessity": {
+          "value": 7,
+          "rationale": "The token is the onchain claim instrument; the debt exists legally without it, but onchain transfer, settlement, and composability need the token."
+        },
+        "token_value_capture": {
+          "value": 4,
+          "rationale": "Value is the debt claim itself plus coupon; no protocol-level accrual beyond the underlying loan economics."
+        },
+        "world_impact_potential": {
+          "value": 5.5,
+          "rationale": "Tokenized private credit is a large addressable market; success means a working template for onchain real-world assets."
+        }
+      },
+      "milestones": [
+        {
+          "level": 0,
+          "achieved": true,
+          "achieved_at": "2025-01-01",
+          "evidence_summary": "FIGR_HELOC token live and trading; represents Figure HELOC loan assets.",
+          "evidence_url": null
+        },
+        {
+          "level": 1,
+          "achieved": true,
+          "achieved_at": "2025-06-01",
+          "evidence_summary": "Listed on exchanges; independent holders beyond Figure.",
+          "evidence_url": null
+        },
+        {
+          "level": 2,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Origination and performance data not yet independently verified at scale.",
+          "evidence_url": null
+        },
+        {
+          "level": 3,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No full-cycle or stress test of the onchain claim structure yet.",
+          "evidence_url": null
+        },
+        {
+          "level": 4,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No external institutions operationally dependent on the token yet.",
+          "evidence_url": null
+        },
+        {
+          "level": 5,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Not the dominant RWA instrument by any measure.",
+          "evidence_url": null
+        }
+      ],
+      "events": [
+        {
+          "date": "2025-01-01",
+          "type": "launch",
+          "title": "FIGR_HELOC token live (approximate date)",
+          "description": "Tokenized Figure HELOC assets begin trading; built on Provenance Blockchain rails.",
+          "evidence_url": null
+        }
+      ]
+    },
+    {
+      "slug": "wbt",
+      "name": "WhiteBIT Coin",
+      "symbol": "WBT",
+      "coingecko_id": "whitebit",
+      "defillama_chain": null,
+      "thesis_category": "other",
+      "launch_date": "2022-08-01",
+      "launch_notes": "Approximate: WhiteBIT announced WBT in 2022 as its exchange utility token; exact genesis unverified and flagged for correction. Later became the native asset of Whitechain.",
+      "thesis": "Be the utility token of the WhiteBIT exchange and Whitechain: staking tiers, fee discounts, and ecosystem perks that retain traders.",
+      "measurable_success": "Sustained staking and fee-payment demand correlated with WhiteBIT/Whitechain activity; token held by active users, not just speculators.",
+      "provisional": true,
+      "provisional_reason": "Exchange/venue token: scored under the provisional 'other' category; launch date approximate.",
+      "assessments": {
+        "token_necessity": {
+          "value": 3,
+          "rationale": "A centralized exchange can discount fees in cash; WBT is a loyalty and staking mechanism, not a protocol requirement. Triggers the token-necessity gate."
+        },
+        "token_value_capture": {
+          "value": 3,
+          "rationale": "Staking tiers and burn programs exist, but capture depends entirely on one venue's fortunes (and is gate-capped)."
+        },
+        "world_impact_potential": {
+          "value": 3.5,
+          "rationale": "A successful exchange loyalty token is a business win for one venue, not world-changing infrastructure."
+        }
+      },
+      "milestones": [
+        {
+          "level": 0,
+          "achieved": true,
+          "achieved_at": "2022-08-01",
+          "evidence_summary": "WBT issued; fee-discount utility live on WhiteBIT.",
+          "evidence_url": null
+        },
+        {
+          "level": 1,
+          "achieved": true,
+          "achieved_at": "2023-01-01",
+          "evidence_summary": "Adopted by WhiteBIT users; staking tiers active.",
+          "evidence_url": null
+        },
+        {
+          "level": 2,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "Fee-payment demand not independently verified at scale.",
+          "evidence_url": null
+        },
+        {
+          "level": 3,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No independent stress test separable from WhiteBIT itself.",
+          "evidence_url": null
+        },
+        {
+          "level": 4,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "No external institutions depend on WBT.",
+          "evidence_url": null
+        },
+        {
+          "level": 5,
+          "achieved": false,
+          "achieved_at": null,
+          "evidence_summary": "BNB dominates the exchange-token category.",
+          "evidence_url": null
+        }
+      ],
+      "events": [
+        {
+          "date": "2022-08-01",
+          "type": "launch",
+          "title": "WhiteBIT Coin launches (approximate date)",
+          "description": "Native utility token of the WhiteBIT exchange; later the primary asset of Whitechain.",
           "evidence_url": null
         }
       ]

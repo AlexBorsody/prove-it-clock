@@ -1,6 +1,14 @@
 # Prove-It Clock — Top-20 Expansion Design
 
-**Status:** design (not implemented). Methodology v0.2.0. Repo `AlexBorsody/prove-it-clock`.
+**Status:** implemented 2026-09-20 (methodology v0.3.0). Repo `AlexBorsody/prove-it-clock`.
+
+> Implementation notes: universe is ranks **1–20** by CoinGecko market cap (BTC
+> included — it was never leaving the board). Stablecoins (USDT, USDC, USDS),
+> exchange/venue tokens (WBT, LEO), and the RWA token (FIGR_HELOC) are seeded
+> under a new provisional `other` thesis category (methodology v0.3.0) rather
+> than force-fit into payments. A dedicated stablecoin rubric is still an open
+> question. Universe check runs daily with append-only membership
+> (`data/snapshots/universe_<date>.json`).
 
 ## 1. Objective & scope
 

@@ -1,0 +1,2942 @@
+{
+  "snapshot_date": "2026-09-20",
+  "generated_at": "2026-09-20T03:18:15.843Z",
+  "project_count": 20,
+  "metric_count": 204,
+  "unavailable_count": 102,
+  "metrics": [
+    {
+      "projectSlug": "btc",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 80298.53283449043,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 1612850502319,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 1612861582986,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 23976881580,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 20086640,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 20086778,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 21000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 7,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "meta": {
+        "genesis_date": "2009-01-03",
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:03.216Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:03.216Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:03.216Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/bitcoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:03.216Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 6157773.714635212,
+      "meta": {
+        "days": 27,
+        "btc_sum": 76.67169506,
+        "btc_usd": 80313.52
+      },
+      "source": {
+        "provider": "bitcoin",
+        "endpoint": "/charts/transaction-fees?timespan=30days&format=json",
+        "fetchedAt": "2026-09-20T03:18:15.114Z"
+      }
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 83243977.99414267,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 27
+      },
+      "source": {
+        "provider": "bitcoin",
+        "endpoint": "/charts/transaction-fees?timespan=30days&format=json",
+        "fetchedAt": "2026-09-20T03:18:15.114Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 2577.7128273108983,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 314667531669,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 314667531669,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 10947031337,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 122064744.06907414,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 122064744.0690741,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 9.2,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "meta": {
+        "genesis_date": "2015-07-30",
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:06.138Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:06.138Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:06.138Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/ethereum?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:06.138Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 315347228.2099999,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Ethereum?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:17:56.225Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 3836724609.888332,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Ethereum?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:17:56.225Z"
+      }
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-20",
+      "value": 52531417342,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Ethereum",
+        "fetchedAt": "2026-09-20T03:17:57.896Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 108.01308802761449,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 63444167577,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 68521789818,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 3019490798,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 587367190.9311358,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 634375876.2960379,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 21,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "meta": {
+        "genesis_date": null,
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:08.975Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:08.975Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:08.975Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/solana?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:16:08.975Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 420154618.09999996,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Solana?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:17:58.890Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 5111881186.883333,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Solana?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:17:58.890Z"
+      }
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-20",
+      "value": 6207031254,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Solana",
+        "fetchedAt": "2026-09-20T03:18:00.104Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 1.3736566421618222,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 86372528270,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 137342867434,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 3171069507,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 62879209849,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 99985622230,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 100000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 5.9,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 11.998488376957138,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 8977872127,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 12000898920,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 460313811,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 748099970.424884,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 1000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 1000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 10.7,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.2203888722353065,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 8269278899,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 9917072485,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 512472770,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 37522923322.162025,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 45000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 45000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 5.6,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 442017.52,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Cardano?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:01.041Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 5377879.826666667,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Cardano?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:01.041Z"
+      }
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-20",
+      "value": 59273497,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Cardano",
+        "fetchedAt": "2026-09-20T03:18:02.275Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.9995568027021099,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 183303165611,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 188767682426,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 49665257285,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 183384649789.2811,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 188851595759.0362,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 0,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 749.7962369166319,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 99847671056,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 99847670861,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 982539096,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 133160300.58,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 133160299.17,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 200000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 13.2,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 98498883.31999998,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/BSC?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:03.502Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 1198403080.3933332,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/BSC?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:03.502Z"
+      }
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-20",
+      "value": 5733571387,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/BSC",
+        "fetchedAt": "2026-09-20T03:18:08.018Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.9996523756476069,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 74222693455,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 74223911870,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 12146369305,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 74248107066.79173,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 74250064356.76073,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 0,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.3394737252330854,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 32235111298,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 32235768437,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 376725593,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 94955991096.57959,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 94958013506.00539,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 0.4,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 8110274.42,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Tron?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:09.833Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 98675005.44333334,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Tron?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:09.833Z"
+      }
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-20",
+      "value": 5579938911,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Tron",
+        "fetchedAt": "2026-09-20T03:18:11.209Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 1460.116260454951,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 24739857497,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 24742342491,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 1073097840,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 16940251.7280448,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 16942011.1030448,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 21000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 153.9,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 90.07313029800007,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 20035488751,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 86043663838,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 938518062,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 222445714.07414138,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 955307079.4341414,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 1000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 21,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "fees_30d_usd",
+      "observedAt": "2026-09-20",
+      "value": 153043612.50000003,
+      "meta": {
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Hyperliquid%20L1?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:12.477Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "fees_annualized_usd",
+      "observedAt": "2026-09-20",
+      "value": 1862030618.7500002,
+      "meta": {
+        "method": "trailing window annualized",
+        "days": 30
+      },
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/overview/fees/Hyperliquid%20L1?dataType=dailyFees",
+        "fetchedAt": "2026-09-20T03:18:12.477Z"
+      }
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "tvl_usd",
+      "observedAt": "2026-09-20",
+      "value": 1425238932,
+      "source": {
+        "provider": "defillama",
+        "endpoint": "/v2/historicalChainTvl/Hyperliquid%20L1",
+        "fetchedAt": "2026-09-20T03:18:14.263Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.08537767460298844,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 13321341890,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 13321472553,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 1000912229,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 155986326383.70523,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 171700253126.579,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 3.5,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 527.1239217983473,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 9917328001,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 9917341606,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 135530861,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 18806928.1279939,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 18806966.52799391,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 27.1,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.01363463983462306,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 9670338722,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 15576618620,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 26512166,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 709234634574.3281,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 1142408526965.963,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 1150000000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": -1.8,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.9998612883067711,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 9593874352,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 9593874352,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 69645922,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 9595722807.594458,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 9595969839.156376,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 0,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 8.894515792073213,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 8181690265,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 8763228407,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 61008,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 919857851.9,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 985239504,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": -4.4,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 0.18989709935968813,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 6621579224,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 9495749030,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 275958962,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 34867264486.183266,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 50001786839.70148,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 2.1,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "meta": {
+        "genesis_date": null,
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/stellar?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:49.364Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/stellar?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:49.364Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/stellar?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:49.364Z"
+      }
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/stellar?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:49.364Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 1.0168586544514349,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 23140466333,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 23140466333,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 345014,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 22756817018.848,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 22756817018.848,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": -1.3,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "meta": {
+        "genesis_date": null,
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/figure-heloc?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:52.001Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/figure-heloc?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:52.001Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/figure-heloc?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:52.001Z"
+      }
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/figure-heloc?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:52.001Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "price_usd",
+      "observedAt": "2026-09-20",
+      "value": 81.76437347179775,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "market_cap_usd",
+      "observedAt": "2026-09-20",
+      "value": 9719165943,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "fdv_usd",
+      "observedAt": "2026-09-20",
+      "value": 23990330044,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "volume_24h_usd",
+      "observedAt": "2026-09-20",
+      "value": 65064367,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "circulating_supply",
+      "observedAt": "2026-09-20",
+      "value": 118887984,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "total_supply",
+      "observedAt": "2026-09-20",
+      "value": 293457483,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "max_supply",
+      "observedAt": "2026-09-20",
+      "value": 400000000,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "price_change_30d_pct",
+      "observedAt": "2026-09-20",
+      "value": 31.3,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cchainlink%2Ccardano%2Ctether%2Cbinancecoin%2Cusd-coin%2Ctron%2Czcash%2Chyperliquid%2Cdogecoin%2Cmonero%2Crain%2Cusds%2Cleo-token%2Cstellar%2Cfigure-heloc%2Cwhitebit&price_change_percentage=30d&precision=full",
+        "fetchedAt": "2026-09-20T03:16:00.504Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "launch_date",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "meta": {
+        "genesis_date": null,
+        "note": "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit"
+      },
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/whitebit?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:54.720Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "dev_commits_4w",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/whitebit?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:54.720Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "dev_stars",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/whitebit?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:54.720Z"
+      }
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "dev_forks",
+      "observedAt": "2026-09-20",
+      "value": null,
+      "source": {
+        "provider": "coingecko",
+        "endpoint": "/coins/whitebit?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false",
+        "fetchedAt": "2026-09-20T03:17:54.720Z"
+      }
+    }
+  ],
+  "unavailable": [
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "btc",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "eth",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "sol",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/ripple?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xrp",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/chainlink?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/chainlink?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/chainlink?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "link",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/cardano?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/cardano?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "ada",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/cardano?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/tether?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/tether?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/tether?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdt",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/binancecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/binancecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "bnb",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/binancecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/usd-coin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/usd-coin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/usd-coin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usdc",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/tron?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/tron?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "trx",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/tron?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/zcash?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/zcash?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/zcash?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "zec",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/hyperliquid?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/hyperliquid?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "hype",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/hyperliquid?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/dogecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/dogecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/dogecoin?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "doge",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/monero?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/monero?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/monero?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xmr",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/rain?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/rain?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/rain?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "rain",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: CoinGecko /coins/usds?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: CoinGecko /coins/usds?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: CoinGecko /coins/usds?localization=false&tickers=false&market_data=false&community_data=false&developer_data=true&sparkline=false -> HTTP 429",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "usds",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "dev_commits_4w",
+      "reason": "detail fetch failed: fetch failed",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "dev_stars",
+      "reason": "detail fetch failed: fetch failed",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "dev_forks",
+      "reason": "detail fetch failed: fetch failed",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "leo",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "xlm",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "figr_heloc",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "dev_commits_4w",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "dev_stars",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "dev_forks",
+      "reason": "CoinGecko developer_data empty for this coin (GitHub adapter is Phase 2)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "tvl_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "fees_30d_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    },
+    {
+      "projectSlug": "wbt",
+      "metricCode": "fees_annualized_usd",
+      "reason": "no DefiLlama chain coverage for this project (DefiLlama tracks EVM/non-EVM chains and DeFi protocols; this asset has no chain series)",
+      "provider": "adapter"
+    }
+  ]
+}

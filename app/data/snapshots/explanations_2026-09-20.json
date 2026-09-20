@@ -1,0 +1,1802 @@
+[
+  {
+    "project": "btc",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 5.9,
+        "status": "provisional",
+        "delta": -0.1,
+        "summary": "Bitcoin reality -0.1 since last snapshot.",
+        "contributors": [
+          {
+            "component": "economic_throughput",
+            "contribution": 2.3,
+            "text": "Economic throughput: 5.8/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 3.6,
+            "text": "Thesis milestones: 6/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 7.1,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Bitcoin execution_evidence unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 4,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Bitcoin reflexivity_risk unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0,
+            "text": "Token-necessity inverse: 0/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 4.3,
+            "text": "Valuation vs economic activity: 8.6/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "eth",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 8.8,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Ethereum reality unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "capital_committed",
+            "contribution": 1.9,
+            "text": "Capital committed: 9.3/10 (weight 20%)"
+          },
+          {
+            "component": "economic_throughput",
+            "contribution": 3.7,
+            "text": "Economic throughput: 9.2/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 3.2,
+            "text": "Thesis milestones: 8/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 7.1,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Ethereum execution_evidence unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 2,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Ethereum reflexivity_risk unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.2,
+            "text": "Token-necessity inverse: 1/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 1.9,
+            "text": "Valuation vs economic activity: 3.8/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "sol",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 7.6,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Solana reality unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "capital_committed",
+            "contribution": 1.4,
+            "text": "Capital committed: 7/10 (weight 20%)"
+          },
+          {
+            "component": "economic_throughput",
+            "contribution": 3.8,
+            "text": "Economic throughput: 9.4/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 2.4,
+            "text": "Thesis milestones: 6/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 5.9,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Solana execution_evidence unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 2.8,
+            "text": "Setback drag: 7/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 1.5,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Solana reflexivity_risk unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.2,
+            "text": "Token-necessity inverse: 1/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0.2,
+            "text": "Supply overhang: 0.7/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 1.1,
+            "text": "Valuation vs economic activity: 2.2/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "xrp",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 2,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "XRP reality unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 2,
+            "text": "Thesis milestones: 2/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "XRP execution_evidence unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 3.8,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "XRP reflexivity_risk unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 1.6,
+            "text": "Token-necessity inverse: 4/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 2.2,
+            "text": "Supply overhang: 3.7/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "link",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 6,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Chainlink reality unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 6,
+            "text": "Thesis milestones: 6/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Chainlink execution_evidence unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 2.3,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Chainlink reflexivity_risk unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.8,
+            "text": "Token-necessity inverse: 2/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 1.5,
+            "text": "Supply overhang: 2.5/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "ada",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 2.6,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Cardano reality unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "capital_committed",
+            "contribution": 0.4,
+            "text": "Capital committed: 1.9/10 (weight 20%)"
+          },
+          {
+            "component": "economic_throughput",
+            "contribution": 1.4,
+            "text": "Economic throughput: 3.5/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 0.8,
+            "text": "Thesis milestones: 2/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Cardano execution_evidence unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 3.7,
+        "status": "provisional",
+        "delta": 0,
+        "summary": "Cardano reflexivity_risk unchanged since last snapshot.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.2,
+            "text": "Token-necessity inverse: 1/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0.5,
+            "text": "Supply overhang: 1.7/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 3.2,
+            "text": "Valuation vs economic activity: 6.4/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "usdt",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 8,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 8,
+            "text": "Thesis milestones: 8/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 7.1,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 0.2,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0,
+            "text": "Token-necessity inverse: 0/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0.2,
+            "text": "Supply overhang: 0.3/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "bnb",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 7.1,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "capital_committed",
+            "contribution": 1.4,
+            "text": "Capital committed: 6.9/10 (weight 20%)"
+          },
+          {
+            "component": "economic_throughput",
+            "contribution": 3.3,
+            "text": "Economic throughput: 8.2/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 2.4,
+            "text": "Thesis milestones: 6/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 5.9,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 2.8,
+            "text": "Setback drag: 7/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 2.3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.4,
+            "text": "Token-necessity inverse: 2/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 1.9,
+            "text": "Valuation vs economic activity: 3.8/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "usdc",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 8,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 8,
+            "text": "Thesis milestones: 8/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 7.1,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 0,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0,
+            "text": "Token-necessity inverse: 0/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "trx",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 6.2,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "capital_committed",
+            "contribution": 1.4,
+            "text": "Capital committed: 6.9/10 (weight 20%)"
+          },
+          {
+            "component": "economic_throughput",
+            "contribution": 2.4,
+            "text": "Economic throughput: 6/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 2.4,
+            "text": "Thesis milestones: 6/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 7.1,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 3,
+            "text": "Milestone velocity: 5/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 2.8,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.4,
+            "text": "Token-necessity inverse: 2/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 2.5,
+            "text": "Valuation vs economic activity: 5/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "zec",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 4,
+            "text": "Thesis milestones: 4/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 2.8,
+            "text": "Setback drag: 7/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 0,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0,
+            "text": "Token-necessity inverse: 0/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "hype",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 6.2,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "capital_committed",
+            "contribution": 1.1,
+            "text": "Capital committed: 5.4/10 (weight 20%)"
+          },
+          {
+            "component": "economic_throughput",
+            "contribution": 3.4,
+            "text": "Economic throughput: 8.5/10 (weight 40%)"
+          },
+          {
+            "component": "thesis_milestones",
+            "contribution": 1.6,
+            "text": "Thesis milestones: 4/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 8.7,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 6,
+            "text": "Milestone velocity: 10/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 2.8,
+            "text": "Setback drag: 7/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 3.7,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.4,
+            "text": "Token-necessity inverse: 2/10 (weight 20%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 2.3,
+            "text": "Supply overhang: 7.7/10 (weight 30%)"
+          },
+          {
+            "component": "valuation_multiple",
+            "contribution": 1.1,
+            "text": "Valuation vs economic activity: 2.1/10 (weight 50%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "doge",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 4,
+            "text": "Thesis milestones: 4/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 0,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0,
+            "text": "Token-necessity inverse: 0/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "xmr",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 4,
+            "text": "Thesis milestones: 4/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 0.4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 0.4,
+            "text": "Setback drag: 1/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 0,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0,
+            "text": "Token-necessity inverse: 0/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "rain",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 2,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 2,
+            "text": "Thesis milestones: 2/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 10,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 6,
+            "text": "Milestone velocity: 10/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 3.9,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 1.6,
+            "text": "Token-necessity inverse: 4/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 2.3,
+            "text": "Supply overhang: 3.8/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "usds",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 4,
+            "text": "Thesis milestones: 4/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 10,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 6,
+            "text": "Milestone velocity: 10/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 0.4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.4,
+            "text": "Token-necessity inverse: 1/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "leo",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 4,
+            "text": "Thesis milestones: 4/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 3.5,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 2.8,
+            "text": "Token-necessity inverse: 7/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0.4,
+            "text": "Supply overhang: 0.7/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "xlm",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 8,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 8,
+            "text": "Thesis milestones: 8/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 2.6,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 0.8,
+            "text": "Token-necessity inverse: 2/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 1.8,
+            "text": "Supply overhang: 3/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "figr_heloc",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 2,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 2,
+            "text": "Thesis milestones: 2/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 10,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 6,
+            "text": "Milestone velocity: 10/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 1.3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 1.2,
+            "text": "Token-necessity inverse: 3/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 0,
+            "text": "Supply overhang: 0/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  },
+  {
+    "project": "wbt",
+    "snapshot_date": "2026-09-20",
+    "methodology_version": "0.3.0",
+    "entries": [
+      {
+        "score": "reality",
+        "value": 2,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "thesis_milestones",
+            "contribution": 2,
+            "text": "Thesis milestones: 2/10 (weight 100%)"
+          }
+        ],
+        "missing_components": [
+          "capital_committed",
+          "developer_activity",
+          "economic_throughput"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "execution_evidence",
+        "value": 4.3,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "milestone_velocity",
+            "contribution": 0,
+            "text": "Milestone velocity: 0/10 (weight 60%)"
+          },
+          {
+            "component": "setback_drag",
+            "contribution": 4,
+            "text": "Setback drag: 10/10 (weight 40%)"
+          }
+        ],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "reflexivity_risk",
+        "value": 6.4,
+        "status": "provisional",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [
+          {
+            "component": "necessity_inverse",
+            "contribution": 2.8,
+            "text": "Token-necessity inverse: 7/10 (weight 40%)"
+          },
+          {
+            "component": "supply_overhang",
+            "contribution": 3.5,
+            "text": "Supply overhang: 5.9/10 (weight 60%)"
+          }
+        ],
+        "missing_components": [
+          "incentive_dependence",
+          "valuation_multiple"
+        ],
+        "gates_applied": []
+      },
+      {
+        "score": "development",
+        "value": null,
+        "status": "unavailable",
+        "delta": null,
+        "summary": "First snapshot under methodology v0.3.0.",
+        "contributors": [],
+        "missing_components": [
+          "developer_activity"
+        ],
+        "gates_applied": []
+      }
+    ]
+  }
+]

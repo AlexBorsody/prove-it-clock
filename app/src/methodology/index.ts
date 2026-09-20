@@ -12,6 +12,7 @@
  */
 import methodologyV010 from "../../methodology/v0.1.0.json";
 import methodologyV020 from "../../methodology/v0.2.0.json";
+import methodologyV030 from "../../methodology/v0.3.0.json";
 import seedsDoc from "../../data/projects.json";
 
 export interface MethodologyConfig {
@@ -61,6 +62,7 @@ export interface ConfidenceDef {
 }
 
 export function loadMethodology(version: string): MethodologyConfig {
+  if (version === "0.3.0") return methodologyV030 as unknown as MethodologyConfig;
   if (version === "0.2.0") return methodologyV020 as unknown as MethodologyConfig;
   if (version === "0.1.0") return methodologyV010 as unknown as MethodologyConfig;
   throw new Error(`Unknown methodology version: ${version}`);
@@ -99,6 +101,9 @@ export interface SeedProject {
   assessments: Record<string, { value: number; rationale: string }>;
   milestones: SeedMilestone[];
   events: SeedEvent[];
+  /** analyst-flagged provisional seed (thin evidence, awkward category fit) */
+  provisional?: boolean;
+  provisional_reason?: string;
 }
 
 export function loadSeeds(): SeedProject[] {
