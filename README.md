@@ -6,6 +6,56 @@ scores, every number traceable back to its inputs.
 
 > Algorithms calculate. AI explains. Humans define and version methodology.
 
+## Project Charter
+
+*Founding charter · v0.1 · September 2026*
+
+**Purpose.** Answer one question: *is a crypto project actually becoming what it promised to become?* Crypto has attracted extraordinary capital around extraordinary claims. Some projects may become important infrastructure; others may survive on speculation, become collectibles, or collapse. The Clock measures that evolution with transparent evidence — not price action, marketing, or narrative.
+
+**Mission.** Make crypto capital allocation evidence-driven: harder for narrative to masquerade as progress, harder for speculation to masquerade as adoption, easier for genuinely useful technology to stand out, easier to spot promises still unsupported after many years.
+
+**What we're not.** Not a price predictor, trading signal, token promoter, pay-to-rank directory, advocacy org, popularity contest, or investment advice. A high Reality score doesn't mean fairly valued; a low one doesn't mean the price can't rise. Market performance and thesis success are different questions.
+
+**Core principle.** *Price is evidence of demand for an asset — not evidence that its thesis succeeded.* Market cap isn't utility. Volume isn't adoption. Attention, GitHub activity, partnerships, pilots, TVL, wallets, transactions — none are proof of adoption on their own.
+
+**The Prove-It Principle.** Token appreciation can precede proof: belief → token value → treasury → development → new narratives → continued belief. That's a legitimate mechanism — but eventually a transition should appear: development → real adoption → durable economic demand → reduced subsidy dependence → real-world utility. The Clock measures whether that transition is happening.
+
+**The Clock.** Every project gets an elapsed clock from a documented start. Not a deadline — time is evidence. *Time without progress matters.*
+
+**What we measure** — independent dimensions, never one opaque score:
+
+- **Reality** — what is demonstrably real today: utility, economic demand, adoption, retention, thesis fulfillment.
+- **World Impact Potential** — how consequential the thesis would be if realized. Magnitude of opportunity, not likelihood.
+- **Execution Evidence** — is it moving toward its potential? Trajectory, milestones, retention, competitive position. Not a calibrated probability until backtesting earns it.
+- **Reflexivity / Failure Risk** — dependence on speculation, incentives, issuance, belief. Observable characteristics, not fraud allegations.
+- **Evidence Confidence** — how much to trust our measurements. Missing data lowers confidence; it is never treated as negative evidence.
+
+**Protocol ≠ token.** A successful protocol does not imply a successful token. We score Protocol Reality, Token Necessity (could the system run without the token?), and Token Value Capture separately.
+
+**Thesis-specific evaluation.** BTC isn't judged as SaaS; LINK isn't judged as BTC; a payments network is judged on settlement adoption. Always: *is this project succeeding at the job it claims to exist to perform?*
+
+**Evidence hierarchy.** Durable economic dependence outranks recurring usage outranks user-paid demand outranks post-incentive retention — down to announcements and marketing claims. *Claims never outrank observable outcomes.*
+
+**Derived gaps.** Hype Gap (Attention − Reality), Build Gap (Development − Reality), Belief Gap (Community − Measured), Promise Gap (Potential − Reality). The gaps may prove more informative than any single score.
+
+**Methodology standard.** We don't claim perfect objectivity — every subjective decision is explicit, documented, and reproducible. Every metric exposes definition, formula, source, weight, normalization, gates, and missing-data behavior. Users should be able to pinpoint exactly where they disagree. That's a feature.
+
+**Reproducibility.** Raw evidence → normalized metrics → components → dimensions → published result. Every number traceable to inputs. *Algorithms calculate. AI explains. Humans define and version methodology.*
+
+**Independence — non-negotiable.** No paid score improvements. No payment for favorable methodology. Sponsorship and advertising never touch scoring. Material conflicts and holdings disclosed. Corrections made openly. Methodology changes apply consistently, never tuned to favor a project.
+
+**Corrections.** We expect to be wrong sometimes. Challenges must cite specific evidence; confirmed errors get corrected openly. Credibility comes from the correction process, not from pretending mistakes never happen.
+
+**Possible outcomes.** Infrastructure · monetary/collectible asset · speculative relic · collapse · extractive failure. Analytical categories, not predetermined conclusions — projects can move between them.
+
+**History.** We preserve what projects promised, how theses evolved, milestones, failures, pivots, and historical scores — so the industry's history can't be rewritten around each cycle's narrative.
+
+**Long-term goal.** As the dataset grows: backtest which observable characteristics actually distinguished durable projects from failures — then, and only then, consider calibrated probabilities.
+
+**Founding principle.** *Time should produce evidence.* If a technology is genuinely changing the world, evidence accumulates. Our job is to measure it.
+
+---
+
 ## How it works
 
 ```
