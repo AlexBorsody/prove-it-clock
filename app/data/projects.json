@@ -1,5 +1,5 @@
 {
-  "methodology_version": "0.1.0",
+  "methodology_version": "0.3.0",
   "note": "Seed data: theses, analyst assessments (MODELING DECISIONS, not measured facts), milestone ladders, timeline events. Every assessment carries a rationale. Evidence URLs are included only where the source is stable and well-known; otherwise evidence_summary text is used.",
   "milestone_ladders": {
     "execution": [
