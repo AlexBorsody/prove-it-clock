@@ -42,17 +42,20 @@ export default async function Home() {
         marketCap: metrics[p.slug]?.market_cap_usd ?? null,
         development: s?.scores.development?.value ?? null,
         promiseGap: s?.derived.promise_gap ?? null,
+        potentialOutlook: s?.derived.potential_outlook ?? null,
         status: s?.scores.reality?.status ?? "unavailable",
       };
     }),
   );
 
   const provisional = rows.filter((r) => r.status === "provisional").length;
+  const methodologyVersion =
+    (projects.length > 0 && scores[projects[0].slug]?.methodology_version) || "?";
 
   return (
     <>
       <div className="meta-line">
-        SNAPSHOT <b>{snapshotDate}</b> · METHODOLOGY <b>v0.1.0</b> · {rows.length} PROJECTS ·{" "}
+        SNAPSHOT <b>{snapshotDate}</b> · METHODOLOGY <b>v{methodologyVersion}</b> · {rows.length} PROJECTS ·{" "}
         {provisional} PROVISIONAL
       </div>
       <h1 className="page-title">Leaderboard</h1>
