@@ -66,10 +66,7 @@ The compounding store: every snapshot accrues permanently; history can't be back
 2. Daily cron on this machine: pipeline → loader → verify row counts → fail loudly on error.
 3. Never update or delete snapshot rows. A bad run is skipped, not repaired.
 
-**3. SEO structured-data pass**
-Per project page: `<title>`, meta description, canonical, Open Graph + Twitter cards. JSON-LD on project pages. `sitemap.xml` for all 20 pages + `/methodology`.
-
-**4. Promise-gap alerts feed**
+**3. Promise-gap alerts feed**
 Daily job diffs latest snapshot against previous; emits rows where `promise_gap` or `potential_outlook` changed beyond epsilon. Append-only `alerts` table + `GET /api/alerts` (paginated, 5-min cache). Needs item 2 running to be useful.
 
 ## Env
