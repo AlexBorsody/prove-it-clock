@@ -4,7 +4,10 @@
 // These are the factors that feed the ranking, in the order they lead the display.
 //
 // kind:
-//   core    — the main graph factors: promise timeline, promises kept, potential
+//   core    — the promise track: duration, kept, rate, recency. THIS IS THE RANK.
+//   context — the context track: everything else. Second line; qualifies the rank
+//             but NEVER overrides it. No amount of good context rescues a bad
+//             promise record — the anti-hype rule the product rests on.
 //   scored  — v0.2.0 methodology categories (live inputs to card + chart)
 //   planned — defined, not yet built; never silently scored
 //
@@ -17,7 +20,7 @@
 // Hard rule: nothing here changes the v0.2.0 methodology. A new score or a new
 // formula needs a methodology version bump, not a config edit.
 
-export type RankingFactorKind = "core" | "scored" | "planned";
+export type RankingFactorKind = "core" | "context" | "scored" | "planned";
 export type RankingFactorStatus = "live" | "proxy" | "planned" | "needs-thought";
 
 export interface RankingFactor {
@@ -129,7 +132,7 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
   {
     key: "potential",
     name: "Overall potential",
-    kind: "core",
+    kind: "context",
     status: "needs-thought",
     question: "If they delivered, how much would it matter?",
     source:
@@ -144,7 +147,7 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
   {
     key: "competition",
     name: "Competition",
-    kind: "planned",
+    kind: "context",
     status: "planned",
     question: "How many others are doing the same thing?",
     source:
@@ -160,7 +163,7 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
   {
     key: "token_distribution",
     name: "Token distribution",
-    kind: "planned",
+    kind: "context",
     status: "planned",
     question: "Who holds the coins — the founders or the public?",
     source:
@@ -194,6 +197,49 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
       "validated against the three examples. Candidate engine for the subjective " +
       "potential factor — undecided. Publisher-holdings disclosure applies (LINK " +
       "is a disclosed interest).",
+  },
+  {
+    key: "utility",
+    name: "Utility",
+    kind: "context",
+    status: "planned",
+    question: "Does anyone actually use it for what was promised?",
+    source:
+      "Not yet built. Candidates: active addresses, transaction volume, protocol " +
+      "revenue — all gameable to some degree; needs a defensible definition " +
+      "before it touches anything.",
+    note:
+      "XRP case: sold as cross-border payments rails — is it actually moving " +
+      "value, or just traded? Utility without promises-kept is hype; " +
+      "promises-kept without utility is a museum piece. Context only, never " +
+      "overrides the promise rank.",
+  },
+  {
+    key: "company_structure",
+    name: "Company structure",
+    kind: "context",
+    status: "planned",
+    question: "Is there a company behind the coin — and who answers for it?",
+    source:
+      "Not yet built. Categories: private company, foundation, DAO, no entity. " +
+      "Mostly static per project, researched once, reviewed on change.",
+    note:
+      "XRP case: Ripple Labs is a private company holding a large share of XRP " +
+      "— the promise is decentralized money, the structure is a cap table. " +
+      "Cuts directly against the thesis. Static-ish fact, high interpretive weight.",
+  },
+  {
+    key: "dev_activity",
+    name: "Dev activity",
+    kind: "context",
+    status: "planned",
+    question: "Is anyone still building?",
+    source:
+      "Not yet built. GitHub API (free, no key at this volume): commits, " +
+      "releases, contributors. Needs a repo-to-project mapping first.",
+    note:
+      "A dead repo next to fresh promises is a tell. But activity is not " +
+      "delivery — busy repos ship nothing too. Context, not verdict.",
   },
   {
     key: "reality",
