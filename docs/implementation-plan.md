@@ -1,6 +1,6 @@
 # Prove-It Clock — Implementation Plan
 
-**Status:** 2026-09-20. Full technical scope to finish the build. Technical only.
+**Status:** 2026-09-21. Shipped: v0.2.0 seed live, fallback removed, visual QA passed. Technical only.
 **Companion:** `implementation-spec.md` (history API, timeline chart, event pipeline specs).
 
 ## Non-goals
@@ -57,7 +57,50 @@
 - Homepage: 20 rows. Unscored detail page: no chart lines, explicit unavailable state.
 - History: null stretches are gaps, not zeros.
 
-## 6. Ship
+## 6. Ship — DONE 2026-09-21
+
+- v0.2.0 seed inserted via Supabase SQL (84 genuine v0.2.0 snapshots; v0.3.0 retired as non-current, append-only history preserved).
+- `activeDatasetVersionId` fallback removed (`app/src/lib/data.ts`): queries v0.2.0 exactly, fails loudly if missing.
+- Production smoke test: 20 projects, 6 scored, 14 unavailable; Promise Gap / Potential Outlook values match seed.
+- Visual QA: `/`, `/projects/btc`, `/projects/usdt`, `/methodology` all pass.
+- Footer version corrected: v0.3.0 → v0.2.0 (remote `75ccf1da`), verified live.
+
+## 7. Embeddable timeline widget — next
+
+- Route `app/embed/projects/[slug]/timeline/page.tsx`: server-rendered SVG of the
+  existing ScoreTimeline component, no JS dependency.
+- Query params: `theme=light|dark`, `w`, `h`. Served with iframe-friendly headers
+  (`X-Frame-Options` removed for this route), long cache TTL (5 min, same as API).
+- Unscored projects render the explicit unavailable state, not an empty chart.
+- Copy-paste embed snippet shown on each scored project page (static HTML
+  `<iframe>` snippet; no JS loader).
+- Gates: `tsc` clean, `next build` clean, iframe renders btc + usdt correctly in
+  both themes.
+
+## 8. SEO structured-data pass — queued
+
+- Per project page: `<title>`, meta description, canonical URL, Open Graph +
+  Twitter card tags.
+- JSON-LD `WebPage` + `Article` blocks on project pages (scores as data points,
+  methodology version referenced).
+- `sitemap.xml`: all 20 project pages + `/methodology`.
+- Gates: validate with a schema checker; no layout changes.
+
+## 9. Promise-gap alerts feed — queued
+
+- Daily job: diff latest snapshot against previous; emit rows where
+  `promise_gap` or `potential_outlook` changed beyond epsilon.
+- Output: append-only `alerts` table (Supabase) + `GET /api/alerts` endpoint
+  (paginated, 5-min cache). Delivery channels (email/Telegram) are a separate
+  decision — this task is the feed only.
+- Gates: rerun against two snapshots, verify deltas computed correctly, no
+  false alerts on unchanged rows.
+
+## Blocked on Alex
+
+- Telegram broadcast channel (needs his Telegram account).
+- Next scoring-update cadence (his methodology call).
+- Publisher disclosures (Dash/BAT/AVAX/LINK positions) still unconfirmed.
 
 - Commit §1+§2, push, wait for Vercel, verify production: methodology 0.2.0, 6 scored, 20 rows.
 
