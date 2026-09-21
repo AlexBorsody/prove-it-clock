@@ -55,16 +55,78 @@ for accountability.
 - Event pipeline: `npm run events:check` passes — all 6 scored projects have ≥5 valid events.
 - `score.ts` reads `ACTIVE_METHODOLOGY_VERSION` — the pipeline can no longer generate speculative snapshots.
 
-## Build queue (planned, not started)
+## Build queue (planned, not started — no code until the plan is settled)
 
 **1. Trading-card layout + per-category chart**
-Project detail page becomes a trading-card layout: header, stat bars per v0.2.0 score category (Reality, Potential, Execution, Reflexivity, Confidence, Promise Gap, Potential Outlook), evidence links and events one click deeper. Timeline gains per-category lines feeding the overall line, from existing snapshot history. Nulls still gaps. Presentation only — no scoring changes. Open question for Alex: final stat lineup (Utility / Promises Kept / Runway was proposed — he rules).
+
+Frontend (`app/src/app/(site)/projects/[slug]/page.tsx`, `app/src/components/`):
+- Restructure the detail page as a trading card: header (name, symbol, rank,
+  thesis category), stat bars for the seven v0.2.0 categories — Reality, World
+  Impact Potential, Execution Evidence, Reflexivity Risk, Evidence Confidence,
+  Promise Gap, Potential Outlook. New `StatBar` component (extend
+  `components/score.tsx` or new `components/stat-bar.tsx`); existing
+  `ScoreCard`/`ScoreCell` stay for the leaderboard.
+- `timeline-chart.tsx` / `timeline-svg.tsx`: draw one line per score category
+  plus the overall line, from the history API's existing per-`score_code`
+  series. Legend toggles already exist — extend to per-category. Existing
+  render contract holds: nulls break the line (gaps, never interpolation),
+  methodology-version markers stay on the axis, event annotations stay.
+- Evidence links, events, explanation feed, raw evidence move one click deeper
+  (collapsible sections); the card face stays clean.
+- Unscored projects keep the explicit unavailable state — no empty chart.
+- The embed widget (`/embed/...`) picks up the upgraded chart for free (shared
+  `timeline-svg` renderer).
+
+Backend:
+- No new endpoints. `GET /api/projects/[slug]/history` already returns every
+  scored metric as a dated per-`score_code` series with methodology versions —
+  the per-category lines need no new data. Verify the 6 scored projects have
+  multi-day history for each score code before building (84 v0.2.0 snapshots
+  exist today).
+
+Open question for Alex: final stat lineup (Utility / Promises Kept / Runway
+was proposed — he rules).
 
 **2. Daily historical-data cadence**
-The chart needs growing history: every snapshot accrues permanently; history can't be backfilled by competitors. Make daily snapshots automatic:
-1. `scripts/load-snapshot.ts`: reads today's `scores_<date>.json` (+ explanations), inserts into Supabase append-only. Idempotent: `ON CONFLICT DO NOTHING`. Service-role key from `app/.env.local` (gitignored), server-side only, never logged.
-2. Daily cron on this machine: pipeline → loader → verify row counts → fail loudly on error.
-3. Never update or delete snapshot rows. A bad run is skipped, not repaired.
+
+Backend (new `app/scripts/load-snapshot.ts`, run via `tsx`):
+- Reads `data/snapshots/scores_<date>.json` (+ `explanations_<date>.json`),
+  maps each score to a `score_snapshots` row
+  (project_id, methodology_version_id, snapshot_date, score_code, value,
+  confidence, status). Idempotent: `ON CONFLICT DO NOTHING` on the table's
+  unique key. Component-level values stay in the JSON audit trail for now —
+  the chart only needs score-level rows.
+- Version gating: resolves `methodology_version_id` from
+  `methodology_versions` by `ACTIVE_METHODOLOGY_VERSION`; refuses to load any
+  other version. Never writes speculative rows.
+- Credentials from `app/.env.local` (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`),
+  server-side only, never logged, never committed.
+- Daily cron on this machine: pipeline → loader → verify row counts → fail
+  loudly (log + surface) on any error. Exact cron mechanism (runtime cron vs
+  system crontab) to be decided during the week.
+- Never update or delete snapshot rows. A bad run is skipped, not repaired.
+
+Frontend: none — the chart reads the same history API; new daily points appear
+automatically.
+
+## Third-party APIs
+
+None new for this queue. The daily run reuses the pipeline's existing
+providers, all keyless free tiers, ~21 calls/day:
+- CoinGecko `/api/v3` — market data, universe ranks (already integrated).
+- DefiLlama `api.llama.fi` — TVL / fees per chain (already integrated).
+- blockchain.info — BTC on-chain fees only (already integrated).
+Rate discipline (spaced calls, same-day disk cache in `data/raw/<date>/`)
+already holds at this volume.
+
+## Node.js modules
+
+None new for this queue. Current deps cover everything:
+- `@supabase/supabase-js` (already) — the loader script's DB writes.
+- `tsx` + `typescript` (already) — run and typecheck the loader.
+- `next` / `react` / `react-dom` (already) — card layout, hand-rolled SVG chart.
+- `dotenv` — only if we decide against hand-parsing `.env.local` in the
+  loader (a 5-line fallback); not otherwise needed.
 
 ## Env
 
