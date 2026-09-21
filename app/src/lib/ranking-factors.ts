@@ -129,6 +129,28 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
       "silently activated.",
   },
   {
+    key: "ai_assessment",
+    name: "AI assessment",
+    kind: "planned",
+    status: "planned",
+    question: "What does a careful analyst conclude from all of the above?",
+    source:
+      "Planned: nightly pipeline feeds a structured brief (thesis, milestones + " +
+      "evidence summaries, events, current scores — the same evidence a human " +
+      "analyst sees, nothing hidden) through an OpenAI endpoint using strict " +
+      "JSON-schema structured outputs. Precomputed and cached — never per page load.",
+    note:
+      "Separate track, never blended into the deterministic scores. Output schema: " +
+      "score 0–10, rationale bullets, key risks, confidence, one-line verdict. Each " +
+      "snapshot stores model id + prompt version + input hash; prompt changes are " +
+      "versioned and history is append-only. Display shows the rationale, not just " +
+      "the number — an unexplained AI number would be theater. Prerequisites: " +
+      "OpenAI API key, model choice (mini-class is plenty at this volume), prompt " +
+      "validated against the three examples. Candidate engine for the subjective " +
+      "potential factor — undecided. Publisher-holdings disclosure applies (LINK " +
+      "is a disclosed interest).",
+  },
+  {
     key: "reality",
     name: "Reality",
     kind: "scored",
