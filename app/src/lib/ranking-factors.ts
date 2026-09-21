@@ -98,6 +98,35 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
       "This is a presentation series, not a methodology score.",
   },
   {
+    key: "promise_rate",
+    name: "Promise rate",
+    kind: "core",
+    status: "live",
+    question: "How fast do they keep promises?",
+    source:
+      "Computed from seed data, no new inputs: milestones kept / prove-it age " +
+      "(years). Same series that draws promises_kept, divided by duration.",
+    note:
+      "Naive math on the examples — BTC: 4/17.7y = 0.23/yr; XRP: 2/14.3y = " +
+      "0.14/yr; LINK: 4/9.3y = 0.43/yr. Flaw: milestones are coarse (6 levels) " +
+      "so the rate saturates; it punishes longevity. Read it next to recency, " +
+      "never alone.",
+  },
+  {
+    key: "promise_recency",
+    name: "Promise recency",
+    kind: "core",
+    status: "live",
+    question: "When did they last keep a promise?",
+    source:
+      "Computed from seed data: years since the most recent achieved_at. " +
+      "A project still delivering reads near zero.",
+    note:
+      "XRP: last kept 2014-01-01 — ~12.7 years stale. That single number is the " +
+      "flagship story. BTC (control): 2024-01-10, ~2.7y. LINK: 2023-01-01, ~3.7y. " +
+      "Staleness is arguably more damning than a low kept count.",
+  },
+  {
     key: "potential",
     name: "Overall potential",
     kind: "core",
@@ -127,6 +156,22 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
       "competition. BTC (control): store-of-value lane, thinner competition. " +
       "Intended role: a discount on potential, not a standalone score. Never " +
       "silently activated.",
+  },
+  {
+    key: "token_distribution",
+    name: "Token distribution",
+    kind: "planned",
+    status: "planned",
+    question: "Who holds the coins — the founders or the public?",
+    source:
+      "Not yet built. Inputs: founder/insider holding %, premine %, private " +
+      "allocation %. Sourcing this honestly per project is the hard part — " +
+      "needs research, not estimation.",
+    note:
+      "Alex: founder holdings matter; also (voice garble — 'private Leon', read " +
+      "as premine/private allocations; to confirm) whether the supply was " +
+      "premined or privately allocated before the public ever saw it. A project " +
+      "can keep promises and still be insiders-first. High value, hard to source.",
   },
   {
     key: "ai_assessment",
