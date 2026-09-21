@@ -17,10 +17,12 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "daily": "npm run pipeline && npm run snapshot:load",
     "dev": "next dev",
     "pipeline": "npm run pipeline:ingest && npm run pipeline:score",
     "pipeline:ingest": "tsx src/pipeline/ingest.ts",
     "pipeline:score": "tsx src/pipeline/score.ts",
+    "snapshot:load": "tsx scripts/load-snapshot.ts",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "events:check": "tsx scripts/events-check.ts"

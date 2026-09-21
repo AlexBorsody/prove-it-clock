@@ -44,6 +44,8 @@ tape, the more it can tell you.
 cd app
 npm install
 npm run pipeline   # ingest live data, score, explain (writes data/snapshots/)
+npm run snapshot:load -- YYYY-MM-DD # append that snapshot to Supabase
+npm run daily      # pipeline + idempotent Supabase load for today's snapshot
 npm run dev        # local UI at http://localhost:3000
 npm run typecheck  # TypeScript
 npm run build      # production build
