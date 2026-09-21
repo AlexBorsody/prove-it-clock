@@ -20,7 +20,6 @@ import {
 import { getSupabase, supabaseEnv } from "@/lib/supabase";
 import {
   ACTIVE_METHODOLOGY_VERSION,
-  SPECULATIVE_VERSIONS,
   isScoredProject,
   isSpeculativeVersion,
 } from "@/lib/active-methodology";
@@ -174,21 +173,19 @@ class SupabaseStore implements DataStore {
   }
 
   /**
-   * The dataset backing active v0.2.0 output: the v0.2.0 row when it exists,
-   * otherwise the newest non-speculative version (v0.1.0 today). Speculative
-   * versions never back active output. `is_current` is ignored on purpose.
+   * The dataset backing active v0.2.0 output: the genuine v0.2.0 methodology
+   * row, now seeded in the database. No fallback — if the row is missing we
+   * fail loudly rather than silently serving a stale methodology. Speculative
+   * versions (e.g. v0.3.0) are never candidates.
    */
   private async activeDatasetVersionId(sb: any): Promise<string> {
     const { data } = await sb
       .from("methodology_versions")
       .select("id,version")
-      .order("version", { ascending: false });
-    const rows = (data ?? []) as { id: string; version: string }[];
-    const active =
-      rows.find((r) => r.version === ACTIVE_METHODOLOGY_VERSION) ??
-      rows.find((r) => !SPECULATIVE_VERSIONS.has(r.version));
-    if (!active) throw new Error("no active methodology dataset");
-    return active.id;
+      .eq("version", ACTIVE_METHODOLOGY_VERSION)
+      .maybeSingle();
+    if (!data) throw new Error(`methodology ${ACTIVE_METHODOLOGY_VERSION} dataset missing`);
+    return (data as { id: string }).id;
   }
 
   async listProjects(): Promise<ProjectMeta[]> {
