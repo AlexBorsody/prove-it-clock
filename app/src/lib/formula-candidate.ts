@@ -198,39 +198,55 @@ export const CONTEXT_SCORE_CANDIDATE = {
 };
 
 /**
- * Open design questions. Nothing here blocks the config — these are decisions
- * for Alex, to be settled in docs/implementation.md Part 1 before Codex builds.
+ * Decisions made 2026-09-21 (full review pass). Alex delegated these; he can
+ * override any of them. Each records the reasoning so the override is informed.
  */
-export const FORMULA_OPEN_QUESTIONS = [
+export const FORMULA_DECISIONS = [
   {
     key: "link-beats-btc",
-    question: "LINK 67 > BTC 63 on the promise rank — does that read correctly?",
-    context:
-      "Track 1 measures delivery, not greatness; BTC's moat (adoption, Lindy, " +
-      "decentralization) shows up in the context line. If it reads wrong, " +
-      "weights move globally with published reasoning.",
+    decision: "LINK 67 > BTC 63 stands on the promise rank.",
+    reasoning:
+      "Track 1 measures delivery, not greatness. The gap is structural, not a " +
+      "tuning artifact: LINK delivers ~2x faster (T 0.86 vs 0.45) and the " +
+      "ordering survives reasonable constant changes (3y/7y decay, 0.4 " +
+      "throughput anchor all keep LINK ahead). BTC's moat — adoption, Lindy " +
+      "effect, decentralization — belongs to the context line, which is " +
+      "exactly what the two-track design is for.",
+    date: "2026-09-21",
   },
   {
     key: "small-sample-bar",
-    question: "Should the rank require a minimum bar (e.g. 3+ years or 4+ milestones)?",
-    context:
-      "A 1-year 2/2 project scores 91 — above BTC. The formula is honest but " +
-      "the ranking needs a bar: below it, 'too early to rank' (unavailable, " +
-      "not zero). Consistent with the product thesis — the Clock needs time to work. " +
-      "Recommendation: yes, set the bar before v0.3.0 ships.",
+    decision: "The rank requires >= 3 years promising. Below that: 'too early to rank' (unavailable, never zero).",
+    reasoning:
+      "A 1-year 2/2 project scores 91 — above BTC. The formula is honest; the " +
+      "ranking would be naive without a bar. Single criterion (years, not " +
+      "milestone count) because milestone granularity varies by seed. " +
+      "On-thesis: the Clock needs time to work.",
+    date: "2026-09-21",
   },
   {
     key: "throughput-constant",
-    question: "Is 0.5 kept/year = excellent the right anchor?",
-    context:
-      "Tied to coarse milestone granularity. Revisit if seeds get finer milestones.",
+    decision: "Keep the 0.5 kept/year = excellent anchor.",
+    reasoning:
+      "Tied to coarse milestone granularity, documented in the component " +
+      "rationale. Revisit only if seeds get finer milestones.",
+    date: "2026-09-21",
   },
   {
     key: "recency-scale",
-    question: "Is the 5-year decay scale right?",
-    context:
-      "Drives the flagship story (XRP 12.7y -> 0.08). Alternatives: 3y (harsher) or 7y (more patient).",
+    decision: "Keep the 5-year decay scale.",
+    reasoning:
+      "Drives the flagship story correctly (XRP 12.7y -> 0.08). 3y would be " +
+      "harsher, 7y more patient — 5y is the middle path.",
+    date: "2026-09-21",
   },
+];
+
+/**
+ * Still genuinely open — decided in docs/implementation.md Part 1 before Codex
+ * builds. Not decidable yet: nothing here can be tuned before the factors exist.
+ */
+export const FORMULA_OPEN_QUESTIONS = [
   {
     key: "context-weights",
     question: "Equal weights for context factors, or should realism/potential lead?",

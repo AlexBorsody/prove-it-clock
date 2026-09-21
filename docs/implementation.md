@@ -97,7 +97,9 @@ The honest output: LINK edges BTC on pure delivery (faster pace, more recent), a
 
 Sanity check: a brand-new project scores ~30 (all hope, no record: F=0, T=0, C=1, D=0). XRP at 31 is worth little more than a newborn — 14 years of promising bought almost nothing.
 
-**Open question for Alex:** does LINK > BTC read correctly? The design's answer is yes for Track 1 — it measures delivery, not greatness. BTC's moat (adoption, Lindy effect, decentralization) shows up in the context line, not here. If it reads wrong, the weights move — globally, with the reasoning published.
+**Decision (2026-09-21):** LINK > BTC stands. Track 1 measures delivery, not greatness — and the gap is structural (LINK delivers ~2× faster), surviving reasonable constant changes. BTC's moat (adoption, Lindy effect, decentralization) belongs to the context line; that's what the two-track design is for.
+
+**Decision (2026-09-21):** the rank requires ≥3 years promising. Below that: "too early to rank" — unavailable, never zero. The Clock needs time to work.
 
 Missing data: the Promise Score needs the milestone set. No milestones → unavailable, never zero.
 
@@ -190,8 +192,10 @@ Stays separate and display-only: the deterministic output (both scores + full fa
 
 ## Design phase (not buildable yet — settling in Part 1 first)
 
-- Promise Score formula + weights — specced in Part 1 (v0.3.0 candidate). Open: Alex rules on LINK 67 > BTC 63.
-- Context composite formula — aggregation rule + per-factor shapes specced; parameters TBD per factor.
+Decided 2026-09-21 (recorded in `formula-candidate.ts`): LINK > BTC stands;
+3-year minimum bar for the rank; 0.5/yr throughput anchor kept; 5y recency
+scale kept. Remaining:
+- Context composite parameters per factor (as each factor leaves design).
 - Placement of the v0.2.0 scores in the two tracks.
 - AI assessment pipeline (OpenAI key, model choice, prompt v1, validation).
 - Token distribution sourcing research; utility definition; project-lane taxonomy for competition; realism assessment method.
