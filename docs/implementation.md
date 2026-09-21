@@ -47,6 +47,7 @@ Promise track (the rank):
 
 Context track (the qualifier):
 - **Overall potential** — how big could this be if delivered? Subjective, needs more thought. World-impact score used as proxy for now.
+- **Realism** — how likely is the remaining promise, given the time gone and who's eating the lane? The fairness lens on staleness: some things legitimately take decades, and a quiet period can mean "not yet" rather than "failed." Pairs with potential — potential asks how big, realism asks how likely. Needs thought before it becomes a number.
 - **Competition** — how many credible projects chase the same promise? A discount on potential, not a score. Planned — needs a project-lane taxonomy first.
 - **Token distribution** — who holds the coins: founders or the public? Premine, private allocations, insider %. Planned — honest per-project sourcing is the hard part.
 - **Utility** — does anyone actually use it for what was promised? Planned — needs a game-proof definition before it touches anything.
@@ -56,6 +57,16 @@ Context track (the qualifier):
 Across both tracks:
 - **AI assessment** — a careful-analyst second opinion. The deterministic output plus the full factor breakdown goes through an OpenAI endpoint (strict JSON schema: score, rationale, risks, confidence, verdict). Displayed separately with its reasoning shown — an unexplained AI number would be theater. Prompt-versioned, append-only. Planned — needs API key, model choice, prompt validation against the three examples.
 - **v0.2.0 methodology scores** — Reality, World Impact Potential, Execution Evidence, Reflexivity Risk, Evidence Confidence, Promise Gap, Potential Outlook. The current live scoring layer; placement in the two tracks TBD.
+
+## Realism versus potential
+
+Potential asks how big. Realism asks how likely — and it's what keeps staleness honest. Without it, the Clock punishes patience: some promises genuinely take decades, and "hasn't kept one lately" can mean the time hasn't come yet.
+
+XRP is the unrealistic case and the reason the factor exists. ~12.7 years since the last kept promise, while the lane got eaten around them: stablecoins moving real volume, banks building their own rails, SWIFT upgrading its own messaging. The remaining promise — displacing correspondent banking — isn't just late, it's unlikely. Time ran out *and* the world moved on.
+
+LINK is the counter-case. Shorter history, big ambition (becoming core financial infrastructure), still inside the window where "not yet" is legitimate. A young project with a bold promise reads as unproven, not damned.
+
+Realism's inputs: staleness, lane velocity (are competitors shipping while this project stalls?), remaining promise difficulty, execution trend. Analyst judgment first, AI-assisted later. A qualitative read — never a calibrated probability, never a prediction.
 
 ## The formula (sketch — weights TBD)
 

@@ -145,6 +145,26 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
       "formula yet; that is the open question.",
   },
   {
+    key: "realism",
+    name: "Realism",
+    kind: "context",
+    status: "needs-thought",
+    question: "How likely is the remaining promise, given the time gone and who's eating the lane?",
+    source:
+      "Not yet built. Inputs: staleness, lane velocity (are competitors shipping " +
+      "while this project stalls?), remaining promise difficulty, execution " +
+      "trend. Analyst judgment first, AI-assisted later — a qualitative read, " +
+      "never a calibrated probability.",
+    note:
+      "The fairness lens on staleness: some things legitimately take decades, " +
+      "and a quiet period can mean 'not yet' rather than 'failed'. XRP is the " +
+      "unrealistic case — ~12.7y stale while stablecoins, bank rails, and " +
+      "SWIFT's own upgrades ate the payments lane; displacing correspondent " +
+      "banking now reads unlikely. LINK is the counter-case — shorter history, " +
+      "big ambition, still inside the window where 'not yet' is legitimate. " +
+      "Pairs with potential: potential asks how big, realism asks how likely.",
+  },
+  {
     key: "competition",
     name: "Competition",
     kind: "context",
