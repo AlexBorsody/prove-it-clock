@@ -38,7 +38,10 @@ export const PROMISE_SCORE_CANDIDATE = {
       definition: "kept / total — what fraction of promises did they keep?",
       rationale:
         "The core of the question ('are they full of shit'). Heaviest weight. " +
-        "Needs the seed milestone set; without it the score is unavailable, never zero.",
+        "Needs the seed milestone set; without it the score is unavailable, never zero. " +
+        "Note: unachieved rungs count in total regardless of target date — a " +
+        "future-dated promise (target 2030) counts as unkept today. Whether " +
+        "future-dated promises deserve a grace treatment is an open seed-design question.",
     },
     {
       key: "recency",
@@ -81,6 +84,12 @@ export const PROMISE_SCORE_CANDIDATE = {
    */
   historical: "recomputable per date t from milestones with achieved_date <= t",
   missingData: "No milestone set -> score unavailable. Never zero, never estimated.",
+  conventions: [
+    "years_promising = (as_of - launch_date) in days / 365.25, from the seed launch_date.",
+    "staleness S = (as_of - latest achieved_at) in days / 365.25; if nothing kept, S = years_promising.",
+    "Final score rounded to the nearest integer (standard rounding).",
+    "Guards: total = 0 -> unavailable. years_promising <= 0 -> unavailable (too early, never zero).",
+  ],
   /**
    * Test vectors for the implementation. Inputs -> expected Promise Score
    * (2026-09-21). Codex verifies against these; any deviation is a defect.
@@ -89,7 +98,7 @@ export const PROMISE_SCORE_CANDIDATE = {
     {
       slug: "btc",
       label: "control",
-      inputs: { kept: 4, total: 6, years: 17.71, staleness: 2.69 },
+      inputs: { kept: 4, total: 6, years: 17.71, staleness: 2.7 },
       expected: 63,
     },
     {
@@ -101,8 +110,9 @@ export const PROMISE_SCORE_CANDIDATE = {
     {
       slug: "link",
       label: "third example",
-      inputs: { kept: 4, total: 6, years: 9.01, staleness: 3.72 },
-      expected: 68,
+      inputs: { kept: 4, total: 6, years: 9.31, staleness: 3.72 },
+      expected: 67,
+      note: "Seed launch_date is 2017-06-01 (not the ICO date) — years must come from seeds, never memory.",
     },
     {
       slug: "hypothetical-new",
@@ -194,7 +204,7 @@ export const CONTEXT_SCORE_CANDIDATE = {
 export const FORMULA_OPEN_QUESTIONS = [
   {
     key: "link-beats-btc",
-    question: "LINK 68 > BTC 63 on the promise rank — does that read correctly?",
+    question: "LINK 67 > BTC 63 on the promise rank — does that read correctly?",
     context:
       "Track 1 measures delivery, not greatness; BTC's moat (adoption, Lindy, " +
       "decentralization) shows up in the context line. If it reads wrong, " +

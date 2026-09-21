@@ -91,9 +91,11 @@ Worked, 2026-09-21:
 |---|---|---|---|---|---|
 | BTC | 0.67 | 0.45 | 0.58 | 1.00 | **63** |
 | XRP | 0.33 | 0.28 | 0.08 | 1.00 | **31** |
-| LINK | 0.67 | 0.89 | 0.48 | 0.90 | **68** |
+| LINK | 0.67 | 0.86 | 0.48 | 0.93 | **67** |
 
 The honest output: LINK edges BTC on pure delivery (faster pace, more recent), and XRP collapses to 31 — the flagship story in one number.
+
+Sanity check: a brand-new project scores ~30 (all hope, no record: F=0, T=0, C=1, D=0). XRP at 31 is worth little more than a newborn — 14 years of promising bought almost nothing.
 
 **Open question for Alex:** does LINK > BTC read correctly? The design's answer is yes for Track 1 — it measures delivery, not greatness. BTC's moat (adoption, Lindy effect, decentralization) shows up in the context line, not here. If it reads wrong, the weights move — globally, with the reasoning published.
 
@@ -188,7 +190,7 @@ Stays separate and display-only: the deterministic output (both scores + full fa
 
 ## Design phase (not buildable yet — settling in Part 1 first)
 
-- Promise Score formula + weights — specced in Part 1 (v0.3.0 candidate). Open: Alex rules on LINK 68 > BTC 63.
+- Promise Score formula + weights — specced in Part 1 (v0.3.0 candidate). Open: Alex rules on LINK 67 > BTC 63.
 - Context composite formula — aggregation rule + per-factor shapes specced; parameters TBD per factor.
 - Placement of the v0.2.0 scores in the two tracks.
 - AI assessment pipeline (OpenAI key, model choice, prompt v1, validation).
