@@ -1,74 +1,72 @@
-# Prove-It Clock — Distribution & Marketing Strategy
+# Prove-It Clock — Strategy
 
-**Status:** draft 2026-09-20. Review monthly; this doc is the working surface.
+**Status:** 2026-09-21. Review monthly; this doc is the working surface.
 
-## 1. Positioning
+## Positioning
 
 The accountability layer for crypto. Not another dashboard, not a rating shop —
 a public, versioned, append-only record of promise vs. delivery. Neutral voice,
-always. Trust is the product; a single paid placement kills the instrument
-(charter: trust never for sale).
+always. Trust is the product; a single paid placement kills the instrument.
 
-## 2. Channels (priority order)
+## The moat: data that compounds
 
-### Twitter/X — primary
+Code is cheap; every crypto dashboard looks the same. The durable edge is the
+append-only history underneath. Time moves one direction, and every snapshot we
+take is data no competitor can backfill, buy, or scrape retroactively.
 
-- Owned audience already exists; this is the main stage.
-- Content: annotated timeline graphs, score-change alerts, methodology notes,
-  one-coin promise-vs-delivery threads.
-- The timeline screenshot is the atomic shareable unit.
+- Each snapshot (scores, metrics, explanations, methodology version) accrues permanently. A new entrant starts at zero history; we start at N years.
+- The version log is itself a dataset: every dispute and observed outcome teaches the next methodology version what to measure.
+- Calibration becomes possible only with a long tape: did large promise gaps precede collapses? Backtesting needs history, and history needs someone to have recorded it.
 
-### Telegram — mirror
+The algorithm doesn't predict price. It measures one thing — the gap between
+promise and delivery — and gets sharper the longer the tape runs. Improvement
+comes from recorded outcomes, not from tuning weights to flatter anyone.
 
-- Broadcast/announcement channel that mirrors Twitter posts. ~10 minutes to set
-  up, near-zero maintenance.
-- Later (optional): show up in existing crypto group chats and share timelines
-  where genuinely relevant. Never spam groups.
+## Channels (priority order)
 
-### Discord — deferred
+**Twitter/X — primary.** Annotated timeline graphs, score-change alerts,
+methodology notes, one-coin promise-vs-delivery threads. The timeline
+screenshot is the atomic shareable unit.
 
-- Running a server means moderation, trolls, daily babysitting. Not worth it
-  until there's real traction.
-- Cheaper path: participate in existing crypto servers; link timelines where
-  they add signal.
+**Telegram — mirror.** Broadcast channel mirroring Twitter posts. ~10 minutes
+to set up, near-zero maintenance. (Needs Alex's Telegram account.)
 
-### Reddit — out
+**Discord — deferred.** Not worth the moderation cost until there's traction.
 
-- Deliberately excluded. Spam optics and trust risk outweigh reach for an
-  accountability product.
+**Reddit — out.** Spam optics and trust risk outweigh reach for an
+accountability product.
 
-### SEO — the slow compounder
+**SEO — the slow compounder.** Target: every "is [coin] legit / safe / a scam"
+query lands on a project page with its annotated timeline. The timeline is the
+landing page.
 
-- Target: every "is [coin] legit / safe / a scam" query lands on a Clock
-  project page with its annotated timeline.
-- The timeline is the landing page (§10.6 of top20-expansion.md).
-
-## 3. Content engine
+## Content engine
 
 Distribution is fed by the pipeline, not by brainstorming:
 
-- Each snapshot run → score-change posts ("X's promise gap widened from 3.1 to
-  4.0 — here's what shipped vs. what was promised").
-- Each methodology version → a "what changed and why" note (shows the work).
-- Event annotations (launches, hacks, pivots) → retrospective threads.
+- Each snapshot run → score-change posts.
+- Each methodology version → a "what changed and why" note.
+- Event annotations → retrospective threads.
 
 No content calendar gymnastics: the data ships on schedule, posts follow the data.
 
-## 4. Voice guardrails
+## Voice guardrails
 
-- Accountability, never promotion. No price talk, no buy/sell signals, no
-  shilling — including coins the publisher holds.
-- Publisher posts personally; assistant drafts only. (Standing rule.)
-- Disclosures page stays current; unconfirmed items get confirmed or removed.
+Accountability, never promotion. No price talk, no buy/sell signals, no
+shilling — including coins the publisher holds. Publisher posts personally;
+assistant drafts only. Disclosures page stays current; unconfirmed items get
+confirmed or removed.
 
-## 5. Funnel → monetization
+## Funnel → monetization
 
 Free public Clock is the top of funnel: timeline screenshot → project page →
-API docs → paid tier (API access, full historical time-series, embeddable
-widgets, promise-gap alerts). Sell access, never scores (§10.5).
+API docs → paid tier. **Sell access, never scores.**
 
-## 6. Review cadence
+- Paid: API access, full historical time-series, embeddable widgets for media sites, promise-gap alerts.
+- Customers: funds, journalists, researchers, compliance teams.
+- Hard line: a rating is never for sale. The day a score can be bought, the instrument is worthless.
+
+## Review cadence
 
 Monthly: what drove traffic, which posts got shared, which channels convert.
-Kill what doesn't move; double down on what does. Update this doc, don't let
-it rot.
+Kill what doesn't move; double down on what does. Update this doc, don't let it rot.
