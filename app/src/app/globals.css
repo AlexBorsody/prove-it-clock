@@ -210,3 +210,52 @@ h1.page-title { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
   h1.page-title { font-size: 21px; }
   .score-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Trading card */
+.panel.card {
+  border-color: var(--accent);
+  border-width: 1px;
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+.stat-bars { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 12px; }
+.stat-bar {
+  display: grid;
+  grid-template-columns: 170px 1fr 52px;
+  grid-template-areas: "label track val" "sub sub sub";
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 2px;
+}
+.stat-label { grid-area: label; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-dim); }
+.stat-track { grid-area: track; height: 8px; border-radius: 4px; background: var(--bg-raised); overflow: hidden; }
+.stat-track > div { height: 100%; border-radius: 4px; }
+.stat-val { grid-area: val; font-size: 16px; font-weight: 700; text-align: right; }
+.stat-sub { grid-area: sub; font-size: 11px; color: var(--text-faint); }
+.card-foot { margin: 0; font-size: 12px; color: var(--text-faint); }
+
+/* Collapsible evidence sections — one click deeper, zero JS */
+details.panel.fold { padding: 0; }
+details.panel.fold > summary.fold-head {
+  cursor: pointer;
+  padding: 16px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+details.panel.fold > summary.fold-head::-webkit-details-marker { display: none; }
+details.panel.fold > summary.fold-head::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 13px;
+  transition: transform 0.15s ease;
+}
+details.panel.fold[open] > summary.fold-head::before { transform: rotate(90deg); }
+details.panel.fold > summary.fold-head:hover { color: var(--accent); }
+.fold-body { padding: 0 22px 20px; }
+
+@media (max-width: 640px) {
+  .stat-bar { grid-template-columns: 1fr 52px; grid-template-areas: "label val" "track track" "sub sub"; }
+}

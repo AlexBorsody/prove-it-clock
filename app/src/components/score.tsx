@@ -54,8 +54,7 @@ export function StatusTag({ status }: { status: string }) {
   return <span className="tag measured">Final</span>;
 }
 
-export function ScoreCard({
-  label,
+export function ScoreCard({  label,
   value,
   scale = "score",
   sub,
@@ -78,6 +77,39 @@ export function ScoreCard({
           {sub} {status === "provisional" ? "· provisional" : ""}
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Trading-card stat bar: label, 0–10 track, value. The card face of a project.
+ * `display` overrides the value text (e.g. confidence shown as "62%").
+ */
+export function StatBar({
+  label,
+  value,
+  scale = "score",
+  sub,
+  display,
+}: {
+  label: string;
+  value: number | null;
+  scale?: "score" | "risk" | "gap";
+  sub?: string;
+  display?: string;
+}) {
+  const pct = value == null ? 0 : Math.max(0, Math.min(100, (value / 10) * 100));
+  const text = display ?? (value == null ? "—" : value.toFixed(1));
+  return (
+    <div className="stat-bar">
+      <div className="stat-label">{label}</div>
+      <div className="stat-track">
+        <div style={{ width: `${pct}%`, background: colorFor(value, scale) }} />
+      </div>
+      <div className="stat-val num" style={{ color: colorFor(value, scale) }}>
+        {text}
+      </div>
+      {sub ? <div className="stat-sub">{sub}</div> : null}
     </div>
   );
 }

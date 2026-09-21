@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { getStore } from "@/lib/data";
 import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
-import { ScoreCard, ScoreCell, EpistemicTag, StatusTag } from "@/components/score";
+import { ScoreCell, StatBar, EpistemicTag, StatusTag } from "@/components/score";
 import TimelineChart from "@/components/timeline-chart";
 import type { ProjectSnapshot, SeedProject } from "@/methodology/index";
 
@@ -46,6 +46,15 @@ function todaySummary(seed: SeedProject, snap: ProjectSnapshot, metrics: Record<
     lines.push(`Not yet measurable: ${missing.join(", ")} — these reduce confidence rather than being estimated.`);
   }
   return lines;
+}
+
+function Details({ title, children, open = false }: { title: string; children: React.ReactNode; open?: boolean }) {
+  return (
+    <details className="panel fold" open={open}>
+      <summary className="fold-head">{title}</summary>
+      <div className="fold-body">{children}</div>
+    </details>
+  );
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -100,67 +109,82 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   const realityComps = Object.entries(s.reality?.components ?? {});
   const maxMilestone = Math.max(...seed.milestones.filter((m) => m.achieved).map((m) => m.level), 0);
+  const confidence = s.reality?.confidence ?? null;
 
   return (
     <>
-      <div className="meta-line">
-        PROJECT <b>{seed.symbol}</b> · {CATEGORY_LABELS[seed.thesis_category] ?? seed.thesis_category} · SNAPSHOT{" "}
-        <b>{snap.snapshot_date}</b> · METHODOLOGY <b>v{ACTIVE_METHODOLOGY_VERSION}</b>
-      </div>
-      <h1 className="page-title">{seed.name}</h1>
-      <p className="page-sub">{seed.thesis}</p>
-
-      <div className="score-grid" style={{ marginBottom: 18 }}>
-        <ScoreCard label="Reality" value={s.reality?.value} sub={`confidence ${s.reality?.confidence ?? "—"}%`} status={s.reality?.status} />
-        <ScoreCard label="World impact potential" value={s.world_impact_potential?.value} sub="if the thesis succeeds" />
-        <ScoreCard label="Execution evidence" value={s.execution_evidence?.value} sub="evidence score, not a probability" status={s.execution_evidence?.status} />
-        <ScoreCard label="Reflexivity risk" value={s.reflexivity_risk?.value} scale="risk" sub="dependence on belief" status={s.reflexivity_risk?.status} />
-        <ScoreCard label="Promise gap" value={snap.derived.promise_gap} scale="gap" sub="potential − reality" />
-        <ScoreCard label="Potential outlook" value={snap.derived.potential_outlook} sub="speculative, uncalibrated — not a probability" />
-        <ScoreCard label="Prove-It age" value={snap.prove_it_age_years} sub={`launched ${seed.launch_date}`} />
-      </div>
-
-      <div className="panel">
-        <h2>Potential outlook <EpistemicTag kind="mixed" /></h2>
-        <p className="panel-sub">
-          Forward-looking, but <b>not</b> a probability and <b>not</b> a price prediction — it is
-          uncalibrated until historical backtesting exists. Formula:{" "}
-          <span className="num">clamp(max(promise_gap, 0) × (execution_evidence / 10), 0, 10)</span>.
-          It reads as: of the promise not yet realized, how much does current execution support
-          capturing? A large promise gap with weak execution scores low — the thesis may be real,
-          but nothing is moving toward it. This is the closest the Clock comes to “potential,”
-          and it is deliberately built from evidence, not from narrative heat.
+      {/* Trading card — the verdict at a glance. */}
+      <div className="panel card">
+        <div className="meta-line">
+          PROJECT <b>{seed.symbol}</b> · {CATEGORY_LABELS[seed.thesis_category] ?? seed.thesis_category} · SNAPSHOT{" "}
+          <b>{snap.snapshot_date}</b> · METHODOLOGY <b>v{ACTIVE_METHODOLOGY_VERSION}</b>
+        </div>
+        <h1 className="page-title">{seed.name}</h1>
+        <p className="page-sub" style={{ marginBottom: 14 }}>{seed.thesis}</p>
+        <div className="stat-bars">
+          <StatBar label="Reality" value={s.reality?.value} sub={`confidence ${confidence ?? "—"}%${s.reality?.status === "provisional" ? " · provisional" : ""}`} />
+          <StatBar label="World impact potential" value={s.world_impact_potential?.value} sub="if the thesis succeeds" />
+          <StatBar label="Execution evidence" value={s.execution_evidence?.value} sub="evidence, not a probability" />
+          <StatBar label="Reflexivity risk" value={s.reflexivity_risk?.value} scale="risk" sub="dependence on belief" />
+          <StatBar
+            label="Evidence confidence"
+            value={confidence == null ? null : confidence / 10}
+            display={confidence == null ? undefined : `${confidence}%`}
+            sub="missing data reduces confidence — never estimated"
+          />
+          <StatBar label="Promise gap" value={snap.derived.promise_gap} scale="gap" sub="potential − reality" />
+          <StatBar label="Potential outlook" value={snap.derived.potential_outlook} sub="uncalibrated — not a probability" />
+        </div>
+        <p className="card-foot num">
+          Prove-It age {snap.prove_it_age_years.toFixed(1)}y · launched {seed.launch_date} · milestone Level {maxMilestone} of 5
         </p>
       </div>
 
+      {/* The chart — the product. */}
       <div className="panel">
-        <h2>What it claims to become <EpistemicTag kind="modeling" /></h2>
-        <p className="panel-sub">The project's stated thesis, as assessed for this methodology version.</p>
+        <h2>Score history</h2>
+        <p className="panel-sub">
+          Every scored category over time. Gaps are missing data — lines break instead of
+          interpolating. Dashed ticks mark methodology versions.
+        </p>
+        <TimelineChart slug={slug} />
+      </div>
+
+      <Details title="What it claims to become">
+        <p className="panel-sub">The project's stated thesis, as assessed for this methodology version. <EpistemicTag kind="modeling" /></p>
         <p style={{ fontSize: 15 }}>{seed.thesis}</p>
         <p style={{ color: "var(--text-dim)" }}>
           <b style={{ color: "var(--text)" }}>Measurable success would look like:</b> {seed.measurable_success}
         </p>
-      </div>
+      </Details>
 
-      <div className="panel">
-        <h2>What exists today <EpistemicTag kind="mixed" /></h2>
-        <p className="panel-sub">Assembled deterministically from measured metrics and assessed milestones.</p>
+      <Details title="What exists today">
+        <p className="panel-sub">Assembled deterministically from measured metrics and assessed milestones. <EpistemicTag kind="mixed" /></p>
         <ul style={{ margin: "0 0 0 18px", padding: 0 }}>
           {todaySummary(seed, snap, metrics).map((l, i) => (
             <li key={i} style={{ marginBottom: 8 }}>{l}</li>
           ))}
         </ul>
-      </div>
+      </Details>
 
-      <div className="panel">
-        <h2>
-          Reality breakdown <EpistemicTag kind={s.reality?.epistemic ?? "mixed"} />{" "}
-          <StatusTag status={s.reality?.status ?? "unavailable"} />
-        </h2>
+      <Details title="Potential outlook — how to read it">
+        <p className="panel-sub" style={{ marginBottom: 0 }}>
+          Forward-looking, but <b>not</b> a probability and <b>not</b> a price prediction — it is
+          uncalibrated until historical backtesting exists. Formula:{" "}
+          <span className="num">clamp(max(promise_gap, 0) × (execution_evidence / 10), 0, 10)</span>.
+          It reads as: of the promise not yet realized, how much does current execution support
+          capturing? A large promise gap with weak execution scores low — the thesis may be real,
+          but nothing is moving toward it. <EpistemicTag kind="mixed" />
+        </p>
+      </Details>
+
+      <Details title="Reality breakdown">
         <p className="panel-sub">
           Weights are category-specific ({seed.thesis_category}); missing inputs redistribute
           weight and reduce confidence. Gates applied:{" "}
-          {s.reality?.gates_applied.length ? s.reality.gates_applied.join("; ") : "none"}.
+          {s.reality?.gates_applied.length ? s.reality.gates_applied.join("; ") : "none"}.{" "}
+          <EpistemicTag kind={s.reality?.epistemic ?? "mixed"} />{" "}
+          <StatusTag status={s.reality?.status ?? "unavailable"} />
         </p>
         {realityComps.map(([code, c]) => {
           const def = methodology.components[code];
@@ -179,26 +203,24 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
           );
         })}
-      </div>
+      </Details>
 
-      <div className="panel">
-        <h2>Protocol vs token <EpistemicTag kind="modeling" /></h2>
+      <Details title="Protocol vs token">
         <p className="panel-sub">
           A protocol can be useful while its token captures little value. These are assessed
-          separately — never inferred from price.
+          separately — never inferred from price. <EpistemicTag kind="modeling" />
         </p>
         <div className="score-grid">
-          <ScoreCard label="Protocol reality" value={s.reality?.value} sub="same as Reality above" />
-          <ScoreCard label="Token necessity" value={s.token_necessity?.value} sub={seed.assessments.token_necessity?.rationale} />
-          <ScoreCard label="Token value capture" value={s.token_value_capture?.value} sub={seed.assessments.token_value_capture?.rationale} />
+          <StatBar label="Protocol reality" value={s.reality?.value} sub="same as Reality above" />
+          <StatBar label="Token necessity" value={s.token_necessity?.value} sub={seed.assessments.token_necessity?.rationale} />
+          <StatBar label="Token value capture" value={s.token_value_capture?.value} sub={seed.assessments.token_value_capture?.rationale} />
         </div>
         {s.token_value_capture?.gates_applied.map((g) => (
           <p key={g} style={{ color: "var(--accent)", fontSize: 13 }}>⚠ Gate: {g}</p>
         ))}
-      </div>
+      </Details>
 
-      <div className="panel">
-        <h2>Prove-It timeline</h2>
+      <Details title={`Prove-It timeline — ${seed.events.length} events`}>
         <p className="panel-sub">
           {snap.prove_it_age_years.toFixed(1)} years since launch. The question: after{" "}
           {snap.prove_it_age_years.toFixed(1)} years, how much closer is the thesis to fulfilled?
@@ -215,31 +237,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </div>
             ))}
         </div>
-      </div>
+      </Details>
 
-      <div className="panel">
-        <h2>Score history</h2>
-        <p className="panel-sub">
-          Reality score over time. Gaps are missing data — the line breaks instead of
-          interpolating. Dataset snapshots shown at their recorded methodology version.
-        </p>
-        <TimelineChart slug={slug} />
-      </div>
-
-      <div className="panel">
-        <h2>Embed this timeline</h2>
-        <p className="panel-sub">
-          Copy-paste snippet. Renders the same score timeline with no JavaScript.
-          Swap <span className="num">theme=light</span> for <span className="num">theme=dark</span> to
-          match a dark host page.
-        </p>
-        <pre className="num" style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 6, padding: "10px 12px", fontSize: 12, overflowX: "auto", whiteSpace: "pre-wrap", wordBreak: "break-all", margin: 0 }}>
-{`<iframe src="${embedUrl}?theme=light" width="720" height="340" loading="lazy" title="Prove-It Clock — ${seed.name} score timeline"></iframe>`}
-        </pre>
-      </div>
-
-      <div className="panel">
-        <h2>Explanation feed</h2>
+      <Details title="Explanation feed">
         <p className="panel-sub">
           Deterministic contributor lists computed by the pipeline. (Future: AI summarizes
           these; it never touches the numbers.)
@@ -269,12 +269,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
           );
         })}
-      </div>
+      </Details>
 
-      <div className="panel">
-        <h2>Raw evidence <EpistemicTag kind="measured" /></h2>
+      <Details title="Raw evidence">
         <p className="panel-sub">
-          Every measured input behind the scores, with its source. Inspect anything.
+          Every measured input behind the scores, with its source. Inspect anything. <EpistemicTag kind="measured" />
         </p>
         <div className="table-wrap">
           <table className="board" style={{ minWidth: 0 }}>
@@ -311,7 +310,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </ul>
           </>
         )}
-      </div>
+      </Details>
+
+      <Details title="Embed this timeline">
+        <p className="panel-sub">
+          Copy-paste snippet. Renders the same score timeline with no JavaScript.
+          Swap <span className="num">theme=light</span> for <span className="num">theme=dark</span> to
+          match a dark host page.
+        </p>
+        <pre className="num" style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 6, padding: "10px 12px", fontSize: 12, overflowX: "auto", whiteSpace: "pre-wrap", wordBreak: "break-all", margin: 0 }}>
+{`<iframe src="${embedUrl}?theme=light" width="720" height="340" loading="lazy" title="Prove-It Clock — ${seed.name} score timeline"></iframe>`}
+        </pre>
+      </Details>
     </>
   );
 }

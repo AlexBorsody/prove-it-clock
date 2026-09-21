@@ -50,6 +50,8 @@ export interface TimelinePalette {
   green: string;
   purple: string;
   red: string;
+  teal: string;
+  pink: string;
 }
 
 /** Matches the app's research-terminal theme (globals.css :root). */
@@ -64,6 +66,8 @@ export const DARK_PALETTE: TimelinePalette = {
   green: "#3fb950",
   purple: "#bc8cff",
   red: "#f85149",
+  teal: "#39c5cf",
+  pink: "#f778ba",
 };
 
 export const LIGHT_PALETTE: TimelinePalette = {
@@ -77,6 +81,8 @@ export const LIGHT_PALETTE: TimelinePalette = {
   green: "#1a7f37",
   purple: "#8250df",
   red: "#cf222e",
+  teal: "#0d7d8c",
+  pink: "#d34b8f",
 };
 
 const W = 680;
@@ -117,9 +123,41 @@ export default function TimelineSvg({
   onSelectEvent,
   fillBackground = false,
 }: TimelineSvgProps) {
-  const codes = Object.keys(body.metrics).filter((c) =>
-    body.metrics[c].some((pt) => pt.value != null),
-  );
+  // One color per score category — stable across projects and renders.
+  const CODE_COLORS: Record<string, keyof TimelinePalette> = {
+    reality: "accent",
+    execution_evidence: "green",
+    world_impact_potential: "blue",
+    reflexivity_risk: "red",
+    token_necessity: "purple",
+    token_value_capture: "dim",
+    promise_gap: "teal",
+    potential_outlook: "pink",
+  };
+  const FALLBACK = ["accent", "blue", "green", "purple", "red", "teal", "pink", "dim"] as const;
+  const colorOf = (code: string) => {
+    const key = CODE_COLORS[code] ?? FALLBACK[codes.indexOf(code) % FALLBACK.length];
+    return p[key];
+  };
+
+  // Stable series order — the card's stat order, not API insertion order.
+  const CODE_ORDER = [
+    "reality",
+    "execution_evidence",
+    "world_impact_potential",
+    "reflexivity_risk",
+    "token_necessity",
+    "token_value_capture",
+    "promise_gap",
+    "potential_outlook",
+  ];
+  const codes = Object.keys(body.metrics)
+    .filter((c) => body.metrics[c].some((pt) => pt.value != null))
+    .sort((a, b) => {
+      const ia = CODE_ORDER.indexOf(a);
+      const ib = CODE_ORDER.indexOf(b);
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+    });
 
   if (codes.length === 0) {
     const eventCount = body.events.length;
@@ -139,9 +177,6 @@ export default function TimelineSvg({
       </div>
     );
   }
-
-  const seriesColors = [p.accent, p.blue, p.green, p.purple, p.red, p.dim];
-  const colorOf = (code: string) => seriesColors[codes.indexOf(code) % seriesColors.length];
 
   const all = codes
     .flatMap((c) => body.metrics[c])
