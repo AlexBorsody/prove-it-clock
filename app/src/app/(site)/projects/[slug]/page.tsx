@@ -110,6 +110,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const realityComps = Object.entries(s.reality?.components ?? {});
   const maxMilestone = Math.max(...seed.milestones.filter((m) => m.achieved).map((m) => m.level), 0);
   const confidence = s.reality?.confidence ?? null;
+  const promisesKept = seed.milestones.filter((m) => m.achieved).length;
+  const promisesTotal = seed.milestones.length;
 
   return (
     <>
@@ -122,6 +124,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <h1 className="page-title">{seed.name}</h1>
         <p className="page-sub" style={{ marginBottom: 14 }}>{seed.thesis}</p>
         <div className="stat-bars">
+          <StatBar label="Promises kept" value={promisesTotal ? (promisesKept / promisesTotal) * 10 : null} display={`${promisesKept}/${promisesTotal}`} sub="milestones achieved · each dated in the timeline below" />
           <StatBar label="Reality" value={s.reality?.value} sub={`confidence ${confidence ?? "—"}%${s.reality?.status === "provisional" ? " · provisional" : ""}`} />
           <StatBar label="World impact potential" value={s.world_impact_potential?.value} sub="if the thesis succeeds" />
           <StatBar label="Execution evidence" value={s.execution_evidence?.value} sub="evidence, not a probability" />
@@ -136,7 +139,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <StatBar label="Potential outlook" value={snap.derived.potential_outlook} sub="uncalibrated — not a probability" />
         </div>
         <p className="card-foot num">
-          Prove-It age {snap.prove_it_age_years.toFixed(1)}y · launched {seed.launch_date} · milestone Level {maxMilestone} of 5
+          Promising for {snap.prove_it_age_years.toFixed(1)}y · launched {seed.launch_date} · milestone Level {maxMilestone} of 5
         </p>
       </div>
 
@@ -144,8 +147,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Score history</h2>
         <p className="panel-sub">
-          Every scored category over time. Gaps are missing data — lines break instead of
-          interpolating. Dashed ticks mark methodology versions.
+          Promises kept plus every scored category over time. Gaps are missing data —
+          lines break instead of interpolating. Dashed ticks mark methodology versions.
         </p>
         <TimelineChart slug={slug} />
       </div>

@@ -15,6 +15,8 @@
  * 5-minute in-memory cache, same discipline as the history API.
  */
 import { getSupabase } from "./supabase";
+import { loadSeeds } from "../methodology/index";
+import { ACTIVE_METHODOLOGY_VERSION, SCORED_PROJECT_SLUGS } from "./active-methodology";
 
 const HISTORY_TTL_MS = 5 * 60_000;
 
@@ -117,6 +119,32 @@ export async function getProjectHistory(
       confidence: num(r.confidence),
       status: String(r.status),
     });
+  }
+
+  // Promises kept — a presentation series, not a methodology score.
+  // Built deterministically from seed milestone achieved_at dates: cumulative
+  // kept count at each achievement date. Scored projects only — unscored
+  // projects stay fully unavailable.
+  if (
+    (SCORED_PROJECT_SLUGS as readonly string[]).includes(slug) &&
+    (!metricCodes || metricCodes.includes("promises_kept"))
+  ) {
+    const seed = loadSeeds().find((s) => s.slug === slug);
+    if (seed) {
+      const kept = seed.milestones
+        .filter((m) => m.achieved && m.achieved_at)
+        .sort((a, b) => String(a.achieved_at).localeCompare(String(b.achieved_at)));
+      const total = seed.milestones.length;
+      if (kept.length > 0 && total > 0) {
+        metrics["promises_kept"] = kept.map((m, i) => ({
+          date: String(m.achieved_at),
+          methodology_version: ACTIVE_METHODOLOGY_VERSION,
+          value: i + 1,
+          confidence: null,
+          status: "final",
+        }));
+      }
+    }
   }
 
   const body: ProjectHistory = {

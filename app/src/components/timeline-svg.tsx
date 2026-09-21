@@ -52,6 +52,7 @@ export interface TimelinePalette {
   red: string;
   teal: string;
   pink: string;
+  orange: string;
 }
 
 /** Matches the app's research-terminal theme (globals.css :root). */
@@ -68,6 +69,7 @@ export const DARK_PALETTE: TimelinePalette = {
   red: "#f85149",
   teal: "#39c5cf",
   pink: "#f778ba",
+  orange: "#f0883e",
 };
 
 export const LIGHT_PALETTE: TimelinePalette = {
@@ -83,6 +85,7 @@ export const LIGHT_PALETTE: TimelinePalette = {
   red: "#cf222e",
   teal: "#0d7d8c",
   pink: "#d34b8f",
+  orange: "#c2510c",
 };
 
 const W = 680;
@@ -125,6 +128,7 @@ export default function TimelineSvg({
 }: TimelineSvgProps) {
   // One color per score category — stable across projects and renders.
   const CODE_COLORS: Record<string, keyof TimelinePalette> = {
+    promises_kept: "orange",
     reality: "accent",
     execution_evidence: "green",
     world_impact_potential: "blue",
@@ -134,7 +138,7 @@ export default function TimelineSvg({
     promise_gap: "teal",
     potential_outlook: "pink",
   };
-  const FALLBACK = ["accent", "blue", "green", "purple", "red", "teal", "pink", "dim"] as const;
+  const FALLBACK = ["accent", "blue", "green", "purple", "red", "teal", "pink", "dim", "orange"] as const;
   const colorOf = (code: string) => {
     const key = CODE_COLORS[code] ?? FALLBACK[codes.indexOf(code) % FALLBACK.length];
     return p[key];
@@ -142,6 +146,7 @@ export default function TimelineSvg({
 
   // Stable series order — the card's stat order, not API insertion order.
   const CODE_ORDER = [
+    "promises_kept",
     "reality",
     "execution_evidence",
     "world_impact_potential",
