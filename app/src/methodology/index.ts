@@ -84,7 +84,7 @@ export interface SeedEvent {
   date: string;
   type: string;
   title: string;
-  description: string;
+  evidence_summary: string;
   evidence_url: string | null;
 }
 

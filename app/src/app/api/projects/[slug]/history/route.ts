@@ -132,7 +132,9 @@ export async function GET(
         date: e.event_date,
         type: e.event_type,
         title: e.title,
-        description: e.description,
+        // DB column is `description`; seeds and the API surface call it
+        // `evidence_summary`. Same field, no rename in the append-only DB.
+        evidence_summary: e.description,
         evidence_url: e.evidence_url,
       })),
       generated_at: new Date().toISOString(),

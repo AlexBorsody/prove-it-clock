@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getStore } from "@/lib/data";
 import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
 import { ScoreCard, ScoreCell, EpistemicTag, StatusTag } from "@/components/score";
-import ScoreTimeline from "@/components/score-timeline";
+import TimelineChart from "@/components/timeline-chart";
 import type { ProjectSnapshot, SeedProject } from "@/methodology/index";
 
 export const dynamic = "force-dynamic";
@@ -80,7 +80,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
         <div className="panel">
           <h2>Score history</h2>
-          <ScoreTimeline slug={slug} />
+          <TimelineChart slug={slug} />
         </div>
       </>
     );
@@ -204,7 +204,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <div className={`tl-event t-${e.type}`} key={i}>
                 <div className="tl-date num">{e.date} · {e.type.replace("_", " ")}</div>
                 <div className="tl-title">{e.title}</div>
-                <p className="tl-desc">{e.description}</p>
+                <p className="tl-desc">{e.evidence_summary}</p>
               </div>
             ))}
         </div>
@@ -216,7 +216,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           Reality score over time. Gaps are missing data — the line breaks instead of
           interpolating. Dataset snapshots shown at their recorded methodology version.
         </p>
-        <ScoreTimeline slug={slug} />
+        <TimelineChart slug={slug} />
       </div>
 
       <div className="panel">
