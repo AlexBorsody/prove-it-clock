@@ -1,6 +1,6 @@
 # Prove-It Clock — Implementation
 
-**Status:** 2026-09-21. v0.2.0 live in production. Technical only — no strategy, no marketing.
+**Status:** 2026-09-21. v0.2.0 live in production. Planning only — no code until the plan is settled. Technical only: no strategy, no marketing.
 
 **Non-goals:** no scoring-logic changes without a methodology version bump. No speculation. No price prediction. Algorithms calculate; AI explains; humans version methodology.
 
@@ -30,8 +30,7 @@ for accountability.
 
 - Next.js app in `app/`, deployed on Vercel (`prove-it-clock.vercel.app`).
 - Data layer `app/src/lib/data.ts` reads Supabase `score_snapshots` (primary time-series store). JSON snapshots in `app/data/snapshots/` remain as build artifacts and audit trail.
-- Pipeline `app/src/pipeline/ingest.ts` + `score.ts` writes local append-only JSON (`metrics/scores/explanations/universe_<date>.json`); raw upstream data cached in `app/data/raw/<date>/`.
-- Single source of truth for the active version: `app/src/lib/active-methodology.ts`. `score.ts` must read it — never a hardcoded version constant.
+- Pipeline `app/src/pipeline/ingest.ts` + `score.ts` writes local append-only JSON (`metrics/scores/explanations/universe_<date>.json`); raw upstream data cached in `app/data/raw/<date>/`. `score.ts` reads the active version from `app/src/lib/active-methodology.ts` — never a hardcoded constant.
 - Pages: `/` (leaderboard), `/projects/[slug]`, `/methodology`, `/embed/projects/[slug]/timeline` (chromeless widget).
 
 ## History API
@@ -43,36 +42,35 @@ for accountability.
 
 ## Timeline chart
 
-- `components/timeline-chart.tsx`: hand-rolled SVG, zero new dependencies.
+- `components/timeline-chart.tsx` + `timeline-svg.tsx`: hand-rolled SVG, zero new dependencies.
 - Multi-line chart per project page: each scored metric over time.
 - Methodology-version markers on the axis — the viewer always knows which version produced which stretch of line.
 - Event annotations from seed `events[]` (launch, hack, pivot, leadership exit).
 - Unscored projects: explicit unavailable state, not an empty chart.
 
-## Event pipeline
+## Done 2026-09-21
 
-- `npm run events:check` validates every event has `date`, `title`, `evidence_summary`.
-- Backfill the 6 scored projects first, ≥5 events each.
+- v0.2.0 seed live (84 genuine snapshots, append-only/idempotent); fallback removed; footer fixed.
+- Embeddable timeline widget shipped: `/embed/projects/[slug]/timeline`, light/dark, iframe snippet on scored project pages. Verified live.
+- Event pipeline: `npm run events:check` passes — all 6 scored projects have ≥5 valid events.
+- `score.ts` reads `ACTIVE_METHODOLOGY_VERSION` — the pipeline can no longer generate speculative snapshots.
 
-## Build queue
+## Build queue (planned, not started)
 
-**Done 2026-09-21:** v0.2.0 seed live (84 snapshots, append-only/idempotent), fallback removed, footer fixed, embeddable timeline widget shipped (`/embed/projects/[slug]/timeline`, light/dark, iframe snippet on scored project pages).
+**1. Trading-card layout + per-category chart**
+Project detail page becomes a trading-card layout: header, stat bars per v0.2.0 score category (Reality, Potential, Execution, Reflexivity, Confidence, Promise Gap, Potential Outlook), evidence links and events one click deeper. Timeline gains per-category lines feeding the overall line, from existing snapshot history. Nulls still gaps. Presentation only — no scoring changes. Open question for Alex: final stat lineup (Utility / Promises Kept / Runway was proposed — he rules).
 
-**8. SEO structured-data pass — queued**
+**2. Daily historical-data cadence**
+The compounding store: every snapshot accrues permanently; history can't be backfilled by competitors. Make daily snapshots automatic:
+1. `scripts/load-snapshot.ts`: reads today's `scores_<date>.json` (+ explanations), inserts into Supabase append-only. Idempotent: `ON CONFLICT DO NOTHING`. Service-role key from `app/.env.local` (gitignored), server-side only, never logged.
+2. Daily cron on this machine: pipeline → loader → verify row counts → fail loudly on error.
+3. Never update or delete snapshot rows. A bad run is skipped, not repaired.
+
+**3. SEO structured-data pass**
 Per project page: `<title>`, meta description, canonical, Open Graph + Twitter cards. JSON-LD on project pages. `sitemap.xml` for all 20 pages + `/methodology`.
 
-**9. Promise-gap alerts feed — queued**
-Daily job diffs latest snapshot against previous; emits rows where `promise_gap` or `potential_outlook` changed beyond epsilon. Append-only `alerts` table + `GET /api/alerts` (paginated, 5-min cache). Needs §11 running to be useful.
-
-**10. Trading-card layout + per-category chart — queued**
-Project detail page becomes a trading-card layout: header, stat bars per v0.2.0 score category (Reality, Potential, Execution, Reflexivity, Confidence, Promise Gap, Potential Outlook), evidence links and events one click deeper. Timeline gains per-category lines feeding the overall line, from existing snapshot history. Nulls still gaps. Presentation only — no scoring changes. Open question for Alex: final stat lineup (Utility / Promises Kept / Runway was proposed in the design draft — he rules).
-
-**11. Daily historical-data cadence — the compounding store**
-The moat: every snapshot accrues permanently; history can't be backfilled by competitors. Today snapshots are manual. Make them daily and automatic:
-1. `scripts/load-snapshot.ts`: reads today's `scores_<date>.json` (+ explanations), inserts into Supabase append-only. Idempotent: `ON CONFLICT DO NOTHING`. Service-role key from `app/.env.local` (gitignored), server-side only, never logged.
-2. ~~Done 2026-09-21:~~ `score.ts` reads the active methodology version.
-3. Daily cron on this machine: pipeline → loader → verify row counts → fail loudly on error.
-4. Never update or delete snapshot rows. A bad run is skipped, not repaired.
+**4. Promise-gap alerts feed**
+Daily job diffs latest snapshot against previous; emits rows where `promise_gap` or `potential_outlook` changed beyond epsilon. Append-only `alerts` table + `GET /api/alerts` (paginated, 5-min cache). Needs item 2 running to be useful.
 
 ## Env
 
@@ -81,4 +79,5 @@ The moat: every snapshot accrues permanently; history can't be backfilled by com
 ## Blocked on Alex
 
 - Publisher disclosures (Dash/BAT/AVAX/LINK positions) still unconfirmed.
-- §10 stat lineup ruling.
+- Trading-card stat lineup ruling.
+- Telegram broadcast channel (needs his Telegram account) — strategy-side, not blocking build.
