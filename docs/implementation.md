@@ -61,13 +61,10 @@ for accountability.
 Project detail page becomes a trading-card layout: header, stat bars per v0.2.0 score category (Reality, Potential, Execution, Reflexivity, Confidence, Promise Gap, Potential Outlook), evidence links and events one click deeper. Timeline gains per-category lines feeding the overall line, from existing snapshot history. Nulls still gaps. Presentation only — no scoring changes. Open question for Alex: final stat lineup (Utility / Promises Kept / Runway was proposed — he rules).
 
 **2. Daily historical-data cadence**
-The compounding store: every snapshot accrues permanently; history can't be backfilled by competitors. Make daily snapshots automatic:
+The chart needs growing history: every snapshot accrues permanently; history can't be backfilled by competitors. Make daily snapshots automatic:
 1. `scripts/load-snapshot.ts`: reads today's `scores_<date>.json` (+ explanations), inserts into Supabase append-only. Idempotent: `ON CONFLICT DO NOTHING`. Service-role key from `app/.env.local` (gitignored), server-side only, never logged.
 2. Daily cron on this machine: pipeline → loader → verify row counts → fail loudly on error.
 3. Never update or delete snapshot rows. A bad run is skipped, not repaired.
-
-**3. Promise-gap alerts feed**
-Daily job diffs latest snapshot against previous; emits rows where `promise_gap` or `potential_outlook` changed beyond epsilon. Append-only `alerts` table + `GET /api/alerts` (paginated, 5-min cache). Needs item 2 running to be useful.
 
 ## Env
 
