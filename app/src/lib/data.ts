@@ -17,6 +17,13 @@ import {
   type ProjectSnapshot,
   type SeedProject,
 } from "@/methodology/index";
+import { getSupabase, supabaseEnv } from "@/lib/supabase";
+import {
+  ACTIVE_METHODOLOGY_VERSION,
+  SPECULATIVE_VERSIONS,
+  isScoredProject,
+  isSpeculativeVersion,
+} from "@/lib/active-methodology";
 import scoresDocJson from "../../data/snapshots/scores_2026-09-20.json";
 import metricsDocJson from "../../data/snapshots/metrics_2026-09-20.json";
 
@@ -104,13 +111,22 @@ class JsonFileStore implements DataStore {
   }
 
   async getLatestScores(): Promise<Record<string, ProjectSnapshot>> {
+    // Bundled snapshots are the speculative v0.3.0 set: never served as
+    // active scores. Only verified, non-speculative snapshots for the six
+    // v0.2.0 projects count; everything else is unavailable.
     const out: Record<string, ProjectSnapshot> = {};
-    for (const s of SCORES) out[s.project] = s;
+    for (const s of SCORES) {
+      if (isSpeculativeVersion(s.methodology_version)) continue;
+      if (!isScoredProject(s.project)) continue;
+      out[s.project] = s;
+    }
     return out;
   }
 
   async getSnapshotHistory(slug: string): Promise<ProjectSnapshot[]> {
-    return SCORES.filter((x) => x.project === slug);
+    return SCORES.filter(
+      (x) => x.project === slug && !isSpeculativeVersion(x.methodology_version),
+    );
   }
 
   async getMethodology(version: string): Promise<MethodologyConfig> {
@@ -152,20 +168,27 @@ class JsonFileStore implements DataStore {
 // ---------------------------------------------------------------------------
 
 class SupabaseStore implements DataStore {
-  private client: unknown = null;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async db(): Promise<any> {
-    if (!this.client) {
-      const { createClient } = await import("@supabase/supabase-js");
-      this.client = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_ANON_KEY!);
-    }
-    return this.client;
+    return getSupabase();
   }
 
-  private async currentVersionId(sb: any): Promise<string> {
-    const { data } = await sb.from("methodology_versions").select("id").eq("is_current", true).single();
-    return data.id;
+  /**
+   * The dataset backing active v0.2.0 output: the v0.2.0 row when it exists,
+   * otherwise the newest non-speculative version (v0.1.0 today). Speculative
+   * versions never back active output. `is_current` is ignored on purpose.
+   */
+  private async activeDatasetVersionId(sb: any): Promise<string> {
+    const { data } = await sb
+      .from("methodology_versions")
+      .select("id,version")
+      .order("version", { ascending: false });
+    const rows = (data ?? []) as { id: string; version: string }[];
+    const active =
+      rows.find((r) => r.version === ACTIVE_METHODOLOGY_VERSION) ??
+      rows.find((r) => !SPECULATIVE_VERSIONS.has(r.version));
+    if (!active) throw new Error("no active methodology dataset");
+    return active.id;
   }
 
   async listProjects(): Promise<ProjectMeta[]> {
@@ -242,10 +265,14 @@ class SupabaseStore implements DataStore {
 
   async getLatestScores(): Promise<Record<string, ProjectSnapshot>> {
     const sb = await this.db();
-    const versionId = await this.currentVersionId(sb);
+    const versionId = await this.activeDatasetVersionId(sb);
     const snaps = await this.snapshotsFor(sb, versionId);
+    // v0.2.0 scores six projects; the other fourteen stay unavailable.
     const out: Record<string, ProjectSnapshot> = {};
-    for (const s of snaps) out[s.project] = s; // last wins = latest
+    for (const s of snaps) {
+      if (!isScoredProject(s.project)) continue;
+      out[s.project] = s; // last wins = latest
+    }
     for (const s of Object.values(out)) {
       const v = (await sb.from("methodology_versions").select("version").eq("id", versionId).single()).data;
       s.methodology_version = v?.version ?? "";
@@ -255,7 +282,7 @@ class SupabaseStore implements DataStore {
 
   async getSnapshotHistory(slug: string): Promise<ProjectSnapshot[]> {
     const sb = await this.db();
-    const versionId = await this.currentVersionId(sb);
+    const versionId = await this.activeDatasetVersionId(sb);
     return this.snapshotsFor(sb, versionId, slug);
   }
 
@@ -268,7 +295,7 @@ class SupabaseStore implements DataStore {
 
   async getLatestSnapshotDate(): Promise<string> {
     const sb = await this.db();
-    const versionId = await this.currentVersionId(sb);
+    const versionId = await this.activeDatasetVersionId(sb);
     const { data } = await sb
       .from("score_snapshots")
       .select("snapshot_date")
@@ -334,7 +361,7 @@ class SupabaseStore implements DataStore {
 }
 
 export function getStore(): DataStore {
-  if (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY) {
+  if (supabaseEnv()) {
     return new SupabaseStore();
   }
   return new JsonFileStore();

@@ -1,4 +1,5 @@
 import { getStore } from "@/lib/data";
+import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
 import LeaderboardTable, { type BoardRow } from "@/components/leaderboard-table";
 
 export const dynamic = "force-dynamic";
@@ -49,14 +50,14 @@ export default async function Home() {
   );
 
   const provisional = rows.filter((r) => r.status === "provisional").length;
-  const methodologyVersion =
-    (projects.length > 0 && scores[projects[0].slug]?.methodology_version) || "?";
+  const scored = rows.filter((r) => r.reality != null).length;
+  const methodologyVersion = ACTIVE_METHODOLOGY_VERSION;
 
   return (
     <>
       <div className="meta-line">
         SNAPSHOT <b>{snapshotDate}</b> · METHODOLOGY <b>v{methodologyVersion}</b> · {rows.length} PROJECTS ·{" "}
-        {provisional} PROVISIONAL
+        {scored} SCORED · {provisional} PROVISIONAL
       </div>
       <h1 className="page-title">Leaderboard</h1>
       <p className="page-sub">

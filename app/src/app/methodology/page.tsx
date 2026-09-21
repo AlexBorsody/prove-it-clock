@@ -1,5 +1,6 @@
 import { getStore } from "@/lib/data";
 import { EpistemicTag } from "@/components/score";
+import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
 import disclosuresDoc from "../../../data/disclosures.json";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +42,7 @@ function formulaText(code: string, norm: Record<string, unknown>): string {
 
 export default async function MethodologyPage() {
   const store = getStore();
-  const cfg = await store.getMethodology("0.3.0");
+  const cfg = await store.getMethodology(ACTIVE_METHODOLOGY_VERSION);
   const observer = (cfg as unknown as { observer_effect?: ObserverEffect }).observer_effect;
   const disclosures = disclosuresDoc as unknown as Disclosures;
 

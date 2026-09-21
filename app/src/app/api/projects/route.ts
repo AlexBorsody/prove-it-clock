@@ -2,7 +2,8 @@
  * GET /api/projects — the Prove-It Clock projects API.
  *
  * Serves the full scored universe (top 20 by CoinGecko market cap):
- *   - scores from the latest committed daily snapshot (methodology v0.3.0)
+ *   - scores from the latest verified daily snapshot (methodology v0.2.0:
+ *     six scored projects, fourteen explicitly unavailable)
  *   - market data fetched LIVE from CoinGecko on each request, with a
  *     short server-side TTL cache (90s) so upstream is never hammered
  *     and page loads never call vendors directly
@@ -19,6 +20,7 @@
  */
 import { getStore } from "@/lib/data";
 import { loadSeeds } from "@/methodology/index";
+import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
 import { fetchUniverseMarkets, type UniverseRow } from "@/providers/coingecko/index";
 
 export const dynamic = "force-dynamic";
@@ -72,7 +74,7 @@ export async function GET(req: Request) {
     return ra - rb;
   });
 
-  const methodologyVersion = "0.3.0";
+  const methodologyVersion = ACTIVE_METHODOLOGY_VERSION;
 
   const items = ordered.map((seed) => {
     const snap = scores[seed.slug] ?? null;
@@ -91,7 +93,7 @@ export async function GET(req: Request) {
       provisional: seed.provisional === true,
       provisional_reason: seed.provisional_reason ?? null,
       prove_it_age_years: snap?.prove_it_age_years ?? null,
-      status: snap ? snap.scores.reality.status : "awaiting_seed",
+      status: snap ? snap.scores.reality.status : "unavailable",
       market: {
         price_usd: num(m?.current_price ?? sm.price_usd),
         market_cap_usd: num(m?.market_cap ?? sm.market_cap_usd),

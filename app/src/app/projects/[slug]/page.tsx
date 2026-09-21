@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { getStore } from "@/lib/data";
+import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
 import { ScoreCard, ScoreCell, EpistemicTag, StatusTag } from "@/components/score";
+import ScoreTimeline from "@/components/score-timeline";
 import type { ProjectSnapshot, SeedProject } from "@/methodology/index";
 
 export const dynamic = "force-dynamic";
@@ -45,56 +47,45 @@ function todaySummary(seed: SeedProject, snap: ProjectSnapshot, metrics: Record<
   return lines;
 }
 
-function HistoryChart({ history }: { history: ProjectSnapshot[] }) {
-  const pts = history
-    .map((h) => ({ d: h.snapshot_date, v: h.scores.reality?.value ?? null }))
-    .filter((p) => p.v != null) as { d: string; v: number }[];
-  if (pts.length < 2) {
-    return (
-      <p className="panel-sub" style={{ margin: 0 }}>
-        History begins with the first snapshot ({history[0]?.snapshot_date ?? "n/a"}). Each daily
-        pipeline run appends a point; trend, trajectory, and backtesting build from here.
-      </p>
-    );
-  }
-  const W = 560, H = 140, PAD = 28;
-  const vs = pts.map((p) => p.v);
-  const lo = Math.max(0, Math.min(...vs) - 1), hi = Math.min(10, Math.max(...vs) + 1);
-  const X = (i: number) => PAD + (i / (pts.length - 1)) * (W - 2 * PAD);
-  const Y = (v: number) => H - PAD - ((v - lo) / (hi - lo || 1)) * (H - 2 * PAD);
-  const path = pts.map((p, i) => `${i ? "L" : "M"}${X(i).toFixed(1)},${Y(p.v).toFixed(1)}`).join(" ");
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", maxWidth: 640 }}>
-      <path d={path} fill="none" stroke="var(--accent)" strokeWidth="2.5" />
-      {pts.map((p, i) => (
-        <g key={p.d}>
-          <circle cx={X(i)} cy={Y(p.v)} r="4" fill="var(--accent)" />
-          <text x={X(i)} y={H - 8} fontSize="10" fill="var(--text-faint)" textAnchor="middle" fontFamily="monospace">
-            {p.d.slice(5)}
-          </text>
-          <text x={X(i)} y={Y(p.v) - 10} fontSize="11" fill="var(--text)" textAnchor="middle" fontFamily="monospace" fontWeight="700">
-            {p.v.toFixed(1)}
-          </text>
-        </g>
-      ))}
-    </svg>
-  );
-}
-
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const store = getStore();
   const seed = await store.getProject(slug);
   if (!seed) notFound();
-  const [scores, history, metricRows, availability, methodology] = await Promise.all([
+  const [scores, metricRows, availability, methodology] = await Promise.all([
     store.getLatestScores(),
-    store.getSnapshotHistory(slug),
     store.getMetricRows(slug),
     store.getMetricAvailability(),
-    store.getMethodology("0.2.0"),
+    store.getMethodology(ACTIVE_METHODOLOGY_VERSION),
   ]);
-  const snap = scores[slug];
-  if (!snap) notFound();
+  const snap = scores[slug] ?? null;
+
+  if (!snap) {
+    return (
+      <>
+        <div className="meta-line">
+          PROJECT <b>{seed.symbol}</b> · {CATEGORY_LABELS[seed.thesis_category] ?? seed.thesis_category} · METHODOLOGY{" "}
+          <b>v{ACTIVE_METHODOLOGY_VERSION}</b>
+        </div>
+        <h1 className="page-title">{seed.name}</h1>
+        <p className="page-sub">{seed.thesis}</p>
+        <div className="panel">
+          <h2>Not scored under v{ACTIVE_METHODOLOGY_VERSION} <StatusTag status="unavailable" /></h2>
+          <p className="panel-sub" style={{ marginBottom: 0 }}>
+            v{ACTIVE_METHODOLOGY_VERSION} scores six projects with verified data. {seed.name} is
+            outside that set: its scores are <b>unavailable</b> — not estimated, not
+            zero-filled, not carried over from the speculative v0.3.0 set. Market data below
+            is shown for context only.
+          </p>
+        </div>
+        <div className="panel">
+          <h2>Score history</h2>
+          <ScoreTimeline slug={slug} />
+        </div>
+      </>
+    );
+  }
+
   const s = snap.scores;
   const metrics: Record<string, number | null> = {};
   for (const r of metricRows) metrics[r.metricCode] = r.value;
@@ -107,7 +98,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <>
       <div className="meta-line">
         PROJECT <b>{seed.symbol}</b> · {CATEGORY_LABELS[seed.thesis_category] ?? seed.thesis_category} · SNAPSHOT{" "}
-        <b>{snap.snapshot_date}</b> · METHODOLOGY <b>v{snap.methodology_version}</b>
+        <b>{snap.snapshot_date}</b> · METHODOLOGY <b>v{ACTIVE_METHODOLOGY_VERSION}</b>
       </div>
       <h1 className="page-title">{seed.name}</h1>
       <p className="page-sub">{seed.thesis}</p>
@@ -220,8 +211,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       <div className="panel">
-        <h2>Historical Reality</h2>
-        <HistoryChart history={history} />
+        <h2>Score history</h2>
+        <p className="panel-sub">
+          Reality score over time. Gaps are missing data — the line breaks instead of
+          interpolating. Dataset snapshots shown at their recorded methodology version.
+        </p>
+        <ScoreTimeline slug={slug} />
       </div>
 
       <div className="panel">
