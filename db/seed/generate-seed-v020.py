@@ -291,10 +291,12 @@ def main():
     lines.append("-- ============================================================================")
     lines.append("BEGIN;")
     lines.append("")
-    lines.append("-- 1. Genuine v0.2.0 methodology row (frozen config).")
+    lines.append("-- 1. Genuine v0.2.0 methodology row (frozen config). Inserted NOT current:")
+    lines.append("--    the v0.3.0 row may still hold is_current, and the partial-unique")
+    lines.append("--    constraint allows only one TRUE. The flag flip happens in step 2.")
     lines.append(
         "INSERT INTO methodology_versions (id, version, changelog, config_json, is_current) VALUES "
-        f"('{methodology_id}', '0.2.0', {sq(changelog)}, {sq(config_json)}::jsonb, TRUE) "
+        f"('{methodology_id}', '0.2.0', {sq(changelog)}, {sq(config_json)}::jsonb, FALSE) "
         "ON CONFLICT (id) DO NOTHING;"
     )
     lines.append("")
