@@ -2,7 +2,7 @@
 
 **Status:** 2026-09-21. v0.2.0 live in production. Design phase — no code until the plan is settled. Habib discusses + documents; Codex builds from Part 2 when the plan is done.
 
-**How this doc works:** Part 1 is non-technical — what the product is, how the game works, the ranking factors, the strategy. Part 2 is the technical build plan. If you don't code, read Part 1.
+**How this doc works:** Part 1 is non-technical — what the product is, how it works, the ranking factors, the strategy. Part 2 is the technical build plan. If you don't code, read Part 1.
 
 **Non-goals:** no scoring-logic changes without a methodology version bump. No speculation. No price prediction. Algorithms calculate; AI explains; humans version methodology.
 
@@ -33,25 +33,25 @@ Every factor behind the verdict is inspectable — accountability means you can 
 
 **Track 1 — Promise. This is the rank.** Four factors: how long they've been promising, how many promises they kept, how fast they keep them, when they last kept one. One number, pure accountability, the main line on the chart. The homepage sorts by this.
 
-**Track 2 — Context. This is the qualifier.** Everything else: potential, competition, token distribution, utility, company structure, dev activity. Second line on the chart. It qualifies the rank but never overrides it.
+**Track 2 — Context. This is the qualifier.** Everything else: potential, realism, competition, token distribution, utility, company structure, dev activity. Second line on the chart. It qualifies the rank but never overrides it.
 
 The anti-hype rule: no amount of good context rescues a bad promise record. A project can't hide a 12-year staleness behind "active GitHub" or "real utility."
 
 ## Ranking factors
 
-Promise track (the rank):
-- **Promise duration** — how long have they been promising? Live.
-- **Promises kept** — how many milestones did they actually deliver, historically dated? Live.
-- **Promise rate** — kept ÷ years. How fast do they deliver? Live. Read next to recency — coarse milestones saturate, so it punishes longevity alone.
-- **Promise recency** — when did they last keep a promise? Live. XRP: ~12.7 years stale — the flagship story in one number.
+Promise track (the rank) — all live, computed from seed data:
+- **Promise duration** — how long have they been promising?
+- **Promises kept** — how many milestones did they actually deliver, historically dated?
+- **Promise rate** — kept ÷ years. How fast do they deliver? Read next to recency — coarse milestones saturate, so it punishes longevity alone.
+- **Promise recency** — when did they last keep a promise? The flagship story in one number (see Realism versus potential).
 
 Context track (the qualifier):
 - **Overall potential** — how big could this be if delivered? Subjective, needs more thought. World-impact score used as proxy for now.
-- **Realism** — how likely is the remaining promise, given the time gone and who's eating the lane? The fairness lens on staleness: some things legitimately take decades, and a quiet period can mean "not yet" rather than "failed." Pairs with potential — potential asks how big, realism asks how likely. Needs thought before it becomes a number.
+- **Realism** — how likely is the remaining promise, given the time gone and who's eating the lane? The fairness lens on staleness (details below). Needs thought before it becomes a number.
 - **Competition** — how many credible projects chase the same promise? A discount on potential, not a score. Planned — needs a project-lane taxonomy first.
 - **Token distribution** — who holds the coins: founders or the public? Premine, private allocations, insider %. Planned — honest per-project sourcing is the hard part.
 - **Utility** — does anyone actually use it for what was promised? Planned — needs a game-proof definition before it touches anything.
-- **Company structure** — is there a company behind the coin, and who answers for it? Private company, foundation, DAO, no entity. Planned. (XRP: Ripple Labs is a private company — the promise is decentralized money, the structure is a cap table.)
+- **Company structure** — is there a company behind the coin, and who answers for it? Private company, foundation, DAO, no entity. Planned.
 - **Dev activity** — is anyone still building? Commits, releases, contributors. Planned — GitHub API, repo-to-project mapping first.
 
 Across both tracks:
@@ -84,9 +84,9 @@ Weights are the secret sauce, tuned against these examples until they read corre
 
 ## Canonical examples
 
-- **XRP — flagship.** Long promise duration, 2/6 kept, ~12.7 years since the last kept promise, crowded payments lane, private-company structure. The case the product exists to make.
-- **BTC — control.** 4/6 kept, most recent 2024, store-of-value lane. The baseline a fair model must get right.
-- **LINK — third.** 4/6 kept, best throughput of the three, narrower oracle promise. Tests whether the model distinguishes a mostly-kept bounded promise from XRP's broad crowded one.
+- **XRP — flagship.** The case the product exists to make: broad crowded promise, stalled delivery, private-company structure.
+- **BTC — control.** The baseline a fair model must get right.
+- **LINK — third.** Tests whether the model distinguishes a mostly-kept bounded promise from XRP's broad crowded one.
 
 ## Strategy (positioning)
 
@@ -141,7 +141,8 @@ Weights are the secret sauce, tuned against these examples until they read corre
 - Embeddable timeline widget shipped: `/embed/projects/[slug]/timeline`, light/dark, iframe snippet on scored project pages. Verified live.
 - Event pipeline: `npm run events:check` passes — all 6 scored projects have ≥5 valid events.
 - `score.ts` reads `ACTIVE_METHODOLOGY_VERSION` — the pipeline can no longer generate speculative snapshots.
-- Promises-kept series live (chart line + card lead); chart default series set to the primary factors; `ai_assessment` + two-track architecture registered in `ranking-factors.ts` (design only, nothing built).
+- Promises-kept series live (chart line + card lead); chart default series set to the primary factors.
+- Design registered in `ranking-factors.ts` (two-track architecture, AI assessment, realism, context factors) — design only, nothing built.
 
 ## Design phase (not buildable yet — settling in Part 1 first)
 
@@ -149,7 +150,7 @@ Weights are the secret sauce, tuned against these examples until they read corre
 - Context composite formula.
 - Placement of the v0.2.0 scores in the two tracks.
 - AI assessment pipeline (OpenAI key, model choice, prompt v1, validation).
-- Token distribution sourcing research; utility definition; project-lane taxonomy for competition.
+- Token distribution sourcing research; utility definition; project-lane taxonomy for competition; realism assessment method.
 
 ## Build queue (planned — Codex builds when the plan is settled)
 
@@ -180,8 +181,8 @@ Backend:
   multi-day history for each score code before building (84 v0.2.0 snapshots
   exist today).
 
-Open question for Alex: final stat lineup (Utility / Promises Kept / Runway
-was proposed — he rules).
+Open question for Alex: final stat lineup — the two-track design says the
+promise track leads the card; he rules on the exact lineup.
 
 **2. Daily historical-data cadence**
 
@@ -238,6 +239,6 @@ Planned: `openai` (AI assessment, when that leaves design phase).
 ## Blocked on Alex
 
 - Publisher disclosures (Dash/BAT/AVAX/LINK positions) still unconfirmed.
-- Trading-card stat lineup ruling.
+- Trading-card stat lineup ruling (two-track says promise track leads).
 - "Private Leon" garble — read as premine/private allocations; needs his confirmation.
 - Telegram broadcast channel (needs his Telegram account) — strategy-side, not blocking build.
