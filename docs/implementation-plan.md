@@ -96,11 +96,60 @@
 - Gates: rerun against two snapshots, verify deltas computed correctly, no
   false alerts on unchanged rows.
 
+## 11. Daily historical-data cadence — the compounding store
+
+`top20-expansion.md` §10.1: every snapshot accrues permanently; history is the moat.
+Today snapshots are manual (one-off SQL seed). This section makes them daily and automatic.
+
+Current state:
+- `npm run pipeline` (ingest → score) already writes local append-only JSON:
+  `data/snapshots/{metrics,scores,explanations,universe}_<date>.json`. Ingest caches
+  raw upstream data in `data/raw/<date>/` (the audit trail).
+- No DB loader exists — snapshots never reach Supabase on their own.
+- **Blocker:** `app/src/pipeline/score.ts` hardcodes `METHODOLOGY_VERSION = "0.3.0"`
+  (speculative). Daily snapshots must score under the ACTIVE version (v0.2.0) —
+  read it from the same single source of truth the app uses
+  (`app/src/lib/active-methodology.ts`), never a hardcoded constant.
+
+Build:
+1. `scripts/load-snapshot.ts`: reads today's `scores_<date>.json` (+ explanations),
+   inserts into Supabase append-only. Idempotent: `ON CONFLICT DO NOTHING`, same
+   as the seed. Credentials from `app/.env.local` (gitignored): service-role key,
+   server-side only, never logged, never committed.
+2. Fix `score.ts` to score under the active methodology version (no hardcoded
+   0.3.0; v0.3.0 stays out of active output).
+3. Daily cron on this machine (persistent VM): pipeline → loader → verify row
+   counts → fail loudly (log + surface to Alex) on any error. ~21 upstream
+   calls/day, all free tiers.
+4. Never update or delete existing snapshot rows. A bad run is skipped, not repaired.
+
+Gates: dry-run the full chain once (pipeline + loader), verify new dated rows in
+Supabase with correct v0.2.0 labels, verify a second run inserts nothing
+(idempotency), verify failure surfaces.
+
+Note: §9 alerts feed diffs consecutive snapshots — it needs this cadence running
+to be useful beyond the existing 14-snapshot history.
+
 ## Blocked on Alex
 
 - Telegram broadcast channel (needs his Telegram account).
-- Next scoring-update cadence (his methodology call).
 - Publisher disclosures (Dash/BAT/AVAX/LINK positions) still unconfirmed.
+
+## 10. Trading-card layout + per-category chart — queued behind §7
+
+Per `times-up-design.md` ("The card: Marvel-card stat bars"). Presentation only —
+no scoring changes, no new factors, methodology stays v0.2.0.
+
+- Project detail page becomes a trading-card layout: header (name/symbol/rank),
+  stat bars per v0.2.0 score category (Reality, Potential, Execution, Reflexivity,
+  Confidence, Promise Gap, Potential Outlook), evidence links and events one
+  click deeper.
+- ScoreTimeline gains per-category lines (color-coded) feeding into the overall
+  line, drawn from existing snapshot component history. Nulls still render as gaps.
+- Sequenced after the §7 widget (both touch project pages + ScoreTimeline) so
+  they don't collide; the widget then picks up the upgraded chart for free.
+- Gates: `tsc` clean, `next build` clean, btc renders all category lines,
+  usdt renders unavailable state.
 
 - Commit §1+§2, push, wait for Vercel, verify production: methodology 0.2.0, 6 scored, 20 rows.
 
