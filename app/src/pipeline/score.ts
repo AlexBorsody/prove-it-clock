@@ -23,12 +23,15 @@ import {
   type MetricGetter,
   type ProjectSnapshot,
 } from "../methodology/index.js";
+import { ACTIVE_METHODOLOGY_VERSION } from "../lib/active-methodology.js";
 import type { NormalizedMetric } from "../providers/types.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const today = new Date().toISOString().slice(0, 10);
 const SNAP_DIR = join(ROOT, "data", "snapshots");
-const METHODOLOGY_VERSION = "0.3.0";
+// Always score under the ACTIVE methodology version — never a hardcoded
+// speculative version. Speculative versions are append-only history.
+const METHODOLOGY_VERSION = ACTIVE_METHODOLOGY_VERSION;
 
 function latestMetricsFile(): string {
   const files = readdirSync(SNAP_DIR).filter((f) => f.startsWith("metrics_")).sort();
@@ -137,7 +140,7 @@ async function main() {
   console.log(`[score] wrote ${explOut}`);
 
   // --- console summary (the "first calculated results") ---
-  console.log("\n=== RESULTS (methodology v0.3.0, unadjusted) ===");
+  console.log(`\n=== RESULTS (methodology v${cfg.version}, unadjusted) ===`);
   for (const snap of snapshots) {
     const s = snap.scores;
     const fmt = (v: number | null) => (v == null ? "n/a" : v.toFixed(1));

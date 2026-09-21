@@ -70,7 +70,7 @@ Project detail page becomes a trading-card layout: header, stat bars per v0.2.0 
 **11. Daily historical-data cadence — the compounding store**
 The moat: every snapshot accrues permanently; history can't be backfilled by competitors. Today snapshots are manual. Make them daily and automatic:
 1. `scripts/load-snapshot.ts`: reads today's `scores_<date>.json` (+ explanations), inserts into Supabase append-only. Idempotent: `ON CONFLICT DO NOTHING`. Service-role key from `app/.env.local` (gitignored), server-side only, never logged.
-2. Fix `score.ts` to score under the active methodology version (read from `active-methodology.ts`).
+2. ~~Done 2026-09-21:~~ `score.ts` reads the active methodology version.
 3. Daily cron on this machine: pipeline → loader → verify row counts → fail loudly on error.
 4. Never update or delete snapshot rows. A bad run is skipped, not repaired.
 

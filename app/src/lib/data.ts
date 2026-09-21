@@ -79,7 +79,7 @@ const METRICS_DOC = metricsDocJson as {
 };
 
 // Score codes computed from other scores, not measured directly.
-// Mirrors the `derived` section of the methodology config (v0.3.0.json)
+// Mirrors the `derived` section of the methodology config
 // and the kind='derived' rows in score_definitions.
 const DERIVED_SCORE_CODES = new Set([
   "promise_gap",
