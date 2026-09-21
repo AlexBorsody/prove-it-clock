@@ -191,8 +191,7 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
       "allocation %. Sourcing this honestly per project is the hard part — " +
       "needs research, not estimation.",
     note:
-      "Alex: founder holdings matter; also (voice garble — 'private Leon', read " +
-      "as premine/private allocations; to confirm) whether the supply was " +
+      "Alex: founder holdings matter, and so does whether the supply was " +
       "premined or privately allocated before the public ever saw it. A project " +
       "can keep promises and still be insiders-first. High value, hard to source.",
   },

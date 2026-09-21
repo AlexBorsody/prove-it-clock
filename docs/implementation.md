@@ -74,7 +74,7 @@ Realism's inputs: staleness, lane velocity (are competitors shipping while this 
 
 ### Promise Score (Track 1 — the rank, the main line)
 
-Four components, each 0–1, from seed milestone data. All four are computable for any past date *t* from milestones with achieved_date ≤ *t* — so the main graph line is a true historical series, not a backfill.
+Four components, each 0–1, from seed milestone data. Numerator and recency come from achieved_at ≤ *t*; the denominator comes from published_at ≤ *t* — only promises that existed then count. Until seeds carry published_at, the historical line is reconstructed: labeled, never presented as the true series.
 
 - **Fulfillment F** = kept ÷ total. The core: what fraction of promises did you keep?
 - **Throughput T** = min((kept ÷ years) / 0.5, 1). Pace: 0.5 kept promises/year reads as excellent at coarse milestone granularity, capped at 1.
@@ -103,6 +103,18 @@ Sanity check: a brand-new project scores ~30 (all hope, no record: F=0, T=0, C=1
 
 Missing data: the Promise Score needs the milestone set. No milestones → unavailable, never zero.
 
+### Milestone states (decided 2026-09-21)
+
+A promise is not binary. Seeds today only know achieved true/false — that can't distinguish "still trying" from "quietly dropped it", and the fulfillment ratio needs the distinction. Config: `app/src/lib/milestone-states.ts`.
+
+Stored states: **open** (live promise), **fulfilled** (kept, evidence-linked), **abandoned** (stopped pursuing — team said so or evidence shows it's dead), **superseded** (replaced by a newer promise, linked to it). **Overdue** is derived, never stored: open + target_date in the past. A late delivery still counts as fulfilled — fulfilled is fulfilled; the lateness shows in recency and the record.
+
+The anti-gaming rule: **abandoning a promise never improves the score.** Abandoned stays in the denominator. The only way out is supersession — into a *new* accountable commitment, linked. You can't shrink your way to a better ratio.
+
+**F = fulfilled ÷ (fulfilled + open + overdue + abandoned).**
+
+Schema additions per milestone: `state`, `target_date` (nullable — no date means open, never overdue; we don't invent dates), `published_at` (when the promise entered the public record — drives the historical denominator), `superseded_by`, `state_note` (who called it and why).
+
 ### Context Score (Track 2 — the qualifier, the second line)
 
 **Context Score = 100 × Σ(wᵢ·xᵢ) / Σwᵢ**, over assessed factors only. Each xᵢ ∈ [0,1], higher = better for the project's case. Unassessed factors are excluded and labeled — never zero-filled. Default equal weights until tuned.
@@ -123,6 +135,7 @@ The context line updates when analysts (or the AI pipeline) reassess — steppy,
 - **Main line:** Promise Score(t), recomputed per date from milestone history. Methodology-version markers on the axis.
 - **Second line:** Context Score(t), analyst-updated.
 - Nulls render as gaps on both. The anti-hype rule is visual: the context line can never pull the promise line up.
+- **Every point is inspectable** (config: `app/src/lib/history-semantics.ts`): **observed** (computed from the record as it stood at *t* — numerator from achieved_at ≤ *t*, denominator from published_at ≤ *t*), **reconstructed** (today's knowledge applied backward — dashed, labeled, never sold as the true series; the historical line stays reconstructed until seeds carry published_at), **methodology-change** (markers where the version changed — scores across the line aren't comparable), **missing** (gaps, never interpolated).
 
 ### AI assessment (unchanged)
 
@@ -194,7 +207,10 @@ Stays separate and display-only: the deterministic output (both scores + full fa
 
 Decided 2026-09-21 (recorded in `formula-candidate.ts`): LINK > BTC stands;
 3-year minimum bar for the rank; 0.5/yr throughput anchor kept; 5y recency
-scale kept. Remaining:
+scale kept. Decided 2026-09-21 (recorded in `milestone-states.ts`,
+`history-semantics.ts`): milestone state machine (open/fulfilled/abandoned/
+superseded, overdue derived, anti-gaming denominator rule); historical series
+types (observed/reconstructed/methodology-change/missing). Remaining:
 - Context composite parameters per factor (as each factor leaves design).
 - Placement of the v0.2.0 scores in the two tracks.
 - AI assessment pipeline (OpenAI key, model choice, prompt v1, validation).
@@ -254,6 +270,35 @@ Backend (new `app/scripts/load-snapshot.ts`, run via `tsx`):
 Frontend: none — the chart reads the same history API; new daily points appear
 automatically.
 
+**3. Milestone schema v2 (Phase A — blocks the v0.3.0 pipeline)**
+
+- Seeds + DB: extend milestones with `state`, `target_date`, `published_at`,
+  `superseded_by`, `state_note` (field spec in `app/src/lib/milestone-states.ts`).
+- Backfill: achieved=true → `fulfilled` (achieved_at kept); achieved=false →
+  `open` with no target_date (never retroactively marked overdue — we don't
+  invent dates). published_at backfill: honest "unknown" until researched —
+  the historical line renders as reconstructed meanwhile (per
+  `history-semantics.ts`), which is the truthful state.
+- No score changes in this phase. v0.2.0 untouched.
+
+**4. v0.3.0 Promise Score pipeline (Phase B)**
+
+- Nightly compute per project per day from milestone states, using the
+  denominator rule from `milestone-states.ts` and the formula from
+  `formula-candidate.ts`. Append-only rows, methodology version v0.3.0.
+- 3-year eligibility bar: below it, "too early to rank" (unavailable, never zero).
+- API: score + components (F, C, T, D) per point — inspectability is the product.
+- Chart: Promise Score becomes the main rank line; promises_kept stays;
+  series-type labels (observed/reconstructed) per the semantics config;
+  methodology markers already exist.
+
+**5. Context track wiring (Phase C)** — as each factor leaves design: lane
+taxonomy on seeds, per-factor config, second line on the chart (separate
+panel, never blended into the rank).
+
+**6. AI assessment (Phase D)** — nightly pipeline, structured outputs,
+cached; rationale displayed. Separate track, never blended.
+
 ## Third-party APIs
 
 None new for this queue. The daily run reuses the pipeline's existing
@@ -288,5 +333,3 @@ Planned: `openai` (AI assessment, when that leaves design phase).
 
 - Publisher disclosures (Dash/BAT/AVAX/LINK positions) still unconfirmed.
 - Trading-card stat lineup ruling (two-track says promise track leads).
-- "Private Leon" garble — read as premine/private allocations; needs his confirmation.
-- Telegram broadcast channel (needs his Telegram account) — strategy-side, not blocking build.
