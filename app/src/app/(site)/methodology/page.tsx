@@ -1,7 +1,7 @@
 import { getStore } from "@/lib/data";
 import { EpistemicTag } from "@/components/score";
 import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
-import disclosuresDoc from "../../../data/disclosures.json";
+import disclosuresDoc from "../../../../data/disclosures.json";
 
 export const dynamic = "force-dynamic";
 

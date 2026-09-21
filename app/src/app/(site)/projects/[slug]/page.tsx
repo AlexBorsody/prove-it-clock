@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { getStore } from "@/lib/data";
 import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
 import { ScoreCard, ScoreCell, EpistemicTag, StatusTag } from "@/components/score";
@@ -59,6 +60,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     store.getMethodology(ACTIVE_METHODOLOGY_VERSION),
   ]);
   const snap = scores[slug] ?? null;
+
+  // Absolute URL for the copy-paste embed snippet (works locally and in prod).
+  const hdrs = await headers();
+  const host = hdrs.get("x-forwarded-host") ?? hdrs.get("host") ?? "prove-it-clock.vercel.app";
+  const proto = hdrs.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  const embedUrl = `${proto}://${host}/embed/projects/${slug}/timeline`;
 
   if (!snap) {
     return (
@@ -217,6 +224,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           interpolating. Dataset snapshots shown at their recorded methodology version.
         </p>
         <TimelineChart slug={slug} />
+      </div>
+
+      <div className="panel">
+        <h2>Embed this timeline</h2>
+        <p className="panel-sub">
+          Copy-paste snippet. Renders the same score timeline with no JavaScript.
+          Swap <span className="num">theme=light</span> for <span className="num">theme=dark</span> to
+          match a dark host page.
+        </p>
+        <pre className="num" style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 6, padding: "10px 12px", fontSize: 12, overflowX: "auto", whiteSpace: "pre-wrap", wordBreak: "break-all", margin: 0 }}>
+{`<iframe src="${embedUrl}?theme=light" width="720" height="340" loading="lazy" title="Prove-It Clock — ${seed.name} score timeline"></iframe>`}
+        </pre>
       </div>
 
       <div className="panel">
