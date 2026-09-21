@@ -24,6 +24,7 @@ import { notFound } from "next/navigation";
 import { supabaseEnabled } from "@/lib/supabase";
 import { getProjectHistory } from "@/lib/history";
 import { ACTIVE_METHODOLOGY_VERSION } from "@/lib/active-methodology";
+import { CHART_DEFAULT_SERIES } from "@/lib/ranking-factors";
 import TimelineSvg, {
   DARK_PALETTE,
   LIGHT_PALETTE,
@@ -178,7 +179,18 @@ export default async function EmbedTimelinePage({
           v{ACTIVE_METHODOLOGY_VERSION}
         </div>
       </div>
-      <TimelineSvg body={body} palette={p} fillBackground />
+      <TimelineSvg
+        body={body}
+        palette={p}
+        fillBackground
+        hidden={
+          new Set(
+            Object.keys(body.metrics).filter(
+              (c) => !CHART_DEFAULT_SERIES.includes(c),
+            ),
+          )
+        }
+      />
       {credit(p, slug)}
     </>,
   );

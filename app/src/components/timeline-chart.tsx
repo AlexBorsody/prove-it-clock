@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { CHART_DEFAULT_SERIES } from "../lib/ranking-factors";
 import TimelineSvg, {
   DARK_PALETTE,
   type SvgEvent,
@@ -23,13 +24,25 @@ export default function TimelineChart({ slug }: { slug: string }) {
   const [failed, setFailed] = useState(false);
   const [hidden, setHidden] = useState<Set<string>>(new Set());
   const [selectedEvent, setSelectedEvent] = useState<SvgEvent | null>(null);
+  const defaultsSet = useRef(false);
 
   useEffect(() => {
     let live = true;
     fetch(`/api/projects/${slug}/history`)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((j) => {
-        if (live) setBody(j);
+        if (live) {
+          setBody(j);
+          // First load: the main ranking factors lead; everything else is one
+          // tap away in the legend. After that the user's toggles rule.
+          if (!defaultsSet.current) {
+            defaultsSet.current = true;
+            const codes = Object.keys(j.metrics ?? {});
+            setHidden(
+              new Set(codes.filter((c) => !CHART_DEFAULT_SERIES.includes(c))),
+            );
+          }
+        }
       })
       .catch(() => {
         if (live) setFailed(true);

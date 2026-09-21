@@ -72,8 +72,7 @@ export const RANKING_EXAMPLES: {
   },
 };
 
-export const RANKING_FACTORS: RankingFactor[] = [
-  {
+export const RANKING_FACTORS: RankingFactor[] = [  {
     key: "promise_duration",
     name: "Promise duration",
     kind: "core",
@@ -188,4 +187,19 @@ export const RANKING_FACTORS: RankingFactor[] = [
       "v0.2.0 derived: clamp(max(promise_gap,0) × (execution_evidence/10), 0, 10). " +
       "Not a probability or price prediction; uncalibrated until backtesting.",
   },
+];
+
+/**
+ * Series shown on the chart by default: the main factors.
+ * Everything else stays one tap away in the legend — no data is hidden,
+ * the main factors just lead. Mirrors the card's stat bars.
+ */
+export const CHART_DEFAULT_SERIES: readonly string[] = [
+  "promises_kept",
+  "reality",
+  "world_impact_potential",
+  "execution_evidence",
+  "reflexivity_risk",
+  "promise_gap",
+  "potential_outlook",
 ];
