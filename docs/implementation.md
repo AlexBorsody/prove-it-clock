@@ -68,19 +68,61 @@ LINK is the counter-case. Shorter history, big ambition (becoming core financial
 
 Realism's inputs: staleness, lane velocity (are competitors shipping while this project stalls?), remaining promise difficulty, execution trend. Analyst judgment first, AI-assisted later. A qualitative read — never a calibrated probability, never a prediction.
 
-## The formula (sketch — weights TBD)
+## The formula (v0.3.0 candidate — design only, not implemented)
 
-Promise Score = f(fulfillment, throughput, staleness, duration). Context = composite of the context factors (formula TBD).
+**Status:** candidate spec. Implementing it ships as methodology v0.3.0 — append-only, new version, diffs public. v0.3.0 stays out of active output until approved. Nothing below changes v0.2.0.
 
-Naive read on the three examples:
+### Promise Score (Track 1 — the rank, the main line)
 
-| | Kept | Rate | Stale |
-|---|---|---|---|
-| BTC (control) | 4/6 | 0.23/yr | 2.7y |
-| XRP (flagship) | 2/6 | 0.14/yr | 12.7y |
-| LINK | 4/6 | 0.43/yr | 3.7y |
+Four components, each 0–1, from seed milestone data. All four are computable for any past date *t* from milestones with achieved_date ≤ *t* — so the main graph line is a true historical series, not a backfill.
 
-Weights are the secret sauce, tuned against these examples until they read correctly. The formula ships as a new methodology version — append-only, never a silent tweak. The formula itself is published: transparency is the product; the moat is the accumulated history plus the tuning, which nobody can copy.
+- **Fulfillment F** = kept ÷ total. The core: what fraction of promises did you keep?
+- **Throughput T** = min((kept ÷ years) / 0.5, 1). Pace: 0.5 kept promises/year reads as excellent at coarse milestone granularity, capped at 1.
+- **Recency C** = e^(−S/5), S = years since the last kept promise. Momentum with a 5-year decay: ~37% credit left at 5 years stale, ~14% at 10.
+- **Duration D** = min(years promising / 10, 1). Credibility: a 10-year timeline is hard to fake. Capped on purpose — longevity must not rescue a bad record.
+
+**Promise Score = 100 × (0.40·F + 0.30·C + 0.20·T + 0.10·D)**
+
+Why these weights: fulfillment is the question ("are they full of shit"), recency is momentum, throughput is pace, duration is a small credibility bonus. Weights are global, never per-project.
+
+Worked, 2026-09-21:
+
+| | F | T | C | D | Score |
+|---|---|---|---|---|---|
+| BTC | 0.67 | 0.45 | 0.58 | 1.00 | **63** |
+| XRP | 0.33 | 0.28 | 0.08 | 1.00 | **31** |
+| LINK | 0.67 | 0.89 | 0.48 | 0.90 | **68** |
+
+The honest output: LINK edges BTC on pure delivery (faster pace, more recent), and XRP collapses to 31 — the flagship story in one number.
+
+**Open question for Alex:** does LINK > BTC read correctly? The design's answer is yes for Track 1 — it measures delivery, not greatness. BTC's moat (adoption, Lindy effect, decentralization) shows up in the context line, not here. If it reads wrong, the weights move — globally, with the reasoning published.
+
+Missing data: the Promise Score needs the milestone set. No milestones → unavailable, never zero.
+
+### Context Score (Track 2 — the qualifier, the second line)
+
+**Context Score = 100 × Σ(wᵢ·xᵢ) / Σwᵢ**, over assessed factors only. Each xᵢ ∈ [0,1], higher = better for the project's case. Unassessed factors are excluded and labeled — never zero-filled. Default equal weights until tuned.
+
+Per-factor normalization (shapes fixed, parameters TBD as each factor leaves design):
+- potential: analyst 0–10 → /10 (current proxy: world_impact_potential)
+- realism: qualitative → low 0.2 / medium 0.5 / high 0.8 (assessment method TBD)
+- competition: x = 1/(1+n), n = credible lane competitors (needs lane taxonomy)
+- token_distribution: x = 1 − insider share — founders + team + private allocations + premine (needs honest sourcing)
+- utility: usage-against-promise ratio → 0–1 (needs game-proof definition)
+- company_structure: rubric TBD — direction: less single-party control scores higher
+- dev_activity: activity vs lane median → 0–1 (needs repo mapping)
+
+The context line updates when analysts (or the AI pipeline) reassess — steppy, versioned, never interpolated.
+
+### The graph
+
+- **Main line:** Promise Score(t), recomputed per date from milestone history. Methodology-version markers on the axis.
+- **Second line:** Context Score(t), analyst-updated.
+- Nulls render as gaps on both. The anti-hype rule is visual: the context line can never pull the promise line up.
+
+### AI assessment (unchanged)
+
+Stays separate and display-only: the deterministic output (both scores + full factor breakdown) feeds the OpenAI brief → score, rationale, risks, confidence, verdict. Shown with its reasoning. Prompt-versioned, append-only.
 
 ## Canonical examples
 
@@ -146,8 +188,8 @@ Weights are the secret sauce, tuned against these examples until they read corre
 
 ## Design phase (not buildable yet — settling in Part 1 first)
 
-- Promise Score formula + weights (tuned against XRP/BTC/LINK).
-- Context composite formula.
+- Promise Score formula + weights — specced in Part 1 (v0.3.0 candidate). Open: Alex rules on LINK 68 > BTC 63.
+- Context composite formula — aggregation rule + per-factor shapes specced; parameters TBD per factor.
 - Placement of the v0.2.0 scores in the two tracks.
 - AI assessment pipeline (OpenAI key, model choice, prompt v1, validation).
 - Token distribution sourcing research; utility definition; project-lane taxonomy for competition; realism assessment method.
