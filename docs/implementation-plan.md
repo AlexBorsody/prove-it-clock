@@ -65,7 +65,7 @@
 - Visual QA: `/`, `/projects/btc`, `/projects/usdt`, `/methodology` all pass.
 - Footer version corrected: v0.3.0 → v0.2.0 (remote `75ccf1da`), verified live.
 
-## 7. Embeddable timeline widget — next
+## 7. Embeddable timeline widget — SHIPPED 2026-09-21
 
 - Route `app/embed/projects/[slug]/timeline/page.tsx`: server-rendered SVG of the
   existing ScoreTimeline component, no JS dependency.
