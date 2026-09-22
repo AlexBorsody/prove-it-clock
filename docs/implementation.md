@@ -46,8 +46,10 @@ rules. Results must follow evidence rather than preset rankings.
 
 ## The character card and hearts
 
-Each project is a character, presented as a game/Pokémon-style card. Its
-timeline is its journey; the line tracks a Zelda-style heart meter.
+Think of each project as a game/Pokémon-style character and its timeline as its
+journey. Visually, keep the project summary simple: a compact **8-bit heart
+meter**, with filled and empty hearts and a numeric count such as **2 / 20**.
+The character analogy guides the model, not an elaborate game interface.
 
 - **Maximum hearts:** project-specific capacity based on credible potential.
 - **Starting hearts:** a modest, labeled allowance, not proof of promises kept.
@@ -83,9 +85,13 @@ Hearts remain model units; their economic mapping is still to be defined.
 ## The graph
 
 One main line: **hearts over time**, intended to explain justified token value.
-The card shows filled and empty containers; the graph shows filled hearts over
-time against the project's maximum. Capacity changes remain visible. Selecting
-a gain or loss explains the milestone reward or decay behind it. A person should
+Use ordinary plotted lines and points: dates on the horizontal axis, hearts on
+the vertical axis, and a simple reference for maximum capacity. Pixel hearts
+belong in the compact current-value meter, not at every graph point. No character
+art, animations, ornate card frames, or game-engine UI is needed.
+
+Capacity changes remain visible. Selecting a gain or loss explains the milestone
+reward or decay behind it. A person should
 be able to say, “It went up because they kept a meaningful promise,” or “It is
 falling because the initial promise still has not materialized.” Select a point
 to see the evidence or assumption behind the change.
