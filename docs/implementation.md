@@ -41,14 +41,34 @@ support the estimate, the graph should decline and eventually reach zero.
 BTC and LINK provide contrasting delivery examples to assess using the same
 rules. Results must follow evidence rather than preset rankings.
 
+## The character card and hearts
+
+Each project is a character, presented as a game/Pokémon-style card. Its
+timeline is its journey; the line tracks a Zelda-style heart meter.
+
+- **Starting hearts:** a modest, bounded boost from team, utility, and potential.
+- **Earned hearts:** meaningful promises fulfilled with evidence.
+- **Lost hearts:** prolonged non-delivery erodes unearned potential.
+- **Full hearts:** the core promise is fulfilled. Starting bonuses or announcements
+  alone cannot fill the meter.
+- **Zero hearts:** the promise has failed with no demonstrated value supporting it.
+
+Hearts express progress toward realizing potential, including the limited
+starting allowance. The size of that potential determines what full hearts
+could be worth. Two projects with full hearts need not deserve the same market
+cap. Hearts are the visible unit; the economic mapping remains to be defined.
+
 ## The graph
 
-One main line: **estimated justified token value over time**. A person should
+One main line: **hearts over time**, intended to explain justified token value.
+The card shows current hearts; the graph shows how they changed. A person should
 be able to say, “It went up because they kept a meaningful promise,” or “It is
 falling because the initial promise still has not materialized.” Select a point
 to see the evidence or assumption behind the change.
 
-Actual traded price may be a comparison; it does not set the justified value.
+Actual traded price may be a clearly labeled comparison once the valuation
+mapping exists; hearts and dollars must not be treated as the same unit.
+Traded price does not set the justified value.
 There is no separate countdown or extra score dashboard. Time affects the
 valuation through non-delivery, not through another interface.
 
@@ -60,13 +80,13 @@ from evidence. Fulfilled promises do not require an endless stream of new promis
 
 1. For BTC, XRP, and LINK, record promises, fulfillment evidence, and starting
    potential, including the modest contribution from supporting factors.
-2. Define the starting allowance, value earned through delivery, and the rate
-   and finite endpoint of decline under non-delivery. Use consistent rules;
+2. Define the heart scale, starting allowance, hearts earned through delivery,
+   full-heart criteria, and the rate and finite endpoint of decline under non-delivery. Use consistent rules;
    no coin-specific tuning or resets through marketing.
 3. Define how that value accrues to the token and becomes a justified market-cap
    estimate. Per-token price requires a stated supply basis for each date.
 
-The health-points analogy explains the behavior; it is not yet a valuation
+The hearts model defines the presentation and behavior; it is not yet a valuation
 formula. Until the economic mapping exists, do not label points or an impact
 score as dollars. Then adapt the existing graph to this model.
 
