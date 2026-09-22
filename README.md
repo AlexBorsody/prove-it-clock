@@ -1,9 +1,10 @@
 # The Prove-It Clock
 
-What should a crypto project’s market cap be, given its promise and what it
-actually delivers? The Clock follows **promises kept** and **potential of the
-promise** over time. A justified-market-cap model is the goal, not yet a
-capability of the current prototype.
+The product is a graph of **what the token should be worth**. Promise potential,
+team, utility, and impact give a modest starting allowance. Meaningful promises
+kept support or raise value; prolonged non-delivery wears unearned value down,
+eventually to zero if no token value is demonstrated. No separate clock UI.
+The valuation formula is not yet implemented in the current prototype.
 
 [Live site](https://prove-it-clock.vercel.app) · Active methodology **v0.2.0** ·
 20 seeded projects, six scored (BTC, ETH, XRP, SOL, ADA, LINK).

@@ -1,102 +1,84 @@
-# Prove-It Clock — Implementation
+# Prove-It — Implementation
 
-**Direction: September 22, 2026.** This replaces the previous multi-factor plan.
-The existing v0.2.0 app is a prototype; it does not yet implement this model.
+**Direction: September 22, 2026.** The graph is the product. This replaces the
+clock interface and multi-factor dashboard. The existing v0.2.0 app does not
+yet calculate this model; the project name can be settled later.
 
 ## The point
 
-**What should a project's market cap be, given the promise it made and what it actually delivers?**
+**Show what the token should be worth as promises are kept and potential is realized.**
 
-The Clock follows two things over time:
+The model has a simple progression:
 
-- **Promises kept:** how much of the promised outcome is demonstrably real.
-- **Potential of the promise:** what fulfilling that outcome could be worth.
+- **Starting value:** the promise and overall vision establish potential.
+  Team, utility, and world impact provide a modest starting boost—like a game
+  character starting with more health points. They do not prove delivery.
+- **Delivery:** meaningful promises kept turn potential into demonstrated value
+  and can support or raise the line. Trivial tasks do not earn automatic increases.
+- **Non-delivery:** as time passes without meaningful progress, unearned value
+  wears down. With prolonged non-delivery and no demonstrated token value,
+  the line must eventually reach zero.
 
-The goal is for delivery to reach the promised outcome. If it does, the project
-wins. If its opportunity expires without delivery, the value attributed to that
-unfulfilled promise should fall toward zero. Time matters because a promise
-cannot justify value forever.
+Starting advantages are bounded and counted once. Reputation, repeated claims,
+or new announcements cannot continually refill the starting allowance. Utility
+already counted at the start cannot be counted again as new progress. Later
+verified utility belongs to delivery evidence.
 
-## Promise fulfilled?
+## Promises and potential
 
-Each project needs one clear core promise and an evidence-based definition of
-success. Milestones show progress toward it; completing many small tasks is not
-the same as fulfilling a valuable promise.
+Define each project's core promise and the evidence that would count as keeping
+it. Assess the impact of individual promises and the overall vision separately,
+without adding overlapping value twice. Delivering something consequential
+matters more than completing many small milestones.
 
-The chart shows delivery against that goal over time. They meet when the
-original success criteria are met—not when we lower the goal to meet delivery.
-A fulfilled promise stops being judged as perpetually late; maintaining what
-was delivered becomes the evidence for its continuing value.
+Team, utility, and World Impact assessments support the starting allowance.
+They are supporting inputs, not separate headline scores or chart tracks.
+The current World Impact score is a possible impact proxy, not a dollar value.
 
-A deadline or opportunity window must have a stated basis. Passing it without
-delivery means time is up for that promise. Changing the promise or extending
-the window must remain visible in the history, never reset the clock silently.
-The exact expiry rule still needs to be defined.
+**XRP is Alex's non-delivery test case:** if the evidence shows its core promise
+has remained unkept after all this time, with no demonstrated token value to
+support the estimate, the graph should decline and eventually reach zero.
+BTC and LINK provide contrasting delivery examples to assess using the same
+rules. Results must follow evidence rather than preset rankings.
 
-## Potential and value
+## The graph
 
-Promise Potential Impact (PPI) asks how consequential fulfillment would be.
-Assess each promise's potential separately from the overall project vision,
-as Alex specified. Both belong under potential; avoid counting overlapping
-promises twice when assessing the project as a whole.
-The existing World Impact score can be a temporary, labeled project-level proxy;
-it is not yet a sourced assessment of each promise or a dollar valuation.
+One main line: **estimated justified token value over time**. A person should
+be able to say, “It went up because they kept a meaningful promise,” or “It is
+falling because the initial promise still has not materialized.” Select a point
+to see the evidence or assumption behind the change.
 
-Team, utility, adoption, competition, and execution evidence support the case
-for the promise's potential and whether it remains attainable. They belong
-behind the explanation, not in separate headline scores or a Context track.
+Actual traded price may be a comparison; it does not set the justified value.
+There is no separate countdown or extra score dashboard. Time affects the
+valuation through non-delivery, not through another interface.
 
-The intended output is a reasoned estimate of **justified market cap**, compared
-with actual market cap. Derive the estimate from delivery, remaining credible
-potential, and how the token captures that value; do not use today's market cap
-to justify itself. A successful project does not automatically make its token
-valuable.
+Demonstrated continuing value does not disappear merely because it is old.
+The unearned starting allowance decays; loss of delivered utility is assessed
+from evidence. Fulfilled promises do not require an endless stream of new promises.
 
-For a wholly failed thesis with no remaining delivered value, the model should
-allow justified value to reach zero. If useful value has already been delivered,
-separate that from the expired promise rather than erasing it. This describes
-the model's valuation, not a claim that the traded market cap must reach zero.
+## Define before building
 
-## What the user sees
+1. For BTC, XRP, and LINK, record promises, fulfillment evidence, and starting
+   potential, including the modest contribution from supporting factors.
+2. Define the starting allowance, value earned through delivery, and the rate
+   and finite endpoint of decline under non-delivery. Use consistent rules;
+   no coin-specific tuning or resets through marketing.
+3. Define how that value accrues to the token and becomes a justified market-cap
+   estimate. Per-token price requires a stated supply basis for each date.
 
-One project view: the promise, promises kept, potential of the promise, and the
-clock. One timeline shows whether delivery is approaching fulfillment before
-the opportunity runs out. Evidence and assumptions sit one click deeper.
-Once the valuation method is defined, show justified versus actual market cap.
-Until then, label valuation as not yet calculated; a 0–10 impact score is not dollars.
-
-Delivery and the goal must use comparable measures. Do not plot a milestone
-count and a potential score as if their numerical intersection proves success.
-BTC, XRP, and LINK are the working examples; their outcomes must follow the
-evidence rather than predetermined rankings.
-
-## Next work — one focused prototype
-
-1. Specify the core promise, success evidence, delivered progress, potential,
-   and justified opportunity window for BTC, XRP, and LINK.
-2. Define how fulfillment and expiry affect token value. State the assumptions
-   needed to turn that into a market-cap estimate before choosing a formula.
-3. Adapt the existing card and timeline to those concepts. Store dated evidence
-   and assessments so every visible change can be inspected.
-
-The previous weighted Promise formula, separate Context Score, seven-category
-chart expansion, independent AI rating, and additional provider integrations
-are out of the current plan. Do not build them from older docs or config mirrors.
+The health-points analogy explains the behavior; it is not yet a valuation
+formula. Until the economic mapping exists, do not label points or an impact
+score as dollars. Then adapt the existing graph to this model.
 
 ## Implementation boundaries
 
-Keep Next.js, Supabase, the existing providers/loader, and the shared chart.
+Keep Next.js, Supabase, existing providers/loader, and the shared chart.
 Codex owns schemas, ingestion, and API contracts alongside Muse's existing work.
-Backend changes should serve this prototype: dated promise evidence, potential
-assessments, fulfillment/expiry history, and eventually valuation assumptions.
-No new service or speculative schema is needed before those definitions settle.
+Store dated evidence, starting assumptions, delivery, and versioned assessments.
+Missing evidence stays unknown, not zero. Preserve past snapshots; publish new
+calculations under a new approved methodology rather than relabeling old scores.
 
-Preserve historical snapshots and methodology versions. Missing evidence stays
-unknown, not zero. New calculations need a new approved methodology; existing
-v0.2.0 scores and speculative v0.3.0 records must not be relabeled or overwritten.
-The loader still needs integrity work before unattended operation; that supports
-the product rather than becoming another product track.
-
-[Previous design and architecture findings](archive/2026-09-22-previous-implementation.md)
-are archived for reference. This page is the current scope; daily logs record
-progress, not competing roadmaps.
+No independent Context Score, AI rating, extra provider integration, or new
+service is in scope. The loader's integrity fixes support this graph. Older
+formulas and queues are superseded; [archived findings](archive/2026-09-22-previous-implementation.md)
+remain reference material, not a second plan.

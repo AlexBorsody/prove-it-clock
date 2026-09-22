@@ -8,9 +8,10 @@ and new integrations are outside it.
 
 ## Positioning
 
-A record of promises kept and the potential of the promise, working toward an
-evidence-based estimate of justified market cap. Assumptions and history remain
-public; sponsorship must never influence the assessment.
+One graph of justified token value: a modest starting allowance for potential,
+value supported by meaningful delivery, and decline under sustained non-delivery.
+Supporting factors explain the starting allowance; they do not continually refill
+it. Assumptions and history stay public, and sponsorship never affects results.
 
 ## The moat: data that compounds
 
