@@ -1,8 +1,8 @@
 # Superseded plan — preserved for reference
 
 Alex replaced this scope on September 22 with promises kept, potential of the
-promise, and justified market value. The [current implementation plan](../implementation.md)
-takes precedence over all formulas, queues, and role descriptions below.
+promise, and justified market value. The [game design](../game_design.md) and [technical plan](../implementation.md)
+take precedence over all formulas, queues, and role descriptions below.
 Technical findings remain reference material, not a separate build queue.
 This copy includes Alex’s “Promise Fulfilled?” and PPI additions.
 

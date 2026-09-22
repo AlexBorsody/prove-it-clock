@@ -11,7 +11,8 @@ hearts and prolonged non-delivery erodes unearned value. The UI is a compact
 
 ## Read first
 
-- [Implementation](docs/implementation.md): the focused product concept and next prototype. This is the single planning surface.
+- [Game design](docs/game_design.md): product concept, heart rules, examples, and open design decisions.
+- [Implementation](docs/implementation.md): architecture, schema/API contracts, integrity work, and technical delivery.
 - [Strategy](docs/strategy.md): distribution and monetization, separate from engineering scope.
 - [Daily logs](docs/tasks/): outcomes, decisions, verification, and blockers. Historical queues do not override the implementation plan.
 
@@ -51,7 +52,7 @@ administration. Never expose privileged credentials through `NEXT_PUBLIC_*`.
 
 The loader exists, but unattended operation is not yet verified. Reruns can
 overwrite local artifacts; loader completeness and atomicity need work. Read
-the [archived architecture findings](docs/archive/2026-09-22-previous-implementation.md) before scheduling or running against production.
+the [technical implementation plan](docs/implementation.md) before scheduling or running against production.
 
 ## Repository map
 

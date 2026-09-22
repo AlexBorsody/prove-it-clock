@@ -1,69 +1,91 @@
-# Prove-It — Implementation
+# Prove-It — Technical Implementation
 
-**September 22, 2026.** This is the active plan. The v0.2.0 app does not yet
-implement this hearts model or calculate justified token value.
+**September 22, 2026.** [Game design](game_design.md) defines what to build.
+This document covers architecture, data contracts, and delivery. Proposed
+hearts storage/API changes below are not implemented or finalized migrations.
 
-## The idea
+## Current system
 
-**One graph: is the project earning its value by keeping promises and realizing its potential?**
-
-Each project is a game character. Its promise is the goal, its hearts show its
-condition, and the graph records its journey. Ultimately, this should explain
-what the token should be worth.
-
-## The rules
-
-| Element | Meaning |
-| --- | --- |
-| Maximum hearts | Credible potential/world impact sets capacity. Bigger ambition needs more delivery—not free filled hearts. |
-| Starting hearts | A modest, bounded allowance supported by team and existing utility. Label it separately from earned delivery. |
-| Earned hearts | Verified promises kept. Important promises can earn more; one might be worth two hearts. |
-| Lost hearts | Prolonged non-delivery erodes unearned value. Announcements cannot refill it. |
-| Full hearts | The core promise is fulfilled. |
-| Zero hearts | Unsupported promise is exhausted and no demonstrated token value remains. |
-
-Use consistent rules. Define rewards and evidence requirements beforehand.
-Do not double-count overlapping promises, starting utility, or subdivided tasks.
-Preserve real continuing utility; age alone does not erase delivered value.
-Changes to promises, rewards, and capacity remain visible in history.
-
-## Examples
-
-Alex's illustrative numbers, not verified ratings:
-
-| Project | Promise framing | Hearts |
+| Layer | Location | Current behavior |
 | --- | --- | --- |
-| XRP | Replace major parts of SWIFT/banking infrastructure | 2 / 20 |
-| BAT | Reward participation in advertising | 3 / 10 |
+| App | `app/src/app/` | Next.js pages and API routes, deployed on Vercel. |
+| Chart | `app/src/components/timeline-*.tsx` | Shared SVG renderer for project pages and embeds. |
+| Reads | `app/src/lib/data.ts`, `history.ts`, `supabase.ts` | Server-side Supabase reads; project details/milestones still use bundled seeds. |
+| Providers | `app/src/providers/` | CoinGecko, DefiLlama, Bitcoin adapters. |
+| Pipeline | `app/src/pipeline/` | Writes local metrics, scores, and explanations. |
+| Loader | `app/scripts/load-snapshot.ts` | Inserts scores/explanations with conflict-ignore; verifies score count. |
+| Schema | `db/migrations/001_initial.sql` | Projects, observations, methodology versions, snapshots, components, events, explanations. |
 
-A larger meter means greater potential, not greater fulfillment. Deals earn
-hearts only when they meet delivery criteria. Check the evidence for both;
-use BTC and LINK as additional examples without predetermined rankings.
+Flow: providers → local observations → deterministic scorer → loader → Supabase
+→ server readers/API → chart. Keep this structure; no new backend service.
 
-## The interface
+Active output remains v0.2.0 for six projects. The hearts model needs a new
+approved methodology identifier; existing speculative v0.3.0 already represents
+a different config. Preserve both historical datasets.
 
-Show the promise, a compact **8-bit heart meter**, and **filled / maximum**.
-Below it: a simple line graph of filled hearts over time, with a capacity
-reference. Selecting a point explains the delivery or decline behind it.
+## Proposed data model
 
-No elaborate game UI, countdown, category dashboard, or separate Context/AI
-score. Supporting factors stay inside the explanation.
+Reuse project, evidence, and methodology references. Add only what the approved
+heart rules require; settle exact tables and constraints before writing DDL.
 
-## Still to define
+| Record | Required information |
+| --- | --- |
+| Promise revision | Project, promise, success criteria, reward hearts, publication/effective date, recorded-at time, evidence links, supersession reference. |
+| Assessment | Project, methodology, maximum hearts, starting allowance, rationale, input/evidence revision. |
+| Delivery event | Promise revision, fulfillment/change date, recorded-at time, evidence, and reward provenance. |
+| Heart snapshot | Project, date, methodology, capacity, remaining starting allowance, delivery/decay breakdown, filled hearts, availability reason, run/input references. |
+| Completed run | Run date, input/config identity, expected coverage, completion state, artifact references. |
 
-1. **Capacity and rewards:** maximum hearts, starting allowance, milestone weights, and fulfillment criteria.
-2. **Decline:** when non-delivery costs hearts and when unsupported value reaches zero.
-3. **Valuation:** how delivery and potential create token value; per-token price also requires dated supply.
+Snapshots are immutable. Enforce natural-key uniqueness, finite nonnegative
+heart values, filled hearts ≤ capacity, and consistent unavailable/null states.
+Missing evidence must not become a zero score. Store effective and recorded-at
+dates separately so later research cannot masquerade as an earlier observation.
 
-Hearts are not dollars. Actual price is a comparison, not proof of justified
-value. Define that economic connection before displaying a dollar estimate.
+Valuation stays absent until its method is approved; do not add speculative
+price fields or convert hearts to dollars in the frontend.
 
-## Build scope
+## API and frontend contract
 
-Apply the rules to XRP/BAT, then adapt the existing card and graph. Keep Next.js,
-Supabase, providers/loader, and the shared renderer. Codex owns backend work
-alongside Muse. Store dated evidence and versioned assessments; unknown is not
-zero, and old snapshots stay intact. Loader integrity fixes support this scope.
+Existing endpoints: `GET /api/projects` and
+`GET /api/projects/[slug]/history?metrics=<csv>&from=<date>&to=<date>`.
+Keep legacy responses stable while defining an additive or explicitly versioned
+hearts contract; do not silently reinterpret existing score codes.
 
-Older formulas and queues are superseded. [Archived findings](archive/2026-09-22-previous-implementation.md)
-are reference only; daily logs record progress.
+A heart-history point needs date, methodology, filled hearts, maximum hearts,
+availability, observed/reconstructed provenance, and references explaining the
+change. The current-value meter and timeline must use the same completed snapshot.
+Validate date ranges, paginate complete history, and apply filters to every series.
+
+Adapt the shared SVG to variable capacity and a maximum reference line. Preserve
+missing-data gaps and version boundaries. Render the compact pixel-heart meter
+from the same values; keep scoring and decay calculations server-side.
+
+## Integrity work before daily operation
+
+- Make local artifacts immutable. Reject stale/partial inputs; do not treat any raw-cache hit as a completed ingest.
+- Validate allowed projects, score codes, numeric bounds, methodology/config identity, and explanation coverage in the existing loader.
+- Publish a run atomically or only after a completion marker. Scores and explanations currently write separately.
+- Identical retries are no-ops; conflicting existing payloads must fail visibly. Verify values and explanations, not only row counts.
+- Persist or expose snapshot-linked observations/components. Fix zero-age/empty-evidence mappings and latest-metric selection in current readers.
+- Propagate DB errors, replace broad history scans with indexed filtered/latest queries, and bound caches.
+- Inspect deployed grants/RLS before migrations; separate read credentials from the ingestion writer. Apply DB invariants to historical writes.
+
+`npm run daily` runs pipeline then loader; it is not a scheduler. Schedule only
+after a complete run and safe rerun are verified. Scheduler location remains open.
+Historical SQL batches in `db/seed/` are not an ordered bootstrap sequence.
+
+## Delivery order and checks
+
+1. Settle capacity/rewards and decay in [game_design.md](game_design.md); record evidence for XRP/BAT, then BTC/LINK.
+2. Specify migrations and the shared API contract against those rules; implement versioned calculations and reliable persistence.
+3. Wire the meter and graph. Verify evidence-backed gains, non-delivery decay, differing capacities, missing data, and historical reproducibility.
+
+Run typecheck/build and targeted checks for changed behavior. Test loader retries
+and incomplete-run failures before deployment; spot-check API/card/embed agreement.
+No new test framework or provider is needed for this scope.
+
+Codex owns backend work alongside Muse. GitHub access is verified; direct
+Supabase/Vercel management access remains unverified in this checkout. Existing
+local credentials/project setup are needed before live schema checks. Secrets
+stay in ignored env/deployment configuration. See [README](../README.md) for
+commands and [daily logs](tasks/) for progress.

@@ -1,6 +1,6 @@
 # Prove-It Clock — Strategy
 
-**Status:** 2026-09-22. Product direction follows [implementation.md](implementation.md). Distribution and monetization ideas remain deferred.
+**Status:** 2026-09-22. Product direction follows [game_design.md](game_design.md). Distribution and monetization ideas remain deferred.
 
 These distribution ideas are not engineering commitments. The current queue
 lives in [implementation.md](implementation.md); SEO, alerts, paid API tiers,
