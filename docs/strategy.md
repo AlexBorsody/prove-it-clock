@@ -2,6 +2,10 @@
 
 **Status:** 2026-09-21. Review monthly; this doc is the working surface.
 
+These distribution ideas are not engineering commitments. The current queue
+lives in [implementation.md](implementation.md); SEO, alerts, paid API tiers,
+and new integrations are outside it.
+
 ## Positioning
 
 The accountability layer for crypto. Not another dashboard, not a rating shop —
@@ -10,35 +14,17 @@ always. Trust is the product; a single paid placement kills the instrument.
 
 ## The moat: data that compounds
 
-Code is cheap; every crypto dashboard looks the same. The durable edge is the
-append-only history underneath. Time moves one direction, and every snapshot we
-take is data no competitor can backfill, buy, or scrape retroactively.
+The durable value is a consistent record of what was measured, when it was
+known, and which methodology produced it. Public data can be copied; reliable
+provenance and a sustained recording cadence take work.
 
-- Each snapshot (scores, metrics, explanations, methodology version) accrues permanently. A new entrant starts at zero history; we start at N years.
+- Preserve scores, metrics, explanations, and methodology versions. Distinguish observations recorded then from later reconstructions.
 - The version log is itself a dataset: every dispute and observed outcome teaches the next methodology version what to measure.
 - Calibration becomes possible only with a long tape: did large promise gaps precede collapses? Backtesting needs history, and history needs someone to have recorded it.
 
 The algorithm doesn't predict price. It measures one thing — the gap between
 promise and delivery — and gets sharper the longer the tape runs. Improvement
 comes from recorded outcomes, not from tuning weights to flatter anyone.
-
-## Channels (priority order)
-
-**Twitter/X — primary.** Annotated timeline graphs, score-change alerts,
-methodology notes, one-coin promise-vs-delivery threads. The timeline
-screenshot is the atomic shareable unit.
-
-**Telegram — mirror.** Broadcast channel mirroring Twitter posts. ~10 minutes
-to set up, near-zero maintenance. (Needs Alex's Telegram account.)
-
-**Discord — deferred.** Not worth the moderation cost until there's traction.
-
-**Reddit — out.** Spam optics and trust risk outweigh reach for an
-accountability product.
-
-**SEO — the slow compounder.** Target: every "is [coin] legit / safe / a scam"
-query lands on a project page with its annotated timeline. The timeline is the
-landing page.
 
 ## Content engine
 
@@ -48,7 +34,8 @@ Distribution is fed by the pipeline, not by brainstorming:
 - Each methodology version → a "what changed and why" note.
 - Event annotations → retrospective threads.
 
-No content calendar gymnastics: the data ships on schedule, posts follow the data.
+Once daily operation is verified, posts can follow completed runs. Scheduling
+remains planned.
 
 ## Voice guardrails
 
