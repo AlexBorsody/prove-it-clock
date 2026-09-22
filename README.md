@@ -1,10 +1,10 @@
 # The Prove-It Clock
 
-The product is a graph of **what the token should be worth**. Promise potential,
-team, utility, and impact give a modest starting allowance. Meaningful promises
-kept support or raise value; prolonged non-delivery wears unearned value down,
-eventually to zero if no token value is demonstrated. No separate clock UI.
-The valuation formula is not yet implemented in the current prototype.
+The product is a simple graph of **promises kept** and **potential realized**,
+working toward what the token should be worth. Potential sets the maximum
+hearts; starting support fills a modest allowance; meaningful delivery earns
+hearts and prolonged non-delivery erodes unearned value. The UI is a compact
+8-bit heart meter and an ordinary line graph. Hearts are not yet a dollar valuation.
 
 [Live site](https://prove-it-clock.vercel.app) · Active methodology **v0.2.0** ·
 20 seeded projects, six scored (BTC, ETH, XRP, SOL, ADA, LINK).

@@ -8,10 +8,11 @@ and new integrations are outside it.
 
 ## Positioning
 
-One graph of justified token value: a modest starting allowance for potential,
-value supported by meaningful delivery, and decline under sustained non-delivery.
-Supporting factors explain the starting allowance; they do not continually refill
-it. Assumptions and history stay public, and sponsorship never affects results.
+A simple hearts-over-time graph explaining promises kept and potential realized,
+working toward an estimate of justified token value. Potential sets meter capacity;
+starting support provides a modest allowance, meaningful delivery earns hearts,
+and sustained non-delivery erodes unearned value. Assumptions and history stay
+public, and sponsorship never affects results.
 
 ## The moat: data that compounds
 
