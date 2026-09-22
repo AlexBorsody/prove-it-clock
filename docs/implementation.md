@@ -1,6 +1,6 @@
 # Prove-It Clock — Implementation
 
-**Status:** 2026-09-21. v0.2.0 live in production. Design phase — no code until the plan is settled. Habib discusses + documents; Codex builds from Part 2 when the plan is done.
+**Status:** 2026-09-22. v0.2.0 is active. Scope before further implementation. Muse is the existing build teammate; Codex owns backend architecture, schemas, ingestion, and API contracts. Alex approves methodology changes. A snapshot loader merged during this review; Part 2 includes its remaining gaps.
 
 **How this doc works:** Part 1 is non-technical — what the product is, how it works, the ranking factors, the strategy. Part 2 is the technical build plan. If you don't code, read Part 1.
 
@@ -14,7 +14,7 @@
 
 One question: *is a crypto project actually becoming what it promised to become?*
 
-The value: estimate whether a project is full of shit or not, based on ranking factors, displayed as a historical timeline where each factor can be inspected for accountability.
+The value: estimate whether a project is full of it or not, based on ranking factors, displayed as a historical timeline where each factor can be inspected for accountability.  As clock runs out it's a very good indicator token should be viewed as a shitcoin and marketcap reflected accordingly.
 
 What it is not: investment advice, price prediction, or a hype amplifier.
 
@@ -26,12 +26,17 @@ The core loop:
 2. Time passes — the Clock keeps the timeline.
 3. The Clock checks: what was kept, how fast, how recently.
 4. The verdict renders as a timeline. The longer the timeline, the harder to fake.
+5. Two UI elements clock and graph. 
+   1. Clock can be represented visually as a an hour glass or digital countdown. 
+   2. Graph is where the value really stems from as we can see how the asset has performed over time with the different ranking factors (highest weight being promises kept) in a perfect world this would correlate directly with what the appraised marketcap of the token would be.
+   3. This is inspired by the pagerank algorythm with the highest trust ranking factor being "Promises Delivered" as pagerank uses inbound links for authoratative sites.
+   4. Promises are ranked via their "Potential impact"  keeping a promise with a lot of impact/significance is similar to how inbound links are rankked via their own pagerank/inbound link juice.
 
 Every factor behind the verdict is inspectable — accountability means you can see the work. A project's win condition: keep promises, keep them recently, keep them coming.
 
 ## Two-track architecture
 
-**Track 1 — Promise. This is the rank.** Four factors: how long they've been promising, how many promises they kept, how fast they keep them, when they last kept one. One number, pure accountability, the main line on the chart. The homepage sorts by this.
+**Planned Track 1 — Promise. This is the rank.** Four factors: how long they've been promising, how many promises they kept, how fast they keep them, when they last kept one. One number, pure accountability, the main line on the chart. The proposed homepage will sort by this; the current table defaults to Reality.
 
 **Track 2 — Context. This is the qualifier.** Everything else: potential, realism, competition, token distribution, utility, company structure, dev activity. Second line on the chart. It qualifies the rank but never overrides it.
 
@@ -39,7 +44,7 @@ The anti-hype rule: no amount of good context rescues a bad promise record. A pr
 
 ## Ranking factors
 
-Promise track (the rank) — all live, computed from seed data:
+Promise-track inputs are defined in seeds and the factor inventory. Promises kept is displayed; duration has a DB mapping defect; rate/recency are not separately displayed:
 - **Promise duration** — how long have they been promising?
 - **Promises kept** — how many milestones did they actually deliver, historically dated?
 - **Promise rate** — kept ÷ years. How fast do they deliver? Read next to recency — coarse milestones saturate, so it punishes longevity alone.
@@ -70,7 +75,7 @@ Realism's inputs: staleness, lane velocity (are competitors shipping while this 
 
 ## The formula (v0.3.0 candidate — design only, not implemented)
 
-**Status:** candidate spec. Implementing it ships as methodology v0.3.0 — append-only, new version, diffs public. v0.3.0 stays out of active output until approved. Nothing below changes v0.2.0.
+**Status:** candidate spec, historically named v0.3.0. That identifier already exists with a different speculative config and seed dataset. Resolve the version before implementation; never replace its frozen config or relabel historical rows. The candidate stays out of active output until approved. Nothing below changes v0.2.0.
 
 ### Promise Score (Track 1 — the rank, the main line)
 
@@ -111,7 +116,7 @@ Stored states: **open** (live promise), **fulfilled** (kept, evidence-linked), *
 
 The anti-gaming rule: **abandoning a promise never improves the score.** Abandoned stays in the denominator. The only way out is supersession — into a *new* accountable commitment, linked. You can't shrink your way to a better ratio.
 
-**F = fulfilled ÷ (fulfilled + open + overdue + abandoned).**
+**F = fulfilled ÷ (fulfilled + open + overdue + abandoned).** Open and overdue here must be disjoint counts: count each promise once. Stored `open` includes both; the config mirror still needs that clarification.
 
 Schema additions per milestone: `state`, `target_date` (nullable — no date means open, never overdue; we don't invent dates), `published_at` (when the promise entered the public record — drives the historical denominator), `superseded_by`, `state_note` (who called it and why).
 
@@ -137,7 +142,9 @@ The context line updates when analysts (or the AI pipeline) reassess — steppy,
 - Nulls render as gaps on both. The anti-hype rule is visual: the context line can never pull the promise line up.
 - **Every point is inspectable** (config: `app/src/lib/history-semantics.ts`): **observed** (computed from the record as it stood at *t* — numerator from achieved_at ≤ *t*, denominator from published_at ≤ *t*), **reconstructed** (today's knowledge applied backward — dashed, labeled, never sold as the true series; the historical line stays reconstructed until seeds carry published_at), **methodology-change** (markers where the version changed — scores across the line aren't comparable), **missing** (gaps, never interpolated).
 
-### AI assessment (unchanged)
+A known publication date alone does not establish what the Clock knew then. Before implementation, settle recorded-at timestamps and input revisions so later research cannot silently turn reconstructed history into observed history.
+
+### AI assessment (planned)
 
 Stays separate and display-only: the deterministic output (both scores + full factor breakdown) feeds the OpenAI brief → score, rationale, risks, confidence, verdict. Shown with its reasoning. Prompt-versioned, append-only.
 
@@ -155,181 +162,115 @@ Stays separate and display-only: the deterministic output (both scores + full fa
 
 ---
 
-# Part 2 — Technical (Codex builds from here)
+# Part 2 — Architecture and build scope
 
-## Active model (hard rules)
+## Working rules
 
-- Methodology **v0.2.0**. Six scored: BTC, ETH, XRP, SOL, ADA, LINK.
-- Other 14 top-20: score `null`, status `unavailable`. Never zero, never an estimate.
-- Market cap controls membership and display rank only. Never touches scores.
-- Nulls are returned as null and render as gaps — in API responses and charts.
-- **Versioned methodology.** Every scoring change ships as a new version. Diffs are public. Silent rewrites are a defect.
-- **Append-only history.** New versions add new snapshots. Past snapshots are never rewritten.
-- **No tuning.** Nothing is tuned per project. Every number comes from methodology config + observations + versioned seeds.
-- **No paid placement.** Sponsorship never affects rankings. Ever.
-- **Observer effect.** Publishing scores can move markets. Influence is a liability, not a goal. If projects ever optimize for Clock scores instead of real utility, the methodology changes — publicly, as a new version.
-- **Missing data is labeled, never invented.** Gaps become `unavailable` components that reduce confidence — never zero-filled, never hidden.
-- **Provisional seeds** ship flagged as PROVISIONAL and score-capped, not padded with guesses.
+- Active methodology: **0.2.0**, six scored projects (BTC, ETH, XRP, SOL, ADA, LINK). Other seeded projects remain unavailable. Speculative versions never enter active output.
+- Preserve versioned scores, input evidence, and methodology configs. Append new records; no silent rewrites, per-project tuning, paid placement, or missing-data zero fill.
+- Product intent says market cap controls membership/display rank, not scores. **Current Reflexivity Risk violates that rule.** Resolve it explicitly; do not silently change the frozen model.
+- Keep one Next.js app, one Postgres database, isolated provider adapters, and the shared SVG renderer. No separate backend service, generic repository framework, queue platform, or new provider is justified for the current scope.
+- Part 1 owns product decisions; Part 2 owns implementation scope. [Daily logs](tasks/) record outcomes and blockers, not competing queues. [Strategy](strategy.md) does not authorize engineering work.
 
-## Architecture
+## Current architecture
 
-- Next.js app in `app/`, deployed on Vercel (`prove-it-clock.vercel.app`).
-- Data layer `app/src/lib/data.ts` reads Supabase `score_snapshots` (primary time-series store). JSON snapshots in `app/data/snapshots/` remain as build artifacts and audit trail.
-- Pipeline `app/src/pipeline/ingest.ts` + `score.ts` writes local append-only JSON (`metrics/scores/explanations/universe_<date>.json`); raw upstream data cached in `app/data/raw/<date>/`. `score.ts` reads the active version from `app/src/lib/active-methodology.ts` — never a hardcoded constant.
-- `app/src/lib/ranking-factors.ts` is the machine-readable mirror of the Part 1 factor inventory (tracks, status, sources). Design truth lives in Part 1; the config mirrors it.
-- Pages: `/` (leaderboard), `/projects/[slug]`, `/methodology`, `/embed/projects/[slug]/timeline` (chromeless widget).
+```mermaid
+flowchart LR
+  P[Provider adapters] --> I[Ingest]
+  I --> J[Local metrics and raw cache]
+  J --> S[Deterministic scorer]
+  C[Methodology and seeds] --> S
+  S --> O[Local scores and explanations]
+  O --> L[Snapshot loader]
+  L --> D[(Supabase)]
+  D --> R[Server readers]
+  C --> R
+  R --> V[Pages and APIs]
+  V --> G[Shared site and embed chart]
+```
 
-## History API
+| Boundary | Implementation | Responsibility and current limitation |
+| --- | --- | --- |
+| Providers | `app/src/providers/` | Normalize CoinGecko, DefiLlama, Bitcoin data. Explicit deadlines/retries and source-time handling need work. |
+| Pipeline | `app/src/pipeline/` | Local ingest/scoring; same-day artifacts can be overwritten. |
+| Loader | `app/scripts/load-snapshot.ts` | Active-version gate, conflict-ignore score/explanation inserts, score count check. Merged in `11b68af`; not yet a verified unattended cadence. |
+| Methodology | `app/src/methodology/index.ts`, `app/methodology/` | Engine plus configs; several gates/formulas are hardcoded. |
+| Database | `db/migrations/001_initial.sql` | Reference data, observations, snapshots, components, events, explanations. Community tables are unused stubs. |
+| Server readers | `app/src/lib/data.ts`, `history.ts`, `supabase.ts` | Supabase scores/observations, but bundled seeds still provide project details and milestones. |
+| Presentation | `app/src/app/`, `app/src/components/` | Server pages, history endpoint, shared site/embed SVG; no scoring in components. |
 
-- `GET /api/projects/[slug]/history?metrics=<csv>&from=<date>&to=<date>`
-- Returns per-metric time-series `[{ date, methodology_version, value }]`; `value` may be `null` (unavailable).
-- Server-side Supabase read; 5-minute cache.
-- Nulls render as gaps in the line, never as zero.
+`ACTIVE_METHODOLOGY_VERSION` selects active scores, not the DB's `is_current` flag. Frozen `methodology_versions.config_json` is the complete DB methodology record; the weight table cannot faithfully represent category-specific weights.
 
-## Timeline chart
+The JSON store imports fixed September 20 artifacts containing speculative scores, which are filtered out. Local mode has unavailable scores and no history without Supabase; newly written files are not automatically picked up by that store.
 
-- `components/timeline-chart.tsx` + `timeline-svg.tsx`: hand-rolled SVG, zero new dependencies.
-- Multi-line chart per project page: each scored metric over time.
-- Methodology-version markers on the axis — the viewer always knows which version produced which stretch of line.
-- Event annotations from seed `events[]` (launch, hack, pivot, leadership exit).
-- Unscored projects: explicit unavailable state, not an empty chart.
+## Current API and display contracts
 
-## Done 2026-09-21
+| Consumer | Source | Known limitation |
+| --- | --- | --- |
+| Homepage | `DataStore` → `LeaderboardTable` | Defaults to Reality sorting; broad history query repeated per project. |
+| Card/evidence | `DataStore` + seeds | DB mapping supplies zero age, empty components/gates. |
+| `GET /api/projects` | `DataStore` + live CoinGecko overlay | Fixed seed membership sorted by live rank; different freshness from homepage. |
+| `GET /api/projects/[slug]/history` | Supabase + seed-derived kept counts | Points contain date, version, value, confidence, status; unavailable reasons omitted. |
+| Embed | Shared history reader and SVG | Default series hidden; no interactive toggles. |
 
-- v0.2.0 seed live (84 genuine snapshots, append-only/idempotent); fallback removed; footer fixed.
-- Embeddable timeline widget shipped: `/embed/projects/[slug]/timeline`, light/dark, iframe snippet on scored project pages. Verified live.
-- Event pipeline: `npm run events:check` passes — all 6 scored projects have ≥5 valid events.
-- `score.ts` reads `ACTIVE_METHODOLOGY_VERSION` — the pipeline can no longer generate speculative snapshots.
-- Promises-kept series live (chart line + card lead); chart default series set to the primary factors.
-- Design registered in `ranking-factors.ts` (two-track architecture, AI assessment, realism, context factors) — design only, nothing built.
+History accepts `metrics`, `from`, and `to`; its in-process cache lasts five minutes. The quote overlay cache lasts 90 seconds. Neither is a global serverless cache. History returns 404 for unknown projects, 503 for missing configuration, and 500 on query failure. Filter validation, consistent range handling, pagination, bounded caching, and sanitized errors remain work.
 
-## Design phase (not buildable yet — settling in Part 1 first)
+The September 22 public API check found **84 v0.2.0 rows: six projects × 14 codes, all dated September 21**, plus earlier v0.1.0 history. USDT had no score series. This is one active-version date, not multi-day coverage. The v0.2.0 seed generator carries September 19 dimensions forward and recalculates derived scores; these rows do not establish a fresh provider run on September 21.
 
-Decided 2026-09-21 (recorded in `formula-candidate.ts`): LINK > BTC stands;
-3-year minimum bar for the rank; 0.5/yr throughput anchor kept; 5y recency
-scale kept. Decided 2026-09-21 (recorded in `milestone-states.ts`,
-`history-semantics.ts`): milestone state machine (open/fulfilled/abandoned/
-superseded, overdue derived, anti-gaming denominator rule); historical series
-types (observed/reconstructed/methodology-change/missing). Remaining:
-- Context composite parameters per factor (as each factor leaves design).
-- Placement of the v0.2.0 scores in the two tracks.
-- AI assessment pipeline (OpenAI key, model choice, prompt v1, validation).
-- Token distribution sourcing research; utility definition; project-lane taxonomy for competition; realism assessment method.
+## Current queue — two deliverables
 
-## Build queue (planned — Codex builds when the plan is settled)
+### 1. Complete the card and category timeline
 
-**1. Trading-card layout + per-category chart**
+The trading card, `StatBar`, collapsible evidence, legend toggles, and embed already exist. Correct and extend them instead of rebuilding. Alex still decides the final stat lineup.
 
-Frontend (`app/src/app/(site)/projects/[slug]/page.tsx`, `app/src/components/`):
-- Restructure the detail page as a trading card: header (name, symbol, rank,
-  thesis category), stat bars for the seven v0.2.0 categories — Reality, World
-  Impact Potential, Execution Evidence, Reflexivity Risk, Evidence Confidence,
-  Promise Gap, Potential Outlook. New `StatBar` component (extend
-  `components/score.tsx` or new `components/stat-bar.tsx`); existing
-  `ScoreCard`/`ScoreCell` stay for the leaderboard.
-- `timeline-chart.tsx` / `timeline-svg.tsx`: draw one line per score category
-  plus the overall line, from the history API's existing per-`score_code`
-  series. Legend toggles already exist — extend to per-category. Existing
-  render contract holds: nulls break the line (gaps, never interpolation),
-  methodology-version markers stay on the axis, event annotations stay.
-- Evidence links, events, explanation feed, raw evidence move one click deeper
-  (collapsible sections); the card face stays clean.
-- Unscored projects keep the explicit unavailable state — no empty chart.
-- The embed widget (`/embed/...`) picks up the upgraded chart for free (shared
-  `timeline-svg` renderer).
+- Keep the history endpoint/shared renderer. Define units: scores 0–10, confidence 0–100%, kept promises as counts, and gaps that may be negative.
+- Confidence is metadata, not a dedicated history series. Agree its mapping; no second independently calculated confidence score.
+- No approved overall Promise Score exists yet. Do not add an overall line before the candidate leaves design.
+- Restore actual age, components, gates, and snapshot-linked evidence through the DB mapping. Missing evidence must be labeled rather than shown as an empty explanation.
+- Acceptance: BTC/XRP/LINK agree across card/API/embed; USDT remains unavailable; missing days/nulls are honest gaps; methodology boundaries do not imply continuity between incomparable scores.
 
-Backend:
-- No new endpoints. `GET /api/projects/[slug]/history` already returns every
-  scored metric as a dated per-`score_code` series with methodology versions —
-  the per-category lines need no new data. Verify the 6 scored projects have
-  multi-day history for each score code before building (84 v0.2.0 snapshots
-  exist today).
+### 2. Make daily history safe to schedule
 
-Open question for Alex: final stat lineup — the two-track design says the
-promise track leads the card; he rules on the exact lineup.
+The new loader and `npm run daily` command exist. Harden them; do not create a second loader. No scheduler or successful authenticated end-to-end run has been verified in this checkout.
 
-**2. Daily historical-data cadence**
+- Validate one UTC run date, active config identity, seed revision, score eligibility, finite numeric values, confidence bounds, and expected project/code coverage. The scorer and loader currently accept all seeded projects rather than enforcing the six-project active set.
+- Make audit artifacts immutable, reject stale/partial inputs, and compute explanation deltas only within the same methodology.
+- Define complete-run publication: transaction or completion marker. The loader currently writes scores then explanations in separate requests; an explanation failure leaves visible scores behind.
+- Retry identical natural-key inserts as no-ops. Detect differing payloads at existing keys; conflict-ignore plus matching row counts is not content verification. Verify explanations too; current success logging reports their input count.
+- Persist observations alongside scores so evidence stays current. Components may remain in immutable artifacts only with a real retrieval path; otherwise use the existing component table. Preserve unavailable reasons and provenance.
+- Verify one complete run and safe rerun through API readers before scheduling. Decide scheduler location and failure reporting; a sleeping laptop cannot guarantee daily execution.
 
-Backend (new `app/scripts/load-snapshot.ts`, run via `tsx`):
-- Reads `data/snapshots/scores_<date>.json` (+ `explanations_<date>.json`),
-  maps each score to a `score_snapshots` row
-  (project_id, methodology_version_id, snapshot_date, score_code, value,
-  confidence, status). Idempotent: `ON CONFLICT DO NOTHING` on the table's
-  unique key. Component-level values stay in the JSON audit trail for now —
-  the chart only needs score-level rows.
-- Version gating: resolves `methodology_version_id` from
-  `methodology_versions` by `ACTIVE_METHODOLOGY_VERSION`; refuses to load any
-  other version. Never writes speculative rows.
-- Credentials from `app/.env.local` (`SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`),
-  server-side only, never logged, never committed.
-- Daily cron on this machine: pipeline → loader → verify row counts → fail
-  loudly (log + surface) on any error. Exact cron mechanism (runtime cron vs
-  system crontab) to be decided during the week.
-- Never update or delete snapshot rows. A bad run is skipped, not repaired.
+## Architecture findings
 
-Frontend: none — the chart reads the same history API; new daily points appear
-automatically.
+Review findings below are open, not completed fixes. Keep scoring-policy decisions separate from data plumbing.
 
-**3. Milestone schema v2 (Phase A — blocks the v0.3.0 pipeline)**
+| Priority | Finding and evidence | Required outcome |
+| --- | --- | --- |
+| Before scoring release | **Market-cap contradiction:** v0.2.0 valuation and supply-overhang components consume market cap. An isolated BTC probe changed only market cap and risk moved 3.6 → 3.1. | Explicit policy decision and versioned correction if changing behavior. |
+| Before scoring release | **Version/provenance mismatch:** v0.2.0 generator carries old dimensions to a new date; Outlook uses two decimals there versus one in the engine. Existing speculative `v0.3.0.json` is a different model from the new Promise candidate. | Pin source dates, revisions, rounding, engine/config identity; resolve candidate version naming without rewriting history. |
+| Before scheduling | **Artifact integrity:** scorer overwrites date-only files, accepts older metrics, compares previous files across versions; any raw-cache hit can skip an incomplete ingest. | Immutable artifacts, freshness and completion checks, same-version deltas. |
+| Before scheduling | **Loader integrity:** no six-project gate, full runtime numeric/completeness validation, atomic publication, conflicting-payload check, observation/component loading, or explanation readback. | Complete the existing loader contract described above. Dry-run must validate the same payload rules as writes. |
+| Before scheduling | **DB enforcement:** migration lacks historical update/delete guards and status/value/confidence constraints. Five community stubs lack RLS enablement in this migration. | Inspect deployed grants/policies; enforce invariants and separate read credentials from writer privileges. Public exposure is unverified; do not expand unused tables. |
+| Before growing history | **Incomplete reads:** most `DataStore` queries discard errors; latest scores use ascending unpaginated history, and metrics deduplicate a bounded result in memory. Homepage repeats broad history queries. | DB-side filtering/latest selection, complete pagination, batched reads, and explicit operational failures. |
+| Card correctness | **Lost evidence:** score mapping supplies zero age/empty components and gates; history versions remain blank. Project-page reduction overwrites newer metrics with older rows from descending results. | Typed, nullable mappings preserving dates, version, actual latest values, and snapshot-linked evidence. |
+| Chart correctness | **Misleading continuity/units:** SVG assumes 0–10, joins across missing days/version changes, slopes kept counts, and makes markers from mixed synthetic/score points. | Explicit domains, count steps, version-aware segments, gap handling, and unique markers. |
+| History correctness | **Inconsistent policy:** excludes only literal 0.3.0, synthetic kept points ignore date filters, reasons are dropped, cache entries accumulate. | One approved-history policy, consistent validated filters, bounded caches, explicit reasons. |
+| Provider contract | **Membership/freshness split:** projects API calls CoinGecko on cache miss but pages use DB metrics; static seed list is advertised as live top 20. Universe call runs before ingest cache check. | One documented membership/freshness contract, bounded calls, visible stale/degraded states. |
+| Before historical scoring | **Time/missingness defects:** future milestones/events pass trailing-window checks; ladder ignores achievement date; measured zero in log normalization becomes unavailable. Completely unavailable dimensions are omitted from confidence averaging. | Explicit, versioned semantics; current engine is not safe for historical reconstruction. |
+| Before broader scoring | **Provisional promise not implemented:** `seed.provisional` does not apply the promised status/cap in the scorer. | Define and implement the cap through a methodology decision; don't claim it exists. |
 
-- Seeds + DB: extend milestones with `state`, `target_date`, `published_at`,
-  `superseded_by`, `state_note` (field spec in `app/src/lib/milestone-states.ts`).
-- Backfill: achieved=true → `fulfilled` (achieved_at kept); achieved=false →
-  `open` with no target_date (never retroactively marked overdue — we don't
-  invent dates). published_at backfill: honest "unknown" until researched —
-  the historical line renders as reconstructed meanwhile (per
-  `history-semantics.ts`), which is the truthful state.
-- No score changes in this phase. v0.2.0 untouched.
+## Deferred design — not additional current deliverables
 
-**4. v0.3.0 Promise Score pipeline (Phase B)**
+**Milestone schema / Promise Score:** keep Part 1's states, formula constants, and three-year eligibility decision. Before DDL, settle immutable state transitions, effective dates versus recorded-at dates, evidence revisions, and as-of reconstruction. `published_at` alone cannot prove what the system knew then. Unknown dates remain unknown. Supersession needs same-project links, no cycles/self-links, and a rule against replacing several commitments with one easier promise. Count overdue once. Backfill achieved=true as fulfilled and false as open without invented deadlines. No v0.2.0 changes.
 
-- Nightly compute per project per day from milestone states, using the
-  denominator rule from `milestone-states.ts` and the formula from
-  `formula-candidate.ts`. Append-only rows, methodology version v0.3.0.
-- 3-year eligibility bar: below it, "too early to rank" (unavailable, never zero).
-- API: score + components (F, C, T, D) per point — inspectability is the product.
-- Chart: Promise Score becomes the main rank line; promises_kept stays;
-  series-type labels (observed/reconstructed) per the semantics config;
-  methodology markers already exist.
+**Context and AI:** lane taxonomy, realism, utility, distribution, entity control, developer-repo mapping, and weights remain design questions. AI stays separate from deterministic scoring, with versioned prompts and inspectable reasoning. No additional API or package is needed for this in the current queue.
 
-**5. Context track wiring (Phase C)** — as each factor leaves design: lane
-taxonomy on seeds, per-factor config, second line on the chart (separate
-panel, never blended into the rank).
+**Seed SQL:** overlapping batches in `db/seed/` are historical artifacts, not an ordered migration chain. Preserve them. Verify and document a clean-database bootstrap when DB access is available; do not run every file or regenerate frozen history.
 
-**6. AI assessment (Phase D)** — nightly pipeline, structured outputs,
-cached; rationale displayed. Separate track, never blended.
+## Access and decisions
 
-## Third-party APIs
+GitHub/local access is verified. Supabase/Vercel management access is not: credentials/project link were absent in checked locations. Inspect deployed schema/grants and recovery arrangements before migrations. Keep secrets out of docs.
 
-None new for this queue. The daily run reuses the pipeline's existing
-providers, all keyless free tiers, ~21 calls/day:
-- CoinGecko `/api/v3` — market data, universe ranks (already integrated).
-- DefiLlama `api.llama.fi` — TVL / fees per chain (already integrated).
-- blockchain.info — BTC on-chain fees only (already integrated).
-Rate discipline (spaced calls, same-day disk cache in `data/raw/<date>/`)
-already holds at this volume.
+Alex decisions: final card lineup, market-cap conflict, any scoring-policy changes, and future version identifier. Publisher disclosures remain unconfirmed. Scheduler location and run publication contract need technical agreement.
 
-Planned additions (design phase): OpenAI API (AI assessment — needs key +
-billing), GitHub API (dev activity — free, keyless at this volume),
-CryptoCompare news API (free, keyless — annotations only, never scores).
-
-## Node.js modules
-
-None new for this queue. Current deps cover everything:
-- `@supabase/supabase-js` (already) — the loader script's DB writes.
-- `tsx` + `typescript` (already) — run and typecheck the loader.
-- `next` / `react` / `react-dom` (already) — card layout, hand-rolled SVG chart.
-- `dotenv` — only if we decide against hand-parsing `.env.local` in the
-  loader (a 5-line fallback); not otherwise needed.
-
-Planned: `openai` (AI assessment, when that leaves design phase).
-
-## Env
-
-- `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` → Vercel env (server-side only, never `NEXT_PUBLIC_*`) and local `app/.env.local` (gitignored).
-- `OPENAI_API_KEY` → same pattern, when the AI assessment leaves design phase.
-
-## Blocked on Alex
-
-- Publisher disclosures (Dash/BAT/AVAX/LINK positions) still unconfirmed.
-- Trading-card stat lineup ruling (two-track says promise track leads).
+Verification stays proportionate: typecheck/build and targeted checks for the changed data path, plus spot-checks when deploying. No new test framework. Current results and local runtime details live in the [September 22 log](tasks/2026-09-22.md).
