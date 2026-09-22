@@ -51,9 +51,15 @@ score. Supporting factors stay inside the explanation.
 
 ## Still to define
 
-1. **Capacity and rewards:** maximum hearts, starting allowance, milestone weights, and fulfillment criteria.
-2. **Decline:** when non-delivery costs hearts and when unsupported value reaches zero.
-3. **Valuation:** how delivery and potential create token value; per-token price also requires dated supply.
+Proposed in [hearts-algorithm.md](hearts-algorithm.md) (DRAFT 2026-09-22, pending
+Alex's sign-off): capacity tiers {5, 10, 20}, starting allowance from a 3-item
+present-tense checklist capped at capacity/5, lineage rewards {0,1,2} fixed at
+publication, 2-year grace then 1 heart/year decay on the unearned allowance only,
+core-promise gate on the final heart. Four open questions for Alex live at the
+bottom of that doc.
+
+Valuation stays separate: `justified_mcap = (filled/capacity) × potential_value_usd`,
+per-token via dated supply — defined, never displayed until the method is approved.
 
 Hearts are not dollars. Actual price is a comparison, not proof of justified
 value. Define that economic connection before displaying a dollar estimate.
