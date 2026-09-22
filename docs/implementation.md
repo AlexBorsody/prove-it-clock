@@ -44,9 +44,10 @@ Promise-track inputs are defined in seeds and the factor inventory. Promises kep
 - **Promises kept** — how many milestones did they actually deliver, historically dated?
 - **Promise rate** — kept ÷ years. How fast do they deliver? Read next to recency — coarse milestones saturate, so it punishes longevity alone.
 - **Promise recency** — when did they last keep a promise? The flagship story in one number (see Realism versus potential).
+- **Promise Potential Impact (PPI)** — Each promise has a potential score. Use world impact score for now.
 
 Context track (the qualifier):
-- **Overall potential** — how big could this be if delivered? Subjective, needs more thought. World-impact score used for now.
+- **Overall potential of Project** — how big could this be if delivered? Subjective, needs more thought. World-impact score used for now.
 - **Realism** — how likely is the remaining promise, given the time gone and who's eating the lane? The fairness lens on staleness (details below). Needs thought before it becomes a number.
 - **Competition** — how many credible projects chase the same promise? A discount on potential, not a score. Planned — needs a project-lane taxonomy first.
 - **Token distribution** — who holds the coins: founders or the public? Premine, private allocations, insider %. Planned — honest per-project sourcing is the hard part.
