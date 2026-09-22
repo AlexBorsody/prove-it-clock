@@ -26,11 +26,6 @@ The core loop:
 2. Time passes — the Clock keeps the timeline.
 3. The Clock checks: what was kept, how fast, how recently.
 4. The verdict renders as a timeline. The longer the timeline, the harder to fake.
-5. Two UI elements clock and graph. 
-   1. Clock can be represented visually as a an hour glass or digital countdown. 
-   2. Graph is where the value really stems from as we can see how the asset has performed over time with the different ranking factors (highest weight being promises kept) in a perfect world this would correlate directly with what the appraised marketcap of the token would be.
-   3. This is inspired by the pagerank algorythm with the highest trust ranking factor being "Promises Delivered" as pagerank uses inbound links for authoratative sites.
-   4. Promises are ranked via their "Potential impact"  keeping a promise with a lot of impact/significance is similar to how inbound links are rankked via their own pagerank/inbound link juice.
 
 Every factor behind the verdict is inspectable — accountability means you can see the work. A project's win condition: keep promises, keep them recently, keep them coming.
 
@@ -51,7 +46,7 @@ Promise-track inputs are defined in seeds and the factor inventory. Promises kep
 - **Promise recency** — when did they last keep a promise? The flagship story in one number (see Realism versus potential).
 
 Context track (the qualifier):
-- **Overall potential** — how big could this be if delivered? Subjective, needs more thought. World-impact score used as proxy for now.
+- **Overall potential** — how big could this be if delivered? Subjective, needs more thought. World-impact score used for now.
 - **Realism** — how likely is the remaining promise, given the time gone and who's eating the lane? The fairness lens on staleness (details below). Needs thought before it becomes a number.
 - **Competition** — how many credible projects chase the same promise? A discount on potential, not a score. Planned — needs a project-lane taxonomy first.
 - **Token distribution** — who holds the coins: founders or the public? Premine, private allocations, insider %. Planned — honest per-project sourcing is the hard part.
