@@ -1,6 +1,6 @@
 # Prove-It Clock — Strategy
 
-**Status:** 2026-09-21. Review monthly; this doc is the working surface.
+**Status:** 2026-09-22. Product direction follows [implementation.md](implementation.md). Distribution and monetization ideas remain deferred.
 
 These distribution ideas are not engineering commitments. The current queue
 lives in [implementation.md](implementation.md); SEO, alerts, paid API tiers,
@@ -8,9 +8,9 @@ and new integrations are outside it.
 
 ## Positioning
 
-The accountability layer for crypto. Not another dashboard, not a rating shop —
-a public, versioned, append-only record of promise vs. delivery. Neutral voice,
-always. Trust is the product; a single paid placement kills the instrument.
+A record of promises kept and the potential of the promise, working toward an
+evidence-based estimate of justified market cap. Assumptions and history remain
+public; sponsorship must never influence the assessment.
 
 ## The moat: data that compounds
 
@@ -22,9 +22,9 @@ provenance and a sustained recording cadence take work.
 - The version log is itself a dataset: every dispute and observed outcome teaches the next methodology version what to measure.
 - Calibration becomes possible only with a long tape: did large promise gaps precede collapses? Backtesting needs history, and history needs someone to have recorded it.
 
-The algorithm doesn't predict price. It measures one thing — the gap between
-promise and delivery — and gets sharper the longer the tape runs. Improvement
-comes from recorded outcomes, not from tuning weights to flatter anyone.
+The product asks what the promise justifies in market value, not what the market
+will trade at next. The valuation method remains to be defined. Recorded
+outcomes should improve it; weights must not be tuned to flatter projects.
 
 ## Content engine
 
@@ -39,8 +39,8 @@ remains planned.
 
 ## Voice guardrails
 
-Accountability, never promotion. No price talk, no buy/sell signals, no
-shilling — including coins the publisher holds. Publisher posts personally;
+Explain justified value and its assumptions without presenting it as a future
+trading price or a buy/sell signal. No promotion of publisher-held coins. Publisher posts personally;
 assistant drafts only. Disclosures page stays current; unconfirmed items get
 confirmed or removed.
 

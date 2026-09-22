@@ -1,87 +1,70 @@
 # The Prove-It Clock
 
-One question: *is a crypto project actually becoming what it promised to become?*
+What should a crypto project’s market cap be, given its promise and what it
+actually delivers? The Clock follows **promises kept** and **potential of the
+promise** over time. A justified-market-cap model is the goal, not yet a
+capability of the current prototype.
 
-The Clock estimates whether a project is full of shit or not — based on
-ranking factors, displayed as a historical timeline where each factor can be
-inspected for accountability. Not prices. Not predictions. Not buy/sell
-recommendations.
+[Live site](https://prove-it-clock.vercel.app) · Active methodology **v0.2.0** ·
+20 seeded projects, six scored (BTC, ETH, XRP, SOL, ADA, LINK).
 
-## The ranking factors
+## Read first
 
-Independent dimensions, never one opaque score:
+- [Implementation](docs/implementation.md): the focused product concept and next prototype. This is the single planning surface.
+- [Strategy](docs/strategy.md): distribution and monetization, separate from engineering scope.
+- [Daily logs](docs/tasks/): outcomes, decisions, verification, and blockers. Historical queues do not override the implementation plan.
 
-- **Reality** — what is demonstrably real today: utility, economic demand, adoption, retention.
-- **World Impact Potential** — how consequential the thesis would be if realized. Magnitude, not likelihood.
-- **Execution Evidence** — is it moving toward its potential? Trajectory, milestones, competitive position.
-- **Reflexivity / Failure Risk** — dependence on speculation, incentives, issuance, belief.
-- **Evidence Confidence** — how much to trust our measurements. Missing data lowers confidence; never treated as negative evidence.
+Muse is the existing build teammate. Codex owns backend architecture, schemas,
+ingestion, and frontend/API/DB contracts. Alex approves methodology changes.
+The earlier multi-factor Promise/Context design is superseded by the current plan.
 
-Derived gaps: **Hype Gap** (Attention − Reality), **Build Gap** (Development − Reality), **Belief Gap** (Community − Measured), **Promise Gap** (Potential − Reality).
+## Develop locally
 
-Potential Outlook: `clamp(max(promise_gap, 0) × (execution_evidence / 10), 0, 10)` — of the promise not yet realized, how much does current execution support capturing. Not a probability, not a price prediction, uncalibrated until backtesting earns it.
-
-## The timeline
-
-Every project gets a historical chart: each scored factor plotted over time,
-with methodology-version markers on the axis and event annotations (launches,
-hacks, pivots, leadership exits). The history is the product — the longer the
-tape, the more it can tell you.
-
-## Rules
-
-- **Versioned methodology.** Every scoring change ships as a new version. Diffs are public. Silent rewrites are a defect.
-- **Append-only history.** New snapshots add rows. Past snapshots are never rewritten.
-- **Missing data is UNAVAILABLE** — never zero-filled, never estimated, never hidden.
-- **Market cap controls membership and display rank only.** Never touches scores.
-- **No paid placement.** Sponsorship never affects rankings. Ever.
-- **Observer effect.** Publishing scores can move markets; influence is a liability, not a goal.
-- Algorithms calculate. AI explains. Humans define and version methodology.
-
-## Run it
+With Node.js and npm available:
 
 ```bash
 cd app
-npm install
-npm run pipeline   # ingest live data, score, explain (writes data/snapshots/)
-npm run snapshot:load -- YYYY-MM-DD # append that snapshot to Supabase
-npm run daily      # pipeline + idempotent Supabase load for today's snapshot
-npm run dev        # local UI at http://localhost:3000
-npm run typecheck  # TypeScript
-npm run build      # production build
+npm ci
+npm run dev
+npm run typecheck
+npm run events:check
+npm run build
 ```
 
-The pipeline caches raw API responses under `data/raw/<date>/` — page loads never hit upstream providers.
+The app runs at `http://localhost:3000`. Without Supabase, bundled speculative
+scores are filtered out and the history API returns 503. Local mode is not a
+complete offline demo.
 
-## Supabase
+For DB reads, set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` (or legacy
+`SUPABASE_ANON_KEY`) in ignored `app/.env.local`, against a database with the
+required read policies. The client also accepts and prefers
+`SUPABASE_SERVICE_ROLE_KEY`; reserve privileged credentials for ingestion and
+administration. Never expose privileged credentials through `NEXT_PUBLIC_*`.
 
-Apply `db/migrations/001_initial.sql`, then set (server-side only, never `NEXT_PUBLIC_*`):
+## Pipeline commands
 
-```bash
-SUPABASE_URL=...
-SUPABASE_SERVICE_ROLE_KEY=...
-```
+- `npm run pipeline`: fetch providers and write local metrics/scores/explanations.
+- `npm run snapshot:load -- YYYY-MM-DD --dry-run`: validate existing artifacts without DB writes.
+- `npm run snapshot:load -- YYYY-MM-DD`: load scores/explanations using server-side Supabase credentials.
+- `npm run daily`: pipeline then loader. This command is not a scheduler.
 
-## Structure
+The loader exists, but unattended operation is not yet verified. Reruns can
+overwrite local artifacts; loader completeness and atomicity need work. Read
+the [archived architecture findings](docs/archive/2026-09-22-previous-implementation.md) before scheduling or running against production.
 
-```
-app/
-  methodology/v0.2.0.json      # versioned config: scores, components, weights, gates
-  data/projects.json           # project seeds: theses, milestones, events
-  data/snapshots/              # pipeline outputs: metrics, scores, explanations
-  data/raw/<date>/             # cached raw provider responses
-  src/providers/               # CoinGecko, DefiLlama, Bitcoin adapters (isolated)
-  src/methodology/             # deterministic scoring engine
-  src/pipeline/                # ingest.ts, score.ts
-  src/lib/data.ts              # DataStore: JSON (local) / Supabase (env)
-  src/app/                     # leaderboard, project detail, methodology pages
-db/migrations/001_initial.sql # full Postgres schema + RLS
-docs/implementation.md         # technical build doc
-docs/strategy.md               # distribution + monetization
-docs/tasks/                    # daily task docs
-```
+## Repository map
 
-## Current state
+| Path | Purpose |
+| --- | --- |
+| `app/src/providers/` | Provider adapters |
+| `app/src/pipeline/`, `app/scripts/` | Ingest, scoring, snapshot loader, event check |
+| `app/src/methodology/`, `app/methodology/` | Engine and versioned configs |
+| `app/data/` | Analyst seeds, disclosures, audit artifacts |
+| `app/src/lib/` | Server readers, version policy, design mirrors |
+| `app/src/app/`, `app/src/components/` | Pages, APIs, shared chart |
+| `db/migrations/` | Schema history |
+| `db/seed/` | Historical artifacts, not an ordered migration sequence |
 
-- Live: https://prove-it-clock.vercel.app
-- Methodology v0.2.0. 20 projects: 6 scored (BTC, ETH, XRP, SOL, LINK, ADA), 14 explicitly unavailable.
+Versioned, evidence-linked, append-only scores and explicit missing data are
+product requirements. Legacy scores remain historical; the new valuation
+method must be defined and versioned before replacing them.
