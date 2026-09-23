@@ -76,7 +76,13 @@ Historical SQL batches in `db/seed/` are not an ordered bootstrap sequence.
 
 ## Delivery order and checks
 
-1. Settle capacity/rewards and decay in [game_design.md](game_design.md); record evidence for XRP/BAT, then BTC/LINK.
+1. Feature freeze. Complete evidence-first BAT and XRP case studies under the
+   current heart methodology: reconstruct major promise lineages from dated
+   primary sources, predefine fulfillment criteria and rewards, calculate
+   mechanically, surface every judgment and evidence source in the UI. The
+   researcher works blind to Alex's illustrative scores. Report methodology
+   ambiguities instead of inventing rules. No new features until both pages
+   survive scrutiny; BTC/LINK after.
 2. Specify migrations and the shared API contract against those rules; implement versioned calculations and reliable persistence.
 3. Wire the meter and graph. Verify evidence-backed gains, non-delivery decay, differing capacities, missing data, and historical reproducibility.
 

@@ -29,7 +29,10 @@ Changes to promises, rewards, and capacity remain visible in history.
 
 ## Examples
 
-Alex's illustrative numbers, not verified ratings:
+Alex's illustrative numbers, not verified ratings — and not targets. The BAT/XRP
+case studies are a blinded falsification test: the researcher reconstructs from
+primary sources without knowing these numbers. If the methodology disagrees with
+them, the methodology wins and the intuition gets examined.
 
 | Project | Promise framing | Hearts |
 | --- | --- | --- |
@@ -49,23 +52,24 @@ reference. Selecting a point explains the delivery or decline behind it.
 No elaborate game UI, countdown, category dashboard, or separate Context/AI
 score. Supporting factors stay inside the explanation.
 
-## Still to define
+## Decided 2026-09-23
 
-Proposed in [hearts-algorithm.md](hearts-algorithm.md) (DRAFT 2026-09-22, pending
-Alex's sign-off): capacity tiers {5, 10, 20}, starting allowance from a 3-item
-present-tense checklist capped at capacity/5, lineage rewards {0,1,2} fixed at
-publication, 2-year grace then 1 heart/year decay on the unearned allowance only,
-core-promise gate on the final heart. Four open questions for Alex live at the
-bottom of that doc.
+Per [hearts-algorithm.md](hearts-algorithm.md): capacity tiers {5, 10, 20} (locked),
+starting allowance from a 3-item present-tense checklist capped at capacity/5,
+lineage rewards {0,1,2} fixed at publication, 2-year grace then 1 heart/year decay
+on the unearned allowance only (provisional — tested by the case studies, not
+debated further), core-promise gate on the final heart. Fulfilled-then-abandoned
+lineages retire visibly: the graph rises at fulfillment and falls at retirement;
+history is never rewritten.
 
-Valuation stays separate: `justified_mcap = (filled/capacity) × potential_value_usd`,
-per-token via dated supply — defined, never displayed until the method is approved.
-
-Hearts are not dollars. Actual price is a comparison, not proof of justified
-value. Define that economic connection before displaying a dollar estimate.
+Valuation is postponed to v2. The product shows delivery beside market cap —
+`BAT — 3/10 delivered — $X market cap` — and never a calculated fair value.
+Hearts are not dollars. The market provides the valuation; Prove-It provides the
+evidence-based delivery measurement.
 
 ## Scope
 
 Start with XRP/BAT, then check BTC/LINK. Keep the product to the heart meter,
-timeline, and evidence behind changes. Older formulas and feature queues are
-superseded. Engineering details live in [implementation.md](implementation.md).
+timeline, and evidence behind changes. No new features until the BAT and XRP case
+studies survive scrutiny. Older formulas and feature queues are superseded.
+Engineering details live in [implementation.md](implementation.md).

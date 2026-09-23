@@ -18,5 +18,10 @@ take is data no competitor can backfill, buy, or scrape retroactively.
 - The version log is itself a dataset: every dispute and observed outcome teaches the next methodology version what to measure.
 - Calibration becomes possible only with a long tape: did large promise gaps precede collapses? Backtesting needs history, and history needs someone to have recorded it.
 
-## Ultimately this _Should_ be an appraisal engine
-The algorithm doesn't predict price, but in a perfect world it should. It measures one thing the gap between promise and delivery and gets sharper the longer the tape runs. Value comes from recorded outcomes, not from hype.
+## Valuation is v2, not v1
+
+v1 shows evidence-based delivery beside market cap and lets the market provide
+the valuation. A fair-value formula would look scientific while its key input
+remains an analyst estimate — credibility the tape hasn't earned yet. If the
+historical record survives scrutiny, an appraisal engine becomes thinkable.
+Not before.

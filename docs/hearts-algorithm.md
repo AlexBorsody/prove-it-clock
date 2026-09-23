@@ -1,9 +1,10 @@
 # Prove-It — Hearts Algorithm v1
 
-**DRAFT proposal, 2026-09-22 (Habib). Alex decides.** Proposes closing the three
-open items in [game_design.md](game_design.md) ("Still to define"). Nothing here
-is implemented; the v0.2.0 app is untouched. If approved, this ships as a new
-methodology version — append-only, diffs public.
+**v1, adopted 2026-09-23 (Alex).** Closes the open items in [game_design.md](game_design.md).
+Constants are provisional starting defaults — tested by the BAT/XRP case studies,
+not debated in the abstract. Nothing here is implemented; the v0.2.0 app is
+untouched. When built, this ships as a new methodology version — append-only,
+diffs public.
 
 ## The idea in one paragraph
 
@@ -25,6 +26,10 @@ full only when the core promise itself is kept.
 | `DECAY_RATE` | 1 heart / year after grace | Linear, explainable, no curve-fitting |
 | `REWARDS` | {0, 1, 2} | 0 = tracked but trivial, 1 = kept promise, 2 = major promise declared upfront |
 
+Capacity tiers are locked — no further granularity debate. Grace and decay are
+provisional defaults; the BAT/XRP case studies test them. Argue about evidence,
+not constants.
+
 ## Per-project inputs (analyst-set, rationale required, versioned)
 
 **Capacity** — pick the tier nearest the ambition:
@@ -44,9 +49,12 @@ Present-tense evidence only. This is the "unearned" slice and it is labeled as s
 **Promise lineages** — reuse the milestone state machine (`open / fulfilled /
 abandoned / superseded`, overdue derived). Each lineage gets a reward {0,1,2}
 **at publication time**, with its success criteria and evidence requirement
-written down first. Rewards are never raised retroactively. A lineage earns
-exactly once: supersession continues the lineage (no double count), abandonment
-ends it (its hearts are removed, visibly). Subdivided busywork gets reward 0 —
+written down first. Rewards are never raised retroactively. A lineage earns while
+it is fulfilled. If a fulfilled lineage is later abandoned, its hearts are
+retired as a separate visible event — the graph rises at fulfillment and falls
+at retirement. History is never rewritten: what was delivered happened. This
+keeps historical delivery distinct from current realized utility. Supersession
+continues the lineage (no double count). Subdivided busywork gets reward 0 —
 it stays on the record for accountability but earns nothing. One lineage is
 marked the **core promise**; it earns no hearts itself, it is the gate below.
 
@@ -56,10 +64,13 @@ marked the **core promise**; it earns no hearts itself, it is the gate below.
 S(t)       = years since the last fulfillment (or since inception, if none)
 allowance(t) = A0                              if S(t) ≤ 2
              = max(0, A0 − floor(S(t) − 2))     otherwise
-earned(t)    = Σ rewards of lineages in state 'fulfilled' at t
+earned(t)    = Σ rewards of lineages fulfilled-and-not-yet-retired at t
 filled(t)    = min(capacity, earned(t) + allowance(t))
 if core promise is not fulfilled: filled(t) = min(filled(t), capacity − 1)
 ```
+
+A lineage fulfilled at F and abandoned at A contributes its reward on [F, A)
+and zero after — two events, both visible: `+1 fulfilled — F`, `−1 retired — A`.
 
 Display `filled / capacity`, with the earned-vs-allowance split visible.
 Every point carries its provenance (observed / reconstructed /
@@ -69,7 +80,8 @@ Read the states off the meter:
 - **Full hearts** — `filled == capacity`, which requires the core promise kept.
 - **Zero hearts** — `filled == 0`: the allowance drained and nothing was ever earned. The unsupported promise is exhausted.
 
-## Worked examples (using Alex's illustrative framings)
+## Worked examples (illustrative only — the case-study researcher works blind to
+these numbers; if the methodology disagrees with them, the methodology wins)
 
 **XRP — 2/20.** Capacity 20 (replace SWIFT-scale settlement). Checklist: ledger
 live and used ✓, Ripple shipping ✓, measurable volume ✓ → A0 = 3 (cap 4).
@@ -100,24 +112,30 @@ is exactly the story the old design told with words.
 
 - **Promise spam** earns nothing: open promises pay zero; only fulfillment pays.
 - **Subdivided tasks** get reward 0, set by the analyst — not the project.
-- **Abandoning** a lineage removes its hearts; it can never improve the meter.
+- **Abandoning** a fulfilled lineage retires its hearts as a visible event — the
+  fall is on the record, and it can never improve the meter.
 - **Announcements** don't touch S(t); only fulfillment resets the clock.
 - **Farming** is capped: nothing can exceed capacity, and the core gate holds the last heart.
 - **Reward inflation** is blocked: rewards are fixed at publication, in public, with criteria.
 
-## Valuation (defined, not displayed)
+## Valuation: postponed to v2
 
-The appraisal-engine endpoint, kept simple:
+No fair-value calculation in v1. The product shows the meter **beside** market
+cap — `BAT — 3/10 delivered — $X market cap` — and lets the market provide the
+valuation while Prove-It provides the evidence-based delivery measurement. A
+`justified_mcap = (filled/capacity) × potential_value_usd` formula would look
+scientific while `potential_value_usd` remains an analyst estimate; it spends
+credibility the tape hasn't earned yet. Revisit only after the BAT/XRP case
+studies survive scrutiny.
 
-```
-justified_mcap(t) = (filled(t) / capacity) × potential_value_usd
-per_token(t)      = justified_mcap(t) / circulating_supply(t)
-```
+## Locked 2026-09-23
 
-Requires three inputs: the hearts fraction (we compute), an analyst
-`potential_value_usd` (the dollar size of the promise if realized), and a dated
-supply schedule. Until all three exist and the method is approved, the product
-shows hearts only — never a dollar estimate. Hearts are not dollars.
+- Capacity tiers {5, 10, 20}: locked. No further granularity debate.
+- Grace 2 years, decay 1 heart/year: provisional defaults. Tested by the BAT/XRP
+  case studies, not debated in the abstract.
+- Core-promise gate on the final heart: kept.
+- Fulfilled-then-abandoned: visible rise and fall, never a history rewrite.
+- Valuation: postponed to v2 (see above).
 
 ## Config mapping (for the build)
 
@@ -130,10 +148,3 @@ shows hearts only — never a dollar estimate. Hearts are not dollars.
 - Series provenance → existing `app/src/lib/history-semantics.ts`
 - Replaces the v0.3.0 candidate Promise Score formula (`formula-candidate.ts`
   becomes historical)
-
-## Open questions for Alex
-
-1. Grace 2 years / decay 1 heart per year — too kind, too harsh?
-2. Capacity tiers {5, 10, 20} — enough granularity, or do we need 15?
-3. The core-promise gate on the final heart — keep it, or is it over-clever?
-4. Allowance checklist: are those the right three present-tense tests?
