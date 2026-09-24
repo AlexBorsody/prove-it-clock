@@ -95,3 +95,11 @@ Supabase/Vercel management access remains unverified in this checkout. Existing
 local credentials/project setup are needed before live schema checks. Secrets
 stay in ignored env/deployment configuration. See [README](../README.md) for
 commands and [daily logs](tasks/) for progress.
+
+## Case-study work in progress — September 24
+
+The first delivery task has [BAT and XRP evidence worksheets](case-studies/README.md).
+Sources, candidate lineage judgments, conditional calculations and manual tests
+are available for review. [Alex/Muse questions](case-studies/review.md) are tracked
+in Markdown. These are non-blinded research drafts, not accepted ratings or live
+pages; feature development remains frozen pending the case-study review.
