@@ -11,9 +11,9 @@ hearts and prolonged non-delivery erodes unearned value. The UI is a compact
 
 ## Read first
 
-- [Game design](docs/game_design.md): product concept, heart rules, examples, and open design decisions.
+- [Game design](docs/game_design.md): product concept, adopted heart rules, and case-study scope.
 - [Implementation](docs/implementation.md): architecture, schema/API contracts, integrity work, and technical delivery.
-- [Strategy](docs/strategy.md): distribution and monetization, separate from engineering scope.
+- [Strategy](docs/strategy.md): accountability positioning and why valuation is deferred to v2.
 - [Daily logs](docs/tasks/): outcomes, decisions, verification, and blockers. Historical queues do not override the implementation plan.
 
 Muse is the existing build teammate. Codex owns backend architecture, schemas,
@@ -70,3 +70,16 @@ the [technical implementation plan](docs/implementation.md) before scheduling or
 Versioned, evidence-linked, append-only scores and explicit missing data are
 product requirements. Legacy scores remain historical; the new valuation
 method must be defined and versioned before replacing them.
+
+## Case-study review build
+
+Local draft review pages are available at `/case-studies` (BAT, XRP, questions,
+and adopted rules). They render the Markdown in `docs/case-studies/`; edit those
+files and rebuild to update the preview. These are research pages, not accepted
+heart ratings. Legacy production scoring remains v0.2.0.
+
+From `app/`, run `npm run test:hearts` for the isolated heart arithmetic and
+Markdown-route checks. Then `npm run build` and
+`npm run start -- --hostname 127.0.0.1 --port 3100` to review the built pages.
+Questions and remaining evidence checks are in
+[the review worksheet](docs/case-studies/review.md).

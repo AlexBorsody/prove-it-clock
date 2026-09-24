@@ -12,7 +12,7 @@ The adopted formula/constants stay unchanged until Alex records a decision.
 - [ ] Resolve questions below; complete evidence gaps listed in each worksheet.
 - [ ] Independently replicate research blind to the example scores.
 - [ ] Accept the inputs and exact dated transitions.
-- [ ] Implement the approved case-study pages and test them; no UI changes yet.
+- [x] Verify draft review pages locally at desktop and 390px mobile width; accepted ratings and dated graph remain pending.
 - [ ] Alex/Muse sign off both pages before moving to further features or BTC/LINK.
 
 ## Questions requiring a decision
@@ -31,8 +31,8 @@ The adopted formula/constants stay unchanged until Alex records a decision.
 
 ## Paper tests for the existing formula
 
-These are fictional inputs, not BAT/XRP ratings. They can be checked manually;
-no test framework or application code has been added.
+These are fictional inputs, not BAT/XRP ratings. They can be checked manually. The arithmetic-only cases are also covered by
+`npm run test:hearts`; unresolved event-policy cases remain manual review items.
 
 | Test | Input | Expected from the written formula |
 | --- | --- | --- |
@@ -50,9 +50,10 @@ no test framework or application code has been added.
 ## Handoff and testing boundaries
 
 Worksheets contain sources, analyst judgments, date precision and gaps. They are
-review inputs, not schema migrations, seed replacements or live app content.
-The UI deliverable from the September 23 task remains open: earlier instructions
-require planning before code, and these unresolved rules affect its numbers.
+review inputs, not schema migrations, seed replacements or accepted ratings.
+Alex subsequently authorized continuing the build step by step. Draft review pages
+now render these Markdown worksheets; accepted ratings and a dated heart graph
+remain open because these unresolved rules affect their numbers.
 Do not lift conditional arithmetic into production as an accepted rating.
 
 Muse can review sources and annotate this file now. Once decisions are recorded,

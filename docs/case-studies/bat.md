@@ -29,6 +29,8 @@ specified; links are live pages, not archived captures. Summaries are paraphrase
 | B08 | 2025-08-14, updated 2026-07-16 — [Self-custody payouts on Solana](https://brave.com/blog/payouts-on-solana/) | Announces broader access in eligible countries on desktop/Android using bridged BAT. iOS remains excluded. Edited page cannot alone prove every detail was present on the original publication date. |
 | B09 | 2026-06-15 — [Rewards partner update](https://brave.com/blog/rewards-partners-june-2026/) | Reports a BAT tipping integration with Streamiverse and other partner activity. Distinguish stated existing capabilities from planned integrations; obtain partner-side evidence before an external-adoption award. |
 | B10 | Live report; browser stats dated 2026-08-31 — [Transparency feed](https://brave.com/transparency/) | Lists a 2025-10-21 purchase of 159,174 BAT. This is within the review's last-12-month window, but a company-reported purchase is not audited ad revenue or recipient payout. Browser-user counts are not BAT-user counts. |
+| B11 | 2017-10-12 — [BAT Mercury launch](https://brave.com/blog/bat-mercury-launch/) | Announces BAT-denominated Brave Payments and publisher collections through Uphold, initially with one-way wallets. Earlier direct launch evidence for BAT-2 than B02. |
+| B12 | 2026-06-22 — [Streamiverse product announcement](https://streamiverse.io/de/blog/brave) | Partner-side account describes available BAT tips, wallet integration and setup instructions. Corroborates product availability claims, not independently measured transaction volume. |
 
 ## Lineage assessment
 
@@ -36,8 +38,8 @@ specified; links are live pages, not archived captures. Summaries are paraphrase
 | --- | --- | --- | --- |
 | BAT-C | Broad economic outcome not established by these sources; quantitative acceptance criteria absent | No fulfillment date | Core remains unproven; do not unlock full meter |
 | BAT-1 | Production release claim supports fulfillment under the narrow launch criterion (B03). iOS loss later narrows coverage (B04), not the original desktop scope | 2019-04-24 release claim | +2 if reviewer accepts launch evidence; current operation needs a functional check |
-| BAT-2 | Creator contributions documented by B02; current external tipping described by B09 | Fulfilled **by** 2019-04-17; earliest date unresolved | +1 if accepted; do not invent the first award date |
-| BAT-3 | B07 states intent; B09 gives a concrete integration lead. Partner corroboration and lineage equivalence not yet checked | No accepted fulfillment date | Unknown/pending; excluded from conditional subtotal, not marked failed |
+| BAT-2 | B11 directly announces BAT publisher contributions; B02 is a later Android expansion | 2017-10-12 release claim | +1 if accepted; do not invent the first award date |
+| BAT-3 | B07 states intent; B09 and partner-side B12 describe available integration. Criterion equivalence and overlap with BAT-2 remain open | Documented by 2026-06-22, not necessarily first delivery | Candidate +1 only if independent outcome accepted; not yet included in the base scenarios |
 | BAT-4 | B08 supports public self-custody payout capability; broader than prior invite-only access | 2025-08-14 publication; details edited later | +1 only if separate from BAT-1 and criterion means one public route, not every chain promised in B07 |
 
 Browser launch, each creator channel, and each partnership are not extra hearts.
@@ -73,19 +75,33 @@ and the stated candidate weights. Unknown lineages make the inventory incomplete
 
 If a same-lineage upgrade is allowed to refresh `S`, the second scenario changes.
 That is precisely why the lineage/reset decision must precede a displayed number.
-No historical daily curve is generated: earliest creator date, historical allowance,
+No historical daily curve is generated: historical allowance,
 source vintages and retirement semantics remain unresolved.
 
 ## Muse/Alex review and manual tests
 
 - [ ] Open B02/B03: verify that creator contributions precede the ad launch; do not label grants as ad earnings.
 - [ ] In a disposable Brave profile, record version, platform, region and Rewards eligibility. Inspect the supported payout route without making purchases or exposing wallet data. A visible setup option is not proof of receipt; user-approved payout evidence would corroborate actual use.
-- [ ] Validate B09 with a dated Streamiverse source or observed functionality; no partner award from an announcement alone.
+- [x] Find partner-side source for B09: B12 added. Functional use and lineage eligibility still need review.
 - [ ] Decide whether BAT-4 is new utility or a continuation of BAT-1, before choosing a scenario.
 - [ ] Review the iOS regression separately from global abandonment.
 - [ ] Record answers in [review.md](review.md); do not alter the adopted formula or seeds implicitly.
 
-Research gaps: earliest BAT creator release, archived versions of edited sources,
-partner-side delivery proof, historical allowance evidence, wider 2017/2021 roadmap
+Research gaps: archived versions of edited sources, functional partner-use
+corroboration, historical allowance evidence, wider 2017/2021 roadmap
 coverage, and independent scrutiny. Neither a completed case-study UI nor a
 published production rating is claimed.
+
+
+## Research iteration 2 — source corrections
+
+B11 moves the candidate creator-release date from an evidence-by date in 2019 to
+a direct 2017 launch claim. B12 fills the missing partner-statement gap; it does
+not prove transaction volumes or automatically earn another heart. Candidate
+weights from revision 1 remain unchanged.
+
+If reviewers accept BAT-3 as a separate fulfilled outcome by 2026-06-22, accept
+BAT-1/2/4, and establish `A0=2`, the conditional arithmetic becomes earned five,
+allowance two, filled seven. This additional scenario is not a new published
+rating; it demonstrates why incomplete source research must not freeze a total.
+The two earlier scenarios remain explicit subsets, not exhaustive score bounds.

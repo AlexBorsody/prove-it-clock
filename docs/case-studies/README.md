@@ -46,6 +46,6 @@ The lineage inventory is a first bounded pass, not an exhaustive promise audit.
 2. [XRP evidence and calculation worksheet](xrp.md).
 3. [Questions and manual acceptance checks](review.md).
 
-Status: research worksheets in progress; no accepted production rating, UI or DB
-write. Acceptance requires source review, methodology decisions, and a separate
+Status: worksheets available on draft review pages under `/case-studies`; no
+accepted production rating or DB write. Acceptance requires source review, methodology decisions, and a separate
 implementation handoff. Keep feature development frozen meanwhile.

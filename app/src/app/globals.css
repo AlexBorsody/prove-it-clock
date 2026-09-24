@@ -259,3 +259,32 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 @media (max-width: 640px) {
   .stat-bar { grid-template-columns: 1fr 52px; grid-template-areas: "label val" "track track" "sub sub"; }
 }
+
+/* Evidence review pages: Markdown remains the single editorial source. */
+.research { max-width: 1000px; margin: 0 auto; }
+.research-notice { border-left: 3px solid var(--accent); padding: 12px 16px; background: var(--bg-panel); }
+.research-notice strong { color: var(--accent); }
+.research-notice p { margin: 6px 0 0; color: var(--text-dim); }
+.research-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 24px 0; }
+.research-nav [aria-current="page"] { color: var(--text); text-decoration: underline; text-underline-offset: 5px; }
+.research-document { font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
+.research-document h1 { font-size: clamp(25px, 4vw, 34px); line-height: 1.2; }
+.research-document h2 { margin: 36px 0 12px; font-size: 20px; }
+.research-document h3 { margin-top: 24px; font-size: 17px; }
+.research-document p, .research-document ul { max-width: 82ch; }
+.research-document li { margin-bottom: 8px; }
+.research-document code { font-family: var(--mono); font-size: .88em; background: var(--bg-raised); padding: 2px 4px; }
+.research-document pre { overflow-x: auto; padding: 16px; background: var(--bg-panel); }
+.research-document pre code { padding: 0; background: none; }
+.research-table { max-width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 6px; margin: 16px 0 24px; }
+.research-table table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 13px; }
+.research-table th, .research-table td { text-align: left; vertical-align: top; padding: 12px; border-bottom: 1px solid var(--border); }
+.research-table th { background: var(--bg-raised); }
+.research-table tr:last-child td { border-bottom: none; }
+.research-source { margin-top: 32px; color: var(--text-dim); font-size: 12px; }
+.research a:focus-visible, .research-table:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 600px) {
+  .topbar { flex-wrap: wrap; gap: 12px; }
+  .nav { flex-wrap: wrap; }
+}
+.research-table th:first-child, .research-table td:first-child { min-width: 64px; overflow-wrap: normal; }

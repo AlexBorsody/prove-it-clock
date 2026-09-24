@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
-  // Static-friendly: the leaderboard and project pages render from JSON
-  // snapshots at build/request time. No upstream API calls from page loads.
+  // Review pages read the repository's shared editorial Markdown at build time.
+  outputFileTracingRoot: path.join(process.cwd(), ".."),
+  outputFileTracingIncludes: {
+    "/case-studies": ["../docs/case-studies/*.md"],
+    "/case-studies/*": ["../docs/case-studies/*.md", "../docs/hearts-algorithm.md"],
+  },
 };
 
 export default nextConfig;
