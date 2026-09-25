@@ -4,18 +4,56 @@ export const metadata = { title: "How the scoring works | Prove-It" };
 
 import Icon from "@/components/chrome-icons";
 
-function H2({ icon, children }: { icon: Parameters<typeof Icon>[0]["name"]; children: React.ReactNode }) {
+type IconName = Parameters<typeof Icon>[0]["name"];
+
+function Section({
+  icon,
+  title,
+  tag,
+  open,
+  alt,
+  children,
+}: {
+  icon: IconName;
+  title: string;
+  tag?: string;
+  open?: boolean;
+  alt?: boolean;
+  children: React.ReactNode;
+}) {
   return (
-    <h2>
-      <Icon name={icon} size={17} style={{ marginRight: 10 }} />
-      {children}
-    </h2>
+    <details className={"panel fold" + (alt ? " section-alt" : "")} open={open}>
+      <summary className="fold-head">
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+          <Icon name={icon} size={16} />
+          {title}
+          {tag ? (
+            <span
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                color: "var(--accent)",
+                border: "1px solid var(--border-strong)",
+                borderRadius: 999,
+                padding: "2px 10px",
+              }}
+            >
+              {tag}
+            </span>
+          ) : null}
+        </span>
+      </summary>
+      <div className="fold-body">{children}</div>
+    </details>
   );
 }
 
 export default function MethodologyPage() {
   return (
-    <>
+    <div className="methodology-page">
       <h1 className="page-title">How the scoring works</h1>
       <p className="page-sub">
         Crypto projects make promises. We check whether they kept them.
@@ -23,164 +61,207 @@ export default function MethodologyPage() {
         being earned <i>and</i> lost over time.
       </p>
 
-      <div className="panel">
-        <H2 icon="list">1. List the promises</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          First we write down what the project actually promised, from its
-          whitepaper or launch materials. Some projects have no issuer at
-          all: for founderless protocols we score the claims the community
-          converged on instead, and only when the story is dominant,
-          measurable, and broadly shared. Before scoring anything, we also
-          write down what "done" looks like for each promise, so the
-          goalposts can't move later.
+      <Section icon="heart" title="Hearts are earned, never given" open>
+        <p>
+          Every heart on the meter was <b style={{ color: "var(--green)" }}>earned</b> by
+          keeping a promise. There are no free hearts, no head start, no points
+          for existing. A project starts at zero and every heart has a named
+          promise and linked evidence behind it.
         </p>
-      </div>
-
-      <div className="panel section-alt">
-        <H2 icon="heart">2. Hearts are given for proof</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          A heart means: the project said it would do X, and here is the evidence
-          it happened. Every heart links to its evidence on the project's page.
-          Each promise can earn up to 2 hearts, depending on how central it is to
-          the project.
+        <p>
+          A heart stays earned only while its evidence condition holds.
+          One-time achievements ("shipped mainnet") keep their hearts
+          permanently. Ongoing claims ("advertisers are buying ads") count
+          only while they are currently true: when the evidence stops, the
+          heart lapses, and you see the fall on the graph. If evidence
+          resumes, the heart comes back. There is no time decay. Scores
+          change because evidence changes, not because time passes.
         </p>
-      </div>
-
-      <div className="panel">
-        <H2 icon="trending-down">3. Hearts can be taken away</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          A heart stays only while the proof stays true. If a project delivered
-          something and then quit (a partnership ends, a product shuts down),
-          those hearts go away, and you see it on the graph. That's the rise and
-          fall. We never rewrite the past; old scores stay exactly as published.
+        <p className="update-marker">
+          <b>Methodology update:</b> free hearts removed. Historical scores
+          recalculated. This is not a change in project performance.
         </p>
-      </div>
+      </Section>
 
-      <div className="panel section-alt">
-        <H2 icon="gift">4. Some hearts are free</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          A project that actually exists gets a small head start: a working
-          product, a team that's still shipping, real usage tied to the promise:
-          up to 3 hearts. These are clearly labeled as unearned, so you can tell
-          them apart from hearts that were earned with proof.
+      <Section icon="alert" title="The Shitcoin Score verdict" alt>
+        <p>
+          The section keeps the name <b>Shitcoin Score</b>, but its output is a
+          category, not a number. It is a delivery-accountability rating, not a
+          fraud or investment-risk rating. The software picks the category from
+          the promise states; humans resolve ambiguous evidence.
         </p>
-      </div>
-
-      <div className="panel">
-        <H2 icon="sliders">5. The meter size fits the promise</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          Bigger promises get bigger meters: 5 for a niche product, 10 for a
-          project aiming to own a sector, 20 for one trying to rewire global
-          infrastructure. The meter is headroom, not a target. Most projects
-          will never fill it.
+        <ul>
+          <li>
+            <b>No concern:</b> no retired or lapsed promise on record.
+          </li>
+          <li>
+            <b>Watch:</b> reserved for verified overdue promises once deadline
+            evidence is researched. Nothing triggers it yet.
+          </li>
+          <li>
+            <b>Delivery concern:</b> a supporting promise was retired or lapsed.
+          </li>
+          <li>
+            <b>Core delivery failure:</b> the core promise was retired or lapsed.
+          </li>
+        </ul>
+        <p style={{ marginBottom: 0 }}>
+          CODE and HYPE never move the verdict directly. USE can support a
+          promise state only when it measures a predefined, promise-specific
+          condition.
         </p>
-      </div>
+      </Section>
 
-      <div className="panel section-alt">
-        <H2 icon="shield-check">6. "Done" needs outside proof</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          The project's own announcement never counts as proof. What counts: a
-          working product anyone can use, a payout that can be verified, a named
-          customer on the record. If it's borderline, it doesn't count.
+      <Section icon="grid" title="PROMISES / CODE / USE / HYPE">
+        <p>Four pillars. One of them is the score; the other three explain it.</p>
+        <ul>
+          <li>
+            <b>PROMISES</b> is the score. Hearts, earned only, one per kept
+            promise lineage while its evidence condition holds.
+          </li>
+          <li>
+            <b>CODE</b> asks: are they building? Observable GitHub activity on
+            curated repos. Activity is not proof of progress.
+          </li>
+          <li>
+            <b>USE</b> asks: is anyone using it for its stated purpose? It must
+            measure intended use, never generic chain activity.
+          </li>
+          <li>
+            <b>HYPE</b> asks: is anyone talking about it? Observed mention
+            counts. Attention is not support and never evidence of delivery.
+          </li>
+        </ul>
+        <p style={{ marginBottom: 0 }}>
+          CODE and USE are evidence. HYPE is context.
         </p>
-      </div>
+      </Section>
 
-      <div className="panel">
-        <H2 icon="star">7. The last heart is special</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          Every project has one main promise: the reason it exists. Until that
-          promise is actually fulfilled, the last heart on the meter stays empty.
-          No project gets a perfect score on hype alone.
+      <Section icon="chart" title="The Prove-It Index" tag="gated" alt>
+        <p>
+          Hearts are the simple public mechanic: did they keep their promises?
+          The Prove-It Index is the deeper health and credibility algorithm
+          underneath. One number, 0-100, plotted through time. We are building
+          it now. It is not live yet.
         </p>
-      </div>
-
-      <div className="panel section-alt">
-        <H2 icon="person">8. Who scored it</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          Every score names the person who did the research, with their evidence
-          linked. If a second researcher independently checks the work, the score
-          gets marked verified. We don't do valuations. The meter sits next to
-          the market cap, and the market can decide what it's worth.
+        <ul>
+          <li><b>Promises: 60%</b></li>
+          <li><b>USE: 25%</b></li>
+          <li><b>CODE: 15%</b></li>
+          <li><b>HYPE: 0%.</b> Context only. It never improves the score.</li>
+        </ul>
+        <p>
+          Every meaningful move gets a clickable event marker explaining
+          exactly why the score moved: promise fulfilled or abandoned, deadline
+          missed, major release, usage milestone, development resumed or
+          stalled, major hype spike (context only).
         </p>
-      </div>
-
-      <div className="panel" id="shitcoin-score">
-        <H2 icon="alert">9. The shitcoin score</H2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          One number, shown as a badge on every project: abandoned promises
-          plus missing hearts. Add up the promises the project fulfilled then
-          dropped, the promises whose proof dried up, the hearts it never
-          earned, and the hearts it lost from its all-time high. Higher is
-          worse. A project that promised big, proved little, and walked away
-          from what it proved scores high. A project that kept its promises
-          scores low.
+        <p style={{ marginBottom: 0 }}>
+          The Index does not publish until USE metrics exist, because 25% of
+          the score cannot be fiction. The formula is locked; the build waits
+          on the data.
         </p>
-      </div>
+      </Section>
 
-      <div className="panel">
-        <h2>An example</h2>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          XRP is 5 out of 20. It earned 2 hearts for real cross-border payment
-          usage, plus 3 free hearts for being a live project with real
-          activity. In 2019 it gained a heart when the MoneyGram partnership
-          launched, and lost it in 2021 when the partnership ended. That's the
-          graph doing its job.
+      <Section icon="flask" title="Prove-It Data">
+        <p>
+          Prove-It runs its own independently operated data collection. We do
+          not rent our inputs from aggregators and relabel them. For each
+          metric family we publish:
         </p>
-      </div>
+        <ul>
+          <li>source, definition, and coverage,</li>
+          <li>how it is calculated, and</li>
+          <li>a timestamp and methodology version.</li>
+        </ul>
+        <p style={{ marginBottom: 0 }}>
+          Raw data may stay private, but anything that moves a heart or a
+          verdict ships with enough evidence, aggregates, and source scope
+          for you to challenge it.
+        </p>
+      </Section>
 
-      <details className="panel fold">
-        <summary className="fold-head">
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-            <Icon name="wrench" size={15} />
-            Under the hood: the precise rules, for the curious
-            <Icon name="chevron-down" size={14} />
+      <Section icon="shield-check" title="Nothing unfinished ships" alt>
+        <p>
+          A section, metric, or verdict that lacks real data or a reviewed
+          definition never renders publicly. No "coming soon" panels, no
+          provisional scores.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          Missing data means unknown, never zero. A failed collection never
+          renders as zero.
+        </p>
+      </Section>
+
+      <Section icon="person" title="Who scored it">
+        <p>
+          Every score names the analyst who did the research, with evidence
+          linked. If a second researcher independently reproduces the work,
+          the score is marked verified.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          We do no valuations. The meter sits next to the market cap, and the
+          market decides what it is worth.
+        </p>
+      </Section>
+
+      <Section icon="book" title="Worked example: XRP at 2 of 20" alt>
+        <p>
+          XRP is <b>2 of 20</b>, earned only. One heart for the ledger
+          milestone (permanent), one for XRP payments as an ongoing claim
+          (currently active). The MoneyGram corridor earned a heart in 2019
+          and retired it in 2021 when the partnership ended: the rise and the
+          fall, visible on the graph. Bank settlement never delivered, so the
+          core promise stays open and the last heart stays empty. Verdict:
+          Delivery concern.
+        </p>
+      </Section>
+
+      <Section icon="wrench" title="Under the hood: the precise rules">
+        <p>
+          <b>Capacity.</b> Fixed tiers of 5, 10, or 20. 20 is for projects
+          trying to rewire global infrastructure, 10 for owning a sector, 5
+          for a niche or single-application promise. Capacity is headroom,
+          never a target.
+        </p>
+        <p>
+          <b>Rewards.</b> Each promise lineage is worth 0, 1, or 2 hearts,
+          decided <i>before</i> anyone checks the evidence: 0 is tracked but
+          trivial, 1 is a kept promise, 2 is a major promise declared upfront.
+          Rewards are never raised retroactively.
+        </p>
+        <p>
+          <b>Milestone vs ongoing.</b> Milestones ("shipped X") keep their
+          hearts permanently unless the achievement is explicitly retired.
+          Ongoing claims ("X is true") count only while currently true. They
+          lapse when the evidence stops and come back if it resumes.
+        </p>
+        <p>
+          <b>The core promise.</b> One promise per project is the main one. It
+          earns no hearts itself. While it is unfulfilled, the meter cannot go
+          above capacity minus 1.
+        </p>
+        <p>
+          <b>What counts as proof.</b> The promise's own success criterion,
+          checkable by someone other than the project: a working public
+          product, a verifiable payout, a named customer on the record. The
+          project's own announcement alone never counts. Borderline cases stay
+          unfulfilled.
+        </p>
+        <p>
+          <b>History.</b> Scores are published as dated snapshots. Old
+          snapshots are never edited or deleted. When the methodology itself
+          changes, history is restated openly and the originals stay as an
+          immutable audit archive.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          <b>Methodology string.</b>{" "}
+          <span style={{ fontFamily: "var(--mono)", fontSize: "0.85em" }}>
+            hearts claim-type rule v2 (adopted 2026-09-25; time decay removed;
+            allowance removed 2026-09-25)
           </span>
-        </summary>
-        <div className="fold-body">
-          <p>
-            <b>Capacity.</b> Fixed tiers of 5, 10, or 20. 20 is for projects trying
-            to rewire global infrastructure, 10 for owning a sector, 5 for a niche
-            or single-application promise. Capacity is headroom, never a target.
-          </p>
-          <p>
-            <b>Free hearts.</b> Count how many of these are true: working product,
-            team actively shipping, real economic activity tied to the promise.
-            The count is capped at 3, and at capacity ÷ 5 rounded down. So a
-            5-heart project can get at most 1 free heart, a 20-heart project up
-            to 3.
-          </p>
-          <p>
-            <b>Earned hearts.</b> Each promise is worth 0, 1, or 2 hearts, decided
-            <i> before </i>
-            anyone checks the evidence. One-time achievements ("milestones") keep
-            their hearts permanently unless the achievement is explicitly retired.
-            Ongoing promises ("we process payments") only count while they're
-            currently true. They lapse when the evidence stops and come back if
-            it resumes.
-          </p>
-          <p>
-            <b>What counts as proof.</b> The promise's own success criterion,
-            checkable by someone other than the project: a working public product,
-            a verifiable payout, a named customer on the record. The project's own
-            announcement alone never counts. Borderline cases stay unfulfilled.
-          </p>
-          <p>
-            <b>The main promise.</b> One promise per project is the main one. It
-            earns no hearts itself. Instead, while it's unfulfilled, the meter
-            can't go above capacity − 1.
-          </p>
-          <p>
-            <b>History.</b> Scores are published as dated snapshots. Old snapshots
-            are never edited or deleted. The past stays exactly as it was scored.
-            Each score names its researcher; if a second researcher independently
-            reproduces it, the score is marked verified.
-          </p>
-          <p style={{ marginBottom: 0 }}>
-            <b>No valuations.</b> The meter sits next to the market cap. The market
-            provides the valuation; we just check the promises.
-          </p>
-        </div>
-      </details>
-    </>
+        </p>
+      </Section>
+    </div>
   );
 }
