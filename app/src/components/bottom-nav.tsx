@@ -32,6 +32,15 @@ export default function BottomNav() {
           </Link>
         );
       })}
+      <button
+        type="button"
+        className="tabbtn"
+        onClick={() => window.dispatchEvent(new CustomEvent("proveit:walkthrough"))}
+        aria-label="Replay the guided tour"
+      >
+        <Icon name="help" size={22} />
+        <span>Tour</span>
+      </button>
     </nav>
   );
 }
