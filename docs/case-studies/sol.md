@@ -7,15 +7,14 @@
 
 ## Result
 
-**SOL 8/20.** Earned 5 (mainnet milestone permanent; high-throughput processing
+**SOL 5/20.** Earned 5 (mainnet milestone permanent; high-throughput processing
 ongoing, active; app ecosystem ongoing, active; mobile hardware milestone
-permanent), allowance 3, core open. Solana Pay merchant payments open
+permanent), core open. Solana Pay merchant payments open
 (unfulfilled).
 
 ```
 earned    = 1 (mainnet, milestone) + 2 (throughput, ongoing/active) + 1 (ecosystem, ongoing/active) + 1 (mobile, milestone) = 5
-allowance = 3   (3 checks pass, capped at min(3, floor(20/5)=4))
-filled    = min(20, 5 + 3) = 8
+filled    = min(20, 5) = 5
 ```
 
 ## Lineages
@@ -35,12 +34,8 @@ whether or not it gets there.
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (mainnet processing
-125M+ tx/day; top chain for DEX volume six straight months in 2025) yes;
-active team (Firedancer live on mainnet Dec 2025; Agave releases; Alpenglow in
-test; Seeker shipped Aug 2025) yes; measurable economic activity tied to the
-promise ($100B+/month DEX volume; $1.3-1.5B record 2025 app revenues; $8.8B TVL)
-yes. 3 checks, capped at min(3, floor(20/5)) = **3**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Historical snapshots (earned hearts)
 

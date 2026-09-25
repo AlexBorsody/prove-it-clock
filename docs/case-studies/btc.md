@@ -7,15 +7,14 @@
 
 ## Result
 
-**BTC 8/20.** Earned 5 (decentralized ledger milestone permanent; peer-to-peer
+**BTC 5/20.** Earned 5 (decentralized ledger milestone permanent; peer-to-peer
 payments ongoing, currently active; digital gold / store of value ongoing,
-currently active), allowance 3, core open.
+currently active), core open.
 
 ```
 earned    = 1 (ledger, milestone) + 2 (P2P payments, ongoing/active)
           + 2 (store of value, ongoing/active) = 5
-allowance = 3   (3 checks pass, capped at floor(20/5)=4)
-filled    = min(20, 5 + 3) = 8
+filled    = min(20, 5) = 5
 ```
 
 ## Lineages
@@ -32,11 +31,8 @@ rewire global money ambition (mechanical per rubric).
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (Bitcoin network
-running, ~19.9M BTC issued, blocks every ~10 min), active team (open-source
-contributors shipping Core releases), economic activity tied to the promise
-(merchant acceptance, El Salvador/Chivo usage, Lightning payment volume,
-corporate treasury and ETP holdings). 3 checks → capped at floor(20/5) = **3**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Assessment notes
 

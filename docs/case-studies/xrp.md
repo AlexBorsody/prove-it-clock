@@ -7,13 +7,12 @@
 
 ## Result
 
-**XRP 5/20.** Earned 2 (ledger milestone permanent; payments product ongoing,
-currently active), allowance 3, core open (cap 19, not binding).
+**XRP 2/20.** Earned 2 (ledger milestone permanent; payments product ongoing,
+currently active), core open (cap 19, not binding).
 
 ```
 earned    = 1 (ledger, milestone) + 1 (XRP payments, ongoing/active) + 0 (MoneyGram, retired) = 2
-allowance = 3   (3 checks pass, capped at floor(20/5)=4)
-filled    = min(20, 2 + 3) = 5
+filled    = min(20, 2) = 2
 ```
 
 ## Lineages
@@ -29,10 +28,8 @@ Capacity 20: global settlement infrastructure ambition (mechanical per rubric).
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (XRPL ~1.8M
-tx/day, Q3 2025), active team (Ripple, 60+ licenses, US bank charter
-application), economic activity tied to the promise (ODL volume above).
-3 checks → capped at floor(20/5) = **3**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Assessment notes
 

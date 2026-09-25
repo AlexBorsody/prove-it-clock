@@ -1,26 +1,29 @@
-# Social Pipeline: Prove-It's Own Social Data
+# HYPE Pipeline: Prove-It's Own Attention Data
 
-Our proprietary social-metrics layer. Not a CoinGecko clone: we juxtapose
-**hype** (social volume) against **substance** (hearts earned). A project
-with massive buzz and few hearts reads as all sizzle, no steak. That
+Our proprietary attention-metrics layer. Not a CoinGecko clone: we juxtapose
+**hype** (observed attention) against **substance** (hearts earned). A project
+with massive hype and few hearts reads as all sizzle, no steak. That
 contrast is the differentiator; raw community numbers are not.
 
-**Display only.** Social metrics never feed the hearts scoring algorithm.
-They are a separate signal layer that may get its own ranking later.
+**Display only.** Hype metrics never feed the hearts scoring algorithm and
+carry 0% weight in the Prove-It Index. Hype is context: observed attention,
+never proof of support or adoption. Per [vision.md](vision.md), no trend
+percentages publish until 8 complete weeks of snapshots exist; until then,
+absolute mentions plus "baseline collecting, week N/8".
 
 ## What is shown
 
-Per project, in the Social subsection of the Vitals panel:
+Per project, in the HYPE stat card:
 
-- News mentions in the last 7 days (with trend vs the prior snapshot)
-- Reddit subscribers (with trend)
-- Telegram members (with trend)
-- A **hype-vs-substance verdict**: one plain-language read contrasting
-  buzz against hearts earned.
+- News mentions in the last 7 days (trend vs baseline once the baseline exists)
+- Reddit subscribers (once credentials exist; the tile hides until then)
+- Telegram members (best-effort; the tile hides when unavailable)
+- A **hype-vs-substance read**: one plain-language line contrasting hype
+  against hearts earned.
 
-### The verdict rules
+### The read rules
 
-Buzz is measured against the median 7-day news mentions across all tracked
+Hype is measured against the median 7-day news mentions across all tracked
 projects in the latest collector batch (our own dataset, our own baseline):
 
 - **high**: mentions at least 2x the cross-project median
@@ -29,13 +32,13 @@ projects in the latest collector batch (our own dataset, our own baseline):
 
 Then:
 
-- high buzz + under 40% of hearts filled: **"All sizzle, no steak."**
-- low buzz + at least 60% of hearts filled: **"Quietly proven."**
+- high hype + under 40% of hearts filled: **"All sizzle, no steak."**
+- low hype + at least 60% of hearts filled: **"Quietly proven."**
 - anything else: neutral juxtaposition, no judgment.
 
-No composite score is computed. The two numbers sit side by side. Buzz
-needs at least 4 projects with news data in the batch; otherwise no buzz
-judgment is made.
+No composite score is computed from hype. The two numbers sit side by side.
+Hype needs at least 4 projects with news data in the batch; otherwise no
+hype judgment is made.
 
 ## Architecture
 
@@ -46,14 +49,14 @@ GitHub Action (daily 06:30 UTC, manual via workflow_dispatch)
     -> INSERT into public.social_snapshots (service role)
   -> app/src/app/api/social/[slug]/route.ts (anon key, RLS public read)
     -> latest 2 snapshots + cross-project median
-  -> app/src/components/social-vitals.tsx (Social subsection of Vitals panel)
-    -> hypeVerdict() from app/src/lib/social.ts
+  -> HYPE stat card + hype-vs-substance read
 ```
 
 Scheduler choice: GitHub Actions over Vercel Cron. The collector fans out
 to three free APIs per project with politeness delays and can run past
 serverless duration limits. Runs are idempotent: one snapshot row per
-project per run.
+project per run. A failed collection never renders as zero; the tile shows
+the last good value marked stale, or hides.
 
 ## Data sources
 
@@ -89,7 +92,7 @@ editor; raw Postgres on 5432 is blocked from the build workspace.
 
 ## X/Twitter upgrade path (future, paid)
 
-When social becomes a paid-tier feature, X is the missing venue that
+When hype becomes a paid-tier feature, X is the missing venue that
 matters most (crypto conversation lives there). The path:
 
 1. X API Basic tier (~$100+/mo at time of writing): `GET /2/users/by/username/:u`
@@ -97,8 +100,8 @@ matters most (crypto conversation lives there). The path:
    per project handle.
 2. Add an `x_followers` / `x_mentions_7d` column pair to
    `social_snapshots` (new migration), a fetcher in `social-collect.ts`,
-   and a tile in the Social subsection. The verdict rules stay unchanged;
-   X mentions fold into the buzz median.
+   and a tile in the HYPE card. The read rules stay unchanged;
+   X mentions fold into the hype median.
 3. Alternative: LunarCrush API (crypto-native social metrics, has a free
    tier but requires API-key signup) as a second paid/free source.
 

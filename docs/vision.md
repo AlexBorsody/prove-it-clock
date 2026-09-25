@@ -59,7 +59,7 @@ why the score moved:
 - Major release
 - Usage milestone
 - Development resumed / stalled
-- Major buzz spike (context only, never moves the score)
+- Major hype spike (context only, never moves the score)
 
 Gating rule: the Index does not publish until USE metrics exist, because
 25% of the score cannot be fiction. "Missing data means unknown, never

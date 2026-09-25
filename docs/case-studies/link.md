@@ -7,13 +7,12 @@
 
 ## Result
 
-**LINK 6/20.** Earned 4 (mainnet milestone; Data Feeds production use; CCIP
-cross-chain production use), allowance 2, core open.
+**LINK 4/20.** Earned 4 (mainnet milestone; Data Feeds production use; CCIP
+cross-chain production use), core open.
 
 ```
 earned    = 1 (mainnet, milestone) + 2 (Data Feeds, ongoing/active) + 1 (CCIP, ongoing/active) = 4
-allowance = 2   (2 of 3 checks pass, capped at floor(20/5)=4)
-filled    = min(20, 4 + 2) = 6
+filled    = min(20, 4) = 4
 ```
 
 ## Lineages
@@ -31,18 +30,15 @@ blockchains and the traditional financial system (mechanical per rubric).
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (Data Feeds live
-since 2019, CCIP mainnet since 2023) yes; active team (shipping Sept 2026: Data
-Streams on Arc, CCIP on Arc, Infosys partnership) yes; measurable economic
-activity tied to the promise, UNVERIFIED (staking rewards and fee flows exist,
-no verified current figure). 2 checks → **2** free hearts.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Assessment notes
 
 - **CCIP scored as its own lineage** (not folded into the oracle promise): it
   was introduced as a distinct promise in the 2.0 whitepaper with its own
   mainnet launch and named users, a genuinely distinct shipped product. A
-  stricter reading could fold it into L2 (total would drop to 5/20); blinded
+  stricter reading could fold it into L2 (earned would drop to 3/20); blinded
   replication should rule on this.
 - **Core framed at the ambitious end** (universal connectivity layer, per WP
   2.0) so it stays open. Framing it at the 2017 end ("a decentralized oracle

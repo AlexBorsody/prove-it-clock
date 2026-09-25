@@ -136,6 +136,30 @@ works, empty states honest, `next build` clean.
 3. Commit, push via `~/workspace/bin/gh-push.py`, verify Vercel deploy
    and the live pages.
 
+## Gating rule: nothing unfinished ships
+
+A section, metric, or verdict that lacks real data or a reviewed definition
+does not render publicly. No "coming soon" panels, no provisional scores,
+no zeros standing in for unknowns. The UI shows only what is real; the
+rest waits in the plan.
+
+Currently gated:
+
+- **Prove-It Index**: hidden until USE metrics and the CODE score
+  definition both exist and are reviewed.
+- **USE stat card / home row**: renders "metrics coming" until per-project
+  USE metrics are defined. Never a number before that.
+- **HYPE trend percentages**: gated on 8 complete weeks of snapshots.
+  Until then, absolute mentions + "baseline collecting, week N/8".
+- **Watch verdict**: no v1 trigger. Renders nothing until deadline
+  evidence is researched and reviewed.
+- **Overdue promise state**: defined in the data model, never rendered
+  until deadline evidence exists.
+- **USE timeline toggle**: hidden until USE metrics exist.
+- **Valuation, rebrand, timeline strips beyond CODE**: parked, not gated.
+  Parked means no spec and no build; gated means spec'd and waiting on
+  data.
+
 ## Phase 5: Prove-It Index (gated)
 
 Builds only after the USE metrics and the CODE score definition exist.
@@ -148,9 +172,9 @@ The formula is locked in vision.md; this phase is data plumbing and UI.
 2. **Event log.** New append-only table `index_events`: project_slug,
    occurred_at, event_type (promise_fulfilled, promise_abandoned,
    deadline_missed, major_release, usage_milestone, dev_resumed,
-   dev_stalled, buzz_spike), title, note, evidence_url. Promise events
+   dev_stalled, hype_spike), title, note, evidence_url. Promise events
    backfill from published heart runs; releases from the GitHub releases
-   API; dev resumed/stalled from commit activity; buzz spikes from
+   API; dev resumed/stalled from commit activity; hype spikes from
    social_snapshots once the baseline exists. Deadline_missed and
    usage_milestone have no v1 triggers and stay empty until their data
    exists.
@@ -160,7 +184,7 @@ The formula is locked in vision.md; this phase is data plumbing and UI.
    Tested like the verdict function.
 4. **UI.** Detail-page section per vision.md: 0-100 line through time,
    weights disclosed beside it, clickable markers showing the event note
-   and evidence link. Buzz-spike markers render as context-only. The
+   and evidence link. Hype-spike markers render as context-only. The
    section does not render until all three scoring components have real
    inputs.
 
@@ -187,6 +211,5 @@ clean.
 3. **Legacy v0.2.0 timeline** on the detail page: remove now, or keep
    per the earlier standing rule?
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
-5. **Index gating:** the plan gates the public Index on real USE data
-   (recommendation: 25% of a 0-100 score cannot be fiction). Alternative:
-   ship provisional with a loud "USE pending" label. Which?
+5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
+   waits for real USE data. No provisional scores, per the gating rule.

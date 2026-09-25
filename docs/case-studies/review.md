@@ -52,6 +52,6 @@ Fictional inputs, not ratings. Arithmetic cases also run under `npm run test:hea
 |---|---|---|
 | Milestone permanence | Reward-2 milestone fulfilled at A | +2 at all t ≥ A unless retired |
 | Ongoing lapse | Reward-1 ongoing active, then evidence stops at B | +1 before B, 0 at B; reactivation restores it |
-| Core clipping | Capacity 5, earned 4, allowance 1, core open | 4, with clipping explained |
+| Core clipping | Capacity 5, earned 4, core open | 4, with clipping explained |
 | Retirement | Reward-2 lineage retired at A | +2 before A, 0 at A; both events kept |
 | Unknown | Evidence unavailable | review-required; never filled 0 |

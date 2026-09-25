@@ -7,13 +7,12 @@
 
 ## Result
 
-**BAT 5/10.** Earned 3 (both lineages ongoing, currently active), allowance 2,
+**BAT 3/10.** Earned 3 (both lineages ongoing, currently active),
 core open (cap 9, not binding).
 
 ```
 earned    = 2 (ad loop, ongoing/active) + 1 (creators, ongoing/active) = 3
-allowance = 2   (3 checks pass, capped at floor(10/5))
-filled    = min(10, 3 + 2) = 5
+filled    = min(10, 3) = 3
 ```
 
 ## Lineages
@@ -28,17 +27,15 @@ Capacity 10: advertising-sector ambition (mechanical per rubric).
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (Brave browser),
-active team (Brave Software shipping, Roadmap 4.0 in progress), economic
-activity (BAT ad buys; 2025-10-21 purchase per [transparency feed](https://brave.com/transparency/)).
-3 checks → capped at floor(10/5) = **2**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Assessment notes
 
 - **Granularity:** one ad-loop lineage, not three (users/publishers/advertisers).
   Splitting the loop's three sides manufactures hearts, the adopted
-  anti-subdivision rule forbids it. A second pass scored 4/10 on the split
-  carving; rejected for that reason.
+  anti-subdivision rule forbids it. A second pass carved it as three lineages and scored 4/10 earned;
+  rejected for that reason.
 - **Claim typing:** both earning lineages are carved as **ongoing**, not
   milestones, the promises are phrased in the present tense ("users earn",
   "creators earn"). The hearts exist while the claim is true; if Brave ever

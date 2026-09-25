@@ -7,14 +7,13 @@
 
 ## Result
 
-**ETH 8/20.** Earned 5 (mainnet milestone permanent; production dapps ongoing,
+**ETH 5/20.** Earned 5 (mainnet milestone permanent; production dapps ongoing,
 active; proof-of-stake Merge milestone permanent; rollups ongoing, active),
-allowance 3, core open.
+core open.
 
 ```
 earned    = 1 (mainnet, milestone) + 2 (dapps, ongoing/active) + 1 (Merge, milestone) + 1 (rollups, ongoing/active) = 5
-allowance = 3   (3 checks pass, capped at min(3, floor(20/5)=4))
-filled    = min(20, 5 + 3) = 8
+filled    = min(20, 5) = 5
 ```
 
 ## Lineages
@@ -32,22 +31,19 @@ systems "we have not yet imagined" (mechanical per rubric).
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (mainnet processing,
-biggest chain by TVL and active dapps) yes; active team (client teams shipping,
-protocol upgrades landing) yes; measurable economic activity tied to the
-promise (DeFi volume, L2 activity, gas fees) yes. 3 checks, capped at
-min(3, floor(20/5)) = **3**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Historical snapshots (earned hearts)
 
-| Snapshot | Earned | Allowance | Filled | Notes |
-|---|---|---|---|---|
-| 2013-01-01 | - | - | - | Unavailable, whitepaper published Nov 2013 |
-| 2017-06-01 | 1 | 2 | 3 | Mainnet live; CryptoKitties/MakerDAO (Dec 2017) after as_of |
-| 2018-06-01 | 1 | 2 | 3 | Mainnet only; no sustained multi-protocol wave yet |
-| 2019-06-01 | 1 | 2 | 3 | Mainnet only; Uniswap/Compound exist but pre-wave |
-| 2021-06-01 | 3 | 3 | 6 | DeFi Summer activates dapp lineage (+2, eff. 2020-06-15) |
-| 2026-09-25 | 5 | 3 | 8 | Merge +1 (2022-09-15), rollups +1 (2021-08-31) |
+| Snapshot | Earned | Notes |
+|---|---|---|
+| 2013-01-01 | - | Unavailable, whitepaper published Nov 2013 |
+| 2017-06-01 | 1 | Mainnet live; CryptoKitties/MakerDAO (Dec 2017) after as_of |
+| 2018-06-01 | 1 | Mainnet only; no sustained multi-protocol wave yet |
+| 2019-06-01 | 1 | Mainnet only; Uniswap/Compound exist but pre-wave |
+| 2021-06-01 | 3 | DeFi Summer activates dapp lineage (+2, eff. 2020-06-15) |
+| 2026-09-25 | 5 | Merge +1 (2022-09-15), rollups +1 (2021-08-31) |
 
 ## Assessment notes
 

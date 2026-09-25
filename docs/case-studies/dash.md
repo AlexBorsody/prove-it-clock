@@ -11,15 +11,14 @@ reading, not a verified rating.
 
 ## Result
 
-**DASH 7/20.** Earned 5 (masternode network, PrivateSend, InstantSend, DAO
-treasury, Evolution platform, all milestones permanent), allowance 2, core
+**DASH 5/20.** Earned 5 (masternode network, PrivateSend, InstantSend, DAO
+treasury, Evolution platform, all milestones permanent), core
 open. The merchant-economy lineage lapsed (was +2 active 2018-2019, now 0):
 the rise and fall stays visible.
 
 ```
 earned    = 1 (masternodes) + 1 (PrivateSend) + 1 (InstantSend) + 1 (treasury) + 1 (Evolution) = 5
-allowance = 2   (2 of 3 checks pass, capped at min(3, floor(20/5)=4))
-filled    = min(20, 5 + 2) = 7
+filled    = min(20, 5) = 5
 ```
 
 ## Lineages
@@ -40,12 +39,8 @@ rubric tier as XRP.
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (network live since
-2014; InstantSend/PrivateSend functional in production wallets; Platform
-mainnet live with EvoNodes) yes; active team (Platform v4.2.0-dev.9 Sept 2026;
-Dash Core v23.0.0 Nov 2025; roadmap updated Apr 2026) yes; measurable economic
-activity tied to the promise, UNVERIFIED (Venezuela merchant economy gone; no
-verified current payment-volume figure). 2 checks = **2**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Historical snapshots (earned hearts)
 

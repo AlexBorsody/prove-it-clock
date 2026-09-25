@@ -11,13 +11,12 @@ reading, not a verified rating.
 
 ## Result
 
-**AVAX 8/20.** Earned 5 (mainnet milestone permanent; C-Chain DeFi ongoing,
-active; subnets/L1s ongoing, active), allowance 3, core open.
+**AVAX 5/20.** Earned 5 (mainnet milestone permanent; C-Chain DeFi ongoing,
+active; subnets/L1s ongoing, active), core open.
 
 ```
 earned    = 1 (mainnet, milestone) + 2 (DeFi, ongoing/active) + 2 (subnets, ongoing/active) = 5
-allowance = 3   (3 checks pass, capped at min(3, floor(20/5)=4))
-filled    = min(20, 5 + 3) = 8
+filled    = min(20, 5) = 5
 ```
 
 ## Lineages
@@ -35,12 +34,8 @@ financial infrastructure = tier-20 scope, whether or not it gets there.
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product (C-Chain DeFi live,
-Aave $258M on Avalanche Aug 2026; 100+ L1s live; real daily tx) yes; active
-team (Helicon Sept 2026; Granite Nov 2025; Octane Apr 2025; Retro9000 grants)
-yes; measurable economic activity tied to the promise (TVL ~$2.77B mid-2025;
-DEX volumes $500M+/day; stablecoin supply $1.7B; gaming tx volumes) yes.
-3 checks, capped at min(3, floor(20/5)) = **3**.
+Removed 2026-09-25: scoring is earned-only. The allowance-era assessment is
+preserved in git history.
 
 ## Historical snapshots (earned hearts)
 
