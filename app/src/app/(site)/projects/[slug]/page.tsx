@@ -26,6 +26,30 @@ function stateTag(state: string): string {
   }
 }
 
+function stateLabel(state: string): string {
+  switch (state) {
+    case "fulfilled": return "Proven";
+    case "active": return "Active";
+    case "lapsed": return "Lapsed";
+    case "retired": return "Ended";
+    default: return "Not yet proven"; // unfulfilled
+  }
+}
+
+function claimLabel(t: string): string {
+  if (t === "milestone") return "One-time";
+  if (t === "ongoing") return "Ongoing";
+  return t;
+}
+
+function heartLabel(pr: any): string | null {
+  if (!pr.reward) return null;
+  const n = `${pr.reward} heart${pr.reward > 1 ? "s" : ""}`;
+  if (pr.state === "retired" || pr.state === "lapsed") return `${n} earned, then lost`;
+  if (pr.state === "fulfilled" || pr.state === "active") return `${n} earned`;
+  return null;
+}
+
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   let points: any[] = [];
@@ -90,23 +114,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Promises</h2>
         <p className="panel-sub">
-          Each promise can earn up to 2 hearts, decided before we look at the
-          evidence. One-time achievements keep their hearts; ongoing promises only
-          count while they're still true.
+          What {latest.name} promised, and what actually happened. Each promise is
+          scored on its own — the hearts add up to the meter at the top.
         </p>
         {promises.map((pr, i) => (
           <div className="comp-row" key={i}>
-            <div className="comp-head">
-              <span className="comp-name">
-                {pr.lineage}{pr.core ? " · main promise" : ""} · {pr.reward}♥
-              </span>
-              <span style={{ display: "flex", gap: 6 }}>
-                <span className={`tag ${stateTag(pr.state)}`}>{pr.state}</span>
-                <span className="tag na">{pr.claim_type}</span>
-              </span>
+            <div className="comp-name">{pr.criteria}</div>
+            <div className="comp-tags">
+              <span className={`tag ${stateTag(pr.state)}`}>{stateLabel(pr.state)}</span>
+              <span className="tag na">{claimLabel(pr.claim_type)}</span>
+              {pr.core ? <span className="tag na">Main promise</span> : null}
+              {heartLabel(pr) ? <span className="comp-hearts num">{heartLabel(pr)}</span> : null}
             </div>
-            <p className="comp-desc">{pr.criteria}</p>
-            <p className="comp-desc" style={{ color: "var(--text-faint)" }}>{pr.rationale}</p>
+            <p className="comp-desc">{pr.rationale}</p>
             {pr.evidence?.length > 0 && (
               <div className="comp-meta">
                 evidence:{" "}
