@@ -31,10 +31,23 @@ html, body {
   line-height: 1.55;
 }
 
-a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+/* App-style links: bold, never underlined. External links get an "open in new" glyph. */
+a { color: var(--blue); font-weight: 700; text-decoration: none; }
+a:hover { color: #8ab8ff; }
+a[href^="http"]::after {
+  content: "";
+  display: inline-block;
+  width: 0.72em;
+  height: 0.72em;
+  margin-left: 0.28em;
+  vertical-align: -0.08em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
 a[target="_blank"]::after { content: " ↗"; font-size: 0.85em; }
 .nav a, .card-link, .card-link:hover { text-decoration: none; }
-a:hover { text-decoration-thickness: 2px; }
+.card-link { font-weight: 400; } /* cards are blocks, not text links */
 
 .num, td.num, .score-val {
   font-family: var(--mono);
@@ -287,7 +300,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .research-notice strong { color: var(--accent); }
 .research-notice p { margin: 6px 0 0; color: var(--text-dim); }
 .research-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 24px 0; }
-.research-nav [aria-current="page"] { color: var(--text); text-decoration: underline; text-underline-offset: 5px; }
+.research-nav [aria-current="page"] { color: var(--text); font-weight: 700; }
 .research-document { font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
 .research-document h1 { font-size: clamp(25px, 4vw, 34px); line-height: 1.2; }
 .research-document h2 { margin: 36px 0 12px; font-size: 20px; }
@@ -384,6 +397,6 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .wt-replay {
   background: none; border: none; padding: 0;
   color: var(--text-faint); font-size: 12px; font-family: inherit;
-  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+  font-weight: 700; cursor: pointer;
 }
 .wt-replay:hover { color: var(--text); }
