@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { HEARTS_METHODOLOGY, readHeartHistory } from "@/lib/heart-data";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinBadge, { shitcoinScore } from "@/components/shitcoin-badge";
+import Vitals from "@/components/vitals";
 import HeartsTimeline from "@/components/hearts-timeline";
 import TimelineChart from "@/components/timeline-chart";
 
@@ -100,6 +101,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <p className="panel-sub" style={{ marginBottom: 0 }}>{assessment.rationale}</p>
         )}
       </div>
+
+      {/* Live ecosystem stats. Display only, never scored. */}
+      <Vitals slug={slug} />
 
       {/* The graph. */}
       <div className="panel">
