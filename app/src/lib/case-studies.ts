@@ -6,6 +6,8 @@ export const CASE_STUDY_DOCUMENTS = {
   overview: { title: "Research protocol", file: "case-studies/README.md" },
   bat: { title: "BAT evidence", file: "case-studies/bat.md" },
   xrp: { title: "XRP evidence", file: "case-studies/xrp.md" },
+  btc: { title: "BTC evidence", file: "case-studies/btc.md" },
+  link: { title: "LINK evidence", file: "case-studies/link.md" },
   review: { title: "Review questions & checks", file: "case-studies/review.md" },
   algorithm: { title: "Adopted heart rules", file: "hearts-algorithm.md" },
 } as const;

@@ -48,7 +48,9 @@ The lineage inventory is a first bounded pass, not an exhaustive promise audit.
 
 1. [BAT evidence and calculation worksheet](bat.md).
 2. [XRP evidence and calculation worksheet](xrp.md).
-3. [Questions and manual acceptance checks](review.md).
+3. [BTC evidence and calculation worksheet](btc.md).
+4. [LINK evidence and calculation worksheet](link.md).
+5. [Questions and manual acceptance checks](review.md).
 
 Status: worksheets available on draft review pages under `/case-studies`; no
 accepted production rating or DB write. Acceptance requires source review, methodology decisions, and a separate

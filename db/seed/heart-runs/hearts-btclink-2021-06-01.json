@@ -1,0 +1,161 @@
+{
+  "schema_version": 2,
+  "run_key": "hearts-btclink-2021-06-01",
+  "as_of": "2021-06-01T00:00:00Z",
+  "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed)",
+  "review_status": "published",
+  "reviewed_by": "Muse (single analyst; reconstructed 2026-09-25)",
+  "policy_ref": "docs/hearts-algorithm.md + docs/case-studies/btc.md + docs/case-studies/link.md (claim-type rule adopted 2026-09-25)",
+  "projects": [
+    {
+      "slug": "btc",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 3,
+        "rationale": "BTC 6/20 reconstructed as of 2021-06-01: ledger milestone + payments active; allowance 3.",
+        "allowance_rationale": "Working product yes; team shipping yes; payment activity yes. 3 checks.",
+        "promises": [
+          {
+            "lineage": "btc-core",
+            "claim_type": "ongoing",
+            "criteria": "Bitcoin becomes the world's peer-to-peer electronic cash",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "Dollar system untouched; adoption real but a fraction of global payments.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Whitepaper title: 'A Peer-to-Peer Electronic Cash System'"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-ledger",
+            "claim_type": "milestone",
+            "criteria": "Decentralized payment ledger anyone can verify",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "Genesis block 2009-01-03; thousands of independent full nodes today; time cannot unship it.",
+            "evidence": [
+              {
+                "url": "https://www.blockchain.com/explorer/blocks/btc/0",
+                "summary": "Genesis block 2009-01-03"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-payments",
+            "claim_type": "ongoing",
+            "criteria": "Real peer-to-peer payments: people and merchants actually pay in BTC at scale",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2018-03-15T00:00:00Z",
+            "rationale": "Lightning mainnet launch 2018-03-15 makes everyday payments usable; BitPay merchant processing since 2011; El Salvador legal tender 2021-09-07 (context, not a heart event).",
+            "evidence": [
+              {
+                "url": "https://lightning.engineering/posts/2018-03-lightning-launch/",
+                "summary": "Lightning Network mainnet launch 2018-03-15"
+              },
+              {
+                "url": "https://bitpay.com/about",
+                "summary": "BitPay merchant payment processing since 2011"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "link",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 2,
+        "rationale": "LINK 5/20 reconstructed as of 2021-06-01: Aave/Synthetix production feeds since 2020-01-09 (+2); CCIP not yet launched; allowance 2.",
+        "allowance_rationale": "Working product yes; team shipping yes; fee-flow figures unverified. 2 checks.",
+        "promises": [
+          {
+            "lineage": "link-core",
+            "claim_type": "ongoing",
+            "criteria": "Chainlink becomes the broadly relied-on connectivity layer between smart contracts, blockchains, and external systems",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2017-09-04T00:00:00Z",
+            "rationale": "DeFi reliance strong; enterprise record is pilots/PoCs only (SWIFT 2023, DTCC 2024, UBS/SBI 2024) \u2014 no confirmed production bank deployments.",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/business/2024/05/16/dtcc-chainlink-complete-pilot-to-accelerate-fund-tokenization-with-jpmorgan-templeton-bny-mellon-participating",
+                "summary": "DTCC Smart NAV pilot 2024 \u2014 pilot, not production"
+              }
+            ]
+          },
+          {
+            "lineage": "link-mainnet",
+            "claim_type": "milestone",
+            "criteria": "Decentralized oracle network live on a public mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2019-05-30T00:00:00Z",
+            "rationale": "Launch announced at Consensus 2019; three completed security audits; 'first functioning, decentralized oracle network'.",
+            "evidence": [
+              {
+                "url": "https://decrypt.co/7042/chainlink-mainnet-live-ethereum-may",
+                "summary": "Decrypt May 2019: mainnet live on Ethereum 2019-05-30"
+              }
+            ]
+          },
+          {
+            "lineage": "link-feeds",
+            "claim_type": "ongoing",
+            "criteria": "Named production applications continuously consume Chainlink Data Feeds",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-01-09T00:00:00Z",
+            "rationale": "Aave Oracle Network live 2020-01-09 with 16 feeds; all Synths migrated to Chainlink oracles 2020; relationship expanding (Aave SVR proposal Dec 2024).",
+            "evidence": [
+              {
+                "url": "https://en.cryptonomist.ch/2020/01/09/aave-oracle-network-on-chainlink/",
+                "summary": "Aave Oracle Network live on Ethereum mainnet 2020-01-09"
+              },
+              {
+                "url": "https://blog.synthetix.io/all-synths-are-now-powered-by-chainlink-decentralised-oracles/",
+                "summary": "Synthetix: all synths powered by Chainlink oracles, Sept 2020"
+              },
+              {
+                "url": "https://CoinTelegraph.com/news/aave-mulls-chainlink-integration-return-mev-fees",
+                "summary": "CoinTelegraph Dec 2024: Aave proposes Chainlink SVR integration"
+              }
+            ]
+          },
+          {
+            "lineage": "link-ccip",
+            "claim_type": "ongoing",
+            "criteria": "Named production users move messages/assets across chains via CCIP",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2021-04-15T00:00:00Z",
+            "rationale": "CCIP promise made in 2.0 whitepaper; no mainnet yet.",
+            "evidence": [
+              {
+                "url": "https://chain.link/whitepaper",
+                "summary": "Chainlink 2.0 whitepaper 2021-04-15: cross-chain interoperability"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    }
+  ]
+}
