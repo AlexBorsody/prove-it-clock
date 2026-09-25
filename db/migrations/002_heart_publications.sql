@@ -1,4 +1,6 @@
 -- Additive, independent of legacy v0.2/v0.3 scores. Apply after 001.
+-- NOTE: this migration was rewritten 2026-09-25 before ever reaching production
+-- (claim-type rule replaced grace/decay). It was only ever run in ephemeral test DBs.
 BEGIN;
 CREATE TABLE public.heart_runs (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -20,21 +22,19 @@ CREATE TABLE public.heart_snapshots (
   availability text NOT NULL CHECK (availability IN ('available','unavailable')),
   unavailable_reason text,
   capacity integer CHECK (capacity IN (5,10,20)),
-  starting_allowance integer,
-  years_since_fulfillment numeric CHECK (years_since_fulfillment >= 0 AND years_since_fulfillment < 'Infinity'::numeric),
+  allowance integer,
   core_fulfilled boolean,
   earned integer CHECK (earned >= 0),
-  allowance integer CHECK (allowance >= 0),
   filled integer CHECK (filled >= 0 AND filled <= capacity),
   assessment jsonb,
   PRIMARY KEY(run_id, project_id),
   CHECK ((availability = 'unavailable' AND length(trim(unavailable_reason)) > 0 AND unavailable_reason IS NOT NULL
-    AND capacity IS NULL AND starting_allowance IS NULL AND years_since_fulfillment IS NULL
-    AND core_fulfilled IS NULL AND earned IS NULL AND allowance IS NULL AND filled IS NULL AND assessment IS NULL)
+    AND capacity IS NULL AND allowance IS NULL
+    AND core_fulfilled IS NULL AND earned IS NULL AND filled IS NULL AND assessment IS NULL)
     OR (availability = 'available' AND unavailable_reason IS NULL
-    AND capacity IS NOT NULL AND starting_allowance IS NOT NULL AND years_since_fulfillment IS NOT NULL
-    AND core_fulfilled IS NOT NULL AND earned IS NOT NULL AND allowance IS NOT NULL AND filled IS NOT NULL
-    AND assessment IS NOT NULL AND starting_allowance BETWEEN 0 AND least(3,capacity/5)))
+    AND capacity IS NOT NULL AND allowance IS NOT NULL
+    AND core_fulfilled IS NOT NULL AND earned IS NOT NULL AND filled IS NOT NULL
+    AND assessment IS NOT NULL AND allowance BETWEEN 0 AND least(3,capacity/5)))
 );
 CREATE TABLE public.heart_market_observations (
   run_id uuid NOT NULL REFERENCES public.heart_runs(id),
@@ -70,17 +70,19 @@ USING (EXISTS (SELECT 1 FROM public.heart_runs r WHERE r.id = run_id AND r.revie
 
 -- Only the backend writer can call this. One RPC transaction publishes the entire
 -- explicit cohort, input evidence, market observations, and calculated results.
+-- Claim-type rule: earned counts only currently active promises; milestones are
+-- permanent once active (no lapse); ongoing claims may lapse and reactivate.
 CREATE FUNCTION public.publish_heart_run(document jsonb) RETURNS uuid
 LANGUAGE plpgsql SECURITY DEFINER SET search_path = '' AS $$
 DECLARE
   rid uuid; existing jsonb; item jsonb; a jsonb; p jsonb; m jsonb; pid uuid;
-  cap integer; initial integer; elapsed numeric; earned_hearts integer;
-  remaining integer; core_done boolean; seen text[]; lineage text;
+  cap integer; present integer; earned_hearts integer;
+  core_done boolean; seen text[]; lineage text;
 BEGIN
   IF jsonb_typeof(document) IS DISTINCT FROM 'object' OR
      jsonb_typeof(document->'projects') IS DISTINCT FROM 'array' OR
      jsonb_array_length(document->'projects') NOT BETWEEN 1 AND 1000 OR
-     document->>'schema_version' IS DISTINCT FROM '1' THEN
+     document->>'schema_version' IS DISTINCT FROM '2' THEN
     RAISE EXCEPTION 'Invalid publication envelope';
   END IF;
   -- Serialize same-key retries. A conflicting retry must never silently win.
@@ -107,17 +109,18 @@ BEGIN
         jsonb_typeof(a->'promises') IS DISTINCT FROM 'array' OR
         jsonb_array_length(a->'promises') = 0 OR
         coalesce(length(trim(a->>'rationale')),0) = 0 OR
-        coalesce(length(trim(a->>'recency_rationale')),0) = 0 THEN
-        RAISE EXCEPTION 'Assessment needs promises and capacity/recency rationale';
+        coalesce(length(trim(a->>'allowance_rationale')),0) = 0 THEN
+        RAISE EXCEPTION 'Assessment needs promises, rationale and allowance rationale';
       END IF;
-      cap := (a->>'capacity')::integer; initial := (a->>'starting_allowance')::integer;
-      elapsed := (a->>'years_since_fulfillment')::numeric;
+      cap := (a->>'capacity')::integer; present := (a->>'allowance')::integer;
       earned_hearts := 0; core_done := NULL; seen := ARRAY[]::text[];
       FOR p IN SELECT value FROM jsonb_array_elements(a->'promises') LOOP
         lineage := p->>'lineage';
         IF coalesce(length(trim(lineage)),0) = 0 OR lineage = ANY(seen) THEN RAISE EXCEPTION 'Missing or duplicate promise lineage'; END IF;
         seen := array_append(seen,lineage);
-        IF p->>'state' IS NULL OR p->>'state' NOT IN ('unfulfilled','fulfilled','abandoned') OR
+        IF p->>'state' IS NULL OR p->>'state' NOT IN ('unfulfilled','active','lapsed','retired') OR
+           p->>'claim_type' IS NULL OR p->>'claim_type' NOT IN ('milestone','ongoing') OR
+           (p->>'claim_type' = 'milestone' AND p->>'state' = 'lapsed') OR
            p->>'reward' IS NULL OR p->>'reward' NOT IN ('0','1','2') OR
            jsonb_typeof(p->'core') IS DISTINCT FROM 'boolean' OR
            coalesce(length(trim(p->>'criteria')),0) = 0 OR
@@ -132,15 +135,15 @@ BEGIN
         END IF;
         IF (p->>'core')::boolean THEN
           IF core_done IS NOT NULL OR (p->>'reward')::integer <> 0 THEN RAISE EXCEPTION 'Exactly one zero-reward core required'; END IF;
-          core_done := p->>'state' = 'fulfilled';
-        ELSIF p->>'state' = 'fulfilled' THEN earned_hearts := earned_hearts + (p->>'reward')::integer;
+          core_done := p->>'state' = 'active';
+        ELSIF p->>'state' = 'active' THEN earned_hearts := earned_hearts + (p->>'reward')::integer;
         END IF;
       END LOOP;
-      remaining := greatest(0,initial - floor(greatest(0,elapsed-2)));
-      INSERT INTO public.heart_snapshots(run_id,project_id,availability,capacity,starting_allowance,
-        years_since_fulfillment,core_fulfilled,earned,allowance,filled,assessment)
-      VALUES(rid,pid,'available',cap,initial,elapsed,core_done,earned_hearts,remaining,
-        least(earned_hearts+remaining, CASE WHEN core_done THEN cap ELSE cap-1 END),a);
+      IF core_done IS NULL THEN RAISE EXCEPTION 'Missing core promise'; END IF;
+      INSERT INTO public.heart_snapshots(run_id,project_id,availability,capacity,allowance,
+        core_fulfilled,earned,filled,assessment)
+      VALUES(rid,pid,'available',cap,present,core_done,earned_hearts,
+        least(earned_hearts+present, CASE WHEN core_done THEN cap ELSE cap-1 END),a);
     ELSE RAISE EXCEPTION 'Unknown availability'; END IF;
     m := item->'market';
     IF m IS NOT NULL AND m <> 'null'::jsonb THEN

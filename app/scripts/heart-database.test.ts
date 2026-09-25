@@ -3,25 +3,34 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { validateHeartPublication, type HeartPublication } from '../src/lib/heart-publication';
-import { calculateHeartBalance } from '../src/lib/hearts';
+import { calculateHeartBalance, type HeartBalanceInput } from '../src/lib/hearts';
 import { heartQuery } from '../src/lib/heart-data';
+
+type Assessment = NonNullable<NonNullable<HeartPublication['projects'][number]['assessment']>>;
 
 function fixture(key = 'fixture-1'): HeartPublication {
   return {
-    schema_version:1,run_key:key,as_of:'2026-09-24T00:00:00Z',methodology:'test-only',review_status:'published',
+    schema_version:2,run_key:key,as_of:'2026-09-25T00:00:00Z',methodology:'test-only',review_status:'published',
     reviewed_by:'test reviewer',policy_ref:'fixture only; not production policy',
-    projects:[{slug:'fixture-a',availability:'available',assessment:{capacity:10,starting_allowance:2,
-      years_since_fulfillment:3,rationale:'Test capacity',recency_rationale:'Explicit test interval',promises:[
-        {lineage:'core',criteria:'Core test',reward:0,core:true,state:'unfulfilled',effective_at:'2020-01-01T00:00:00Z',
-          rationale:'Not yet delivered',evidence:[{url:'https://example.org/core',summary:'Test evidence'}]},
-        {lineage:'delivery',criteria:'Delivery test',reward:2,core:false,state:'fulfilled',effective_at:'2023-09-24T00:00:00Z',
-          rationale:'Delivered',evidence:[{url:'https://example.org/delivery',summary:'Test evidence'}]}
-      ]},market:{observed_at:'2026-09-23T00:00:00Z',source_url:'https://example.org/markets',price_usd:2,
+    projects:[{slug:'fixture-a',availability:'available',assessment:{capacity:10,allowance:2,
+      rationale:'Test capacity',allowance_rationale:'Present-tense checklist: product live, team shipping',promises:[
+        {lineage:'core',claim_type:'milestone',criteria:'Core test',reward:0,core:true,state:'unfulfilled',
+          effective_at:'2020-01-01T00:00:00Z',rationale:'Not yet delivered',
+          evidence:[{url:'https://example.org/core',summary:'Test evidence'}]},
+        {lineage:'delivery',claim_type:'ongoing',criteria:'Delivery test',reward:2,core:false,state:'active',
+          effective_at:'2023-09-24T00:00:00Z',rationale:'Delivered',
+          evidence:[{url:'https://example.org/delivery',summary:'Test evidence'}]}
+      ]},market:{observed_at:'2026-09-24T00:00:00Z',source_url:'https://example.org/markets',price_usd:2,
         market_cap_usd:100,raw_payload:{test:true}}},
       {slug:'fixture-b',availability:'unavailable',unavailable_reason:'Awaiting evidence',market:{
-        observed_at:'2026-09-23T00:00:00Z',source_url:'https://example.org/markets',price_usd:3,
+        observed_at:'2026-09-24T00:00:00Z',source_url:'https://example.org/markets',price_usd:3,
         market_cap_usd:200,raw_payload:{test:true}}}]
   };
+}
+
+function toInput(a: Assessment): HeartBalanceInput {
+  return {capacity: a.capacity, allowance: a.allowance, promises: a.promises.map(p => ({
+    lineage: p.lineage, claimType: p.claim_type, state: p.state, reward: p.reward, core: p.core}))};
 }
 
 test('PostgreSQL publication: atomicity, evidence, retries, ranks, append-only history and access', async t => {
@@ -38,8 +47,10 @@ test('PostgreSQL publication: atomicity, evidence, retries, ranks, append-only h
     await t.test('writer RPC derives results and stores raw evidence and markets', async () => {
       await db.exec('SET ROLE service_role');
       await publish(doc);
-      const {rows} = await db.query<{filled:number;assessment:unknown}>('SELECT filled,assessment FROM heart_snapshots WHERE availability=\'available\'');
-      assert.equal(rows[0].filled,3); assert.deepEqual(rows[0].assessment,doc.projects[0].assessment);
+      const {rows} = await db.query<{filled:number;earned:number;allowance:number;assessment:unknown}>(
+        'SELECT filled,earned,allowance,assessment FROM heart_snapshots WHERE availability=\'available\'');
+      assert.equal(rows[0].earned,2); assert.equal(rows[0].allowance,2); assert.equal(rows[0].filled,4);
+      assert.deepEqual(rows[0].assessment,doc.projects[0].assessment);
       assert.equal((await db.query('SELECT * FROM heart_market_observations')).rows.length,2);
       await db.exec('RESET ROLE');
     });
@@ -73,12 +84,14 @@ test('PostgreSQL publication: atomicity, evidence, retries, ranks, append-only h
       await assert.rejects(db.exec('UPDATE heart_snapshots SET filled=0'),/append-only/);
       await assert.rejects(db.exec('DELETE FROM heart_runs'),/append-only/);
     });
-    await t.test('duplicate lineages, missing core, invalid capacity, future data and review metadata rejected in SQL', async () => {
+    await t.test('duplicate lineages, missing core, invalid capacity, lapsed milestones and review metadata rejected in SQL', async () => {
       const cases: Array<(d:HeartPublication)=>void> = [
         d=>d.projects[0].assessment!.promises.push(d.projects[0].assessment!.promises[1]),
         d=>{d.projects[0].assessment!.promises.shift();},
         d=>{d.projects[0].assessment!.capacity=7 as 10;},
-        d=>{d.projects[0].assessment!.starting_allowance=3;},
+        d=>{d.projects[0].assessment!.allowance=3;},
+        d=>{d.projects[0].assessment!.promises[1].claim_type='milestone';d.projects[0].assessment!.promises[1].state='lapsed';},
+        d=>{d.projects[0].assessment!.promises[1].claim_type='vibes' as 'milestone';},
         d=>{d.projects[0].market!.observed_at='2027-01-01T00:00:00Z';},
         d=>{delete d.reviewed_by;},
         d=>{d.projects.push(d.projects[0]);},
@@ -90,15 +103,32 @@ test('PostgreSQL publication: atomicity, evidence, retries, ranks, append-only h
         assert.equal((await db.query('SELECT * FROM heart_runs WHERE run_key=$1',[bad.run_key])).rows.length,0);
       }
     });
-    await t.test('SQL matches TypeScript grace, decay, core cap and retirement arithmetic', async () => {
-      for (const [i,years] of [0,2,2.99,3,8].entries()) {
-        const d=fixture(`arithmetic-${i}`);const a=d.projects[0].assessment!;
-        a.years_since_fulfillment=years;
-        if (i===4) a.promises[1].state='abandoned';
+    await t.test('SQL matches TypeScript claim-type arithmetic: lapse, reactivation, retirement, core gate', async () => {
+      const scenarios: Array<(a: Assessment) => void> = [
+        a=>{}, // baseline: milestone-less ongoing active +2, allowance 2, core open -> 4
+        a=>{a.promises[1].state='lapsed';}, // lapse drops the heart -> 2
+        a=>{a.promises[1].state='retired';}, // retirement removes it visibly -> 2
+        a=>{a.promises.push({lineage:'ledger',claim_type:'milestone',criteria:'Ledger test',reward:1,core:false,
+          state:'active',effective_at:'2012-06-01T00:00:00Z',rationale:'Deployed',
+          evidence:[{url:'https://example.org/ledger',summary:'Test evidence'}]});}, // milestone permanent -> 5
+        a=>{a.promises[0].state='active';a.allowance=1;
+          a.promises.push({lineage:'ledger',claim_type:'milestone',criteria:'Ledger test',reward:1,core:false,
+            state:'active',effective_at:'2012-06-01T00:00:00Z',rationale:'Deployed',
+            evidence:[{url:'https://example.org/ledger',summary:'Test evidence'}]});
+          a.promises.push({lineage:'extra',claim_type:'ongoing',criteria:'Extra test',reward:2,core:false,
+            state:'active',effective_at:'2024-01-01T00:00:00Z',rationale:'Delivered',
+            evidence:[{url:'https://example.org/extra',summary:'Test evidence'}]});
+          a.capacity=5;}, // core fulfilled unlocks capacity: 2+1+2+2=7 -> 5
+      ];
+      for (const [i,change] of scenarios.entries()) {
+        const d=fixture(`claimtype-${i}`);const a=d.projects[0].assessment!;
+        change(a); validateHeartPublication(d);
         const id=(await publish(d)).rows[0].id;
-        const row=(await db.query<{filled:number}>('SELECT filled FROM heart_snapshots WHERE run_id=$1 AND availability=\'available\'',[id])).rows[0];
-        assert.equal(row.filled,calculateHeartBalance({capacity:a.capacity,startingAllowance:a.starting_allowance,
-          earned:i===4?0:2,yearsSinceFulfillment:years,coreFulfilled:false}).filled);
+        const row=(await db.query<{filled:number;earned:number}>(
+          'SELECT filled,earned FROM heart_snapshots WHERE run_id=$1 AND availability=\'available\'',[id])).rows[0];
+        const expected=calculateHeartBalance(toInput(a));
+        assert.equal(row.filled,expected.filled);
+        assert.equal(row.earned,expected.earned);
       }
     });
   } finally {await db.close();}
@@ -108,6 +138,9 @@ test('publication artifact validation rejects unsafe inputs before network calls
   validateHeartPublication(fixture());
   const bad=fixture();bad.projects[0].assessment!.promises.push(bad.projects[0].assessment!.promises[1]);
   assert.throws(()=>validateHeartPublication(bad),/Duplicate lineage/);
+  const lapsed=fixture();lapsed.projects[0].assessment!.promises[1].claim_type='milestone';
+  lapsed.projects[0].assessment!.promises[1].state='lapsed';
+  assert.throws(()=>validateHeartPublication(lapsed),/cannot lapse/);
   assert.throws(()=>validateHeartPublication({...fixture(),reviewed_by:undefined}));
   assert.throws(()=>validateHeartPublication({...fixture(),projects:[]}));
 });

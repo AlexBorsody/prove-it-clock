@@ -10,9 +10,9 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
   return (
     <main className="research">
       <aside className="research-notice" aria-label="Research status">
-        <strong>Research draft — no published heart rating</strong>
-        <p>Historical reconstruction, not a blinded study. Conditional calculations
-          are review examples, not live scores. Questions remain open for Alex and Muse.</p>
+        <strong>Research draft — methodology adopted 2026-09-25, three review questions still open</strong>
+        <p>Reviewed case studies under the claim-type rule, not a blinded replication.
+          No published heart rating until the open questions in the review close.</p>
       </aside>
       <nav className="research-nav" aria-label="Case studies">
         {Object.entries(CASE_STUDY_DOCUMENTS).map(([key, document]) => (
