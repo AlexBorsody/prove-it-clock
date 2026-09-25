@@ -75,9 +75,14 @@ badge (categorical, color-coded), CODE / USE / HYPE compact columns,
 heart-history sparkline column. Sortable by column. Compare button above
 the table opens Phase 2b.
 
+Below the table: stacked area chart of HYPE share across projects over
+time (from `social_snapshots`).
+
+Dark theme ships with this phase: the whole app goes dark, CMC-style.
+
 Acceptance: 8 rows, correct hearts and verdicts, sparklines render from
-published runs, sorting works, no em dashes, no timestamps, no count
-labels.
+published runs, sorting works, dark theme throughout, no em dashes, no
+timestamps, no count labels.
 
 ## Phase 2b: Compare view
 
@@ -112,6 +117,11 @@ cleanly.
 2. Delivery Timeline: hearts step-line on top; CODE/HYPE activity strip
    below with toggle. USE toggle hidden until its metrics exist. Failed
    collection never renders as zero.
+3. HYPE mindshare bump chart: per-project rank by mentions over time,
+   30d/90d toggle, coin icons on rank lines. Gated on 8 weeks of snapshots
+   like all HYPE trends; before that, the section does not render.
+4. Delivery-health gauge in the header stat strip: hearts filled %,
+   green/amber/red. Never sentiment.
 4. Promises list with status icons. State mapping: active -> Fulfilled,
    unfulfilled -> Active, lapsed/retired -> Abandoned. Overdue is defined
    in the model but has no v1 trigger and does not render.
