@@ -171,7 +171,7 @@ anything a failure. We can.
   settlement never shipped. Nobody scores delivery.
 - **Proof history.** Price charts exist everywhere. Nobody charts proof
   earned and lost over time as promises were kept or abandoned.
-- **Hype inverted.** CMC treats buzz as a positive signal. We put buzz
+- **Hype inverted.** CMC treats hype as a positive signal. We put hype
   next to proof and say "all sizzle, no steak" when the meter is empty.
 - **Verdicts.** A delivery-accountability rating (No concern through Core
   delivery failure) is something an aggregator funded by listings can

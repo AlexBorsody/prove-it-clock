@@ -39,7 +39,7 @@ Published 2026-09-25 under the claim-type rule, earned-only (single-analyst; Ale
 
 A larger meter means greater potential, not greater fulfillment. Deals earn
 hearts only when they meet delivery criteria. Check the evidence for both;
-use BTC and LINK as additional examples without predetermined rankings.
+BTC and LINK are now scored as well, current scores in implementation.md.
 
 ## The interface
 

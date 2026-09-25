@@ -13,7 +13,7 @@ remains open is below, decide in chat or annotate here.
    promises); XRP's ledger is a milestone, its payments product ongoing.
    xRapid → ODL → Ripple Payments is one continuing lineage.
 3. **Subsidized fulfillment counts**, disclosed (BAT creator payouts).
-4. **ODL volume figures** (2024–2026) accepted provisionally from secondary
+4. **ODL volume figures** (2024-2026) accepted provisionally from secondary
    sources citing Ripple; blinded replication must re-verify primaries.
 
 ## Decided 2026-09-25 (Muse's calls, Alex can override)

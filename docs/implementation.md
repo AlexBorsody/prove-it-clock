@@ -144,9 +144,9 @@ cleanly.
 6. Evidence / Methodology bottom section: sources, tracked repos, data
    coverage, methodology version, run id. Replaces the "under the hood"
    drawer (same content, visible by default).
-7. Legacy v0.2.0 timeline section: remove or keep per Alex's call (open
-   question 3 below). Default recommendation: remove; the Delivery
-   Timeline supersedes it and two timelines on one page is clutter.
+7. Legacy v0.2.0 timeline section: the Phase 3 build removed it; the
+   Delivery Timeline is the single timeline on the page. Pending Alex's
+   confirmation (open question 3 below).
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
@@ -234,8 +234,9 @@ clean.
 2. **HYPE word:** once the 8-week baseline exists the word is vs
    baseline; until then, show just "collecting" or rank vs the
    cross-project median that week?
-3. **Legacy v0.2.0 timeline** on the detail page: remove now, or keep
-   per the earlier standing rule?
+3. **Legacy v0.2.0 timeline** on the detail page: the Phase 3 build removed
+   it, leaving the Delivery Timeline as the single timeline. Confirm this is
+   the final call, or say restore.
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
 5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
    waits for real USE data. No provisional scores, per the gating rule.

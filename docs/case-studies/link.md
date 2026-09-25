@@ -51,5 +51,7 @@ preserved in git history.
   manufacture hearts); the 2017 ICO (context only).
 - **L3 present-tense evidence is thin**, rests on launch evidence plus Sept
   2026 editorial claims; needs a named 2025/2026 CCIP production confirmation.
-- **Allowance check 3 needs on-chain measurement** (CCIP volume, LINK paid to
-  node operators, staking pool) before it can count.
+- **On-chain evidence still needed:** CCIP volume, LINK paid to node operators,
+  and the staking pool still lack on-chain measurement. The ongoing-active
+  status rests on launch evidence plus Sept 2026 editorial claims until a
+  named 2025/2026 production confirmation exists.
