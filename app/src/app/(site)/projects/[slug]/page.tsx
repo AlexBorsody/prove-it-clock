@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* Live ecosystem stats. Display only, never scored. */}
-      <Vitals slug={slug} />
+      <Vitals slug={slug} earned={latest.earned} capacity={latest.capacity} />
 
       {/* The graph. */}
       <div className="panel">

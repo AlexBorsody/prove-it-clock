@@ -6,10 +6,11 @@
  *
  * Data sources (all free, no signup):
  * - GitHub REST API: stars, forks, open issues, last commit, 52-week commit
- *   activity. Unauthenticated limit is 60 requests/hour per IP. Each project
- *   needs 3 requests, refreshed at most every 6 hours, so ~4 requests/hour
- *   total across all 8 projects. Set GITHUB_TOKEN to raise the limit to
- *   5,000/hour; the code works without it.
+ *   activity, open pull requests (via the search API). Unauthenticated limit
+ *   is 60 requests/hour per IP (search has its own 10/minute budget). Each
+ *   project needs 4 requests, refreshed at most every 6 hours, so ~6
+ *   requests/hour total across all 8 projects. Set GITHUB_TOKEN to raise
+ *   the limits; the code works without it and degrades gracefully.
  *
  * Deliberately NOT included (documented, not faked):
  * - X/Twitter follower counts and mentions: X API is paywalled.
@@ -54,6 +55,7 @@ export interface VitalsData {
   stars: number | null;
   forks: number | null;
   openIssues: number | null;
+  openPRs: number | null;
   lastPushAt: string | null;
   lastCommitAt: string | null;
   lastCommitMessage: string | null;
@@ -155,6 +157,7 @@ export async function fetchVitals(slug: string): Promise<VitalsData> {
     stars: null,
     forks: null,
     openIssues: null,
+    openPRs: null,
     lastPushAt: null,
     lastCommitAt: null,
     lastCommitMessage: null,
@@ -165,13 +168,16 @@ export async function fetchVitals(slug: string): Promise<VitalsData> {
     partial: false,
   };
 
-  const [repo, commits, weeks] = await Promise.all([
+  const [repo, commits, weeks, prs] = await Promise.all([
     gh<GhRepo>(`/repos/${meta.github}`),
     gh<GhCommit[]>(`/repos/${meta.github}/commits?per_page=1`),
     ghCommitActivity(meta.github),
+    gh<{ total_count: number }>(
+      `/search/issues?q=${encodeURIComponent(`repo:${meta.github} type:pr state:open`)}&per_page=1`
+    ),
   ]);
 
-  if (!repo && !commits && !weeks) {
+  if (!repo && !commits && !weeks && !prs) {
     return { ...base, partial: true }; // GitHub fully unreachable; UI shows the down state
   }
 
@@ -182,6 +188,11 @@ export async function fetchVitals(slug: string): Promise<VitalsData> {
     base.lastPushAt = repo.pushed_at;
   } else {
     base.partial = true;
+  }
+
+  // Search API is best-effort (stricter rate limits); the tile hides on null.
+  if (prs && typeof prs.total_count === "number") {
+    base.openPRs = prs.total_count;
   }
 
   if (commits && commits[0]) {

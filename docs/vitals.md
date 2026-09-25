@@ -8,7 +8,7 @@ their own ranking later.
 
 Per project, from the canonical development repo:
 
-- Stars, forks, open issues
+- Stars, forks, open issues, open pull requests
 - Last commit (relative time plus the commit message)
 - Commits in the last 30 and 90 days
 - A 52-week commit-activity sparkline
@@ -20,6 +20,7 @@ Per project, from the canonical development repo:
 1. `GET /repos/{owner}/{repo}` - stars, forks, open issues, last push
 2. `GET /repos/{owner}/{repo}/commits?per_page=1` - latest commit date/message
 3. `GET /repos/{owner}/{repo}/stats/commit_activity` - 52 weekly commit totals
+4. `GET /search/issues?q=repo:{owner}/{repo}+type:pr+state:open` - open PR count (best-effort)
 
 Canonical repos (verified 2026-09-25):
 

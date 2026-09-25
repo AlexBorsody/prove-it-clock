@@ -1,7 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import type { VitalsData } from "@/lib/vitals";
+import SocialVitals from "@/components/social-vitals";
+import {
+  GithubMark,
+  StarIcon,
+  ForkIcon,
+  IssueIcon,
+  CommitIcon,
+  PullRequestIcon,
+} from "@/components/icons";
 
 /** Project vitals: live GitHub activity. Display only, never scored. */
 
@@ -61,16 +71,26 @@ function Sparkline({ weeks }: { weeks: NonNullable<VitalsData["weeks"]> }) {
   );
 }
 
-function Tile({ label, value }: { label: string; value: number | null }) {
+function Tile({
+  icon,
+  label,
+  value,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: number | null;
+}) {
+  if (value == null) return null;
   return (
     <div className="vital-tile">
+      <div className="vital-icon">{icon}</div>
       <div className="vital-num num">{fmtCompact(value)}</div>
       <div className="vital-label">{label}</div>
     </div>
   );
 }
 
-export default function Vitals({ slug }: { slug: string }) {
+export default function Vitals({ slug, earned, capacity }: { slug: string; earned: number; capacity: number }) {
   const [data, setData] = useState<VitalsData | null>(null);
   const [failed, setFailed] = useState(false);
   const [retry, setRetry] = useState(0);
@@ -98,7 +118,8 @@ export default function Vitals({ slug }: { slug: string }) {
 
   return (
     <div className="panel">
-      <h2>
+      <h2 className="vitals-heading">
+        <GithubMark className="vitals-mark" />
         Vitals <span className="tag measured">live</span>
       </h2>
       <p className="panel-sub">
@@ -135,14 +156,16 @@ export default function Vitals({ slug }: { slug: string }) {
             <span className="vitals-repo-label">{data.repoLabel}</span>
           </p>
           <div className="vitals-grid">
-            <Tile label="Stars" value={data.stars} />
-            <Tile label="Forks" value={data.forks} />
-            <Tile label="Open issues" value={data.openIssues} />
-            <Tile label="Commits, 30d" value={data.commits30d} />
-            <Tile label="Commits, 90d" value={data.commits90d} />
+            <Tile icon={<StarIcon />} label="Stars" value={data.stars} />
+            <Tile icon={<ForkIcon />} label="Forks" value={data.forks} />
+            <Tile icon={<IssueIcon />} label="Open issues" value={data.openIssues} />
+            <Tile icon={<PullRequestIcon />} label="Open PRs" value={data.openPRs} />
+            <Tile icon={<CommitIcon />} label="Commits, 30d" value={data.commits30d} />
+            <Tile icon={<CommitIcon />} label="Commits, 90d" value={data.commits90d} />
           </div>
           {data.lastCommitAt && (
             <p className="vitals-commit">
+              <CommitIcon className="vitals-commit-icon" />
               <b>Last commit</b> {relTime(data.lastCommitAt)}
               {data.lastCommitMessage ? (
                 <span className="vitals-commit-msg">{data.lastCommitMessage}</span>
@@ -160,6 +183,10 @@ export default function Vitals({ slug }: { slug: string }) {
           </p>
         </>
       )}
+
+      {/* Prove-It's own social layer: hype vs substance. Display only.
+          Renders independently of the GitHub section above. */}
+      <SocialVitals slug={slug} earned={earned} capacity={capacity} />
     </div>
   );
 }

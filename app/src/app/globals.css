@@ -437,7 +437,16 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .shitcoin-badge.sev-warn { --sev-color: var(--amber); }
 .shitcoin-badge.sev-bad { --sev-color: var(--red); }
 
+/* ---- icons: Octicons + brand marks, always currentColor ---- */
+.icon { display: inline-block; vertical-align: -2px; flex-shrink: 0; }
+
 /* ---- vitals: live GitHub activity, display only ---- */
+.vitals-heading { display: flex; align-items: center; gap: 10px; }
+.vitals-mark { width: 22px; height: 22px; color: var(--text); }
+.vitals-heading .tag { margin-left: 2px; }
+.vital-icon { color: var(--text-dim); margin-bottom: 8px; }
+.vital-icon .icon { width: 18px; height: 18px; }
+.vitals-commit-icon { width: 14px; height: 14px; margin-right: 6px; color: var(--text-dim); }
 .vitals-repo { margin: 0 0 14px; font-size: 14px; }
 .vitals-repo-label { color: var(--text-faint); margin-left: 10px; font-size: 13px; }
 .vitals-grid {
@@ -473,6 +482,27 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .vitals-spark rect { fill: var(--green); opacity: 0.75; }
 .vitals-spark rect:last-child { opacity: 1; }
 .vitals-foot { color: var(--text-faint); font-size: 12.5px; margin: 10px 0 0; }
+
+/* ---- social: our own hype-vs-substance layer, display only ---- */
+.social-section { border-top: 1px solid var(--border); margin-top: 18px; padding-top: 16px; }
+.social-heading { font-size: 14px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 6px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.social-heading-icon { width: 16px; height: 16px; color: var(--text-dim); }
+.hype-verdict-icon { width: 18px; height: 18px; margin-right: 8px; vertical-align: -3px; color: var(--hype-color); }
+.social-trend { font-size: 11px; color: var(--text-faint); margin-left: 6px; vertical-align: middle; }
+.hype-verdict {
+  border-radius: 12px; background: #101012; border: 1px solid var(--border-strong);
+  border-left: 5px solid var(--hype-color, var(--text-faint));
+  padding: 12px 14px; margin-top: 4px;
+}
+.hype-verdict.sev-bad { --hype-color: var(--red); }
+.hype-verdict.sev-ok { --hype-color: var(--green); }
+.hype-verdict.sev-neutral { --hype-color: var(--text-faint); }
+.hype-verdict-kicker {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-faint); font-weight: 700; margin-bottom: 6px;
+}
+.hype-verdict-read { margin: 0 0 6px; font-size: 15px; font-weight: 700; color: var(--text); }
+.hype-verdict-sub { margin: 0; font-size: 12.5px; color: var(--text-dim); }
 .vitals-loading { display: grid; gap: 10px; }
 .vitals-skel {
   height: 52px; border-radius: 10px; background: var(--bg-raised);
