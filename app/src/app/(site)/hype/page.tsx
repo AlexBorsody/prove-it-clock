@@ -45,6 +45,7 @@ export default async function HypePage() {
       ).category,
       mentions: latest?.news_mentions_7d ?? null,
       baselineWeeks,
+      sources: latest?.sources_ok ?? [],
     };
   });
 

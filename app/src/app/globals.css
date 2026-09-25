@@ -799,21 +799,109 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
-  min-height: 88px;
 }
-.board-card:hover { border-color: var(--border-strong); }
-.board-card-r1 { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.board-card-head {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: inherit;
+  margin-bottom: 12px;
+}
 .board-card-rank {
-  font-family: var(--mono); font-weight: 700; font-size: 14px;
-  color: var(--text-faint); min-width: 22px;
+  font-family: var(--mono); font-weight: 700; font-size: 15px;
+  color: var(--text-faint); min-width: 20px; text-align: right;
 }
-.board-card-name { font-weight: 700; font-size: 17px; }
-.board-card-sym { color: var(--text-faint); font-size: 13.5px; margin-left: 6px; font-family: var(--mono); }
-.board-card-r2 { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
-.board-card-hearts { font-family: var(--mono); font-weight: 700; font-size: 15px; }
-.board-card-r3 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.board-card-word { font-size: 14px; font-weight: 700; color: var(--text-dim); }
-.board-card-word.good { color: var(--green); }
+.board-card-titles { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.board-card-name { font-weight: 700; font-size: 18px; line-height: 1.2; }
+.board-card-symbol {
+  color: var(--text-faint); font-size: 13px; font-family: var(--mono);
+  letter-spacing: 0.06em;
+}
+.board-card-hearts { margin-bottom: 4px; }
+.board-card-potential {
+  display: block; margin-top: 6px;
+  font-weight: 700; font-size: 15px; color: var(--text);
+}
+.board-card .shitcoin-meter { margin-top: 10px; }
+.board-card-factors {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+  margin-top: 12px;
+}
+.factor-cell {
+  display: flex; flex-direction: column; gap: 3px;
+  background: var(--bg-raised); border-radius: 10px;
+  padding: 10px 12px; text-decoration: none; color: inherit;
+  border: none; font: inherit; text-align: left; cursor: pointer;
+  min-width: 0;
+}
+button.factor-cell.open { outline: 2px solid var(--border-strong); }
+.factor-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+.factor-val { font-size: 15px; font-weight: 700; }
+.factor-val .cell-sub { display: block; font-weight: 400; }
+.board-card-promises { margin-top: 10px; }
+
+/* Compact shitcoin meter: label + segments, no paragraph. */
+.shitcoin-meter.compact .shitcoin-meter-label { margin-bottom: 6px; }
+.shitcoin-meter.compact .shitcoin-segments { gap: 4px; }
+.shitcoin-meter.compact .shitcoin-seg {
+  padding: 7px 4px; font-size: 11px; border-radius: 3px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Expandable promises (scoreboard rows and cards). */
+.expand-btn {
+  background: var(--bg-raised); border: none; color: var(--text-dim);
+  font-size: 13px; font-weight: 700; border-radius: 8px;
+  padding: 6px 10px; cursor: pointer;
+}
+.expand-btn.open { color: var(--text); }
+.expand-row td { background: var(--bg-panel); padding: 0 16px 16px; }
+.expand-promises-head {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-faint);
+  padding: 12px 0 8px;
+}
+.promise-rows { display: flex; flex-direction: column; gap: 8px; }
+.promise-row {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--bg-raised); border-radius: 10px; padding: 10px 12px;
+}
+.promise-row-criteria { font-size: 14px; font-weight: 600; line-height: 1.35; }
+.promise-row-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.promise-rows-empty { color: var(--text-faint); font-size: 14px; margin: 4px 0; }
+.promise-rows-more {
+  font-size: 14px; font-weight: 700; margin-top: 2px;
+  text-decoration: none;
+}
+
+/* Tappable scoreboard cells. */
+.cell-link { text-decoration: none; color: inherit; display: inline-block; }
+.cell-link:hover .word { text-decoration: underline; }
+
+/* CODE ranking page. */
+.code-rows { display: flex; flex-direction: column; }
+.code-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1.6fr) auto minmax(0, 1fr) auto;
+  gap: 12px; align-items: center;
+  padding: 14px 4px; border-top: 1px solid var(--border);
+}
+.code-row:first-child { border-top: none; }
+.code-rank { font-weight: 700; font-size: 15px; color: var(--text-faint); }
+.code-coin { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.code-coin-link { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; min-width: 0; }
+.code-name { font-weight: 700; font-size: 16px; }
+.code-repo { font-size: 12.5px; color: var(--text-faint); }
+.code-repo a { color: var(--accent); text-decoration: none; font-weight: 700; }
+.code-commits { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.code-commits-num { font-size: 22px; font-weight: 800; }
+.code-bar { height: 8px; background: var(--bg-raised); border-radius: 4px; overflow: hidden; min-width: 60px; }
+.code-bar-fill { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+@media (max-width: 640px) {
+  .code-row { grid-template-columns: 28px minmax(0, 1fr) auto; }
+  .code-bar, .code-row > .word { display: none; }
+}
 
 /* Stat strip cells with metric icons. */
 .stat-head { display: flex; align-items: center; gap: 8px; }
@@ -889,3 +977,52 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
   font-size: 14px; font-weight: 700; color: var(--text-dim);
   background: var(--bg-raised); border-radius: 8px; padding: 4px 10px;
 }
+
+/* HYPE source icons: Reddit, Telegram, News. Lit when the source delivered. */
+.hype-sources { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; vertical-align: middle; }
+.hype-source { display: inline-flex; color: var(--text-faint); opacity: 0.35; }
+.hype-source.on { opacity: 1; color: var(--text-dim); }
+.hype-source-icon { width: 16px; height: 16px; }
+
+/* GitHub marks on CODE stats. */
+.code-github { width: 14px; height: 14px; color: var(--text-faint); margin-right: 5px; vertical-align: -2px; }
+.repo-link { display: inline-flex; align-items: center; font-weight: 700; }
+.repo-github { width: 13px; height: 13px; margin-right: 4px; }
+
+/* Scoreboard CTA stays quiet: small, right-aligned, never full-bleed. */
+.scoreboard-actions .btn {
+  font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 10px;
+  background: var(--bg-raised); color: var(--text-dim); border: 1px solid var(--border-strong);
+}
+
+/* Mobile card, spec rebuild: dense but clean. */
+.mcard {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  margin-bottom: 12px;
+}
+.mcard-head { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; margin-bottom: 10px; }
+.mcard-name { font-weight: 800; font-size: 17px; color: var(--text); }
+.mcard-ticker { font-size: 13px; font-weight: 700; color: var(--text-faint); letter-spacing: 0.06em; }
+.mcard-hearts { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.compact-hearts { display: inline-flex; gap: 3px; font-size: 13px; }
+.compact-hearts .ch { color: #2c2f3a; display: inline-flex; }
+.compact-hearts .ch.filled { color: var(--green); }
+.mcard-count { font-size: 15px; font-weight: 800; color: var(--text-dim); }
+.mcard-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
+.mcard-dot { color: var(--text-faint); }
+.mcard-verdict { text-transform: uppercase; letter-spacing: 0.04em; }
+.mcard-verdict.v-not-a-shitcoin { color: var(--green); }
+.mcard-verdict.v-watch { color: var(--text-dim); }
+.mcard-verdict.v-shitcoin-risk { color: var(--amber); }
+.mcard-verdict.v-shitcoin { color: var(--red); }
+.mcard-stat { color: var(--text-dim); text-decoration: none; font-weight: 700; }
+.mcard-spark { margin: 2px 0 8px; opacity: 0.9; }
+.mcard-promises-toggle {
+  width: 100%; background: none; border: none; padding: 6px 0 0;
+  color: var(--text-faint); font-size: 13px; font-weight: 700; text-align: left;
+  border-top: 1px solid var(--border);
+}
+.mcard-promises { margin-top: 8px; }

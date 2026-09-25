@@ -62,6 +62,7 @@ export default async function Home() {
           promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
         ).category,
         code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
+        codeCommits: vitals?.commits90d ?? null,
         codeNote:
           vitals == null
             ? "No commit data"
@@ -73,6 +74,12 @@ export default async function Home() {
         hypeCollecting: baselineWeeks < 8,
         baselineWeeks,
         spark,
+        promises: promises.map((pr: any) => ({
+          criteria: pr.criteria ?? pr.lineage ?? "Promise",
+          state: pr.state ?? "open",
+          core: !!pr.core,
+          reward: pr.reward ?? 0,
+        })),
       };
     })
   );
@@ -83,7 +90,6 @@ export default async function Home() {
   return (
     <>
       <h1 className="page-title">Prove-It</h1>
-      <p className="page-sub slogan">Truth, not hype.</p>
 
       {rows.length === 0 ? (
         <div className="panel">

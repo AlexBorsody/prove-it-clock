@@ -94,17 +94,17 @@ export default function MethodologyPage() {
         </p>
         <ul>
           <li>
-            <b>No concern:</b> no retired or lapsed promise on record.
+            <b>Not a shitcoin:</b> no retired or lapsed promise on record.
           </li>
           <li>
             <b>Watch:</b> reserved for verified overdue promises once deadline
             evidence is researched. Nothing triggers it yet.
           </li>
           <li>
-            <b>Delivery concern:</b> a supporting promise was retired or lapsed.
+            <b>Shitcoin risk:</b> a supporting promise was retired or lapsed.
           </li>
           <li>
-            <b>Core delivery failure:</b> the core promise was retired or lapsed.
+            <b>Shitcoin:</b> the core promise was retired or lapsed.
           </li>
         </ul>
         <p style={{ marginBottom: 0 }}>
@@ -207,15 +207,15 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="book" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20</>} alt>
+      <Section icon="book" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20 potential</>} alt>
         <p>
-          <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20</b>, earned only. One heart for the ledger
+          <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20 potential</b>, earned only. One heart for the ledger
           milestone (permanent), one for XRP payments as an ongoing claim
           (currently active). The MoneyGram corridor earned a heart in 2019
           and retired it in 2021 when the partnership ended: the rise and the
           fall, visible on the graph. Bank settlement never delivered, so the
           core promise stays open and the last heart stays empty. Verdict:
-          Delivery concern.
+          Shitcoin risk.
         </p>
       </Section>
 

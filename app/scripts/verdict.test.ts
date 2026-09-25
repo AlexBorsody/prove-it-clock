@@ -11,36 +11,36 @@ const p = (overrides: Partial<VerdictPromise> = {}): VerdictPromise => ({
   ...overrides,
 });
 
-test("clean record: no verified failure -> No concern", () => {
+test("clean record: no verified failure -> Not a shitcoin", () => {
   const v = verdictFor([p(), p({ lineage: "core", core: true, state: "open" })]);
-  assert.equal(v.category, "No concern");
+  assert.equal(v.category, "Not a shitcoin");
   assert.deepEqual(v.failedLineages, []);
 });
 
-test("supporting promise retired -> Delivery concern", () => {
+test("supporting promise retired -> Shitcoin risk", () => {
   const v = verdictFor([p(), p({ lineage: "moneygram", state: "retired" })]);
-  assert.equal(v.category, "Delivery concern");
+  assert.equal(v.category, "Shitcoin risk");
   assert.deepEqual(v.failedLineages, ["moneygram"]);
 });
 
-test("supporting promise lapsed -> Delivery concern", () => {
+test("supporting promise lapsed -> Shitcoin risk", () => {
   const v = verdictFor([p(), p({ lineage: "merchants", state: "lapsed" })]);
-  assert.equal(v.category, "Delivery concern");
+  assert.equal(v.category, "Shitcoin risk");
   assert.deepEqual(v.failedLineages, ["merchants"]);
 });
 
-test("core promise retired -> Core delivery failure", () => {
+test("core promise retired -> Shitcoin", () => {
   const v = verdictFor([
     p({ lineage: "core", core: true, state: "retired" }),
     p(),
   ]);
-  assert.equal(v.category, "Core delivery failure");
+  assert.equal(v.category, "Shitcoin");
   assert.deepEqual(v.failedLineages, ["core"]);
 });
 
-test("core promise lapsed -> Core delivery failure", () => {
+test("core promise lapsed -> Shitcoin", () => {
   const v = verdictFor([p({ lineage: "core", core: true, state: "lapsed" })]);
-  assert.equal(v.category, "Core delivery failure");
+  assert.equal(v.category, "Shitcoin");
 });
 
 test("core failure outranks supporting failures", () => {
@@ -48,7 +48,7 @@ test("core failure outranks supporting failures", () => {
     p({ lineage: "side", state: "retired" }),
     p({ lineage: "core", core: true, state: "lapsed" }),
   ]);
-  assert.equal(v.category, "Core delivery failure");
+  assert.equal(v.category, "Shitcoin");
   assert.deepEqual(v.failedLineages, ["core"]);
 });
 
@@ -58,13 +58,13 @@ test("Watch is never returned: no v1 trigger", () => {
   }
 });
 
-test("empty promise list -> No concern (never unknown-as-zero)", () => {
-  assert.equal(verdictFor([]).category, "No concern");
+test("empty promise list -> Not a shitcoin (never unknown-as-zero)", () => {
+  assert.equal(verdictFor([]).category, "Not a shitcoin");
 });
 
 /* Mechanical check: the eight published earned-only assessments must
  * produce exactly the expected verdicts. */
-test("published earned-only run: XRP and DASH -> Delivery concern, rest -> No concern", () => {
+test("published earned-only run: XRP and DASH -> Shitcoin risk, rest -> Not a shitcoin", () => {
   const doc = JSON.parse(
     readFileSync(
       "../db/seed/heart-runs-earnedonly/hearts-8project-2026-09-25d-earnedonly.json",
@@ -72,14 +72,14 @@ test("published earned-only run: XRP and DASH -> Delivery concern, rest -> No co
     )
   );
   const expected: Record<string, string> = {
-    btc: "No concern",
-    eth: "No concern",
-    sol: "No concern",
-    link: "No concern",
-    avax: "No concern",
-    bat: "No concern",
-    xrp: "Delivery concern",
-    dash: "Delivery concern",
+    btc: "Not a shitcoin",
+    eth: "Not a shitcoin",
+    sol: "Not a shitcoin",
+    link: "Not a shitcoin",
+    avax: "Not a shitcoin",
+    bat: "Not a shitcoin",
+    xrp: "Shitcoin risk",
+    dash: "Shitcoin risk",
   };
   const seen = new Set<string>();
   for (const proj of doc.projects) {

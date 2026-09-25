@@ -17,6 +17,7 @@ import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import DeliveryTimeline from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
+import { GithubMark } from "@/components/icons";
 
 export const dynamic = "force-dynamic";
 
@@ -43,8 +44,8 @@ function claimLabel(t: string): string {
 
 /** One-line plain meaning of each verdict category. */
 function verdictMeaning(c: VerdictCategory): string {
-  if (c === "Core delivery failure") return "a main promise failed";
-  if (c === "Delivery concern") return "a supporting promise failed";
+  if (c === "Shitcoin") return "a main promise failed";
+  if (c === "Shitcoin risk") return "a supporting promise failed";
   if (c === "Watch") return "a promise is overdue and under review";
   return "nothing failed that the evidence could confirm";
 }
@@ -163,7 +164,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   ? "Couldn't reach GitHub"
                   : "No commit data"}
               {repo ? (
-                <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer">repo</a>
+                <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer" className="repo-link">
+                  <GithubMark className="repo-github" /> repo
+                </a>
               ) : null}
             </span>
           </div>

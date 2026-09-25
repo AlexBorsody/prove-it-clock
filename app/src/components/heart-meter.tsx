@@ -63,3 +63,22 @@ export default function HeartMeter({
     </span>
   );
 }
+
+/**
+ * CompactHearts: a 10-slot proportional meter for tight spaces (mobile
+ * cards). Never renders every empty heart; the exact count rides alongside
+ * as earned/capacity text.
+ */
+export function CompactHearts({ earned, capacity }: { earned: number; capacity: number }) {
+  const SLOTS = 10;
+  const filled = capacity > 0 ? Math.round((earned / capacity) * SLOTS) : 0;
+  return (
+    <span className="compact-hearts" aria-hidden="true">
+      {Array.from({ length: SLOTS }, (_, i) => (
+        <span key={i} className={i < filled ? "ch filled" : "ch"}>
+          <PixelHeart />
+        </span>
+      ))}
+    </span>
+  );
+}

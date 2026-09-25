@@ -101,13 +101,14 @@ export interface HypeSnapshot {
   project_slug: string;
   as_of: string;
   news_mentions_7d: number | null;
+  sources_ok: string[];
 }
 
 export async function readHypeSnapshots(): Promise<HypeSnapshot[]> {
   const db = heartReadClient();
   const { data, error } = await db
     .from("social_snapshots")
-    .select("project_slug,as_of,news_mentions_7d")
+    .select("project_slug,as_of,news_mentions_7d,sources_ok")
     .order("as_of", { ascending: true })
     .limit(1000);
   if (error) throw error;
@@ -134,7 +135,7 @@ export async function readHypeSnapshotsFor(slug: string): Promise<HypeSnapshot[]
   const db = heartReadClient();
   const { data, error } = await db
     .from("social_snapshots")
-    .select("project_slug,as_of,news_mentions_7d")
+    .select("project_slug,as_of,news_mentions_7d,sources_ok")
     .eq("project_slug", slug)
     .order("as_of", { ascending: true })
     .limit(500);

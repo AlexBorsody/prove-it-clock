@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import Link from "next/link";
-import HeartMeter from "@/components/heart-meter";
+import HeartMeter, { CompactHearts } from "@/components/heart-meter";
 import { HeartSparkline, type HeartPoint } from "@/components/hearts-timeline";
-import VerdictBadge, { VERDICT_SEVERITY } from "@/components/verdict-badge";
+import ShitcoinMeter from "@/components/shitcoin-meter";
+import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
 
@@ -20,11 +21,13 @@ export interface ScoreboardRow {
   code: CodeWord;
   /** Honest CODE failure text ("Couldn't reach GitHub" / "No commit data"), or null when fine. */
   codeNote: string | null;
+  codeCommits: number | null;
   use: "coming";
   hypeMentions: number | null;
   hypeCollecting: boolean;
   baselineWeeks: number;
   spark: HeartPoint[];
+  promises: PromiseBrief[];
 }
 
 type SortKey = "rank" | "coin" | "hearts" | "verdict" | "code" | "use" | "hype";
@@ -33,11 +36,12 @@ const HEADERS: Array<{ key: SortKey | null; label: string }> = [
   { key: "rank", label: "#" },
   { key: "coin", label: "Coin" },
   { key: "hearts", label: "Hearts" },
-  { key: "verdict", label: "Verdict" },
+  { key: "verdict", label: "Shitcoin score" },
   { key: "code", label: "Code" },
   { key: "use", label: "Use" },
   { key: "hype", label: "Hype" },
   { key: null, label: "Last 90 days" },
+  { key: null, label: "" },
 ];
 
 function sortVal(row: ScoreboardRow, key: SortKey): number | string {
@@ -45,7 +49,7 @@ function sortVal(row: ScoreboardRow, key: SortKey): number | string {
     case "rank": return row.rank;
     case "coin": return row.name;
     case "hearts": return row.filledPct;
-    case "verdict": return VERDICT_SEVERITY[row.verdict];
+    case "verdict": return row.verdict;
     case "code": return row.code === "Active" ? 0 : row.code === "Quiet" ? 1 : 2;
     case "use": return 0; // every row is "coming" until USE metrics exist
     case "hype": return row.hypeMentions ?? -1;
@@ -59,9 +63,20 @@ function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) 
   return <span className="word dim">-</span>;
 }
 
+function HypeCell({ mentions, collecting }: { mentions: number | null; collecting: boolean }) {
+  if (mentions == null) return <span style={{ color: "var(--text-faint)" }}>-</span>;
+  return (
+    <span>
+      {mentions.toLocaleString()}
+      {collecting ? <span className="cell-sub">collecting</span> : null}
+    </span>
+  );
+}
+
 export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("rank");
   const [dir, setDir] = useState<1 | -1>(1);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const sorted = useMemo(() => {
     const copy = [...rows];
@@ -79,10 +94,15 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
     else { setSortKey(key); setDir(1); }
   }
 
+  function toggleExpand(slug: string) {
+    setExpanded((e) => (e === slug ? null : slug));
+  }
+
   return (
     <>
       <p className="explain">
         Hearts are earned by keeping promises. More hearts filled means more promises kept.
+        Tap Code or Hype to see the activity behind the words.
       </p>
       <div className="table-wrap board-desktop">
         <table className="board">
@@ -103,88 +123,131 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
           </thead>
           <tbody>
             {sorted.map((r) => (
-              <tr key={r.slug}>
-                <td className="num" style={{ color: "var(--text-faint)" }}>{r.rank}</td>
-                <td>
-                  <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
-                    <img
-                      src={`/icons/${r.symbol.toLowerCase()}.svg`}
-                      alt=""
-                      width={30}
-                      height={30}
-                      className="coin-icon"
-                    />
-                    <span>
-                      <span className="proj-name" style={{ color: "var(--text)" }}>{r.name}</span>
-                      <br />
-                      <span className="proj-cat num">{r.symbol}</span>
-                    </span>
-                  </Link>
-                </td>
-                <td>
-                  <HeartMeter filled={r.earned} capacity={r.capacity} allowance={0} size={16} />
-                  {" "}
-                  <span className="num">{r.earned} of {r.capacity} potential</span>
-                </td>
-                <td><VerdictBadge category={r.verdict} compact /></td>
-                <td><CodeWordCell code={r.code} note={r.codeNote} /></td>
-                <td><span className="word dim">coming</span></td>
-                <td className="num">
-                  {r.hypeMentions == null ? (
-                    <span style={{ color: "var(--text-faint)" }}>-</span>
-                  ) : (
-                    <span>
-                      {r.hypeMentions.toLocaleString()}
-                      {r.hypeCollecting ? (
-                        <span className="cell-sub">collecting</span>
-                      ) : null}
-                    </span>
-                  )}
-                </td>
-                <td>
-                  {r.spark.length >= 2 ? (
-                    <HeartSparkline points={r.spark} />
-                  ) : (
-                    <span style={{ color: "var(--text-faint)" }}>-</span>
-                  )}
-                </td>
-              </tr>
+              <Fragment key={r.slug}>
+                <tr>
+                  <td className="num" style={{ color: "var(--text-faint)" }}>{r.rank}</td>
+                  <td>
+                    <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
+                      <img
+                        src={`/icons/${r.symbol.toLowerCase()}.svg`}
+                        alt=""
+                        width={30}
+                        height={30}
+                        className="coin-icon"
+                      />
+                      <span>
+                        <span className="proj-name" style={{ color: "var(--text)" }}>{r.name}</span>
+                        <br />
+                        <span className="proj-cat num">{r.symbol}</span>
+                      </span>
+                    </Link>
+                  </td>
+                  <td>
+                    <HeartMeter filled={r.earned} capacity={r.capacity} allowance={0} size={16} />
+                    {" "}
+                    <span className="num">{r.earned} of {r.capacity} potential</span>
+                  </td>
+                  <td>
+                    <ShitcoinMeter category={r.verdict} compact />
+                  </td>
+                  <td>
+                    <Link href="/code" className="cell-link" title="See CODE activity ranking">
+                      <CodeWordCell code={r.code} note={r.codeNote} />
+                    </Link>
+                  </td>
+                  <td><span className="word dim">coming</span></td>
+                  <td className="num">
+                    <Link href="/hype" className="cell-link" title="See HYPE ranking">
+                      <HypeCell mentions={r.hypeMentions} collecting={r.hypeCollecting} />
+                    </Link>
+                  </td>
+                  <td>
+                    {r.spark.length >= 2 ? (
+                      <HeartSparkline points={r.spark} />
+                    ) : (
+                      <span style={{ color: "var(--text-faint)" }}>-</span>
+                    )}
+                  </td>
+                  <td>
+                    <button
+                      className={`expand-btn${expanded === r.slug ? " open" : ""}`}
+                      onClick={() => toggleExpand(r.slug)}
+                      aria-expanded={expanded === r.slug}
+                      aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
+                    >
+                      {expanded === r.slug ? "▲" : "▼"}
+                    </button>
+                  </td>
+                </tr>
+                {expanded === r.slug ? (
+                  <tr key={`${r.slug}-promises`} className="expand-row">
+                    <td colSpan={9}>
+                      <div className="expand-promises">
+                        <div className="expand-promises-head">
+                          {r.name} promises ({r.promises.length})
+                        </div>
+                        <PromiseRows slug={r.slug} promises={r.promises} />
+                      </div>
+                    </td>
+                  </tr>
+                ) : null}
+              </Fragment>
             ))}
           </tbody>
         </table>
       </div>
       <div className="board-cards">
-        {sorted.map((r) => (
-          <Link key={r.slug} href={`/projects/${r.slug}`} className="board-card">
-            <span className="board-card-row board-card-head">
-              <span className="board-card-rank num">{r.rank}</span>
-              <img
-                src={`/icons/${r.symbol.toLowerCase()}.svg`}
-                alt=""
-                width={28}
-                height={28}
-                className="coin-icon"
-              />
-              <span className="board-card-name">{r.name}</span>
-              <span className="board-card-symbol num">{r.symbol}</span>
-            </span>
-            <span className="board-card-row board-card-hearts">
-              <HeartMeter filled={r.earned} capacity={r.capacity} allowance={0} size={18} />
-              <span className="num">{r.earned} of {r.capacity} potential hearts</span>
-            </span>
-            <span className="board-card-row board-card-meta">
-              <VerdictBadge category={r.verdict} compact />
-              <CodeWordCell code={r.code} note={r.codeNote} />
-              <span className="num">
-                {r.hypeMentions == null ? (
-                  <span style={{ color: "var(--text-faint)" }}>-</span>
-                ) : (
-                  r.hypeMentions.toLocaleString()
-                )}
-              </span>
-            </span>
-          </Link>
-        ))}
+        {sorted.map((r) => {
+          const open = expanded === r.slug;
+          return (
+            <div key={r.slug} className="mcard">
+              <Link href={`/projects/${r.slug}`} className="mcard-head">
+                <img
+                  src={`/icons/${r.symbol.toLowerCase()}.svg`}
+                  alt=""
+                  width={30}
+                  height={30}
+                  className="coin-icon"
+                />
+                <span className="mcard-name">{r.name}</span>
+                <span className="mcard-ticker num">{r.symbol}</span>
+              </Link>
+              <div className="mcard-hearts">
+                <CompactHearts earned={r.earned} capacity={r.capacity} />
+                <span className="num mcard-count">{r.earned}/{r.capacity}</span>
+              </div>
+              <div className="mcard-stats">
+                <span className={`mcard-verdict v-${r.verdict.replace(/\s+/g, "-").toLowerCase()}`}>
+                  {r.verdict}
+                </span>
+                <span className="mcard-dot" aria-hidden="true">·</span>
+                <Link href="/code" className="mcard-stat">
+                  {r.codeNote ? r.codeNote : `CODE ${r.code}`}
+                  {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits`}
+                </Link>
+                <span className="mcard-dot" aria-hidden="true">·</span>
+                <Link href="/hype" className="mcard-stat num">
+                  HYPE {r.hypeMentions == null ? "-" : r.hypeMentions.toLocaleString()}
+                </Link>
+              </div>
+              <div className="mcard-spark">
+                <HeartSparkline points={r.spark} />
+              </div>
+              <button
+                className={`mcard-promises-toggle${open ? " open" : ""}`}
+                onClick={() => toggleExpand(r.slug)}
+                aria-expanded={open}
+              >
+                Promises · {r.promises.length} {open ? "▲" : "▼"}
+              </button>
+              {open ? (
+                <div className="mcard-promises">
+                  <PromiseRows slug={r.slug} promises={r.promises} />
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </div>
     </>
   );

@@ -5,9 +5,9 @@
  * the category.
  *
  * Rules (vision.md):
- * - Core promise confirmed retired/lapsed -> "Core delivery failure"
- * - Supporting promise confirmed retired/lapsed -> "Delivery concern"
- * - No verified failure -> "No concern"
+ * - Core promise confirmed retired/lapsed -> "Shitcoin"
+ * - Supporting promise confirmed retired/lapsed -> "Shitcoin risk"
+ * - No verified failure -> "Not a shitcoin"
  * - "Watch" is reserved for verified overdue promises after deadline
  *   research; it has no v1 trigger and this function never returns it.
  *
@@ -15,10 +15,10 @@
  */
 
 export type VerdictCategory =
-  | "No concern"
+  | "Not a shitcoin"
   | "Watch"
-  | "Delivery concern"
-  | "Core delivery failure";
+  | "Shitcoin risk"
+  | "Shitcoin";
 
 export interface VerdictPromise {
   lineage: string;
@@ -40,15 +40,15 @@ export function verdictFor(promises: VerdictPromise[]): Verdict {
   const coreFailed = failed.filter((p) => p.core);
   if (coreFailed.length > 0) {
     return {
-      category: "Core delivery failure",
+      category: "Shitcoin",
       failedLineages: coreFailed.map((p) => p.lineage),
     };
   }
   if (failed.length > 0) {
     return {
-      category: "Delivery concern",
+      category: "Shitcoin risk",
       failedLineages: failed.map((p) => p.lineage),
     };
   }
-  return { category: "No concern", failedLineages: [] };
+  return { category: "Not a shitcoin", failedLineages: [] };
 }

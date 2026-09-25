@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import VerdictBadge from "@/components/verdict-badge";
+import { RedditIcon, TelegramIcon, MegaphoneIcon } from "@/components/icons";
 import type { VerdictCategory } from "@/lib/verdict";
 
 export interface HypeRow {
@@ -15,6 +16,28 @@ export interface HypeRow {
   verdict: VerdictCategory;
   mentions: number | null;
   baselineWeeks: number;
+  sources: string[];
+}
+
+function SourceIcons({ sources }: { sources: string[] }) {
+  const items = [
+    { key: "reddit", label: "Reddit", Icon: RedditIcon },
+    { key: "telegram", label: "Telegram", Icon: TelegramIcon },
+    { key: "news", label: "News", Icon: MegaphoneIcon },
+  ];
+  return (
+    <span className="hype-sources" title="HYPE sources">
+      {items.map(({ key, label, Icon }) => (
+        <span
+          key={key}
+          className={`hype-source${sources.includes(key) ? " on" : ""}`}
+          title={`${label}${sources.includes(key) ? "" : " (no data)"}`}
+        >
+          <Icon className="hype-source-icon" />
+        </span>
+      ))}
+    </span>
+  );
 }
 
 type SortKey = "mentions" | "hearts";
@@ -67,8 +90,8 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
               </span>
             </Link>
             <div className="hype-hearts num">
-              <span className="hype-val">{r.earned}/{r.capacity}</span>
-              <span className="cell-sub">hearts</span>
+              <span className="hype-val">{r.earned} of {r.capacity}</span>
+              <span className="cell-sub">potential hearts</span>
             </div>
             <div className="hype-mentions num">
               {r.mentions == null ? (
@@ -88,6 +111,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
             </div>
             <div className="hype-verdict">
               <VerdictBadge category={r.verdict} compact />
+              <SourceIcons sources={r.sources} />
             </div>
           </div>
         ))}

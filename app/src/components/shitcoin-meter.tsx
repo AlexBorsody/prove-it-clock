@@ -10,22 +10,25 @@ import type { VerdictCategory } from "@/lib/verdict";
  * red = Core delivery failure.
  */
 const ORDER: Array<{ cat: VerdictCategory; cls: string }> = [
-  { cat: "No concern", cls: "sev-ok" },
+  { cat: "Not a shitcoin", cls: "sev-ok" },
   { cat: "Watch", cls: "sev-watch" },
-  { cat: "Delivery concern", cls: "sev-warn" },
-  { cat: "Core delivery failure", cls: "sev-bad" },
+  { cat: "Shitcoin risk", cls: "sev-warn" },
+  { cat: "Shitcoin", cls: "sev-bad" },
 ];
 
 export default function ShitcoinMeter({
   category,
   meaning,
+  compact,
 }: {
   category: VerdictCategory;
-  meaning: string;
+  meaning?: string;
+  /** Compact: segments only, no meaning paragraph. For dense rows/cards. */
+  compact?: boolean;
 }) {
   return (
     <div
-      className="shitcoin-meter"
+      className={`shitcoin-meter${compact ? " compact" : ""}`}
       role="img"
       aria-label={`Shitcoin Score: ${category}. ${meaning}`}
     >
@@ -41,10 +44,12 @@ export default function ShitcoinMeter({
           </span>
         ))}
       </div>
-      <p className="shitcoin-meter-meaning">
-        {category}: {meaning}. A delivery rating against promises, never fraud
-        or investment risk.
-      </p>
+      {compact ? null : (
+        <p className="shitcoin-meter-meaning">
+          {category}: {meaning}. A delivery rating against promises, never fraud
+          or investment risk.
+        </p>
+      )}
     </div>
   );
 }
