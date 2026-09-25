@@ -72,7 +72,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           One point per published run. A heart stays earned only while its evidence
           condition holds — when evidence changes, the line moves.
         </p>
-        <HeartsTimeline points={points.map((p) => ({ as_of: p.as_of, filled: p.filled, capacity: p.capacity }))} />
+        <HeartsTimeline points={points.filter((p) => p.availability === "available").map((p) => ({ as_of: p.as_of, filled: p.filled, capacity: p.capacity }))} />
       </div>
 
       {/* Legacy v0.2.0 score timeline. */}
