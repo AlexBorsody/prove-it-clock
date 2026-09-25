@@ -100,10 +100,6 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
 
   return (
     <>
-      <p className="explain">
-        Hearts are earned by keeping promises. More hearts filled means more promises kept.
-        Tap Code or Hype to see the activity behind the words.
-      </p>
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>

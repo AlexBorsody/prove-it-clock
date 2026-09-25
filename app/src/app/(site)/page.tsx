@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   HEARTS_METHODOLOGY,
   readHeartRankings,
@@ -103,11 +102,6 @@ export default async function Home() {
         </div>
       ) : (
         <>
-          <div className="scoreboard-actions">
-            <Link href="/compare" className="btn">
-              Compare projects <span aria-hidden="true">→</span>
-            </Link>
-          </div>
           <ScoreboardTable rows={rows} />
           <div className="panel" style={{ marginTop: 18 }}>
             <h2>HYPE share</h2>
