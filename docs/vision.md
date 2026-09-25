@@ -122,6 +122,31 @@ their context. Entry point: a Compare button on the homepage.
    methodology version, run id. What CODE counts lives here, auditable and
    challengeable, not on the main page.
 
+## Visual language: steal what we like from CoinMarketCap
+
+Dark, dense, familiar. CMC's mobile app is the reference: dark theme,
+compact stat cards, gauges, stacked and bump charts, bottom tab bar.
+
+What we steal:
+
+- **Dark theme** across the app.
+- **Overview-style stat cards** with a gauge: ours shows delivery health
+  (hearts filled %) per project or across the board, never sentiment.
+- **Stacked area chart**: HYPE share across tracked projects over time
+  (each project's slice of total mentions), on the homepage or a HYPE view.
+- **Mindshare bump chart**: HYPE rank over time per project, 30d/90d
+  toggle, coin icons on rank lines. Built from our own snapshots.
+- **Bottom tab bar**: Scoreboard / Compare / Methodology.
+- **News ticker**: top HYPE stories driving mentions, clearly labeled as
+  attention drivers, not endorsements.
+
+What we do not steal:
+
+- Sentiment gauges (Bullish/Bearish, Fear & Greed): HYPE is volume-only.
+- Price columns, price charts, market-cap breakdowns: we sit next to the
+  market, we don't price it.
+- Prediction markets, KOL leaderboards: not our product.
+
 ## Data rules
 
 - Hearts are the simple public score. The Prove-It Index is the deeper 0-100 composite; it never appears on the homepage.
