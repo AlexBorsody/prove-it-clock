@@ -167,7 +167,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
         {rationale ? <p className="potential-line">{rationale}</p> : null}
-        <div id="verdict">
+        <div id="verdict" data-tour="shitcoin">
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
         {oneLiner ? (
@@ -246,7 +246,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 3. Delivery timeline. */}
-      <div className="panel section-alt">
+      <div className="panel section-alt" data-tour="timeline">
         <h2>Delivery timeline</h2>
         <p className="panel-sub">
           Hearts earned over time. Rises and falls are the story: when the evidence changed, the line moved.

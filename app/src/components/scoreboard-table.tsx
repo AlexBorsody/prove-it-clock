@@ -101,7 +101,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
   }
 
   return (
-    <>
+    <div data-tour="hearts">
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>
@@ -266,6 +266,6 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

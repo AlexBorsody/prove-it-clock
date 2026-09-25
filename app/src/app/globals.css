@@ -386,50 +386,38 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .hearts-timeline .heart-line { stroke: var(--green); stroke-width: 2.5; }
 .hearts-timeline .heart-dot { fill: var(--green); stroke: var(--bg); stroke-width: 2; }
 
-/* ---- first-run walkthrough ----
-   Tooltip tour matching the dark terminal aesthetic. */
-.wt-scrim {
-  position: fixed; inset: 0; z-index: 90;
-  background: rgba(4, 6, 10, 0.72);
-}
-.wt-anchor {
-  position: relative !important; z-index: 95 !important;
-  outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px;
-}
-.wt-tip {
-  position: fixed; z-index: 100;
-  width: min(340px, calc(100vw - 32px));
-  background: var(--bg-raised);
+/* ---- guided tour (driver.js) ----
+   Dark popover matching the terminal aesthetic. */
+.wt-driver-pop {
+  background: var(--bg-raised) !important;
   border: 1px solid var(--border-strong);
-  border-radius: 12px;
-  padding: 18px 18px 16px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 14px;
+  color: var(--text);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  max-width: min(340px, calc(100vw - 48px));
 }
-.wt-step {
+.wt-driver-pop .driver-popover-title {
+  font-size: 17px; font-weight: 800; color: var(--text);
+  margin-bottom: 4px; font-family: inherit;
+}
+.wt-driver-pop .driver-popover-description { color: var(--text-dim); font-size: 14px; }
+.wt-driver-pop .driver-popover-description p { margin: 0 0 4px; }
+.wt-stepnum {
   font-size: 12px; letter-spacing: 0.08em; font-weight: 700;
-  color: var(--accent); margin-bottom: 6px;
+  color: var(--accent); margin-bottom: 8px;
 }
-.wt-tip h3 { margin: 0 0 8px; font-size: 17px; letter-spacing: 0.01em; }
-.wt-tip p { margin: 0 0 16px; font-size: 15px; color: var(--text-dim); }
-.wt-close {
-  position: absolute; top: 8px; right: 10px;
-  background: none; border: none; padding: 6px;
-  color: var(--text-faint); font-size: 15px; cursor: pointer;
+.wt-driver-pop .driver-popover-footer { margin-top: 12px; }
+.wt-driver-pop .driver-popover-btn {
+  font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 10px;
+  border: 1px solid var(--border-strong); background: transparent;
+  color: var(--text); text-shadow: none;
 }
-.wt-close:hover { color: var(--text); }
-.wt-actions { display: flex; gap: 8px; align-items: center; }
-.wt-btn {
-  font-size: 14px; font-weight: 700; padding: 8px 16px;
-  border-radius: 10px; cursor: pointer;
+.wt-driver-pop .driver-popover-next-btn,
+.wt-driver-pop .driver-popover-done-btn {
+  background: var(--accent); border-color: var(--accent); color: #14100a;
 }
-.wt-btn.primary { background: var(--accent); border: 1px solid var(--accent); color: #14100a; }
-.wt-btn.ghost { background: transparent; border: 1px solid var(--border-strong); color: var(--text); }
-.wt-btn.ghost:hover { border-color: var(--accent); }
-.wt-skip {
-  margin-left: auto; background: none; border: none; padding: 8px 4px;
-  color: var(--text-faint); font-size: 14px; cursor: pointer;
-}
-.wt-skip:hover { color: var(--text); }
+.wt-driver-pop .driver-popover-close-btn { color: var(--text-faint); }
+.wt-driver-pop .driver-popover-arrow { border-color: var(--bg-raised); }
 
 /* Shitcoin score badge: the special sauce. Dark badge, thick severity bar,
    big mono number. Links to the formula on the methodology page. */

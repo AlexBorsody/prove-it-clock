@@ -72,7 +72,7 @@ export default async function CodePage() {
           </p>
         </div>
       ) : (
-        <div className="panel">
+        <div className="panel" data-tour="code">
           <p className="explain" style={{ marginTop: 0 }}>
             Ranked by commits. CODE is context: it never moves the heart score.
             A failed GitHub fetch is shown as-is, never as zero activity.

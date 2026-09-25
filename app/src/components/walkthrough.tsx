@@ -1,32 +1,43 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Icon from "@/components/chrome-icons";
+import { useCallback, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { driver, type Driver } from "driver.js";
+import "driver.js/dist/driver.css";
 
 const SEEN_KEY = "proveit-walkthrough-seen";
 const REPLAY_EVENT = "proveit:walkthrough";
 
-type Step = { title: string; body: string; anchor?: string };
+type TourStep = { route: string; selector: string; title: string; body: string };
 
-const STEPS: Step[] = [
+/**
+ * A real guided tour: each step navigates to the page that owns the
+ * concept and spotlights the actual section, not a modal description.
+ */
+const STEPS: TourStep[] = [
   {
+    route: "/",
+    selector: '[data-tour="hearts"]',
     title: "Hearts = proof delivered",
-    body: "Every heart maps to a promise and evidence.",
-    anchor: ".hearts, .mcard-hearts",
+    body: "Every heart maps to a promise and evidence. Tap the hearts on any row to see what earned them.",
   },
   {
+    route: "/projects/btc",
+    selector: '[data-tour="shitcoin"]',
     title: "Shitcoin warning = what went wrong",
-    body: "Abandoned or failed promises trigger the verdict.",
-    anchor: ".shitcoin-meter",
+    body: "Abandoned or failed promises trigger the verdict. Tap the gauge for the full breakdown.",
   },
   {
+    route: "/code",
+    selector: '[data-tour="code"]',
     title: "CODE + HYPE = context",
-    body: "See whether they're still building and whether attention outruns substance.",
-    anchor: ".mcard-stats",
+    body: "CODE shows whether they are still building. HYPE shows whether attention outruns substance.",
   },
   {
+    route: "/projects/btc",
+    selector: '[data-tour="timeline"]',
     title: "Timeline = the special sauce",
-    body: "Watch credibility rise and fall as real events happen. Click through to the evidence.",
+    body: "Watch credibility rise and fall as real events happen. Every move links to evidence.",
   },
 ];
 
@@ -46,164 +57,128 @@ function wasSeen(): boolean {
   }
 }
 
-export default function Walkthrough() {
-  const [step, setStep] = useState<number | null>(null);
-  const tipRef = useRef<HTMLDivElement>(null);
-  const anchorRef = useRef<HTMLElement | null>(null);
-
-  const clearAnchor = useCallback(() => {
-    anchorRef.current?.classList.remove("wt-anchor");
-    anchorRef.current = null;
-  }, []);
-
-  const place = useCallback(() => {
-    const tip = tipRef.current;
-    if (!tip) return;
-    const w = Math.min(340, window.innerWidth - 32);
-    tip.style.width = `${w}px`;
-    const el = anchorRef.current;
-    if (!el) {
-      // centered card when there is nothing to anchor to
-      tip.style.left = `${Math.max(16, (window.innerWidth - w) / 2)}px`;
-      tip.style.top = `${Math.max(16, (window.innerHeight - tip.offsetHeight) / 2)}px`;
-      return;
+/** Poll for an element rendered after a route change. */
+function waitForElement(
+  selector: string,
+  onFound: () => void,
+  onTimeout: () => void,
+  timeoutMs = 6000
+) {
+  const started = Date.now();
+  const id = window.setInterval(() => {
+    if (document.querySelector(selector)) {
+      window.clearInterval(id);
+      onFound();
+    } else if (Date.now() - started > timeoutMs) {
+      window.clearInterval(id);
+      onTimeout();
     }
-    const r = el.getBoundingClientRect();
-    const gap = 12;
-    const h = tip.offsetHeight || 220;
-    let top = r.bottom + gap;
-    if (top + h > window.innerHeight - 16) top = r.top - h - gap; // flip above
-    top = Math.max(16, top);
-    const left = Math.max(16, Math.min(r.left, window.innerWidth - w - 16));
-    tip.style.left = `${left}px`;
-    tip.style.top = `${top}px`;
+  }, 120);
+}
+
+export default function Walkthrough() {
+  const router = useRouter();
+  const drvRef = useRef<Driver | null>(null);
+  const stepRef = useRef(0);
+  const activeRef = useRef(false);
+  const transitioningRef = useRef(false);
+
+  const endTour = useCallback((save = true) => {
+    activeRef.current = false;
+    transitioningRef.current = false;
+    drvRef.current?.destroy();
+    drvRef.current = null;
+    if (save) markSeen();
   }, []);
 
   const showStep = useCallback(
     (i: number) => {
-      clearAnchor();
-      const sel = STEPS[i].anchor;
-      const el = sel ? (document.querySelector(sel) as HTMLElement | null) : null;
-      if (el) {
-        el.scrollIntoView({ block: "center", behavior: "smooth" });
-        el.classList.add("wt-anchor");
-        anchorRef.current = el;
+      if (i < 0 || i >= STEPS.length) {
+        endTour();
+        return;
       }
-      setStep(i);
-      // position after paint, and again once smooth-scroll settles
-      requestAnimationFrame(() => place());
-      setTimeout(place, 450);
-    },
-    [clearAnchor, place]
-  );
+      // Tear down the previous highlight before doing anything else.
+      transitioningRef.current = true;
+      drvRef.current?.destroy();
+      drvRef.current = null;
 
-  const dismiss = useCallback(
-    (save = true) => {
-      if (save) markSeen();
-      clearAnchor();
-      setStep(null);
+      stepRef.current = i;
+      activeRef.current = true;
+      const s = STEPS[i];
+      const last = i === STEPS.length - 1;
+
+      const render = () => {
+        const el = document.querySelector(s.selector) as HTMLElement | null;
+        if (!el || !activeRef.current) {
+          // Section missing on this render: skip forward, never strand the user.
+          showStep(i + 1);
+          return;
+        }
+        el.scrollIntoView({ block: "center", behavior: "smooth" });
+        const drv = driver({
+          allowClose: true,
+          overlayColor: "rgba(2,6,16,0.78)",
+          popoverClass: "wt-driver-pop",
+          showProgress: false,
+          nextBtnText: last ? "Got it" : "Next",
+          prevBtnText: "Back",
+          doneBtnText: "Got it",
+          onNextClick: () => showStep(i + 1),
+          onPrevClick: () => {
+            if (i > 0) showStep(i - 1);
+          },
+          onCloseClick: () => endTour(),
+          onDestroyed: () => {
+            // Escape key or outside tap: close the tour, but not when we are
+            // mid-transition to the next step's page.
+            if (activeRef.current && !transitioningRef.current) endTour();
+          },
+        });
+        drvRef.current = drv;
+        // Let the smooth scroll settle before measuring the highlight box.
+        window.setTimeout(() => {
+          if (!activeRef.current) return;
+          transitioningRef.current = false;
+          drv.highlight({
+            element: el,
+            popover: {
+              title: s.title,
+              description:
+                `<div class="wt-stepnum num">Step ${i + 1} of ${STEPS.length}</div>` +
+                `<p>${s.body}</p>`,
+              side: "bottom",
+              align: "center",
+            },
+          });
+        }, 380);
+      };
+
+      if (window.location.pathname !== s.route) {
+        router.push(s.route);
+        waitForElement(
+          s.selector,
+          render,
+          () => showStep(i + 1) // page never rendered the section: move on
+        );
+      } else {
+        render();
+      }
     },
-    [clearAnchor]
+    [router, endTour]
   );
 
   // first-run autostart + replay listener
   useEffect(() => {
     const onReplay = () => showStep(0);
     window.addEventListener(REPLAY_EVENT, onReplay);
-    let t: ReturnType<typeof setTimeout> | undefined;
-    if (!wasSeen()) t = setTimeout(() => showStep(0), 700);
+    let t: number | undefined;
+    if (!wasSeen()) t = window.setTimeout(() => showStep(0), 700);
     return () => {
       window.removeEventListener(REPLAY_EVENT, onReplay);
-      if (t) clearTimeout(t);
+      if (t) window.clearTimeout(t);
+      endTour(false);
     };
-  }, [showStep]);
+  }, [showStep, endTour]);
 
-  // keep the tooltip glued to its anchor while scrolling / resizing
-  useEffect(() => {
-    if (step === null) return;
-    let raf = 0;
-    const onMove = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(place);
-    };
-    window.addEventListener("scroll", onMove, { passive: true });
-    window.addEventListener("resize", onMove);
-    return () => {
-      window.removeEventListener("scroll", onMove);
-      window.removeEventListener("resize", onMove);
-      cancelAnimationFrame(raf);
-    };
-  }, [step, place]);
-
-  // escape dismisses
-  useEffect(() => {
-    if (step === null) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") dismiss();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [step, dismiss]);
-
-  useEffect(() => () => clearAnchor(), [clearAnchor]);
-
-  if (step === null) return null;
-  const s = STEPS[step];
-  const last = step === STEPS.length - 1;
-
-  return (
-    <>
-      <div className="wt-scrim" onClick={() => dismiss()} aria-hidden="true" />
-      <div
-        ref={tipRef}
-        className="wt-tip"
-        role="dialog"
-        aria-modal="true"
-        aria-label={`Step ${step + 1} of ${STEPS.length}: ${s.title}`}
-      >
-        <button
-          type="button"
-          className="wt-close"
-          onClick={() => dismiss()}
-          aria-label="Skip walkthrough"
-        >
-          <Icon name="x" size={14} />
-        </button>
-        <div className="wt-step num">
-          STEP {step + 1} / {STEPS.length}
-        </div>
-        <h3>{s.title}</h3>
-        <p>{s.body}</p>
-        <div className="wt-actions">
-          {step > 0 && (
-            <button type="button" className="wt-btn ghost" onClick={() => showStep(step - 1)}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-                <Icon name="chevron-left" size={14} />
-                Back
-              </span>
-            </button>
-          )}
-          {!last && (
-            <button type="button" className="wt-btn primary" onClick={() => showStep(step + 1)}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-                Next
-                <Icon name="chevron-right" size={14} />
-              </span>
-            </button>
-          )}
-          {last && (
-            <button type="button" className="wt-btn primary" onClick={() => dismiss()}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-                <Icon name="check" size={14} />
-                Got it
-              </span>
-            </button>
-          )}
-          <button type="button" className="wt-skip" onClick={() => dismiss()}>
-            Skip
-          </button>
-        </div>
-      </div>
-    </>
-  );
+  return null;
 }
