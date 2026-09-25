@@ -171,6 +171,13 @@ anything a failure. We can.
 
 One line: CoinMarketCap ranks by price. Prove-It ranks by proof.
 
+The niche is the audience, not a feature. CMC serves people asking "what
+should I buy": every feature is a buy signal (price, momentum, sentiment,
+RSI). Prove-It serves people asking "should I believe this": verdicts,
+proof history, hype next to an empty meter. The burned skeptics, the
+journalists, the diligence analysts. Different job, different user, and
+CMC cannot follow without attacking its own customers.
+
 ## Data rules
 
 - Hearts are the simple public score. The Prove-It Index is the deeper 0-100 composite; it never appears on the homepage.
