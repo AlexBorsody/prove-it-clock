@@ -86,8 +86,8 @@ a:hover { text-decoration: underline; }
   margin-bottom: 18px;
 }
 .panel h2 {
-  margin: 0 0 4px; font-size: 13px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--text-dim); font-weight: 700;
+  margin: 0 0 6px; font-size: 17px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text); font-weight: 800;
 }
 .panel h2 .tag { margin-left: 8px; }
 .panel-sub { color: var(--text-faint); font-size: 12.5px; margin: 0 0 16px; }
@@ -209,13 +209,13 @@ table.spec td { padding: 8px 10px; border-bottom: 1px solid var(--border); verti
 footer.site { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-faint); font-size: 12px; }
 footer.site p { margin: 4px 0; }
 
-h1.page-title { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+h1.page-title { font-size: 34px; margin: 0 0 6px; letter-spacing: -0.01em; }
 .page-sub { color: var(--text-dim); margin: 0 0 20px; font-size: 14px; max-width: 860px; }
 
 @media (max-width: 720px) {
   .shell { padding: 0 12px 60px; }
   .topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
-  h1.page-title { font-size: 21px; }
+  h1.page-title { font-size: 27px; }
   .score-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -298,9 +298,11 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .research-table th:first-child, .research-table td:first-child { min-width: 64px; overflow-wrap: normal; }
 
 /* Hearts instrument */
-.hearts { letter-spacing: 2px; }
-.heart { color: var(--border); }
+.hearts { display: inline-flex; gap: 4px; align-items: center; }
+.heart { color: var(--border-strong); display: inline-flex; }
 .heart.on { color: var(--red); }
+.px-heart { width: 1em; height: auto; display: block; shape-rendering: crispEdges; }
+.px-heart rect { fill: currentColor; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; align-items: stretch; }
 .card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
 .card-link .panel { transition: border-color .15s; height: 100%; }
