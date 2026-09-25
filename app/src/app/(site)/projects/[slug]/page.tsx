@@ -46,7 +46,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="meta-line">
         PROJECT <b>{latest.symbol}</b>
         {latest.market_cap_rank ? <> · MCAP RANK <b>#{latest.market_cap_rank}</b></> : null}
-        <> · RUN <b>{String(latest.as_of).slice(0, 10)}</b></>
+        <> · SCORED <b>{String(latest.as_of).slice(0, 10)}</b></>
       </div>
 
       {/* The meter. */}
@@ -59,7 +59,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
         <p className="card-foot num" style={{ marginTop: 12 }}>
-          {latest.earned} earned + {latest.allowance} allowance · {fmtUsd(latest.price_usd)} · {fmtUsd(latest.market_cap_usd)} mcap
+          {latest.earned} earned · {latest.allowance} free · {fmtUsd(latest.price_usd)} · {fmtUsd(latest.market_cap_usd)} mcap
         </p>
         {assessment.rationale && (
           <p className="panel-sub" style={{ marginBottom: 0 }}>{assessment.rationale}</p>
@@ -70,8 +70,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Heart history</h2>
         <p className="panel-sub">
-          One point per published run. A heart stays earned only while its evidence
-          condition holds — when evidence changes, the line moves.
+          Each dot is a past score. When the evidence changed, the line moved —
+          up when the project proved something, down when proof fell apart.
         </p>
         <HeartsTimeline points={points.filter((p) => p.availability === "available").map((p) => ({ as_of: p.as_of, filled: p.filled, capacity: p.capacity }))} />
       </div>
@@ -80,9 +80,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Legacy score history</h2>
         <p className="panel-sub">
-          The old v0.2.0 factor scores, kept for reference. Not every project
-          was scored under the legacy model — an empty timeline means no legacy
-          data, not a zero.
+          Scores from the old system (v0.2.0), kept for reference. Not every project
+          was scored under it — an empty timeline means no old data, not a zero.
         </p>
         <TimelineChart slug={slug} />
       </div>
@@ -91,14 +90,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Promises</h2>
         <p className="panel-sub">
-          Each promise lineage can earn 0–2 hearts, chosen before fulfillment. Milestones stay
-          earned unless retired; ongoing claims count only while active.
+          Each promise can earn up to 2 hearts, decided before we look at the
+          evidence. One-time achievements keep their hearts; ongoing promises only
+          count while they're still true.
         </p>
         {promises.map((pr, i) => (
           <div className="comp-row" key={i}>
             <div className="comp-head">
               <span className="comp-name">
-                {pr.lineage}{pr.core ? " · core" : ""} · {pr.reward}♥
+                {pr.lineage}{pr.core ? " · main promise" : ""} · {pr.reward}♥
               </span>
               <span style={{ display: "flex", gap: 6 }}>
                 <span className={`tag ${stateTag(pr.state)}`}>{pr.state}</span>
@@ -122,7 +122,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         ))}
         {assessment.allowance_rationale && (
           <>
-            <h2 style={{ marginTop: 20 }}>Unearned allowance</h2>
+            <h2 style={{ marginTop: 20 }}>Free hearts</h2>
             <p className="panel-sub" style={{ marginBottom: 0 }}>{assessment.allowance_rationale}</p>
           </>
         )}

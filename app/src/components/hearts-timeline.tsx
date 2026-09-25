@@ -48,7 +48,7 @@ const W = 720;
 const H = 260;
 export default function HeartsTimeline({ points }: { points: HeartPoint[] }) {
   if (!points.length) {
-    return <p className="panel-sub" style={{ marginBottom: 0 }}>No published runs yet.</p>;
+    return <p className="panel-sub" style={{ marginBottom: 0 }}>No scores published yet.</p>;
   }
   const ordered = [...points].sort((a, b) => a.as_of.localeCompare(b.as_of));
   const cap = Math.max(...ordered.map((p) => p.capacity), 1);

@@ -95,12 +95,62 @@ export default function MethodologyPage() {
         <h2>An example</h2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           XRP is 5 out of 20. It earned 2 hearts for real cross-border payment
-          usage, plus 3 unearned hearts for being a live project with real
+          usage, plus 3 free hearts for being a live project with real
           activity. In 2019 it gained a heart when the MoneyGram partnership
           launched — and lost it in 2021 when the partnership ended. That's the
           graph doing its job.
         </p>
       </div>
+
+      <details className="panel fold">
+        <summary className="fold-head">
+          Under the hood — the precise rules, for the curious
+        </summary>
+        <div className="fold-body">
+          <p>
+            <b>Capacity.</b> Fixed tiers of 5, 10, or 20. 20 is for projects trying
+            to rewire global infrastructure, 10 for owning a sector, 5 for a niche
+            or single-application promise. Capacity is headroom, never a target.
+          </p>
+          <p>
+            <b>Free hearts.</b> Count how many of these are true: working product,
+            team actively shipping, real economic activity tied to the promise.
+            The count is capped at 3, and at capacity ÷ 5 rounded down — so a
+            5-heart project can get at most 1 free heart, a 20-heart project up
+            to 3.
+          </p>
+          <p>
+            <b>Earned hearts.</b> Each promise is worth 0, 1, or 2 hearts, decided
+            <i> before </i>
+            anyone checks the evidence. One-time achievements ("milestones") keep
+            their hearts permanently unless the achievement is explicitly retired.
+            Ongoing promises ("we process payments") only count while they're
+            currently true — they lapse when the evidence stops and come back if
+            it resumes.
+          </p>
+          <p>
+            <b>What counts as proof.</b> The promise's own success criterion,
+            checkable by someone other than the project: a working public product,
+            a verifiable payout, a named customer on the record. The project's own
+            announcement alone never counts. Borderline cases stay unfulfilled.
+          </p>
+          <p>
+            <b>The main promise.</b> One promise per project is the main one. It
+            earns no hearts itself — instead, while it's unfulfilled, the meter
+            can't go above capacity − 1.
+          </p>
+          <p>
+            <b>History.</b> Scores are published as dated snapshots. Old snapshots
+            are never edited or deleted — the past stays exactly as it was scored.
+            Each score names its researcher; if a second researcher independently
+            reproduces it, the score is marked verified.
+          </p>
+          <p style={{ marginBottom: 0 }}>
+            <b>No valuations.</b> The meter sits next to the market cap. The market
+            provides the valuation; we just check the promises.
+          </p>
+        </div>
+      </details>
     </>
   );
 }

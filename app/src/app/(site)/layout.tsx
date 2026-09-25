@@ -25,9 +25,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <p>
           Prove-It is an independent accountability layer. It does not predict
           prices and does not tell anyone what to buy or sell. Every heart is traceable
-          to its evidence; every run is published whole and append-only.
+          to its evidence, and past scores are never changed.
         </p>
-        <p className="num">Hearts claim-type rule v2 · Scores are single-analyst unless marked verified.</p>
+        <p className="num">Scores are researched by one analyst unless marked verified.</p>
       </footer>
     </div>
   );

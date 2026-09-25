@@ -44,16 +44,16 @@ export default async function Home() {
     <>
       <div className="meta-line">
         {run ? (
-          <>PUBLISHED RUN <b>{String(run.as_of).slice(0, 10)}</b> · {projects.length} PROJECTS</>
+          <>LAST SCORED <b>{String(run.as_of).slice(0, 10)}</b> · {projects.length} PROJECTS</>
         ) : (
-          <>NO PUBLISHED RUN YET</>
+          <>NO SCORES PUBLISHED YET</>
         )}
       </div>
       <h1 className="page-title">Prove-It</h1>
       <p className="page-sub">
-        Did the project do what it said it would? Hearts are earned only while the
-        evidence condition they were awarded under stays true. The graph shows the
-        score through time — rises and falls included.
+        Did the project do what it said it would? A heart means the project proved
+        something it promised. If the proof goes away, so does the heart — the graph
+        shows the whole story, rises and falls included.
       </p>
 
       {projects.length === 0 ? (
@@ -78,7 +78,7 @@ export default async function Home() {
                 <HeartMeter filled={p.filled} capacity={p.capacity} />
                 <HeartSparkline points={histories[p.slug] ?? []} />
                 <div className="card-foot num">
-                  {p.earned} earned + {p.allowance} allowance · {fmtUsd(p.market_cap_usd)} mcap
+                  {p.earned} earned · {p.allowance} free · {fmtUsd(p.market_cap_usd)} mcap
                 </div>
               </div>
             </a>
