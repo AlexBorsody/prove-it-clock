@@ -1,8 +1,9 @@
-# Hearts Algorithm v1
+# Hearts — claim-type rule v2
 
-**Adopted 2026-09-23 (Alex).** One meter per project: **filled / capacity**.
-Partially implemented (arithmetic lib, review pages, DB migration); not in
-production. v1 ships as a new methodology version — append-only, diffs public.
+**Adopted 2026-09-25 (Alex).** One meter per project: **filled / capacity**.
+Live in production: append-only runs in Supabase, published via RPC, served by
+the site. Methodology string: `hearts claim-type rule v2 (adopted 2026-09-25;
+time decay removed)`.
 
 ## The idea
 
@@ -20,7 +21,7 @@ passes. The meter reads full only when the core promise itself is kept.
 | Constant | Value |
 |---|---|
 | `CAPACITY_TIERS` | {5, 10, 20} — locked, no further debate |
-| `MAX_ALLOWANCE` | floor(capacity / 5) → 1, 2, 4 |
+| `MAX_ALLOWANCE` | min(3, floor(capacity / 5)) → 1, 2, 3 |
 | `REWARDS` | {0, 1, 2}: 0 = tracked but trivial, 1 = kept promise, 2 = major promise declared upfront |
 
 Time-based decay is deliberately absent: no grace period, no per-year drain.
@@ -87,6 +88,6 @@ valuation. No fair-value calculation until the case studies survive scrutiny.
 ## Case studies
 
 Scored assessments live in [case-studies/](case-studies/) ([BAT](case-studies/bat.md),
-[XRP](case-studies/xrp.md)); open methodology questions in
+[XRP](case-studies/xrp.md)); the methodology decisions behind them are recorded in
 [case-studies/review.md](case-studies/review.md). The illustrative sketches that
 used to sit in this doc are retired — the case studies are the examples now.

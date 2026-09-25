@@ -16,13 +16,25 @@ remains open is below — decide in chat or annotate here.
 4. **ODL volume figures** (2024–2026) accepted provisionally from secondary
    sources citing Ripple; blinded replication must re-verify primaries.
 
-## Still open
+## Decided 2026-09-25 (Muse's calls — Alex can override)
 
-| # | Question | Why it matters |
-|---|---|---|
-| 1 | What evidence clears "fulfilled" — issuer release, customer statement, functional test, observed payout? | Sets the bar for all future projects |
-| 2 | What proves a core promise, and can the lineage inventory actually fill capacity? | Neither BAT nor XRP inventory can reach its cap today |
-| 3 | Is independent blinded replication required before production? | All passes so far were non-blinded |
+**1. Evidence bar for "fulfilled".** The promise's own success criterion must be
+observable by a third party. Clears: a working product anyone can use, an
+onchain or otherwise verifiable payout, a named customer confirming on the
+record. Does not clear: the issuer's own announcement or roadmap alone
+(announcements never change scores). Borderline cases stay unfulfilled — the
+analyst doesn't get to be generous.
+
+**2. Core promise proof; capacity need not fill.** The core promise is proven
+under the same bar as (1); its only mechanical role is gating the final heart
+(cap vs cap−1). Capacity is headroom, not a target — the lineage inventory is
+not required to fill it. Unfilled headroom is honest: even the full story told
+so far doesn't max the meter.
+
+**3. Blinded replication is an upgrade, not a gate.** Scores publish attributed
+to their analyst (single-analyst is fine); blinded replication, when it
+happens, upgrades a score to verified. Mandating it before any publish would
+freeze the product; attribution is the honest lightweight version.
 
 Settled 2026-09-25: **no time decay** — scores change because evidence changes,
 not because time passes (Alex + ChatGPT; the 2-year/1-per-year rule was

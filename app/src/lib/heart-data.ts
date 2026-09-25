@@ -1,5 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
+/** Methodology string for the hearts instrument (claim-type rule, adopted 2026-09-25). */
+export const HEARTS_METHODOLOGY = 'hearts claim-type rule v2 (adopted 2026-09-25; time decay removed)';
+
 /** Separate read client: prefer RLS-protected credentials over the writer key. */
 export function heartReadClient() {
   const url = process.env.SUPABASE_URL;

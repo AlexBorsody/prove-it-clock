@@ -288,3 +288,25 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   .nav { flex-wrap: wrap; }
 }
 .research-table th:first-child, .research-table td:first-child { min-width: 64px; overflow-wrap: normal; }
+
+/* Hearts instrument */
+.hearts { letter-spacing: 2px; }
+.heart { color: var(--border); }
+.heart.on { color: var(--red); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card-link { text-decoration: none; color: inherit; }
+.card-link .panel { transition: border-color .15s; }
+.card-link:hover .panel { border-color: var(--accent); }
+.card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.card-name { font-size: 20px; font-weight: 700; }
+.card-symbol { color: var(--text-faint); font-size: 12px; margin-top: 2px; }
+.card-score { font-size: 22px; font-weight: 700; color: var(--accent); }
+.panel.card .hearts { display: block; margin: 4px 0 10px; }
+
+/* Hearts timeline */
+.hearts-timeline { width: 100%; height: auto; display: block; }
+.hearts-timeline .grid { stroke: var(--border); stroke-width: 1; }
+.hearts-timeline .axis { fill: var(--text-faint); font-size: 11px; font-family: var(--mono); }
+.hearts-timeline .axis.strong { fill: var(--text); font-weight: 700; font-size: 13px; }
+.hearts-timeline .heart-line { stroke: var(--red); stroke-width: 2.5; }
+.hearts-timeline .heart-dot { fill: var(--red); stroke: var(--bg); stroke-width: 2; }

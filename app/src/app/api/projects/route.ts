@@ -1,5 +1,5 @@
 /**
- * GET /api/projects — the Prove-It Clock projects API.
+ * GET /api/projects — the Prove-It projects API.
  *
  * Serves the full scored universe (top 20 by CoinGecko market cap):
  *   - scores from the latest verified daily snapshot (methodology v0.2.0:

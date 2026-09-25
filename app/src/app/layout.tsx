@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Prove-It Clock — Crypto Accountability, Evidence-Driven",
+  title: "Prove-It — Crypto Accountability, Evidence-Driven",
   description:
-    "Measuring the distance between crypto's promises and reality. Versioned, evidence-traceable project scores.",
+    "Did the project do what it said it would? Hearts earned only while the evidence holds, with the full history on a graph.",
 };
 
 /**

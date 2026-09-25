@@ -9,26 +9,25 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <div className="shell">
       <header className="topbar">
         <div className="brand">
-          <div className="brand-mark">◷</div>
+          <div className="brand-mark">♥</div>
           <div className="brand-name">
-            THE PROVE-IT CLOCK
+            PROVE-IT
             <small>EVIDENCE-DRIVEN CRYPTO ACCOUNTABILITY</small>
           </div>
         </div>
         <nav className="nav">
-          <a href="/">Leaderboard</a>
+          <a href="/">Projects</a>
           <a href="/methodology">Methodology</a>
-          <a href="/case-studies">Case studies</a>
         </nav>
       </header>
       {children}
       <footer className="site">
         <p>
-          The Prove-It Clock is an independent accountability layer. It does not predict
-          prices and does not tell anyone what to buy or sell. Every score is traceable
-          to its inputs; every methodology change is versioned.
+          Prove-It is an independent accountability layer. It does not predict
+          prices and does not tell anyone what to buy or sell. Every heart is traceable
+          to its evidence; every run is published whole and append-only.
         </p>
-        <p className="num">Methodology v0.2.0 · Scores are provisional while data coverage is incomplete.</p>
+        <p className="num">Hearts claim-type rule v2 · Scores are single-analyst unless marked verified.</p>
       </footer>
     </div>
   );
