@@ -164,8 +164,8 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
 .comp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .comp-name { font-weight: 700; font-size: 16.5px; }
 .comp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
-.comp-hearts { font-size: 13.5px; color: var(--text-dim); margin-left: 2px; }
-.comp-desc { color: var(--text-dim); font-size: 14px; margin: 0 0 6px; }
+.comp-hearts { font-size: 13.5px; color: var(--text-dim); margin-left: 2px; font-weight: 600; }
+.comp-desc { color: var(--text-dim); font-size: 14px; margin: 0 0 6px; font-weight: 500; }
 .comp-meta { font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); }
 
 /* ---- timeline ---- */
@@ -212,7 +212,7 @@ footer.site { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--b
 footer.site p { margin: 4px 0; }
 
 h1.page-title { font-size: 34px; margin: 0 0 6px; letter-spacing: -0.01em; }
-.page-sub { color: var(--text-dim); margin: 0 0 20px; font-size: 16px; max-width: 860px; }
+.page-sub { color: var(--text-dim); margin: 0 0 20px; font-size: 16px; max-width: 860px; font-weight: 500; }
 
 @media (max-width: 720px) {
   .shell { padding: 0 12px 60px; }
@@ -241,7 +241,7 @@ h1.page-title { font-size: 34px; margin: 0 0 6px; letter-spacing: -0.01em; }
 .stat-track > div { height: 100%; border-radius: 4px; }
 .stat-val { grid-area: val; font-size: 16px; font-weight: 700; text-align: right; }
 .stat-sub { grid-area: sub; font-size: 11px; color: var(--text-faint); }
-.card-foot { margin: 0; font-size: 13.5px; color: var(--text-faint); white-space: nowrap; }
+.card-foot { margin: 0; font-size: 13.5px; color: var(--text-faint); white-space: nowrap; font-weight: 600; }
 
 /* Collapsible evidence sections — one click deeper, zero JS */
 details.panel.fold { padding: 0; }
