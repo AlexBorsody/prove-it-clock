@@ -21,14 +21,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         </nav>
       </header>
       {children}
-      <footer className="site">
-        <p>
-          Prove-It is an independent accountability layer. It does not predict
-          prices and does not tell anyone what to buy or sell. Every heart is traceable
-          to its evidence, and past scores are never changed.
-        </p>
-        <p className="num">Scores are researched by one analyst unless marked verified.</p>
-      </footer>
     </div>
   );
 }
