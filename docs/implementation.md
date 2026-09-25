@@ -33,8 +33,8 @@ Current earned scores (2026-09-25, earned-only):
 
 ## Phase 0: Vision and plan (this session)
 
-Docs written, tree clean, Alex reviews vision + plan before any code.
-Done when Alex says go.
+Docs written, tree clean. Alex said go 2026-09-25 ("get started building
+one step at a time"). Build proceeds phase by phase below.
 
 ## Phase 1: Data layer
 
@@ -44,7 +44,8 @@ Done when Alex says go.
    `test:verdict` script). Mechanical check: XRP and DASH ->
    Delivery concern, other six -> No concern.
 2. `app/data/verdict-lines.ts`: analyst-written one-liner per project,
-   reviewed, updated only when promise states change. Drafts for review:
+   updated only when promise states change. Drafts below ship as-is and
+   Alex edits on the verification pass (open question 4):
 
    - BTC: "Delivered payments at scale and the store-of-value case."
    - ETH: "Delivered the Merge, rollups, and a live dapp ecosystem."
@@ -79,6 +80,7 @@ Below the table: stacked area chart of HYPE share across projects over
 time (from `social_snapshots`).
 
 Dark theme ships with this phase: the whole app goes dark, CMC-style.
+Slogan "Truth, not hype." under the page title.
 
 Acceptance: 8 rows, correct hearts and verdicts, sparklines render from
 published runs, sorting works, dark theme throughout, no em dashes, no
@@ -91,8 +93,12 @@ mentions + change vs baseline, verdict badge. Sortable by mentions and by
 hearts. Gated like all HYPE trends: absolute mentions only until 8 weeks
 of snapshots, then change vs baseline. No sentiment column, ever.
 
-Acceptance: rows render from `social_snapshots`, sorting works, baseline
-gating honest, no em dashes.
+The hype bubble (vision.md): animated bubble per project, bubble size =
+HYPE mentions, substance fill = hearts filled %. All sizzle, no steak
+reads at a glance.
+
+Acceptance: rows render from `social_snapshots`, sorting works, bubbles
+render with honest proportions, baseline gating honest, no em dashes.
 
 ## Phase 2b: Compare view
 
@@ -132,26 +138,23 @@ cleanly.
    like all HYPE trends; before that, the section does not render.
 4. Delivery-health gauge in the header stat strip: hearts filled %,
    green/amber/red. Never sentiment.
-4. Promises list with status icons. State mapping: active -> Fulfilled,
+5. Promises list with status icons. State mapping: active -> Fulfilled,
    unfulfilled -> Active, lapsed/retired -> Abandoned. Overdue is defined
    in the model but has no v1 trigger and does not render.
-5. Evidence / Methodology bottom section: sources, tracked repos, data
+6. Evidence / Methodology bottom section: sources, tracked repos, data
    coverage, methodology version, run id. Replaces the "under the hood"
    drawer (same content, visible by default).
-6. Legacy v0.2.0 timeline section: remove or keep per Alex's call (open
+7. Legacy v0.2.0 timeline section: remove or keep per Alex's call (open
    question 3 below). Default recommendation: remove; the Delivery
    Timeline supersedes it and two timelines on one page is clutter.
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
 
-## Phase 4: Methodology page and ship
+## Phase 4: Verify and ship
 
-1. Methodology page: categorical verdict rules, earned-only hearts copy,
-   the methodology-update marker ("free hearts removed; historical
-   scores recalculated; not a change in project performance"), Prove-It
-   Data section (source, definition, coverage, calculation, timestamp,
-   methodology version per metric family).
+1. Methodology page: DONE 2026-09-25 (rewritten, collapsible sections,
+   bigger type, live on Vercel).
 2. Full verification: `npm run test:hearts`, `tsc --noEmit`,
    `next build`, mechanical verdict check, screenshot review of home +
    two detail pages (one No concern, one Delivery concern).
@@ -225,8 +228,9 @@ clean.
 
 ## Open questions for Alex
 
-1. **USE on the home card:** show "USE -" as an honest placeholder, or
-   hide the USE slot until real metrics land?
+1. **USE on the home row:** DECIDED 2026-09-25: show "coming" as the
+   honest placeholder per the gating rule (never hide the slot, never
+   show a number).
 2. **HYPE word:** once the 8-week baseline exists the word is vs
    baseline; until then, show just "collecting" or rank vs the
    cross-project median that week?
