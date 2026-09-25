@@ -231,7 +231,7 @@ h1.page-title { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
 .stat-track > div { height: 100%; border-radius: 4px; }
 .stat-val { grid-area: val; font-size: 16px; font-weight: 700; text-align: right; }
 .stat-sub { grid-area: sub; font-size: 11px; color: var(--text-faint); }
-.card-foot { margin: 0; font-size: 12px; color: var(--text-faint); }
+.card-foot { margin: 0; font-size: 12px; color: var(--text-faint); white-space: nowrap; }
 
 /* Collapsible evidence sections — one click deeper, zero JS */
 details.panel.fold { padding: 0; }
@@ -293,9 +293,9 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .hearts { letter-spacing: 2px; }
 .heart { color: var(--border); }
 .heart.on { color: var(--red); }
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.card-link { text-decoration: none; color: inherit; }
-.card-link .panel { transition: border-color .15s; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; align-items: stretch; }
+.card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
+.card-link .panel { transition: border-color .15s; height: 100%; }
 .card-link:hover .panel { border-color: var(--accent); }
 .card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
 .card-name { font-size: 20px; font-weight: 700; }
@@ -304,6 +304,9 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .panel.card .hearts { display: block; margin: 4px 0 10px; }
 
 /* Hearts timeline */
+.heart-spark { width: 100%; height: 30px; display: block; margin: 2px 0 8px; }
+.heart-spark path { stroke: var(--red); }
+.heart-spark circle { fill: var(--red); }
 .hearts-timeline { width: 100%; height: auto; display: block; }
 .hearts-timeline .grid { stroke: var(--border); stroke-width: 1; }
 .hearts-timeline .axis { fill: var(--text-faint); font-size: 11px; font-family: var(--mono); }

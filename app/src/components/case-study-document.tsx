@@ -10,9 +10,9 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
   return (
     <main className="research">
       <aside className="research-notice" aria-label="Research status">
-        <strong>Research draft — methodology adopted 2026-09-25, open questions decided</strong>
-        <p>Single-analyst assessments under the claim-type rule, not a blinded replication.
-          BAT 5/10 and XRP 5/20 are published; blinded replication would upgrade them to verified.</p>
+        <strong>Research notes — single-analyst assessment, not a blinded replication</strong>
+        <p>Evidence was gathered by one analyst and is published for anyone to check.
+          Blinded replication by an independent analyst would upgrade a score to verified.</p>
       </aside>
       <nav className="research-nav" aria-label="Case studies">
         {Object.entries(CASE_STUDY_DOCUMENTS).map(([key, document]) => (
@@ -36,8 +36,8 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
         >{markdown}</Markdown>
       </article>
       <p className="research-source">
-        Review content comes from <code>docs/{CASE_STUDY_DOCUMENTS[slug].file}</code>.
-        Edit the Markdown and rebuild to update this page. Checklist boxes are read-only.
+        Scoring follows the <a href="/methodology">published methodology</a>.
+        Checklist boxes are read-only.
       </p>
     </main>
   );

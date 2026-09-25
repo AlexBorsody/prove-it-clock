@@ -12,7 +12,8 @@ function fmtUsd(v: number | null | undefined): string {
   if (v >= 1e9) return `$${(v / 1e9).toFixed(2)}B`;
   if (v >= 1e6) return `$${(v / 1e6).toFixed(1)}M`;
   if (v >= 1e3) return `$${(v / 1e3).toFixed(0)}K`;
-  return `$${v.toFixed(0)}`;
+  if (v >= 1) return `$${v.toFixed(2)}`;
+  return `$${v.toPrecision(2)}`;
 }
 
 function stateTag(state: string): string {
@@ -79,8 +80,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Legacy score history</h2>
         <p className="panel-sub">
-          The old v0.2.0 factor scores, kept for reference. BAT was never scored
-          under the legacy model, so its timeline starts with hearts.
+          The old v0.2.0 factor scores, kept for reference. Not every project
+          was scored under the legacy model — an empty timeline means no legacy
+          data, not a zero.
         </p>
         <TimelineChart slug={slug} />
       </div>

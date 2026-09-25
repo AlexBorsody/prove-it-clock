@@ -1,5 +1,6 @@
-import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
+import { HEARTS_METHODOLOGY, readHeartHistory, readHeartRankings } from "@/lib/heart-data";
 import HeartMeter from "@/components/heart-meter";
+import { HeartSparkline } from "@/components/hearts-timeline";
 
 export const dynamic = "force-dynamic";
 
@@ -8,7 +9,9 @@ function fmtUsd(v: number | null | undefined): string {
   if (v >= 1e12) return `$${(v / 1e12).toFixed(2)}T`;
   if (v >= 1e9) return `$${(v / 1e9).toFixed(2)}B`;
   if (v >= 1e6) return `$${(v / 1e6).toFixed(1)}M`;
-  return `$${v.toFixed(0)}`;
+  if (v >= 1e3) return `$${(v / 1e3).toFixed(0)}K`;
+  if (v >= 1) return `$${v.toFixed(2)}`;
+  return `$${v.toPrecision(2)}`;
 }
 
 export default async function Home() {
@@ -21,6 +24,21 @@ export default async function Home() {
   } catch {
     // fall through to the empty state below
   }
+
+  // Sparkline histories: rises and falls are the product, so they belong on the cards.
+  const histories: Record<string, { as_of: string; filled: number; capacity: number }[]> = {};
+  await Promise.all(
+    projects.map(async (p) => {
+      try {
+        const h = await readHeartHistory(p.slug, HEARTS_METHODOLOGY, 1, 100);
+        histories[p.slug] = (h.points ?? [])
+          .filter((pt: any) => pt.availability === "available")
+          .map((pt: any) => ({ as_of: pt.as_of, filled: pt.filled, capacity: pt.capacity }));
+      } catch {
+        histories[p.slug] = [];
+      }
+    })
+  );
 
   return (
     <>
@@ -58,6 +76,7 @@ export default async function Home() {
                   <div className="card-score num">{p.filled}/{p.capacity}</div>
                 </div>
                 <HeartMeter filled={p.filled} capacity={p.capacity} />
+                <HeartSparkline points={histories[p.slug] ?? []} />
                 <div className="card-foot num">
                   {p.earned} earned + {p.allowance} allowance · {fmtUsd(p.market_cap_usd)} mcap
                 </div>
