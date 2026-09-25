@@ -2,7 +2,8 @@
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
 **Research:** two passes (Muse 2026-09-23, Codex 2026-09-24), non-blinded.
-**Status:** scored under adopted rules; Alex review required before any production use.
+**Status:** published to production 2026-09-25 under adopted rules; single-analyst
+(non-blinded) — blinded replication outstanding before scores are called verified.
 
 ## Result
 

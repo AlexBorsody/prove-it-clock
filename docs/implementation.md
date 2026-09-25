@@ -19,6 +19,11 @@ and its pages are retired but preserved in git history.)
 Flow: analyst writes a publication document → dry-run validation → `publish_heart_run`
 → Supabase → server readers/API → meter + graph. No backend service, no scheduler.
 
+Published runs (all claim-type rule v2): `hearts-2013-01-01`, `hearts-2017-06-01`,
+`hearts-2018-06-01`, `hearts-2019-06-01`, `hearts-2021-06-01` (backdated
+reconstructions from case-study evidence), `hearts-claimtype-2026-09-25`
+(current). Artifacts live in `db/seed/heart-runs/`.
+
 ## Invariants
 
 - Snapshots are immutable; runs are append-only; history is never rewritten.

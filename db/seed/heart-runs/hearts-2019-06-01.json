@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "run_key": "hearts-2019-06-01",
+  "as_of": "2019-06-01T00:00:00Z",
+  "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed)",
+  "review_status": "published",
+  "reviewed_by": "Muse (single analyst; reconstructed 2026-09-25)",
+  "policy_ref": "docs/hearts-algorithm.md + docs/case-studies/bat.md + docs/case-studies/xrp.md (claim-type rule adopted 2026-09-25)",
+  "projects": [
+    {
+      "slug": "xrp",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 3,
+        "rationale": "XRP 6/20 reconstructed as of 2019-06-01: ledger milestone (+1), xRapid payments product active (+1), MoneyGram corridor active (+1), allowance 3, core open.",
+        "allowance_rationale": "Working product (XRPL) yes; active team (Ripple) yes; economic activity (xRapid live with named customers, MoneyGram corridor operating) yes. 3 checks.",
+        "promises": [
+          {
+            "lineage": "bank-settlement",
+            "claim_type": "milestone",
+            "criteria": "Banks settle in XRP at meaningful scale",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2012-06-01T00:00:00Z",
+            "rationale": "12+ years of pilots; correspondent banking untouched.",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/markets/2014/05/05/fidor-becomes-first-bank-to-use-ripple-payment-protocol",
+                "summary": "Bank used Ripple protocol without XRP (entity/asset split)"
+              }
+            ]
+          },
+          {
+            "lineage": "xrpl-ledger",
+            "claim_type": "milestone",
+            "criteria": "Working XRP settlement ledger",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2012-06-01T00:00:00Z",
+            "rationale": "Ledger launch June 2012; time cannot unship it.",
+            "evidence": [
+              {
+                "url": "https://xrpl.org/about/history",
+                "summary": "Ledger launch June 2012 (month precision)"
+              }
+            ]
+          },
+          {
+            "lineage": "xrp-payments",
+            "claim_type": "ongoing",
+            "criteria": "Commercial XRP payments product with named customers",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2018-10-01T00:00:00Z",
+            "rationale": "xRapid live 2018-10-01 with MercuryFX, Cuallix, Catalyst (xRapid \u2192 ODL \u2192 Ripple Payments treated as one continuing lineage; supersession, no double count).",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/markets/2018/10/01/ripple-event-reveal-3-companies-are-now-using-xrp-for-real-payments",
+                "summary": "Named customers using XRP for real payments"
+              }
+            ]
+          },
+          {
+            "lineage": "moneygram-corridor",
+            "claim_type": "ongoing",
+            "criteria": "Major MoneyGram/ODL corridor",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2019-01-01T00:00:00Z",
+            "rationale": "MoneyGram corridor active through 2019\u20132020 (10-K documents operation and Dec 2020 cessation).",
+            "evidence": [
+              {
+                "url": "https://www.sec.gov/Archives/edgar/data/1273931/000127393122000039/mgi-20211231x.htm",
+                "summary": "MoneyGram 2021 10-K: documents the corridor's operation, ODL cessation Dec 2020, termination 2021-03-07"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "bat",
+      "availability": "available",
+      "assessment": {
+        "capacity": 10,
+        "allowance": 2,
+        "rationale": "BAT 5/10 reconstructed as of 2019-06-01: ad loop active (+2, Brave Ads Apr 2019), creator payouts active (+1), allowance 2 (capped), core open.",
+        "allowance_rationale": "Working product yes; active team yes; economic activity (ad loop live, creator payouts live) yes. 3 checks, capped at floor(10/5) = 2.",
+        "promises": [
+          {
+            "lineage": "attention-standard",
+            "claim_type": "milestone",
+            "criteria": "BAT becomes a web-wide attention standard",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2017-05-01T00:00:00Z",
+            "rationale": "Stated aim in the 2017 whitepaper; not realized.",
+            "evidence": [
+              {
+                "url": "https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf",
+                "summary": "Founding whitepaper states the attention-standard aim; the promise set the lineages are carved from"
+              }
+            ]
+          },
+          {
+            "lineage": "ad-loop",
+            "claim_type": "ongoing",
+            "criteria": "Users earn BAT for private opt-in ads",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2019-04-24T00:00:00Z",
+            "rationale": "Brave Ads launched 2019-04-24; still funded via BAT buybacks for user rewards per BAT Roadmap 4.0.",
+            "evidence": [
+              {
+                "url": "https://brave.com/blog/brave-ads-launch/",
+                "summary": "Brave Ads launch: production ad loop with user revenue share"
+              },
+              {
+                "url": "https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing",
+                "summary": "Independent corroboration of ad launch and 70% revenue share"
+              }
+            ]
+          },
+          {
+            "lineage": "creator-payouts",
+            "claim_type": "ongoing",
+            "criteria": "Creators/publishers earn BAT",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2017-10-12T00:00:00Z",
+            "rationale": "BAT Mercury launched 2017-10-12; creator BAT payments live. Subsidy caveat: payouts substantially funded by Brave's user-growth pool, disclosed not hidden.",
+            "evidence": [
+              {
+                "url": "https://brave.com/blog/bat-mercury-launch/",
+                "summary": "BAT Mercury launch: creator BAT payments (earliest direct evidence)"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    }
+  ]
+}

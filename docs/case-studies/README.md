@@ -1,5 +1,9 @@
 # BAT/XRP case-study review
 
+**Completed 2026-09-25.** Scores published to production under the adopted
+claim-type rule v2; backdated runs (2013–2021) published 2026-09-25 for the
+timeline graph. What follows is the original research brief, kept for the record.
+
 Started 2026-09-24. This is the first delivery task in
 [the adopted plan](../tasks/2026-09-23.md), not authorization for other features.
 Work sequentially: BAT, then XRP, then Alex/Muse review before implementation.

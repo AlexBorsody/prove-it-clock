@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { HEARTS_METHODOLOGY, readHeartHistory } from "@/lib/heart-data";
 import HeartMeter from "@/components/heart-meter";
 import HeartsTimeline from "@/components/hearts-timeline";
+import TimelineChart from "@/components/timeline-chart";
 
 export const dynamic = "force-dynamic";
 
@@ -72,6 +73,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           condition holds — when evidence changes, the line moves.
         </p>
         <HeartsTimeline points={points.map((p) => ({ as_of: p.as_of, filled: p.filled, capacity: p.capacity }))} />
+      </div>
+
+      {/* Legacy v0.2.0 score timeline. */}
+      <div className="panel">
+        <h2>Legacy score history</h2>
+        <p className="panel-sub">
+          The old v0.2.0 factor scores, kept for reference. BAT was never scored
+          under the legacy model, so its timeline starts with hearts.
+        </p>
+        <TimelineChart slug={slug} />
       </div>
 
       {/* The evidence. */}
