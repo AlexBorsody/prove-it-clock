@@ -95,3 +95,38 @@ Supabase/Vercel management access remains unverified in this checkout. Existing
 local credentials/project setup are needed before live schema checks. Secrets
 stay in ignored env/deployment configuration. See [README](../README.md) for
 commands and [daily logs](tasks/) for progress.
+
+## Case-study work in progress — September 24
+
+The first delivery task has [BAT and XRP evidence worksheets](case-studies/README.md).
+Sources, candidate lineage judgments, conditional calculations and manual tests
+are available for review. [Alex/Muse questions](case-studies/review.md) are tracked
+in Markdown. These are non-blinded research drafts, not accepted ratings or live
+pages; feature development remains frozen pending the case-study review.
+
+
+## First build slice — case-study review screens
+
+Alex authorized step-by-step building after the September 24 research pass.
+This slice implements the case-study review deliverable; broader features still
+wait for review of both projects.
+
+| Screen | Next.js frontend | Backend / data |
+| --- | --- | --- |
+| `/case-studies` | Server-rendered protocol and navigation | Allowlisted Markdown loader reads the committed research protocol at build time |
+| `/case-studies/bat`, `/case-studies/xrp` | Evidence tables, judgments and conditional arithmetic, with persistent draft notice | Same committed worksheets as the agent review; no vendor calls or invented Supabase scores |
+| `/case-studies/review` | Read-only questions and manual acceptance checks | Edit answers in Markdown; no authentication or write endpoint required |
+| `/case-studies/algorithm` | Adopted rule reference | Renders the adopted algorithm document, separately from active legacy methodology |
+
+`react-markdown` + `remark-gfm` render tables/checklists in Server Components;
+raw HTML is skipped and the default safe URL transform remains enabled. Local
+Markdown links resolve to the matching review screen or repository source. The
+allowlist prevents route slugs from becoming filesystem paths. Next output tracing
+includes the shared docs outside `app/`. No existing dependency versions changed.
+
+The isolated `hearts.ts` function implements only arithmetic from explicit reviewed
+inputs. It exposes capacity/core clipping so displayed components reconcile. It
+never selects fulfillment evidence or recency reset events, fetches providers,
+writes Supabase, or replaces v0.2.0. Those decisions remain in the review worksheet.
+Run `npm run test:hearts` for arithmetic boundaries, invalid-input rejection,
+conditional-case fixtures and document-route checks.

@@ -18,6 +18,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <nav className="nav">
           <a href="/">Leaderboard</a>
           <a href="/methodology">Methodology</a>
+          <a href="/case-studies">Case studies</a>
         </nav>
       </header>
       {children}

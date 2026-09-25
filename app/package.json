@@ -3,10 +3,13 @@
     "@supabase/supabase-js": "^2.45.0",
     "next": "^15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1"
   },
   "description": "The Prove-It Clock \u2014 evidence-driven crypto accountability. Measures the distance between crypto's promises and reality.",
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
@@ -25,7 +28,10 @@
     "snapshot:load": "tsx scripts/load-snapshot.ts",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "events:check": "tsx scripts/events-check.ts"
+    "events:check": "tsx scripts/events-check.ts",
+    "test:hearts": "node --import tsx --test scripts/hearts.test.ts scripts/case-studies.test.ts",
+    "hearts:publish": "node --import tsx scripts/publish-hearts.ts",
+    "test:db": "node --import tsx --test scripts/heart-database.test.ts"
   },
   "version": "0.1.0"
 }

@@ -1,79 +1,66 @@
-# Case study: BAT (Basic Attention Token) — evidence-first assessment
+# BAT — case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v1 (adopted 2026-09-23).
-**Researcher note:** Worked mechanically from the rubric. Illustrative scores were
-not used as targets; where the result differs from them, the methodology wins.
-**Status:** research complete, UI wiring pending (Codex task).
+**Research:** two passes (Muse 2026-09-23, Codex 2026-09-24), non-blinded.
+**Status:** scored under adopted rules; Alex review required before any production use.
 
-## Capacity
+## Result
 
-BAT's stated ambition: a blockchain-based digital advertising platform that
-rewards user attention ("reward participation in advertising"). The capacity
-rubric assigns **10** to owning a sector and names advertising explicitly.
-**Capacity = 10** (mechanical, not judgment).
+**BAT 3/10.** Earned 3, allowance decayed to 0, core open (cap 9, not binding).
 
-## Starting allowance (present-tense checklist, last 12 months)
+```
+earned    = 2 (ad loop) + 1 (creators) = 3
+allowance = max(0, 2 − 5) = 0   (A0=2; last fulfillment 2019-04-24; S≈7.4y)
+filled    = min(10, 3 + 0) = 3
+```
 
-| Check | Result | Basis |
+## Lineages
+
+| Promise | Reward | State | Key evidence |
+|---|---|---|---|
+| Users earn BAT for private opt-in ads | 2 | Fulfilled 2019-04-24 | Brave Ads launch, 70% user revenue share — [Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing) |
+| Creators/publishers earn BAT | 1 | Fulfilled 2017-10-12 | BAT Mercury launch via Uphold — [Brave](https://brave.com/blog/bat-mercury-launch/); 290k verified publishers by 2019 — [AMBCrypto](https://eng.ambcrypto.com/brave-ads-reward-over-290000-online-creators-in-bat/) |
+| BAT as a web-wide attention standard | 2 | Open | Stated aim in the [2017 whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf); not realized |
+
+Capacity 10: advertising-sector ambition (mechanical per rubric).
+
+## Allowance
+
+Present-tense checklist (last 12 months): working product, active team (Brave Software),
+economic activity (BAT ad buys, 2025-10-21 BAT purchase per [transparency feed](https://brave.com/transparency/)).
+Raw 3, capped at floor(10/5) = **A0 = 2** → decayed to 0 (see computation).
+
+## Judgment calls (Muse's, Alex can override)
+
+- **Granularity:** one ad-loop lineage, not three (users/publishers/advertisers).
+  Splitting the loop's three sides manufactures hearts — the adopted
+  anti-subdivision rule forbids it. A second pass scored 4/10 on the split
+  carving; rejected for that reason.
+- **Recency:** strict event reading = the adopted rule as written (only a new
+  fulfillment resets S). Continuous operation would give 6/10; not adopted.
+- **Subsidy caveat:** creator payouts were substantially funded by Brave's
+  user-growth token pool, not organic ad revenue. Counts as fulfillment
+  (users/creators really got BAT); disclosed here, not hidden.
+- **Partial loss:** iOS earning/tipping removed 2020-12-10 narrows coverage,
+  does not retire the lineage ([Brave](https://brave.com/blog/rewards-ios/)).
+
+## Open
+
+- Whether self-custody Solana payouts (2025-08-14) are a new lineage or a
+  BAT-1 upgrade — would add +1 and reset S if accepted.
+- External integrations (e.g. Streamiverse 2026-06-22) need partner-side
+  volume evidence before any award.
+
+## Source register
+
+| ID | Source | What it establishes |
 |---|---|---|
-| Working product used for stated purpose | 1 | Brave browser + Brave Rewards + Brave Ads live and used |
-| Identifiable team actively shipping | 1 | Brave Software Inc., Brendan Eich |
-| Measurable economic activity tied to the promise | 1 | BAT ad buys, creator payouts ongoing |
-
-Raw 3, capped at floor(10/5) = **A0 = 2**.
-
-## Promise lineages
-
-| ID | Promise (from 2017 whitepaper / ICO pitch) | Reward | Criteria (predefined) | State | Evidence |
-|---|---|---|---|---|---|
-| L-BAT-1 | Users compensated in BAT for their attention | 2 | Opt-in users receive BAT for viewing privacy-preserving ads matched on-device | **Fulfilled 2019-04-24** | Brave Ads launch: 70% ad-revenue share paid in BAT — [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing) |
-| L-BAT-2 | Publishers/creators earn BAT (improved revenue) | 1 | Verified creators receiving BAT payouts at scale (≥100k verified) | **Fulfilled 2019-10-17** | 290k Brave Verified Publishers; 8M MAU; ~400 ad campaigns — [AMBCrypto](https://eng.ambcrypto.com/brave-ads-reward-over-290000-online-creators-in-bat/). Caveat: payouts substantially subsidized by Brave's user growth pool, not purely organic ad revenue |
-| L-BAT-3 | Advertisers transact on the platform | 1 | Real brands running paid campaigns settled in BAT | **Fulfilled 2019-10-17** | Launch advertisers (Vice, Home Chef, eToro…); Brave buying BAT with ad revenue to fund the 70% user share — [AMBCrypto](https://eng.ambcrypto.com/brave-ads-reward-over-290000-online-creators-in-bat/) |
-| L-BAT-4 | BAT becomes a web standard / multi-platform attention layer | 2 | Adoption beyond Brave as a standard | **Open** | Stated as eventual aim in whitepaper; not realized |
-
-Supporting timeline: ICO 2017-05-31 — 1B BAT, 156,250 ETH (~$35M), <30 seconds —
-[CoinDesk](https://www.coindesk.com/markets/2017/05/31/35-million-in-30-seconds-token-sale-for-internet-browser-brave-sells-out/?outputType=amp).
-Whitepaper: [basicattentiontoken.org](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf).
-
-## Core promise
-
-"Fix digital advertising" via a decentralized, transparent ad exchange. The
-platform exists and operates, but industry-scale transformation has not
-happened. **Core = open (partially realized).** Gate applies: filled ≤ 9
-(not binding here).
-
-## Computation
-
-```
-earned     = 2 + 1 + 1 + 0 = 4
-allowance  = 0  (last fulfillment 2019-10-17; S(t) ≈ 7 years > 2-year grace;
-             strict event reading — see ambiguity A1)
-filled     = min(10, 4 + 0) = 4
-gate       = min(4, 9) = 4
-```
-
-**Result: BAT 4/10** (strict reading; 6/10 under the continuous-operation
-reading of A1 — same ambiguity, same primary reading as the XRP case study).
-
-This differs from the illustrative 3/10 in either reading. Per the falsification
-rule, the methodology wins: BAT kept more promises than the gut estimate — four
-kept promises (one major), a live product, an active team, real economic
-activity. The gap between 4/10 delivery and BAT's market price is the
-undervaluation signal the instrument is built to surface. (Caveat as with XRP:
-same author wrote rubric and application — independent replication still needed.)
-
-## Ambiguities (reported, not resolved — methodology needs these defined)
-
-- **A1. What resets the inactivity clock S(t)?** Applied strictly here (only new
-  fulfillment events; BAT: 4/10 vs 6/10 depending on reading) per the formula's
-  letter, but the prose ("two years of silence") cuts the other way — BAT's
-  platform delivers its promised utility continuously (monthly payouts, ongoing
-  campaigns) and is not "silent" in any ordinary sense. The doc must define
-  whether ongoing delivery of fulfilled promises counts as activity. Top
-  methodology issue.
-- **A2. Lineage granularity.** Users / publishers / advertisers could be read as
-  one lineage (the ad platform works) rather than three. The anti-subdivision
-  rule needs a sharper test than "don't split busywork."
-- **A3. Subsidized fulfillment.** Creator payouts were largely funded by Brave's
-  own token pool rather than organic ad revenue. Does subsidized delivery count
-  as fulfilled? Counted here with the caveat surfaced.
+| B01 | 2017-03-23 [platform announcement](https://basicattentiontoken.org/announcing-a-new-blockchain-based-digital-advertising-platform/) | Intent (opt-in ads, attention measurement); not fulfillment |
+| B03 | 2019-04-24 [Brave Ads launch](https://brave.com/blog/brave-ads-launch/) | Production ad loop with user revenue share |
+| B11 | 2017-10-12 [BAT Mercury launch](https://brave.com/blog/bat-mercury-launch/) | Creator BAT payments via Uphold (earliest direct evidence) |
+| B04 | 2020-12-10 [iOS Rewards changes](https://brave.com/blog/rewards-ios/) | Platform-specific loss, not global retirement |
+| B08 | 2025-08-14 [Solana payouts](https://brave.com/blog/payouts-on-solana/) | Self-custody payout route (page edited later; corroboration needed) |
+| B10 | [Transparency feed](https://brave.com/transparency/) | 2025-10-21 BAT purchase; company-reported, not audited revenue |
+| B13 | 2017 [whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf) | Founding promise set the lineages are carved from |
+| B14 | 2019-04-24 [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing) | Independent corroboration of ad launch + 70% share |
+| B15 | 2019-10-17 [AMBCrypto](https://eng.ambcrypto.com/brave-ads-reward-over-290000-online-creators-in-bat/) | Scale claims (~400 campaigns, named advertisers); subsidy caveat |
