@@ -1,7 +1,7 @@
 # SOL: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** single pass (Muse 2026-09-25), non-blinded.
+**Research:** single pass (2026-09-25), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -53,7 +53,7 @@ yes. 3 checks, capped at min(3, floor(20/5)) = **3**.
 | 2021-06-01 | 4 | Mainnet fulfilled (+1); throughput active (+2); ecosystem active, Serum live Sept 2020 (+1); Pay/mobile promises did not exist yet |
 | 2026-09-25 | 5 | Mobile hardware +1 (2023-05-01); Pay still open |
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **Outages LAPSE the throughput lineage, they do not retire it.** Solana never
   abandoned the performance promise; it shipped QUIC networking, priority fees,
@@ -66,7 +66,7 @@ yes. 3 checks, capped at min(3, floor(20/5)) = **3**.
   near 65k or the 710k whitepaper theoretical. The gap is parked in the core
   (open) instead. If blinded replication demands the headline number, the
   throughput lineage is unfulfilled, earned drops to 3, total becomes 6/20.
-  This is the dossier's biggest fork.
+  This is the assessment's biggest open question.
 - **Solana Pay stays open on the distribution-vs-adoption distinction.** The
   Shopify plugin is merchant access, not merchant volume. Mirrors the LINK
   core treatment (pilots are not production).

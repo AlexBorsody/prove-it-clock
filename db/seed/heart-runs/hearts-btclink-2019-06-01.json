@@ -67,6 +67,26 @@
                 "summary": "BitPay merchant payment processing since 2011"
               }
             ]
+          },
+          {
+            "lineage": "btc-store-of-value",
+            "claim_type": "ongoing",
+            "criteria": "Digital gold / store of value: BTC is bought and held as a long-term store of value",
+            "reward": 2,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2020-08-11T00:00:00Z",
+            "rationale": "Community store-of-value narrative not yet dominant and measurable; convergence evidence arrives 2020-08-11 (MicroStrategy $250M treasury purchase).",
+            "evidence": [
+              {
+                "url": "http://coindesk.com/markets/2020/08/11/microstrategy-buys-250m-in-bitcoin-calling-the-crypto-superior-to-cash",
+                "summary": "MicroStrategy buys $250M BTC as primary treasury reserve 2020-08-11, calling it a 'dependable store of value'"
+              },
+              {
+                "url": "https://www.congress.gov/crs-product/IF12573",
+                "summary": "SEC approval of 11 spot Bitcoin exchange-traded products, 2024-01-10"
+              }
+            ]
           }
         ]
       },

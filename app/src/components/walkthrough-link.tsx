@@ -7,8 +7,10 @@ export default function WalkthroughLink() {
       type="button"
       className="wt-replay"
       onClick={() => window.dispatchEvent(new CustomEvent("proveit:walkthrough"))}
+      aria-label="How to read this"
     >
-      How to read this
+      <span className="wt-replay-full">How to read this</span>
+      <span className="wt-replay-short" aria-hidden="true">?</span>
     </button>
   );
 }

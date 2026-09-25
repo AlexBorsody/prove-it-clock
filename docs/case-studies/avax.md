@@ -1,7 +1,7 @@
 # AVAX: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** single pass (Muse 2026-09-25), non-blinded.
+**Research:** single pass (2026-09-25), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -53,7 +53,7 @@ DEX volumes $500M+/day; stablecoin supply $1.7B; gaming tx volumes) yes.
 | 2021-06-01 | 3 | Mainnet live Sept 2020 (+1); named DeFi apps live, Pangolin Feb 2021 (+2); no subnets yet |
 | 2026-09-25 | 5 | Subnets delivered Mar 2022 (+2); DeFi survived the 2022 contraction and recovered |
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **Finality precision flagged.** The whitepaper's sub-1-second finality is
   issuer-measured on a 2000-node AWS testnet; third-party docs say C-Chain

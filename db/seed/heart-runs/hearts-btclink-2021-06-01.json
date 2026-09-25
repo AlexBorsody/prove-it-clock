@@ -13,7 +13,7 @@
       "assessment": {
         "capacity": 20,
         "allowance": 3,
-        "rationale": "BTC 6/20 reconstructed as of 2021-06-01: ledger milestone + payments active; allowance 3.",
+        "rationale": "BTC 8/20 reconstructed as of 2021-06-01: ledger milestone + payments active + store of value active (MicroStrategy 2020-08-11 convergence); allowance 3.",
         "allowance_rationale": "Working product yes; team shipping yes; payment activity yes. 3 checks.",
         "promises": [
           {
@@ -65,6 +65,26 @@
               {
                 "url": "https://bitpay.com/about",
                 "summary": "BitPay merchant payment processing since 2011"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-store-of-value",
+            "claim_type": "ongoing",
+            "criteria": "Digital gold / store of value: BTC is bought and held as a long-term store of value",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-08-11T00:00:00Z",
+            "rationale": "MicroStrategy $250M treasury purchase 2020-08-11 as 'dependable store of value'; corporate treasuries and 11 US spot ETPs (approved 2024-01-10) confirm the converged community claim.",
+            "evidence": [
+              {
+                "url": "http://coindesk.com/markets/2020/08/11/microstrategy-buys-250m-in-bitcoin-calling-the-crypto-superior-to-cash",
+                "summary": "MicroStrategy buys $250M BTC as primary treasury reserve 2020-08-11, calling it a 'dependable store of value'"
+              },
+              {
+                "url": "https://www.congress.gov/crs-product/IF12573",
+                "summary": "SEC approval of 11 spot Bitcoin exchange-traded products, 2024-01-10"
               }
             ]
           }

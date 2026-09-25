@@ -1,7 +1,7 @@
 # DASH: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** single pass (Muse 2026-09-25), non-blinded.
+**Research:** single pass (2026-09-25), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -58,7 +58,7 @@ verified current payment-volume figure). 2 checks = **2**.
 | 2021-06-01 | 4 | Merchant economy lapsed (-2) |
 | 2026-09-25 | 5 | Evolution/Platform mainnet +1 (2024-07-29) |
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **Merchant-lapse timing is inferred from absence.** Active 2018-2019 is well
   evidenced; the lapse is dated to the 2021 snapshot because no post-2019

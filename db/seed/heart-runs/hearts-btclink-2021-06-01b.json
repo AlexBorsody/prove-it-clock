@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "run_key": "hearts-btclink-2018-06-01",
-  "as_of": "2018-06-01T00:00:00Z",
+  "run_key": "hearts-btclink-2021-06-01b",
+  "as_of": "2021-06-01T00:00:00Z",
   "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed)",
   "review_status": "published",
   "reviewed_by": "Muse (single analyst; reconstructed 2026-09-25)",
@@ -13,8 +13,8 @@
       "assessment": {
         "capacity": 20,
         "allowance": 3,
-        "rationale": "BTC 6/20 reconstructed as of 2018-06-01: Lightning mainnet 2018-03-15 activates the payments lineage (+2); ledger milestone; allowance 3.",
-        "allowance_rationale": "Working product yes; team shipping yes; merchant/Lightning payment activity yes. 3 checks.",
+        "rationale": "BTC 8/20 reconstructed as of 2021-06-01: ledger milestone + payments active + store of value active (MicroStrategy 2020-08-11 convergence); allowance 3.",
+        "allowance_rationale": "Working product yes; team shipping yes; payment activity yes. 3 checks.",
         "promises": [
           {
             "lineage": "btc-core",
@@ -74,9 +74,9 @@
             "criteria": "Digital gold / store of value: BTC is bought and held as a long-term store of value",
             "reward": 2,
             "core": false,
-            "state": "unfulfilled",
+            "state": "active",
             "effective_at": "2020-08-11T00:00:00Z",
-            "rationale": "Community store-of-value narrative not yet dominant and measurable; convergence evidence arrives 2020-08-11 (MicroStrategy $250M treasury purchase).",
+            "rationale": "MicroStrategy $250M treasury purchase 2020-08-11 as 'dependable store of value'; corporate treasuries and 11 US spot ETPs (approved 2024-01-10) confirm the converged community claim.",
             "evidence": [
               {
                 "url": "http://coindesk.com/markets/2020/08/11/microstrategy-buys-250m-in-bitcoin-calling-the-crypto-superior-to-cash",
@@ -97,9 +97,9 @@
       "availability": "available",
       "assessment": {
         "capacity": 20,
-        "allowance": 1,
-        "rationale": "LINK 1/20 reconstructed as of 2018-06-01: whitepaper only (2017-09-04), no delivery yet; allowance 1.",
-        "allowance_rationale": "Working product no; team shipping yes; economic activity no. 1 check.",
+        "allowance": 2,
+        "rationale": "LINK 5/20 reconstructed as of 2021-06-01: Aave/Synthetix production feeds since 2020-01-09 (+2); CCIP not yet launched; allowance 2.",
+        "allowance_rationale": "Working product yes; team shipping yes; fee-flow figures unverified. 2 checks.",
         "promises": [
           {
             "lineage": "link-core",
@@ -123,13 +123,13 @@
             "criteria": "Decentralized oracle network live on a public mainnet",
             "reward": 1,
             "core": false,
-            "state": "unfulfilled",
-            "effective_at": "2017-09-04T00:00:00Z",
-            "rationale": "Whitepaper promise; mainnet not yet launched.",
+            "state": "active",
+            "effective_at": "2019-05-30T00:00:00Z",
+            "rationale": "Launch announced at Consensus 2019; three completed security audits; 'first functioning, decentralized oracle network'.",
             "evidence": [
               {
-                "url": "https://pdfroom.com/books/chainlink-whitepaper-pdf/ZOgZjnV1gkb",
-                "summary": "ChainLink whitepaper v1.0, 4 Sept 2017"
+                "url": "https://decrypt.co/7042/chainlink-mainnet-live-ethereum-may",
+                "summary": "Decrypt May 2019: mainnet live on Ethereum 2019-05-30"
               }
             ]
           },
@@ -139,13 +139,37 @@
             "criteria": "Named production applications continuously consume Chainlink Data Feeds",
             "reward": 2,
             "core": false,
-            "state": "unfulfilled",
-            "effective_at": "2017-09-04T00:00:00Z",
-            "rationale": "No production consumption yet.",
+            "state": "active",
+            "effective_at": "2020-01-09T00:00:00Z",
+            "rationale": "Aave Oracle Network live 2020-01-09 with 16 feeds; all Synths migrated to Chainlink oracles 2020; relationship expanding (Aave SVR proposal Dec 2024).",
             "evidence": [
               {
-                "url": "https://pdfroom.com/books/chainlink-whitepaper-pdf/ZOgZjnV1gkb",
-                "summary": "Whitepaper: oracle network for smart contract data"
+                "url": "https://en.cryptonomist.ch/2020/01/09/aave-oracle-network-on-chainlink/",
+                "summary": "Aave Oracle Network live on Ethereum mainnet 2020-01-09"
+              },
+              {
+                "url": "https://blog.synthetix.io/all-synths-are-now-powered-by-chainlink-decentralised-oracles/",
+                "summary": "Synthetix: all synths powered by Chainlink oracles, Sept 2020"
+              },
+              {
+                "url": "https://CoinTelegraph.com/news/aave-mulls-chainlink-integration-return-mev-fees",
+                "summary": "CoinTelegraph Dec 2024: Aave proposes Chainlink SVR integration"
+              }
+            ]
+          },
+          {
+            "lineage": "link-ccip",
+            "claim_type": "ongoing",
+            "criteria": "Named production users move messages/assets across chains via CCIP",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2021-04-15T00:00:00Z",
+            "rationale": "CCIP promise made in 2.0 whitepaper; no mainnet yet.",
+            "evidence": [
+              {
+                "url": "https://chain.link/whitepaper",
+                "summary": "Chainlink 2.0 whitepaper 2021-04-15: cross-chain interoperability"
               }
             ]
           }

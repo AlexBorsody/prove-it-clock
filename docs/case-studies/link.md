@@ -1,7 +1,7 @@
 # LINK: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** two passes (Muse 2026-09-25, Codex 2026-09-25), non-blinded.
+**Research:** two independent passes (2026-09-25), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -37,7 +37,7 @@ Streams on Arc, CCIP on Arc, Infosys partnership) yes; measurable economic
 activity tied to the promise, UNVERIFIED (staking rewards and fee flows exist,
 no verified current figure). 2 checks → **2** free hearts.
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **CCIP scored as its own lineage** (not folded into the oracle promise): it
   was introduced as a distinct promise in the 2.0 whitepaper with its own

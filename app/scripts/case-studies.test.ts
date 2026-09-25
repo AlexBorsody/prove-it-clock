@@ -5,10 +5,15 @@ import {
 } from "../src/lib/case-studies";
 
 test("case-study routes reject arbitrary paths and inherited object properties", () => {
-  for (const slug of ["../strategy", "constructor", "toString", "__proto__", "btc", "BAT"]) {
+  for (const slug of ["../strategy", "constructor", "toString", "__proto__", "BAT"]) {
     assert.equal(isCaseStudySlug(slug), false, slug);
   }
-  assert.equal(isCaseStudySlug("bat"), true);
+});
+
+test("all intended case-study slugs are allowlisted", () => {
+  for (const slug of ["overview", "bat", "xrp", "btc", "link", "eth", "sol", "dash", "avax", "review", "algorithm"]) {
+    assert.equal(isCaseStudySlug(slug), true, slug);
+  }
 });
 
 test("Markdown links resolve from their actual document directories", () => {

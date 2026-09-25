@@ -11,21 +11,18 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="shell">
       <header className="topbar">
+        <div className="topbar-side">
+          <SiteNav />
+        </div>
         <div className="brand">
           <div className="brand-mark">♥</div>
-          <div className="brand-name">
-            PROVE-IT
-            <small>EVIDENCE-DRIVEN CRYPTO ACCOUNTABILITY</small>
-          </div>
+          <div className="brand-name">Prove-It</div>
         </div>
-        <SiteNav />
+        <div className="topbar-side topbar-right">
+          <WalkthroughLink />
+        </div>
       </header>
       {children}
-      <footer className="site">
-        <p>
-          <WalkthroughLink />
-        </p>
-      </footer>
       <Walkthrough />
     </div>
   );

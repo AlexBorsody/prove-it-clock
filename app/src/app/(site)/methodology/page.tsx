@@ -16,9 +16,12 @@ export default function MethodologyPage() {
         <h2>1. List the promises</h2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           First we write down what the project actually promised, from its
-          whitepaper or launch materials. Before scoring anything, we also write
-          down what "done" looks like for each promise, so the goalposts can't
-          move later.
+          whitepaper or launch materials. Some projects have no issuer at
+          all: for founderless protocols we score the claims the community
+          converged on instead, and only when the story is dominant,
+          measurable, and broadly shared. Before scoring anything, we also
+          write down what "done" looks like for each promise, so the
+          goalposts can't move later.
         </p>
       </div>
 
@@ -87,6 +90,19 @@ export default function MethodologyPage() {
           linked. If a second researcher independently checks the work, the score
           gets marked verified. We don't do valuations. The meter sits next to
           the market cap, and the market can decide what it's worth.
+        </p>
+      </div>
+
+      <div className="panel" id="shitcoin-score">
+        <h2>9. The shitcoin score</h2>
+        <p className="panel-sub" style={{ marginBottom: 0 }}>
+          One number, shown as a badge on every project: abandoned promises
+          plus missing hearts. Add up the promises the project fulfilled then
+          dropped, the promises whose proof dried up, the hearts it never
+          earned, and the hearts it lost from its all-time high. Higher is
+          worse. A project that promised big, proved little, and walked away
+          from what it proved scores high. A project that kept its promises
+          scores low.
         </p>
       </div>
 

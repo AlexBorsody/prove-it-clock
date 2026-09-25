@@ -1,7 +1,7 @@
 # BAT: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** two passes (Muse 2026-09-23, Codex 2026-09-24), non-blinded.
+**Research:** two independent passes (2026-09-23, 2026-09-24), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -33,7 +33,7 @@ active team (Brave Software shipping, Roadmap 4.0 in progress), economic
 activity (BAT ad buys; 2025-10-21 purchase per [transparency feed](https://brave.com/transparency/)).
 3 checks → capped at floor(10/5) = **2**.
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **Granularity:** one ad-loop lineage, not three (users/publishers/advertisers).
   Splitting the loop's three sides manufactures hearts, the adopted

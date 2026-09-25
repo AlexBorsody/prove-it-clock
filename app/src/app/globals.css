@@ -58,29 +58,35 @@ a[target="_blank"]::after { content: " ↗"; font-size: 0.85em; }
 /* ---- shell ---- */
 .shell { max-width: 1280px; margin: 0 auto; padding: 0 20px 80px; }
 
+/* App header: 3-column bar, wordmark centered, actions balanced on the sides. */
 .topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0 14px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0 12px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 24px;
 }
-.brand { display: flex; align-items: center; gap: 12px; }
+.topbar-side { display: flex; min-width: 0; }
+.topbar-right { justify-content: flex-end; }
+/* Compact wordmark: small strong app title + heart mark, no blog tagline. */
+.brand { display: flex; align-items: center; gap: 8px; justify-self: center; }
 .brand-mark {
-  width: 34px; height: 34px; border-radius: 50%;
-  border: 2px solid var(--accent);
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--green);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--mono); color: var(--accent); font-size: 16px;
-  position: relative;
+  font-family: var(--mono); color: var(--green); font-size: 12px;
+  position: relative; flex: none;
 }
 .brand-mark::after {
-  content: ""; position: absolute; inset: 6px;
-  border-right: 2px solid var(--accent);
+  content: ""; position: absolute; inset: 5px;
+  border-right: 2px solid var(--green);
   border-top: 2px solid transparent;
   border-radius: 50%;
   transform: rotate(45deg);
 }
-.brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 17px; }
-.brand-name small { display: block; font-weight: 400; color: var(--text-dim); font-size: 11px; letter-spacing: 0.08em; }
+.brand-name { font-weight: 800; letter-spacing: 0.01em; font-size: 15px; white-space: nowrap; }
 .nav { display: flex; gap: 4px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px; padding: 4px; }
 .nav a {
   color: var(--text-dim); padding: 8px 16px; border-radius: 10px;
@@ -239,7 +245,16 @@ h1.page-title { font-size: 34px; margin: 0 0 6px; letter-spacing: -0.01em; }
 
 @media (max-width: 720px) {
   .shell { padding: 0 12px 60px; }
-  .topbar { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .topbar { gap: 8px; padding: 10px 0; }
+  .nav a { padding: 6px 10px; font-size: 12px; }
+  .brand-name { font-size: 14px; }
+  .wt-replay-full { display: none; }
+  .wt-replay-short {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--border-strong); color: var(--text-dim);
+    font-size: 14px; font-weight: 700;
+  }
   h1.page-title { font-size: 27px; }
   .score-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -400,3 +415,24 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   font-weight: 700; cursor: pointer;
 }
 .wt-replay:hover { color: var(--text); }
+.wt-replay-short { display: none; }
+
+/* Shitcoin score badge: the special sauce. Dark badge, thick severity bar,
+   big mono number. Links to the formula on the methodology page. */
+.shitcoin-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 14px 8px 12px; border-radius: 12px;
+  background: #101012;
+  border: 1px solid var(--border-strong);
+  border-left: 5px solid var(--sev-color);
+  color: inherit;
+}
+.shitcoin-badge:hover { color: inherit; background: #17171a; }
+.shitcoin-num { font-size: 30px; font-weight: 800; line-height: 1; color: var(--sev-color); }
+.shitcoin-label {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-dim); font-weight: 700; line-height: 1.6;
+}
+.shitcoin-badge.sev-ok { --sev-color: var(--green); }
+.shitcoin-badge.sev-warn { --sev-color: var(--amber); }
+.shitcoin-badge.sev-bad { --sev-color: var(--red); }

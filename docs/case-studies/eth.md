@@ -1,7 +1,7 @@
 # ETH: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** single pass (Muse 2026-09-25), non-blinded.
+**Research:** single pass (2026-09-25), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -49,7 +49,7 @@ min(3, floor(20/5)) = **3**.
 | 2021-06-01 | 3 | 3 | 6 | DeFi Summer activates dapp lineage (+2, eff. 2020-06-15) |
 | 2026-09-25 | 5 | 3 | 8 | Merge +1 (2022-09-15), rollups +1 (2021-08-31) |
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **"Ultrasound money" is not scored.** A 2020 meme (Justin Drake, Sept 2020),
   seven years after the whitepaper; scoring it would let later narrative

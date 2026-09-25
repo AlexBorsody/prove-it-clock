@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { HEARTS_METHODOLOGY, readHeartHistory } from "@/lib/heart-data";
 import HeartMeter from "@/components/heart-meter";
+import ShitcoinBadge, { shitcoinScore } from "@/components/shitcoin-badge";
 import HeartsTimeline from "@/components/hearts-timeline";
 import TimelineChart from "@/components/timeline-chart";
 
@@ -64,6 +65,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const latest = points[0];
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
+  const available = points.filter((p: any) => p.availability === "available");
+  const peak = available.length
+    ? Math.max(...available.map((p: any) => p.filled))
+    : latest.filled;
+  const shitcoin = shitcoinScore({
+    promises,
+    capacity: latest.capacity,
+    filled: latest.filled,
+    peak,
+  });
 
   return (
     <>
@@ -80,6 +91,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div className="num" style={{ fontSize: 28, fontWeight: 700 }}>
             {latest.filled}<span style={{ color: "var(--text-faint)", fontSize: 18 }}>/{latest.capacity}</span>
           </div>
+          <ShitcoinBadge score={shitcoin} capacity={latest.capacity} />
         </div>
         <p className="card-foot num" style={{ marginTop: 12 }}>
           {latest.earned} earned · {latest.allowance} free · {fmtUsd(latest.price_usd)} · {fmtUsd(latest.market_cap_usd)} mcap

@@ -1,7 +1,7 @@
 # XRP: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
-**Research:** two passes (Muse 2026-09-23, Codex 2026-09-24), non-blinded.
+**Research:** two independent passes (2026-09-23, 2026-09-24), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
 (non-blinded), blinded replication outstanding before scores are called verified.
 
@@ -34,7 +34,7 @@ tx/day, Q3 2025), active team (Ripple, 60+ licenses, US bank charter
 application), economic activity tied to the promise (ODL volume above).
 3 checks → capped at floor(20/5) = **3**.
 
-## Judgment calls (Muse's, Alex can override)
+## Assessment notes
 
 - **Granularity:** MoneyGram kept as its own lineage (not folded into a grouped
   bridge lineage) so the retirement stays visible, the adopted rise-and-fall

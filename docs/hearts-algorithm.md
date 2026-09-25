@@ -1,6 +1,7 @@
 # Hearts — claim-type rule v2
 
-**Adopted 2026-09-25 (Alex).** One meter per project: **filled / capacity**.
+**Adopted 2026-09-25 (Alex).** Amended 2026-09-25 (Alex): community-promise
+rule for founderless protocols ("Where promises come from"). One meter per project: **filled / capacity**.
 Live in production: append-only runs in Supabase, published via RPC, served by
 the site. Methodology string: `hearts claim-type rule v2 (adopted 2026-09-25;
 time decay removed)`.
@@ -58,6 +59,27 @@ Each lineage gets a reward {0,1,2} **before** fulfillment, with success
 criteria and evidence requirement written down first; never raised
 retroactively.
 
+## Where promises come from
+
+The default source is the issuer: the whitepaper, the launch announcement,
+the claims the team put in writing. That is what the instrument holds the
+project to.
+
+Founderless protocols have no issuer, so the rule adapts: promises can be the
+claims the community actually converged on, Schelling points rather than issuer
+commitments. A community narrative counts as a promise only if all three hold:
+
+1. **Dominant and long-standing:** the claim has been the shared story for
+   years, not a passing meme.
+2. **Measurable with real evidence:** there is data that shows the claim
+   holding, not just people repeating it.
+3. **Broad consensus:** the wider ecosystem converged on it, not one
+   marketing team.
+
+Hype alone never qualifies. The bar is deliberately high: the instrument
+scores claims people actually rely on, whether an issuer wrote them down or a
+community converged on them.
+
 ## Computation at time t
 
 ```
@@ -72,6 +94,26 @@ No clocks, no timers. `allowance(t)` is re-evaluated per assessment from
 present-tense evidence — the same principle as ongoing claims. Display
 `filled / capacity` with the earned-vs-allowance split visible. Every point
 carries provenance (observed / reconstructed / missing).
+
+## Shitcoin score
+
+One number per project, shown as a badge next to the meter. It is the
+failed-promise count plus the heart deficit, read off the same timeline as
+the graph. Higher is worse.
+
+```
+shitcoin_score = retired + lapsed + (capacity - filled) + (peak - filled)
+```
+
+- **retired:** promise lineages fulfilled then abandoned (the visible falls
+  on the timeline)
+- **lapsed:** ongoing promises whose evidence stopped supporting them
+- **capacity - filled:** hearts never earned (unproven ambition)
+- **peak - filled:** hearts lost from the all-time high (the fall)
+
+A project that promised big, proved little, and abandoned what it proved
+scores high. A project that kept its promises scores low. The badge links to
+the plain-English version on the methodology page.
 
 ## Gaming defenses
 
