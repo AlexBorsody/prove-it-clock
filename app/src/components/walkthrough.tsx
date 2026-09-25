@@ -11,7 +11,7 @@ type Step = { title: string; body: string; anchor?: string };
 const STEPS: Step[] = [
   {
     title: "Hearts are the accountability meter",
-    body: "Green hearts are earned per promise lineage, grey hearts are the free allowance every live project gets. Hearts are lost when a promise is abandoned. Capacity is {5, 10, 20}.",
+    body: "Green hearts are earned per promise lineage. Hearts are lost when a promise is abandoned. Capacity is {5, 10, 20}.",
     anchor: ".hearts",
   },
   {

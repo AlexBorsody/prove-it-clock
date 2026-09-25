@@ -4,7 +4,7 @@
  * DISPLAY ONLY. Social metrics never feed the hearts scoring algorithm.
  * They are our proprietary signal layer: instead of cloning CoinGecko's
  * raw community numbers, we juxtapose HYPE (social volume) against
- * SUBSTANCE (hearts earned). A project with massive buzz and few hearts
+ * SUBSTANCE (hearts earned). A project with massive hype and few hearts
  * reads as all sizzle, no steak. That contrast is the differentiator.
  *
  * This module holds types, per-project source config, and pure helpers.
@@ -84,7 +84,7 @@ export interface HypeVerdict {
 }
 
 /**
- * The special sauce: juxtapose HYPE (social buzz, measured against the
+ * The special sauce: juxtapose HYPE (social hype, measured against the
  * median of all tracked projects in the latest batch) with SUBSTANCE
  * (hearts earned). Documented, dead-simple rules:
  *
@@ -95,7 +95,7 @@ export interface HypeVerdict {
  * - anything else: neutral juxtaposition, no judgment.
  *
  * No composite score is computed; the two numbers sit side by side and the
- * read is plain language. Buzz needs at least 4 projects with news data in
+ * read is plain language. Hype needs at least 4 projects with news data in
  * the batch, otherwise it is null and the verdict stays neutral.
  */
 export function hypeVerdict(
@@ -127,11 +127,11 @@ export function hypeVerdict(
     return {
       buzz,
       tone: "proven",
-      read: `Quietly proven: ${hearts} on modest buzz.`,
+      read: `Quietly proven: ${hearts} on modest hype.`,
     };
   }
   if (mentions7d == null) {
-    return { buzz, tone: "neutral", read: `Social buzz is not reporting yet; ${hearts} stand on their own.` };
+    return { buzz, tone: "neutral", read: `Social hype is not reporting yet; ${hearts} stand on their own.` };
   }
   return {
     buzz,

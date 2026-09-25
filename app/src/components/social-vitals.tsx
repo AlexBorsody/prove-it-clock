@@ -22,7 +22,7 @@ import {
 /**
  * Social subsection of the Vitals panel: Prove-It's own social data,
  * framed through the accountability lens. HYPE (social volume) sits next
- * to SUBSTANCE (hearts earned): massive buzz with few hearts reads as
+ * to SUBSTANCE (hearts earned): massive hype with few hearts reads as
  * all sizzle, no steak. Display only, never scored.
  */
 
@@ -159,7 +159,7 @@ export default function SocialVitals({
           {verdict.read}
         </p>
         <p className="hype-verdict-sub">
-          {verdict.buzz ? `Buzz running ${verdict.buzz} vs tracked projects. ` : ""}
+          {verdict.buzz ? `Hype running ${verdict.buzz} vs tracked projects. ` : ""}
           {earned} of {capacity} hearts earned, on the record.
         </p>
       </div>

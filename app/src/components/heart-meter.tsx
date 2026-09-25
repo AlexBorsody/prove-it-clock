@@ -1,6 +1,6 @@
 /** Heart meter: 8-bit pixel hearts, filled over capacity.
- *  Earned hearts render green; allowance ("free") hearts render muted grey;
- *  the rest render empty. Earned hearts come first, then allowance. */
+ *  Earned hearts render green; the rest render empty. Every heart was
+ *  earned by keeping a promise: no allowance, no free hearts. */
 const ROWS = [
   ".XX.XX.",
   "XXXXXXX",
@@ -42,7 +42,11 @@ export default function HeartMeter({
       className="hearts"
       style={{ fontSize: size }}
       role="img"
-      aria-label={`${filled} of ${capacity} hearts (${earned} earned, ${free} allowance)`}
+      aria-label={
+        free > 0
+          ? `${filled} of ${capacity} hearts (${earned} earned, ${free} allowance)`
+          : `${filled} of ${capacity} hearts, ${earned} earned`
+      }
     >
       {Array.from({ length: capacity }, (_, i) => {
         const isAllowance = i >= earned && i < filled;

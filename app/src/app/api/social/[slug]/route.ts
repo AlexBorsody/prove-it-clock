@@ -51,7 +51,7 @@ export async function GET(
       return Response.json({ status: "no_data" });
     }
 
-    // Latest snapshot per project across the table, for the buzz median.
+    // Latest snapshot per project across the table, for the hype median.
     const { data: batchRows, error: batchError } = await client
       .from("social_snapshots")
       .select("project_slug, as_of, news_mentions_7d")
