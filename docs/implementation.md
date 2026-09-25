@@ -69,13 +69,15 @@ match the table above exactly.
 
 ## Phase 2: Homepage scoreboard
 
-One clean card per project: coin icon + name, heart meter (earned-only),
-verdict badge (categorical, color-coded), CODE/USE/HYPE one-word row,
-heart-history sparkline. Built for scanning and comparing; nothing else
-on the card.
+CoinMarketCap-style dense table (vision.md): rank (# by hearts filled %),
+coin (icon + name, links to detail), hearts meter (earned-only), verdict
+badge (categorical, color-coded), CODE / USE / HYPE compact columns,
+heart-history sparkline column. Sortable by column. Compare button above
+the table opens Phase 2b.
 
-Acceptance: 8 cards, correct hearts and verdicts, sparklines render from
-published runs, no em dashes, no timestamps, no count labels.
+Acceptance: 8 rows, correct hearts and verdicts, sparklines render from
+published runs, sorting works, no em dashes, no timestamps, no count
+labels.
 
 ## Phase 2b: Compare view
 
@@ -102,12 +104,12 @@ cleanly.
 
 ## Phase 3: Detail page
 
-1. Header: name, hearts, verdict badge, one-line why (from
-   `verdict-lines.ts`).
-2. Four stat cards: PROMISES / CODE / USE / HYPE per vision.md. USE card
-   shows the honest "metrics coming" state. HYPE card shows absolute
-   mentions + baseline week.
-3. Delivery Timeline: hearts step-line on top; CODE/HYPE activity strip
+1. Header: CoinMarketCap-style coin header (icon, name, rank badge, big
+   hearts, verdict badge, one-line why from `verdict-lines.ts`), then the
+   stat strip: PROMISES / CODE / USE / HYPE per vision.md. USE stat shows
+   the honest "metrics coming" state. HYPE stat shows absolute mentions +
+   baseline week.
+2. Delivery Timeline: hearts step-line on top; CODE/HYPE activity strip
    below with toggle. USE toggle hidden until its metrics exist. Failed
    collection never renders as zero.
 4. Promises list with status icons. State mapping: active -> Fulfilled,

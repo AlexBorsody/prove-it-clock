@@ -68,18 +68,27 @@ unknown, and the Index stays unpublished until all three scoring
 components have real inputs. The formula above is locked; the build
 waits on the data.
 
-## Homepage = scoreboard
+## Homepage = scoreboard (borrow the CoinMarketCap pattern)
 
-One clean card per project. Built for scanning and comparing fast. Nothing
-else.
+A dense, familiar, scannable table in the CoinMarketCap coin-list pattern:
+rank, coin, the score columns, sparkline. People already know how to read
+it. The difference is what we rank: proof, not price.
 
-- Coin icon + name
-- Heart meter: earned / capacity (earned-only, green)
-- Shitcoin Score: category badge
-- CODE Active/Quiet · USE: n/a · HYPE mentions (one-word summaries, honest
-  placeholders where data does not exist yet)
-- Heart-history sparkline underneath (all published points for the active
-  methodology; it fills in as runs publish)
+Columns:
+
+- # (ranked by hearts filled %)
+- Coin: icon + name (links to detail page)
+- Hearts: earned / capacity meter (earned-only, green)
+- Verdict: Shitcoin Score category badge
+- CODE: one-word activity summary (Active/Quiet)
+- USE: one-word summary or "coming"
+- HYPE: mentions/week (baseline status where relevant)
+- Last 90 days: heart-history sparkline
+
+Sortable by column, like CMC. Compact rows, honest with sparse scores
+(2/20 renders as 2/20, no padding, no shame). A Compare button above the
+table opens the compare view. No price column: we sit next to the market,
+we don't price it.
 
 ## Compare view = context
 
@@ -92,23 +101,24 @@ their context. Entry point: a Compare button on the homepage.
 
 ## Detail page = why the scoreboard says what it says
 
-1. **Header.** Name, hearts, verdict badge, one-line why.
-2. **Four stat cards.** PROMISES (earned/capacity; N fulfilled · N active ·
-   N abandoned) / CODE (commits · releases · contributors, 90d; last release)
-   / USE (per-project metric when defined; honest "metrics coming" until then)
-   / HYPE (mentions/week; "baseline collecting, week N/8" until week 9, no
-   trend percentages before that).
-3. **Delivery Timeline.** Hearts step-line on top through time. Activity
+1. **Header.** CoinMarketCap-style coin header: icon, name, rank badge,
+   big hearts count, verdict badge, one-line why. Below it a stat strip in
+   the CMC pattern: PROMISES (earned/capacity; N fulfilled · N active ·
+   N abandoned) / CODE (commits · releases · contributors, 90d; last
+   release) / USE (per-project metric when defined; honest "metrics coming"
+   until then) / HYPE (mentions/week; "baseline collecting, week N/8" until
+   week 9, no trend percentages before that).
+2. **Delivery Timeline.** Hearts step-line on top through time. Activity
    strip below with CODE / HYPE toggle (USE joins when its metrics exist).
    Failed collection never renders as zero.
-4. **Prove-It Index.** The 0-100 composite plotted through time, with
+3. **Prove-It Index.** The 0-100 composite plotted through time, with
    clickable event markers on every meaningful move. Weights disclosed
    beside the graph. Gated on USE data (see above); the section does not
    render until the Index can be computed honestly.
-5. **Promises.** Each lineage with its status: Fulfilled / Active /
+4. **Promises.** Each lineage with its status: Fulfilled / Active /
    Overdue / Abandoned. Overdue is defined in the data model but has no v1
    trigger; it does not render until deadline evidence is researched.
-6. **Evidence / Methodology.** Sources, tracked repos, data coverage,
+5. **Evidence / Methodology.** Sources, tracked repos, data coverage,
    methodology version, run id. What CODE counts lives here, auditable and
    challengeable, not on the main page.
 
