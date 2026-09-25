@@ -13,7 +13,6 @@ hearts and prolonged non-delivery erodes unearned value. The UI is a compact
 
 - [Game design](docs/game_design.md): product concept, adopted heart rules, and case-study scope.
 - [Implementation](docs/implementation.md): architecture, schema/API contracts, integrity work, and technical delivery.
-- [Strategy](docs/strategy.md): accountability positioning and why valuation is deferred to v2.
 - [Daily logs](docs/tasks/): outcomes, decisions, verification, and blockers. Historical queues do not override the implementation plan.
 
 Muse is the existing build teammate. Codex owns backend architecture, schemas,
