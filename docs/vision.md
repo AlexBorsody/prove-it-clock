@@ -9,6 +9,8 @@ a quiet exception.
 Did the project do what it said it would? One instrument per crypto project:
 hearts earned by keeping promises, shown as a meter plus its history.
 
+**Slogan: Truth, not hype.** We cut through the hype.
+
 ## The model
 
 Four pillars. One of them is the score; the other three explain it.
@@ -143,6 +145,12 @@ What we steal:
   hearts, so the hype-vs-substance gap is visible in one glance.
 - **News ticker**: top HYPE stories driving mentions, clearly labeled as
   attention drivers, not endorsements.
+- **The hype bubble**: an animated bubble per project where the bubble's
+  size is HYPE (attention) and the substance filling it is hearts earned.
+  A huge bubble with almost nothing inside reads instantly: all sizzle, no
+  steak. As promises get kept, the substance fills the bubble. XRP is the
+  reference case: an enormous bubble around bank settlement that never
+  filled, with a smaller solid core of real payments usage.
 
 What we do not steal:
 
@@ -208,8 +216,12 @@ CMC cannot follow without attacking its own customers.
 
 HYPE trend percentages. Watch verdict triggers. CODE/USE/HYPE timeline
 strips beyond CODE. The rebrand ("Prove the Hype" and friends); the product
-keeps the Prove-It name for now. Valuation. Anything not in this doc waits
-for Alex, not for a spare afternoon.
+keeps the Prove-It name for now. Valuation. **Beyond crypto:** the
+instrument is asset-class agnostic, and tech stocks are the natural next
+market (Tesla's robotaxi and Full Self-Driving promises, SpaceX's Mars and
+Starship timelines are the reference cases). After crypto is proven, not
+before. Anything not in this doc waits for Alex, not for a spare
+afternoon.
 
 ## Next research (gates the Index)
 
