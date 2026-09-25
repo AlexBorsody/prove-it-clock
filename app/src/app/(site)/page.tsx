@@ -89,30 +89,7 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="page-title">Prove-It</h1>
-      <p className="hero-question">Did crypto projects actually deliver what they promised?</p>
-      <p className="hero-sub">
-        Prove-It tracks promises, evidence, development and hype over time. See what
-        shipped, what failed, and whether the attention matches the substance.
-      </p>
-      <div className="hero-factors">
-        <span className="hero-factor">
-          <Icon name="heart" size={15} />
-          <span><strong>HEARTS</strong> — promises actually delivered</span>
-        </span>
-        <span className="hero-factor">
-          <Icon name="alert" size={15} />
-          <span><strong>SHITCOIN WARNING</strong> — documented delivery failures</span>
-        </span>
-        <span className="hero-factor">
-          <Icon name="code" size={15} />
-          <span><strong>CODE</strong> — is development still active?</span>
-        </span>
-        <span className="hero-factor">
-          <Icon name="hype" size={15} />
-          <span><strong>HYPE</strong> — how much attention surrounds the proof?</span>
-        </span>
-      </div>
+      <h1 className="sr-only">Prove-It: did crypto projects actually deliver what they promised?</h1>
 
       {rows.length === 0 ? (
         <div className="panel">
