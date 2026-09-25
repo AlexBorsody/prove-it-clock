@@ -84,6 +84,16 @@ Acceptance: 8 rows, correct hearts and verdicts, sparklines render from
 published runs, sorting works, dark theme throughout, no em dashes, no
 timestamps, no count labels.
 
+## Phase 2a: HYPE leaderboard tab
+
+CMC Alpha > Socials pattern per vision.md: rows of coin, hearts, HYPE
+mentions + change vs baseline, verdict badge. Sortable by mentions and by
+hearts. Gated like all HYPE trends: absolute mentions only until 8 weeks
+of snapshots, then change vs baseline. No sentiment column, ever.
+
+Acceptance: rows render from `social_snapshots`, sorting works, baseline
+gating honest, no em dashes.
+
 ## Phase 2b: Compare view
 
 Route `/compare`. Pick 2-4 projects (default 4); metrics as rows,

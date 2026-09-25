@@ -136,7 +136,11 @@ What we steal:
   (each project's slice of total mentions), on the homepage or a HYPE view.
 - **Mindshare bump chart**: HYPE rank over time per project, 30d/90d
   toggle, coin icons on rank lines. Built from our own snapshots.
-- **Bottom tab bar**: Scoreboard / Compare / Methodology.
+- **Bottom tab bar**: Scoreboard / HYPE / Compare / Methodology.
+- **HYPE leaderboard** (the HYPE tab, CMC Alpha > Socials pattern): rows of
+  coin icon + name, hearts, HYPE mentions + change vs baseline, verdict
+  badge. No price column, no sentiment column. Sortable by mentions or by
+  hearts, so the hype-vs-substance gap is visible in one glance.
 - **News ticker**: top HYPE stories driving mentions, clearly labeled as
   attention drivers, not endorsements.
 
