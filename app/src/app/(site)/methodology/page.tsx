@@ -207,9 +207,9 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="book" title={<>Worked example: <img className="coin-icon" src="/coins/xrp.png" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20</>} alt>
+      <Section icon="book" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20</>} alt>
         <p>
-          <img className="coin-icon" src="/coins/xrp.png" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20</b>, earned only. One heart for the ledger
+          <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20</b>, earned only. One heart for the ledger
           milestone (permanent), one for XRP payments as an ongoing claim
           (currently active). The MoneyGram corridor earned a heart in 2019
           and retired it in 2021 when the partnership ended: the rise and the

@@ -32,7 +32,7 @@ export default function HypeBubbles({ rows }: { rows: { slug: string; symbol: st
             </svg>
               <img
                 className="coin-icon"
-                src={`/coins/${r.slug}.png`}
+                src={`/icons/${r.slug}.svg`}
                 alt=""
                 aria-hidden="true"
                 style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: size * 0.38, height: size * 0.38 }}
