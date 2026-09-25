@@ -65,9 +65,18 @@ export default async function Home() {
             <a key={p.slug} href={`/projects/${p.slug}`} className="card-link">
               <div className="panel card">
                 <div className="card-top">
-                  <div>
-                    <div className="card-name">{p.name}</div>
-                    <div className="card-symbol num">{p.symbol}{p.market_cap_rank ? ` · #${p.market_cap_rank}` : ""}</div>
+                  <div className="card-identity">
+                    <img
+                      src={`/icons/${p.symbol.toLowerCase()}.svg`}
+                      alt=""
+                      width={34}
+                      height={34}
+                      className="coin-icon"
+                    />
+                    <div>
+                      <div className="card-name">{p.name}</div>
+                      <div className="card-symbol num">{p.symbol}{p.market_cap_rank ? ` · #${p.market_cap_rank}` : ""}</div>
+                    </div>
                   </div>
                   <div className="card-score num">{p.filled}/{p.capacity}</div>
                 </div>

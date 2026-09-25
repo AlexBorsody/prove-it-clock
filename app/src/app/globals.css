@@ -348,7 +348,9 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
 .card-link .panel { transition: background .15s; height: 100%; }
 .card-link:hover .panel.card { background: #1e1e22; }
-.card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.card-identity { display: flex; align-items: center; gap: 10px; }
+.coin-icon { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; }
 .card-name { font-size: 20px; font-weight: 700; }
 .card-symbol { color: var(--text-faint); font-size: 13.5px; margin-top: 2px; }
 .card-score { font-size: 22px; font-weight: 700; color: var(--accent); }
