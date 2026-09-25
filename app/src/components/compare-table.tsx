@@ -15,7 +15,7 @@ export interface CompareProject {
   filledPct: number;
   verdict: VerdictCategory;
   verdictLine: string;
-  promiseCounts: { total: number; active: number; fulfilled: number; abandoned: number };
+  promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number };
   code: { word: CodeWord; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null };
   use: "coming";
   hype: { mentions: number | null; collecting: boolean; baselineWeeks: number };
@@ -65,7 +65,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
         <div className="num" style={{ fontSize: 13 }}>
           <div><b>{c.total}</b> tracked</div>
           <span className="cell-sub">
-            {c.fulfilled} fulfilled · {c.active} active · {c.abandoned} abandoned
+            {c.fulfilled} fulfilled · {c.active} active · {c.open} open · {c.lapsed} lapsed · {c.retired} retired
           </span>
         </div>
       );

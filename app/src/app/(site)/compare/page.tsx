@@ -9,6 +9,7 @@ import {
   type HypeSnapshot,
 } from "@/lib/heart-data";
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
+import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../data/verdict-lines";
 import { fetchVitals } from "@/lib/vitals";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
@@ -36,15 +37,16 @@ export default async function ComparePage() {
     projects.map(async (p) => {
       const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
-      const abandoned = promises.filter((pr) =>
-        pr.lineage === "lapsed" || pr.lineage === "retired"
-      ).length;
-      const fulfilled = promises.filter(
-        (pr) => pr.state === "fulfilled" && pr.lineage !== "lapsed" && pr.lineage !== "retired"
-      ).length;
-      const active = promises.length - abandoned - fulfilled;
+      const states = promises.map((pr: any) => {
+        try {
+          return normalizePromiseState(pr.state);
+        } catch {
+          return "open" as const;
+        }
+      });
+      const count = (s: string) => states.filter((x) => x === s).length;
       const verdict = verdictFor(
-        promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
+        promises.map((pr: any, i: number) => ({ lineage: pr.lineage, state: states[i], core: !!pr.core }))
       ).category as VerdictCategory;
       const latest = hypeLatest[p.slug];
       return {
@@ -56,7 +58,14 @@ export default async function ComparePage() {
         filledPct: p.capacity > 0 ? p.earned / p.capacity : 0,
         verdict,
         verdictLine: verdictLine(p.slug) ?? "",
-        promiseCounts: { total: promises.length, active, fulfilled, abandoned },
+        promiseCounts: {
+          total: promises.length,
+          open: count("open"),
+          active: count("active"),
+          fulfilled: count("fulfilled"),
+          lapsed: count("lapsed"),
+          retired: count("retired"),
+        },
         code: {
           word: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
           commits90d: vitals?.commits90d ?? null,

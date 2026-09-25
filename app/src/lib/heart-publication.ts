@@ -1,4 +1,4 @@
-import { calculateHeartBalance, type HeartPromiseInput } from './hearts';
+import { calculateHeartBalance, normalizePromiseState, type HeartPromiseInput } from './hearts';
 import type { HeartCapacity } from './hearts-config';
 
 export interface HeartPublication {
@@ -24,7 +24,7 @@ export interface HeartPublication {
         criteria: string;
         reward: 0 | 1 | 2;
         core: boolean;
-        state: 'unfulfilled' | 'active' | 'lapsed' | 'retired';
+        state: 'open' | 'active' | 'fulfilled' | 'lapsed' | 'retired';
         effective_at: string;
         rationale: string;
         evidence: Array<{url: string; summary: string}>;
@@ -87,14 +87,15 @@ export function validateHeartPublication(value: unknown): asserts value is Heart
         record(p); nonempty(p.lineage); nonempty(p.criteria); nonempty(p.rationale);
         if (promises.some(q => q.lineage === p.lineage)) throw new Error('Duplicate lineage');
         if (!['milestone','ongoing'].includes(String(p.claim_type))) throw new Error('Invalid claim_type');
-        if (![0,1,2].includes(p.reward as number) || typeof p.core !== 'boolean' ||
-          !['unfulfilled','active','lapsed','retired'].includes(String(p.state))) throw new Error('Invalid promise');
-        if (p.claim_type === 'milestone' && p.state === 'lapsed') throw new Error('Milestone promises cannot lapse');
+        if (![0,1,2].includes(p.reward as number) || typeof p.core !== 'boolean') throw new Error('Invalid promise');
+        // Canonical states; legacy publication values ("unfulfilled"/"active") normalize at the boundary.
+        const state = normalizePromiseState(p.state);
+        if (p.claim_type === 'milestone' && state === 'lapsed') throw new Error('Milestone promises cannot lapse');
         if (timestamp(p.effective_at) > asOf) throw new Error('Future promise event');
         if (!Array.isArray(p.evidence) || !p.evidence.length) throw new Error('Missing evidence');
         for (const e of p.evidence) { record(e); source(e.url); nonempty(e.summary); }
         promises.push({lineage: p.lineage as string, claimType: p.claim_type as 'milestone'|'ongoing',
-          state: p.state as HeartPromiseInput['state'], reward: p.reward as 0|1|2, core: p.core as boolean});
+          state, reward: p.reward as 0|1|2, core: p.core as boolean});
       }
       // Single arithmetic authority: TypeScript and SQL must agree.
       calculateHeartBalance({capacity: a.capacity as HeartCapacity, allowance: a.allowance as number, promises});

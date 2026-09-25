@@ -19,7 +19,7 @@ what the token should be worth.
 | Maximum hearts | Credible potential/world impact sets capacity. Bigger ambition needs more delivery, never free filled hearts. |
 | Starting hearts | Zero. Removed 2026-09-25: every heart on the meter is earned. |
 | Earned hearts | Verified promises kept. Important promises can earn more; one might be worth two hearts. |
-| Lost hearts | A heart stays earned only while its evidence condition holds. Milestones are permanent; ongoing claims lapse when evidence stops; fulfilled-then-abandoned lineages retire visibly. History is never rewritten. |
+| Lost hearts | A heart stays earned only while its evidence condition holds. Milestones are permanent; ongoing claims lapse when evidence stops; dead lineages retire visibly. History is never rewritten. |
 | Full hearts | The core promise is fulfilled (it gates the final heart). |
 | Zero hearts | No promise currently evidenced. |
 
@@ -58,8 +58,8 @@ lineage rewards {0,1,2} fixed before fulfillment, no time decay of any kind
 (scores change because evidence changes: adopted 2026-09-25, replacing the
 earlier provisional decay sketch), core-promise gate on the final heart.
 Starting allowance removed 2026-09-25: scoring is earned-only; history was
-restated and republished, originals kept as audit archive. Fulfilled-then-
-abandoned lineages retire visibly: the graph rises at fulfillment and falls
+restated and republished, originals kept as audit archive. Dead
+lineages retire visibly: the graph rises at fulfillment and falls
 at retirement; history is never rewritten. Shitcoin Score is categorical
 (No concern / Watch / Delivery concern / Core delivery failure), not numeric.
 

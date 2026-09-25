@@ -22,7 +22,7 @@ export type VerdictCategory =
 
 export interface VerdictPromise {
   lineage: string;
-  /** 'unfulfilled' | 'active' | 'lapsed' | 'retired' */
+  /** Canonical promise state: 'open' | 'active' | 'fulfilled' | 'lapsed' | 'retired' */
   state: string;
   core: boolean;
 }

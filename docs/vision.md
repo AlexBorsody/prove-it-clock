@@ -55,7 +55,7 @@ Weights:
 Every meaningful move gets a clickable event marker explaining exactly
 why the score moved:
 
-- Promise fulfilled / Promise abandoned
+- Promise fulfilled / Promise lapsed / Promise retired
 - Deadline missed (defined; no v1 trigger until deadline evidence is
   researched)
 - Major release
@@ -105,8 +105,8 @@ their context. Entry point: a Compare button on the homepage.
 
 1. **Header.** CoinMarketCap-style coin header: icon, name, rank badge,
    big hearts count, verdict badge, one-line why. Below it a stat strip in
-   the CMC pattern: PROMISES (earned/capacity; N fulfilled · N active ·
-   N abandoned) / CODE (commits · releases · contributors, 90d; last
+   the CMC pattern: PROMISES (earned/capacity; N fulfilled · N active · N open · N lapsed ·
+   N retired) / CODE (commits · releases · contributors, 90d; last
    release) / USE (per-project metric when defined; honest "metrics coming"
    until then) / HYPE (mentions/week; "baseline collecting, week N/8" until
    week 9, no trend percentages before that).
@@ -117,8 +117,8 @@ their context. Entry point: a Compare button on the homepage.
    clickable event markers on every meaningful move. Weights disclosed
    beside the graph. Gated on USE data (see above); the section does not
    render until the Index can be computed honestly.
-4. **Promises.** Each lineage with its status: Fulfilled / Active /
-   Overdue / Abandoned. Overdue is defined in the data model but has no v1
+4. **Promises.** Each lineage with its status: Open / Active / Fulfilled /
+   Lapsed / Retired. Overdue is defined in the data model but has no v1
    trigger; it does not render until deadline evidence is researched.
 5. **Evidence / Methodology.** Sources, tracked repos, data coverage,
    methodology version, run id. What CODE counts lives here, auditable and
@@ -170,7 +170,7 @@ anything a failure. We can.
   with no mention that the MoneyGram corridor was retired and bank
   settlement never shipped. Nobody scores delivery.
 - **Proof history.** Price charts exist everywhere. Nobody charts proof
-  earned and lost over time as promises were kept or abandoned.
+  earned and lost over time as promises were fulfilled, lapsed, or retired.
 - **Hype inverted.** CMC treats hype as a positive signal. We put hype
   next to proof and say "all sizzle, no steak" when the meter is empty.
 - **Verdicts.** A delivery-accountability rating (No concern through Core
@@ -191,8 +191,8 @@ CMC cannot follow without attacking its own customers.
 - Hearts are the simple public score. The Prove-It Index is the deeper 0-100 composite; it never appears on the homepage.
 - Earned only: no allowance, no free hearts, no time decay.
 - A heart stays earned only while its evidence condition holds. Milestones
-  are permanent; ongoing claims lapse when evidence stops; fulfilled-then-
-  abandoned lineages retire visibly. History is never rewritten.
+  are permanent; ongoing claims lapse when evidence stops; dead
+  lineages retire visibly. History is never rewritten.
 - Methodology changes restate history openly; the old runs stay as an
   immutable audit archive.
 - Missing data means unknown, never zero.
@@ -209,7 +209,7 @@ CMC cannot follow without attacking its own customers.
   open-page icon.
 - No timestamps and no project-count labels in the public UI.
 - Verdict one-liners name evidence: what was delivered, or what failed.
-  "No abandoned promises" is not a one-liner; "Delivered Lightning, Taproot,
+  "No failed promises" is not a one-liner; "Delivered Lightning, Taproot,
   spot ETF adoption" is.
 
 ## Parked (not in v1)

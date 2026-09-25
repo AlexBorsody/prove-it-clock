@@ -11,7 +11,7 @@
 cross-chain production use), core open.
 
 ```
-earned    = 1 (mainnet, milestone) + 2 (Data Feeds, ongoing/active) + 1 (CCIP, ongoing/active) = 4
+earned    = 1 (mainnet, milestone) + 2 (Data Feeds, ongoing/fulfilled) + 1 (CCIP, ongoing/fulfilled) = 4
 filled    = min(20, 4) = 4
 ```
 
@@ -21,8 +21,8 @@ filled    = min(20, 4) = 4
 |---|---|---|---|---|
 | Chainlink becomes the broadly relied-on connectivity layer between smart contracts, blockchains, and external systems | n/a | 0 | Open | DeFi reliance strong; enterprise record is pilots/PoCs only (SWIFT 2023, DTCC 2024, UBS/SBI 2024), no confirmed production bank deployments |
 | Decentralized oracle network live on a public mainnet | milestone | 1 | Fulfilled 2019-05-30 (permanent) | Launch announced at Consensus 2019, three security audits, [Decrypt](https://decrypt.co/7042/chainlink-mainnet-live-ethereum-may) |
-| Named production applications continuously consume Chainlink Data Feeds | ongoing | 2 | Active (revalidated 2026-09-25) | Aave Oracle Network live 2020-01-09 with 16 feeds, [The Cryptonomist](https://en.cryptonomist.ch/2020/01/09/aave-oracle-network-on-chainlink/); all Synths migrated to Chainlink oracles 2020, [Synthetix blog](https://blog.synthetix.io/all-synths-are-now-powered-by-chainlink-decentralised-oracles/); Aave↔Chainlink expanding via SVR proposal Dec 2024, [CoinTelegraph](https://CoinTelegraph.com/news/aave-mulls-chainlink-integration-return-mev-fees) |
-| Named production users move messages/assets across chains via CCIP | ongoing | 1 | Active (revalidated 2026-09-25) | CCIP mainnet Early Access 2023-07-17, Synthetix live, [Crowdfund Insider](https://www.crowdfundinsider.com/2023/07/210203-chainlink-cross-chain-interoperability-protocol-ccip-launches-on-mainnet/) |
+| Named production applications continuously consume Chainlink Data Feeds | ongoing | 2 | Fulfilled (revalidated 2026-09-25) | Aave Oracle Network live 2020-01-09 with 16 feeds, [The Cryptonomist](https://en.cryptonomist.ch/2020/01/09/aave-oracle-network-on-chainlink/); all Synths migrated to Chainlink oracles 2020, [Synthetix blog](https://blog.synthetix.io/all-synths-are-now-powered-by-chainlink-decentralised-oracles/); Aave↔Chainlink expanding via SVR proposal Dec 2024, [CoinTelegraph](https://CoinTelegraph.com/news/aave-mulls-chainlink-integration-return-mev-fees) |
+| Named production users move messages/assets across chains via CCIP | ongoing | 1 | Fulfilled (revalidated 2026-09-25) | CCIP mainnet Early Access 2023-07-17, Synthetix live, [Crowdfund Insider](https://www.crowdfundinsider.com/2023/07/210203-chainlink-cross-chain-interoperability-protocol-ccip-launches-on-mainnet/) |
 
 Capacity 20: Chainlink 2.0 whitepaper (2021-04-15) ambition, a decentralized
 metalayer; CCIP as Web3's TCP/IP, rewiring how value and data move between all

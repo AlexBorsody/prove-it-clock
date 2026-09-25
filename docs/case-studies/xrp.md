@@ -11,7 +11,7 @@
 currently active), core open (cap 19, not binding).
 
 ```
-earned    = 1 (ledger, milestone) + 1 (XRP payments, ongoing/active) + 0 (MoneyGram, retired) = 2
+earned    = 1 (ledger, milestone) + 1 (XRP payments, ongoing/fulfilled) + 0 (MoneyGram, retired) = 2
 filled    = min(20, 2) = 2
 ```
 
@@ -20,7 +20,7 @@ filled    = min(20, 2) = 2
 | Promise | Type | Reward | State | Key evidence |
 |---|---|---|---|---|
 | Working XRP settlement ledger | milestone | 1 | Fulfilled 2012-06 (permanent) | Ledger launch June 2012, [xrpl.org history](https://xrpl.org/about/history) |
-| Commercial XRP payments product with named customers | ongoing | 1 | Active (revalidated 2026-09-25) | xRapid live 2018-10-01 with MercuryFX, Cuallix, Catalyst, [CoinDesk](https://www.coindesk.com/markets/2018/10/01/ripple-event-reveal-3-companies-are-now-using-xrp-for-real-payments); ODL >$15B in 2024 (+32% YoY); Ripple Q1 2026 update: ODL $35B, +41% YoY, supplier-reported via [CoinGabbar](https://www.coingabbar.com/en/crypto-blogs-details/what-is-ripple-xrp-odl-how-it-changes-cross-border-payments) / [Phemex](https://phemex.com/blogs/xrp-utility-2026-ripplenet-odl-rlusd-real-world-demand-may-13) |
+| Commercial XRP payments product with named customers | ongoing | 1 | Fulfilled (revalidated 2026-09-25) | xRapid live 2018-10-01 with MercuryFX, Cuallix, Catalyst, [CoinDesk](https://www.coindesk.com/markets/2018/10/01/ripple-event-reveal-3-companies-are-now-using-xrp-for-real-payments); ODL >$15B in 2024 (+32% YoY); Ripple Q1 2026 update: ODL $35B, +41% YoY, supplier-reported via [CoinGabbar](https://www.coingabbar.com/en/crypto-blogs-details/what-is-ripple-xrp-odl-how-it-changes-cross-border-payments) / [Phemex](https://phemex.com/blogs/xrp-utility-2026-ripplenet-odl-rlusd-real-world-demand-may-13) |
 | Major MoneyGram/ODL corridor | ongoing | 1 | **Retired 2021-03-07** | Cessation early Dec 2020, contract terminated 2021-03-07, [MoneyGram 2021 10-K](https://www.sec.gov/Archives/edgar/data/1273931/000127393122000039/mgi-20211231x.htm). Rise and fall: `+1, 2019`, `−1, 2021` |
 | Banks settle in XRP at meaningful scale | n/a | 2 | Open | 12+ years of pilots; correspondent banking untouched |
 

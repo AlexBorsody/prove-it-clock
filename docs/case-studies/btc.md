@@ -12,8 +12,8 @@ payments ongoing, currently active; digital gold / store of value ongoing,
 currently active), core open.
 
 ```
-earned    = 1 (ledger, milestone) + 2 (P2P payments, ongoing/active)
-          + 2 (store of value, ongoing/active) = 5
+earned    = 1 (ledger, milestone) + 2 (P2P payments, ongoing/fulfilled)
+          + 2 (store of value, ongoing/fulfilled) = 5
 filled    = min(20, 5) = 5
 ```
 
@@ -22,8 +22,8 @@ filled    = min(20, 5) = 5
 | Promise | Type | Reward | State | Key evidence |
 |---|---|---|---|---|
 | Decentralized payment ledger (anyone can run the rules, no central party) | milestone | 1 | Fulfilled 2009-01-03 (permanent) | Genesis block 2009-01-03; thousands of independent full nodes today |
-| Real peer-to-peer payments: people and merchants actually pay in BTC at scale | ongoing | 2 | Active (revalidated 2026-09-25) | BitPay/merchant processing since 2011; El Salvador legal tender 2021; Lightning Network for everyday payments |
-| Digital gold / store of value: BTC is bought and held as a long-term store of value | ongoing | 2 | Active (converged 2020-08-11, revalidated 2026-09-25) | MicroStrategy $250M treasury purchase 2020-08-11 as "dependable store of value"; corporate treasuries since; 11 US spot Bitcoin ETPs approved 2024-01-10 |
+| Real peer-to-peer payments: people and merchants actually pay in BTC at scale | ongoing | 2 | Fulfilled (revalidated 2026-09-25) | BitPay/merchant processing since 2011; El Salvador legal tender 2021; Lightning Network for everyday payments |
+| Digital gold / store of value: BTC is bought and held as a long-term store of value | ongoing | 2 | Fulfilled (converged 2020-08-11, revalidated 2026-09-25) | MicroStrategy $250M treasury purchase 2020-08-11 as "dependable store of value"; corporate treasuries since; 11 US spot Bitcoin ETPs approved 2024-01-10 |
 | Bitcoin becomes the world's money (peer-to-peer electronic cash at global scale, per the whitepaper title) | n/a | 0 | Open | Dollar system untouched; adoption real but a fraction of global payments |
 
 Capacity 20: "a purely peer-to-peer version of electronic cash" for the world ,

@@ -11,7 +11,7 @@
 core open (cap 9, not binding).
 
 ```
-earned    = 2 (ad loop, ongoing/active) + 1 (creators, ongoing/active) = 3
+earned    = 2 (ad loop, ongoing/fulfilled) + 1 (creators, ongoing/fulfilled) = 3
 filled    = min(10, 3) = 3
 ```
 
@@ -19,8 +19,8 @@ filled    = min(10, 3) = 3
 
 | Promise | Type | Reward | State | Key evidence |
 |---|---|---|---|---|
-| Users earn BAT for private opt-in ads | ongoing | 2 | Active (revalidated 2026-09-25) | Brave Ads launch 2019-04-24 ([Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing)); still funded, BAT buybacks for user rewards per [BAT Roadmap 4.0](https://brave.com/blog/bat-roadmap-4-0/) |
-| Creators/publishers earn BAT | ongoing | 1 | Active (revalidated 2026-09-25) | BAT Mercury launch 2017-10-12 ([Brave](https://brave.com/blog/bat-mercury-launch/)); self-custody Solana payouts opened broadly, page updated 2026-07-16 ([Brave](https://brave.com/blog/payouts-on-solana/)) |
+| Users earn BAT for private opt-in ads | ongoing | 2 | Fulfilled (revalidated 2026-09-25) | Brave Ads launch 2019-04-24 ([Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing)); still funded, BAT buybacks for user rewards per [BAT Roadmap 4.0](https://brave.com/blog/bat-roadmap-4-0/) |
+| Creators/publishers earn BAT | ongoing | 1 | Fulfilled (revalidated 2026-09-25) | BAT Mercury launch 2017-10-12 ([Brave](https://brave.com/blog/bat-mercury-launch/)); self-custody Solana payouts opened broadly, page updated 2026-07-16 ([Brave](https://brave.com/blog/payouts-on-solana/)) |
 | BAT as a web-wide attention standard | n/a | 2 | Open | Stated aim in the [2017 whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf); not realized |
 
 Capacity 10: advertising-sector ambition (mechanical per rubric).

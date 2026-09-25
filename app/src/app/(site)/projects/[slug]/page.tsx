@@ -11,6 +11,7 @@ import {
   useWord,
 } from "@/lib/heart-data";
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
+import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../../data/verdict-lines";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import HeartMeter from "@/components/heart-meter";
@@ -19,12 +20,19 @@ import DeliveryTimeline from "@/components/delivery-timeline";
 
 export const dynamic = "force-dynamic";
 
-/** Display promise state: Fulfilled (earning hearts), Active (unfulfilled), Abandoned (lapsed/retired). No Overdue. */
+/** Display promise state using the canonical five: open / active / fulfilled / lapsed / retired. Legacy DB values normalize at the boundary. */
 function promiseDisplay(pr: any): { label: string; tone: "good" | "dim" | "bad" } {
-  const s = pr.state;
-  if (s === "lapsed" || s === "retired") return { label: "Abandoned", tone: "bad" };
-  if (s === "fulfilled" || (s === "active" && (pr.reward ?? 0) > 0)) return { label: "Fulfilled", tone: "good" };
-  return { label: "Active", tone: "dim" };
+  let s: string;
+  try {
+    s = normalizePromiseState(pr.state);
+  } catch {
+    return { label: "Unknown", tone: "dim" };
+  }
+  if (s === "fulfilled") return { label: "Fulfilled", tone: "good" };
+  if (s === "active") return { label: "Active", tone: "dim" };
+  if (s === "open") return { label: "Open", tone: "dim" };
+  if (s === "lapsed") return { label: "Lapsed", tone: "bad" };
+  return { label: "Retired", tone: "bad" };
 }
 
 function claimLabel(t: string): string {
@@ -83,7 +91,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const rank = ranked.findIndex((p: any) => p.slug === slug) + 1;
 
   const verdict: VerdictCategory = verdictFor(
-    promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
+    promises.map((pr: any) => {
+      let state = "open";
+      try {
+        state = normalizePromiseState(pr.state);
+      } catch {
+        /* unknown -> open; never a silent pass */
+      }
+      return { lineage: pr.lineage, state, core: !!pr.core };
+    })
   ).category;
   const oneLiner = verdictLine(slug);
 

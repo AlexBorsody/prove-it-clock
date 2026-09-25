@@ -51,13 +51,15 @@ Present-tense evidence only. Labeled "unearned" in the UI.
 - **ongoing**: "X is true" (activity, volume, participation). The heart exists
   only while the evidence condition is currently satisfied.
 
-States: open / fulfilled-or-active / lapsed / retired / superseded. A milestone
-goes open → fulfilled (permanent). An ongoing claim goes open → active, and
-lapses when evidence stops supporting it: lapsing is reversible, so the graph
-can fall and rise again on real events. A fulfilled-then-abandoned lineage
+States: open / active / fulfilled / lapsed / retired. A milestone
+goes open → fulfilled (permanent). An ongoing claim goes open → active →
+fulfilled while the evidence condition holds, and lapses when evidence stops
+supporting it: lapsing is reversible, so the graph
+can fall and rise again on real events. A fulfilled-then-dead lineage
 **retires** its hearts as a separate visible event: the graph rises at
-fulfillment and falls at retirement; history is never rewritten. Supersession
-continues the lineage (no double count). Subdivided busywork gets reward 0.
+fulfillment and falls at retirement; history is never rewritten. A replaced
+promise is recorded as retired with a note pointing at the new lineage (no
+double count). Subdivided busywork gets reward 0.
 One lineage is the **core promise**: it earns nothing itself, it gates the
 final heart.
 

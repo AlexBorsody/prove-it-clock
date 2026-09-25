@@ -13,7 +13,7 @@ reading, not a verified rating.
 
 **DASH 5/20.** Earned 5 (masternode network, PrivateSend, InstantSend, DAO
 treasury, Evolution platform, all milestones permanent), core
-open. The merchant-economy lineage lapsed (was +2 active 2018-2019, now 0):
+open. The merchant-economy lineage lapsed (was +2 fulfilled 2018-2019, now 0):
 the rise and fall stays visible.
 
 ```
@@ -30,7 +30,7 @@ filled    = min(20, 5) = 5
 | PrivateSend (DarkSend): protocol-level private transactions via masternode mixing | milestone | 1 | Fulfilled 2014-01-18 (permanent) | Whitepaper: PrivateSend "for increasing fungibility"; shipped in the launch client, rebranded Jun 2016 |
 | InstantSend (InstantX): instant transaction confirmation via masternode quorums | milestone | 1 | Fulfilled 2014-11-01 (permanent) | 1-4 second confirmations via masternode quorums, live on mainnet; rebranded Jun 2016; now default for most transactions |
 | Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals | milestone | 1 | Fulfilled 2015-08-01 (permanent) | "Decentralized governance by blockchain" added Aug 2015; monthly superblocks, masternode voting threshold |
-| Named production merchant economy using Dash for everyday payments | ongoing | 2 | Lapsed (was Active 2018-2019) | 2,000+ merchants in Venezuela Dec 2018 (KFC Caracas); 2,288 merchants worldwide Aug 2018; no third-party-observable named production merchant economy post-2019; the Venezuela program wound down |
+| Named production merchant economy using Dash for everyday payments | ongoing | 2 | Lapsed (was Fulfilled 2018-2019) | 2,000+ merchants in Venezuela Dec 2018 (KFC Caracas); 2,288 merchants worldwide Aug 2018; no third-party-observable named production merchant economy post-2019; the Venezuela program wound down |
 | Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet | milestone | 1 | Fulfilled 2024-07-29 (permanent) | Mainnet Beta 2024-07-29 after 9 years; queryable decentralized database + decentralized API; Platform v1.1 activated Sept 2026 |
 
 Capacity 20: stated ambition is global everyday digital cash ("the best
@@ -55,7 +55,7 @@ preserved in git history.
 
 ## Assessment notes
 
-- **Merchant-lapse timing is inferred from absence.** Active 2018-2019 is well
+- **Merchant-lapse timing is inferred from absence.** Fulfilled 2018-2019 is well
   evidenced; the lapse is dated to the 2021 snapshot because no post-2019
   third-party evidence of a named production merchant economy surfaced.
   Blinded replication should try to falsify this (find 2020-2026 production

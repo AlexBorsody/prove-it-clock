@@ -6,13 +6,13 @@ import { codeWord, hypeSummary, useWord } from "../src/lib/heart-data";
 
 const p = (overrides: Partial<VerdictPromise> = {}): VerdictPromise => ({
   lineage: "delivery",
-  state: "active",
+  state: "fulfilled",
   core: false,
   ...overrides,
 });
 
 test("clean record: no verified failure -> No concern", () => {
-  const v = verdictFor([p(), p({ lineage: "core", core: true, state: "unfulfilled" })]);
+  const v = verdictFor([p(), p({ lineage: "core", core: true, state: "open" })]);
   assert.equal(v.category, "No concern");
   assert.deepEqual(v.failedLineages, []);
 });
@@ -53,7 +53,7 @@ test("core failure outranks supporting failures", () => {
 });
 
 test("Watch is never returned: no v1 trigger", () => {
-  for (const promises of [[p()], [], [p({ state: "unfulfilled" })]]) {
+  for (const promises of [[p()], [], [p({ state: "open" })]]) {
     assert.notEqual(verdictFor(promises).category, "Watch");
   }
 });

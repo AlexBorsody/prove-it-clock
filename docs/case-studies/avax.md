@@ -12,10 +12,10 @@ reading, not a verified rating.
 ## Result
 
 **AVAX 5/20.** Earned 5 (mainnet milestone permanent; C-Chain DeFi ongoing,
-active; subnets/L1s ongoing, active), core open.
+active; subnets/L1s ongoing, fulfilled), core open.
 
 ```
-earned    = 1 (mainnet, milestone) + 2 (DeFi, ongoing/active) + 2 (subnets, ongoing/active) = 5
+earned    = 1 (mainnet, milestone) + 2 (DeFi, ongoing/fulfilled) + 2 (subnets, ongoing/fulfilled) = 5
 filled    = min(20, 5) = 5
 ```
 
@@ -25,8 +25,8 @@ filled    = min(20, 5) = 5
 |---|---|---|---|---|
 | Avalanche becomes the platform where DeFi and traditional finance run at scale: fast, cheap, application-specific blockchains for finance | n/a | 0 | Open | DeFi leg largely delivered; TradFi leg not: BUIDL on Avalanche and the VanEck spot ETF filing are signals and filings, not production financial infrastructure |
 | High-throughput PoS smart-contract platform live on mainnet with fast finality | milestone | 1 | Fulfilled 2020-09-21 (permanent) | Mainnet launch Sept 2020; EVM-compatible C-Chain; subnets architecture from day one |
-| Named production DeFi applications with real usage on the C-Chain | ongoing | 2 | Active (revalidated 2026-09-25) | Avalanche Rush $180M brought Aave and Curve (Aug 2021); TVL ATH ~$13.8B Dec 2021; contraction to $1.69B Sept 2022 without the promise lapsing; recovered to ~$2.77B mid-2025; Aave on Avalanche $258M Aug 2026 |
-| Named live subnets/L1s with observable real usage (one family, scored once) | ongoing | 2 | Active (revalidated 2026-09-25) | DeFi Kingdoms Crystalvale first subnet (~200k tx/day); Crabada Swimmer Subnet May 2022; Dexalot hybrid subnet; Avalanche9000/Etna Dec 2024 (sovereign L1s); 50+ active L1s by early 2026 |
+| Named production DeFi applications with real usage on the C-Chain | ongoing | 2 | Fulfilled (revalidated 2026-09-25) | Avalanche Rush $180M brought Aave and Curve (Aug 2021); TVL ATH ~$13.8B Dec 2021; contraction to $1.69B Sept 2022 without the promise lapsing; recovered to ~$2.77B mid-2025; Aave on Avalanche $258M Aug 2026 |
+| Named live subnets/L1s with observable real usage (one family, scored once) | ongoing | 2 | Fulfilled (revalidated 2026-09-25) | DeFi Kingdoms Crystalvale first subnet (~200k tx/day); Crabada Swimmer Subnet May 2022; Dexalot hybrid subnet; Avalanche9000/Etna Dec 2024 (sovereign L1s); 50+ active L1s by early 2026 |
 
 Capacity 20: stated ambition is the platform for global DeFi and traditional
 finance ("long-term sights set on traditional finance", Sirer 2020); rewiring

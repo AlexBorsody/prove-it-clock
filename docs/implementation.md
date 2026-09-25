@@ -107,7 +107,7 @@ projects as columns:
 
 - Hearts (compact meter + earned/capacity)
 - Verdict badge + one-liner
-- Promises: N fulfilled · N active · N abandoned
+- Promises: N fulfilled · N active · N open · N lapsed · N retired
 - CODE: activity word + commits 90d + contributors + last release
 - USE: per-project metric, or honest "coming"
 - HYPE: mentions/week + baseline status
@@ -138,9 +138,14 @@ cleanly.
    like all HYPE trends; before that, the section does not render.
 4. Delivery-health gauge in the header stat strip: hearts filled %,
    green/amber/red. Never sentiment.
-5. Promises list with status icons. State mapping: active -> Fulfilled,
-   unfulfilled -> Active, lapsed/retired -> Abandoned. Overdue is defined
-   in the model but has no v1 trigger and does not render.
+5. Promises list with status icons. Canonical promise states: open /
+   active / fulfilled / lapsed / retired. Legacy DB values normalize at the
+   boundary (unfulfilled -> open, old active -> fulfilled); display labels
+   match the states. Note: every stored "active" today means the legacy
+   earning sense (= fulfilled). The in-progress sense of "active" has no
+   stored instances and must not be written to storage until a backfill
+   relabels stored rows; readers cannot distinguish the two senses. Overdue
+   is defined in the model but has no v1 trigger and does not render.
 6. Evidence / Methodology bottom section: sources, tracked repos, data
    coverage, methodology version, run id. Replaces the "under the hood"
    drawer (same content, visible by default).
@@ -195,7 +200,7 @@ The formula is locked in vision.md; this phase is data plumbing and UI.
    counts, what "stalled/resumed" means, anti-gaming notes). Both written
    up, reviewed, and versioned before any Index code.
 2. **Event log.** New append-only table `index_events`: project_slug,
-   occurred_at, event_type (promise_fulfilled, promise_abandoned,
+   occurred_at, event_type (promise_fulfilled, promise_lapsed, promise_retired,
    deadline_missed, major_release, usage_milestone, dev_resumed,
    dev_stalled, hype_spike), title, note, evidence_url. Promise events
    backfill from published heart runs; releases from the GitHub releases

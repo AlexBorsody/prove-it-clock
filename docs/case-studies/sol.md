@@ -8,12 +8,11 @@
 ## Result
 
 **SOL 5/20.** Earned 5 (mainnet milestone permanent; high-throughput processing
-ongoing, active; app ecosystem ongoing, active; mobile hardware milestone
-permanent), core open. Solana Pay merchant payments open
-(unfulfilled).
+ongoing, fulfilled; app ecosystem ongoing, fulfilled; mobile hardware milestone
+permanent), core open. Solana Pay merchant payments open.
 
 ```
-earned    = 1 (mainnet, milestone) + 2 (throughput, ongoing/active) + 1 (ecosystem, ongoing/active) + 1 (mobile, milestone) = 5
+earned    = 1 (mainnet, milestone) + 2 (throughput, ongoing/fulfilled) + 1 (ecosystem, ongoing/fulfilled) + 1 (mobile, milestone) = 5
 filled    = min(20, 5) = 5
 ```
 
@@ -23,9 +22,9 @@ filled    = min(20, 5) = 5
 |---|---|---|---|---|
 | Solana becomes the web-scale blockchain: high-throughput, low-cost, reliable infrastructure at global scale | n/a | 0 | Open | Network never left "mainnet-beta"; real throughput (~3-5k TPS, mostly consensus votes) far below the 65k marketing number; outage record incompatible with "reliable" as a current claim |
 | High-performance blockchain live on a public mainnet | milestone | 1 | Fulfilled 2020-03-16 (permanent) | Mainnet Beta launched March 2020 |
-| Sustained high-throughput, low-cost transaction processing in live production | ongoing | 2 | Active (revalidated 2026-09-25; lapsed during each full halt, reactivated on restart) | ~3,000-5,000 TPS at ~$0.00025 average fee in production; full halts Sept 2021, Jan 2022, Apr-Jun 2022, Feb 2023, Feb 2024; no full halt since Feb 2024 |
-| Thriving application ecosystem: named production apps with real users and volume | ongoing | 1 | Active (revalidated 2026-09-25) | Led all chains in DEX volume six straight months in 2025 ($100B+/month); 2025 app revenues $1.3-1.5B, a record |
-| Real-world merchant payments via Solana Pay at meaningful scale | ongoing | 1 | Open (unfulfilled) | Launched Feb 2022, Shopify plugin Aug 2023; distribution, not adoption: no third-party-observable merchant payment volume at scale |
+| Sustained high-throughput, low-cost transaction processing in live production | ongoing | 2 | Fulfilled (revalidated 2026-09-25; lapsed during each full halt, reactivated on restart) | ~3,000-5,000 TPS at ~$0.00025 average fee in production; full halts Sept 2021, Jan 2022, Apr-Jun 2022, Feb 2023, Feb 2024; no full halt since Feb 2024 |
+| Thriving application ecosystem: named production apps with real users and volume | ongoing | 1 | Fulfilled (revalidated 2026-09-25) | Led all chains in DEX volume six straight months in 2025 ($100B+/month); 2025 app revenues $1.3-1.5B, a record |
+| Real-world merchant payments via Solana Pay at meaningful scale | ongoing | 1 | Open | Launched Feb 2022, Shopify plugin Aug 2023; distribution, not adoption: no third-party-observable merchant payment volume at scale |
 | Solana mobile hardware shipped into customers' hands | milestone | 1 | Fulfilled 2023-05-01 (permanent) | Saga launched May 2023; Seeker shipped Aug 2025 (150,000+ preorders, 50+ countries) |
 
 Capacity 20: stated ambition is a "web-scale blockchain" at centralized-payment
@@ -51,7 +50,7 @@ preserved in git history.
 ## Assessment notes
 
 - **Outages LAPSE the throughput lineage, they do not retire it.** Solana never
-  abandoned the performance promise; it shipped QUIC networking, priority fees,
+  dropped the performance promise; it shipped QUIC networking, priority fees,
   stake-weighted QoS, Firedancer/Frankendancer, and Alpenglow to fix the failure
   modes. Mechanically: 2 to 0 during each full halt, 0 to 2 on restart. The
   fixed 5-date snapshot grid undersamples this volatility; a future revision
@@ -60,7 +59,7 @@ preserved in git history.
   Real production throughput is ~3-5k TPS (about 75% consensus votes), nowhere
   near 65k or the 710k whitepaper theoretical. The gap is parked in the core
   (open) instead. If blinded replication demands the headline number, the
-  throughput lineage is unfulfilled, earned drops to 3, total becomes 6/20.
+  throughput lineage is open, earned drops to 3, total becomes 6/20.
   This is the assessment's biggest open question.
 - **Solana Pay stays open on the distribution-vs-adoption distinction.** The
   Shopify plugin is merchant access, not merchant volume. Mirrors the LINK

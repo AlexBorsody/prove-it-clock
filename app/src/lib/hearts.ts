@@ -5,14 +5,49 @@ import { HEART_RULES, type HeartCapacity } from "./hearts-config";
  * under which it was awarded remains true. Scores change because evidence
  * changes, never because time passes.
  *
- * - milestone: permanent once active, unless retired. Time cannot unship it.
- * - ongoing: contributes only while active. May lapse and later reactivate.
+ * - milestone: permanent once fulfilled, unless retired. Time cannot unship it.
+ * - ongoing: contributes only while fulfilled. May lapse and later reactivate.
  *
  * Callers supply reviewed inputs: the current promise states and the
  * present-tense allowance. This does not select evidence or carve lineages.
  */
 export type ClaimType = "milestone" | "ongoing";
-export type PromiseState = "unfulfilled" | "active" | "lapsed" | "retired";
+/**
+ * Canonical promise states (decided 2026-09-25):
+ * - open: on the books, not yet delivered. Earns nothing.
+ * - active: live pursuit with evidence of progress, not yet delivered. Earns nothing.
+ * - fulfilled: delivered against its success criterion. Earns its reward.
+ * - lapsed: deadline passed unfulfilled, or an ongoing claim's evidence stopped. No hearts.
+ * - retired: the team withdrew it. No hearts; the fall stays visible.
+ * Only fulfilled earns. Superseded (replaced by a newer promise) is not a
+ * canonical state; it is recorded as a retired lineage with a note pointing
+ * at the replacement.
+ */
+export type PromiseState = "open" | "active" | "fulfilled" | "lapsed" | "retired";
+
+/**
+ * Legacy publication values (pre-2026-09-25) normalize to the canonical set:
+ * "unfulfilled" -> "open", and the old "active" (which meant earning) ->
+ * "fulfilled". "lapsed" and "retired" pass through. Throws on anything else,
+ * so an unknown value can never silently become a rating.
+ *
+ * NOTE on the "active" collision: the canonical set also defines "active" as
+ * live-but-undelivered pursuit. No stored row uses that sense yet (every
+ * stored "active" means earning, i.e. fulfilled), so this mapping preserves
+ * every promise's meaning. Do NOT write the in-progress sense of "active" to
+ * storage until a backfill migration has relabeled stored rows; readers
+ * cannot distinguish the two senses. When the next restated run is
+ * published, backfill the labels and drop this mapping.
+ */
+export function normalizePromiseState(value: unknown): PromiseState {
+  if (typeof value === "string") {
+    if (value === "open" || value === "fulfilled") return value;
+    if (value === "lapsed" || value === "retired") return value;
+    if (value === "unfulfilled") return "open";
+    if (value === "active") return "fulfilled";
+  }
+  throw new Error(`invalid promise state (${String(value)})`);
+}
 
 export interface HeartPromiseInput {
   lineage: string;
@@ -73,10 +108,13 @@ export function calculateHeartBalance(input: HeartBalanceInput): HeartBalance {
     if (p.claimType !== "milestone" && p.claimType !== "ongoing") {
       throw new Error(`claimType must be milestone or ongoing (${p.lineage})`);
     }
-    if (!["unfulfilled", "active", "lapsed", "retired"].includes(p.state)) {
+    let state: PromiseState;
+    try {
+      state = normalizePromiseState(p.state);
+    } catch {
       throw new Error(`invalid promise state (${p.lineage})`);
     }
-    if (p.claimType === "milestone" && p.state === "lapsed") {
+    if (p.claimType === "milestone" && state === "lapsed") {
       throw new Error(`milestone promises cannot lapse (${p.lineage})`);
     }
     if (![0, 1, 2].includes(p.reward)) throw new Error(`reward must be 0, 1 or 2 (${p.lineage})`);
@@ -84,8 +122,8 @@ export function calculateHeartBalance(input: HeartBalanceInput): HeartBalance {
     if (p.core) {
       if (coreSeen || p.reward !== 0) throw new Error("exactly one zero-reward core promise required");
       coreSeen = true;
-      coreFulfilled = p.state === "active";
-    } else if (p.state === "active") {
+      coreFulfilled = state === "fulfilled";
+    } else if (state === "fulfilled") {
       earned += p.reward;
     }
   }

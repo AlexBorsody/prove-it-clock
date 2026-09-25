@@ -14,10 +14,10 @@ function fixture(key = 'fixture-1'): HeartPublication {
     reviewed_by:'test reviewer',policy_ref:'fixture only; not production policy',
     projects:[{slug:'fixture-a',availability:'available',assessment:{capacity:10,allowance:2,
       rationale:'Test capacity',allowance_rationale:'Present-tense checklist: product live, team shipping',promises:[
-        {lineage:'core',claim_type:'milestone',criteria:'Core test',reward:0,core:true,state:'unfulfilled',
+        {lineage:'core',claim_type:'milestone',criteria:'Core test',reward:0,core:true,state:'open',
           effective_at:'2020-01-01T00:00:00Z',rationale:'Not yet delivered',
           evidence:[{url:'https://example.org/core',summary:'Test evidence'}]},
-        {lineage:'delivery',claim_type:'ongoing',criteria:'Delivery test',reward:2,core:false,state:'active',
+        {lineage:'delivery',claim_type:'ongoing',criteria:'Delivery test',reward:2,core:false,state:'fulfilled',
           effective_at:'2023-09-24T00:00:00Z',rationale:'Delivered',
           evidence:[{url:'https://example.org/delivery',summary:'Test evidence'}]}
       ]},market:{observed_at:'2026-09-24T00:00:00Z',source_url:'https://example.org/markets',price_usd:2,
@@ -40,6 +40,7 @@ test('PostgreSQL publication: atomicity, evidence, retries, ranks, append-only h
     // PGlite has gen_random_uuid built in but not pgcrypto. Everything else in 001 runs unchanged.
     await db.exec(readFileSync('../db/migrations/001_initial.sql','utf8').replace('CREATE EXTENSION IF NOT EXISTS pgcrypto;',''));
     await db.exec(readFileSync('../db/migrations/002_heart_publications.sql','utf8'));
+    await db.exec(readFileSync('../db/migrations/005_canonical_promise_states.sql','utf8'));
     await db.exec("INSERT INTO projects(slug,name,symbol) VALUES ('fixture-a','Fixture A','FA'),('fixture-b','Fixture B','FB'); GRANT SELECT ON projects TO anon,authenticated,service_role;");
     const publish = async (doc: HeartPublication) => db.query<{id:string}>(
       'SELECT public.publish_heart_run($1::jsonb) AS id',[JSON.stringify(doc)]);
@@ -109,16 +110,18 @@ test('PostgreSQL publication: atomicity, evidence, retries, ranks, append-only h
         a=>{a.promises[1].state='lapsed';}, // lapse drops the heart -> 2
         a=>{a.promises[1].state='retired';}, // retirement removes it visibly -> 2
         a=>{a.promises.push({lineage:'ledger',claim_type:'milestone',criteria:'Ledger test',reward:1,core:false,
-          state:'active',effective_at:'2012-06-01T00:00:00Z',rationale:'Deployed',
+          state:'fulfilled',effective_at:'2012-06-01T00:00:00Z',rationale:'Deployed',
           evidence:[{url:'https://example.org/ledger',summary:'Test evidence'}]});}, // milestone permanent -> 5
-        a=>{a.promises[0].state='active';a.allowance=1;
+        a=>{a.promises[0].state='fulfilled';a.allowance=1;
           a.promises.push({lineage:'ledger',claim_type:'milestone',criteria:'Ledger test',reward:1,core:false,
-            state:'active',effective_at:'2012-06-01T00:00:00Z',rationale:'Deployed',
+            state:'fulfilled',effective_at:'2012-06-01T00:00:00Z',rationale:'Deployed',
             evidence:[{url:'https://example.org/ledger',summary:'Test evidence'}]});
           a.promises.push({lineage:'extra',claim_type:'ongoing',criteria:'Extra test',reward:2,core:false,
-            state:'active',effective_at:'2024-01-01T00:00:00Z',rationale:'Delivered',
+            state:'fulfilled',effective_at:'2024-01-01T00:00:00Z',rationale:'Delivered',
             evidence:[{url:'https://example.org/extra',summary:'Test evidence'}]});
           a.capacity=5;}, // core fulfilled unlocks capacity: 2+1+2+2=7 -> 5
+        a=>{const raw=JSON.parse(JSON.stringify(a));raw.promises[0].state='unfulfilled';raw.promises[1].state='active';a.promises=raw.promises;},
+        // legacy labels normalize identically in SQL and TS: core open, delivery earning -> 4
       ];
       for (const [i,change] of scenarios.entries()) {
         const d=fixture(`claimtype-${i}`);const a=d.projects[0].assessment!;

@@ -8,11 +8,11 @@
 ## Result
 
 **ETH 5/20.** Earned 5 (mainnet milestone permanent; production dapps ongoing,
-active; proof-of-stake Merge milestone permanent; rollups ongoing, active),
+active; proof-of-stake Merge milestone permanent; rollups ongoing, fulfilled),
 core open.
 
 ```
-earned    = 1 (mainnet, milestone) + 2 (dapps, ongoing/active) + 1 (Merge, milestone) + 1 (rollups, ongoing/active) = 5
+earned    = 1 (mainnet, milestone) + 2 (dapps, ongoing/fulfilled) + 1 (Merge, milestone) + 1 (rollups, ongoing/fulfilled) = 5
 filled    = min(20, 5) = 5
 ```
 
@@ -22,9 +22,9 @@ filled    = min(20, 5) = 5
 |---|---|---|---|---|
 | Ethereum becomes the general-purpose platform for decentralized applications, arbitrary systems anyone can build and run | n/a | 0 | Open | Whitepaper ambition is open-ended ("many others that we have not yet imagined"); a general-purpose platform never finishes |
 | Smart-contract platform live on a public mainnet | milestone | 1 | Fulfilled 2015-07-30 (permanent) | Frontier launch 2015-07-30; EVM and smart contracts live from genesis |
-| Named production protocols with sustained real usage built on Ethereum | ongoing | 2 | Active (revalidated 2026-09-25) | MakerDAO mainnet Dec 2017; Uniswap V1 Nov 2018; COMP distribution Jun 2020 kicked off DeFi Summer (TVL $1B to $10B in three months); Ethereum remains the biggest chain by TVL and dapp count |
+| Named production protocols with sustained real usage built on Ethereum | ongoing | 2 | Fulfilled (revalidated 2026-09-25) | MakerDAO mainnet Dec 2017; Uniswap V1 Nov 2018; COMP distribution Jun 2020 kicked off DeFi Summer (TVL $1B to $10B in three months); Ethereum remains the biggest chain by TVL and dapp count |
 | The long-promised proof-of-stake transition completes | milestone | 1 | Fulfilled 2022-09-15 (permanent) | The Merge completed 2022-09-15, Beacon Chain had run since Dec 2020, energy use down ~99.95% |
-| Named production rollups carry real activity settling to Ethereum | ongoing | 1 | Active (revalidated 2026-09-25) | Arbitrum One mainnet 2021-08-31; combined L2 throughput ~5x mainnet by Oct 2023; Base live Aug 2023 |
+| Named production rollups carry real activity settling to Ethereum | ongoing | 1 | Fulfilled (revalidated 2026-09-25) | Arbitrum One mainnet 2021-08-31; combined L2 throughput ~5x mainnet by Oct 2023; Base live Aug 2023 |
 
 Capacity 20: whitepaper ambition, a Turing-complete platform for arbitrary
 systems "we have not yet imagined" (mechanical per rubric).

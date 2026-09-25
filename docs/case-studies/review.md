@@ -22,7 +22,7 @@ remains open is below, decide in chat or annotate here.
 observable by a third party. Clears: a working product anyone can use, an
 onchain or otherwise verifiable payout, a named customer confirming on the
 record. Does not clear: the issuer's own announcement or roadmap alone
-(announcements never change scores). Borderline cases stay unfulfilled, the
+(announcements never change scores). Borderline cases stay open, the
 analyst doesn't get to be generous.
 
 **2. Core promise proof; capacity need not fill.** The core promise is proven

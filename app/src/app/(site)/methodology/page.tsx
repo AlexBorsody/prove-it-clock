@@ -154,7 +154,7 @@ export default function MethodologyPage() {
         </ul>
         <p>
           Every meaningful move gets a clickable event marker explaining
-          exactly why the score moved: promise fulfilled or abandoned, deadline
+          exactly why the score moved: promise fulfilled, lapsed, or retired, deadline
           missed, major release, usage milestone, development resumed or
           stalled, major hype spike (context only).
         </p>
@@ -240,7 +240,7 @@ export default function MethodologyPage() {
         </p>
         <p>
           <b>The core promise.</b> One promise per project is the main one. It
-          earns no hearts itself. While it is unfulfilled, the meter cannot go
+          earns no hearts itself. While it is open or active, the meter cannot go
           above capacity minus 1.
         </p>
         <p>
@@ -248,7 +248,7 @@ export default function MethodologyPage() {
           checkable by someone other than the project: a working public
           product, a verifiable payout, a named customer on the record. The
           project's own announcement alone never counts. Borderline cases stay
-          unfulfilled.
+          open.
         </p>
         <p>
           <b>History.</b> Scores are published as dated snapshots. Old
