@@ -1,77 +1,85 @@
-import { HEARTS_METHODOLOGY, readHeartHistory, readHeartRankings } from "@/lib/heart-data";
-import HeartMeter from "@/components/heart-meter";
-import { HeartSparkline } from "@/components/hearts-timeline";
-import ShitcoinBadge, { shitcoinScore } from "@/components/shitcoin-badge";
+import Link from "next/link";
+import {
+  HEARTS_METHODOLOGY,
+  readHeartRankings,
+  readHeartHistory,
+  readHypeSnapshots,
+  latestHypeBySlug,
+  hypeBaselineWeeks,
+  codeWord,
+  useWord,
+  type HypeSnapshot,
+} from "@/lib/heart-data";
+import { verdictFor } from "@/lib/verdict";
+import { fetchVitals } from "@/lib/vitals";
+import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
+import HypeShareChart from "@/components/hype-share-chart";
 import Icon from "@/components/chrome-icons";
 
 export const dynamic = "force-dynamic";
 
-function fmtUsd(v: number | null | undefined): string {
-  if (v == null) return "n/a";
-  if (v >= 1e12) return `$${(v / 1e12).toFixed(2)}T`;
-  if (v >= 1e9) return `$${(v / 1e9).toFixed(2)}B`;
-  if (v >= 1e6) return `$${(v / 1e6).toFixed(1)}M`;
-  if (v >= 1e3) return `$${(v / 1e3).toFixed(0)}K`;
-  if (v >= 1) return `$${v.toFixed(2)}`;
-  return `$${v.toPrecision(2)}`;
-}
-
 export default async function Home() {
   let projects: any[] = [];
+  let hypeSnaps: HypeSnapshot[] = [];
   try {
-    const data = await readHeartRankings(HEARTS_METHODOLOGY, 1, 100);
-    projects = data.projects;
+    const [rankings, hype] = await Promise.all([
+      readHeartRankings(HEARTS_METHODOLOGY, 1, 100),
+      readHypeSnapshots().catch(() => [] as HypeSnapshot[]),
+    ]);
+    projects = rankings.projects;
+    hypeSnaps = hype;
   } catch {
     // fall through to the empty state below
   }
 
-  // Sparkline histories: rises and falls are the product, so they belong on the cards.
-  // Also keep each project's latest full point so we can compute its shitcoin score.
-  const histories: Record<string, { as_of: string; filled: number; capacity: number }[]> = {};
-  const latestBySlug: Record<string, any> = {};
-  await Promise.all(
+  const hypeLatest = latestHypeBySlug(hypeSnaps);
+  const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
+  const names: Record<string, string> = {};
+
+  const rows: ScoreboardRow[] = await Promise.all(
     projects.map(async (p) => {
-      try {
-        const h = await readHeartHistory(p.slug, HEARTS_METHODOLOGY, 1, 100);
-        const pts = (h.points ?? []).filter((pt: any) => pt.availability === "available");
-        histories[p.slug] = pts.map((pt: any) => ({ as_of: pt.as_of, filled: pt.filled, capacity: pt.capacity }));
-        latestBySlug[p.slug] = pts[0] ?? null;
-      } catch {
-        histories[p.slug] = [];
-        latestBySlug[p.slug] = null;
-      }
+      names[p.slug] = p.name;
+      const [history, vitals] = await Promise.all([
+        readHeartHistory(p.slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
+        fetchVitals(p.slug).catch(() => null),
+      ]);
+      const pts = (history.points ?? []).filter((pt: any) => pt.availability === "available");
+      const spark = [...pts]
+        .reverse()
+        .map((pt: any) => ({ as_of: pt.as_of, filled: pt.earned, capacity: pt.capacity }));
+      const promises: any[] = p.assessment?.promises ?? [];
+      const latest = hypeLatest[p.slug];
+      const filledPct = p.capacity > 0 ? p.earned / p.capacity : 0;
+      return {
+        slug: p.slug,
+        name: p.name,
+        symbol: p.symbol,
+        rank: 0, // assigned below
+        earned: p.earned,
+        capacity: p.capacity,
+        filledPct,
+        verdict: verdictFor(
+          promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
+        ).category,
+        code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
+        use: useWord(),
+        hypeMentions: latest?.news_mentions_7d ?? null,
+        hypeCollecting: baselineWeeks < 8,
+        baselineWeeks,
+        spark,
+      };
     })
   );
 
-  const shitcoinBySlug: Record<string, number | null> = {};
-  for (const p of projects) {
-    const latest = latestBySlug[p.slug];
-    const pts = histories[p.slug] ?? [];
-    if (!latest || !pts.length) {
-      shitcoinBySlug[p.slug] = null;
-      continue;
-    }
-    const promises: any[] = latest.assessment?.promises ?? [];
-    const peak = Math.max(...pts.map((pt) => pt.filled));
-    shitcoinBySlug[p.slug] = shitcoinScore({
-      promises,
-      capacity: latest.capacity,
-      filled: latest.filled,
-      peak,
-    });
-  }
+  rows.sort((a, b) => b.filledPct - a.filledPct || b.earned - a.earned || a.name.localeCompare(b.name));
+  rows.forEach((r, i) => { r.rank = i + 1; });
 
   return (
     <>
       <h1 className="page-title">Prove-It</h1>
-      <p className="page-sub">
-        Crypto runs on hype. Prove-It shows what's real. Every token has a
-        market price. We measure what the project actually proved it could do,
-        promise by promise, with the evidence linked. Compare the proof against
-        the price, and decide for yourself.
-      </p>
+      <p className="page-sub slogan">Truth, not hype.</p>
 
-      {projects.length === 0 ? (
+      {rows.length === 0 ? (
         <div className="panel">
           <h2>
             <Icon name="inbox" size={18} style={{ marginRight: 10 }} />
@@ -82,47 +90,22 @@ export default async function Home() {
           </p>
         </div>
       ) : (
-        <div className="cards">
-          {projects.map((p) => (
-            <a key={p.slug} href={`/projects/${p.slug}`} className="card-link">
-              <div className="panel card">
-                <div className="card-top">
-                  <div className="card-identity">
-                    <img
-                      src={`/icons/${p.symbol.toLowerCase()}.svg`}
-                      alt=""
-                      width={34}
-                      height={34}
-                      className="coin-icon"
-                    />
-                    <div>
-                      <div className="card-name">{p.name}</div>
-                      <div className="card-symbol num">{p.symbol}{p.market_cap_rank ? ` · #${p.market_cap_rank}` : ""}</div>
-                    </div>
-                  </div>
-                  <div className="card-score num">{p.filled}/{p.capacity}</div>
-                </div>
-                <HeartMeter filled={p.filled} capacity={p.capacity} allowance={p.allowance} />
-                <HeartSparkline points={histories[p.slug] ?? []} />
-                {shitcoinBySlug[p.slug] != null ? (
-                  <div style={{ margin: "2px 0 10px" }}>
-                    <ShitcoinBadge score={shitcoinBySlug[p.slug] as number} capacity={p.capacity} compact noLink />
-                  </div>
-                ) : null}
-                <div className="card-foot num">
-                  <Icon name="check" size={12} style={{ marginRight: 4 }} />
-                  {p.earned} earned
-                  {" · "}
-                  <Icon name="gift" size={12} style={{ marginRight: 4 }} />
-                  {p.allowance} free
-                  {" · "}
-                  <Icon name="chart" size={12} style={{ marginRight: 4 }} />
-                  {fmtUsd(p.market_cap_usd)} mcap
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+        <>
+          <div className="scoreboard-actions">
+            <Link href="/compare" className="btn">
+              Compare projects
+            </Link>
+          </div>
+          <ScoreboardTable rows={rows} />
+          <div className="panel" style={{ marginTop: 18 }}>
+            <h2>HYPE share</h2>
+            <p className="panel-sub">
+              Each project's slice of observed HYPE (7-day news mentions) over
+              time. Attention, not endorsement.
+            </p>
+            <HypeShareChart snapshots={hypeSnaps} names={names} />
+          </div>
+        </>
       )}
     </>
   );

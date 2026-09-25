@@ -548,3 +548,73 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   border-radius: 0 8px 8px 0;
   margin: 16px 0 4px;
 }
+
+/* ---- Phase 2: scoreboard ---- */
+:root { --amber: #f0b429; }
+
+.page-sub.slogan {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.scoreboard-actions { margin: 0 0 14px; display: flex; justify-content: flex-end; }
+.btn {
+  display: inline-block;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 9px 18px;
+  border-radius: 10px;
+}
+.btn:hover { border-color: var(--accent); color: var(--text); }
+
+/* Categorical verdict badge: green / amber / red / grey. */
+.verdict-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.verdict-badge.v-ok { color: var(--green); background: #173C37; }
+.verdict-badge.v-watch { color: var(--text-dim); background: #323546; }
+.verdict-badge.v-concern { color: var(--amber); background: #433936; }
+.verdict-badge.v-fail { color: var(--red); background: #411F2A; }
+.verdict-badge.compact { font-size: 11px; padding: 3px 9px; }
+
+/* Mini hearts meter for table rows. */
+.mini-meter { display: flex; align-items: center; gap: 8px; }
+.mini-meter-track {
+  width: 72px; height: 6px; border-radius: 3px;
+  background: var(--bg-raised); overflow: hidden; flex-shrink: 0;
+}
+.mini-meter-fill { height: 100%; border-radius: 3px; background: var(--green); }
+.mini-meter-val { font-size: 13px; font-weight: 700; }
+
+/* One-word summary cells. */
+.word { font-size: 13px; font-weight: 700; }
+.word.good { color: var(--green); }
+.word.dim { color: var(--text-faint); }
+.cell-sub {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+
+/* HYPE share stacked area chart. */
+.hype-share { width: 100%; height: auto; display: block; }
+.hype-share .axis { fill: var(--text-faint); font-size: 11px; font-family: var(--mono); }
+.chart-empty {
+  color: var(--text-faint);
+  font-size: 14px;
+  padding: 28px 8px;
+  text-align: center;
+}

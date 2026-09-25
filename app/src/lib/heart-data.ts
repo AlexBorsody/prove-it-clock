@@ -91,3 +91,40 @@ export function hypeSummary(
     collecting: baselineWeeks < 8,
   };
 }
+
+/* ------------------------------------------------------------------ */
+/* HYPE snapshots (Phase 2). Reads through the public social_snapshots */
+/* table; no new endpoint needed.                                       */
+/* ------------------------------------------------------------------ */
+
+export interface HypeSnapshot {
+  project_slug: string;
+  as_of: string;
+  news_mentions_7d: number | null;
+}
+
+export async function readHypeSnapshots(): Promise<HypeSnapshot[]> {
+  const db = heartReadClient();
+  const { data, error } = await db
+    .from("social_snapshots")
+    .select("project_slug,as_of,news_mentions_7d")
+    .order("as_of", { ascending: true })
+    .limit(1000);
+  if (error) throw error;
+  return (data ?? []) as HypeSnapshot[];
+}
+
+/** Latest snapshot per project slug. */
+export function latestHypeBySlug(snaps: HypeSnapshot[]): Record<string, HypeSnapshot> {
+  const out: Record<string, HypeSnapshot> = {};
+  for (const s of snaps) out[s.project_slug] = s; // ascending order: last wins
+  return out;
+}
+
+/** Distinct weeks with at least one snapshot, capped at 8. */
+export function hypeBaselineWeeks(snaps: HypeSnapshot[]): number {
+  const weeks = new Set(
+    snaps.map((s) => Math.floor(new Date(s.as_of).getTime() / WEEK_MS))
+  );
+  return Math.min(8, weeks.size);
+}
