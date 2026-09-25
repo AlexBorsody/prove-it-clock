@@ -5,6 +5,8 @@ import Link from "next/link";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
 import { HeartSparkline, type HeartPoint } from "@/components/hearts-timeline";
 import ShitcoinMeter from "@/components/shitcoin-meter";
+import Icon from "@/components/chrome-icons";
+import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
@@ -139,9 +141,18 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                     </Link>
                   </td>
                   <td>
-                    <HeartMeter filled={r.earned} capacity={r.capacity} allowance={0} size={16} />
-                    {" "}
-                    <span className="num">{r.earned} of {r.capacity} potential</span>
+                    <button
+                      type="button"
+                      className="hearts-cell-toggle"
+                      onClick={() => toggleExpand(r.slug)}
+                      aria-expanded={expanded === r.slug}
+                      aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
+                      title="Show what earned these hearts"
+                    >
+                      <HeartMeter filled={r.earned} capacity={r.capacity} allowance={0} size={16} />
+                      {" "}
+                      <span className="num">{r.earned} of {r.capacity} potential</span>
+                    </button>
                   </td>
                   <td>
                     <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
@@ -150,12 +161,14 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                   </td>
                   <td>
                     <Link href="/code" className="cell-link metric-btn" title="See CODE activity ranking">
+                      <GithubMark />
                       <CodeWordCell code={r.code} note={r.codeNote} />
                     </Link>
                   </td>
                   <td><span className="word dim">coming</span></td>
                   <td className="num">
                     <Link href="/hype" className="cell-link metric-btn" title="See HYPE ranking">
+                      <Icon name="megaphone" size={14} />
                       <HypeCell mentions={r.hypeMentions} collecting={r.hypeCollecting} />
                     </Link>
                   </td>
@@ -211,18 +224,29 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                 <span className="mcard-ticker num">{r.symbol}</span>
               </Link>
               <div className="mcard-hearts">
-                <CompactHearts earned={r.earned} capacity={r.capacity} />
-                <span className="num mcard-count">{r.earned}/{r.capacity}</span>
+                <button
+                  type="button"
+                  className="mcard-hearts-toggle"
+                  onClick={() => toggleExpand(r.slug)}
+                  aria-expanded={open}
+                  aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
+                  title="Show what earned these hearts"
+                >
+                  <CompactHearts earned={r.earned} capacity={r.capacity} />
+                  <span className="num mcard-count">{r.earned}/{r.capacity}</span>
+                </button>
                 <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
                   <ShitcoinMeter category={r.verdict} compact size={38} />
                 </Link>
               </div>
               <div className="mcard-stats">
                 <Link href="/code" className="mcard-stat metric-btn">
+                  <GithubMark />
                   {r.codeNote ? r.codeNote : `CODE ${r.code}`}
                   {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits`}
                 </Link>
                 <Link href="/hype" className="mcard-stat metric-btn num">
+                  <Icon name="megaphone" size={14} />
                   HYPE · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions`}
                 </Link>
               </div>

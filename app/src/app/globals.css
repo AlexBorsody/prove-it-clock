@@ -5,11 +5,12 @@
   --bg: #0a0e14;
   --bg-panel: #131b2a; /* section modules: visibly distinct from the page bg */
   --bg-raised: #1a2334;
+  --bg-elev: #232e44; /* tappable pills/tags: visibly lifted off the surface */
   --border: #1f2937;
   --border-strong: #2d3a4f;
   --text: #d7dee9;
-  --text-dim: #8b96a8;
-  --text-faint: #5b6577;
+  --text-dim: #9aa5ba;
+  --text-faint: #707b90;
   --accent: #f0b429; /* prove-it amber */
   --green: #3fb950;
   --red: #f85149;
@@ -978,7 +979,11 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 /* ---- Shitcoin Score: circular 1-10 gauge ---- */
 .shitcoin-meter { margin-top: 18px; }
-.shitcoin-meter.compact { margin-top: 0; }
+.shitcoin-meter.compact {
+  margin-top: 0;
+  display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+  text-align: center;
+}
 .shitcoin-caption {
   font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--text-dim); font-weight: 700; white-space: nowrap;
@@ -1062,9 +1067,23 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .mcard-ticker { font-size: 13px; font-weight: 700; color: var(--text-faint); letter-spacing: 0.06em; }
 .mcard-hearts { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
 .compact-hearts { display: inline-flex; gap: 3px; font-size: 13px; }
-.compact-hearts .ch { color: #2c2f3a; display: inline-flex; }
+.compact-hearts .ch { color: #3d434f; display: inline-flex; }
 .compact-hearts .ch.filled { color: var(--green); }
 .mcard-count { font-size: 15px; font-weight: 800; color: var(--text-dim); }
+/* Tappable hearts: reveal the promises right where you are. */
+.mcard-hearts-toggle {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: none; border: none; padding: 6px; margin: -6px;
+  cursor: pointer; color: inherit; font: inherit;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.mcard-hearts-toggle:active { transform: scale(0.97); }
+.hearts-cell-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none; border: none; padding: 4px 6px; margin: -4px -6px;
+  cursor: pointer; color: inherit; font: inherit; text-align: left;
+}
+.hearts-cell-toggle:active { transform: scale(0.97); }
 .mcard-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
 .mcard-dot { color: var(--text-faint); }
 .mcard-verdict { text-transform: uppercase; letter-spacing: 0.04em; }
@@ -1074,8 +1093,8 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .mcard-verdict.v-shitcoin { color: var(--red); }
 .mcard-stat { color: var(--text-dim); text-decoration: none; font-weight: 700; }
 .mcard-promises-toggle {
-  width: 100%; background: none; border: none; padding: 6px 0 0;
-  color: var(--text-faint); font-size: 13px; font-weight: 700; text-align: left;
+  width: 100%; background: none; border: none; padding: 12px 0;
+  color: var(--text-dim); font-size: 16px; font-weight: 800; text-align: left;
   border-top: 1px solid var(--border);
 }
 .mcard-promises { margin-top: 8px; }
@@ -1112,7 +1131,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 /* Tappable metrics are buttons: filled background, rounded, obvious. */
 .metric-btn {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--bg-elev); border: 1px solid var(--border);
+  background: var(--bg-elev); border: 1px solid var(--border-strong);
   border-radius: 999px; padding: 7px 12px;
   color: var(--text); font-weight: 700; font-size: 12.5px;
   text-decoration: none; white-space: nowrap;

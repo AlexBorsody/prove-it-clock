@@ -9,7 +9,7 @@ import Icon, { type ChromeIconName } from "@/components/chrome-icons";
  */
 const TABS: Array<{ href: string; label: string; icon: ChromeIconName }> = [
   { href: "/", label: "Scoreboard", icon: "grid" },
-  { href: "/hype", label: "HYPE", icon: "chart" },
+  { href: "/hype", label: "HYPE", icon: "megaphone" },
   { href: "/compare", label: "Compare", icon: "sliders" },
   { href: "/methodology", label: "Methodology", icon: "book" },
 ];

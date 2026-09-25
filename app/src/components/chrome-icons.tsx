@@ -15,6 +15,7 @@ import type { CSSProperties, ReactNode } from "react";
 export type ChromeIconName =
   | "grid"
   | "search"
+  | "megaphone"
   | "book"
   | "info"
   | "help"
@@ -76,6 +77,13 @@ const PATHS: Record<ChromeIconName, ReactNode> = {
     <>
       <circle cx="7" cy="7" r="4.75" />
       <path d="M10.6 10.6L14 14" />
+    </>
+  ),
+  megaphone: (
+    <>
+      <path d="M2.5 6.8v2.4c0 .3.3.5.6.4l1.4-.3V6.7l-1.4-.3c-.3-.1-.6.1-.6.4z" />
+      <path d="M4.5 6.7L13.5 3v10L4.5 9.3" />
+      <path d="M6.5 9.7v3.1" />
     </>
   ),
   x: <path d="M4.5 4.5l7 7M11.5 4.5l-7 7" />,
