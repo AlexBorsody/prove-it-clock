@@ -1,4 +1,5 @@
 import "../globals.css";
+import SiteNav from "@/components/site-nav";
 
 /**
  * Site chrome: topbar, shell, footer. Applies to the public site routes only
@@ -15,10 +16,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             <small>EVIDENCE-DRIVEN CRYPTO ACCOUNTABILITY</small>
           </div>
         </div>
-        <nav className="nav">
-          <a href="/">Projects</a>
-          <a href="/methodology">Methodology</a>
-        </nav>
+        <SiteNav />
       </header>
       {children}
     </div>

@@ -111,7 +111,7 @@ export default async function EmbedTimelinePage({
       w,
       h,
       <p style={{ margin: 0, color: p.dim }}>
-        Timeline unavailable — history is not configured on this deployment.
+        Timeline unavailable. History is not configured on this deployment.
       </p>,
     );
   }
@@ -125,7 +125,7 @@ export default async function EmbedTimelinePage({
       w,
       h,
       <p style={{ margin: 0, color: p.dim }}>
-        Timeline unavailable — the history request failed.
+        Timeline unavailable. The history request failed.
       </p>,
     );
   }
@@ -157,7 +157,7 @@ export default async function EmbedTimelinePage({
               padding: "2px 8px",
             }}
           >
-            NOT SCORED UNDER v{ACTIVE_METHODOLOGY_VERSION} — UNAVAILABLE
+            NOT SCORED UNDER v{ACTIVE_METHODOLOGY_VERSION}: UNAVAILABLE
           </div>
         </div>
         <TimelineSvg body={body} palette={p} fillBackground />

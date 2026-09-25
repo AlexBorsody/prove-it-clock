@@ -10,7 +10,7 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
   return (
     <main className="research">
       <aside className="research-notice" aria-label="Research status">
-        <strong>Research notes — single-analyst assessment, not a blinded replication</strong>
+        <strong>Research notes: single-analyst assessment, not a blinded replication</strong>
         <p>Evidence was gathered by one analyst and is published for anyone to check.
           Blinded replication by an independent analyst would upgrade a score to verified.</p>
       </aside>

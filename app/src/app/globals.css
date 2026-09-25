@@ -68,13 +68,13 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 17px; }
 .brand-name small { display: block; font-weight: 400; color: var(--text-dim); font-size: 11px; letter-spacing: 0.08em; }
-.nav { display: flex; gap: 4px; }
+.nav { display: flex; gap: 4px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px; padding: 4px; }
 .nav a {
-  color: var(--text-dim); padding: 8px 14px; border-radius: 6px;
-  font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--text-dim); padding: 8px 16px; border-radius: 10px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
 }
 .nav a:hover { color: var(--text); background: var(--bg-raised); text-decoration: none; }
-.nav a.active { color: var(--accent); background: rgba(240, 180, 41, 0.08); }
+.nav a.active { color: #14100a; background: var(--accent); }
 
 .meta-line { color: var(--text-faint); font-size: 13px; font-family: var(--mono); margin-bottom: 18px; }
 .meta-line b { color: var(--text-dim); font-weight: 600; }
@@ -83,9 +83,16 @@ a:hover { text-decoration-thickness: 2px; }
 .panel {
   background: var(--bg-panel);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 20px 22px;
   margin-bottom: 18px;
+}
+/* Alternate section tint so stacked sections read as distinct blocks. */
+.panel.section-alt { background: #111a28; border-color: var(--border-strong); }
+/* Warm tint for the lead section on a page. */
+.panel.section-hero {
+  background: linear-gradient(180deg, rgba(240, 180, 41, 0.08), var(--bg-panel) 65%);
+  border-color: var(--border-strong);
 }
 .panel h2 {
   margin: 0 0 6px; font-size: 17px; letter-spacing: 0.04em;

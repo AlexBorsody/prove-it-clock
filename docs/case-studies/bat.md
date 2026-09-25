@@ -1,9 +1,9 @@
-# BAT — case study
+# BAT: case study
 
 **Method:** [hearts-algorithm.md](../hearts-algorithm.md) v2 (claim-type rule, adopted 2026-09-25; time decay removed).
 **Research:** two passes (Muse 2026-09-23, Codex 2026-09-24), non-blinded.
 **Status:** published to production 2026-09-25 under adopted rules; single-analyst
-(non-blinded) — blinded replication outstanding before scores are called verified.
+(non-blinded), blinded replication outstanding before scores are called verified.
 
 ## Result
 
@@ -20,31 +20,31 @@ filled    = min(10, 3 + 2) = 5
 
 | Promise | Type | Reward | State | Key evidence |
 |---|---|---|---|---|
-| Users earn BAT for private opt-in ads | ongoing | 2 | Active (revalidated 2026-09-25) | Brave Ads launch 2019-04-24 ([Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing)); still funded — BAT buybacks for user rewards per [BAT Roadmap 4.0](https://brave.com/blog/bat-roadmap-4-0/) |
+| Users earn BAT for private opt-in ads | ongoing | 2 | Active (revalidated 2026-09-25) | Brave Ads launch 2019-04-24 ([Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing)); still funded, BAT buybacks for user rewards per [BAT Roadmap 4.0](https://brave.com/blog/bat-roadmap-4-0/) |
 | Creators/publishers earn BAT | ongoing | 1 | Active (revalidated 2026-09-25) | BAT Mercury launch 2017-10-12 ([Brave](https://brave.com/blog/bat-mercury-launch/)); self-custody Solana payouts opened broadly, page updated 2026-07-16 ([Brave](https://brave.com/blog/payouts-on-solana/)) |
-| BAT as a web-wide attention standard | — | 2 | Open | Stated aim in the [2017 whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf); not realized |
+| BAT as a web-wide attention standard | n/a | 2 | Open | Stated aim in the [2017 whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf); not realized |
 
 Capacity 10: advertising-sector ambition (mechanical per rubric).
 
 ## Allowance
 
 Present-tense checklist (last 12 months): working product (Brave browser),
-active team (Brave Software shipping — Roadmap 4.0 in progress), economic
+active team (Brave Software shipping, Roadmap 4.0 in progress), economic
 activity (BAT ad buys; 2025-10-21 purchase per [transparency feed](https://brave.com/transparency/)).
 3 checks → capped at floor(10/5) = **2**.
 
 ## Judgment calls (Muse's, Alex can override)
 
 - **Granularity:** one ad-loop lineage, not three (users/publishers/advertisers).
-  Splitting the loop's three sides manufactures hearts — the adopted
+  Splitting the loop's three sides manufactures hearts, the adopted
   anti-subdivision rule forbids it. A second pass scored 4/10 on the split
   carving; rejected for that reason.
 - **Claim typing:** both earning lineages are carved as **ongoing**, not
-  milestones — the promises are phrased in the present tense ("users earn",
+  milestones, the promises are phrased in the present tense ("users earn",
   "creators earn"). The hearts exist while the claim is true; if Brave ever
   kills Rewards, they lapse visibly instead of decaying on a timer.
 - **Recency:** the old grace/decay clock is gone (killed 2026-09-25 as
-  arbitrary). Revalidation replaces it — see the 2026-09-25 evidence above.
+  arbitrary). Revalidation replaces it, see the 2026-09-25 evidence above.
 - **Subsidy caveat:** creator payouts were substantially funded by Brave's
   user-growth token pool, not organic ad revenue. Counts as fulfillment
   (users/creators really got BAT); disclosed here, not hidden.
@@ -54,7 +54,7 @@ activity (BAT ad buys; 2025-10-21 purchase per [transparency feed](https://brave
 ## Open
 
 - Whether self-custody Solana payouts (2025-08-14) are a new lineage or a
-  BAT-1 upgrade — would add +1 and reset S if accepted.
+  BAT-1 upgrade, would add +1 and reset S if accepted.
 - External integrations (e.g. Streamiverse 2026-06-22) need partner-side
   volume evidence before any award.
 

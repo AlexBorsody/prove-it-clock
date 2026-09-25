@@ -62,7 +62,7 @@ export default function TimelineChart({ slug }: { slug: string }) {
   };
 
   if (failed) {
-    return <p className="panel-sub" style={{ margin: 0 }}>Timeline unavailable — history request failed.</p>;
+    return <p className="panel-sub" style={{ margin: 0 }}>Timeline unavailable. History request failed.</p>;
   }
   if (!body) {
     return <p className="panel-sub" style={{ margin: 0 }}>Loading timeline…</p>;

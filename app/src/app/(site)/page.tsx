@@ -15,11 +15,9 @@ function fmtUsd(v: number | null | undefined): string {
 }
 
 export default async function Home() {
-  let run: { as_of: string } | null = null;
   let projects: any[] = [];
   try {
     const data = await readHeartRankings(HEARTS_METHODOLOGY, 1, 100);
-    run = data.run;
     projects = data.projects;
   } catch {
     // fall through to the empty state below
@@ -42,17 +40,10 @@ export default async function Home() {
 
   return (
     <>
-      <div className="meta-line">
-        {run ? (
-          <>LAST SCORED <b>{String(run.as_of).slice(0, 10)}</b> · {projects.length} PROJECTS</>
-        ) : (
-          <>NO SCORES PUBLISHED YET</>
-        )}
-      </div>
       <h1 className="page-title">Prove-It</h1>
       <p className="page-sub">
         Crypto runs on hype. Prove-It shows what's real. Every token has a
-        market price — we measure what the project actually proved it could do,
+        market price. We measure what the project actually proved it could do,
         promise by promise, with the evidence linked. Compare the proof against
         the price, and decide for yourself.
       </p>

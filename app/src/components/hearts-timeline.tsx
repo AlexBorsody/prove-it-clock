@@ -80,7 +80,7 @@ export default function HeartsTimeline({ points }: { points: HeartPoint[] }) {
       <path d={line} className="heart-line" fill="none" />
       {ordered.map((p, i) => (
         <g key={i}>
-          <title>{`${fmtDate(p.as_of)} — ${p.filled} of ${p.capacity} hearts`}</title>
+          <title>{`${fmtDate(p.as_of)}: ${p.filled} of ${p.capacity} hearts`}</title>
           <circle cx={x(times[i])} cy={y(p.filled)} r={5} className="heart-dot" />
           <text x={x(times[i])} y={y(p.filled) - 12} textAnchor="middle" className="axis strong">
             {p.filled}

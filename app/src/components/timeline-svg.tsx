@@ -170,12 +170,12 @@ export default function TimelineSvg({
       <div style={{ fontSize: 13, lineHeight: 1.5, color: p.dim }}>
         <p style={{ margin: "0 0 8px" }}>
           <b style={{ color: p.text }}>No scored history.</b> No verified
-          snapshot history exists for this project — it is explicitly
+          snapshot history exists for this project. It is explicitly
           unavailable, not estimated and not zero-filled.
         </p>
         {eventCount > 0 && (
           <p style={{ margin: 0 }}>
-            {eventCount} recorded event{eventCount === 1 ? "" : "s"} — events
+            {eventCount} recorded event{eventCount === 1 ? "" : "s"}. Events
             are evidence, not scores.
           </p>
         )}
@@ -295,7 +295,7 @@ export default function TimelineSvg({
             >
               <line x1={X(e.date)} x2={X(e.date)} y1={PAD_T - 12} y2={PAD_T - 4} stroke={selected ? p.accent : p.dim} strokeWidth="1.5" />
               <circle cx={X(e.date)} cy={PAD_T - 14} r={selected ? "5" : "3"} fill={selected ? p.accent : p.dim}>
-                <title>{`${e.date} · ${e.type.replace(/_/g, " ")} — ${e.title}`}</title>
+                <title>{`${e.date} · ${e.type.replace(/_/g, " ")}: ${e.title}`}</title>
               </circle>
             </g>
           );
@@ -327,7 +327,7 @@ export default function TimelineSvg({
         <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
           <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: p.dim }} /> Project event{onToggleMetric ? " (click)" : ""}
         </span>
-        <span style={{ color: p.faint }}>Dashed ticks mark methodology versions. Gaps are missing data — lines break, never interpolate.</span>
+        <span style={{ color: p.faint }}>Dashed ticks mark methodology versions. Gaps are missing data: lines break, never interpolate.</span>
       </div>
     </div>
   );

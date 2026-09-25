@@ -70,11 +70,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="meta-line">
         PROJECT <b>{latest.symbol}</b>
         {latest.market_cap_rank ? <> · MCAP RANK <b>#{latest.market_cap_rank}</b></> : null}
-        <> · SCORED <b>{String(latest.as_of).slice(0, 10)}</b></>
       </div>
 
       {/* The meter. */}
-      <div className="panel card">
+      <div className="panel card section-hero">
         <h1 className="page-title">{latest.name}</h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.filled} capacity={latest.capacity} size={34} />
@@ -94,18 +93,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel">
         <h2>Heart history</h2>
         <p className="panel-sub">
-          Each dot is a past score. When the evidence changed, the line moved —
+          Each dot is a past score. When the evidence changed, the line moved:
           up when the project proved something, down when proof fell apart.
         </p>
         <HeartsTimeline points={points.filter((p) => p.availability === "available").map((p) => ({ as_of: p.as_of, filled: p.filled, capacity: p.capacity }))} />
       </div>
 
       {/* Legacy v0.2.0 score timeline. */}
-      <div className="panel">
+      <div className="panel section-alt">
         <h2>Legacy score history</h2>
         <p className="panel-sub">
           Scores from the old system (v0.2.0), kept for reference. Not every project
-          was scored under it — an empty timeline means no old data, not a zero.
+          was scored under it. An empty timeline means no old data, not a zero.
         </p>
         <TimelineChart slug={slug} />
       </div>
@@ -115,7 +114,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <h2>Promises</h2>
         <p className="panel-sub">
           What {latest.name} promised, and what actually happened. Each promise is
-          scored on its own — the hearts add up to the meter at the top.
+          scored on its own. The hearts add up to the meter at the top.
         </p>
         {promises.map((pr, i) => (
           <div className="comp-row" key={i}>
@@ -147,6 +146,51 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </>
         )}
       </div>
+
+      {/* Technical details for the curious. */}
+      <details className="panel fold section-alt">
+        <summary className="fold-head">
+          Look under the hood
+        </summary>
+        <div className="fold-body">
+          <p>
+            The technical details behind this score. Scoring method:{" "}
+            <span className="num">{latest.methodology}</span>
+          </p>
+          <table className="spec">
+            <tbody>
+              <tr><th>Run key</th><td className="num">{latest.run_id}</td></tr>
+              <tr><th>Scored as of</th><td className="num">{String(latest.as_of).slice(0, 10)}</td></tr>
+              <tr><th>Capacity</th><td className="num">{latest.capacity}</td></tr>
+              <tr><th>Earned hearts</th><td className="num">{latest.earned}</td></tr>
+              <tr><th>Free hearts</th><td className="num">{latest.allowance}</td></tr>
+              <tr><th>Filled</th><td className="num">min({latest.capacity}, {latest.earned} + {latest.allowance}) = {latest.filled}</td></tr>
+              {latest.market_observed_at && (
+                <tr><th>Market data</th><td className="num">
+                  observed {String(latest.market_observed_at).slice(0, 10)} · {fmtUsd(latest.price_usd)} · {fmtUsd(latest.market_cap_usd)} mcap · {latest.market_source_url}
+                </td></tr>
+              )}
+            </tbody>
+          </table>
+          <h3 style={{ marginTop: 18 }}>Promise lineages</h3>
+          <table className="spec">
+            <thead>
+              <tr><th>Lineage</th><th>Type</th><th>Reward</th><th>State</th><th>Effective</th></tr>
+            </thead>
+            <tbody>
+              {promises.map((pr: any, i: number) => (
+                <tr key={i}>
+                  <td className="num">{pr.lineage}{pr.core ? " (main)" : ""}</td>
+                  <td>{pr.claim_type}</td>
+                  <td className="num">{pr.reward}</td>
+                  <td>{pr.state}</td>
+                  <td className="num">{String(pr.effective_at ?? "").slice(0, 10)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
     </>
   );
 }
