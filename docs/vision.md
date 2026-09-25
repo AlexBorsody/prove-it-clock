@@ -34,6 +34,40 @@ fraud or investment-risk rating. Rule-based, from promise states:
 CODE and USE are evidence. HYPE is context. None of them move the verdict
 directly in v1.
 
+## The Prove-It Index (provisional name)
+
+Hearts are the simple public accountability mechanic: did they keep their
+promises? The Prove-It Index is the broader historical health and
+credibility algorithm underneath. One number, 0-100, plotted through time
+on the project detail page.
+
+Weights:
+
+- **Promises: 60%** = 60 * (earned hearts / capacity)
+- **USE: 25%** = 25 * use_score, where use_score is 0-1 from the
+  per-project intended-use metrics
+- **CODE: 15%** = 15 * code_score, where code_score is 0-1 from
+  sustained activity on curated repos (definition required before build)
+- **HYPE: 0%**. Context only. It never improves the score.
+
+Every meaningful move gets a clickable event marker explaining exactly
+why the score moved:
+
+- Promise fulfilled / Promise abandoned
+- Deadline missed (defined; no v1 trigger until deadline evidence is
+  researched)
+- Major release
+- Usage milestone
+- Development resumed / stalled
+- Major buzz spike (context only, never moves the score)
+
+Gating rule: the Index does not publish until USE metrics exist, because
+25% of the score cannot be fiction. "Missing data means unknown, never
+zero" applies to the Index too: a component with no data renders as
+unknown, and the Index stays unpublished until all three scoring
+components have real inputs. The formula above is locked; the build
+waits on the data.
+
 ## Homepage = scoreboard
 
 One clean card per project. Built for scanning and comparing fast. Nothing
@@ -58,16 +92,20 @@ else.
 3. **Delivery Timeline.** Hearts step-line on top through time. Activity
    strip below with CODE / HYPE toggle (USE joins when its metrics exist).
    Failed collection never renders as zero.
-4. **Promises.** Each lineage with its status: Fulfilled / Active /
+4. **Prove-It Index.** The 0-100 composite plotted through time, with
+   clickable event markers on every meaningful move. Weights disclosed
+   beside the graph. Gated on USE data (see above); the section does not
+   render until the Index can be computed honestly.
+5. **Promises.** Each lineage with its status: Fulfilled / Active /
    Overdue / Abandoned. Overdue is defined in the data model but has no v1
    trigger; it does not render until deadline evidence is researched.
-5. **Evidence / Methodology.** Sources, tracked repos, data coverage,
+6. **Evidence / Methodology.** Sources, tracked repos, data coverage,
    methodology version, run id. What CODE counts lives here, auditable and
    challengeable, not on the main page.
 
 ## Data rules
 
-- Hearts are the only numerical score.
+- Hearts are the simple public score. The Prove-It Index is the deeper 0-100 composite; it never appears on the homepage.
 - Earned only: no allowance, no free hearts, no time decay.
 - A heart stays earned only while its evidence condition holds. Milestones
   are permanent; ongoing claims lapse when evidence stops; fulfilled-then-
@@ -93,7 +131,12 @@ else.
 
 ## Parked (not in v1)
 
-Real USE metrics per project. HYPE trend percentages. Watch verdict
-triggers. CODE/USE/HYPE timeline strips beyond CODE. The rebrand
-("Prove the Hype" and friends). Valuation. Anything not in this doc waits
+HYPE trend percentages. Watch verdict triggers. CODE/USE/HYPE timeline
+strips beyond CODE. The rebrand ("Prove the Hype" and friends); the product
+keeps the Prove-It name for now. Valuation. Anything not in this doc waits
 for Alex, not for a spare afternoon.
+
+## Next research (gates the Index)
+
+Real USE metrics per project, and the CODE score definition. The Index
+formula is locked; these two inputs are the build's critical path.

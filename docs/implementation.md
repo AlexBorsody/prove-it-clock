@@ -113,6 +113,38 @@ works, empty states honest, `next build` clean.
 3. Commit, push via `~/workspace/bin/gh-push.py`, verify Vercel deploy
    and the live pages.
 
+## Phase 5: Prove-It Index (gated)
+
+Builds only after the USE metrics and the CODE score definition exist.
+The formula is locked in vision.md; this phase is data plumbing and UI.
+
+1. **Research first.** Per-project USE metrics (intended use only) and the
+   CODE score 0-1 definition (sustained activity on curated repos: what
+   counts, what "stalled/resumed" means, anti-gaming notes). Both written
+   up, reviewed, and versioned before any Index code.
+2. **Event log.** New append-only table `index_events`: project_slug,
+   occurred_at, event_type (promise_fulfilled, promise_abandoned,
+   deadline_missed, major_release, usage_milestone, dev_resumed,
+   dev_stalled, buzz_spike), title, note, evidence_url. Promise events
+   backfill from published heart runs; releases from the GitHub releases
+   API; dev resumed/stalled from commit activity; buzz spikes from
+   social_snapshots once the baseline exists. Deadline_missed and
+   usage_milestone have no v1 triggers and stay empty until their data
+   exists.
+3. **Computation.** Pure function `indexFor(project, asOf) -> { score,
+   components: { promises, use, code }, events }`. Promises = 60 *
+   earned/capacity from the active-methodology runs. Integer 0-100.
+   Tested like the verdict function.
+4. **UI.** Detail-page section per vision.md: 0-100 line through time,
+   weights disclosed beside it, clickable markers showing the event note
+   and evidence link. Buzz-spike markers render as context-only. The
+   section does not render until all three scoring components have real
+   inputs.
+
+Acceptance: formula matches vision.md exactly; every plotted move has a
+marker; every marker has an evidence link or a stated reason; `next build`
+clean.
+
 ## Invariants (unchanged)
 
 - Snapshots immutable; runs append-only; history never rewritten.
@@ -132,3 +164,6 @@ works, empty states honest, `next build` clean.
 3. **Legacy v0.2.0 timeline** on the detail page: remove now, or keep
    per the earlier standing rule?
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
+5. **Index gating:** the plan gates the public Index on real USE data
+   (recommendation: 25% of a 0-100 score cannot be fiction). Alternative:
+   ship provisional with a loud "USE pending" label. Which?
