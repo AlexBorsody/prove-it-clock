@@ -151,6 +151,26 @@ What we do not steal:
   market, we don't price it.
 - Prediction markets, KOL leaderboards: not our product.
 
+## Positioning: what CoinMarketCap doesn't do
+
+CMC answers "what's the price and who's talking." Nobody answers "did
+they do what they said." That is the white space, and it is structural:
+CMC's customers are exchanges and token projects, so it can never label
+anything a failure. We can.
+
+- **Promise accountability.** CMC ranks XRP near the top by market cap
+  with no mention that the MoneyGram corridor was retired and bank
+  settlement never shipped. Nobody scores delivery.
+- **Proof history.** Price charts exist everywhere. Nobody charts proof
+  earned and lost over time as promises were kept or abandoned.
+- **Hype inverted.** CMC treats buzz as a positive signal. We put buzz
+  next to proof and say "all sizzle, no steak" when the meter is empty.
+- **Verdicts.** A delivery-accountability rating (No concern through Core
+  delivery failure) is something an aggregator funded by listings can
+  never publish.
+
+One line: CoinMarketCap ranks by price. Prove-It ranks by proof.
+
 ## Data rules
 
 - Hearts are the simple public score. The Prove-It Index is the deeper 0-100 composite; it never appears on the homepage.
