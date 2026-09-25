@@ -89,11 +89,11 @@
             "core": true,
             "state": "unfulfilled",
             "effective_at": "2017-09-04T00:00:00Z",
-            "rationale": "DeFi reliance strong; enterprise record is pilots/PoCs only (SWIFT 2023, DTCC 2024, UBS/SBI 2024) \u2014 no confirmed production bank deployments.",
+            "rationale": "DeFi reliance strong; enterprise record is pilots/PoCs only (SWIFT 2023, DTCC 2024, UBS/SBI 2024), no confirmed production bank deployments.",
             "evidence": [
               {
                 "url": "https://www.coindesk.com/business/2024/05/16/dtcc-chainlink-complete-pilot-to-accelerate-fund-tokenization-with-jpmorgan-templeton-bny-mellon-participating",
-                "summary": "DTCC Smart NAV pilot 2024 \u2014 pilot, not production"
+                "summary": "DTCC Smart NAV pilot 2024, pilot, not production"
               }
             ]
           },
