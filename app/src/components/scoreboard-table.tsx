@@ -36,7 +36,7 @@ const HEADERS: Array<{ key: SortKey | null; label: string }> = [
   { key: "rank", label: "#" },
   { key: "coin", label: "Coin" },
   { key: "hearts", label: "Hearts" },
-  { key: "verdict", label: "Shitcoin score" },
+  { key: "verdict", label: "Shitcoin warning" },
   { key: "code", label: "Code" },
   { key: "use", label: "Use" },
   { key: "hype", label: "Hype" },
@@ -148,18 +148,18 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                     <span className="num">{r.earned} of {r.capacity} potential</span>
                   </td>
                   <td>
-                    <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin meter breakdown`}>
+                    <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
                       <ShitcoinMeter category={r.verdict} compact />
                     </Link>
                   </td>
                   <td>
-                    <Link href="/code" className="cell-link" title="See CODE activity ranking">
+                    <Link href="/code" className="cell-link metric-btn" title="See CODE activity ranking">
                       <CodeWordCell code={r.code} note={r.codeNote} />
                     </Link>
                   </td>
                   <td><span className="word dim">coming</span></td>
                   <td className="num">
-                    <Link href="/hype" className="cell-link" title="See HYPE ranking">
+                    <Link href="/hype" className="cell-link metric-btn" title="See HYPE ranking">
                       <HypeCell mentions={r.hypeMentions} collecting={r.hypeCollecting} />
                     </Link>
                   </td>
@@ -217,17 +217,16 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
               <div className="mcard-hearts">
                 <CompactHearts earned={r.earned} capacity={r.capacity} />
                 <span className="num mcard-count">{r.earned}/{r.capacity}</span>
-                <Link className="mcard-gauge" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin meter breakdown`}>
+                <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
                   <ShitcoinMeter category={r.verdict} compact size={42} />
                 </Link>
               </div>
               <div className="mcard-stats">
-                <Link href="/code" className="mcard-stat">
+                <Link href="/code" className="mcard-stat metric-btn">
                   {r.codeNote ? r.codeNote : `CODE ${r.code}`}
                   {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits`}
                 </Link>
-                <span className="mcard-dot" aria-hidden="true">·</span>
-                <Link href="/hype" className="mcard-stat num">
+                <Link href="/hype" className="mcard-stat metric-btn num">
                   HYPE · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions`}
                 </Link>
               </div>

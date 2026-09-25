@@ -89,25 +89,22 @@ export default function ShitcoinMeter({
     <div
       className={`shitcoin-meter${compact ? " compact" : ""}`}
       role="img"
-      aria-label={`Shitcoin meter ${score} of 10`}
-      title={`Shitcoin meter ${score}/10`}
+      aria-label={`Shitcoin warning ${score} of 10`}
+      title={`Shitcoin warning ${score}/10`}
     >
       <span className="shitcoin-gauge">
         <Dial score={score} color={color} size={dialSize} />
         {!compact && (
           <span className="shitcoin-gauge-meta">
-            <span className="shitcoin-meter-label">Shitcoin meter</span>
+            <span className="shitcoin-meter-label">Shitcoin warning</span>
           </span>
         )}
       </span>
-      {compact && <span className="shitcoin-caption">SHITCOIN</span>}
+      {compact && <span className="shitcoin-caption">SHITCOIN WARNING</span>}
       {!compact && warn && (
         <p className="shitcoin-warn">
           <Icon name="alert" size={15} />
-          <span>
-            <strong>Shitcoin warning.</strong> Documented delivery failures
-            against promises.
-          </span>
+          <span>Documented delivery failures against promises.</span>
         </p>
       )}
       {!compact && inputs && (

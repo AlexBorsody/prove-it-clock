@@ -15,7 +15,7 @@ const STEPS: Step[] = [
     anchor: ".hearts, .mcard-hearts",
   },
   {
-    title: "Shitcoin Score = what went wrong",
+    title: "Shitcoin warning = what went wrong",
     body: "Abandoned or failed promises trigger the verdict.",
     anchor: ".shitcoin-meter",
   },

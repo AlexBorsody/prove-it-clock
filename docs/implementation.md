@@ -15,21 +15,24 @@ and the vision disagree, the vision wins and the plan gets fixed.
 - CODE data: GitHub fetcher exists (`/api/vitals/[slug]`, 8 curated repos,
   6h revalidation). HYPE data: `social_snapshots` table + daily collector,
   1 week collected. USE data: none yet.
-- Working tree is clean at this plan's writing; the one partial UI pass
-  from the superseded brief was reverted.
+- UI 2026-09-25: teaching homepage (the question + four factors), mobile
+  project cards, Shitcoin warning as a 1-10 meter (number only, no category
+  labels). Every metric taps to its data: meter -> project verdict breakdown
+  ("What feeds this meter" lists each failed promise), HYPE -> /hype,
+  CODE -> /code.
 
 Current earned scores (2026-09-25, earned-only):
 
-| Project | Hearts | Promise states | Expected verdict |
+| Project | Hearts | Promise states | Meter |
 |---|---|---|---|
-| BTC | 5/20 | 3 fulfilled, 1 active | No concern |
-| ETH | 5/20 | 4 fulfilled, 1 active | No concern |
-| SOL | 5/20 | 4 fulfilled, 2 active | No concern |
-| LINK | 4/20 | 3 fulfilled, 1 active | No concern |
-| AVAX | 5/20 | 3 fulfilled, 1 active | No concern |
-| BAT | 3/10 | 2 fulfilled, 1 active | No concern |
-| XRP | 2/20 | 2 fulfilled, 1 active, 1 retired | Delivery concern |
-| DASH | 5/20 | 5 fulfilled, 1 active, 1 lapsed | Delivery concern |
+| BTC | 5/20 | 3 fulfilled, 1 active | 1 |
+| ETH | 5/20 | 4 fulfilled, 1 active | 1 |
+| SOL | 5/20 | 4 fulfilled, 2 active | 1 |
+| LINK | 4/20 | 3 fulfilled, 1 active | 1 |
+| AVAX | 5/20 | 3 fulfilled, 1 active | 1 |
+| BAT | 3/10 | 2 fulfilled, 1 active | 1 |
+| XRP | 2/20 | 2 fulfilled, 1 active, 1 retired | 7 |
+| DASH | 5/20 | 5 fulfilled, 1 active, 1 lapsed | 7 |
 
 ## Phase 0: Vision and plan (this session)
 
@@ -71,9 +74,10 @@ match the table above exactly.
 ## Phase 2: Homepage scoreboard
 
 CoinMarketCap-style dense table (vision.md): rank (# by hearts filled %),
-coin (icon + name, links to detail), hearts meter (earned-only), verdict
-badge (categorical, color-coded), CODE / USE / HYPE compact columns,
-heart-history sparkline column. Sortable by column. Compare button above
+coin (icon + name, links to detail), hearts meter (earned-only), Shitcoin
+warning dial (1-10, number only), CODE / USE / HYPE compact columns,
+Proof history sparkline column on desktop. Sortable by column. Mobile
+renders one card per project instead of the table. Compare button above
 the table opens Phase 2b.
 
 Below the table: stacked area chart of HYPE share across projects over
@@ -89,8 +93,8 @@ timestamps, no count labels.
 ## Phase 2a: HYPE leaderboard tab
 
 CMC Alpha > Socials pattern per vision.md: rows of coin, hearts, HYPE
-mentions + change vs baseline, verdict badge. Sortable by mentions and by
-hearts. Gated like all HYPE trends: absolute mentions only until 8 weeks
+mentions + change vs baseline, Shitcoin warning dial. Sortable by mentions
+and by hearts. Gated like all HYPE trends: absolute mentions only until 8 weeks
 of snapshots, then change vs baseline. No sentiment column, ever.
 
 The hype bubble (vision.md): animated bubble per project, bubble size =
@@ -106,7 +110,7 @@ Route `/compare`. Pick 2-4 projects (default 4); metrics as rows,
 projects as columns:
 
 - Hearts (compact meter + earned/capacity)
-- Verdict badge + one-liner
+- Shitcoin warning dial (1-10, number only) + one-liner
 - Promises: N fulfilled · N active · N open · N lapsed · N retired
 - CODE: activity word + commits 90d + contributors + last release
 - USE: per-project metric, or honest "coming"
@@ -126,7 +130,9 @@ cleanly.
 ## Phase 3: Detail page
 
 1. Header: CoinMarketCap-style coin header (icon, name, rank badge, big
-   hearts, verdict badge, one-line why from `verdict-lines.ts`), then the
+   hearts, Shitcoin warning dial, one-line why from `verdict-lines.ts`),
+   then the verdict inputs ("What feeds this meter": each failed promise
+   with state and core flag, or the clean/overdue note), then the
    stat strip: PROMISES / CODE / USE / HYPE per vision.md. USE stat shows
    the honest "metrics coming" state. HYPE stat shows absolute mentions +
    baseline week.
@@ -149,9 +155,9 @@ cleanly.
 6. Evidence / Methodology bottom section: sources, tracked repos, data
    coverage, methodology version, run id. Replaces the "under the hood"
    drawer (same content, visible by default).
-7. Legacy v0.2.0 timeline section: the Phase 3 build removed it; the
-   Delivery Timeline is the single timeline on the page. Pending Alex's
-   confirmation (open question 3 below).
+7. Legacy v0.2.0 timeline section: DECIDED 2026-09-25 (Alex): keep it.
+   The detail page carries both the Delivery Timeline and the legacy
+   timeline; no merge.
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
@@ -239,9 +245,8 @@ clean.
 2. **HYPE word:** once the 8-week baseline exists the word is vs
    baseline; until then, show just "collecting" or rank vs the
    cross-project median that week?
-3. **Legacy v0.2.0 timeline** on the detail page: the Phase 3 build removed
-   it, leaving the Delivery Timeline as the single timeline. Confirm this is
-   the final call, or say restore.
+3. **Legacy v0.2.0 timeline:** DECIDED 2026-09-25 (Alex): keep both
+   timelines on the detail page.
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
 5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
    waits for real USE data. No provisional scores, per the gating rule.

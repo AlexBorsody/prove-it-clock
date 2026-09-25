@@ -110,7 +110,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
               )}
             </div>
             <div className="hype-verdict">
-              <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin meter breakdown`}>
+              <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
                 <ShitcoinMeter category={r.verdict} compact size={38} />
               </Link>
               <SourceIcons sources={r.sources} />

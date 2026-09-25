@@ -40,9 +40,13 @@ function CodeTooltip({
 }) {
   if (!active || !payload || payload.length === 0) return null;
   const p = payload[0].payload;
+  const wn = typeof p.week === "string" ? parseInt(p.week, 10) : p.week;
+  const weekLabel = !isNaN(wn) && wn > 0
+    ? new Date(wn * 1000).toISOString().slice(0, 10)
+    : fmtDate(String(p.week));
   return (
     <div style={TOOLTIP_STYLE}>
-      Week of {p.week}: {p.total} commits
+      Week of {weekLabel}: {p.total} commits
     </div>
   );
 }
@@ -99,7 +103,7 @@ export default function DeliveryTimeline({
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={codeWeeks} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
                   <Tooltip content={<CodeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
-                  <Bar dataKey="total" fill="#58a6ff" />
+                  <Bar dataKey="total" fill="#58a6ff" maxBarSize={28} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -118,7 +122,7 @@ export default function DeliveryTimeline({
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={hypeData} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
                   <Tooltip content={<HypeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
-                  <Bar dataKey="mentions" fill="#f0b429" />
+                  <Bar dataKey="mentions" fill="#f0b429" maxBarSize={28} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

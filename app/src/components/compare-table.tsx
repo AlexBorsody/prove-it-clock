@@ -57,7 +57,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
     case "verdict":
       return (
         <div>
-          <Link href={`/projects/${p.slug}#verdict`} aria-label={`${p.name} Shitcoin meter breakdown`}>
+          <Link href={`/projects/${p.slug}#verdict`} aria-label={`${p.name} Shitcoin warning breakdown`} className="gauge-btn">
             <ShitcoinMeter category={p.verdict} compact size={38} />
           </Link>
           <p className="verdict-line">{p.verdictLine}</p>

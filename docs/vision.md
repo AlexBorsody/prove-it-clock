@@ -24,14 +24,17 @@ Four pillars. One of them is the score; the other three explain it.
 - **HYPE** = is anyone talking about it? Observed mention counts. Attention
   is not support and never evidence of delivery.
 
-**Shitcoin Score** = the verdict. A delivery-accountability rating, not a
-fraud or investment-risk rating. Rule-based, from promise states:
+**Shitcoin warning** = the verdict, as a 1-10 circular meter. A
+delivery-accountability rating, not a fraud or investment-risk rating. The UI
+shows the number only, never a category label. Tapping the meter opens the
+project page at the verdict section, which lists exactly what feeds it: each
+failed promise, its state, and whether it was core. Clean projects read "No
+failed promises in the record. The meter sits at 1."
 
-- **No concern**: no retired or lapsed promise on record.
-- **Watch**: reserved for verified overdue promises once deadline evidence
-  is researched. No v1 trigger.
-- **Delivery concern**: a supporting promise retired or lapsed.
-- **Core delivery failure**: the core promise retired or lapsed.
+The dial position comes from the rule-based category underneath
+(No concern / Watch / Delivery concern / Core delivery failure, from promise
+states). The 1-10 positions are fixed per category today, not a computed
+formula; a real scoring rule is an open methodology question.
 
 CODE and USE are evidence. HYPE is context. None of them move the verdict
 directly in v1.
@@ -72,30 +75,34 @@ waits on the data.
 
 ## Homepage = scoreboard (borrow the CoinMarketCap pattern)
 
-A dense, familiar, scannable table in the CoinMarketCap coin-list pattern:
-rank, coin, the score columns, sparkline. People already know how to read
-it. The difference is what we rank: proof, not price.
+The homepage teaches the product in ten seconds, then shows the ranking.
 
-Columns:
+Teaching block: the question "Did crypto projects actually deliver what they
+promised?", one line on what Prove-It tracks, and four factors: HEARTS
+(promises actually delivered), SHITCOIN WARNING (documented delivery failures),
+CODE (is development still active?), HYPE (how much attention surrounds the
+proof?). Then "Compare projects".
 
-- # (ranked by hearts filled %)
-- Coin: icon + name (links to detail page)
-- Hearts: earned / capacity meter (earned-only, green)
-- Verdict: Shitcoin Score category badge
-- CODE: one-word activity summary (Active/Quiet)
-- USE: one-word summary or "coming"
-- HYPE: mentions/week (baseline status where relevant)
-- Last 90 days: heart-history sparkline
+The scoreboard, CoinMarketCap coin-list pattern, mobile-first:
 
-Sortable by column, like CMC. Compact rows, honest with sparse scores
-(2/20 renders as 2/20, no padding, no shame). A Compare button above the
-table opens the compare view. No price column: we sit next to the market,
-we don't price it.
+- Mobile: one card per project. Coin icon, name, ticker. Compact hearts with
+  earned/capacity. Shitcoin warning dial. One stat line: CODE activity plus
+  commits, HYPE mentions. Expandable promise list. No rank number, no
+  sparkline on the card.
+- Desktop: dense table. Columns: # (ranked by hearts filled %), Coin (icon +
+  name, links to detail), Hearts (earned / capacity meter), Shitcoin warning
+  dial, CODE (activity word + commits), USE ("coming"), HYPE (mentions),
+  Proof history (heart-history sparkline). Sortable by column.
+
+Every metric is tappable and opens its data: the meter opens the project's
+verdict breakdown, HYPE opens the HYPE ranking with its sources, CODE opens
+the CODE ranking with the GitHub stats. Ranking first, metrics one tap away.
+No price column: we sit next to the market, we don't price it.
 
 ## Compare view = context
 
 Pick 2-4 projects, see them side by side. Metrics as rows, projects as
-columns: hearts, verdict + one-liner, promise counts, CODE stats, USE
+columns: hearts, shitcoin warning + one-liner, promise counts, CODE stats, USE
 metric (or "coming"), HYPE mentions + baseline status, Index (once it
 exists). Every row header links to the methodology note explaining what
 the metric means and what it does not. Numbers never appear without
@@ -104,7 +111,9 @@ their context. Entry point: a Compare button on the homepage.
 ## Detail page = why the scoreboard says what it says
 
 1. **Header.** CoinMarketCap-style coin header: icon, name, rank badge,
-   big hearts count, verdict badge, one-line why. Below it a stat strip in
+   big hearts count, Shitcoin warning dial, one-line why. The meter section
+   lists "What feeds this meter": each failed promise with its state and
+   core flag, or the clean/overdue note. Below it a stat strip in
    the CMC pattern: PROMISES (earned/capacity; N fulfilled · N active · N open · N lapsed ·
    N retired) / CODE (commits · releases · contributors, 90d; last
    release) / USE (per-project metric when defined; honest "metrics coming"
@@ -112,7 +121,8 @@ their context. Entry point: a Compare button on the homepage.
    week 9, no trend percentages before that).
 2. **Delivery Timeline.** Hearts step-line on top through time. Activity
    strip below with CODE / HYPE toggle (USE joins when its metrics exist).
-   Failed collection never renders as zero.
+   Failed collection never renders as zero. The legacy v0.2.0 timeline
+   stays on the page below it (Alex's call): both timelines, no merge.
 3. **Prove-It Index.** The 0-100 composite plotted through time, with
    clickable event markers on every meaningful move. Weights disclosed
    beside the graph. Gated on USE data (see above); the section does not
@@ -173,9 +183,8 @@ anything a failure. We can.
   earned and lost over time as promises were fulfilled, lapsed, or retired.
 - **Hype inverted.** CMC treats hype as a positive signal. We put hype
   next to proof and say "all sizzle, no steak" when the meter is empty.
-- **Verdicts.** A delivery-accountability rating (No concern through Core
-  delivery failure) is something an aggregator funded by listings can
-  never publish.
+- **Verdicts.** A 1-10 delivery-accountability meter backed by a published
+  rule is something an aggregator funded by listings can never publish.
 
 One line: CoinMarketCap ranks by price. Prove-It ranks by proof.
 

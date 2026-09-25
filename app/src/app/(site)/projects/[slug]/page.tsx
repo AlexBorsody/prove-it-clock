@@ -5,6 +5,7 @@ import {
   readHeartHistory,
   readHeartRankings,
   readHypeSnapshotsFor,
+  readHypeSnapshots,
   latestHypeBySlug,
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
@@ -127,9 +128,25 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
   const hypeCollecting = baselineWeeks < 8;
 
+  // Power-grid denominators: CODE and HYPE bars scale to the current
+  // leader across tracked projects. Vitals are cached upstream (6h), the
+  // same fetch pattern /code uses.
+  const peerVitals = await Promise.all(
+    Object.keys(VITALS_REPOS).map((ps) =>
+      ps === slug ? Promise.resolve(vitals) : fetchVitals(ps).catch(() => null)
+    )
+  );
+  const maxCommits = Math.max(1, ...peerVitals.map((v) => v?.commits90d ?? 0));
+  const allHypeSnaps = await readHypeSnapshots().catch(() => [] as any[]);
+  const hypeLeaders = latestHypeBySlug(allHypeSnaps);
+  const maxMentions = Math.max(
+    1,
+    ...Object.values(hypeLeaders).map((sn: any) => sn.news_mentions_7d ?? 0)
+  );
+
   return (
     <>
-      {/* 1. Header: icon, name, rank, big hearts, Shitcoin meter, one-liner. */}
+      {/* 1. Header: icon, name, rank, big hearts, Shitcoin warning, one-liner. */}
       <div className="panel card section-hero">
         <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <img
@@ -158,50 +175,70 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         ) : null}
       </div>
 
-      {/* 2. Stat strip: PROMISES / CODE / USE / HYPE. */}
+      {/* 2. Power grid: Marvel-card meters for PROMISES / CODE / USE / HYPE. */}
       <div className="panel">
-        <div className="stat-strip">
-          <div className="stat-cell">
-            <span className="stat-label"><Icon name="promise" size={14} /> Promises</span>
-            <span className="stat-val num">{latest.earned} of {latest.capacity} potential</span>
+        <h2>Power grid</h2>
+        <div className="power-grid">
+          <a href="#promises" className="power-row power-link">
+            <span className="power-head">
+              <span className="power-label"><Icon name="promise" size={14} /> Promises</span>
+              <span className="power-val num">{latest.earned} of {latest.capacity}</span>
+            </span>
+            <span className="power-bar" role="img" aria-label={`${Math.round(filledPct * 100)} percent of potential earned`}>
+              <span className="power-fill good" style={{ width: `${Math.round(filledPct * 100)}%` }} />
+            </span>
             <span className="cell-sub">{Math.round(filledPct * 100)}% earned</span>
-          </div>
-          <div className="stat-cell">
-            <span className="stat-label"><Icon name="code" size={14} /> Code</span>
-            <span className="stat-val num">
-              {vitals?.commits90d != null ? vitals.commits90d.toLocaleString() : "-"}
+          </a>
+          <Link href="/code" className="power-row power-link" aria-label="CODE ranking">
+            <span className="power-head">
+              <span className="power-label"><Icon name="code" size={14} /> Code</span>
+              <span className="power-val num">
+                {vitals?.commits90d != null ? vitals.commits90d.toLocaleString() : "-"}
+              </span>
+            </span>
+            <span className="power-bar" role="img" aria-label="Commits versus the most active project">
+              <span
+                className="power-fill code"
+                style={{ width: `${vitals?.commits90d != null ? Math.round((vitals.commits90d / maxCommits) * 100) : 0}%` }}
+              />
             </span>
             <span className="cell-sub">
               {vitals?.commits90d != null
-                ? <>commits in the last 90 days{repo ? " · " : ""}</>
+                ? "commits / 90d · bar scales to the leader"
                 : vitals != null && vitals.partial
                   ? "Couldn't reach GitHub"
                   : "No commit data"}
-              {repo ? (
-                <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer" className="repo-link">
-                  <GithubMark className="repo-github" /> repo
-                </a>
-              ) : null}
             </span>
-          </div>
-          <div className="stat-cell">
-            <span className="stat-label"><Icon name="use" size={14} /> Use</span>
-            <span className="stat-val"><span className="word dim">coming</span></span>
+          </Link>
+          <div className="power-row power-off">
+            <span className="power-head">
+              <span className="power-label"><Icon name="use" size={14} /> Use</span>
+              <span className="power-val"><span className="word dim">coming</span></span>
+            </span>
+            <span className="power-bar" aria-hidden="true"><span className="power-fill" style={{ width: "0%" }} /></span>
             <span className="cell-sub">intended-use metrics</span>
           </div>
-          <div className="stat-cell">
-            <span className="stat-label"><Icon name="hype" size={14} /> Hype</span>
-            <span className="stat-val num">
-              {hypeMentions != null ? hypeMentions.toLocaleString() : "-"}
+          <Link href="/hype" className="power-row power-link" aria-label="HYPE ranking">
+            <span className="power-head">
+              <span className="power-label"><Icon name="hype" size={14} /> Hype</span>
+              <span className="power-val num">
+                {hypeMentions != null ? hypeMentions.toLocaleString() : "-"}
+              </span>
+            </span>
+            <span className="power-bar" role="img" aria-label="Mentions versus the most hyped project">
+              <span
+                className="power-fill hype"
+                style={{ width: `${hypeMentions != null ? Math.round((hypeMentions / maxMentions) * 100) : 0}%` }}
+              />
             </span>
             <span className="cell-sub">
               {hypeMentions != null
                 ? hypeCollecting
-                  ? `collecting, week ${baselineWeeks}/8`
-                  : "mentions / 7d"
+                  ? `mentions / 7d · collecting, week ${baselineWeeks}/8`
+                  : "mentions / 7d · bar scales to the leader"
                 : "no data"}
             </span>
-          </div>
+          </Link>
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
           Hearts measure promises kept. CODE, USE and HYPE add context; only hearts move the meter.
@@ -218,7 +255,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 4. Promises, with machinery hidden under the hood. */}
-      <div className="panel">
+      <div className="panel" id="promises">
         <h2>Promises</h2>
         <p className="panel-sub">
           What {latest.name} promised, and what actually happened. Each kept promise earns hearts.

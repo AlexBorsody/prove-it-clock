@@ -1,12 +1,8 @@
 import Link from "next/link";
-import {
-  HEARTS_METHODOLOGY,
-  readHeartRankings,
-  codeWord,
-} from "@/lib/heart-data";
+import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import Icon from "@/components/chrome-icons";
-import { GithubMark } from "@/components/icons";
+import { GithubMark, StarIcon, ForkIcon } from "@/components/icons";
 
 export const dynamic = "force-dynamic";
 
@@ -15,11 +11,10 @@ interface CodeRow {
   name: string;
   symbol: string;
   commits90d: number | null;
-  repo: string;
-  repoLabel: string;
+  stars: number | null;
+  forks: number | null;
   repoUrl: string;
   failed: boolean;
-  status: string;
 }
 
 /**
@@ -46,20 +41,18 @@ export default async function CodePage() {
         name: p.name,
         symbol: p.symbol,
         commits90d: vitals?.commits90d ?? null,
-        repo: meta?.github ?? "",
-        repoLabel: meta?.label ?? "",
+        stars: vitals?.stars ?? null,
+        forks: vitals?.forks ?? null,
         repoUrl: meta ? `https://github.com/${meta.github}` : "",
         failed,
-        status: failed
-          ? "Couldn't reach GitHub"
-          : codeWord(vitals ? { commits90d: vitals.commits90d } : null),
       };
     })
   );
 
   rows.sort((a, b) => (b.commits90d ?? -1) - (a.commits90d ?? -1));
 
-  const maxCommits = Math.max(1, ...rows.map((r) => r.commits90d ?? 0));
+  const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
+  const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
 
   return (
     <>
@@ -88,27 +81,35 @@ export default async function CodePage() {
             {rows.map((r, i) => (
               <div key={r.slug} className="code-row">
                 <span className="code-rank num">{i + 1}</span>
-                <span className="code-coin">
-                  <Link href={`/projects/${r.slug}`} className="code-coin-link">
-                    <img
-                      src={`/icons/${r.symbol.toLowerCase()}.svg`}
-                      alt=""
-                      width={34}
-                      height={34}
-                      className="coin-icon"
-                    />
-                    <span className="code-name">{r.name}</span>
-                  </Link>
-                  <span className="code-repo num">
-                    <GithubMark className="code-github" />
-                    {r.repoUrl ? (
-                      <a href={r.repoUrl} target="_blank" rel="noreferrer">
-                        {r.repo}
-                      </a>
-                    ) : (
-                      r.repo
-                    )}
-                    {r.repoLabel ? ` · ${r.repoLabel}` : ""}
+                <Link href={`/projects/${r.slug}`} className="code-coin-link">
+                  <img
+                    src={`/icons/${r.symbol.toLowerCase()}.svg`}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="coin-icon"
+                  />
+                  <span className="code-name">{r.name}</span>
+                </Link>
+                {r.repoUrl ? (
+                  <a
+                    href={r.repoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="github-btn"
+                    aria-label={`${r.name} repo on GitHub`}
+                  >
+                    <GithubMark className="github-btn-icon" />
+                  </a>
+                ) : null}
+                <span className="code-social">
+                  <span className="code-social-row" title="Stars">
+                    <StarIcon className="code-social-icon" />
+                    <span className="num">{compact(r.stars)}</span>
+                  </span>
+                  <span className="code-social-row" title="Forks">
+                    <ForkIcon className="code-social-icon" />
+                    <span className="num">{compact(r.forks)}</span>
                   </span>
                 </span>
                 <span className="code-commits">
@@ -118,15 +119,6 @@ export default async function CodePage() {
                   <span className="cell-sub">
                     {r.failed ? "Couldn't reach GitHub" : "commits / 90d"}
                   </span>
-                </span>
-                <span className="code-bar" aria-hidden="true">
-                  <span
-                    className="code-bar-fill"
-                    style={{ width: `${Math.round(((r.commits90d ?? 0) / maxCommits) * 100)}%` }}
-                  />
-                </span>
-                <span className={`word ${r.status === "Active" ? "good" : "dim"}`}>
-                  {r.status}
                 </span>
               </div>
             ))}

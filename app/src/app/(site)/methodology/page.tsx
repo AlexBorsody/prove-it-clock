@@ -85,12 +85,15 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="alert" title="The Shitcoin Score verdict" id="verdict" alt>
+      <Section icon="alert" title="The Shitcoin warning meter" id="verdict" alt>
         <p>
-          The section keeps the name <b>Shitcoin Score</b>, but its output is a
-          category, not a number. It is a delivery-accountability rating, not a
-          fraud or investment-risk rating. The software picks the category from
-          the promise states; humans resolve ambiguous evidence.
+          The meter reads 1 to 10 and shows the number only, never a label.
+          It is a delivery-accountability rating, not a fraud or
+          investment-risk rating. Tapping it opens the project page at the
+          verdict section, which lists exactly what feeds the meter: each
+          failed promise, its state, and whether it was core. The software
+          picks the position from the promise states; humans resolve ambiguous
+          evidence.
         </p>
         <ul>
           <li>

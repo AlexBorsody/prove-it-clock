@@ -102,7 +102,7 @@ export default async function Home() {
         </span>
         <span className="hero-factor">
           <Icon name="alert" size={15} />
-          <span><strong>SHITCOIN SCORE</strong> — documented delivery failures</span>
+          <span><strong>SHITCOIN WARNING</strong> — documented delivery failures</span>
         </span>
         <span className="hero-factor">
           <Icon name="code" size={15} />
