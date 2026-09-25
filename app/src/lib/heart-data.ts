@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 /** Methodology string for the hearts instrument (claim-type rule, adopted 2026-09-25). */
-export const HEARTS_METHODOLOGY = 'hearts claim-type rule v2 (adopted 2026-09-25; time decay removed)';
+export const HEARTS_METHODOLOGY = 'hearts claim-type rule v2 (adopted 2026-09-25; time decay removed; allowance removed 2026-09-25)';
 
 /** Separate read client: prefer RLS-protected credentials over the writer key. */
 export function heartReadClient() {
@@ -46,4 +46,48 @@ export function heartQuery(request: Request) {
     return Number(raw);
   }
   return {methodology,page:integer('page',1,100000),perPage:integer('per_page',20,100)};
+}
+
+/* ------------------------------------------------------------------ */
+/* Scoreboard summary helpers (Phase 1). Pure functions, unit-tested.  */
+/* ------------------------------------------------------------------ */
+
+/** CODE activity word: commits in the last 90d across the tracked repos. */
+export type CodeWord = "Active" | "Quiet" | "Unknown";
+
+export function codeWord(vitals: { commits90d: number | null } | null): CodeWord {
+  if (!vitals || vitals.commits90d == null) return "Unknown";
+  return vitals.commits90d > 0 ? "Active" : "Quiet";
+}
+
+/** USE has no metrics yet. The slot renders "coming", never a number. */
+export function useWord(): "coming" {
+  return "coming";
+}
+
+export interface HypeSummary {
+  /** Latest 7-day news mentions, null when no snapshot exists. */
+  mentions7d: number | null;
+  /** Distinct weeks with at least one snapshot, capped at 8. */
+  baselineWeeks: number;
+  /** True until 8 complete weeks exist; no trend percentages before week 9. */
+  collecting: boolean;
+}
+
+const WEEK_MS = 7 * 24 * 3600 * 1000;
+
+export function hypeSummary(
+  snaps: { as_of: string; news_mentions_7d: number | null }[]
+): HypeSummary {
+  if (!snaps.length) return { mentions7d: null, baselineWeeks: 0, collecting: true };
+  const latest = snaps[0];
+  const weeks = new Set(
+    snaps.map((s) => Math.floor(new Date(s.as_of).getTime() / WEEK_MS))
+  );
+  const baselineWeeks = Math.min(8, weeks.size);
+  return {
+    mentions7d: latest.news_mentions_7d,
+    baselineWeeks,
+    collecting: baselineWeeks < 8,
+  };
 }
