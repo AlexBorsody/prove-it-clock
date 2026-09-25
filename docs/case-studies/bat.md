@@ -6,29 +6,31 @@
 
 ## Result
 
-**BAT 3/10.** Earned 3, allowance decayed to 0, core open (cap 9, not binding).
+**BAT 5/10.** Earned 3 (both lineages ongoing, currently active), allowance 2,
+core open (cap 9, not binding).
 
 ```
-earned    = 2 (ad loop) + 1 (creators) = 3
-allowance = max(0, 2 − 5) = 0   (A0=2; last fulfillment 2019-04-24; S≈7.4y)
-filled    = min(10, 3 + 0) = 3
+earned    = 2 (ad loop, ongoing/active) + 1 (creators, ongoing/active) = 3
+allowance = 2   (3 checks pass, capped at floor(10/5))
+filled    = min(10, 3 + 2) = 5
 ```
 
 ## Lineages
 
-| Promise | Reward | State | Key evidence |
-|---|---|---|---|
-| Users earn BAT for private opt-in ads | 2 | Fulfilled 2019-04-24 | Brave Ads launch, 70% user revenue share — [Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing) |
-| Creators/publishers earn BAT | 1 | Fulfilled 2017-10-12 | BAT Mercury launch via Uphold — [Brave](https://brave.com/blog/bat-mercury-launch/); 290k verified publishers by 2019 — [AMBCrypto](https://eng.ambcrypto.com/brave-ads-reward-over-290000-online-creators-in-bat/) |
-| BAT as a web-wide attention standard | 2 | Open | Stated aim in the [2017 whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf); not realized |
+| Promise | Type | Reward | State | Key evidence |
+|---|---|---|---|---|
+| Users earn BAT for private opt-in ads | ongoing | 2 | Active (revalidated 2026-09-25) | Brave Ads launch 2019-04-24 ([Brave](https://brave.com/blog/brave-ads-launch/), [CoinDesk](https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing)); still funded — BAT buybacks for user rewards per [BAT Roadmap 4.0](https://brave.com/blog/bat-roadmap-4-0/) |
+| Creators/publishers earn BAT | ongoing | 1 | Active (revalidated 2026-09-25) | BAT Mercury launch 2017-10-12 ([Brave](https://brave.com/blog/bat-mercury-launch/)); self-custody Solana payouts opened broadly, page updated 2026-07-16 ([Brave](https://brave.com/blog/payouts-on-solana/)) |
+| BAT as a web-wide attention standard | — | 2 | Open | Stated aim in the [2017 whitepaper](https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf); not realized |
 
 Capacity 10: advertising-sector ambition (mechanical per rubric).
 
 ## Allowance
 
-Present-tense checklist (last 12 months): working product, active team (Brave Software),
-economic activity (BAT ad buys, 2025-10-21 BAT purchase per [transparency feed](https://brave.com/transparency/)).
-Raw 3, capped at floor(10/5) = **A0 = 2** → decayed to 0 (see computation).
+Present-tense checklist (last 12 months): working product (Brave browser),
+active team (Brave Software shipping — Roadmap 4.0 in progress), economic
+activity (BAT ad buys; 2025-10-21 purchase per [transparency feed](https://brave.com/transparency/)).
+3 checks → capped at floor(10/5) = **2**.
 
 ## Judgment calls (Muse's, Alex can override)
 
@@ -36,8 +38,12 @@ Raw 3, capped at floor(10/5) = **A0 = 2** → decayed to 0 (see computation).
   Splitting the loop's three sides manufactures hearts — the adopted
   anti-subdivision rule forbids it. A second pass scored 4/10 on the split
   carving; rejected for that reason.
-- **Recency:** strict event reading = the adopted rule as written (only a new
-  fulfillment resets S). Continuous operation would give 6/10; not adopted.
+- **Claim typing:** both earning lineages are carved as **ongoing**, not
+  milestones — the promises are phrased in the present tense ("users earn",
+  "creators earn"). The hearts exist while the claim is true; if Brave ever
+  kills Rewards, they lapse visibly instead of decaying on a timer.
+- **Recency:** the old grace/decay clock is gone (killed 2026-09-25 as
+  arbitrary). Revalidation replaces it — see the 2026-09-25 evidence above.
 - **Subsidy caveat:** creator payouts were substantially funded by Brave's
   user-growth token pool, not organic ad revenue. Counts as fulfillment
   (users/creators really got BAT); disclosed here, not hidden.
