@@ -81,6 +81,15 @@ else.
 - Heart-history sparkline underneath (all published points for the active
   methodology; it fills in as runs publish)
 
+## Compare view = context
+
+Pick 2-4 projects, see them side by side. Metrics as rows, projects as
+columns: hearts, verdict + one-liner, promise counts, CODE stats, USE
+metric (or "coming"), HYPE mentions + baseline status, Index (once it
+exists). Every row header links to the methodology note explaining what
+the metric means and what it does not. Numbers never appear without
+their context. Entry point: a Compare button on the homepage.
+
 ## Detail page = why the scoreboard says what it says
 
 1. **Header.** Name, hearts, verdict badge, one-line why.

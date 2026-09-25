@@ -77,6 +77,29 @@ on the card.
 Acceptance: 8 cards, correct hearts and verdicts, sparklines render from
 published runs, no em dashes, no timestamps, no count labels.
 
+## Phase 2b: Compare view
+
+Route `/compare`. Pick 2-4 projects (default 4); metrics as rows,
+projects as columns:
+
+- Hearts (compact meter + earned/capacity)
+- Verdict badge + one-liner
+- Promises: N fulfilled · N active · N abandoned
+- CODE: activity word + commits 90d + contributors + last release
+- USE: per-project metric, or honest "coming"
+- HYPE: mentions/week + baseline status
+- Index: mini sparkline + current score (renders only when the Index
+  itself renders)
+
+Every row header links to the methodology anchor that defines the metric
+and its limits. Numbers never appear without their context. Horizontally
+scrollable on mobile; project names link to detail pages. Entry point: a
+Compare button on the homepage.
+
+Acceptance: 2-4 project selection works, all rows correct against the
+data layer, methodology links land on the right anchors, mobile scrolls
+cleanly.
+
 ## Phase 3: Detail page
 
 1. Header: name, hearts, verdict badge, one-line why (from
