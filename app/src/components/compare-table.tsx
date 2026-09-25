@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import VerdictBadge from "@/components/verdict-badge";
+import ShitcoinMeter from "@/components/shitcoin-meter";
 import HeartMeter from "@/components/heart-meter";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
@@ -57,7 +57,9 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
     case "verdict":
       return (
         <div>
-          <VerdictBadge category={p.verdict} compact />
+          <Link href={`/projects/${p.slug}#verdict`} aria-label={`${p.name} Shitcoin meter breakdown`}>
+            <ShitcoinMeter category={p.verdict} compact size={38} />
+          </Link>
           <p className="verdict-line">{p.verdictLine}</p>
         </div>
       );

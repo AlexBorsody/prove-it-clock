@@ -90,6 +90,29 @@ export default async function Home() {
   return (
     <>
       <h1 className="page-title">Prove-It</h1>
+      <p className="hero-question">Did crypto projects actually deliver what they promised?</p>
+      <p className="hero-sub">
+        Prove-It tracks promises, evidence, development and hype over time. See what
+        shipped, what failed, and whether the attention matches the substance.
+      </p>
+      <div className="hero-factors">
+        <span className="hero-factor">
+          <Icon name="heart" size={15} />
+          <span><strong>HEARTS</strong> — promises actually delivered</span>
+        </span>
+        <span className="hero-factor">
+          <Icon name="alert" size={15} />
+          <span><strong>SHITCOIN SCORE</strong> — documented delivery failures</span>
+        </span>
+        <span className="hero-factor">
+          <Icon name="code" size={15} />
+          <span><strong>CODE</strong> — is development still active?</span>
+        </span>
+        <span className="hero-factor">
+          <Icon name="hype" size={15} />
+          <span><strong>HYPE</strong> — how much attention surrounds the proof?</span>
+        </span>
+      </div>
 
       {rows.length === 0 ? (
         <div className="panel">
@@ -105,7 +128,7 @@ export default async function Home() {
         <>
           <div className="scoreboard-actions">
             <Link href="/compare" className="btn">
-              Compare projects
+              Compare projects <span aria-hidden="true">→</span>
             </Link>
           </div>
           <ScoreboardTable rows={rows} />

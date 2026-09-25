@@ -42,14 +42,6 @@ function claimLabel(t: string): string {
   return t;
 }
 
-/** One-line plain meaning of each verdict category. */
-function verdictMeaning(c: VerdictCategory): string {
-  if (c === "Shitcoin") return "a main promise failed";
-  if (c === "Shitcoin risk") return "a supporting promise failed";
-  if (c === "Watch") return "a promise is overdue and under review";
-  return "nothing failed that the evidence could confirm";
-}
-
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
@@ -78,7 +70,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   });
   const rank = ranked.findIndex((p: any) => p.slug === slug) + 1;
 
-  const verdict: VerdictCategory = verdictFor(
+  const verdictResult = verdictFor(
     promises.map((pr: any) => {
       let state = "open";
       try {
@@ -88,7 +80,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       }
       return { lineage: pr.lineage, state, core: !!pr.core };
     })
-  ).category;
+  );
+  const verdict: VerdictCategory = verdictResult.category;
+  // The exact promises feeding the meter: tap the meter, see the inputs.
+  const verdictInputs = verdictResult.failedLineages.map((lineage) => {
+    const pr = promises.find((p: any) => p.lineage === lineage);
+    return {
+      criteria: pr?.criteria ?? pr?.lineage ?? lineage,
+      state: (() => {
+        try {
+          return normalizePromiseState(pr?.state ?? "open");
+        } catch {
+          return "open";
+        }
+      })(),
+      core: !!pr?.core,
+    };
+  });
+  const verdictEmptyText =
+    verdict === "Watch"
+      ? "A promise is overdue and under review. The meter sits at 4 until the review resolves."
+      : "No failed promises in the record. The meter sits at 1.";
   const oneLiner = verdictLine(slug);
   const rationale = potentialRationale(slug);
 
@@ -138,7 +150,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
         {rationale ? <p className="potential-line">{rationale}</p> : null}
-        <ShitcoinMeter category={verdict} meaning={verdictMeaning(verdict)} />
+        <div id="verdict">
+          <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
+        </div>
         {oneLiner ? (
           <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>{oneLiner}</p>
         ) : null}

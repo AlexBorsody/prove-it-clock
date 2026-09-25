@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import VerdictBadge from "@/components/verdict-badge";
+import ShitcoinMeter from "@/components/shitcoin-meter";
 import { RedditIcon, TelegramIcon, MegaphoneIcon } from "@/components/icons";
 import type { VerdictCategory } from "@/lib/verdict";
 
@@ -110,7 +110,9 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
               )}
             </div>
             <div className="hype-verdict">
-              <VerdictBadge category={r.verdict} compact />
+              <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin meter breakdown`}>
+                <ShitcoinMeter category={r.verdict} compact size={38} />
+              </Link>
               <SourceIcons sources={r.sources} />
             </div>
           </div>

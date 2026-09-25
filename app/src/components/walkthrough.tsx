@@ -10,18 +10,23 @@ type Step = { title: string; body: string; anchor?: string };
 
 const STEPS: Step[] = [
   {
-    title: "Hearts are the accountability meter",
-    body: "Green hearts are earned per promise lineage. Hearts are lost when a promise lapses or is retired. Capacity is {5, 10, 20}.",
-    anchor: ".hearts",
+    title: "Hearts = proof delivered",
+    body: "Every heart maps to a promise and evidence.",
+    anchor: ".hearts, .mcard-hearts",
   },
   {
-    title: "The timeline shows rise and fall",
-    body: "Each point is inspectable. Abandonment appears as a visible drop, and history is never rewritten.",
-    anchor: ".heart-spark, .hearts-timeline",
+    title: "Shitcoin Score = what went wrong",
+    body: "Abandoned or failed promises trigger the verdict.",
+    anchor: ".shitcoin-meter",
   },
   {
-    title: "Evidence sits behind every heart",
-    body: "Open any project to inspect the promises and the proof linked to each heart.",
+    title: "CODE + HYPE = context",
+    body: "See whether they're still building and whether attention outruns substance.",
+    anchor: ".mcard-stats",
+  },
+  {
+    title: "Timeline = the special sauce",
+    body: "Watch credibility rise and fall as real events happen. Click through to the evidence.",
   },
 ];
 

@@ -40,7 +40,7 @@ const HEADERS: Array<{ key: SortKey | null; label: string }> = [
   { key: "code", label: "Code" },
   { key: "use", label: "Use" },
   { key: "hype", label: "Hype" },
-  { key: null, label: "Last 90 days" },
+  { key: null, label: "Proof history" },
   { key: null, label: "" },
 ];
 
@@ -148,7 +148,9 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                     <span className="num">{r.earned} of {r.capacity} potential</span>
                   </td>
                   <td>
-                    <ShitcoinMeter category={r.verdict} compact />
+                    <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin meter breakdown`}>
+                      <ShitcoinMeter category={r.verdict} compact />
+                    </Link>
                   </td>
                   <td>
                     <Link href="/code" className="cell-link" title="See CODE activity ranking">
@@ -215,23 +217,19 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
               <div className="mcard-hearts">
                 <CompactHearts earned={r.earned} capacity={r.capacity} />
                 <span className="num mcard-count">{r.earned}/{r.capacity}</span>
+                <Link className="mcard-gauge" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin meter breakdown`}>
+                  <ShitcoinMeter category={r.verdict} compact size={42} />
+                </Link>
               </div>
               <div className="mcard-stats">
-                <span className={`mcard-verdict v-${r.verdict.replace(/\s+/g, "-").toLowerCase()}`}>
-                  {r.verdict}
-                </span>
-                <span className="mcard-dot" aria-hidden="true">·</span>
                 <Link href="/code" className="mcard-stat">
                   {r.codeNote ? r.codeNote : `CODE ${r.code}`}
                   {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits`}
                 </Link>
                 <span className="mcard-dot" aria-hidden="true">·</span>
                 <Link href="/hype" className="mcard-stat num">
-                  HYPE {r.hypeMentions == null ? "-" : r.hypeMentions.toLocaleString()}
+                  HYPE · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions`}
                 </Link>
-              </div>
-              <div className="mcard-spark">
-                <HeartSparkline points={r.spark} />
               </div>
               <button
                 className={`mcard-promises-toggle${open ? " open" : ""}`}

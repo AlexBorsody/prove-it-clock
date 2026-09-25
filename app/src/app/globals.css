@@ -841,14 +841,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .factor-val .cell-sub { display: block; font-weight: 400; }
 .board-card-promises { margin-top: 10px; }
 
-/* Compact shitcoin meter: label + segments, no paragraph. */
-.shitcoin-meter.compact .shitcoin-meter-label { margin-bottom: 6px; }
-.shitcoin-meter.compact .shitcoin-segments { gap: 4px; }
-.shitcoin-meter.compact .shitcoin-seg {
-  padding: 7px 4px; font-size: 11px; border-radius: 3px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-
 /* Expandable promises (scoreboard rows and cards). */
 .expand-btn {
   background: var(--bg-raised); border: none; color: var(--text-dim);
@@ -927,26 +919,24 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .pi-tip .pi-tip-row { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
 .pi-tip .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
 
-/* ---- Shitcoin Score meter: categorical gauge, flat fills, hard edges ---- */
+/* ---- Shitcoin Score: circular 1-10 gauge ---- */
 .shitcoin-meter { margin-top: 18px; }
+.shitcoin-meter.compact { margin-top: 0; }
+.shitcoin-gauge { display: inline-flex; align-items: center; gap: 10px; }
+.shitcoin-dial { display: block; }
+.shitcoin-gauge-meta { display: flex; flex-direction: column; gap: 2px; }
 .shitcoin-meter-label {
   font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text-dim); font-weight: 700; margin-bottom: 8px;
+  color: var(--text-dim); font-weight: 700;
 }
-.shitcoin-segments { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.shitcoin-seg {
-  padding: 10px 6px; border-radius: 4px; text-align: center;
-  font-size: 12.5px; font-weight: 700; line-height: 1.3;
-  background: var(--bg-raised); color: var(--text-faint);
+.shitcoin-gauge-cat { font-size: 15px; font-weight: 800; }
+.shitcoin-warn {
+  display: flex; align-items: flex-start; gap: 8px;
+  color: var(--red); font-size: 14px; margin: 10px 0 0;
 }
-.shitcoin-seg.active.sev-ok { background: var(--green); color: #04120a; }
-.shitcoin-seg.active.sev-watch { background: #3a4152; color: #e6ebf5; }
-.shitcoin-seg.active.sev-warn { background: var(--amber); color: #1a1206; }
-.shitcoin-seg.active.sev-bad { background: var(--red); color: #ffffff; }
+.shitcoin-warn svg { flex-shrink: 0; margin-top: 1px; }
 .shitcoin-meter-meaning { font-size: 14px; color: var(--text-dim); margin: 8px 0 0; }
-@media (max-width: 420px) {
-  .shitcoin-seg { font-size: 11px; padding: 9px 4px; }
-}
+.mcard-gauge { margin-left: auto; display: inline-flex; }
 
 /* ---- Potential: one-line vision rationale under the hearts meter ---- */
 .potential-line { font-size: 13.5px; color: var(--text-dim); margin: 4px 0 0; }
@@ -1019,10 +1009,41 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .mcard-verdict.v-shitcoin-risk { color: var(--amber); }
 .mcard-verdict.v-shitcoin { color: var(--red); }
 .mcard-stat { color: var(--text-dim); text-decoration: none; font-weight: 700; }
-.mcard-spark { margin: 2px 0 8px; opacity: 0.9; }
 .mcard-promises-toggle {
   width: 100%; background: none; border: none; padding: 6px 0 0;
   color: var(--text-faint); font-size: 13px; font-weight: 700; text-align: left;
   border-top: 1px solid var(--border);
 }
 .mcard-promises { margin-top: 8px; }
+
+/* Homepage hero: teach the product in 10 seconds. */
+.hero-question {
+  font-size: 24px; font-weight: 800; color: var(--text);
+  margin: 6px 0 8px; line-height: 1.25; letter-spacing: -0.01em;
+}
+.hero-sub { font-size: 15px; color: var(--text-dim); margin: 0 0 14px; line-height: 1.5; max-width: 34em; }
+.hero-factors { display: flex; flex-direction: column; gap: 7px; margin: 0 0 16px; }
+.hero-factor { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-dim); }
+.hero-factor svg { color: var(--text-faint); flex-shrink: 0; }
+.hero-factor strong { color: var(--text); font-size: 12.5px; letter-spacing: 0.05em; }
+@media (min-width: 720px) {
+  .hero-factors { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; }
+}
+
+/* Shitcoin meter inputs: tap the meter, see exactly what feeds it. */
+.shitcoin-inputs { margin-top: 10px; }
+.shitcoin-inputs-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--text-faint); text-transform: uppercase; margin-bottom: 6px;
+}
+.shitcoin-inputs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.shitcoin-inputs-list li {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 10px;
+}
+.shitcoin-input-criteria { font-size: 13px; color: var(--text); }
+.shitcoin-input-state { font-size: 12px; font-weight: 700; color: var(--danger); white-space: nowrap; }
+.shitcoin-inputs-empty { font-size: 13px; color: var(--text-dim); margin: 0; }
+/* Tappable gauges: no link underline, keep the dial look. */
+.shitcoin-cell a, .mcard-gauge a, .hype-row a .shitcoin-meter, a.cmp-meter { text-decoration: none; display: inline-flex; }

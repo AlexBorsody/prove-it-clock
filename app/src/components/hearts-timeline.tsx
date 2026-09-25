@@ -4,6 +4,8 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   Tooltip,
@@ -55,30 +57,54 @@ function HeartsTooltip({
   );
 }
 
-/** Minimal sparkline for cards: the line only, no labels. Rises and falls at a glance. */
+/** Minimal sparkline for cards: area + line, endpoint dot on the current
+ *  value. Rises and falls at a glance; the filled area reads as history,
+ *  not decoration. */
 export function HeartSparkline({ points }: { points: HeartPoint[] }) {
   const ordered = [...points].sort((a, b) => a.as_of.localeCompare(b.as_of));
   if (ordered.length < 2) return null;
   const cap = Math.max(...ordered.map((p) => p.capacity), 1);
+  const last = ordered.length - 1;
   const data: HeartDatum[] = ordered.map((p) => ({
     date: fmtDate(p.as_of),
     filled: p.filled,
     capacity: p.capacity,
   }));
+  const first = ordered[0];
+  const latest = ordered[last];
   return (
-    <div style={{ width: "100%", height: 30 }}>
+    <div
+      style={{ width: "100%", height: 46 }}
+      role="img"
+      aria-label={`Proof history: ${first.filled} of ${first.capacity} on ${fmtDate(first.as_of)}, now ${latest.filled} of ${latest.capacity}`}
+    >
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 3, right: 3, bottom: 3, left: 3 }}>
+        <AreaChart data={data} margin={{ top: 5, right: 8, bottom: 2, left: 8 }}>
           <YAxis hide domain={[0, cap]} />
-          <Line
+          <Area
             type="monotone"
             dataKey="filled"
             stroke="#3fb950"
             strokeWidth={2}
-            dot={false}
+            fill="#3fb950"
+            fillOpacity={0.14}
             isAnimationActive={false}
+            dot={(p: any) =>
+              p.index === last ? (
+                <circle
+                  cx={p.cx}
+                  cy={p.cy}
+                  r={3.5}
+                  fill="#3fb950"
+                  stroke="#0d1117"
+                  strokeWidth={1.5}
+                />
+              ) : (
+                <g key={p.index} />
+              )
+            }
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
