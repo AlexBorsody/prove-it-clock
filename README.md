@@ -3,15 +3,16 @@
 Did the project do what it said it would? One instrument per crypto project: a
 **heart meter** (filled / capacity) plus its **history graph**. A heart remains
 earned only while the evidence condition under which it was awarded remains
-true — scores change because evidence changes, not because time passes.
+true: scores change because evidence changes, not because time passes.
 
 [Live site](https://prove-it-clock.vercel.app) · Methodology: hearts claim-type rule v2.
 
 ## Read first
 
+- [Vision](docs/vision.md): the product. Homepage = scoreboard, detail page = why.
 - [Game design](docs/game_design.md): product concept and adopted heart rules.
 - [Hearts algorithm](docs/hearts-algorithm.md): the rule, precisely.
-- [Implementation](docs/implementation.md): architecture and invariants.
+- [Implementation](docs/implementation.md): the build plan and architecture.
 - [Case studies](docs/case-studies/): BAT and XRP evidence worksheets; [review.md](docs/case-studies/review.md) records the methodology decisions.
 - [Daily logs](docs/tasks/): outcomes, decisions, verification.
 
@@ -24,7 +25,7 @@ npm run dev
 ```
 
 For DB reads, set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in ignored
-`app/.env.local`. The service-role key is for publishing runs only — never in
+`app/.env.local`. The service-role key is for publishing runs only: never in
 `NEXT_PUBLIC_*`, never in the repo.
 
 ## Checks
@@ -39,7 +40,7 @@ npm run build
 ## Publishing a run
 
 1. Write the publication document (schema v2) and validate it dry-run.
-2. Call `publish_heart_run(document)` — it validates and writes atomically, or raises.
+2. Call `publish_heart_run(document)`: it validates and writes atomically, or raises.
 3. The site serves the latest published run for the active methodology.
 
 ## Repository map

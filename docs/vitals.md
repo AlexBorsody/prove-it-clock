@@ -1,8 +1,13 @@
-# Project Vitals
+# Project Vitals: the CODE pillar
 
 Live ecosystem stats shown on each project page. **Display only.** Vitals never
-feed the hearts scoring algorithm; they are a separate signal layer that may get
-their own ranking later.
+feed the hearts scoring algorithm; they are the CODE pillar of
+[vision.md](vision.md): are they building? GitHub activity is observable
+activity, not proof of meaningful progress.
+
+The main project page shows CODE statistics only; the tracked repo list lives
+in the Evidence / Methodology section, auditable and challengeable. HYPE data
+lives in [social-pipeline.md](social-pipeline.md). USE metrics are parked.
 
 ## What is shown
 
