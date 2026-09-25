@@ -12,12 +12,13 @@ export interface SearchProject {
 }
 
 /**
- * Header project search. Fuzzy-matches name / symbol / slug with Fuse;
- * picking a result jumps to the project page. Empty query shows every
- * tracked project as a quick list.
+ * CMC-style header search: a lone icon button top-right that expands into a
+ * full-width search field. Fuzzy-matches name / symbol / slug with Fuse;
+ * picking a result jumps to the project page.
  */
 export default function ProjectSearch({ projects }: { projects: SearchProject[] }) {
   const router = useRouter();
+  const [expanded, setExpanded] = useState(false);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -39,11 +40,22 @@ export default function ProjectSearch({ projects }: { projects: SearchProject[] 
     return fuse.search(q).slice(0, 8).map((r) => r.item);
   }, [query, fuse, projects]);
 
-  function go(p: SearchProject) {
+  function expand() {
+    setExpanded(true);
+    setOpen(true);
+    setActive(0);
+    requestAnimationFrame(() => inputRef.current?.focus());
+  }
+
+  function collapse() {
+    setExpanded(false);
     setOpen(false);
     setQuery("");
     setActive(0);
-    inputRef.current?.blur();
+  }
+
+  function go(p: SearchProject) {
+    collapse();
     router.push(`/projects/${p.slug}`);
   }
 
@@ -57,13 +69,25 @@ export default function ProjectSearch({ projects }: { projects: SearchProject[] 
     } else if (e.key === "Enter") {
       if (results[active]) go(results[active]);
     } else if (e.key === "Escape") {
-      setOpen(false);
-      inputRef.current?.blur();
+      collapse();
     }
   }
 
+  if (!expanded) {
+    return (
+      <button
+        type="button"
+        className="psearch-iconbtn"
+        aria-label="Search projects"
+        onClick={expand}
+      >
+        <Icon name="search" size={20} />
+      </button>
+    );
+  }
+
   return (
-    <div className="psearch">
+    <div className="psearch psearch-expanded">
       <div className="psearch-box">
         <Icon name="search" size={17} />
         <input
@@ -87,20 +111,22 @@ export default function ProjectSearch({ projects }: { projects: SearchProject[] 
           autoComplete="off"
           enterKeyHint="go"
         />
-        {query ? (
-          <button
-            type="button"
-            className="psearch-clear"
-            aria-label="Clear search"
-            onClick={() => {
+        <button
+          type="button"
+          className="psearch-clear"
+          aria-label={query ? "Clear search" : "Close search"}
+          onClick={() => {
+            if (query) {
               setQuery("");
               setActive(0);
               inputRef.current?.focus();
-            }}
-          >
-            <Icon name="x" size={15} />
-          </button>
-        ) : null}
+            } else {
+              collapse();
+            }
+          }}
+        >
+          <Icon name="x" size={15} />
+        </button>
       </div>
       {open ? (
         <>
@@ -109,7 +135,7 @@ export default function ProjectSearch({ projects }: { projects: SearchProject[] 
             className="psearch-scrim"
             aria-hidden="true"
             tabIndex={-1}
-            onClick={() => setOpen(false)}
+            onClick={collapse}
           />
           <div className="psearch-drop" role="listbox" id="psearch-list">
             {results.length === 0 ? (

@@ -214,7 +214,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                 <CompactHearts earned={r.earned} capacity={r.capacity} />
                 <span className="num mcard-count">{r.earned}/{r.capacity}</span>
                 <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
-                  <ShitcoinMeter category={r.verdict} compact size={42} />
+                  <ShitcoinMeter category={r.verdict} compact size={38} />
                 </Link>
               </div>
               <div className="mcard-stats">

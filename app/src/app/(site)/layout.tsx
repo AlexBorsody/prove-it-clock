@@ -22,7 +22,10 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     <div className="shell">
       <header className="appbar">
-        <ProjectSearch projects={projects} />
+        <div className="appbar-inner">
+          <span className="appbar-left" aria-hidden="true" />
+          <ProjectSearch projects={projects} />
+        </div>
       </header>
       <main className="with-bottomnav">{children}</main>
       <BottomNav />

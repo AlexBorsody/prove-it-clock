@@ -61,7 +61,17 @@ a[href^="http"]::after {
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
-.psearch { position: relative; max-width: 640px; margin: 0 auto; }
+.appbar-inner { display: flex; align-items: center; gap: 8px; }
+.appbar-left { flex: 1; min-width: 0; }
+.psearch { position: relative; }
+.psearch-expanded { flex: 1; min-width: 0; }
+.psearch-iconbtn {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 12px; flex: none;
+  background: none; border: none; color: var(--text); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.psearch-iconbtn:active { transform: scale(0.92); }
 .psearch-box {
   display: flex; align-items: center; gap: 10px;
   background: var(--bg-elev); border: 1px solid var(--border);
@@ -946,7 +956,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 /* Bottom tab bar: fit four tabs at 390px. */
 @media (max-width: 420px) {
   .bottomnav { padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 2px; }
-  .bottomnav a { min-width: 0; flex: 1 1 0; padding: 8px 6px; font-size: 12px; }
+  .bottomnav a, .bottomnav .tabbtn {
+    min-width: 0; flex: 1 1 0; padding: 8px 4px; font-size: 11.5px;
+    white-space: nowrap;
+  }
 }
 
 /* Recharts dark tooltips. */
@@ -966,6 +979,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 /* ---- Shitcoin Score: circular 1-10 gauge ---- */
 .shitcoin-meter { margin-top: 18px; }
 .shitcoin-meter.compact { margin-top: 0; }
+.shitcoin-caption {
+  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-dim); font-weight: 700; white-space: nowrap;
+}
 .shitcoin-gauge { display: inline-flex; align-items: center; gap: 10px; }
 .shitcoin-dial { display: block; }
 .shitcoin-gauge-meta { display: flex; flex-direction: column; gap: 2px; }
@@ -980,7 +997,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 }
 .shitcoin-warn svg { flex-shrink: 0; margin-top: 1px; }
 .shitcoin-meter-meaning { font-size: 14px; color: var(--text-dim); margin: 8px 0 0; }
-.mcard-gauge { margin-left: auto; display: inline-flex; }
+.mcard-gauge { margin-left: auto; display: inline-flex; flex-shrink: 0; }
+.mcard-gauge .shitcoin-meter.compact {
+  display: inline-flex; flex-direction: row; align-items: center; gap: 8px;
+}
 
 /* ---- Potential: one-line vision rationale under the hearts meter ---- */
 .potential-line { font-size: 13.5px; color: var(--text-dim); margin: 4px 0 0; }
