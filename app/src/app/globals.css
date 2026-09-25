@@ -300,7 +300,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .research-table th:first-child, .research-table td:first-child { min-width: 64px; overflow-wrap: normal; }
 
 /* Hearts instrument */
-.hearts { display: inline-flex; gap: 4px; align-items: center; }
+.hearts { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
 .heart { color: var(--border-strong); display: inline-flex; }
 .heart.on { color: var(--red); }
 .px-heart { width: 1em; height: auto; display: block; shape-rendering: crispEdges; }
