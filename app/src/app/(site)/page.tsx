@@ -1,6 +1,7 @@
 import { HEARTS_METHODOLOGY, readHeartHistory, readHeartRankings } from "@/lib/heart-data";
 import HeartMeter from "@/components/heart-meter";
 import { HeartSparkline } from "@/components/hearts-timeline";
+import Icon from "@/components/chrome-icons";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +51,10 @@ export default async function Home() {
 
       {projects.length === 0 ? (
         <div className="panel">
-          <h2>No scores published</h2>
+          <h2>
+            <Icon name="inbox" size={18} style={{ marginRight: 10 }} />
+            No scores published
+          </h2>
           <p className="panel-sub" style={{ marginBottom: 0 }}>
             The heart database is not reachable or no run is published yet.
           </p>
@@ -67,10 +71,17 @@ export default async function Home() {
                   </div>
                   <div className="card-score num">{p.filled}/{p.capacity}</div>
                 </div>
-                <HeartMeter filled={p.filled} capacity={p.capacity} />
+                <HeartMeter filled={p.filled} capacity={p.capacity} allowance={p.allowance} />
                 <HeartSparkline points={histories[p.slug] ?? []} />
                 <div className="card-foot num">
-                  {p.earned} earned · {p.allowance} free · {fmtUsd(p.market_cap_usd)} mcap
+                  <Icon name="check" size={12} style={{ marginRight: 4 }} />
+                  {p.earned} earned
+                  {" · "}
+                  <Icon name="gift" size={12} style={{ marginRight: 4 }} />
+                  {p.allowance} free
+                  {" · "}
+                  <Icon name="chart" size={12} style={{ marginRight: 4 }} />
+                  {fmtUsd(p.market_cap_usd)} mcap
                 </div>
               </div>
             </a>

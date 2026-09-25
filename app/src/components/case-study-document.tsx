@@ -1,5 +1,6 @@
 import Markdown, { defaultUrlTransform } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Icon from "@/components/chrome-icons";
 import {
   CASE_STUDY_DOCUMENTS, caseStudyHref, readCaseStudy, resolveCaseStudyLink,
   type CaseStudySlug,
@@ -10,14 +11,20 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
   return (
     <main className="research">
       <aside className="research-notice" aria-label="Research status">
-        <strong>Research notes: single-analyst assessment, not a blinded replication</strong>
+        <strong>
+          <Icon name="flask" size={15} style={{ marginRight: 8 }} />
+          Research notes: single-analyst assessment, not a blinded replication
+        </strong>
         <p>Evidence was gathered by one analyst and is published for anyone to check.
           Blinded replication by an independent analyst would upgrade a score to verified.</p>
       </aside>
       <nav className="research-nav" aria-label="Case studies">
         {Object.entries(CASE_STUDY_DOCUMENTS).map(([key, document]) => (
           <a key={key} href={caseStudyHref(key as CaseStudySlug)} aria-current={key === slug ? "page" : undefined}>
-            {document.title}
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <Icon name="doc" size={13} />
+              {document.title}
+            </span>
           </a>
         ))}
       </nav>

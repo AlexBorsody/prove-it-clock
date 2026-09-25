@@ -1,4 +1,6 @@
-/** Heart meter: 8-bit pixel hearts, filled over capacity. */
+/** Heart meter: 8-bit pixel hearts, filled over capacity.
+ *  Earned hearts render green; allowance ("free") hearts render muted grey;
+ *  the rest render empty. Earned hearts come first, then allowance. */
 const ROWS = [
   ".XX.XX.",
   "XXXXXXX",
@@ -25,24 +27,35 @@ function PixelHeart() {
 export default function HeartMeter({
   filled,
   capacity,
+  allowance = 0,
   size = 22,
 }: {
   filled: number;
   capacity: number;
+  allowance?: number;
   size?: number;
 }) {
+  const free = Math.max(0, Math.min(allowance, filled));
+  const earned = filled - free;
   return (
     <span
       className="hearts"
       style={{ fontSize: size }}
       role="img"
-      aria-label={`${filled} of ${capacity} hearts`}
+      aria-label={`${filled} of ${capacity} hearts (${earned} earned, ${free} allowance)`}
     >
-      {Array.from({ length: capacity }, (_, i) => (
-        <span key={i} className={i < filled ? "heart on" : "heart"}>
-          <PixelHeart />
-        </span>
-      ))}
+      {Array.from({ length: capacity }, (_, i) => {
+        const isAllowance = i >= earned && i < filled;
+        return (
+          <span
+            key={i}
+            className={i < earned ? "heart on" : isAllowance ? "heart allowance" : "heart"}
+            style={isAllowance ? { color: "var(--text-dim)" } : undefined}
+          >
+            <PixelHeart />
+          </span>
+        );
+      })}
     </span>
   );
 }

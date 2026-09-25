@@ -2,6 +2,17 @@ export const dynamic = "force-dynamic";
 
 export const metadata = { title: "How the scoring works | Prove-It" };
 
+import Icon from "@/components/chrome-icons";
+
+function H2({ icon, children }: { icon: Parameters<typeof Icon>[0]["name"]; children: React.ReactNode }) {
+  return (
+    <h2>
+      <Icon name={icon} size={17} style={{ marginRight: 10 }} />
+      {children}
+    </h2>
+  );
+}
+
 export default function MethodologyPage() {
   return (
     <>
@@ -13,7 +24,7 @@ export default function MethodologyPage() {
       </p>
 
       <div className="panel">
-        <h2>1. List the promises</h2>
+        <H2 icon="list">1. List the promises</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           First we write down what the project actually promised, from its
           whitepaper or launch materials. Some projects have no issuer at
@@ -26,7 +37,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel section-alt">
-        <h2>2. Hearts are given for proof</h2>
+        <H2 icon="heart">2. Hearts are given for proof</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           A heart means: the project said it would do X, and here is the evidence
           it happened. Every heart links to its evidence on the project's page.
@@ -36,7 +47,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel">
-        <h2>3. Hearts can be taken away</h2>
+        <H2 icon="trending-down">3. Hearts can be taken away</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           A heart stays only while the proof stays true. If a project delivered
           something and then quit (a partnership ends, a product shuts down),
@@ -46,7 +57,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel section-alt">
-        <h2>4. Some hearts are free</h2>
+        <H2 icon="gift">4. Some hearts are free</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           A project that actually exists gets a small head start: a working
           product, a team that's still shipping, real usage tied to the promise:
@@ -56,7 +67,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel">
-        <h2>5. The meter size fits the promise</h2>
+        <H2 icon="sliders">5. The meter size fits the promise</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           Bigger promises get bigger meters: 5 for a niche product, 10 for a
           project aiming to own a sector, 20 for one trying to rewire global
@@ -66,7 +77,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel section-alt">
-        <h2>6. "Done" needs outside proof</h2>
+        <H2 icon="shield-check">6. "Done" needs outside proof</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           The project's own announcement never counts as proof. What counts: a
           working product anyone can use, a payout that can be verified, a named
@@ -75,7 +86,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel">
-        <h2>7. The last heart is special</h2>
+        <H2 icon="star">7. The last heart is special</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           Every project has one main promise: the reason it exists. Until that
           promise is actually fulfilled, the last heart on the meter stays empty.
@@ -84,7 +95,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel section-alt">
-        <h2>8. Who scored it</h2>
+        <H2 icon="person">8. Who scored it</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           Every score names the person who did the research, with their evidence
           linked. If a second researcher independently checks the work, the score
@@ -94,7 +105,7 @@ export default function MethodologyPage() {
       </div>
 
       <div className="panel" id="shitcoin-score">
-        <h2>9. The shitcoin score</h2>
+        <H2 icon="alert">9. The shitcoin score</H2>
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           One number, shown as a badge on every project: abandoned promises
           plus missing hearts. Add up the promises the project fulfilled then
@@ -119,7 +130,11 @@ export default function MethodologyPage() {
 
       <details className="panel fold">
         <summary className="fold-head">
-          Under the hood: the precise rules, for the curious
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+            <Icon name="wrench" size={15} />
+            Under the hood: the precise rules, for the curious
+            <Icon name="chevron-down" size={14} />
+          </span>
         </summary>
         <div className="fold-body">
           <p>

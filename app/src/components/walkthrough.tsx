@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Icon from "@/components/chrome-icons";
 
 const SEEN_KEY = "proveit-walkthrough-seen";
 const REPLAY_EVENT = "proveit:walkthrough";
@@ -10,7 +11,7 @@ type Step = { title: string; body: string; anchor?: string };
 const STEPS: Step[] = [
   {
     title: "Hearts are the accountability meter",
-    body: "Filled hearts over capacity ({5, 10, 20}). Earned per promise lineage, lost when a promise is abandoned.",
+    body: "Green hearts are earned per promise lineage, grey hearts are the free allowance every live project gets. Hearts are lost when a promise is abandoned. Capacity is {5, 10, 20}.",
     anchor: ".hearts",
   },
   {
@@ -161,7 +162,7 @@ export default function Walkthrough() {
           onClick={() => dismiss()}
           aria-label="Skip walkthrough"
         >
-          ✕
+          <Icon name="x" size={14} />
         </button>
         <div className="wt-step num">
           STEP {step + 1} / {STEPS.length}
@@ -171,17 +172,26 @@ export default function Walkthrough() {
         <div className="wt-actions">
           {step > 0 && (
             <button type="button" className="wt-btn ghost" onClick={() => showStep(step - 1)}>
-              Back
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                <Icon name="chevron-left" size={14} />
+                Back
+              </span>
             </button>
           )}
           {!last && (
             <button type="button" className="wt-btn primary" onClick={() => showStep(step + 1)}>
-              Next
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Next
+                <Icon name="chevron-right" size={14} />
+              </span>
             </button>
           )}
           {last && (
             <button type="button" className="wt-btn primary" onClick={() => dismiss()}>
-              Got it
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                <Icon name="check" size={14} />
+                Got it
+              </span>
             </button>
           )}
           <button type="button" className="wt-skip" onClick={() => dismiss()}>

@@ -1,4 +1,6 @@
 /** Shitcoin score badge: failed promises + heart deficit, one number. Higher is worse. */
+import Icon from "@/components/chrome-icons";
+
 export function shitcoinScore({
   promises,
   capacity,
@@ -29,6 +31,7 @@ export default function ShitcoinBadge({
       href="/methodology#shitcoin-score"
       title="Failed promises plus heart deficit. Higher is worse. Tap for the formula."
     >
+      <Icon name="alert" size={20} style={{ color: "var(--sev-color)" }} />
       <span className="shitcoin-num num">{score}</span>
       <span className="shitcoin-label">
         shitcoin
