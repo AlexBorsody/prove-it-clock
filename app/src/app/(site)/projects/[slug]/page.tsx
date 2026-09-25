@@ -159,7 +159,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </p>
           <table className="spec">
             <tbody>
-              <tr><th>Run key</th><td className="num">{latest.run_id}</td></tr>
+              <tr><th>Run ID</th><td className="num">{latest.run_id}</td></tr>
               <tr><th>Scored as of</th><td className="num">{String(latest.as_of).slice(0, 10)}</td></tr>
               <tr><th>Capacity</th><td className="num">{latest.capacity}</td></tr>
               <tr><th>Earned hearts</th><td className="num">{latest.earned}</td></tr>
