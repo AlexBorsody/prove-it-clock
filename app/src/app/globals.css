@@ -231,11 +231,12 @@ h1.page-title { font-size: 34px; margin: 0 0 6px; letter-spacing: -0.01em; }
   .score-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Trading card */
+/* Trading card: off-black neutral grey container, no stroke, no accent ring.
+   Depth comes from the drop shadow; hover lifts the background, not a border. */
 .panel.card {
-  border-color: var(--accent);
-  border-width: 1px;
-  box-shadow: 0 0 0 1px var(--accent), 0 8px 28px rgba(0, 0, 0, 0.35);
+  background: #17171a;
+  border: none;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 .stat-bars { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 12px; }
 .stat-bar {
@@ -312,29 +313,29 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 /* Hearts instrument */
 .hearts { display: inline-flex; gap: 4px; align-items: center; flex-wrap: wrap; }
 .heart { color: var(--border-strong); display: inline-flex; }
-.heart.on { color: var(--red); }
+.heart.on { color: var(--green); } /* earned trust reads green, not red */
 .px-heart { width: 1em; height: auto; display: block; shape-rendering: crispEdges; }
 .px-heart rect { fill: currentColor; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; align-items: stretch; }
 .card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
-.card-link .panel { transition: border-color .15s; height: 100%; }
-.card-link:hover .panel { border-color: var(--accent); }
+.card-link .panel { transition: background .15s; height: 100%; }
+.card-link:hover .panel.card { background: #1e1e22; }
 .card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
 .card-name { font-size: 20px; font-weight: 700; }
 .card-symbol { color: var(--text-faint); font-size: 13.5px; margin-top: 2px; }
 .card-score { font-size: 22px; font-weight: 700; color: var(--accent); }
-.panel.card .hearts { display: block; margin: 4px 0 10px; }
+.panel.card .hearts { margin: 4px 0 10px; } /* keep inline-flex + gap from .hearts */
 
 /* Hearts timeline */
 .heart-spark { width: 100%; height: 30px; display: block; margin: 2px 0 8px; }
-.heart-spark path { stroke: var(--red); }
-.heart-spark circle { fill: var(--red); }
+.heart-spark path { stroke: var(--green); }
+.heart-spark circle { fill: var(--green); }
 .hearts-timeline { width: 100%; height: auto; display: block; }
 .hearts-timeline .grid { stroke: var(--border); stroke-width: 1; }
 .hearts-timeline .axis { fill: var(--text-faint); font-size: 11px; font-family: var(--mono); }
 .hearts-timeline .axis.strong { fill: var(--text); font-weight: 700; font-size: 13px; }
-.hearts-timeline .heart-line { stroke: var(--red); stroke-width: 2.5; }
-.hearts-timeline .heart-dot { fill: var(--red); stroke: var(--bg); stroke-width: 2; }
+.hearts-timeline .heart-line { stroke: var(--green); stroke-width: 2.5; }
+.hearts-timeline .heart-dot { fill: var(--green); stroke: var(--bg); stroke-width: 2; }
 
 /* ---- first-run walkthrough ----
    Tooltip tour matching the dark terminal aesthetic. */

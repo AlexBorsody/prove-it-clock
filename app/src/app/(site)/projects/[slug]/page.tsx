@@ -18,10 +18,10 @@ function fmtUsd(v: number | null | undefined): string {
 
 function stateTag(state: string): string {
   switch (state) {
-    case "fulfilled": return "measured";
-    case "active": return "warn";
-    case "lapsed":
-    case "retired": return "na";
+    case "fulfilled": return "measured"; // proven: green
+    case "active": return "measured"; // earning hearts now: green, not amber
+    case "lapsed": return "bad"; // hearts lost: red
+    case "retired": return "na"; // ended: neutral
     default: return "bad"; // unfulfilled
   }
 }

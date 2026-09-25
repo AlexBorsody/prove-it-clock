@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "run_key": "hearts-ethsoldashavax-2013-01-01",
+  "as_of": "2013-01-01T00:00:00Z",
+  "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed)",
+  "review_status": "published",
+  "reviewed_by": "Muse (single analyst; reconstructed 2026-09-25)",
+  "policy_ref": "docs/hearts-algorithm.md + docs/case-studies/eth.md + docs/case-studies/sol.md + docs/case-studies/dash.md + docs/case-studies/avax.md (claim-type rule adopted 2026-09-25)",
+  "projects": [
+    {
+      "slug": "eth",
+      "availability": "unavailable",
+      "unavailable_reason": "Ethereum did not exist; whitepaper published November 2013.",
+      "market": null
+    },
+    {
+      "slug": "sol",
+      "availability": "unavailable",
+      "unavailable_reason": "Solana did not exist; whitepaper published November 2017.",
+      "market": null
+    },
+    {
+      "slug": "dash",
+      "availability": "unavailable",
+      "unavailable_reason": "Dash did not exist; launched as XCoin 18 January 2014.",
+      "market": null
+    },
+    {
+      "slug": "avax",
+      "availability": "unavailable",
+      "unavailable_reason": "Avalanche did not exist; whitepaper published May 2018.",
+      "market": null
+    }
+  ]
+}
