@@ -51,9 +51,10 @@ export default async function Home() {
       </div>
       <h1 className="page-title">Prove-It</h1>
       <p className="page-sub">
-        Did the project do what it said it would? A heart means the project proved
-        something it promised. If the proof goes away, so does the heart — the graph
-        shows the whole story, rises and falls included.
+        Crypto runs on hype. Prove-It shows what's real. Every token has a
+        market price — we measure what the project actually proved it could do,
+        promise by promise, with the evidence linked. Compare the proof against
+        the price, and decide for yourself.
       </p>
 
       {projects.length === 0 ? (
