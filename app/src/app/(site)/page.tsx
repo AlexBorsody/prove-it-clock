@@ -1,6 +1,7 @@
 import { HEARTS_METHODOLOGY, readHeartHistory, readHeartRankings } from "@/lib/heart-data";
 import HeartMeter from "@/components/heart-meter";
 import { HeartSparkline } from "@/components/hearts-timeline";
+import ShitcoinBadge, { shitcoinScore } from "@/components/shitcoin-badge";
 import Icon from "@/components/chrome-icons";
 
 export const dynamic = "force-dynamic";
@@ -25,19 +26,40 @@ export default async function Home() {
   }
 
   // Sparkline histories: rises and falls are the product, so they belong on the cards.
+  // Also keep each project's latest full point so we can compute its shitcoin score.
   const histories: Record<string, { as_of: string; filled: number; capacity: number }[]> = {};
+  const latestBySlug: Record<string, any> = {};
   await Promise.all(
     projects.map(async (p) => {
       try {
         const h = await readHeartHistory(p.slug, HEARTS_METHODOLOGY, 1, 100);
-        histories[p.slug] = (h.points ?? [])
-          .filter((pt: any) => pt.availability === "available")
-          .map((pt: any) => ({ as_of: pt.as_of, filled: pt.filled, capacity: pt.capacity }));
+        const pts = (h.points ?? []).filter((pt: any) => pt.availability === "available");
+        histories[p.slug] = pts.map((pt: any) => ({ as_of: pt.as_of, filled: pt.filled, capacity: pt.capacity }));
+        latestBySlug[p.slug] = pts[0] ?? null;
       } catch {
         histories[p.slug] = [];
+        latestBySlug[p.slug] = null;
       }
     })
   );
+
+  const shitcoinBySlug: Record<string, number | null> = {};
+  for (const p of projects) {
+    const latest = latestBySlug[p.slug];
+    const pts = histories[p.slug] ?? [];
+    if (!latest || !pts.length) {
+      shitcoinBySlug[p.slug] = null;
+      continue;
+    }
+    const promises: any[] = latest.assessment?.promises ?? [];
+    const peak = Math.max(...pts.map((pt) => pt.filled));
+    shitcoinBySlug[p.slug] = shitcoinScore({
+      promises,
+      capacity: latest.capacity,
+      filled: latest.filled,
+      peak,
+    });
+  }
 
   return (
     <>
@@ -82,6 +104,11 @@ export default async function Home() {
                 </div>
                 <HeartMeter filled={p.filled} capacity={p.capacity} allowance={p.allowance} />
                 <HeartSparkline points={histories[p.slug] ?? []} />
+                {shitcoinBySlug[p.slug] != null ? (
+                  <div style={{ margin: "2px 0 10px" }}>
+                    <ShitcoinBadge score={shitcoinBySlug[p.slug] as number} capacity={p.capacity} compact noLink />
+                  </div>
+                ) : null}
                 <div className="card-foot num">
                   <Icon name="check" size={12} style={{ marginRight: 4 }} />
                   {p.earned} earned

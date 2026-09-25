@@ -438,6 +438,12 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .shitcoin-badge.sev-ok { --sev-color: var(--green); }
 .shitcoin-badge.sev-warn { --sev-color: var(--amber); }
 .shitcoin-badge.sev-bad { --sev-color: var(--red); }
+/* Compact variant for home cards: single-line, tighter. */
+.shitcoin-badge.compact {
+  gap: 8px; padding: 6px 10px; border-radius: 10px; border-left-width: 4px;
+}
+.shitcoin-badge.compact .shitcoin-num { font-size: 20px; }
+.shitcoin-badge.compact .shitcoin-label { font-size: 9px; }
 
 /* ---- icons: Octicons + brand marks, always currentColor ---- */
 .icon { display: inline-block; vertical-align: -2px; flex-shrink: 0; }
