@@ -27,7 +27,7 @@ export default function BottomNav() {
             className={active ? "active" : undefined}
             aria-current={active ? "page" : undefined}
           >
-            <Icon name={t.icon} size={20} />
+            <Icon name={t.icon} size={22} />
             <span>{t.label}</span>
           </Link>
         );

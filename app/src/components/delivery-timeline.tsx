@@ -1,47 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  Tooltip,
+} from "recharts";
 import HeartsTimeline, { type HeartPoint } from "@/components/hearts-timeline";
 
 /**
- * Delivery Timeline: hearts through time, with optional CODE and HYPE
- * activity strips. The USE toggle stays hidden until USE metrics exist.
- * Activity strips are display only; they never change the hearts.
+ * Delivery Timeline: hearts through time, with CODE and HYPE activity
+ * strips always shown below. Activity strips are display only; they never
+ * change the hearts.
  */
 
 export interface CodeWeek { week: string; total: number }
 export interface HypePoint { as_of: string; mentions: number }
 
-function Bars({
-  values,
-  label,
-  color,
+function fmtDate(iso: string): string {
+  const d = new Date(iso);
+  return isNaN(d.getTime()) ? iso.slice(0, 10) : d.toISOString().slice(0, 10);
+}
+
+const TOOLTIP_STYLE = {
+  background: "#151c28",
+  border: "1px solid #2d3a4f",
+  borderRadius: 6,
+  color: "#e6edf3",
+  fontSize: 14,
+  padding: "6px 10px",
+};
+
+function CodeTooltip({
+  active,
+  payload,
 }: {
-  values: number[];
-  label: string;
-  color: string;
+  active?: boolean;
+  payload?: Array<{ payload: CodeWeek }>;
 }) {
-  const max = Math.max(1, ...values);
-  const W = 720;
-  const H = 64;
-  const bw = W / values.length;
+  if (!active || !payload || payload.length === 0) return null;
+  const p = payload[0].payload;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="activity-bars" role="img" aria-label={label}>
-      {values.map((v, i) => {
-        const h = Math.max(2, (v / max) * (H - 6));
-        return (
-          <rect
-            key={i}
-            x={i * bw + 0.5}
-            y={H - h}
-            width={Math.max(1, bw - 1)}
-            height={h}
-            fill={color}
-            opacity={0.85}
-          />
-        );
-      })}
-    </svg>
+    <div style={TOOLTIP_STYLE}>
+      Week of {p.week}: {p.total} commits
+    </div>
+  );
+}
+
+function HypeTooltip({
+  active,
+  payload,
+}: {
+  active?: boolean;
+  payload?: Array<{ payload: { date: string; mentions: number } }>;
+}) {
+  if (!active || !payload || payload.length === 0) return null;
+  const p = payload[0].payload;
+  return (
+    <div style={TOOLTIP_STYLE}>
+      {p.date}: {p.mentions} mentions
+    </div>
   );
 }
 
@@ -54,54 +72,61 @@ export default function DeliveryTimeline({
   codeWeeks: CodeWeek[] | null;
   hypePoints: HypePoint[];
 }) {
-  const [showCode, setShowCode] = useState(false);
-  const [showHype, setShowHype] = useState(false);
+  const hypeData = hypePoints.map((p) => ({
+    date: fmtDate(p.as_of),
+    mentions: p.mentions,
+  }));
 
   return (
     <div>
-      <div className="tl-toggles" role="group" aria-label="Timeline activity overlays">
-        <span>Overlays</span>
-        <button
-          className={showCode ? "active" : undefined}
-          onClick={() => setShowCode((v) => !v)}
-          aria-pressed={showCode}
-        >
-          CODE activity
-        </button>
-        <button
-          className={showHype ? "active" : undefined}
-          onClick={() => setShowHype((v) => !v)}
-          aria-pressed={showHype}
-        >
-          HYPE activity
-        </button>
-      </div>
-
       <HeartsTimeline points={hearts} />
 
-      {showCode ? (
-        <div className="tl-strip">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: 16,
+          marginTop: 16,
+        }}
+      >
+        <div className="tl-card">
           <h3>CODE activity</h3>
-          <p className="panel-sub">Commits per week on the tracked repo, last 52 weeks. Display only.</p>
+          <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>
+            Commits per week on the tracked repo. Display only, it never changes the hearts.
+          </p>
           {codeWeeks && codeWeeks.length > 0 ? (
-            <Bars values={codeWeeks.map((w) => w.total)} label="Commits per week" color="var(--blue)" />
+            <div style={{ width: "100%", height: 120 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={codeWeeks} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
+                  <Tooltip content={<CodeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
+                  <Bar dataKey="total" fill="#58a6ff" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           ) : (
             <p className="tl-note">No commit data available for this project.</p>
           )}
         </div>
-      ) : null}
 
-      {showHype ? (
-        <div className="tl-strip">
+        <div className="tl-card">
           <h3>HYPE activity</h3>
-          <p className="panel-sub">7-day news mentions per snapshot. Attention, not endorsement.</p>
+          <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>
+            News mentions per snapshot. Attention, not endorsement.
+          </p>
           {hypePoints.length >= 2 ? (
-            <Bars values={hypePoints.map((p) => p.mentions)} label="News mentions per snapshot" color="var(--accent)" />
+            <div style={{ width: "100%", height: 120 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={hypeData} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
+                  <Tooltip content={<HypeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
+                  <Bar dataKey="mentions" fill="#f0b429" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           ) : (
-            <p className="tl-note">Collecting HYPE snapshots. Activity draws once more than one snapshot day exists.</p>
+            <p className="tl-note">Collecting HYPE snapshots.</p>
           )}
         </div>
-      ) : null}
+      </div>
     </div>
   );
 }

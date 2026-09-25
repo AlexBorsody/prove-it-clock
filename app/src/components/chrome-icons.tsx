@@ -35,7 +35,12 @@ export type ChromeIconName =
   | "person"
   | "list"
   | "wrench"
-  | "inbox";
+  | "inbox"
+  | "promise"
+  | "code"
+  | "use"
+  | "hype"
+  | "external";
 
 const PATHS: Record<ChromeIconName, ReactNode> = {
   grid: (
@@ -151,6 +156,31 @@ const PATHS: Record<ChromeIconName, ReactNode> = {
     <>
       <path d="M2.5 9.5h11v3a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1z" />
       <path d="M3.5 9.5L4.9 4a1 1 0 0 1 .97-.75h4.26a1 1 0 0 1 .97.75l1.4 5.5" />
+    </>
+  ),
+  promise: (
+    <path d="M8 13.75C4.6 10.8 2.75 8.6 2.75 6.1A2.85 2.85 0 0 1 5.6 3.25c.95 0 1.8.5 2.4 1.3.6-.8 1.45-1.3 2.4-1.3a2.85 2.85 0 0 1 2.85 2.85c0 2.5-1.85 4.7-5.25 7.65z" />
+  ),
+  code: (
+    <>
+      <path d="M6 5L2.75 8 6 11" />
+      <path d="M10 5l3.25 3L10 11" />
+    </>
+  ),
+  use: (
+    <path d="M2 8.5h2.5l1.75-4 3 7 1.75-3H14" />
+  ),
+  hype: (
+    <>
+      <path d="M3 10.5v-5a1 1 0 0 1 1-1h2.6l4.9-2.7a.5.5 0 0 1 .75.43v8.54a.5.5 0 0 1-.75.43L6.6 8.5H4a1 1 0 0 1-1-1z" />
+      <path d="M2.5 9.5v1" />
+    </>
+  ),
+  external: (
+    <>
+      <path d="M6.5 3.5H3.5v9h9V9.5" />
+      <path d="M9.5 3.5h3v3" />
+      <path d="M12.5 3.5L7.5 8.5" />
     </>
   ),
 };

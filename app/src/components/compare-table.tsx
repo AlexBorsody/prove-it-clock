@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import VerdictBadge from "@/components/verdict-badge";
+import HeartMeter from "@/components/heart-meter";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
 
@@ -16,7 +17,7 @@ export interface CompareProject {
   verdict: VerdictCategory;
   verdictLine: string;
   promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number };
-  code: { word: CodeWord; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null };
+  code: { word: CodeWord; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null; unreachable: boolean };
   use: "coming";
   hype: { mentions: number | null; collecting: boolean; baselineWeeks: number };
 }
@@ -43,11 +44,12 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
     case "hearts":
       return (
         <div>
-          <div className="mini-meter" style={{ marginBottom: 6 }}>
+          <HeartMeter filled={p.earned} capacity={p.capacity} allowance={0} size={15} />
+          <div className="mini-meter" style={{ marginBottom: 6, marginTop: 8 }}>
             <div className="mini-meter-track">
               <div className="mini-meter-fill" style={{ width: `${Math.round(p.filledPct * 100)}%` }} />
             </div>
-            <span className="num mini-meter-val">{p.earned}/{p.capacity}</span>
+            <span className="num mini-meter-val">{p.earned} of {p.capacity} potential</span>
           </div>
           <span className="cell-sub">{Math.round(p.filledPct * 100)}% filled</span>
         </div>
@@ -62,15 +64,22 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
     case "promises": {
       const c = p.promiseCounts;
       return (
-        <div className="num" style={{ fontSize: 13 }}>
+        <div className="num" style={{ fontSize: 14 }}>
           <div><b>{c.total}</b> tracked</div>
-          <span className="cell-sub">
-            {c.fulfilled} fulfilled · {c.active} active · {c.open} open · {c.lapsed} lapsed · {c.retired} retired
-          </span>
+          <div className="mini-tags">
+            {c.fulfilled > 0 ? <span className="tag measured">{c.fulfilled} fulfilled</span> : null}
+            {c.active > 0 ? <span className="tag na">{c.active} active</span> : null}
+            {c.open > 0 ? <span className="tag na">{c.open} open</span> : null}
+            {c.lapsed > 0 ? <span className="tag bad">{c.lapsed} lapsed</span> : null}
+            {c.retired > 0 ? <span className="tag bad">{c.retired} retired</span> : null}
+          </div>
         </div>
       );
     }
     case "code": {
+      if (p.code.unreachable) {
+        return <span className="word dim">Couldn&apos;t reach GitHub</span>;
+      }
       const word = p.code.word === "Active" ? <span className="word good">Active</span>
         : p.code.word === "Quiet" ? <span className="word dim">Quiet</span>
         : <span className="word dim">-</span>;
@@ -78,7 +87,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
         <div>
           {word}
           <span className="cell-sub">
-            {p.code.commits90d != null ? `${p.code.commits90d} commits / 90d` : "commits unknown"}
+            {p.code.commits90d != null ? `${p.code.commits90d} commits / 90d` : "No commit data"}
           </span>
           <span className="cell-sub">
             {p.code.lastCommitAt ? `last commit ${fmtDate(p.code.lastCommitAt)}` : "last commit unknown"}
@@ -132,8 +141,9 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
     .filter((p): p is CompareProject => !!p);
 
   return (
-    <div>
-      <div className="compare-picker" role="group" aria-label="Choose projects to compare">
+    <>
+      <div className="panel">
+        <div className="compare-picker" role="group" aria-label="Choose projects to compare">
         {projects.map((p) => {
           const on = selected.includes(p.slug);
           const disabled = !on && selected.length >= MAX_SEL;
@@ -151,6 +161,7 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
             </button>
           );
         })}
+        </div>
       </div>
       <div className="table-wrap">
         <table className="board compare">
@@ -190,6 +201,6 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }

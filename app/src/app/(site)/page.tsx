@@ -62,6 +62,12 @@ export default async function Home() {
           promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
         ).category,
         code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
+        codeNote:
+          vitals == null
+            ? "No commit data"
+            : vitals.commits90d == null && vitals.partial
+              ? "Couldn't reach GitHub"
+              : null,
         use: useWord(),
         hypeMentions: latest?.news_mentions_7d ?? null,
         hypeCollecting: baselineWeeks < 8,
@@ -99,9 +105,8 @@ export default async function Home() {
           <ScoreboardTable rows={rows} />
           <div className="panel" style={{ marginTop: 18 }}>
             <h2>HYPE share</h2>
-            <p className="panel-sub">
-              Each project's slice of observed HYPE (7-day news mentions) over
-              time. Attention, not endorsement.
+            <p className="explain">
+              Each project's slice of observed attention over time. Attention, not endorsement.
             </p>
             <HypeShareChart snapshots={hypeSnaps} names={names} />
           </div>

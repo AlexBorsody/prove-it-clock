@@ -167,7 +167,7 @@ export default function TimelineSvg({
   if (codes.length === 0) {
     const eventCount = body.events.length;
     return (
-      <div style={{ fontSize: 13, lineHeight: 1.5, color: p.dim }}>
+      <div style={{ fontSize: 14, lineHeight: 1.5, color: p.dim }}>
         <p style={{ margin: "0 0 8px" }}>
           <b style={{ color: p.text }}>No scored history.</b> No verified
           snapshot history exists for this project. It is explicitly
@@ -309,7 +309,7 @@ export default function TimelineSvg({
         )}
       </svg>
 
-      <div style={{ marginTop: 8, fontSize: 12, color: p.dim, display: "flex", flexWrap: "wrap", gap: "4px 14px", alignItems: "center" }}>
+      <div style={{ marginTop: 8, fontSize: 13, color: p.dim, display: "flex", flexWrap: "wrap", gap: "4px 14px", alignItems: "center" }}>
         {codes.map((code) => (
           <span
             key={code}

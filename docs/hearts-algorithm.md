@@ -37,8 +37,10 @@ Time-based decay is deliberately absent: no grace period, no per-year drain.
 ## Per-project inputs (analyst-set, rationale required, versioned)
 
 **Capacity**: tier nearest the ambition: **20** = rewire global infrastructure;
-**10** = own a sector; **5** = niche or single-application promise.
-
+**10** = own a sector; **5** = niche or single-application promise. The tier
+is assigned from the project's stated vision when its promises are first
+carved, and the vision rationale is recorded in the case study. Capacity is
+never a default: no project gets 20 by default.
 **Starting allowance** `A0`: REMOVED 2026-09-25. Was: count 0/1 on each, capped at `MAX_ALLOWANCE`:
 - working product used for its stated purpose, last 12 months
 - identifiable team/entity actively shipping, last 12 months

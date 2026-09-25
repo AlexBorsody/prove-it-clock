@@ -5,9 +5,10 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "10.1.0",
+    "recharts": "^3.10.1",
     "remark-gfm": "4.0.1"
   },
-  "description": "The Prove-It Clock \u2014 evidence-driven crypto accountability. Measures the distance between crypto's promises and reality.",
+  "description": "The Prove-It Clock — evidence-driven crypto accountability. Measures the distance between crypto's promises and reality.",
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",
     "@types/node": "^20.0.0",

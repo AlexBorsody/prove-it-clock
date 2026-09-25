@@ -81,7 +81,7 @@ export default function TimelineChart({ slug }: { slug: string }) {
 
       {selectedEvent && (
         <div className="panel" style={{ marginTop: 12, marginBottom: 0, padding: "12px 14px" }}>
-          <div className="num" style={{ color: "var(--text-faint)", fontSize: 12 }}>
+          <div className="num" style={{ color: "var(--text-faint)", fontSize: 13 }}>
             {selectedEvent.date} · {selectedEvent.type.replace(/_/g, " ")}
           </div>
           <div style={{ fontWeight: 700, margin: "4px 0" }}>{selectedEvent.title}</div>

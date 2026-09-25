@@ -51,7 +51,7 @@ function shell(p: TimelinePalette, w: number, h: number, children: React.ReactNo
         background: p.bg,
         color: p.text,
         fontFamily: SANS,
-        fontSize: 13,
+        fontSize: 14,
         lineHeight: 1.5,
         width: w,
         minHeight: h,
@@ -77,7 +77,7 @@ function credit(p: TimelinePalette, slug: string) {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "baseline",
-        fontSize: 11,
+        fontSize: 12,
         color: p.faint,
       }}
     >
@@ -148,7 +148,7 @@ export default async function EmbedTimelinePage({
               marginTop: 4,
               display: "inline-block",
               fontFamily: MONO,
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               letterSpacing: "0.06em",
               color: p.accent,
@@ -175,7 +175,7 @@ export default async function EmbedTimelinePage({
         <div style={{ fontWeight: 700, fontSize: 14 }}>
           {body.name} <span style={{ color: p.faint, fontWeight: 400 }}>score history</span>
         </div>
-        <div style={{ fontFamily: MONO, fontSize: 11, color: p.faint }}>
+        <div style={{ fontFamily: MONO, fontSize: 12, color: p.faint }}>
           v{ACTIVE_METHODOLOGY_VERSION}
         </div>
       </div>

@@ -71,6 +71,7 @@ export default async function ComparePage() {
           commits90d: vitals?.commits90d ?? null,
           lastCommitAt: vitals?.lastCommitAt ?? null,
           openPRs: vitals?.openPRs ?? null,
+          unreachable: vitals != null && vitals.commits90d == null && vitals.partial,
         },
         use: useWord(),
         hype: {

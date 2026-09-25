@@ -73,6 +73,10 @@ export default async function HypePage() {
         <>
           <div className="panel" style={{ marginBottom: 18 }}>
             <h2>Hype bubbles</h2>
+            <p className="explain">
+              HYPE is attention, not quality: bigger bubble means more crypto news mentions this week.
+              "Collecting, week N/8" means the baseline is still being built. It never changes the heart score.
+            </p>
             <p className="panel-sub">
               Bubble size is absolute 7-day news mentions. The green fill is
               hearts earned, the substance behind the noise.

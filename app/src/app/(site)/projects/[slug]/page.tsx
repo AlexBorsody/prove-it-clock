@@ -7,16 +7,16 @@ import {
   readHypeSnapshotsFor,
   latestHypeBySlug,
   hypeBaselineWeeks,
-  codeWord,
-  useWord,
 } from "@/lib/heart-data";
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../../data/verdict-lines";
+import { potentialRationale } from "../../../../../data/potential";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import HeartMeter from "@/components/heart-meter";
-import VerdictBadge from "@/components/verdict-badge";
+import ShitcoinMeter from "@/components/shitcoin-meter";
 import DeliveryTimeline from "@/components/delivery-timeline";
+import Icon from "@/components/chrome-icons";
 
 export const dynamic = "force-dynamic";
 
@@ -41,25 +41,12 @@ function claimLabel(t: string): string {
   return t;
 }
 
-/** Delivery-health gauge: hearts-filled percentage as a semicircle arc. Never sentiment. */
-function DeliveryGauge({ pct }: { pct: number }) {
-  const R = 80;
-  const L = Math.PI * R;
-  const frac = Math.max(0, Math.min(1, pct));
-  return (
-    <svg viewBox="0 0 200 112" className="gauge" role="img" aria-label={`Delivery health ${Math.round(frac * 100)} percent`}>
-      <path d="M 20,100 A 80,80 0 0 1 180,100" fill="none" stroke="var(--bg-raised)" strokeWidth={14} strokeLinecap="round" />
-      <path
-        d="M 20,100 A 80,80 0 0 1 180,100"
-        fill="none"
-        stroke="var(--green)"
-        strokeWidth={14}
-        strokeLinecap="round"
-        strokeDasharray={`${(frac * L).toFixed(1)} ${L.toFixed(1)}`}
-      />
-      <text x={100} y={88} textAnchor="middle" className="gauge-num num">{Math.round(frac * 100)}%</text>
-    </svg>
-  );
+/** One-line plain meaning of each verdict category. */
+function verdictMeaning(c: VerdictCategory): string {
+  if (c === "Core delivery failure") return "a main promise failed";
+  if (c === "Delivery concern") return "a supporting promise failed";
+  if (c === "Watch") return "a promise is overdue and under review";
+  return "nothing failed that the evidence could confirm";
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -102,10 +89,20 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     })
   ).category;
   const oneLiner = verdictLine(slug);
+  const rationale = potentialRationale(slug);
+
+  // Delivery health: kept vs in play vs failed promises, shown as a bar.
+  const health = { kept: 0, inPlay: 0, failed: 0 };
+  for (const pr of promises) {
+    const tone = promiseDisplay(pr).tone;
+    if (tone === "good") health.kept++;
+    else if (tone === "bad") health.failed++;
+    else health.inPlay++;
+  }
+  const healthTotal = health.kept + health.inPlay + health.failed;
 
   const hypeLatest = latestHypeBySlug(hypeSnaps)[slug];
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
-  const code = codeWord(vitals ? { commits90d: vitals.commits90d } : null);
   const repo = VITALS_REPOS[slug];
 
   const heartPoints = available.map((p: any) => ({ as_of: p.as_of, filled: p.earned, capacity: p.capacity }));
@@ -114,16 +111,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     .filter((s: any) => s.news_mentions_7d != null)
     .map((s: any) => ({ as_of: s.as_of, mentions: s.news_mentions_7d as number }));
 
+  const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
+  const hypeCollecting = baselineWeeks < 8;
+
   return (
     <>
-      <div className="meta-line">
-        PROJECT <b>{latest.symbol}</b>
-        {rank > 0 ? <> · RANK <b className="num">#{rank}</b></> : null}
-      </div>
-
-      {/* Header: icon, name, rank, big hearts, verdict. */}
+      {/* 1. Header: icon, name, rank, big hearts, Shitcoin meter, one-liner. */}
       <div className="panel card section-hero">
-        <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <img
             src={`/icons/${latest.symbol.toLowerCase()}.svg`}
             alt=""
@@ -132,81 +127,104 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             className="coin-icon"
           />
           {latest.name}
+          <span className="coin-symbol">{latest.symbol}</span>
+          {rank > 0 ? <span className="rank-chip num">#{rank}</span> : null}
         </h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} allowance={0} size={34} />
           <div className="num" style={{ fontSize: 28, fontWeight: 700 }}>
-            {latest.earned}<span style={{ color: "var(--text-faint)", fontSize: 18 }}>/{latest.capacity}</span>
+            {latest.earned}<span style={{ color: "var(--text-faint)", fontSize: 20 }}> of {latest.capacity} potential</span>
           </div>
-          <VerdictBadge category={verdict} />
         </div>
+        {rationale ? <p className="potential-line">{rationale}</p> : null}
+        <ShitcoinMeter category={verdict} meaning={verdictMeaning(verdict)} />
         {oneLiner ? (
           <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>{oneLiner}</p>
         ) : null}
       </div>
 
-      {/* Stat strip: PROMISES / CODE / USE / HYPE. */}
-      <div className="stat-strip">
-        <div className="stat-cell">
-          <span className="stat-label">Promises</span>
-          <span className="stat-val num">{latest.earned}/{latest.capacity}</span>
-          <span className="cell-sub">{Math.round(filledPct * 100)}% hearts earned</span>
+      {/* 2. Stat strip: PROMISES / CODE / USE / HYPE. */}
+      <div className="panel">
+        <div className="stat-strip">
+          <div className="stat-cell">
+            <span className="stat-label"><Icon name="promise" size={14} /> Promises</span>
+            <span className="stat-val num">{latest.earned} of {latest.capacity} potential</span>
+            <span className="cell-sub">{Math.round(filledPct * 100)}% earned</span>
+          </div>
+          <div className="stat-cell">
+            <span className="stat-label"><Icon name="code" size={14} /> Code</span>
+            <span className="stat-val num">
+              {vitals?.commits90d != null ? vitals.commits90d.toLocaleString() : "-"}
+            </span>
+            <span className="cell-sub">
+              {vitals?.commits90d != null
+                ? <>commits in the last 90 days{repo ? " · " : ""}</>
+                : vitals != null && vitals.partial
+                  ? "Couldn't reach GitHub"
+                  : "No commit data"}
+              {repo ? (
+                <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer">repo</a>
+              ) : null}
+            </span>
+          </div>
+          <div className="stat-cell">
+            <span className="stat-label"><Icon name="use" size={14} /> Use</span>
+            <span className="stat-val"><span className="word dim">coming</span></span>
+            <span className="cell-sub">intended-use metrics</span>
+          </div>
+          <div className="stat-cell">
+            <span className="stat-label"><Icon name="hype" size={14} /> Hype</span>
+            <span className="stat-val num">
+              {hypeMentions != null ? hypeMentions.toLocaleString() : "-"}
+            </span>
+            <span className="cell-sub">
+              {hypeMentions != null
+                ? hypeCollecting
+                  ? `collecting, week ${baselineWeeks}/8`
+                  : "mentions / 7d"
+                : "no data"}
+            </span>
+          </div>
         </div>
-        <div className="stat-cell">
-          <span className="stat-label">Code</span>
-          <span className="stat-val">
-            {code === "Active" ? <span className="word good">Active</span>
-              : code === "Quiet" ? <span className="word dim">Quiet</span>
-              : <span className="word dim">-</span>}
-          </span>
-          <span className="cell-sub">
-            {vitals?.commits90d != null ? `${vitals.commits90d} commits / 90d` : "activity unknown"}
-          </span>
-        </div>
-        <div className="stat-cell">
-          <span className="stat-label">Use</span>
-          <span className="stat-val"><span className="word dim">{useWord()}</span></span>
-          <span className="cell-sub">intended-use metrics</span>
-        </div>
-        <div className="stat-cell">
-          <span className="stat-label">Hype</span>
-          <span className="stat-val num">
-            {hypeLatest?.news_mentions_7d != null ? hypeLatest.news_mentions_7d.toLocaleString() : "-"}
-          </span>
-          <span className="cell-sub">
-            {hypeLatest?.news_mentions_7d != null
-              ? baselineWeeks < 8
-                ? `collecting, week ${baselineWeeks}/8`
-                : "mentions / 7d"
-              : "no data"}
-          </span>
-        </div>
+        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
+          Hearts measure promises kept. CODE, USE and HYPE add context; only hearts move the meter.
+        </p>
       </div>
 
-      {/* Delivery health + timeline. */}
-      <div className="panel">
+      {/* 3. Delivery timeline. */}
+      <div className="panel section-alt">
         <h2>Delivery timeline</h2>
-        <div className="delivery-head">
-          <div>
-            <div className="stat-label" style={{ marginBottom: 4 }}>Delivery health</div>
-            <DeliveryGauge pct={filledPct} />
-          </div>
-          <p className="panel-sub delivery-note">
-            Share of hearts earned. Delivery health is the meter, not a
-            sentiment reading. Rises and falls on the graph are the product:
-            when the evidence changed, the line moved.
-          </p>
-        </div>
+        <p className="panel-sub">
+          Hearts earned over time. Rises and falls are the story: when the evidence changed, the line moved.
+        </p>
         <DeliveryTimeline hearts={heartPoints} codeWeeks={codeWeeks} hypePoints={hypePoints} />
       </div>
 
-      {/* Promises with evidence. */}
+      {/* 4. Promises, with machinery hidden under the hood. */}
       <div className="panel">
         <h2>Promises</h2>
         <p className="panel-sub">
-          What {latest.name} promised, and what actually happened. The hearts
-          add up to the meter at the top.
+          What {latest.name} promised, and what actually happened. Each kept promise earns hearts.
         </p>
+        {healthTotal > 0 ? (
+          <div className="promise-health">
+            <div className="promise-health-label">Delivery health</div>
+            <div
+              className="ph-track"
+              role="img"
+              aria-label={`Delivery health: ${health.kept} kept, ${health.inPlay} in play, ${health.failed} failed`}
+            >
+              <span className="ph-seg kept" style={{ width: `${(health.kept / healthTotal) * 100}%` }} />
+              <span className="ph-seg inplay" style={{ width: `${(health.inPlay / healthTotal) * 100}%` }} />
+              <span className="ph-seg failed" style={{ width: `${(health.failed / healthTotal) * 100}%` }} />
+            </div>
+            <div className="ph-legend">
+              <span className="tag measured">{health.kept} kept</span>
+              <span className="tag na">{health.inPlay} in play</span>
+              <span className="tag bad">{health.failed} failed</span>
+            </div>
+          </div>
+        ) : null}
         {promises.map((pr, i) => {
           const d = promiseDisplay(pr);
           return (
@@ -214,14 +232,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <div className="comp-name">{pr.criteria}</div>
               <div className="comp-tags">
                 <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>{d.label}</span>
-                <span className="tag na">{claimLabel(pr.claim_type)}</span>
                 {pr.core ? <span className="tag na">Main promise</span> : null}
                 {pr.reward ? <span className="comp-hearts num">{pr.reward} heart{pr.reward > 1 ? "s" : ""}</span> : null}
               </div>
               <p className="comp-desc">{pr.rationale}</p>
               {pr.evidence?.length > 0 && (
                 <div className="comp-meta">
-                  evidence:{" "}
                   {pr.evidence.map((e: any, j: number) => (
                     <span key={j}>
                       {j > 0 && " · "}
@@ -233,52 +249,67 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
           );
         })}
+        <details className="panel fold" style={{ marginTop: 18 }}>
+          <summary>Under the hood</summary>
+          <table className="spec">
+            <thead>
+              <tr><th>Lineage</th><th>Type</th><th>Reward</th><th>State</th></tr>
+            </thead>
+            <tbody>
+              {promises.map((pr: any, i: number) => (
+                <tr key={i}>
+                  <td className="num">{pr.lineage}</td>
+                  <td>{claimLabel(pr.claim_type)}</td>
+                  <td className="num">{pr.reward ?? 0}</td>
+                  <td>{promiseDisplay(pr).label}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
       </div>
 
-      {/* Evidence / methodology: visible by default, no collapsible. */}
+      {/* 5. HYPE. */}
       <div className="panel section-alt">
+        <h2>HYPE</h2>
+        <p className="panel-sub">
+          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
+        </p>
+        <div className="num" style={{ fontSize: 34, fontWeight: 700 }}>
+          {hypeMentions != null ? hypeMentions.toLocaleString() : "-"}
+        </div>
+        <div style={{ marginTop: 8 }}>
+          {hypeMentions != null && hypeCollecting ? (
+            <span className="tag na">collecting, week {baselineWeeks}/8</span>
+          ) : hypeMentions != null ? (
+            <span className="tag na">mentions / 7d</span>
+          ) : (
+            <span className="tag na">no data yet</span>
+          )}
+        </div>
+        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
+          <Link href="/hype">See the HYPE leaderboard</Link>
+        </p>
+      </div>
+
+      {/* 6. Evidence and methodology. */}
+      <div className="panel">
         <h2>Evidence and methodology</h2>
         <p className="panel-sub">
-          Evidence links sit with each promise above. Everything below is how
-          this page was scored.
+          Every promise above was checked against public evidence: code,
+          docs, announcements, and independent reporting.
         </p>
-        <table className="spec">
-          <tbody>
-            <tr><th>Methodology</th><td className="num">{latest.methodology}</td></tr>
-            <tr><th>Run ID</th><td className="num">{latest.run_id}</td></tr>
-            <tr><th>Capacity</th><td className="num">{latest.capacity} hearts</td></tr>
-            <tr><th>Earned</th><td className="num">{latest.earned} hearts</td></tr>
-            {repo ? (
-              <tr>
-                <th>Repository</th>
-                <td>
-                  <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer">
-                    {repo.github}
-                  </a>{" "}
-                  <span style={{ color: "var(--text-faint)" }}>({repo.label})</span>
-                </td>
-              </tr>
-            ) : null}
-          </tbody>
-        </table>
-        <h3 style={{ marginTop: 18 }}>Promise lineages</h3>
-        <table className="spec">
-          <thead>
-            <tr><th>Lineage</th><th>Type</th><th>Reward</th><th>State</th><th>Effective</th></tr>
-          </thead>
-          <tbody>
-            {promises.map((pr: any, i: number) => (
-              <tr key={i}>
-                <td className="num">{pr.lineage}{pr.core ? " (main)" : ""}</td>
-                <td>{pr.claim_type}</td>
-                <td className="num">{pr.reward}</td>
-                <td>{promiseDisplay(pr).label}</td>
-                <td className="num">{String(pr.effective_at ?? "").slice(0, 10)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p className="panel-sub" style={{ marginTop: 14, marginBottom: 0 }}>
+        <p className="panel-sub">
+          Methodology {latest.methodology} scored {latest.earned} of{" "}
+          {latest.capacity} hearts. No free hearts: history recalculated.
+        </p>
+        <p className="panel-sub">
+          Run ID <span className="mono-wrap">{latest.run_id}</span>
+          {repo ? (
+            <> · <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer">{repo.github}</a></>
+          ) : null}
+        </p>
+        <p className="panel-sub" style={{ marginBottom: 0 }}>
           <Link href="/methodology">How the scoring works</Link>
         </p>
       </div>

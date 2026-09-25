@@ -1,5 +1,13 @@
 "use client";
 
+import {
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 import type { HypeSnapshot } from "@/lib/heart-data";
 
 /**
@@ -14,12 +22,14 @@ const PALETTE = [
   "#f85149", "#39c5cf", "#ff7b72", "#a371f7",
 ];
 
-const W = 720;
-const H = 220;
-const PAD_L = 8;
-const PAD_R = 8;
-const PAD_T = 10;
-const PAD_B = 26;
+const TOOLTIP_STYLE = {
+  background: "#151c28",
+  border: "1px solid #2d3a4f",
+  borderRadius: 6,
+  color: "#e6edf3",
+  fontSize: 13,
+  padding: "6px 10px",
+};
 
 export default function HypeShareChart({
   snapshots,
@@ -54,42 +64,76 @@ export default function HypeShareChart({
     if (s.news_mentions_7d == null) continue;
     totals.set(s.project_slug, (totals.get(s.project_slug) ?? 0) + s.news_mentions_7d);
   }
-  const ordered = slugs.sort((a, b) => (totals.get(b) ?? 0) - (totals.get(a) ?? 0));
+  const ordered = [...slugs].sort((a, b) => (totals.get(b) ?? 0) - (totals.get(a) ?? 0));
 
-  const tMin = new Date(days[0]).getTime();
-  const tMax = new Date(days[days.length - 1]).getTime();
-  const span = tMax - tMin || 1;
-  const x = (day: string) =>
-    PAD_L + ((new Date(day).getTime() - tMin) / span) * (W - PAD_L - PAD_R);
-  const y = (frac: number) => PAD_T + (1 - frac) * (H - PAD_T - PAD_B);
-
-  // Cumulative fractions per day per project.
-  const cum: number[][] = days.map(() => []);
-  days.forEach((day, di) => {
+  // One row per day: each project's share (fraction 0-1) of that day's
+  // observed mentions. Days with no mentions for a project contribute 0.
+  const rows: Array<Record<string, number | string>> = days.map((day) => {
     const m = byDay.get(day)!;
-    const total = [...m.values()].reduce((s, v) => s + v, 0) || 1;
-    let acc = 0;
-    ordered.forEach((slug, si) => {
-      acc += (m.get(slug) ?? 0) / total;
-      cum[di][si] = acc;
-    });
+    const total = [...m.values()].reduce((sum, v) => sum + v, 0) || 1;
+    const row: Record<string, number | string> = { date: day };
+    for (const slug of ordered) {
+      row[slug] = (m.get(slug) ?? 0) / total;
+    }
+    return row;
   });
 
-  const area = (si: number) => {
-    const top = days.map((day, di) => `${x(day).toFixed(1)},${y(cum[di][si]).toFixed(1)}`).join(" L");
-    const bottom = days.map((day, di) => `${x(day).toFixed(1)},${y(si === 0 ? 0 : cum[di][si - 1]).toFixed(1)}`).reverse().join(" L");
-    return `M${top} L${bottom} Z`;
-  };
+  function ShareTooltip({
+    active,
+    payload,
+    label,
+  }: {
+    active?: boolean;
+    payload?: Array<{ dataKey?: string | number; value?: number | string }>;
+    label?: string | number;
+  }) {
+    if (!active || !payload || payload.length === 0) return null;
+    const day = String(label);
+    return (
+      <div style={TOOLTIP_STYLE}>
+        <div>{day}</div>
+        {ordered.map((slug) => {
+          const mentions = byDay.get(day)?.get(slug) ?? 0;
+          const entry = payload.find((e) => e.dataKey === slug);
+          const pct = Math.round(Number(entry?.value ?? 0) * 100);
+          return (
+            <div key={slug}>
+              {names[slug] ?? slug}: {mentions} mentions ({pct}%)
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${H}`} className="hype-share" role="img" aria-label="HYPE share over time">
-        {ordered.map((slug, si) => (
-          <path key={slug} d={area(si)} fill={PALETTE[si % PALETTE.length]} opacity={0.75} />
-        ))}
-        <text x={PAD_L} y={H - 8} className="axis">{days[0]}</text>
-        <text x={W - PAD_R} y={H - 8} className="axis" textAnchor="end">{days[days.length - 1]}</text>
-      </svg>
+      <div style={{ width: "100%", height: 240 }} role="img" aria-label="HYPE share over time">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={rows} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
+            <XAxis
+              dataKey="date"
+              ticks={[days[0], days[days.length - 1]]}
+              tick={{ fontSize: 12 }}
+              stroke="#5b6577"
+            />
+            <YAxis hide domain={[0, 1]} />
+            <Tooltip content={<ShareTooltip />} />
+            {ordered.map((slug, si) => (
+              <Area
+                key={slug}
+                type="monotone"
+                dataKey={slug}
+                stackId="1"
+                stroke={PALETTE[si % PALETTE.length]}
+                fill={PALETTE[si % PALETTE.length]}
+                fillOpacity={0.75}
+                strokeWidth={1}
+              />
+            ))}
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
       <div className="legend">
         {ordered.map((slug, si) => (
           <span key={slug}>

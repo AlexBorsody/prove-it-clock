@@ -16,7 +16,7 @@ function Section({
   children,
 }: {
   icon: IconName;
-  title: string;
+  title: React.ReactNode;
   tag?: string;
   open?: boolean;
   alt?: boolean;
@@ -33,7 +33,7 @@ function Section({
             <span
               style={{
                 fontFamily: "var(--mono)",
-                fontSize: 11,
+                fontSize: 12.5,
                 fontWeight: 700,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
@@ -207,9 +207,9 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="book" title="Worked example: XRP at 2 of 20" alt>
+      <Section icon="book" title={<>Worked example: <img className="coin-icon" src="/coins/xrp.png" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20</>} alt>
         <p>
-          XRP is <b>2 of 20</b>, earned only. One heart for the ledger
+          <img className="coin-icon" src="/coins/xrp.png" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20</b>, earned only. One heart for the ledger
           milestone (permanent), one for XRP payments as an ongoing claim
           (currently active). The MoneyGram corridor earned a heart in 2019
           and retired it in 2021 when the partnership ended: the rise and the
