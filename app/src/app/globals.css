@@ -685,3 +685,41 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   .hype-row { grid-template-columns: 1fr 1fr; row-gap: 8px; }
   .hype-verdict { grid-column: 2; justify-self: end; }
 }
+
+/* ---- Phase 2b: compare ---- */
+.compare-picker {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 16px;
+}
+.compare-picker button {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 13px; font-weight: 700;
+  padding: 7px 14px; border-radius: 20px;
+  cursor: pointer;
+}
+.compare-picker button:hover:not(:disabled) { border-color: var(--accent); color: var(--text); }
+.compare-picker button.active { color: var(--accent); border-color: var(--accent); }
+.compare-picker button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+table.board.compare { min-width: 640px; }
+table.board.compare th.rowhead,
+table.board.compare td.rowhead {
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: top;
+  position: sticky;
+  left: 0;
+  background: var(--bg);
+  z-index: 2;
+}
+table.board.compare thead th.rowhead { background: var(--bg-raised); }
+table.board.compare td { vertical-align: top; min-width: 170px; }
+.verdict-line {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}

@@ -12,6 +12,7 @@ function Section({
   tag,
   open,
   alt,
+  id,
   children,
 }: {
   icon: IconName;
@@ -19,10 +20,11 @@ function Section({
   tag?: string;
   open?: boolean;
   alt?: boolean;
+  id?: string;
   children: React.ReactNode;
 }) {
   return (
-    <details className={"panel fold" + (alt ? " section-alt" : "")} open={open}>
+    <details id={id} className={"panel fold" + (alt ? " section-alt" : "")} open={open}>
       <summary className="fold-head">
         <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
           <Icon name={icon} size={16} />
@@ -61,7 +63,7 @@ export default function MethodologyPage() {
         being earned <i>and</i> lost over time.
       </p>
 
-      <Section icon="heart" title="Hearts are earned, never given" open>
+      <Section icon="heart" title="Hearts are earned, never given" id="hearts" open>
         <p>
           Every heart on the meter was <b style={{ color: "var(--green)" }}>earned</b> by
           keeping a promise. There are no free hearts, no head start, no points
@@ -83,7 +85,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="alert" title="The Shitcoin Score verdict" alt>
+      <Section icon="alert" title="The Shitcoin Score verdict" id="verdict" alt>
         <p>
           The section keeps the name <b>Shitcoin Score</b>, but its output is a
           category, not a number. It is a delivery-accountability rating, not a
@@ -112,7 +114,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="grid" title="PROMISES / CODE / USE / HYPE">
+      <Section icon="grid" title="PROMISES / CODE / USE / HYPE" id="pillars">
         <p>Four pillars. One of them is the score; the other three explain it.</p>
         <ul>
           <li>
