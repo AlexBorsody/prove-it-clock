@@ -128,3 +128,16 @@ export function hypeBaselineWeeks(snaps: HypeSnapshot[]): number {
   );
   return Math.min(8, weeks.size);
 }
+
+/** HYPE snapshots for a single project, oldest first. */
+export async function readHypeSnapshotsFor(slug: string): Promise<HypeSnapshot[]> {
+  const db = heartReadClient();
+  const { data, error } = await db
+    .from("social_snapshots")
+    .select("project_slug,as_of,news_mentions_7d")
+    .eq("project_slug", slug)
+    .order("as_of", { ascending: true })
+    .limit(500);
+  if (error) throw error;
+  return (data ?? []) as HypeSnapshot[];
+}

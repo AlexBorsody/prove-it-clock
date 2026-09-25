@@ -723,3 +723,58 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
   line-height: 1.5;
   color: var(--text-dim);
 }
+
+/* ---- Phase 3: detail page ---- */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin: 18px 0;
+  overflow: hidden;
+}
+.stat-cell {
+  padding: 14px 16px;
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 4px;
+  min-width: 0;
+}
+.stat-cell:first-child { border-left: none; }
+.stat-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+.stat-val { font-size: 18px; font-weight: 700; }
+
+.delivery-head { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 8px; }
+.delivery-note { margin: 0; max-width: 460px; padding-top: 22px; }
+.gauge { width: 200px; max-width: 60vw; height: auto; display: block; }
+.gauge-num { fill: var(--text); font-size: 30px; font-weight: 700; }
+
+.tl-toggles { display: flex; align-items: center; gap: 8px; margin: 12px 0 4px; flex-wrap: wrap; }
+.tl-toggles > span { font-size: 12px; font-weight: 700; color: var(--text-faint); letter-spacing: 0.04em; }
+.tl-toggles button {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 13px; font-weight: 700;
+  padding: 6px 14px; border-radius: 18px;
+  cursor: pointer;
+}
+.tl-toggles button.active { color: var(--accent); border-color: var(--accent); }
+.tl-strip { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
+.tl-strip h3 { font-size: 14px; margin: 0 0 4px; }
+.tl-note { color: var(--text-faint); font-size: 14px; margin: 6px 0; }
+.activity-bars { width: 100%; height: auto; display: block; }
+
+@media (max-width: 640px) {
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-cell { border-left: none; border-top: 1px solid var(--border); }
+  .stat-cell:nth-child(-n+2) { border-top: none; }
+  .stat-cell:nth-child(even) { border-left: 1px solid var(--border); }
+  .delivery-head { flex-direction: column; gap: 8px; }
+  .delivery-note { padding-top: 0; }
+}
