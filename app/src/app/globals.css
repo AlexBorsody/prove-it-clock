@@ -54,6 +54,48 @@ a[href^="http"]::after {
   font-feature-settings: "tnum";
 }
 
+/* ---- app bar: slim sticky header, search only ---- */
+.appbar {
+  position: sticky; top: 0; z-index: 60;
+  padding: 12px 0;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.psearch { position: relative; max-width: 640px; margin: 0 auto; }
+.psearch-box {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 14px; padding: 11px 14px; color: var(--text-faint);
+}
+.psearch-box input {
+  flex: 1; min-width: 0; background: none; border: none; outline: none;
+  color: var(--text); font-size: 16px; font-family: inherit; padding: 0;
+}
+.psearch-box input::placeholder { color: var(--text-faint); }
+.psearch-clear {
+  background: none; border: none; padding: 4px; cursor: pointer;
+  color: var(--text-faint); display: flex; align-items: center;
+}
+.psearch-scrim {
+  position: fixed; inset: 0; z-index: 59;
+  background: transparent; border: none; padding: 0; cursor: default;
+}
+.psearch-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 60;
+  background: var(--bg-panel); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+.psearch-row {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 11px 14px; background: none; border: none; cursor: pointer;
+  color: var(--text); font-size: 16px; font-family: inherit; text-align: left;
+}
+.psearch-row.active { background: var(--bg-raised); }
+.psearch-name { flex: 1; font-weight: 700; }
+.psearch-sym { color: var(--text-dim); font-size: 13px; font-weight: 700; }
+.psearch-empty { padding: 14px; color: var(--text-dim); font-size: 14px; text-align: center; }
+
 /* ---- shell ---- */
 .shell { max-width: 1280px; margin: 0 auto; padding: 20px 20px 80px; }
 
