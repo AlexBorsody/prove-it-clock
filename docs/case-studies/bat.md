@@ -46,27 +46,31 @@ happened. **Core = open (partially realized).** Gate applies: filled ≤ 9
 
 ```
 earned     = 2 + 1 + 1 + 0 = 4
-allowance  = 2  (no decay — project continuously delivers its fulfilled
-             promises; see ambiguity A1)
-filled     = min(10, 4 + 2) = 6
-gate       = min(6, 9) = 6
+allowance  = 0  (last fulfillment 2019-10-17; S(t) ≈ 7 years > 2-year grace;
+             strict event reading — see ambiguity A1)
+filled     = min(10, 4 + 0) = 4
+gate       = min(4, 9) = 4
 ```
 
-**Result: BAT 6/10.**
+**Result: BAT 4/10** (strict reading; 6/10 under the continuous-operation
+reading of A1 — same ambiguity, same primary reading as the XRP case study).
 
-This disagrees with the illustrative 3/10. Per the falsification rule, the
-methodology wins: BAT earned more than the gut estimate — four kept promises
-(2 major + 2 standard), a live product, an active team, real economic activity.
-The gap between 6/10 delivery and BAT's market price is precisely the
-undervaluation signal the instrument is built to surface.
+This differs from the illustrative 3/10 in either reading. Per the falsification
+rule, the methodology wins: BAT kept more promises than the gut estimate — four
+kept promises (one major), a live product, an active team, real economic
+activity. The gap between 4/10 delivery and BAT's market price is the
+undervaluation signal the instrument is built to surface. (Caveat as with XRP:
+same author wrote rubric and application — independent replication still needed.)
 
 ## Ambiguities (reported, not resolved — methodology needs these defined)
 
-- **A1. What resets the inactivity clock S(t)?** BAT's last *new* fulfillment was
-  2019, but the platform delivers its promised utility continuously (monthly
-  payouts, ongoing campaigns). Strict event-reading drains the allowance to 0
-  (→ 4/10); continuous-operation reading keeps it (→ 6/10). The doc must define
-  whether ongoing delivery of fulfilled promises counts as activity.
+- **A1. What resets the inactivity clock S(t)?** Applied strictly here (only new
+  fulfillment events; BAT: 4/10 vs 6/10 depending on reading) per the formula's
+  letter, but the prose ("two years of silence") cuts the other way — BAT's
+  platform delivers its promised utility continuously (monthly payouts, ongoing
+  campaigns) and is not "silent" in any ordinary sense. The doc must define
+  whether ongoing delivery of fulfilled promises counts as activity. Top
+  methodology issue.
 - **A2. Lineage granularity.** Users / publishers / advertisers could be read as
   one lineage (the ad platform works) rather than three. The anti-subdivision
   rule needs a sharper test than "don't split busywork."
