@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel card section-hero">
         <h1 className="page-title">{latest.name}</h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-          <HeartMeter filled={latest.filled} capacity={latest.capacity} size={34} />
+          <HeartMeter filled={latest.filled} capacity={latest.capacity} allowance={latest.allowance ?? 0} size={34} />
           <div className="num" style={{ fontSize: 28, fontWeight: 700 }}>
             {latest.filled}<span style={{ color: "var(--text-faint)", fontSize: 18 }}>/{latest.capacity}</span>
           </div>
