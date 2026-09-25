@@ -1,0 +1,359 @@
+{
+  "schema_version": 2,
+  "run_key": "hearts-4project-2026-09-25c-earnedonly",
+  "as_of": "2026-09-25T18:05:00Z",
+  "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed; allowance removed 2026-09-25)",
+  "review_status": "published",
+  "reviewed_by": "Muse (single analyst; text cleanup 2026-09-25, scores unchanged)",
+  "policy_ref": "docs/hearts-algorithm.md + docs/case-studies/btc.md + docs/case-studies/link.md (claim-type rule adopted 2026-09-25)",
+  "projects": [
+    {
+      "slug": "xrp",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "promises": [
+          {
+            "core": true,
+            "state": "unfulfilled",
+            "reward": 0,
+            "lineage": "bank-settlement",
+            "criteria": "Banks settle in XRP at meaningful scale",
+            "evidence": [
+              {
+                "url": "https://xrpl.org/",
+                "summary": "XRPL positioned as global settlement infrastructure; bank-scale XRP settlement not realized"
+              }
+            ],
+            "rationale": "Twelve years of pilots; correspondent banking untouched. Ripple-the-company's footprint earns XRP-the-asset nothing.",
+            "claim_type": "milestone",
+            "effective_at": "2012-06-01T00:00:00Z"
+          },
+          {
+            "core": false,
+            "state": "active",
+            "reward": 1,
+            "lineage": "xrpl-ledger",
+            "criteria": "Working XRP settlement ledger",
+            "evidence": [
+              {
+                "url": "https://xrpl.org/about/history",
+                "summary": "XRPL history: ledger launch June 2012"
+              }
+            ],
+            "rationale": "Ledger launched June 2012, time cannot unship it.",
+            "claim_type": "milestone",
+            "effective_at": "2012-06-01T00:00:00Z"
+          },
+          {
+            "core": false,
+            "state": "active",
+            "reward": 1,
+            "lineage": "xrp-payments",
+            "criteria": "Commercial XRP payments product with named customers",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/markets/2018/10/01/ripple-event-reveal-3-companies-are-now-using-xrp-for-real-payments",
+                "summary": "xRapid launch with three named companies using XRP for real payments"
+              },
+              {
+                "url": "https://www.coingabbar.com/en/crypto-blogs-details/what-is-ripple-xrp-odl-how-it-changes-cross-border-payments",
+                "summary": "ODL volume claims via secondary source citing Ripple (2024 and Q1 2026 figures)"
+              }
+            ],
+            "rationale": "xRapid live 2018-10-01 with MercuryFX, Cuallix, Catalyst; xRapid to ODL to Ripple Payments is one continuing lineage (revalidated 2026-09-25; volume figures are secondary sources citing Ripple, primary verification still open per review).",
+            "claim_type": "ongoing",
+            "effective_at": "2018-10-01T00:00:00Z"
+          },
+          {
+            "core": false,
+            "state": "retired",
+            "reward": 1,
+            "lineage": "moneygram-corridor",
+            "criteria": "Major MoneyGram/ODL corridor",
+            "evidence": [
+              {
+                "url": "https://www.sec.gov/Archives/edgar/data/1273931/000127393122000039/mgi-20211231x.htm",
+                "summary": "MoneyGram 2021 10-K: ODL cessation December 2020; termination 2021-03-07"
+              }
+            ],
+            "rationale": "ODL use ceased early December 2020; MoneyGram contract terminated 2021-03-07. Rise and fall stays visible: +1 in 2019, -1 in 2021.",
+            "claim_type": "ongoing",
+            "effective_at": "2021-03-07T00:00:00Z"
+          }
+        ],
+        "allowance": 0,
+        "rationale": "XRP 5/20 under the claim-type rule: ledger milestone permanent, payments product ongoing and active, MoneyGram corridor retired (rise and fall stays visible), allowance 3, core open.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history."
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 1.56,
+        "market_cap_usd": 98264927470.77997,
+        "raw_payload": {
+          "ripple": {
+            "usd": 1.56,
+            "usd_market_cap": 98264927470.77997
+          }
+        }
+      }
+    },
+    {
+      "slug": "bat",
+      "availability": "available",
+      "assessment": {
+        "capacity": 10,
+        "promises": [
+          {
+            "core": true,
+            "state": "unfulfilled",
+            "reward": 0,
+            "lineage": "attention-standard",
+            "criteria": "BAT becomes a web-wide attention standard",
+            "evidence": [
+              {
+                "url": "https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf",
+                "summary": "Founding whitepaper states the attention-standard aim; the promise set the lineages are carved from"
+              }
+            ],
+            "rationale": "Stated aim in the 2017 whitepaper; not realized.",
+            "claim_type": "milestone",
+            "effective_at": "2017-05-01T00:00:00Z"
+          },
+          {
+            "core": false,
+            "state": "active",
+            "reward": 2,
+            "lineage": "ad-loop",
+            "criteria": "Users earn BAT for private opt-in ads",
+            "evidence": [
+              {
+                "url": "https://brave.com/blog/brave-ads-launch/",
+                "summary": "Brave Ads launch: production ad loop with user revenue share"
+              },
+              {
+                "url": "https://brave.com/blog/bat-roadmap-4-0/",
+                "summary": "BAT Roadmap 4.0: BAT buybacks fund user rewards; current development"
+              },
+              {
+                "url": "https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing",
+                "summary": "Independent corroboration of ad launch and 70% revenue share"
+              }
+            ],
+            "rationale": "Brave Ads launched 2019-04-24; still funded via BAT buybacks for user rewards per BAT Roadmap 4.0 (revalidated 2026-09-25).",
+            "claim_type": "ongoing",
+            "effective_at": "2019-04-24T00:00:00Z"
+          },
+          {
+            "core": false,
+            "state": "active",
+            "reward": 1,
+            "lineage": "creator-payouts",
+            "criteria": "Creators/publishers earn BAT",
+            "evidence": [
+              {
+                "url": "https://brave.com/blog/bat-mercury-launch/",
+                "summary": "BAT Mercury launch: creator BAT payments (earliest direct evidence)"
+              },
+              {
+                "url": "https://brave.com/blog/payouts-on-solana/",
+                "summary": "Self-custody Solana payouts opened broadly; page updated 2026-07-16"
+              }
+            ],
+            "rationale": "BAT Mercury launched 2017-10-12; self-custody Solana payouts opened broadly (page updated 2026-07-16; revalidated 2026-09-25). Subsidy caveat: payouts substantially funded by Brave's user-growth pool, disclosed not hidden.",
+            "claim_type": "ongoing",
+            "effective_at": "2017-10-12T00:00:00Z"
+          }
+        ],
+        "allowance": 0,
+        "rationale": "BAT 5/10 under the claim-type rule: two ongoing earning lineages currently active, allowance 2, core open.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history."
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 0.09071,
+        "market_cap_usd": 135681062.12321946,
+        "raw_payload": {
+          "basic-attention-token": {
+            "usd": 0.09071,
+            "usd_market_cap": 135681062.12321946
+          }
+        }
+      }
+    },
+    {
+      "slug": "btc",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "BTC 6/20 as of 2026-09-25: ledger milestone permanent; P2P payments active (Lightning, merchant processing, El Salvador context); core open.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "btc-core",
+            "claim_type": "ongoing",
+            "criteria": "Bitcoin becomes the world's peer-to-peer electronic cash",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "Dollar system untouched; adoption real but a fraction of global payments.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Whitepaper title: 'A Peer-to-Peer Electronic Cash System'"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-ledger",
+            "claim_type": "milestone",
+            "criteria": "Decentralized payment ledger anyone can verify",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "Genesis block 2009-01-03; thousands of independent full nodes today; time cannot unship it.",
+            "evidence": [
+              {
+                "url": "https://www.blockchain.com/explorer/blocks/btc/0",
+                "summary": "Genesis block 2009-01-03"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-payments",
+            "claim_type": "ongoing",
+            "criteria": "Real peer-to-peer payments: people and merchants actually pay in BTC at scale",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2018-03-15T00:00:00Z",
+            "rationale": "Lightning mainnet launch 2018-03-15 makes everyday payments usable; BitPay merchant processing since 2011; El Salvador legal tender 2021-09-07 (context, not a heart event).",
+            "evidence": [
+              {
+                "url": "https://lightning.engineering/posts/2018-03-lightning-launch/",
+                "summary": "Lightning Network mainnet launch 2018-03-15"
+              },
+              {
+                "url": "https://bitpay.com/about",
+                "summary": "BitPay merchant payment processing since 2011"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 83819,
+        "market_cap_usd": 1683869293593.8555,
+        "raw_payload": {
+          "bitcoin": {
+            "usd": 83819,
+            "usd_market_cap": 1683869293593.8555
+          }
+        }
+      }
+    },
+    {
+      "slug": "link",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "LINK 6/20 as of 2026-09-25: mainnet milestone; Data Feeds production (Aave, Synthetix); CCIP production (Synthetix); core open; allowance 2.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "link-core",
+            "claim_type": "ongoing",
+            "criteria": "Chainlink becomes the broadly relied-on connectivity layer between smart contracts, blockchains, and external systems",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2017-09-04T00:00:00Z",
+            "rationale": "DeFi reliance strong; enterprise record is pilots/PoCs only (SWIFT 2023, DTCC 2024, UBS/SBI 2024), no confirmed production bank deployments.",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/business/2024/05/16/dtcc-chainlink-complete-pilot-to-accelerate-fund-tokenization-with-jpmorgan-templeton-bny-mellon-participating",
+                "summary": "DTCC Smart NAV pilot 2024, pilot, not production"
+              }
+            ]
+          },
+          {
+            "lineage": "link-mainnet",
+            "claim_type": "milestone",
+            "criteria": "Decentralized oracle network live on a public mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2019-05-30T00:00:00Z",
+            "rationale": "Launch announced at Consensus 2019; three completed security audits; 'first functioning, decentralized oracle network'.",
+            "evidence": [
+              {
+                "url": "https://decrypt.co/7042/chainlink-mainnet-live-ethereum-may",
+                "summary": "Decrypt May 2019: mainnet live on Ethereum 2019-05-30"
+              }
+            ]
+          },
+          {
+            "lineage": "link-feeds",
+            "claim_type": "ongoing",
+            "criteria": "Named production applications continuously consume Chainlink Data Feeds",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-01-09T00:00:00Z",
+            "rationale": "Aave Oracle Network live 2020-01-09 with 16 feeds; all Synths migrated to Chainlink oracles 2020; relationship expanding (Aave SVR proposal Dec 2024).",
+            "evidence": [
+              {
+                "url": "https://en.cryptonomist.ch/2020/01/09/aave-oracle-network-on-chainlink/",
+                "summary": "Aave Oracle Network live on Ethereum mainnet 2020-01-09"
+              },
+              {
+                "url": "https://blog.synthetix.io/all-synths-are-now-powered-by-chainlink-decentralised-oracles/",
+                "summary": "Synthetix: all synths powered by Chainlink oracles, Sept 2020"
+              },
+              {
+                "url": "https://CoinTelegraph.com/news/aave-mulls-chainlink-integration-return-mev-fees",
+                "summary": "CoinTelegraph Dec 2024: Aave proposes Chainlink SVR integration"
+              }
+            ]
+          },
+          {
+            "lineage": "link-ccip",
+            "claim_type": "ongoing",
+            "criteria": "Named production users move messages/assets across chains via CCIP",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2023-07-17T00:00:00Z",
+            "rationale": "CCIP Mainnet Early Access 2023-07-17 on Avalanche, Ethereum, Optimism, Polygon; Synthetix live.",
+            "evidence": [
+              {
+                "url": "https://www.crowdfundinsider.com/2023/07/210203-chainlink-cross-chain-interoperability-protocol-ccip-launches-on-mainnet/",
+                "summary": "Crowdfund Insider July 2023: CCIP mainnet launch, Synthetix live"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 13.81,
+        "market_cap_usd": 10332614622.713522,
+        "raw_payload": {
+          "chainlink": {
+            "usd": 13.81,
+            "usd_market_cap": 10332614622.713522
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,403 @@
+{
+  "schema_version": 2,
+  "run_key": "hearts-ethsoldashavax-2021-06-01-earnedonly",
+  "as_of": "2021-06-01T00:00:00Z",
+  "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed; allowance removed 2026-09-25)",
+  "review_status": "published",
+  "reviewed_by": "Muse (single analyst; reconstructed 2026-09-25)",
+  "policy_ref": "docs/hearts-algorithm.md + docs/case-studies/eth.md + docs/case-studies/sol.md + docs/case-studies/dash.md + docs/case-studies/avax.md (claim-type rule adopted 2026-09-25)",
+  "projects": [
+    {
+      "slug": "eth",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "DeFi Summer activates dapp lineage (+2, eff. 2020-06-15); rollups promised but not yet live.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "eth-core",
+            "claim_type": "ongoing",
+            "criteria": "Ethereum becomes the general-purpose platform for decentralized applications",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2013-11-01T00:00:00Z",
+            "rationale": "Core promise: Ethereum becomes the general-purpose platform for decentralized applications. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/ethereum/wiki/wiki/White-Paper",
+                "summary": "Whitepaper: a blockchain with a built-in fully fledged Turing-complete programming language"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-mainnet",
+            "claim_type": "milestone",
+            "criteria": "Smart-contract platform live on a public mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2015-07-30T00:00:00Z",
+            "rationale": "Lineage: Smart-contract platform live on a public mainnet. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://u.today/guides/ethereum-turns-10-here-are-10-key-milestones-to-remember",
+                "summary": "Ethereum mainnet (Frontier) launched 2015-07-30, introducing smart contracts and the EVM"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-dapps",
+            "claim_type": "ongoing",
+            "criteria": "Named production protocols with sustained real usage built on Ethereum",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-06-15T00:00:00Z",
+            "rationale": "Lineage: Named production protocols with sustained real usage built on Ethereum. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://coinlaw.io/history-of-defi/",
+                "summary": "COMP distribution 15 June 2020 changed DeFi overnight; TVL $1B to $10B in three months"
+              },
+              {
+                "url": "https://cryptonews.com/exclusives/ethereum-layer-2-activity-near-all-time-high-l2s-become-the-new-norm.htm",
+                "summary": "Ethereum the primary hub for DeFi: Uniswap, Aave, GMX, Chainlink, OpenSea"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-pos",
+            "claim_type": "milestone",
+            "criteria": "The long-promised proof-of-stake transition completes",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2013-11-01T00:00:00Z",
+            "rationale": "Lineage: The long-promised proof-of-stake transition completes. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://techcrunch.com/2022/09/15/ethereum-switches-to-proof-of-stake-consensus-after-completing-the-merge/",
+                "summary": "The Merge completed 2022-09-15; Beacon Chain had run since Dec 2020; energy down 99.95 percent"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-rollups",
+            "claim_type": "ongoing",
+            "criteria": "Named production rollups carry real activity settling to Ethereum",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2020-10-02T00:00:00Z",
+            "rationale": "Lineage: Named production rollups carry real activity settling to Ethereum. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://www.coinspeaker.com/arbitrum-120-million-launches-mainnet/amp/",
+                "summary": "Arbitrum One mainnet launched 31 August 2021"
+              },
+              {
+                "url": "https://cryptonews.com/exclusives/ethereum-layer-2-activity-near-all-time-high-l2s-become-the-new-norm.htm",
+                "summary": "Combined L2 throughput outpacing mainnet 5x; Arbitrum $5.6B TVL, Optimism $2.6B"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "sol",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "Mainnet fulfilled (+1); throughput active (+2); ecosystem active, Serum live Sept 2020 (+1); Pay/mobile promises did not exist yet.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "sol-core",
+            "claim_type": "ongoing",
+            "criteria": "Solana becomes the web-scale blockchain: high-throughput, low-cost, reliable infrastructure at global scale",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2017-11-01T00:00:00Z",
+            "rationale": "Core promise: Solana becomes the web-scale blockchain: high-throughput, low-cost, reliable infrastructure at global scale. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/solana-labs/whitepaper/raw/refs/heads/master/solana-whitepaper-en.pdf",
+                "summary": "Whitepaper: Proof of History enables web-scale throughput; 710k TPS theoretical on 1gbps"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-mainnet",
+            "claim_type": "milestone",
+            "criteria": "High-performance blockchain live on a public mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "rationale": "Lineage: High-performance blockchain live on a public mainnet. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://messari.io/project/solana/profile",
+                "summary": "Mainnet Beta launched March 2020"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-throughput",
+            "claim_type": "ongoing",
+            "criteria": "Sustained high-throughput, low-cost transaction processing in live production",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "rationale": "Lineage: Sustained high-throughput, low-cost transaction processing in live production. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://www.coingabbar.com/en/crypto-blogs-details/solana-network-outage-causes-and-current-status",
+                "summary": "Production reality ~3,000-5,000 TPS at ~$0.00025 average fee; full halts Sep 2021, Jan 2022, Apr-Jun 2022, Feb 2023, Feb 2024; none since Feb 2024"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-ecosystem",
+            "claim_type": "ongoing",
+            "criteria": "Thriving application ecosystem: named production apps with real users and volume",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-09-01T00:00:00Z",
+            "rationale": "Lineage: Thriving application ecosystem: named production apps with real users and volume. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://phemex.com/news/article/solana-dominates-2025-dex-volumes-with-100-billion-monthly-activity-50681",
+                "summary": "Led all chains in DEX volume six straight months in 2025, $100B+/month; 2025 app revenues $1.3-1.5B"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "dash",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "Merchant economy lapsed (-2); no post-2019 third-party evidence of a named production merchant economy.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "dash-core",
+            "claim_type": "ongoing",
+            "criteria": "Dash becomes the world's everyday digital cash: private, instant payments at mass scale",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Core promise: Dash becomes the world's everyday digital cash: private, instant payments at mass scale. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper",
+                "summary": "Whitepaper: a decentralized, strongly anonymous cryptocurrency with tamper-proof instant transactions"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-masternodes",
+            "claim_type": "milestone",
+            "criteria": "Incentivized two-tier masternode network live",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2014-09-01T00:00:00Z",
+            "rationale": "Lineage: Incentivized two-tier masternode network live. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://CoinTelegraph.com/news/dash-masternodes-now-receiving-half-the-block-reward",
+                "summary": "45/45/10 miner/masternode/treasury split; 1,000 Dash collateral requirement"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-privatesend",
+            "claim_type": "milestone",
+            "criteria": "PrivateSend: protocol-level private transactions via masternode mixing",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Lineage: PrivateSend: protocol-level private transactions via masternode mixing. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper",
+                "summary": "PrivateSend for increasing fungibility via improved CoinJoin; shipped in the launch client"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-instantsend",
+            "claim_type": "milestone",
+            "criteria": "InstantSend: instant transaction confirmation via masternode quorums",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2014-11-01T00:00:00Z",
+            "rationale": "Lineage: InstantSend: instant transaction confirmation via masternode quorums. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://bitcoinist.com/dash-digital-cash-system/",
+                "summary": "InstantX secures transactions in under 4 seconds via masternode quorums"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-treasury",
+            "claim_type": "milestone",
+            "criteria": "Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2015-08-01T00:00:00Z",
+            "rationale": "Lineage: Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://cointelegraph.com/news/dashs-past-and-future-an-editorial",
+                "summary": "Treasury system added August 2015: decentralized governance by blockchain, funded from the block reward"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-merchants",
+            "claim_type": "ongoing",
+            "criteria": "Named production merchant economy using Dash for everyday payments",
+            "reward": 2,
+            "core": false,
+            "state": "lapsed",
+            "effective_at": "2021-06-01T00:00:00Z",
+            "rationale": "Lineage: Named production merchant economy using Dash for everyday payments. State as of 2021-06-01: lapsed.",
+            "evidence": [
+              {
+                "url": "https://u.today/kfc-restaurant-embraces-dash-in-venezuela-more-latin-american-countries-to-follow",
+                "summary": "2,000 merchants in Venezuela Dec 2018, including KFC Caracas"
+              },
+              {
+                "url": "https://www.crowdfundinsider.com/2018/08/138089-dash-update-more-than-2000-merchants-around-the-globe-accepts-the-crypto-as-payments-for-goods-services-thanks-to-venezuela-presence/",
+                "summary": "2,288 merchants worldwide Aug 2018, up from 639 in Feb 2018"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-evolution",
+            "claim_type": "milestone",
+            "criteria": "Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2015-06-01T00:00:00Z",
+            "rationale": "Lineage: Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://crash.dash.org/news/evolution-genesis/",
+                "summary": "Evolution Mainnet Beta 2024-07-29: first queryable decentralized database and decentralized API"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "avax",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "Mainnet live Sept 2020 (+1); named DeFi apps live, Pangolin Feb 2021 (+2); no subnets yet.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "avax-core",
+            "claim_type": "ongoing",
+            "criteria": "Avalanche becomes the platform where DeFi and traditional finance run at scale",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2018-05-16T00:00:00Z",
+            "rationale": "Core promise: Avalanche becomes the platform where DeFi and traditional finance run at scale. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "http://coindesk.com/markets/2020/09/16/ava-labs-sets-avalanche-mainnet-launch-for-sept-21",
+                "summary": "Sirer at mainnet launch: DeFi in the short term, long-term sights set on traditional finance"
+              }
+            ]
+          },
+          {
+            "lineage": "avax-mainnet",
+            "claim_type": "milestone",
+            "criteria": "High-throughput PoS smart-contract platform live on mainnet with fast finality",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2020-09-21T00:00:00Z",
+            "rationale": "Lineage: High-throughput PoS smart-contract platform live on mainnet with fast finality. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "http://coindesk.com/markets/2020/09/16/ava-labs-sets-avalanche-mainnet-launch-for-sept-21",
+                "summary": "Mainnet launch 21 Sept 2020; 4,500 TPS claim; EVM-compatible C-Chain; subnets architecture"
+              }
+            ]
+          },
+          {
+            "lineage": "avax-defi",
+            "claim_type": "ongoing",
+            "criteria": "Named production DeFi applications with real usage on the C-Chain",
+            "reward": 2,
+            "core": false,
+            "state": "active",
+            "effective_at": "2021-02-01T00:00:00Z",
+            "rationale": "Lineage: Named production DeFi applications with real usage on the C-Chain. State as of 2021-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/markets/2021/08/18/avalanches-avax-token-jumps-on-180m-incentive-program",
+                "summary": "Avalanche Rush $180M brought Aave and Curve to Avalanche, Aug 2021"
+              },
+              {
+                "url": "https://dailyhodl.com/2022/02/08/ethereum-competitor-avalanche-avax-surpasses-10000000000-in-total-value-locked/",
+                "summary": "TVL ATH nearly $13.8B Dec 2021; Aave, Trader Joe, Benqi, Curve live"
+              }
+            ]
+          },
+          {
+            "lineage": "avax-subnets",
+            "claim_type": "ongoing",
+            "criteria": "Named live subnets/L1s with observable real usage",
+            "reward": 2,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2020-09-21T00:00:00Z",
+            "rationale": "Lineage: Named live subnets/L1s with observable real usage. State as of 2021-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://www.coinbase.com/developer-platform/discover/dev-foundations/intro-to-avalanche-subnets",
+                "summary": "DeFi Kingdoms Crystalvale first subnet (~200k tx/day); Crabada Swimmer Subnet launched 9 May 2022"
+              },
+              {
+                "url": "https://www.coindesk.com/tech/2024/12/16/avalanche-blockchain-s-largest-ever-upgrade-avalanche9000-is-live",
+                "summary": "Avalanche9000/Etna live Dec 2024: sovereign L1s via ACP-77"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "schema_version": 2,
+  "run_key": "hearts-ethsoldashavax-2017-06-01-earnedonly",
+  "as_of": "2017-06-01T00:00:00Z",
+  "methodology": "hearts claim-type rule v2 (adopted 2026-09-25; time decay removed; allowance removed 2026-09-25)",
+  "review_status": "published",
+  "reviewed_by": "Muse (single analyst; reconstructed 2026-09-25)",
+  "policy_ref": "docs/hearts-algorithm.md + docs/case-studies/eth.md + docs/case-studies/sol.md + docs/case-studies/dash.md + docs/case-studies/avax.md (claim-type rule adopted 2026-09-25)",
+  "projects": [
+    {
+      "slug": "eth",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "Mainnet live; CryptoKitties/MakerDAO (Dec 2017) after as_of.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "eth-core",
+            "claim_type": "ongoing",
+            "criteria": "Ethereum becomes the general-purpose platform for decentralized applications",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2013-11-01T00:00:00Z",
+            "rationale": "Core promise: Ethereum becomes the general-purpose platform for decentralized applications. State as of 2017-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/ethereum/wiki/wiki/White-Paper",
+                "summary": "Whitepaper: a blockchain with a built-in fully fledged Turing-complete programming language"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-mainnet",
+            "claim_type": "milestone",
+            "criteria": "Smart-contract platform live on a public mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2015-07-30T00:00:00Z",
+            "rationale": "Lineage: Smart-contract platform live on a public mainnet. State as of 2017-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://u.today/guides/ethereum-turns-10-here-are-10-key-milestones-to-remember",
+                "summary": "Ethereum mainnet (Frontier) launched 2015-07-30, introducing smart contracts and the EVM"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-dapps",
+            "claim_type": "ongoing",
+            "criteria": "Named production protocols with sustained real usage built on Ethereum",
+            "reward": 2,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2013-11-01T00:00:00Z",
+            "rationale": "Lineage: Named production protocols with sustained real usage built on Ethereum. State as of 2017-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://coinlaw.io/history-of-defi/",
+                "summary": "COMP distribution 15 June 2020 changed DeFi overnight; TVL $1B to $10B in three months"
+              },
+              {
+                "url": "https://cryptonews.com/exclusives/ethereum-layer-2-activity-near-all-time-high-l2s-become-the-new-norm.htm",
+                "summary": "Ethereum the primary hub for DeFi: Uniswap, Aave, GMX, Chainlink, OpenSea"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-pos",
+            "claim_type": "milestone",
+            "criteria": "The long-promised proof-of-stake transition completes",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2013-11-01T00:00:00Z",
+            "rationale": "Lineage: The long-promised proof-of-stake transition completes. State as of 2017-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://techcrunch.com/2022/09/15/ethereum-switches-to-proof-of-stake-consensus-after-completing-the-merge/",
+                "summary": "The Merge completed 2022-09-15; Beacon Chain had run since Dec 2020; energy down 99.95 percent"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "sol",
+      "availability": "unavailable",
+      "unavailable_reason": "Solana whitepaper published November 2017, after this snapshot date.",
+      "market": null
+    },
+    {
+      "slug": "dash",
+      "availability": "available",
+      "assessment": {
+        "capacity": 20,
+        "allowance": 0,
+        "rationale": "Masternodes + PrivateSend + InstantSend + treasury; merchant economy not yet built.",
+        "allowance_rationale": "Methodology update 2026-09-25: unearned allowance removed. Scores are earned promise hearts only. This change does not represent a change in project delivery. Original published scores remain available under the prior methodology as an immutable audit history.",
+        "promises": [
+          {
+            "lineage": "dash-core",
+            "claim_type": "ongoing",
+            "criteria": "Dash becomes the world's everyday digital cash: private, instant payments at mass scale",
+            "reward": 0,
+            "core": true,
+            "state": "unfulfilled",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Core promise: Dash becomes the world's everyday digital cash: private, instant payments at mass scale. State as of 2017-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper",
+                "summary": "Whitepaper: a decentralized, strongly anonymous cryptocurrency with tamper-proof instant transactions"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-masternodes",
+            "claim_type": "milestone",
+            "criteria": "Incentivized two-tier masternode network live",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2014-09-01T00:00:00Z",
+            "rationale": "Lineage: Incentivized two-tier masternode network live. State as of 2017-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://CoinTelegraph.com/news/dash-masternodes-now-receiving-half-the-block-reward",
+                "summary": "45/45/10 miner/masternode/treasury split; 1,000 Dash collateral requirement"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-privatesend",
+            "claim_type": "milestone",
+            "criteria": "PrivateSend: protocol-level private transactions via masternode mixing",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Lineage: PrivateSend: protocol-level private transactions via masternode mixing. State as of 2017-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper",
+                "summary": "PrivateSend for increasing fungibility via improved CoinJoin; shipped in the launch client"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-instantsend",
+            "claim_type": "milestone",
+            "criteria": "InstantSend: instant transaction confirmation via masternode quorums",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2014-11-01T00:00:00Z",
+            "rationale": "Lineage: InstantSend: instant transaction confirmation via masternode quorums. State as of 2017-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://bitcoinist.com/dash-digital-cash-system/",
+                "summary": "InstantX secures transactions in under 4 seconds via masternode quorums"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-treasury",
+            "claim_type": "milestone",
+            "criteria": "Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals",
+            "reward": 1,
+            "core": false,
+            "state": "active",
+            "effective_at": "2015-08-01T00:00:00Z",
+            "rationale": "Lineage: Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals. State as of 2017-06-01: active.",
+            "evidence": [
+              {
+                "url": "https://cointelegraph.com/news/dashs-past-and-future-an-editorial",
+                "summary": "Treasury system added August 2015: decentralized governance by blockchain, funded from the block reward"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-merchants",
+            "claim_type": "ongoing",
+            "criteria": "Named production merchant economy using Dash for everyday payments",
+            "reward": 2,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Lineage: Named production merchant economy using Dash for everyday payments. State as of 2017-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://u.today/kfc-restaurant-embraces-dash-in-venezuela-more-latin-american-countries-to-follow",
+                "summary": "2,000 merchants in Venezuela Dec 2018, including KFC Caracas"
+              },
+              {
+                "url": "https://www.crowdfundinsider.com/2018/08/138089-dash-update-more-than-2000-merchants-around-the-globe-accepts-the-crypto-as-payments-for-goods-services-thanks-to-venezuela-presence/",
+                "summary": "2,288 merchants worldwide Aug 2018, up from 639 in Feb 2018"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-evolution",
+            "claim_type": "milestone",
+            "criteria": "Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet",
+            "reward": 1,
+            "core": false,
+            "state": "unfulfilled",
+            "effective_at": "2015-06-01T00:00:00Z",
+            "rationale": "Lineage: Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet. State as of 2017-06-01: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://crash.dash.org/news/evolution-genesis/",
+                "summary": "Evolution Mainnet Beta 2024-07-29: first queryable decentralized database and decentralized API"
+              }
+            ]
+          }
+        ]
+      },
+      "market": null
+    },
+    {
+      "slug": "avax",
+      "availability": "unavailable",
+      "unavailable_reason": "Avalanche whitepaper published May 2018, after this snapshot date.",
+      "market": null
+    }
+  ]
+}
