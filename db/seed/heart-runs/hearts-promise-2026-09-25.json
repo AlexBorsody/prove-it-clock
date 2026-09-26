@@ -1073,5 +1073,7 @@
         }
       }
     }
-  ]
+  ],
+  "reviewed_by": "Muse (single analyst; BTC/ETH promise research 2026-09-25, six projects carried over pending research; Alex waived line-item review 2026-09-25)",
+  "policy_ref": "docs/implementation.md (promise-heart rule v3 adopted 2026-09-25) + promise-research/btc.md + promise-research/eth.md"
 }
