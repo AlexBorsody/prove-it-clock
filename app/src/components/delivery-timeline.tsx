@@ -9,9 +9,8 @@ import {
 import HeartsTimeline, { type HeartPoint } from "@/components/hearts-timeline";
 
 /**
- * Delivery Timeline: hearts through time, with CODE and HYPE activity
- * strips always shown below. Activity strips are display only; they never
- * change the hearts.
+ * Delivery Timeline: hearts through time, with the HYPE activity strip
+ * below. Activity is display only; it never changes the hearts.
  */
 
 export interface CodeWeek { week: string; total: number }
@@ -67,13 +66,39 @@ function HypeTooltip({
   );
 }
 
+/**
+ * CodeActivityChart: commits per week on the tracked repo, as a modular
+ * card. Lives in the CODE section of project pages. Display only; it never
+ * changes the hearts.
+ */
+export function CodeActivityChart({ codeWeeks }: { codeWeeks: CodeWeek[] | null }) {
+  return (
+    <div className="tl-card">
+      <h3>CODE activity</h3>
+      <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>
+        Commits per week on the tracked repo. Display only, it never changes the hearts.
+      </p>
+      {codeWeeks && codeWeeks.length > 0 ? (
+        <div style={{ width: "100%", height: 120 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={codeWeeks} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
+              <Tooltip content={<CodeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
+              <Bar dataKey="total" fill="#58a6ff" maxBarSize={28} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      ) : (
+        <p className="tl-note">No commit data available for this project.</p>
+      )}
+    </div>
+  );
+}
+
 export default function DeliveryTimeline({
   hearts,
-  codeWeeks,
   hypePoints,
 }: {
   hearts: HeartPoint[];
-  codeWeeks: CodeWeek[] | null;
   hypePoints: HypePoint[];
 }) {
   const hypeData = hypePoints.map((p) => ({
@@ -93,25 +118,6 @@ export default function DeliveryTimeline({
           marginTop: 16,
         }}
       >
-        <div className="tl-card">
-          <h3>CODE activity</h3>
-          <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>
-            Commits per week on the tracked repo. Display only, it never changes the hearts.
-          </p>
-          {codeWeeks && codeWeeks.length > 0 ? (
-            <div style={{ width: "100%", height: 120 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={codeWeeks} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
-                  <Tooltip content={<CodeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
-                  <Bar dataKey="total" fill="#58a6ff" maxBarSize={28} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          ) : (
-            <p className="tl-note">No commit data available for this project.</p>
-          )}
-        </div>
-
         <div className="tl-card">
           <h3>HYPE activity</h3>
           <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>

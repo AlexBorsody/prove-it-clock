@@ -221,14 +221,13 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
 
 /* ---- breakdown rows ---- */
 .comp-row {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-elev);
   padding: 14px 16px;
-  margin: 12px 0;
+  margin: 0 0 14px;
 }
 .promise-head { display: flex; align-items: center; gap: 10px; }
-.comp-row:first-child { border-top: 1px solid var(--border); padding-top: 14px; }
 .comp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .comp-name { font-weight: 700; font-size: 17px; }
 .comp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
@@ -1063,7 +1062,9 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 }
 .shitcoin-warn svg { flex-shrink: 0; margin-top: 1px; }
 .shitcoin-meter-meaning { font-size: 14px; color: var(--text-dim); margin: 8px 0 0; }
-.mcard-gauge { margin-left: auto; display: inline-flex; flex-shrink: 0; }
+.mcard-gauge { display: inline-flex; flex-shrink: 0; }
+/* Warning sits on its own row under the hearts: left-aligned, never wrapping. */
+.mcard-warning { margin: 0 0 8px; }
 .mcard-gauge .shitcoin-meter.compact {
   display: inline-flex; flex-direction: row; align-items: center; gap: 6px;
 }

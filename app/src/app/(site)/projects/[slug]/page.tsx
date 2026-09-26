@@ -22,7 +22,7 @@ import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
-import DeliveryTimeline from "@/components/delivery-timeline";
+import DeliveryTimeline, { CodeActivityChart } from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -250,7 +250,7 @@ function backfillHeartHistory(
 
       <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
 
-      {/* 2. CODE: the same row component as the /code ranking. */}
+      {/* 2. CODE: the row component from the /code ranking, plus the activity chart. */}
       <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE</h2>
         <p className="panel-sub">
@@ -261,6 +261,9 @@ function backfillHeartHistory(
             row={codeRowData}
             search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
           />
+        </div>
+        <div style={{ marginTop: 12 }}>
+          <CodeActivityChart codeWeeks={codeWeeks} />
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
           <ButtonLink href="/code">See the CODE ranking</ButtonLink>
@@ -274,7 +277,7 @@ function backfillHeartHistory(
         <p className="panel-sub">
           Hearts earned over time. Rises and falls are the story: when the evidence changed, the line moved.
         </p>
-        <DeliveryTimeline hearts={heartPoints} codeWeeks={codeWeeks} hypePoints={hypePoints} />
+        <DeliveryTimeline hearts={heartPoints} hypePoints={hypePoints} />
       </div>
 
       {/* 4. Promises, with machinery hidden under the hood. */}
