@@ -36,10 +36,12 @@ export default function CodeRow({
   row,
   rank,
   search,
+  showWatchers = false,
 }: {
   row: CodeRowData;
   /** Rank number; omitted on the project detail page. */
   rank?: number;
+  showWatchers?: boolean;
   search: { id: string; title: string };
 }) {
   const r = row;
@@ -76,7 +78,7 @@ export default function CodeRow({
           <GithubMark className="github-btn-icon" />
         </a>
       ) : null}
-      <div className="code-metrics">
+      <div className={`code-metrics${showWatchers ? " code-metrics-four" : ""}`}>
         <MetricLink href={r.repoUrl ? `${r.repoUrl}/stargazers` : undefined} label={`${r.name} stars on GitHub`}>
           <span className="code-metric-label"><StarIcon /> Stars</span>
           <span className="code-metric-value num">{compact(r.stars)}</span>
@@ -85,6 +87,10 @@ export default function CodeRow({
           <span className="code-metric-label"><ForkIcon /> Forks</span>
           <span className="code-metric-value num">{compact(r.forks)}</span>
         </MetricLink>
+        {showWatchers && <MetricLink href={r.repoUrl ? `${r.repoUrl}/watchers` : undefined} label={`${r.name} watchers on GitHub`}>
+          <span className="code-metric-label">Watchers</span>
+          <span className="code-metric-value num">{compact(r.watchers)}</span>
+        </MetricLink>}
         <MetricLink href={r.repoUrl ? `${r.repoUrl}/commits` : undefined} label={`${r.name} commit history on GitHub`}>
           <span className="code-metric-label"><CommitIcon /> Commits</span>
           <span className="code-metric-value num">

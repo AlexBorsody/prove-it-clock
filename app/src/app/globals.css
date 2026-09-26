@@ -955,16 +955,18 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .cell-link:hover .word { text-decoration: underline; }
 
 /* CODE ranking page. */
-.sort-seg {
-  display: inline-flex; border: 1px solid var(--border); border-radius: 10px;
-  overflow: hidden; margin: 4px 0 14px;
-}
+.code-sort-heading { display: flex; justify-content: space-between; gap: 12px; margin: 4px 0 8px; color: var(--text-dim); font-size: 14px; }
+.sort-seg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0 0 18px; }
 .sort-seg a {
-  padding: 8px 16px; font-size: 13px; font-weight: 700; color: var(--text-dim);
-  text-decoration: none; -webkit-tap-highlight-color: transparent;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  min-width: 0; min-height: 48px; padding: 10px 8px; border: 1px solid var(--border);
+  border-radius: 10px; background: var(--bg-panel); font-size: 16px; font-weight: 700;
+  color: var(--text-dim); text-decoration: none; -webkit-tap-highlight-color: transparent;
 }
-.sort-seg a + a { border-left: 1px solid var(--border); }
-.sort-seg a.active { background: var(--bg-elev); color: var(--text); }
+.sort-seg a:hover { border-color: var(--text-dim); color: var(--text); }
+.sort-seg a.active { background: var(--accent); border-color: var(--accent); color: #10151e; }
+.sort-seg a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 420px) { .sort-seg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .code-rows { display: flex; flex-direction: column; }
 .code-row {
   display: grid;
@@ -1299,3 +1301,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .comp-sources li a { display: block; }
 .promise-filter-status { font-size: 15px; color: var(--text-dim); }
 .promise-heart-evidence { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; flex-shrink: 0; }
+
+/* The CODE ranking exposes every sort value; project cards remain compact. */
+.code-metrics-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 640px) {
+  .code-metrics-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .code-metrics-four .code-metric:last-child { grid-column: auto; display: flex; align-items: flex-start; min-height: 96px; }
+}
