@@ -40,7 +40,7 @@ export default function HypeExplorer() {
       {error && <p role="alert">{error} <button className={styles.reset} onClick={() => setRetry(v => v + 1)}>Try again</button></p>}
     </div>
     {feed && <>
-      <div className={styles.stats}><div><strong>{feed.articles.length}</strong><span>news articles returned</span></div><div><strong>{publishers.length}</strong><span>publishers</span></div><div><strong>{names[slug]}</strong><span>{date(feed.window_start)} – {date(feed.window_end)}</span></div></div>
+      <div className={styles.stats}><div><strong>{feed.articles.length}</strong><span>matching headlines</span></div><div><strong>{publishers.length}</strong><span>publishers</span></div><div><strong>{names[slug]}</strong><span>{date(feed.window_start)} – {date(feed.window_end)}</span></div></div>
       <div className={styles.grid}>
         <div><h3>When the coverage happened</h3><p className={styles.hint}>Select a day to read its headlines{publisher ? ` from ${publisher}` : ""}.</p>
           <div className={styles.chart} role="group" aria-label="Articles by publication day in UTC">{days.map(d => <button key={d.day} className={styles.day} aria-pressed={day === d.day} aria-label={`${date(d.day)}: ${d.count} articles`} onClick={() => { setDay(day === d.day ? "" : d.day); setLimit(12); }}><span className={styles.barSpace}><span className={styles.bar} style={{ height: `${Math.max(2, d.count / maxDay * 100)}%` }} /><span className={styles.count}>{d.count}</span></span><span className={styles.date}>{date(d.day)}</span></button>)}</div>
@@ -52,7 +52,7 @@ export default function HypeExplorer() {
       <ul className={styles.articles}>{filtered.slice(0, limit).map(a => <li key={a.url}><div className={styles.articleMeta}><span>{a.publisher}</span><time dateTime={a.published_at}>{date(a.published_at)}</time></div><a href={a.url} target="_blank" rel="noopener noreferrer">{a.title}<span aria-hidden="true"> ↗</span></a></li>)}</ul>
       {!filtered.length && <p>No matching articles in this feed. This does not mean there was no coverage elsewhere.</p>}
       {filtered.length > limit && <button className={styles.more} onClick={() => setLimit(v => v + 12)}>Show more headlines ({filtered.length - limit} remaining)</button>}
-      <p className={styles.hint}>Source: <a href={feed.source_url} target="_blank" rel="noopener noreferrer">Google News RSS</a> · checked {new Date(feed.fetched_at).toLocaleString("en-US", { timeZone: "UTC" })} UTC. Refreshed hourly. This is a limited search feed, not every mention on the internet. Syndicated stories may appear under multiple publishers. Live results can differ from saved daily totals below.</p>
+      <p className={styles.hint}>Source: <a href={feed.source_url} target="_blank" rel="noopener noreferrer">Google News RSS</a> · checked {new Date(feed.fetched_at).toLocaleString("en-US", { timeZone: "UTC" })} UTC. Refreshed hourly. Only headlines naming the project are included. This is a limited search feed, not every mention on the internet. Syndicated stories may appear under multiple publishers. Live results can differ from saved daily totals below.</p>
     </>}
     <div className={styles.coverage}><div><strong>News sites</strong><span>Headlines and publishers via Google News</span></div><div><strong>Reddit + Telegram</strong><span>Community size only; posts are not indexed</span></div><div><strong>X / Twitter</strong><span>Not connected; no post data yet</span></div></div>
   </section>;

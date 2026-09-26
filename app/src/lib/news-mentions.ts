@@ -2,6 +2,14 @@ import { DOMParser } from "linkedom";
 import { isSocialSlug, SOCIAL_SOURCES } from "./social";
 import type { MentionFeed, NewsMention } from "./hype-mentions";
 
+// Feed search can match site navigation rather than the story itself.
+const HEADLINE_MATCH: Record<string, RegExp> = {
+  btc: /\b(bitcoin|btc)\b/i, eth: /\b(ethereum|ether|eth)\b/i,
+  xrp: /\b(xrp|ripple)\b/i, sol: /\bsolana\b/i,
+  link: /\bchainlink\b/i, avax: /\b(avax|avalanche)\b/i,
+  dash: /\bdash\b/i, bat: /\bbasic attention token\b|\bbrave (browser|wallet|rewards)\b|\bBAT (token|crypto)\b/i,
+};
+
 function safeUrl(value: string | null | undefined): string | null {
   try {
     const url = new URL(value ?? "");
@@ -39,6 +47,7 @@ export function parseNewsFeed(xml: string, slug: string, now = new Date()): Ment
     // Google appends the publisher to the title; it is already shown separately.
     const suffix = " - " + publisher;
     if (title.endsWith(suffix)) title = title.slice(0, -suffix.length);
+    if (!HEADLINE_MATCH[slug].test(title)) continue;
     seen.add(url);
     articles.push({ url, title, publisher, publisher_url: safeUrl(source?.getAttribute("url")), published_at: new Date(published).toISOString() });
   }

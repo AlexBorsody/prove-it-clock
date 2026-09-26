@@ -15,7 +15,7 @@ export const openApiSpec = {
     "/mentions/{slug}": {
       get: {
         summary: "Explore a project's news sources",
-        description: "Current rolling seven-day Google News RSS sample, cached for one hour. Returns article links, publishers and publication times. Not exhaustive coverage, social posts, or persisted historical evidence. Unknown projects return 404; provider failures return 503, never a zero count.",
+        description: "Current rolling seven-day Google News RSS sample with project-matching headlines, cached for one hour. Returns article links, publishers and publication times. Not exhaustive coverage, social posts, or persisted historical evidence. Unknown projects return 404; provider failures return 503, never a zero count.",
         parameters: [{ name: "slug", in: "path", required: true, schema: { type: "string", enum: ["btc", "eth", "xrp", "sol", "link", "avax", "dash", "bat"] } }],
         responses: {
           "200": { description: "News feed sample", content: { "application/json": { schema: {
