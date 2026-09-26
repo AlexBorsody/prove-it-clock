@@ -6,3 +6,9 @@
 - Sorts descend, unknown/failed measurements remain last (after real zeroes), and equal values break by project name. The source rows are not mutated.
 - Two focused sort tests passed. Manual acceptance: select every sort, verify order and URL, use Back, reload a sort URL, and inspect controls at 320px.
 - Production build (including lint/type checks) and `git diff --check` passed.
+
+## Dropdown follow-up
+
+- Synced Muse's main changes, preserving active-metric highlighting and project-page cleanup.
+- Replaced the large sorting tiles with a labeled native dropdown. Selection updates local rows immediately; the URL tracks selection without server navigation or GitHub refetches. URL changes synchronize state for Back/Forward. A GET form supports sorting without JavaScript.
+- Validate all four choices, direct sort URL reloads, Back/Forward, and 320px width. Previous tile-control notes above describe the superseded UI.
