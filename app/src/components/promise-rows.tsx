@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ButtonLink from "@/components/button-link";
 import { normalizePromiseState } from "@/lib/hearts";
 
 export interface PromiseBrief {
@@ -55,9 +55,9 @@ export default function PromiseRows({ slug, promises }: { slug: string; promises
           </div>
         );
       })}
-      <Link href={`/projects/${slug}`} className="promise-rows-more">
+      <ButtonLink href={`/projects/${slug}`}>
         Full evidence on the project page
-      </Link>
+      </ButtonLink>
     </div>
   );
 }

@@ -951,11 +951,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .promise-row-source:hover { text-decoration-color: var(--accent); }
 .promise-row-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .promise-rows-empty { color: var(--text-faint); font-size: 14px; margin: 4px 0; }
-.promise-rows-more {
-  font-size: 14px; font-weight: 700; margin-top: 2px;
-  text-decoration: none;
-}
-
 /* Tappable scoreboard cells. */
 .cell-link { text-decoration: none; color: inherit; display: inline-block; }
 .cell-link:hover .word { text-decoration: underline; }
@@ -1211,6 +1206,16 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   text-decoration: none; white-space: nowrap;
 }
 .metric-btn:active { transform: scale(0.97); }
+/* Text CTA links are buttons too: filled background, rounded corners. */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--bg-elev); border: 1px solid var(--border-strong);
+  border-radius: 12px; padding: 10px 18px;
+  color: var(--text); font-weight: 800; font-size: 14px;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #14100a; }
 .gauge-btn {
   display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
   background: var(--bg-elev); border: 1px solid var(--border);

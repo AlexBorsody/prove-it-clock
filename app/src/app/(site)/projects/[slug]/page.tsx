@@ -21,6 +21,7 @@ import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
+import ButtonLink from "@/components/button-link";
 import DeliveryTimeline from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
@@ -262,7 +263,7 @@ function backfillHeartHistory(
           />
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <Link href="/code">See the CODE ranking</Link>
+          <ButtonLink href="/code">See the CODE ranking</ButtonLink>
         </p>
       </section>
 
@@ -363,7 +364,7 @@ function backfillHeartHistory(
         </p>
         <HypeSummaryCard row={hypeRow} />
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <Link href="/hype">See the HYPE leaderboard</Link>
+          <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
         </p>
       </section>
 
