@@ -3,7 +3,6 @@
 import { Fragment, useMemo, useState } from "react";
 import Link from "next/link";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
-import { HeartSparkline, type HeartPoint } from "@/components/hearts-timeline";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
@@ -29,7 +28,6 @@ export interface ScoreboardRow {
   hypeMentions: number | null;
   hypeCollecting: boolean;
   baselineWeeks: number;
-  spark: HeartPoint[];
   promises: PromiseBrief[];
 }
 
@@ -43,7 +41,6 @@ const HEADERS: Array<{ key: SortKey | null; label: string }> = [
   { key: "code", label: "Code" },
   { key: "use", label: "Usage" },
   { key: "hype", label: "Hype" },
-  { key: null, label: "Proof history" },
   { key: null, label: "" },
 ];
 
@@ -173,13 +170,6 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                       <Icon name="megaphone" size={14} />
                       <HypeCell mentions={r.hypeMentions} collecting={r.hypeCollecting} />
                     </Link>
-                  </td>
-                  <td>
-                    {r.spark.length >= 2 ? (
-                      <HeartSparkline points={r.spark} />
-                    ) : (
-                      <span style={{ color: "var(--text-faint)" }}>-</span>
-                    )}
                   </td>
                   <td>
                     <button

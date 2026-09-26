@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   HEARTS_METHODOLOGY,
   readHeartRankings,
-  readHeartHistory,
   readHypeSnapshots,
   latestHypeBySlug,
   hypeBaselineWeeks,
@@ -40,14 +39,7 @@ export default async function Home() {
   const rows: ScoreboardRow[] = await Promise.all(
     projects.map(async (p) => {
       names[p.slug] = p.name;
-      const [history, vitals] = await Promise.all([
-        readHeartHistory(p.slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
-        fetchVitals(p.slug).catch(() => null),
-      ]);
-      const pts = (history.points ?? []).filter((pt: any) => pt.availability === "available");
-      const spark = [...pts]
-        .reverse()
-        .map((pt: any) => ({ as_of: pt.as_of, filled: pt.earned, capacity: pt.capacity }));
+      const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
       const latest = hypeLatest[p.slug];
       const filledPct = p.capacity > 0 ? p.earned / p.capacity : 0;
@@ -74,7 +66,6 @@ export default async function Home() {
         hypeMentions: latest?.news_mentions_7d ?? null,
         hypeCollecting: baselineWeeks < 8,
         baselineWeeks,
-        spark,
         promises: promises.map((pr: any) => ({
           criteria: pr.criteria ?? pr.lineage ?? "Promise",
           state: pr.state ?? "open",
