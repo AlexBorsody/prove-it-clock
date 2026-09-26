@@ -244,6 +244,18 @@ Starship timelines are the reference cases). After crypto is proven, not
 before. Anything not in this doc waits for Alex, not for a spare
 afternoon.
 
+## Research direction: AI-assisted promise assessment
+
+Alex wants to explore cosine similarity and Euclidean distance for future
+ranking: alignment with a promise, the measurable gap to fulfillment, and
+progress over time. An evidence-based AI estimate could then investigate
+likelihood, timing and impact. These are different questions; semantic
+similarity alone cannot prove delivery or predict value. See
+[the game-design research note](archive/ai-promise-research-2026-09-25.md#research-direction-modeling-promise-versus-reality).
+This authorizes design exploration; it does not change earned hearts or the
+current Index formula. Implementation follows after the measures are defined
+and tested against real outcomes.
+
 ## Next research (gates the Index)
 
 Real USE metrics per project, and the CODE score definition. The Index
