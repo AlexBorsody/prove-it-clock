@@ -955,10 +955,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .cell-link:hover .word { text-decoration: underline; }
 
 /* CODE ranking page. */
-.code-sort-control { display: flex; align-items: center; gap: 12px; margin: 4px 0 18px; }
-.code-sort-control label { flex-shrink: 0; color: var(--text-dim); font-size: 15px; font-weight: 700; }
+.code-sort-control { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: 100%; margin: 4px 0 18px; }
+.code-sort-control label { display: block; text-align: left; color: var(--text-dim); font-size: 15px; font-weight: 700; }
 .code-sort-control select {
-  flex: 1; min-width: 0; max-width: 360px; min-height: 48px; padding: 10px 12px;
+  width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px;
   border: 1px solid var(--border-strong); border-radius: 10px;
   background: var(--bg-panel); color: var(--text); font: inherit; font-size: 16px;
   cursor: pointer; color-scheme: dark;

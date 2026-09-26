@@ -12,3 +12,4 @@
 - Synced Muse's main changes, preserving active-metric highlighting and project-page cleanup.
 - Replaced the large sorting tiles with a labeled native dropdown. Selection updates local rows immediately; the URL tracks selection without server navigation or GitHub refetches. URL changes synchronize state for Back/Forward. A GET form supports sorting without JavaScript.
 - Validate all four choices, direct sort URL reloads, Back/Forward, and 320px width. Previous tile-control notes above describe the superseded UI.
+- Alignment follow-up: label sits above a full-width dropdown; both share the ranking panel’s left edge, and the dropdown shares its right edge. Removed the desktop width cap and inline label offset. Browser visual verification remains blocked by automatic approval review treating the earlier Stop request as active.
