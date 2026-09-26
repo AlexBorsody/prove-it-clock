@@ -13,7 +13,6 @@ import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../data/verdict-lines";
 import { fetchVitals } from "@/lib/vitals";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
-import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -88,12 +87,10 @@ export default async function ComparePage() {
 
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "compare-overview", title: "Compare projects", kind: "Compare", keywords: "hearts promises code hype side by side" })}>
       <h1 className="page-title">Compare</h1>
       <p className="page-sub">
         Pick two to four projects. Same metrics, side by side.
       </p>
-      </div>
       {items.length === 0 ? (
         <div className="panel">
           <p className="panel-sub" style={{ marginBottom: 0 }}>

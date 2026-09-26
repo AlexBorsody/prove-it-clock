@@ -1,0 +1,200 @@
+{
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    {
+      "claim_type": "milestone",
+      "core": true,
+      "criteria": "Proof of History is live in production as the network's cryptographic clock, delivering sub-second transaction confirmation.",
+      "effective_at": "2017-11-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Solana whitepaper by Anatoly Yakovenko: Proof of History encodes trustless passage of time into the ledger, reducing BFT messaging overhead for sub-second finality",
+          "url": "https://raw.githubusercontent.com/solana-labs/whitepaper/3c499476ff59033d85437db25ab9b4af7a47c20f/solana-whitepaper-en.pdf"
+        }
+      ],
+      "lineage": "sol-p01-proof-of-history",
+      "rationale": "PoH has run in production since mainnet beta 2020 with ~400ms slots and sub-second optimistic confirmation; the core invention works as described.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The network demonstrably sustains throughput near 710,000 transactions per second on commodity hardware and bandwidth.",
+      "effective_at": "2017-11-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Solana whitepaper: protocol analysis shows throughput up to 710k TPS is possible on a 1 gbps network with today's hardware",
+          "url": "https://raw.githubusercontent.com/solana-labs/whitepaper/3c499476ff59033d85437db25ab9b4af7a47c20f/solana-whitepaper-en.pdf"
+        },
+        {
+          "summary": "Firedancer full client went live on mainnet December 12, 2025 after 100 days of production validation; lab benchmarks target 1M+ TPS",
+          "url": "https://www.datawallet.com/crypto/firedancer-solana"
+        }
+      ],
+      "lineage": "sol-p02-710k-tps",
+      "rationale": "Mainnet real throughput remains far below the whitepaper figure; Firedancer and Alpenglow are actively chasing it but it is not yet demonstrated.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ordinary transactions keep costing fractions of a penny (well under one cent) even during congestion.",
+      "effective_at": "2020-03-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official solana.com learn page: transaction fees typically $0.00025, fractions of a penny; thousands of TPS comparable to major payment networks",
+          "url": "https://github.com/bunsdev/solana-com/blob/HEAD/content/learn/en/what-is-solana.mdx"
+        },
+        {
+          "summary": "Independent 2026 fee analysis: median Solana fee $0.0008, average simple transfer ~$0.001, consistently sub-cent",
+          "url": "https://crypto-economy.com/the-dream-of-cheap-cryptocurrencies-is-already-real-on-solana/"
+        }
+      ],
+      "lineage": "sol-p03-low-fees",
+      "rationale": "Fees have stayed sub-cent through the 2024 memecoin mania and record 2025-2026 activity; the low-fee standard holds in real usage.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Blocks keep being produced roughly every 400 milliseconds with confirmation in under a second.",
+      "effective_at": "2017-11-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Solana whitepaper: verifiers submit signatures within 500ms, enabling sub-second finality; block time design target 400ms",
+          "url": "https://raw.githubusercontent.com/solana-labs/whitepaper/3c499476ff59033d85437db25ab9b4af7a47c20f/solana-whitepaper-en.pdf"
+        },
+        {
+          "summary": "Official solana.com learn page: transactions complete in under a second, blocks every ~400ms",
+          "url": "https://github.com/bunsdev/solana-com/blob/HEAD/content/learn/en/what-is-solana.mdx"
+        }
+      ],
+      "lineage": "sol-p04-400ms-blocks",
+      "rationale": "400ms slots have run in production since mainnet beta; sub-second confirmation is the lived network behavior.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "The network runs as a production-grade chain with outages becoming rare and short, measured by sustained full block production.",
+      "effective_at": "2020-03-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Full outage history: Sep 2021 ~17h, Jan 2022 intermittent, Apr-Jun 2022 several hours, Feb 2023 ~19h, Feb 2024 ~5h",
+          "url": "https://www.cryptotimes.io/2025/03/17/history-of-solanas-network-outages-since-its-inception/"
+        },
+        {
+          "summary": "No full network-wide halt since February 6, 2024; longest no-outage stretch in chain history through a record-activity year",
+          "url": "https://www.cryptopolitan.com/solana-record-year-no-network-downtime/"
+        }
+      ],
+      "lineage": "sol-p05-network-reliability",
+      "rationale": "Honest record: five major outage years 2021-2024, then a record clean stretch since Feb 2024; reliability is improving but the history means not yet fulfilled.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A second, independently-built validator client runs in production on mainnet, giving Solana real client diversity.",
+      "effective_at": "2022-11-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Firedancer full client announced live on mainnet December 12, 2025 at Breakpoint Abu Dhabi after 100 days producing 50,000+ blocks in production",
+          "url": "https://www.datawallet.com/crypto/firedancer-solana"
+        },
+        {
+          "summary": "Solana Foundation Breakpoint 2025 recap: Firedancer is live on mainnet; Solana is no longer a single-client network",
+          "url": "https://github.com/solana-foundation/solana-com/blob/HEAD/apps/media/content/posts/solana-breakpoint-2025.mdx"
+        }
+      ],
+      "lineage": "sol-p06-firedancer",
+      "rationale": "Full Firedancer client live on mainnet since Dec 2025, holding a low double-digit share of stake with the Firedancer family near 40%; diversity is real though not yet balanced.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Solana Pay is a working decentralized payment rail with real merchants settling real volume at fractions-of-a-cent fees.",
+      "effective_at": "2022-02-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Solana Labs launched Solana Pay Feb 1, 2022: decentralized peer-to-peer payments, instant settlement, fees of fractions of a cent, 65,000 TPS scale",
+          "url": "https://www.zdnet.com/finance/blockchain/solana-labs-launches-new-digital-payment-platform-solana-pay/"
+        },
+        {
+          "summary": "Helio's Solana Pay Shopify plugin processed ~$50M in 6 months across 200+ stores; 5,000 merchants and 350k active wallets on the upgraded plugin",
+          "url": "https://cryptonews.com/news/millions-of-shopify-merchants-can-accept-hundreds-of-cryptos-as-helio-upgrades-solana-pay-plugin/"
+        }
+      ],
+      "lineage": "sol-p07-solana-pay",
+      "rationale": "Solana Pay exists, is integrated with Shopify via Helio, and processes real merchant volume; modest versus the millions-of-merchants framing but genuine usage.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The Saga crypto phone ships and sustains a Web3 mobile user base.",
+      "effective_at": "2022-06-23T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Saga launched May 2023, sold ~20,000 units versus a 50,000 breakeven target; Solana Mobile ended all technical support October 2025 after 2 years",
+          "url": "https://elevenews.com/2025/10/21/solana-mobile-shutters-saga-device-after-two-year-crypto-fueled-run/"
+        }
+      ],
+      "lineage": "sol-p08-saga",
+      "rationale": "Saga sold under half its breakeven, lived on airdrop farming (BONK), and had support ended after 2 years; the product line was retired in favor of Seeker.",
+      "state": "retired"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The Seeker phone ships at scale and anchors a decentralized mobile platform with its SKR token economy.",
+      "effective_at": "2024-01-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Seeker began shipping August 4, 2025 to 50+ countries after 150,000 preorders; SKR token TGE January 21, 2026 with staking and governance live",
+          "url": "https://www.ainvest.com/news/solana-news-today-solana-mobile-ships-150-000-seeker-phones-enhanced-crypto-security-web3-features-2508/"
+        },
+        {
+          "summary": "Seeker specs and SKR token design: SeedVault wallet, dApp Store 2.0, TEEPIN architecture, developer rewards without app-store gatekeepers",
+          "url": "https://bingx.com/en/learn/article/what-is-the-solana-seeker-mobile-and-when-will-it-launch"
+        }
+      ],
+      "lineage": "sol-p09-seeker",
+      "rationale": "150,000 units shipped to 50+ countries with the SKR economy live; real hardware in real hands, a genuine second attempt at the mobile promise.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Solana remains a leading ecosystem that keeps attracting and retaining active developers.",
+      "effective_at": "2020-03-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Electric Capital 2024 Developer Report: Solana onboarded 7,625 new developers, the first chain since 2016 to overtake Ethereum for new devs, 83% YoY growth",
+          "url": "https://cryptobriefing.com/solana-crypto-developer-growth/"
+        }
+      ],
+      "lineage": "sol-p10-developer-ecosystem",
+      "rationale": "Independent 2024 data confirms Solana as the top ecosystem for new developers with the fastest growth among large chains; the ecosystem momentum is real.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Alpenglow ships on mainnet, cutting deterministic finality from ~12.8 seconds to ~150 milliseconds.",
+      "effective_at": "2025-05-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Alpenglow (SIMD-0326) approved by validators September 2025 with 98.27% support; Votor replaces TowerBFT targeting 100-150ms finality; testnet rollout underway",
+          "url": "https://bsc.news/post/solana-alpenglow-consensus-upgrade"
+        }
+      ],
+      "lineage": "sol-p11-alpenglow",
+      "rationale": "Approved and in staged rollout (public testnet, mainnet target late September 2026) but not yet live on mainnet; still pending.",
+      "state": "open"
+    }
+  ],
+  "rationale": "Researched the Solana whitepaper (Anatoly Yakovenko, 2017), official solana.com learn content, Solana Foundation Breakpoint 2025 recap, Solana Labs launch announcements, Jump Crypto Firedancer coverage, Electric Capital 2024 developer report, and independent outage histories (2017-2026).",
+  "slug": "sol"
+}

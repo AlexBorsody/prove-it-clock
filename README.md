@@ -32,16 +32,9 @@ For DB reads, set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in ignored
 ```bash
 npm run test:hearts   # heart arithmetic
 npm run test:db       # migration + publish RPC
-npm run test:search   # section extraction, matching and crawler coverage
 npx tsc --noEmit
 npm run build
 ```
-
-Search refreshes page sections on demand with a rolling 24-hour attempt cache,
-keeping the last complete index if a refresh fails. For a custom local port, set
-`SEARCH_SITE_URL=http://127.0.0.1:3101` to the origin running this checkout.
-Vercel uses its deployment URL automatically. See the site-search section in
-[implementation.md](docs/implementation.md) for indexing and new-section tags.
 
 ## Publishing a run
 

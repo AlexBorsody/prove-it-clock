@@ -1,0 +1,265 @@
+{
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    {
+      "claim_type": "ongoing",
+      "core": true,
+      "criteria": "Chainlink oracle networks are the widely used, decentralized way smart contracts get tamper-proof off-chain data.",
+      "effective_at": "2017-09-04T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Chainlink v1.0 whitepaper (Ellis, Juels, Nazarov, 4 Sep 2017) presenting Chainlink as a decentralized oracle network for smart contract external connectivity.",
+          "url": "https://img1.wsimg.com/blobby/go/f3713a5a-c28d-4973-a55c-ed5b2de3120e/downloads/ChainLink.pdf?ver=1779292597733"
+        },
+        {
+          "summary": "SmartCon 2022 keynote recap where Nazarov reports Chainlink oracles enabled over $6 trillion in transactions and $512B in a single month (Aug 2022).",
+          "url": "https://chainlinktoday.com/sergey-nazarov-celebrates-launch-of-chainlink-economics-2-0-during-smartcon-2022-keynote/"
+        }
+      ],
+      "lineage": "link-p01-decentralized-oracle-network",
+      "rationale": "Chainlink mainnet launched 2019 and its oracle networks became the default data layer for smart contracts, securing trillions in transaction value.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Most major DeFi protocols use Chainlink price feeds as their primary price data source.",
+      "effective_at": "2022-09-28T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "SmartCon 2022 keynote recap quoting Nazarov: Chainlink achieved standard status at over sixty percent of the oracle market.",
+          "url": "https://chainlinktoday.com/sergey-nazarov-celebrates-launch-of-chainlink-economics-2-0-during-smartcon-2022-keynote/"
+        }
+      ],
+      "lineage": "link-p02-price-feeds-defi-standard",
+      "rationale": "Nazarov stated at SmartCon 2022 that Chainlink had become the standard at over sixty percent; price feeds remain the default oracle for top DeFi protocols.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Developers can build hybrid smart contracts that combine on-chain code with Chainlink decentralized oracle network off-chain computation and services.",
+      "effective_at": "2021-04-15T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Chainlink 2.0 whitepaper (15 Apr 2021) laying out hybrid smart contracts powered by decentralized oracle networks with off-chain computation.",
+          "url": "https://research-chain-linkproxy.c9w.net/whitepaper-v2.pdf"
+        },
+        {
+          "summary": "Chainlink Labs press release (Oct 2023) announcing Functions Beta and Automation 2.0 live on mainnet with real users like Space and Time, Oku Finance, Sommelier.",
+          "url": "https://www.prnewswire.com/news-releases/chainlink-announces-new-decentralized-computing-capabilities-with-functions-beta-and-automation-2-0-on-mainnet-301944023.html"
+        }
+      ],
+      "lineage": "link-p03-hybrid-smart-contracts",
+      "rationale": "The 2.0 vision of DONs providing off-chain computation is live and used via Automation, Functions, Data Streams, and CCIP.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "LINK staking provides slashable cryptoeconomic security where attacking a DON costs more than the combined deposits of all its nodes (super-linear impact).",
+      "effective_at": "2021-04-15T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Chainlink 2.0 whitepaper (15 Apr 2021) proposing explicit super-linear staking where malicious actors need budgets larger than all node deposits combined.",
+          "url": "https://research-chain-linkproxy.c9w.net/whitepaper-v2.pdf"
+        },
+        {
+          "summary": "Official Chainlink blog overview of explicit staking: nodes lock LINK as collateral that can be slashed for malicious behavior.",
+          "url": "https://blog.chain.link/explicit-staking-in-chainlink-2-0/"
+        }
+      ],
+      "lineage": "link-p04-superlinear-staking",
+      "rationale": "Staking v0.1 and v0.2 shipped without slashing-based super-linear security; the full cryptoeconomic design from the 2.0 whitepaper is still pending.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Chainlink Staking v0.1 goes live on Ethereum mainnet and the capped pool fills with community participation.",
+      "effective_at": "2022-06-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Chainlink blog (21 Nov 2022) with staking v0.1 design and launch details: 25M LINK cap, Dec 6 early access, Dec 8 general access.",
+          "url": "http://blog.chain.link/chainlink-staking-launch-details/?ref"
+        },
+        {
+          "summary": "Official Chainlink blog (6 Dec 2022) announcing Staking v0.1 early access live on Ethereum mainnet.",
+          "url": "https://blog.chain.link/chainlink-staking-early-access-now-live"
+        }
+      ],
+      "lineage": "link-p05-staking-v01",
+      "rationale": "Staking v0.1 launched Dec 6-8 2022 with a 25M LINK cap; the community allotment filled within hours of general access.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Chainlink Staking v0.2 launches as a modular, upgradable platform with an expanded 45M LINK pool, unbonding mechanism, and node-operator slashing.",
+      "effective_at": "2023-08-25T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Report on the Staking v0.2 mainnet launch: 45M LINK pool, modular rearchitecture, unbonding mechanism, node-operator slashing, dynamic rewards.",
+          "url": "https://cryptobriefing.com/chainlink-opens-staking-more-users-v0-2-release/"
+        },
+        {
+          "summary": "Official Chainlink blog on the v0.2 launch process: 45M LINK cap, priority migration for v0.1 stakers, fair-entry mechanism.",
+          "url": "https://chain.link/blog/chainlink-staking-v0-2-early-access-eligibility"
+        }
+      ],
+      "lineage": "link-p06-staking-v02",
+      "rationale": "Staking v0.2 went live on mainnet Nov-Dec 2023 with the 45M LINK pool, unbonding, and slashing for node operator stake.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Smart contracts use Chainlink VRF for provably fair, tamper-proof randomness in production applications.",
+      "effective_at": "2020-05-12T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Chainlink blog documenting VRF mainnet launch (Oct 2020), 1M+ requests across Ethereum/Polygon/BSC, and 35 production use cases in gaming, NFTs, DeFi.",
+          "url": "https://blog.chain.link/blockchain-rng-use-cases-enabled-by-chainlink-vrf/?ref=blog.fantom.foundation"
+        },
+        {
+          "summary": "Official Chainlink 2023 network review reporting 10.5M+ VRF randomness requests powering hundreds of gaming and NFT applications.",
+          "url": "https://blog.chain.link/the-chainlink-network-in-2023"
+        }
+      ],
+      "lineage": "link-p07-vrf",
+      "rationale": "VRF launched on mainnet Oct 2020 and became the standard RNG for blockchain gaming and NFTs, serving over 10.5M randomness requests.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Developers automate smart contract functions through Chainlink's decentralized keeper network in production.",
+      "effective_at": "2021-08-05T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Chainlink blog (5 Aug 2021) announcing Chainlink Keepers live on Ethereum mainnet for decentralized smart contract automation.",
+          "url": "https://blog.chain.link/chainlink-keepers-is-now-live-on-mainnet/"
+        }
+      ],
+      "lineage": "link-p08-keepers-automation",
+      "rationale": "Chainlink Keepers (now Automation) launched on Ethereum mainnet Aug 2021 and was adopted by Aave, Synthetix, PoolTogether and others for production upkeeps.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "DeFi derivatives protocols use Chainlink Data Streams for low-latency market data in production.",
+      "effective_at": "2023-10-02T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Chainlink blog (Oct 2023) launching Data Streams on Arbitrum mainnet with GMX using them in production for perpetual futures.",
+          "url": "https://blog.chain.link/data-streams-mainnet"
+        },
+        {
+          "summary": "Official Chainlink Q4 2023 product update reporting Data Streams live in production with GMX V2 and other top protocols committed to mainnet.",
+          "url": "https://blog.chain.link/chainlink-product-update-q4-2023/"
+        }
+      ],
+      "lineage": "link-p09-data-streams",
+      "rationale": "Data Streams launched on Arbitrum mainnet Oct 2023 and went live in production powering GMX V2, accounting for 90%+ of high-throughput DeFi on Arbitrum.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Developers connect smart contracts to Web2 APIs and run custom serverless computation via Chainlink Functions in production.",
+      "effective_at": "2023-03-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "TechCrunch exclusive (1 Mar 2023) on the Chainlink Functions launch: serverless platform connecting dApps to Web2 APIs like AWS and Meta.",
+          "url": "https://techcrunch.com/2023/03/01/chainlink-launches-web3-dev-platform-to-connect-builders-to-web2-0-apis-like-aws-and-meta/"
+        },
+        {
+          "summary": "Official Chainlink Q3 2023 product update: Functions is the most widely used Web3 serverless solution by developers building on testnets.",
+          "url": "https://blog.chain.link/chainlink-product-update-q3-2023/"
+        }
+      ],
+      "lineage": "link-p10-functions",
+      "rationale": "Functions launched in beta on mainnet Oct 2023 but remains a beta product with usage concentrated on testnets; production adoption is still early.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Cross-chain applications move data and value between blockchains via Chainlink CCIP in production.",
+      "effective_at": "2023-07-17T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Report on the CCIP mainnet early-access launch (17 Jul 2023) on Ethereum, Avalanche, Polygon, Arbitrum and Optimism, with Synthetix live and Aave integrating.",
+          "url": "https://cointelegraph.com/news/chainlink-launches-cross-chain-protocol-ccip-ethereum-blockchain-mainnet"
+        },
+        {
+          "summary": "PYMNTS (Sep 2026) reporting CCIP active since Jul 2023, now connecting 60+ blockchain networks, used by JPMorgan, ANZ, UBS and HKMA for cross-chain transactions.",
+          "url": "https://www.pymnts.com/blockchain/2026/bottomline-partners-with-chainlink-to-connect-600-banks-to-blockchain-settlement/"
+        }
+      ],
+      "lineage": "link-p11-ccip",
+      "rationale": "CCIP launched on mainnet Jul 2023, reached general availability, and now connects 60+ blockchains with live adoption by Synthetix, Aave, and financial institutions.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Banks settle tokenized assets and transact across blockchains through CCIP using their existing Swift messaging infrastructure.",
+      "effective_at": "2023-06-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CoinDesk (17 Jul 2023) on the Swift-Chainlink collaboration: Swift testing CCIP with dozens of financial institutions, moving toward a pilot phase.",
+          "url": "https://www.coindesk.com/tech/2023/07/17/chainlinks-interoperability-protocol-connecting-blockchains-to-bank-chains-goes-live?utm_campaign=coindesk_main&utm_term=organic&utm_content=editorial&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8qn23FKPB0j54FbtLQJgkBAlJ_AUcgfl2QQhMhjwzIusMikEg1P371_g1SnK9Chjc5ljP7"
+        },
+        {
+          "summary": "PYMNTS (Sep 2026) on the Bottomline-Chainlink partnership to connect 600+ bank clients to onchain settlement via CCIP and CRE using ISO 20022 messaging.",
+          "url": "https://www.pymnts.com/blockchain/2026/bottomline-partners-with-chainlink-to-connect-600-banks-to-blockchain-settlement/"
+        }
+      ],
+      "lineage": "link-p12-swift-bank-connectivity",
+      "rationale": "Swift and Chainlink ran pilots with 12+ institutions and later production-oriented partnerships (UBS Project Guardian, Bottomline), but bank-scale production flows are not yet live.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Stablecoins and protocols use Chainlink Proof of Reserve to verify asset reserves on-chain.",
+      "effective_at": "2020-11-11T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CoinDesk (Nov 2020) on TrustToken integrating Chainlink Proof of Reserve for TrueUSD on-chain collateralization data.",
+          "url": "https://www.coindesk.com/business/2020/11/11/trusttoken-taps-chainlink-for-on-chain-proof-of-reserves-for-trueusd-stablecoin"
+        },
+        {
+          "summary": "Report (Feb 2023) on TUSD using Chainlink Proof of Reserve to secure minting so new tokens cannot be minted beyond USD reserves.",
+          "url": "https://crypto.news/tusd-to-use-chainlinks-proof-of-reserves/"
+        }
+      ],
+      "lineage": "link-p13-proof-of-reserve",
+      "rationale": "Proof of Reserve launched in 2020 and is used in production by TrueUSD (first stablecoin with on-chain mint control) and Paxos (PAXG, USDP).",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Early-stage projects and blockchains grow through the Chainlink BUILD and SCALE programs, with fee and token commitments flowing to network service providers.",
+      "effective_at": "2022-09-28T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Chainlink SmartCon 2022 recap announcing the SCALE and BUILD programs with initial participants Avalanche, Metis, Moonbeam, Moonriver and Space and Time, Truflation, bitsCrunch.",
+          "url": "https://chain.link/blog/smartcon-2022-recap"
+        },
+        {
+          "summary": "CoinDesk (28 Sep 2022) on the BUILD and SCALE launch: BUILD projects donate 3-5% of native tokens, SCALE reduces oracle costs for participating chains.",
+          "url": "https://www.coindesk.com/business/2022/09/28/blockchain-data-provider-chainlink-launches-programs-to-reduce-costs-ahead-of-staking-of-its-token"
+        }
+      ],
+      "lineage": "link-p14-economics-20-build-scale",
+      "rationale": "BUILD and SCALE launched at SmartCon 2022 and are operating: 38+ BUILD projects and 7+ blockchain ecosystems in SCALE committing fees and tokens.",
+      "state": "fulfilled"
+    }
+  ],
+  "rationale": "Researched the Chainlink 1.0 whitepaper (Sep 2017), the Chainlink 2.0 whitepaper (Apr 2021), official Chainlink blog launch posts (VRF, Keepers, Data Streams, Staking v0.1/v0.2), the SmartCon 2022 keynote and recap (Economics 2.0, BUILD, SCALE), the CCIP mainnet launch (Jul 2023), and Swift/bank integration announcements through Sep 2026.",
+  "slug": "link"
+}

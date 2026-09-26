@@ -1,0 +1,2208 @@
+{
+  "schema_version": 3,
+  "run_key": "hearts-promise-2026-09-26",
+  "as_of": "2026-09-26T03:06:37Z",
+  "methodology": "hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)",
+  "review_status": "published",
+  "projects": [
+    {
+      "slug": "btc",
+      "availability": "available",
+      "assessment": {
+        "capacity": 16,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "16 promises researched from the Bitcoin whitepaper, Satoshi's public writings, and community-adopted claims. Each fulfilled promise earns one heart.",
+        "promises": [
+          {
+            "lineage": "btc-p01-peer-to-peer-electronic-cash",
+            "claim_type": "ongoing",
+            "criteria": "an ordinary user can send and receive BTC wallet-to-wallet with no bank, processor, or other intermediary in the loop.",
+            "core": true,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "base-layer transfers have run intermediary-free since 2009.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p02-double-spending-solved-without-a-trusted-party",
+            "claim_type": "ongoing",
+            "criteria": "no confirmed transaction is ever reversed by a conflicting spend accepted under the proof-of-work consensus rules.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "no double-spend of economically finalized transactions in 17 years of mainnet history.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p03-immutable-history-via-proof-of-work",
+            "claim_type": "ongoing",
+            "criteria": "no rewrite of deeply confirmed history; reorganizations limited to a handful of blocks.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "deepest reorgs were a few blocks (e.g., March 2013); finalized history never rewritten.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p04-security-under-an-honest-majority-cpu-assumption",
+            "claim_type": "ongoing",
+            "criteria": "zero successful majority (51%) attacks against Bitcoin; attacker catch-up probability decays as the paper's section 11 calculates.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "no 51% attack on Bitcoin to date; the hashpower majority has remained honest.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p05-nodes-can-leave-and-rejoin-at-will",
+            "claim_type": "ongoing",
+            "criteria": "a node offline for an extended period can sync and converge on the same chain tip as the rest of the network.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "initial block download and SPV sync do exactly this.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p06-pseudonymous-privacy",
+            "claim_type": "ongoing",
+            "criteria": "ordinary on-chain activity cannot be systematically linked to real-world identities by third parties.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "the protocol still uses pseudonymous keys, but chain-analysis firms and KYC on-ramps now routinely deanonymize flows at scale.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper section 10, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p07-permissionless-participation",
+            "claim_type": "ongoing",
+            "criteria": "anyone can run a node or mine without registering identity or seeking approval.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "no identity gate exists at the protocol level (mining economics concentrate, but permission is never required).",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper section 12, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p08-eventually-completely-inflation-free",
+            "claim_type": "ongoing",
+            "criteria": "block subsidy reaches zero (around 2140) and fee revenue alone sustains mining; the monetary base stops growing.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "the subsidy was still 3.125 BTC per block in 2026; the fee-only era is a century out and untested.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper section 6, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p09-21-million-hard-cap",
+            "claim_type": "ongoing",
+            "criteria": "total BTC ever mined never exceeds 21,000,000; issuance follows the halving schedule.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "supply was about 19.9M in 2026, on schedule, cap enforced by consensus code.",
+            "evidence": [
+              {
+                "url": "https://mmalmi.github.io/satoshi/",
+                "summary": "Satoshi correspondence with Martti Malmi, 2009-2011"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p10-lost-coins-don-t-break-the-money",
+            "claim_type": "ongoing",
+            "criteria": "coins lost through destroyed keys stay unspendable without affecting issuance, consensus, or the 21M cap.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2010-06-21T00:00:00Z",
+            "rationale": "millions of BTC are estimated lost and the protocol is unaffected; the scarcity thesis is intact.",
+            "evidence": [
+              {
+                "url": "https://bitcointalk.org/index.php?topic=198.msg1647#msg1647",
+                "summary": "Satoshi forum post, 2010-06-21"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p11-participants-can-be-anonymous",
+            "claim_type": "ongoing",
+            "criteria": "ordinary users can transact without their real-world identity being discoverable from chain data.",
+            "core": false,
+            "state": "lapsed",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "the whitepaper itself only ever promised pseudonymity (section 10), and in practice chain analysis plus regulated on-ramps have made strong anonymity the exception, not the rule.",
+            "evidence": [
+              {
+                "url": "https://www.metzdowd.com/pipermail/cryptography/2008-October/014810.html",
+                "summary": "Bitcoin announcement, cryptography mailing list, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p12-block-size-limit-can-be-raised-later",
+            "claim_type": "milestone",
+            "criteria": "base-layer block capacity is raised through a planned, phased change when needed.",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2010-10-04T00:00:00Z",
+            "rationale": "walked back by the community: the limit was never raised by hard fork; scaling went via SegWit (2017) and large-block advocates split to Bitcoin Cash. Walked back: the limit was never raised by hard fork; scaling went via SegWit (2017).",
+            "evidence": [
+              {
+                "url": "https://satoshi.nakamotoinstitute.org/posts/bitcointalk/485/",
+                "summary": "Satoshi forum post, 2010-10-04"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p13-fees-will-replace-the-block-subsidy",
+            "claim_type": "ongoing",
+            "criteria": "transaction fees exceed the block subsidy as the dominant share of miner revenue.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2010-02-14T00:00:00Z",
+            "rationale": "the subsidy still dominates block rewards outside demand spikes; the transition is decades away.",
+            "evidence": [
+              {
+                "url": "http://satoshi.nakamotoinstitute.org/posts/bitcointalk/57/",
+                "summary": "Satoshi forum post, 2010-02-14"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p14-money-without-trusted-third-parties",
+            "claim_type": "ongoing",
+            "criteria": "the base layer operates with no central server, mint, or trusted intermediary required to transact or verify.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-02-11T00:00:00Z",
+            "rationale": "the protocol has no trusted parties (caveat: most users voluntarily reintroduce them via custodial exchanges).",
+            "evidence": [
+              {
+                "url": "https://satoshi.nakamotoinstitute.org/emails/p2p-research/35/",
+                "summary": "Satoshi on the P2P Foundation forum, 2009-02-11"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p15-digital-gold-an-aspirational-store-of-value",
+            "claim_type": "ongoing",
+            "criteria": "BTC retains purchasing power over multi-year horizons with volatility converging toward gold-like stability.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2020-07-01T00:00:00Z",
+            "rationale": "long-run purchasing power is up enormously, but 70%+ drawdowns (e.g., 2021-2022) keep it \"aspirational,\" as the source itself frames it.",
+            "evidence": [
+              {
+                "url": "https://fidelitydigitalassets-dev.fidelitymicrosite.com/sites/g/files/djuvja3256/files/acquiadam/bitinvthessisstoreofvalue.pdf",
+                "summary": "Fidelity Digital Assets research report, 2020-07"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p16-instant-near-free-payments-via-lightning",
+            "claim_type": "milestone",
+            "criteria": "median Lightning payment settles in seconds for sub-cent fees with high first-attempt routing success.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2016-01-01T00:00:00Z",
+            "rationale": "the network has run since 2018 with growing capacity and sub-cent fees, but routing reliability and UX still limit everyday use. ---",
+            "evidence": [
+              {
+                "url": "https://lightning.network/lightning-network-summary.pdf?ref=hajisatoshi.ghost.io",
+                "summary": "Lightning Network summary, 2016-01"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 83819,
+        "market_cap_usd": 1683869293593.8555,
+        "raw_payload": {
+          "bitcoin": {
+            "usd": 83819,
+            "usd_market_cap": 1683869293593.8555
+          }
+        }
+      }
+    },
+    {
+      "slug": "eth",
+      "availability": "available",
+      "assessment": {
+        "capacity": 12,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "12 promises researched from the Ethereum whitepaper, founder and team statements, and the official roadmap. Each fulfilled promise earns one heart.",
+        "promises": [
+          {
+            "lineage": "eth-p01-general-purpose-smart-contracts",
+            "claim_type": "milestone",
+            "criteria": "arbitrary user-deployed programs execute on-chain; thousands of dapps and token contracts live on mainnet",
+            "core": true,
+            "state": "fulfilled",
+            "effective_at": "2015-07-30T00:00:00Z",
+            "rationale": "smart contracts and dapps are Ethereum's defining, shipped reality",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/whitepaper/",
+                "summary": "Ethereum whitepaper, 2014"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p02-transition-from-proof-of-work-to-proof-of-stake",
+            "claim_type": "milestone",
+            "criteria": "consensus layer switched from mining to staked-ETH validation on mainnet",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2022-09-15T00:00:00Z",
+            "rationale": "the Merge executed September 15, 2022, after years of delays; the difficulty bomb was postponed through Byzantium, Constantinople, Muir Glacier, London, Arrow Glacier, and Gray Glacier (see https://blog.ethereum.org/2022/06/16/gray-glacier-announcement, EF blog, June 16, 2022)",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/roadmap/merge/",
+                "summary": "Official Ethereum roadmap; Merge completed 2022-09-15"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p03-cut-energy-use-by-99-95",
+            "claim_type": "milestone",
+            "criteria": "post-Merge energy use at or below ~0.05% of pre-Merge proof-of-work levels",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2022-09-15T00:00:00Z",
+            "rationale": "the post-Merge network uses roughly 99.95% less energy, as the official roadmap records",
+            "evidence": [
+              {
+                "url": "https://blog.ethereum.org/2021/05/18/country-power-no-more/",
+                "summary": "Ethereum Foundation blog, 2021-05-18"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p04-eip-1559-fee-market-reform",
+            "claim_type": "milestone",
+            "criteria": "base-fee mechanism live on mainnet; fee estimation more predictable than the old first-price auction",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2021-08-05T00:00:00Z",
+            "rationale": "EIP-1559 shipped with London; fees became more predictable, though not permanently low (low fees were never the promise)",
+            "evidence": [
+              {
+                "url": "https://eips.ethereum.org/EIPS/eip-1559",
+                "summary": "EIP-1559; activated in the London upgrade, 2021-08-05"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p05-rollup-centric-scaling-strategy",
+            "claim_type": "ongoing",
+            "criteria": "rollups adopted as the ecosystem's scaling path, with protocol development organized around supporting them (major L2s live, data-availability upgrades shipped)",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-10-01T00:00:00Z",
+            "rationale": "the ecosystem went rollup-centric (Optimism, Arbitrum, Base, zkSync era chains); the strategy held",
+            "evidence": [
+              {
+                "url": "https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698",
+                "summary": "Founder roadmap post, 2020-10"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p06-100-000-tps-via-rollups-plus-sharding",
+            "claim_type": "ongoing",
+            "criteria": "sustained combined throughput at or above ~100,000 transactions per second",
+            "core": false,
+            "state": "open",
+            "effective_at": "2020-10-05T00:00:00Z",
+            "rationale": "scaling is underway (rollups + blobs), but the ~100k TPS target has not been reached",
+            "evidence": [
+              {
+                "url": "https://twitter.com/VitalikButerin/status/1312905884549300224?s=20",
+                "summary": "Founder tweet, 2020-10-05"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p07-proto-danksharding-blobs-to-cut-layer-2-data-costs",
+            "claim_type": "milestone",
+            "criteria": "EIP-4844 active on mainnet; rollups posting data in blobs at lower cost than calldata",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2024-03-13T00:00:00Z",
+            "rationale": "blobs shipped with Dencun and L2 data costs fell",
+            "evidence": [
+              {
+                "url": "https://eips.ethereum.org/EIPS/eip-4844",
+                "summary": "EIP-4844; activated in the Dencun upgrade, 2024-03-13"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p08-full-sharding",
+            "claim_type": "milestone",
+            "criteria": "execution sharding implemented and live on mainnet",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2014-01-01T00:00:00Z",
+            "rationale": "the original execution-sharding design never shipped; it was superseded by the rollup-centric data-availability roadmap Superseded by the rollup-centric data-availability roadmap.",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/whitepaper/",
+                "summary": "Ethereum whitepaper, 2014"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p09-asic-resistant-decentralized-mining",
+            "claim_type": "ongoing",
+            "criteria": "no dominant specialized ASICs for Ethereum mining; mining viable on commodity GPUs",
+            "core": false,
+            "state": "lapsed",
+            "effective_at": "2014-01-01T00:00:00Z",
+            "rationale": "Ethash ASICs arrived (e.g., 2018) and mining itself ended entirely with the Merge; the decentralized-mining era rose and fell",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/whitepaper/",
+                "summary": "Ethereum whitepaper mining section, 2014"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p10-plasma-general-purpose-scaling",
+            "claim_type": "milestone",
+            "criteria": "general-purpose Plasma chains carrying large-scale smart-contract load on Ethereum",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2017-08-01T00:00:00Z",
+            "rationale": "general-purpose Plasma never materialized; rollups displaced it as the scaling approach Superseded: general-purpose Plasma never materialized; rollups displaced it.",
+            "evidence": [
+              {
+                "url": "https://plasma.io/plasma.pdf",
+                "summary": "Plasma paper, 2017-08"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p11-account-abstraction-erc-4337",
+            "claim_type": "milestone",
+            "criteria": "EntryPoint live on mainnet; smart-contract wallets usable in production",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2023-03-01T00:00:00Z",
+            "rationale": "ERC-4337 is final and the EntryPoint has been live on mainnet since March 2023",
+            "evidence": [
+              {
+                "url": "https://eips.ethereum.org/EIPS/eip-4337",
+                "summary": "EIP-4337; EntryPoint deployed on mainnet, 2023-03"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p12-stateless-validation",
+            "claim_type": "ongoing",
+            "criteria": "stateless clients validating on mainnet without a full local state database",
+            "core": false,
+            "state": "open",
+            "effective_at": "2026-03-01T00:00:00Z",
+            "rationale": "statelessness is still a roadmap item; the specific Verkle-tree design was displaced by the binary-state-tree plan",
+            "evidence": [
+              {
+                "url": "https://www.theblock.co/news/ecosystems/2026-03-01-vitalik-buterin-lays-out-a-two-part-plan-to-overhaul-ethereums-execution-layer-from-the-ground-up-391681",
+                "summary": "Reporting on the execution-layer overhaul plan, 2026-03-01"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 2683.7,
+        "market_cap_usd": 327589413397.1717,
+        "raw_payload": {
+          "ethereum": {
+            "usd": 2683.7,
+            "usd_market_cap": 327589413397.1717
+          }
+        }
+      }
+    },
+    {
+      "slug": "xrp",
+      "availability": "available",
+      "assessment": {
+        "capacity": 19,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "XRP's scoreable claims are dominated by Ripple's public commitments on supply discipline, cross-border liquidity, ecosystem funding, and XRPL feature delivery; this inventory captures each attributable promise once, scoring real usage rather than announcements.",
+        "promises": [
+          {
+            "claim_type": "ongoing",
+            "core": true,
+            "criteria": "XRP is used by real financial institutions for live cross-border settlement at meaningful scale, with XRP acting as the bridge asset for on-demand liquidity.",
+            "effective_at": "2017-05-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ripple escrow announcement (16 May 2017): XRP is a digital asset designed for enterprise use, with companies able to use XRP for on-demand liquidity as a bridge currency at lower cost.",
+                "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/"
+              },
+              {
+                "summary": "Ripple Q4 2018 XRP Markets Report: xRapid commercially available since early October 2018, with MercuryFX, Cuallix and Catalyst Corporate Federal Credit Union signed on as customers.",
+                "url": "https://ripple.com/insights/q4-2018-xrp-markets-report/"
+              },
+              {
+                "summary": "Daily Hodl (Nov 2019): RippleNet surpassed 300 clients with 10x YoY transaction growth; two dozen customers signed on to On-Demand Liquidity, including MoneyGram settling currencies in seconds.",
+                "url": "https://dailyhodl.com/2019/11/07/ripple-hits-300-clients-as-moneygram-announces-expansion-of-xrp-powered-on-demand-liquidity/"
+              },
+              {
+                "summary": "Ripple USD launch PR (Dec 2024): Ripple Payments has processed $70B+ across 90+ payout markets, the company's own latest primary volume figure for the payments business.",
+                "url": "https://www.businesswire.com/news/home/20241216911945/en/5762080/Raising-the-Standard-for-Stablecoins-Ripple-USD-Launches-Globally-with-Unmatched-Utility-Experience-and-Compliance"
+              }
+            ],
+            "lineage": "xrp-p01-bridge-liquidity",
+            "rationale": "Ripple's own reports show commercial xRapid customers (2018), two dozen ODL customers with MoneyGram settling in seconds (2019), and $70B+ processed through Ripple Payments across 90+ payout markets (2024).",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "55 billion XRP are locked in escrow contracts on the XRP Ledger, removing them from circulating supply.",
+            "effective_at": "2017-05-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ripple escrow announcement (16 May 2017): Ripple commits to placing 55 billion XRP into 55 escrow contracts of one billion XRP each.",
+                "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/"
+              },
+              {
+                "summary": "CryptoNinjas (Dec 2017): Ripple's 55 billion XRP escrow lockup is complete on the XRP Ledger.",
+                "url": "https://www.cryptoninjas.net/2017/12/08/ripples-55-billion-xrp-lockup-complete/"
+              }
+            ],
+            "lineage": "xrp-p02-escrow-55b",
+            "rationale": "The full 55 billion XRP escrow was completed on-ledger in December 2017 as announced.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Each month up to one billion XRP is released from escrow and any unused amount is returned to the back of the escrow queue.",
+            "effective_at": "2017-05-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ripple escrow announcement (16 May 2017): unused XRP from each monthly release returns to the back of the escrow queue, keeping supply releases predictable.",
+                "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/"
+              },
+              {
+                "summary": "CryptoNinjas (Dec 2017): confirms the escrow structure and the monthly release with re-escrow of unused amounts.",
+                "url": "https://www.cryptoninjas.net/2017/12/08/ripples-55-billion-xrp-lockup-complete/"
+              }
+            ],
+            "lineage": "xrp-p03-re-escrow",
+            "rationale": "The monthly release and re-escrow mechanism has operated on the XRP Ledger as stated since December 2017.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "xRapid is commercially available and real customers use XRP for live cross-border payments.",
+            "effective_at": "2018-10-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ripple Q4 2018 XRP Markets Report: xRapid became commercially available in early October 2018, with MercuryFX, Cuallix and Catalyst Corporate Federal Credit Union signed on.",
+                "url": "https://ripple.com/insights/q4-2018-xrp-markets-report/"
+              }
+            ],
+            "lineage": "xrp-p04-xrapid-commercial",
+            "rationale": "Ripple reported xRapid commercially available in early October 2018 with three named customers in production.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Xpring invests in, incubates, acquires or grants funding to projects building on XRP or the XRP Ledger.",
+            "effective_at": "2018-05-14T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CryptoDaily (May 2018): Ripple announces Xpring to invest in, incubate, acquire and provide grants to projects using XRP and the XRP Ledger.",
+                "url": "https://cryptodaily.co.uk/2018/05/ripples-xpring-great-xrp/"
+              },
+              {
+                "summary": "CoinTelegraph: Xpring announced roughly $500 million invested across 20+ XRP ecosystem firms before the program was folded into RippleX.",
+                "url": "https://cointelegraph.com/news/ripple-incubator-xpring-announces-500-million-invested-in-xrp-projects"
+              }
+            ],
+            "lineage": "xrp-p05-xpring",
+            "rationale": "Xpring deployed about $500 million across 20+ XRP ecosystem firms before being reorganized into RippleX.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ripple funds university blockchain research partnerships at meaningful scale, with active partner programs and funded projects.",
+            "effective_at": "2018-06-04T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CoinDesk (Jun 2018): Ripple commits more than $50 million plus technical resources to 17 universities for blockchain research (UBRI).",
+                "url": "https://www.coindesk.com/markets/2018/06/04/ripple-pumps-50-million-into-academic-research-on-blockchain"
+              },
+              {
+                "summary": "CoinDesk (Feb 2019): Ripple teams with 10 new universities, growing the University Blockchain Research Initiative to 29 partners.",
+                "url": "https://www.coindesk.com/markets/2019/02/07/ripple-teams-with-10-new-universities-for-blockchain-research-initiative"
+              }
+            ],
+            "lineage": "xrp-p06-ubri",
+            "rationale": "UBRI scaled from 17 to 29+ university partners with real funding and research programs deployed.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Games using Interledger with XRP as settlement reach players at meaningful scale.",
+            "effective_at": "2019-03-12T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CoinDesk (Mar 2019): Ripple's Xpring and Forte create a $100 million fund to develop games using the Interledger Protocol with XRP as settlement.",
+                "url": "https://www.coindesk.com/markets/2019/03/12/ripples-xpring-helps-launch-100-million-fund-for-game-developers"
+              },
+              {
+                "summary": "Daily Hodl (Nov 2020): Forte describes its platform as chain-agnostic, open to Ethereum, EOS and Tron, with no meaningful XRP-settled game usage reported.",
+                "url": "https://dailyhodl.com/2020/11/23/ripple-backed-startup-pushing-to-bring-xrp-to-140-billion-gaming-industry-announces-slew-of-partnerships/"
+              }
+            ],
+            "lineage": "xrp-p07-forte-gaming",
+            "rationale": "Forte went chain-agnostic and no meaningful XRP-settled game usage ever materialized; the XRP gaming push died out.",
+            "state": "lapsed"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "The $250 million Creator Fund backs creators building NFT and tokenization uses on the XRP Ledger, with funded projects going live.",
+            "effective_at": "2021-09-29T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ripple press (Mar 2022): Ripple's $250M Creator Fund drew nearly 4,000 applications and signed its first creators building NFT projects on the XRP Ledger.",
+                "url": "http://ripple.com/ripple-press/ripple-signs-first-creators-extends-nft-partnerships-with-creator-fund/"
+              },
+              {
+                "summary": "Business Wire (Mar 2022): mirror of the first-creator announcement, confirming fund disbursement to NFT builders on XRPL.",
+                "url": "https://www.businesswire.com/news/home/20220310005468/en"
+              }
+            ],
+            "lineage": "xrp-p08-creator-fund",
+            "rationale": "Nearly 4,000 applications and funded creators launched real NFT projects on the XRP Ledger.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Native NFT support (XLS-20) is live on the XRP Ledger mainnet with real minting and marketplace use.",
+            "effective_at": "2022-10-31T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "FXStreet (Nov 2022): Ripple CTO David Schwartz announced XLS-20 activation on XRP Ledger mainnet on 31 October 2022.",
+                "url": "https://www.fxstreet.com/amp/cryptocurrencies/news/xrp-price-nfts-arrive-on-xrp-ledger-mainnet-what-to-expect-202211021114"
+              },
+              {
+                "summary": "Bitcoinist: NFTs on the XRP Ledger gained momentum with real marketplace activity after activation.",
+                "url": "https://bitcoinist.com/nfts-on-xrp-ledger-gain-momentum/"
+              }
+            ],
+            "lineage": "xrp-p09-xls20-nfts",
+            "rationale": "XLS-20 activated on mainnet on 31 October 2022 and real NFT minting and marketplace use followed.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ripple disburses material funding to developers building on the XRP Ledger through grants and accelerator programs.",
+            "effective_at": "2022-03-17T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Business Wire (Mar 2022): Ripple commits 1 billion XRP to grants, accelerator and diversity/sustainability programs over 10-20 years; the existing fund had already awarded $6M to 50+ projects.",
+                "url": "https://www.businesswire.com/news/home/20220317005422/en/Ripple-Commits-1-Billion-XRP-to-Grants-Program-Accelerator-to-Advance-XRP-Ledger-Development"
+              },
+              {
+                "summary": "U.Today (May 2024): RippleX announced XRPL Grants Wave 7 awardees, seven projects from seven countries receiving over $700,000, showing the rolling program still disbursing years later.",
+                "url": "https://u.today/ripplex-releases-funds-to-developers-details"
+              }
+            ],
+            "lineage": "xrp-p10-developer-fund",
+            "rationale": "Grants are actively disbursing years after launch, from $6M to 50+ projects at announcement through Wave 7 in 2024.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A native automated market maker (XLS-30) is live on the XRP Ledger mainnet with real integrations and trading use.",
+            "effective_at": "2024-03-22T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CryptoTimes (Mar 2024): Ripple CTO announced mainnet activation of the XLS-30 automated market maker on 22 March 2024.",
+                "url": "https://www.cryptotimes.io/2024/03/23/ripple-unveils-new-automated-trading-system-warns-of-risks/"
+              },
+              {
+                "summary": "Messari State of XRP Ledger Q4 2025: reports real AMM integrations and usage on the XRP Ledger.",
+                "url": "https://messari.io/report/state-of-xrp-ledger-q4-2025"
+              }
+            ],
+            "lineage": "xrp-p11-xls30-amm",
+            "rationale": "XLS-30 activated on mainnet in March 2024 and saw real integrations and usage through 2025.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ripple deploys $100 million into carbon markets and ships carbon-credit tokenization tools on the XRP Ledger with real usage.",
+            "effective_at": "2022-05-19T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Business Wire (May 2022): Ripple commits $100 million to carbon markets and carbon-credit tokenization tools on the XRP Ledger.",
+                "url": "https://www.businesswire.com/news/home/20220519005440/en"
+              }
+            ],
+            "lineage": "xrp-p12-carbon-markets",
+            "rationale": "Commitment stated in May 2022; no verified deployed tokenization usage found, so it stays open.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ripple reaches net-zero carbon emissions by 2030 or sooner.",
+            "effective_at": "2022-05-19T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Business Wire (May 2022): Ripple commits to net zero by 2030 or sooner as part of its climate pledge.",
+                "url": "https://www.businesswire.com/news/home/20220519005440/en"
+              }
+            ],
+            "lineage": "xrp-p13-net-zero-2030",
+            "rationale": "The target date is 2030; there is no evidence of achievement yet, so it stays open.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Ripple USD (RLUSD) launches on the XRP Ledger and Ethereum as a 1:1 USD-backed stablecoin.",
+            "effective_at": "2024-12-17T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Business Wire (Apr 2024): Ripple announces RLUSD, a USD-backed stablecoin for the XRP Ledger and Ethereum, 1:1 backed by dollar deposits, short-term US treasuries and cash equivalents, with monthly third-party attestations.",
+                "url": "https://www.businesswire.com/news/home/20240404802548/en/Ripple-to-Issue-USD-backed-Stablecoin-Bringing-More-Utility-and-Liquidity-to-XRP-Ledger?ref=blockhead.co"
+              },
+              {
+                "summary": "Business Wire (Dec 2024): RLUSD launches globally on the XRP Ledger and Ethereum on 17 December 2024.",
+                "url": "https://www.businesswire.com/news/home/20241216911945/en/5762080/Raising-the-Standard-for-Stablecoins-Ripple-USD-Launches-Globally-with-Unmatched-Utility-Experience-and-Compliance"
+              },
+              {
+                "summary": "Adbytes.Media (Aug 2026): Ripple's transparency page showed ~$1.87B RLUSD in circulation backed by ~$1.98B in reserves, evidencing real post-launch adoption.",
+                "url": "https://adbytes.media/blog/ripples-rlusd-crosses-2-billion-as-supply-grows-not-price"
+              }
+            ],
+            "lineage": "xrp-p14-rlusd-launch",
+            "rationale": "RLUSD launched on both chains in December 2024 and grew to roughly $2 billion in circulation by August 2026.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "RLUSD reserves are backed 1:1 and independently attested on a monthly basis.",
+            "effective_at": "2024-04-04T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Business Wire (Apr 2024): Ripple commits to monthly third-party attestations of RLUSD reserves.",
+                "url": "https://www.businesswire.com/news/home/20240404802548/en/Ripple-to-Issue-USD-backed-Stablecoin-Bringing-More-Utility-and-Liquidity-to-XRP-Ledger?ref=blockhead.co"
+              },
+              {
+                "summary": "BSC News (Mar 2026): Deloitte attestation for February 2026 showed reserves exceeded circulating RLUSD at two snapshots ($1.61B vs 1.54B; $1.57B vs 1.50B), part of the ongoing monthly series.",
+                "url": "https://bsc.news/post/ripple-rlusd-stablecoin-fully-backed-deloitte"
+              }
+            ],
+            "lineage": "xrp-p15-rlusd-attestations",
+            "rationale": "Deloitte has issued recurring monthly attestations showing RLUSD reserves exceed tokens in circulation.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "RLUSD expands to additional blockchains and DeFi protocols beyond the XRP Ledger and Ethereum.",
+            "effective_at": "2024-04-04T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Business Wire (Apr 2024): Ripple says RLUSD will launch on the XRP Ledger and Ethereum and expand to additional blockchains and DeFi protocols over time.",
+                "url": "https://www.businesswire.com/news/home/20240404802548/en/Ripple-to-Issue-USD-backed-Stablecoin-Bringing-More-Utility-and-Liquidity-to-XRP-Ledger?ref=blockhead.co"
+              }
+            ],
+            "lineage": "xrp-p16-rlusd-expansion",
+            "rationale": "RLUSD remains on the XRP Ledger and Ethereum; no verified expansion to additional chains, so it stays open.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The XRPL EVM sidechain mainnet, with XRP as its native gas token, hosts real dApps and meaningful usage.",
+            "effective_at": "2025-06-30T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ripple blog: XRPL EVM Sidechain mainnet is live, built with Peersyst and connected via Axelar, with XRP as the native gas token; named application partners (Strobe, Securd, Vertex) were listed as coming soon at launch.",
+                "url": "https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/"
+              }
+            ],
+            "lineage": "xrp-p17-evm-sidechain",
+            "rationale": "Mainnet launched in June 2025 but named applications were still coming soon; no demonstrated real usage yet, so it stays open.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Native on-ledger lending (XLS-66) is activated on the XRP Ledger mainnet and real loans are originated.",
+            "effective_at": "2024-10-18T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "XRPLF standards repo: XLS-0066 lending protocol proposal created 18 October 2024, still in Draft status as of September 2026.",
+                "url": "https://github.com/xrplf/xrpl-standards/blob/HEAD/XLS-0066-lending-protocol/README.md"
+              }
+            ],
+            "lineage": "xrp-p18-xrpl-lending",
+            "rationale": "XLS-66 remains a draft proposal with no mainnet activation and no real loans, so it stays open.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Codius delivers a working smart-contract hosting platform adopted by developers.",
+            "effective_at": "2014-07-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Bitcoin Magazine: Codius was announced by Ripple in July 2014 as a smart-contract hosting platform; Ripple discontinued development in 2015, citing a small market.",
+                "url": "https://bitcoinmagazine.com/business/ripple-discontinues-smart-contract-platform-codius-citing-small-market-1435182153"
+              },
+              {
+                "summary": "CoinDesk (Jun 2018): Ripple released Codius in beta in 2014 and shelved it the following year; former CTO Stefan Thomas later revived it outside Ripple.",
+                "url": "https://www.coindesk.com/markets/2018/06/06/ripple-smart-contracts-creator-targets-ethereum-with-new-tech-launch"
+              }
+            ],
+            "lineage": "xrp-p19-codius",
+            "rationale": "Ripple explicitly discontinued Codius in 2015 for lack of demand; it was never adopted as promised and was later revived outside Ripple.",
+            "state": "retired"
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 1.56,
+        "market_cap_usd": 98264927470.77997,
+        "raw_payload": {
+          "ripple": {
+            "usd": 1.56,
+            "usd_market_cap": 98264927470.77997
+          }
+        }
+      }
+    },
+    {
+      "slug": "bat",
+      "availability": "available",
+      "assessment": {
+        "capacity": 17,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Researched the BAT whitepaper (Brave Software, Jan 7 2018), BAT Roadmap 2.0 (Feb 2021), BAT Roadmap 4.0 (Jul 2026), State of the BAT 2022, and the current basicattentiontoken.org site; fulfillment checked against live products and Brave's own delivery recaps.",
+        "promises": [
+          {
+            "claim_type": "ongoing",
+            "core": true,
+            "criteria": "BAT is adopted beyond Brave as the web-wide unit of account for attention, or its protocols become web standards.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper (Brave Software, Jan 7 2018): BAT as the token for a decentralized ad exchange, with BAT and its protocols as a future part of web standards.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              }
+            ],
+            "lineage": "bat-p01-attention-standard",
+            "rationale": "BAT works inside Brave's ecosystem but is not a web-wide standard; the whitepaper's standards vision remains unmet.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ordinary users can opt into private ads in Brave and actually receive BAT for their attention.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper: users get privacy and security when viewing ads plus a share of tokens.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              },
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Brave Rewards grew to tens of millions of users.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              },
+              {
+                "summary": "Brave Community payout thread: July 2026 Brave Ads user payouts processing normally.",
+                "url": "https://community.brave.app/t/ads-payout-status-update/287895/87"
+              }
+            ],
+            "lineage": "bat-p02-user-rewards",
+            "rationale": "Brave Rewards has paid tens of millions of users since 2019; July 2026 payouts processed normally.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Publishers and creators can register and actually receive BAT for attention to their content and tips.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper: publishers are rewarded in BAT based on measured user attention.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              },
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): over 2 million verified websites and content creators in Brave Creators.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p03-creator-payouts",
+            "rationale": "Over 2 million verified websites and creators receive BAT through Brave Creators.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Advertisers can run campaigns on Brave Ads with private attribution and real reporting.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper: advertisers get less expensive attention, less fraud, and better attribution.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              },
+              {
+                "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): Brave Ads served 2.5K+ campaigns from 400+ advertisers in 190+ countries.",
+                "url": "https://brave.com/blog/bat-roadmap-2-0/"
+              },
+              {
+                "summary": "basicattentiontoken.org: 400+ advertisers to date on the private ad network.",
+                "url": "https://basicattentiontoken.org/"
+              }
+            ],
+            "lineage": "bat-p04-advertiser-platform",
+            "rationale": "Brave Ads serves thousands of campaigns from 400+ advertisers with anonymous accounting.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ad confirmation events are validated on-chain with a decentralized audit trail that participants can verify.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper section 3.5: beyond 1.0, make transfer and verification fully distributed on Ethereum using state channels and zero-knowledge proofs.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              },
+              {
+                "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): Themis research on moving Brave/BAT ad operations on-chain.",
+                "url": "https://brave.com/blog/bat-roadmap-2-0/"
+              }
+            ],
+            "lineage": "bat-p05-onchain-ad-confirmations",
+            "rationale": "Themis produced research papers and an RFCC but no production on-chain deployment.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The 300M BAT user growth pool is distributed as grants to early adopters of Brave and BAT.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper section 5.3: 300M BAT endowment for early adopters, up to 5 BAT per user.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              },
+              {
+                "summary": "BAT Ecosystem Growth page: Brave's BAT purchases fund user rewards for viewing ads.",
+                "url": "https://basicattentiontoken.org/growth/"
+              }
+            ],
+            "lineage": "bat-p06-user-growth-pool",
+            "rationale": "UGP grants were distributed to users for years; Brave's growth page documents ongoing BAT purchases funding user rewards.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A native Brave Wallet ships on desktop and mobile, unifying Brave Rewards, custodial accounts, and non-custodial accounts.",
+            "effective_at": "2021-02-22T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): Brave Wallet plan to unify Rewards, custodial, and non-custodial accounts.",
+                "url": "https://brave.com/blog/bat-roadmap-2-0/"
+              },
+              {
+                "summary": "State of the BAT 2022 (Brave): desktop Brave Wallet released Nov 2021, mobile beta Dec 2021.",
+                "url": "https://brave.com/blog/state-of-the-bat-2022/"
+              }
+            ],
+            "lineage": "bat-p07-brave-wallet",
+            "rationale": "Desktop wallet shipped November 2021; mobile beta December 2021.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Brave ships an in-browser DEX aggregator letting users swap tokens with BAT fee and balance advantages.",
+            "effective_at": "2021-02-22T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): DEX aggregator with BAT transaction-fee and balance-holder discounts.",
+                "url": "https://brave.com/blog/bat-roadmap-2-0/"
+              },
+              {
+                "summary": "The Cryptonomist, Jul 8 2021: Brave Swap with 0x API integration live in the desktop browser.",
+                "url": "https://cryptonomist.ch/2021/07/08/brave-swap-partners-with-0x-project-to-foster-defi/"
+              },
+              {
+                "summary": "State of the BAT 2022 (Brave): Brave Swap integrated into desktop and mobile Brave Wallets.",
+                "url": "https://brave.com/blog/state-of-the-bat-2022/"
+              }
+            ],
+            "lineage": "bat-p08-brave-swap",
+            "rationale": "Brave Swap with 0x integration went live in the wallet in July 2021.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "BAT becomes usable on blockchains beyond Ethereum.",
+            "effective_at": "2021-02-22T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): multi-chain support with many assets and blockchains.",
+                "url": "https://brave.com/blog/bat-roadmap-2-0/"
+              },
+              {
+                "summary": "State of the BAT 2022 (Brave): BAT bridged to BSC, Avalanche, Polygon, Gnosis Chain, and Solana with real wallet holdings.",
+                "url": "https://brave.com/blog/state-of-the-bat-2022/"
+              }
+            ],
+            "lineage": "bat-p09-crosschain-bat",
+            "rationale": "BAT bridged to BSC, Avalanche, Polygon, Gnosis Chain, and Solana with real wallet holdings.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "BAT can be spent on value-added services and partner offerings beyond ad rewards and tipping.",
+            "effective_at": "2018-01-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT whitepaper section 3.5: plan to explore value-added services offered to users on the browser platform through BAT.",
+                "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+              },
+              {
+                "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): research into BAT utility for search, e-commerce, and VPN.",
+                "url": "https://brave.com/blog/bat-roadmap-2-0/"
+              }
+            ],
+            "lineage": "bat-p10-bat-spend-utility",
+            "rationale": "No durable broad spend utility yet; Roadmap 4.0 extends utility to purchases, offers, and loyalty but has not shipped.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "BravePay stablecoin protocol launches, giving users self-custody private on-chain payments.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): BravePay stablecoin protocol layer for self-custody private transactions.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p11-bravepay",
+            "rationale": "Announced July 2026; no public launch yet.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The Brave Rewards Card launches in virtual and physical form and pays BAT rewards on everyday purchases.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Brave Rewards Card for everyday purchases in eligible countries, earning BAT rewards.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p12-rewards-card",
+            "rationale": "Announced July 2026; card partner and availability still to be announced.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The unified Brave Wallet ships, combining saved payment methods, self-custody multi-chain crypto, and Brave Rewards.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): unified Brave Wallet redesign merging cards, crypto accounts, and Rewards.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p13-unified-wallet",
+            "rationale": "Announced July 2026; community testing planned for fall 2026.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Verified creators receive verifiable micro-royalty payments when AI products use their content.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Creator Contribution Protocol for compensating creators when AI uses their content.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p14-creator-ai-protocol",
+            "rationale": "Announced July 2026; still in research and development with a dedicated post planned later in 2026.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Brave supports x402 and Machine Payments Protocol transactions for agentic payments.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): browser support for x402 and MPP agentic payments.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p15-agentic-payments",
+            "rationale": "Announced July 2026; implementation planned, not shipped.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "A share of net revenue from Brave Wallet features, the Rewards Card, and BravePay funds BAT buybacks supporting user rewards and creator contributions, with public disclosure.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): percentage of net revenue funds BAT buybacks for user rewards and creator contributions via the UGP Reserve.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p16-bat-buybacks",
+            "rationale": "Announced July 2026; buybacks are tied to future revenue sources that do not exist yet.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Brave Rewards delivers an Offer Wall, loyalty tiers, and BravePass tied to purchases, wallet activity, and loyalty.",
+            "effective_at": "2026-07-09T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Rewards evolves beyond ads into offers, purchases, wallet activity, and loyalty.",
+                "url": "https://brave.com/blog/bat-roadmap-4-0/"
+              }
+            ],
+            "lineage": "bat-p17-rewards-evolution",
+            "rationale": "Announced July 2026 as the evolution beyond browser-based rewards; not shipped.",
+            "state": "open"
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 0.09071,
+        "market_cap_usd": 135681062.12321946,
+        "raw_payload": {
+          "basic-attention-token": {
+            "usd": 0.09071,
+            "usd_market_cap": 135681062.12321946
+          }
+        }
+      }
+    },
+    {
+      "slug": "link",
+      "availability": "available",
+      "assessment": {
+        "capacity": 14,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Researched the Chainlink 1.0 whitepaper (Sep 2017), the Chainlink 2.0 whitepaper (Apr 2021), official Chainlink blog launch posts (VRF, Keepers, Data Streams, Staking v0.1/v0.2), the SmartCon 2022 keynote and recap (Economics 2.0, BUILD, SCALE), the CCIP mainnet launch (Jul 2023), and Swift/bank integration announcements through Sep 2026.",
+        "promises": [
+          {
+            "claim_type": "ongoing",
+            "core": true,
+            "criteria": "Chainlink oracle networks are the widely used, decentralized way smart contracts get tamper-proof off-chain data.",
+            "effective_at": "2017-09-04T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Chainlink v1.0 whitepaper (Ellis, Juels, Nazarov, 4 Sep 2017) presenting Chainlink as a decentralized oracle network for smart contract external connectivity.",
+                "url": "https://img1.wsimg.com/blobby/go/f3713a5a-c28d-4973-a55c-ed5b2de3120e/downloads/ChainLink.pdf?ver=1779292597733"
+              },
+              {
+                "summary": "SmartCon 2022 keynote recap where Nazarov reports Chainlink oracles enabled over $6 trillion in transactions and $512B in a single month (Aug 2022).",
+                "url": "https://chainlinktoday.com/sergey-nazarov-celebrates-launch-of-chainlink-economics-2-0-during-smartcon-2022-keynote/"
+              }
+            ],
+            "lineage": "link-p01-decentralized-oracle-network",
+            "rationale": "Chainlink mainnet launched 2019 and its oracle networks became the default data layer for smart contracts, securing trillions in transaction value.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Most major DeFi protocols use Chainlink price feeds as their primary price data source.",
+            "effective_at": "2022-09-28T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "SmartCon 2022 keynote recap quoting Nazarov: Chainlink achieved standard status at over sixty percent of the oracle market.",
+                "url": "https://chainlinktoday.com/sergey-nazarov-celebrates-launch-of-chainlink-economics-2-0-during-smartcon-2022-keynote/"
+              }
+            ],
+            "lineage": "link-p02-price-feeds-defi-standard",
+            "rationale": "Nazarov stated at SmartCon 2022 that Chainlink had become the standard at over sixty percent; price feeds remain the default oracle for top DeFi protocols.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Developers can build hybrid smart contracts that combine on-chain code with Chainlink decentralized oracle network off-chain computation and services.",
+            "effective_at": "2021-04-15T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Chainlink 2.0 whitepaper (15 Apr 2021) laying out hybrid smart contracts powered by decentralized oracle networks with off-chain computation.",
+                "url": "https://research-chain-linkproxy.c9w.net/whitepaper-v2.pdf"
+              },
+              {
+                "summary": "Chainlink Labs press release (Oct 2023) announcing Functions Beta and Automation 2.0 live on mainnet with real users like Space and Time, Oku Finance, Sommelier.",
+                "url": "https://www.prnewswire.com/news-releases/chainlink-announces-new-decentralized-computing-capabilities-with-functions-beta-and-automation-2-0-on-mainnet-301944023.html"
+              }
+            ],
+            "lineage": "link-p03-hybrid-smart-contracts",
+            "rationale": "The 2.0 vision of DONs providing off-chain computation is live and used via Automation, Functions, Data Streams, and CCIP.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "LINK staking provides slashable cryptoeconomic security where attacking a DON costs more than the combined deposits of all its nodes (super-linear impact).",
+            "effective_at": "2021-04-15T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Chainlink 2.0 whitepaper (15 Apr 2021) proposing explicit super-linear staking where malicious actors need budgets larger than all node deposits combined.",
+                "url": "https://research-chain-linkproxy.c9w.net/whitepaper-v2.pdf"
+              },
+              {
+                "summary": "Official Chainlink blog overview of explicit staking: nodes lock LINK as collateral that can be slashed for malicious behavior.",
+                "url": "https://blog.chain.link/explicit-staking-in-chainlink-2-0/"
+              }
+            ],
+            "lineage": "link-p04-superlinear-staking",
+            "rationale": "Staking v0.1 and v0.2 shipped without slashing-based super-linear security; the full cryptoeconomic design from the 2.0 whitepaper is still pending.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Chainlink Staking v0.1 goes live on Ethereum mainnet and the capped pool fills with community participation.",
+            "effective_at": "2022-06-07T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Chainlink blog (21 Nov 2022) with staking v0.1 design and launch details: 25M LINK cap, Dec 6 early access, Dec 8 general access.",
+                "url": "http://blog.chain.link/chainlink-staking-launch-details/?ref"
+              },
+              {
+                "summary": "Official Chainlink blog (6 Dec 2022) announcing Staking v0.1 early access live on Ethereum mainnet.",
+                "url": "https://blog.chain.link/chainlink-staking-early-access-now-live"
+              }
+            ],
+            "lineage": "link-p05-staking-v01",
+            "rationale": "Staking v0.1 launched Dec 6-8 2022 with a 25M LINK cap; the community allotment filled within hours of general access.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Chainlink Staking v0.2 launches as a modular, upgradable platform with an expanded 45M LINK pool, unbonding mechanism, and node-operator slashing.",
+            "effective_at": "2023-08-25T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Report on the Staking v0.2 mainnet launch: 45M LINK pool, modular rearchitecture, unbonding mechanism, node-operator slashing, dynamic rewards.",
+                "url": "https://cryptobriefing.com/chainlink-opens-staking-more-users-v0-2-release/"
+              },
+              {
+                "summary": "Official Chainlink blog on the v0.2 launch process: 45M LINK cap, priority migration for v0.1 stakers, fair-entry mechanism.",
+                "url": "https://chain.link/blog/chainlink-staking-v0-2-early-access-eligibility"
+              }
+            ],
+            "lineage": "link-p06-staking-v02",
+            "rationale": "Staking v0.2 went live on mainnet Nov-Dec 2023 with the 45M LINK pool, unbonding, and slashing for node operator stake.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Smart contracts use Chainlink VRF for provably fair, tamper-proof randomness in production applications.",
+            "effective_at": "2020-05-12T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Chainlink blog documenting VRF mainnet launch (Oct 2020), 1M+ requests across Ethereum/Polygon/BSC, and 35 production use cases in gaming, NFTs, DeFi.",
+                "url": "https://blog.chain.link/blockchain-rng-use-cases-enabled-by-chainlink-vrf/?ref=blog.fantom.foundation"
+              },
+              {
+                "summary": "Official Chainlink 2023 network review reporting 10.5M+ VRF randomness requests powering hundreds of gaming and NFT applications.",
+                "url": "https://blog.chain.link/the-chainlink-network-in-2023"
+              }
+            ],
+            "lineage": "link-p07-vrf",
+            "rationale": "VRF launched on mainnet Oct 2020 and became the standard RNG for blockchain gaming and NFTs, serving over 10.5M randomness requests.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Developers automate smart contract functions through Chainlink's decentralized keeper network in production.",
+            "effective_at": "2021-08-05T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Chainlink blog (5 Aug 2021) announcing Chainlink Keepers live on Ethereum mainnet for decentralized smart contract automation.",
+                "url": "https://blog.chain.link/chainlink-keepers-is-now-live-on-mainnet/"
+              }
+            ],
+            "lineage": "link-p08-keepers-automation",
+            "rationale": "Chainlink Keepers (now Automation) launched on Ethereum mainnet Aug 2021 and was adopted by Aave, Synthetix, PoolTogether and others for production upkeeps.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "DeFi derivatives protocols use Chainlink Data Streams for low-latency market data in production.",
+            "effective_at": "2023-10-02T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Chainlink blog (Oct 2023) launching Data Streams on Arbitrum mainnet with GMX using them in production for perpetual futures.",
+                "url": "https://blog.chain.link/data-streams-mainnet"
+              },
+              {
+                "summary": "Official Chainlink Q4 2023 product update reporting Data Streams live in production with GMX V2 and other top protocols committed to mainnet.",
+                "url": "https://blog.chain.link/chainlink-product-update-q4-2023/"
+              }
+            ],
+            "lineage": "link-p09-data-streams",
+            "rationale": "Data Streams launched on Arbitrum mainnet Oct 2023 and went live in production powering GMX V2, accounting for 90%+ of high-throughput DeFi on Arbitrum.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Developers connect smart contracts to Web2 APIs and run custom serverless computation via Chainlink Functions in production.",
+            "effective_at": "2023-03-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "TechCrunch exclusive (1 Mar 2023) on the Chainlink Functions launch: serverless platform connecting dApps to Web2 APIs like AWS and Meta.",
+                "url": "https://techcrunch.com/2023/03/01/chainlink-launches-web3-dev-platform-to-connect-builders-to-web2-0-apis-like-aws-and-meta/"
+              },
+              {
+                "summary": "Official Chainlink Q3 2023 product update: Functions is the most widely used Web3 serverless solution by developers building on testnets.",
+                "url": "https://blog.chain.link/chainlink-product-update-q3-2023/"
+              }
+            ],
+            "lineage": "link-p10-functions",
+            "rationale": "Functions launched in beta on mainnet Oct 2023 but remains a beta product with usage concentrated on testnets; production adoption is still early.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Cross-chain applications move data and value between blockchains via Chainlink CCIP in production.",
+            "effective_at": "2023-07-17T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Report on the CCIP mainnet early-access launch (17 Jul 2023) on Ethereum, Avalanche, Polygon, Arbitrum and Optimism, with Synthetix live and Aave integrating.",
+                "url": "https://cointelegraph.com/news/chainlink-launches-cross-chain-protocol-ccip-ethereum-blockchain-mainnet"
+              },
+              {
+                "summary": "PYMNTS (Sep 2026) reporting CCIP active since Jul 2023, now connecting 60+ blockchain networks, used by JPMorgan, ANZ, UBS and HKMA for cross-chain transactions.",
+                "url": "https://www.pymnts.com/blockchain/2026/bottomline-partners-with-chainlink-to-connect-600-banks-to-blockchain-settlement/"
+              }
+            ],
+            "lineage": "link-p11-ccip",
+            "rationale": "CCIP launched on mainnet Jul 2023, reached general availability, and now connects 60+ blockchains with live adoption by Synthetix, Aave, and financial institutions.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Banks settle tokenized assets and transact across blockchains through CCIP using their existing Swift messaging infrastructure.",
+            "effective_at": "2023-06-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CoinDesk (17 Jul 2023) on the Swift-Chainlink collaboration: Swift testing CCIP with dozens of financial institutions, moving toward a pilot phase.",
+                "url": "https://www.coindesk.com/tech/2023/07/17/chainlinks-interoperability-protocol-connecting-blockchains-to-bank-chains-goes-live?utm_campaign=coindesk_main&utm_term=organic&utm_content=editorial&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8qn23FKPB0j54FbtLQJgkBAlJ_AUcgfl2QQhMhjwzIusMikEg1P371_g1SnK9Chjc5ljP7"
+              },
+              {
+                "summary": "PYMNTS (Sep 2026) on the Bottomline-Chainlink partnership to connect 600+ bank clients to onchain settlement via CCIP and CRE using ISO 20022 messaging.",
+                "url": "https://www.pymnts.com/blockchain/2026/bottomline-partners-with-chainlink-to-connect-600-banks-to-blockchain-settlement/"
+              }
+            ],
+            "lineage": "link-p12-swift-bank-connectivity",
+            "rationale": "Swift and Chainlink ran pilots with 12+ institutions and later production-oriented partnerships (UBS Project Guardian, Bottomline), but bank-scale production flows are not yet live.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Stablecoins and protocols use Chainlink Proof of Reserve to verify asset reserves on-chain.",
+            "effective_at": "2020-11-11T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CoinDesk (Nov 2020) on TrustToken integrating Chainlink Proof of Reserve for TrueUSD on-chain collateralization data.",
+                "url": "https://www.coindesk.com/business/2020/11/11/trusttoken-taps-chainlink-for-on-chain-proof-of-reserves-for-trueusd-stablecoin"
+              },
+              {
+                "summary": "Report (Feb 2023) on TUSD using Chainlink Proof of Reserve to secure minting so new tokens cannot be minted beyond USD reserves.",
+                "url": "https://crypto.news/tusd-to-use-chainlinks-proof-of-reserves/"
+              }
+            ],
+            "lineage": "link-p13-proof-of-reserve",
+            "rationale": "Proof of Reserve launched in 2020 and is used in production by TrueUSD (first stablecoin with on-chain mint control) and Paxos (PAXG, USDP).",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Early-stage projects and blockchains grow through the Chainlink BUILD and SCALE programs, with fee and token commitments flowing to network service providers.",
+            "effective_at": "2022-09-28T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Chainlink SmartCon 2022 recap announcing the SCALE and BUILD programs with initial participants Avalanche, Metis, Moonbeam, Moonriver and Space and Time, Truflation, bitsCrunch.",
+                "url": "https://chain.link/blog/smartcon-2022-recap"
+              },
+              {
+                "summary": "CoinDesk (28 Sep 2022) on the BUILD and SCALE launch: BUILD projects donate 3-5% of native tokens, SCALE reduces oracle costs for participating chains.",
+                "url": "https://www.coindesk.com/business/2022/09/28/blockchain-data-provider-chainlink-launches-programs-to-reduce-costs-ahead-of-staking-of-its-token"
+              }
+            ],
+            "lineage": "link-p14-economics-20-build-scale",
+            "rationale": "BUILD and SCALE launched at SmartCon 2022 and are operating: 38+ BUILD projects and 7+ blockchain ecosystems in SCALE committing fees and tokens.",
+            "state": "fulfilled"
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 13.81,
+        "market_cap_usd": 10332614622.713522,
+        "raw_payload": {
+          "chainlink": {
+            "usd": 13.81,
+            "usd_market_cap": 10332614622.713522
+          }
+        }
+      }
+    },
+    {
+      "slug": "sol",
+      "availability": "available",
+      "assessment": {
+        "capacity": 11,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Researched the Solana whitepaper (Anatoly Yakovenko, 2017), official solana.com learn content, Solana Foundation Breakpoint 2025 recap, Solana Labs launch announcements, Jump Crypto Firedancer coverage, Electric Capital 2024 developer report, and independent outage histories (2017-2026).",
+        "promises": [
+          {
+            "claim_type": "milestone",
+            "core": true,
+            "criteria": "Proof of History is live in production as the network's cryptographic clock, delivering sub-second transaction confirmation.",
+            "effective_at": "2017-11-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Solana whitepaper by Anatoly Yakovenko: Proof of History encodes trustless passage of time into the ledger, reducing BFT messaging overhead for sub-second finality",
+                "url": "https://raw.githubusercontent.com/solana-labs/whitepaper/3c499476ff59033d85437db25ab9b4af7a47c20f/solana-whitepaper-en.pdf"
+              }
+            ],
+            "lineage": "sol-p01-proof-of-history",
+            "rationale": "PoH has run in production since mainnet beta 2020 with ~400ms slots and sub-second optimistic confirmation; the core invention works as described.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The network demonstrably sustains throughput near 710,000 transactions per second on commodity hardware and bandwidth.",
+            "effective_at": "2017-11-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Solana whitepaper: protocol analysis shows throughput up to 710k TPS is possible on a 1 gbps network with today's hardware",
+                "url": "https://raw.githubusercontent.com/solana-labs/whitepaper/3c499476ff59033d85437db25ab9b4af7a47c20f/solana-whitepaper-en.pdf"
+              },
+              {
+                "summary": "Firedancer full client went live on mainnet December 12, 2025 after 100 days of production validation; lab benchmarks target 1M+ TPS",
+                "url": "https://www.datawallet.com/crypto/firedancer-solana"
+              }
+            ],
+            "lineage": "sol-p02-710k-tps",
+            "rationale": "Mainnet real throughput remains far below the whitepaper figure; Firedancer and Alpenglow are actively chasing it but it is not yet demonstrated.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Ordinary transactions keep costing fractions of a penny (well under one cent) even during congestion.",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official solana.com learn page: transaction fees typically $0.00025, fractions of a penny; thousands of TPS comparable to major payment networks",
+                "url": "https://github.com/bunsdev/solana-com/blob/HEAD/content/learn/en/what-is-solana.mdx"
+              },
+              {
+                "summary": "Independent 2026 fee analysis: median Solana fee $0.0008, average simple transfer ~$0.001, consistently sub-cent",
+                "url": "https://crypto-economy.com/the-dream-of-cheap-cryptocurrencies-is-already-real-on-solana/"
+              }
+            ],
+            "lineage": "sol-p03-low-fees",
+            "rationale": "Fees have stayed sub-cent through the 2024 memecoin mania and record 2025-2026 activity; the low-fee standard holds in real usage.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Blocks keep being produced roughly every 400 milliseconds with confirmation in under a second.",
+            "effective_at": "2017-11-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Solana whitepaper: verifiers submit signatures within 500ms, enabling sub-second finality; block time design target 400ms",
+                "url": "https://raw.githubusercontent.com/solana-labs/whitepaper/3c499476ff59033d85437db25ab9b4af7a47c20f/solana-whitepaper-en.pdf"
+              },
+              {
+                "summary": "Official solana.com learn page: transactions complete in under a second, blocks every ~400ms",
+                "url": "https://github.com/bunsdev/solana-com/blob/HEAD/content/learn/en/what-is-solana.mdx"
+              }
+            ],
+            "lineage": "sol-p04-400ms-blocks",
+            "rationale": "400ms slots have run in production since mainnet beta; sub-second confirmation is the lived network behavior.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "The network runs as a production-grade chain with outages becoming rare and short, measured by sustained full block production.",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Full outage history: Sep 2021 ~17h, Jan 2022 intermittent, Apr-Jun 2022 several hours, Feb 2023 ~19h, Feb 2024 ~5h",
+                "url": "https://www.cryptotimes.io/2025/03/17/history-of-solanas-network-outages-since-its-inception/"
+              },
+              {
+                "summary": "No full network-wide halt since February 6, 2024; longest no-outage stretch in chain history through a record-activity year",
+                "url": "https://www.cryptopolitan.com/solana-record-year-no-network-downtime/"
+              }
+            ],
+            "lineage": "sol-p05-network-reliability",
+            "rationale": "Honest record: five major outage years 2021-2024, then a record clean stretch since Feb 2024; reliability is improving but the history means not yet fulfilled.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A second, independently-built validator client runs in production on mainnet, giving Solana real client diversity.",
+            "effective_at": "2022-11-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Firedancer full client announced live on mainnet December 12, 2025 at Breakpoint Abu Dhabi after 100 days producing 50,000+ blocks in production",
+                "url": "https://www.datawallet.com/crypto/firedancer-solana"
+              },
+              {
+                "summary": "Solana Foundation Breakpoint 2025 recap: Firedancer is live on mainnet; Solana is no longer a single-client network",
+                "url": "https://github.com/solana-foundation/solana-com/blob/HEAD/apps/media/content/posts/solana-breakpoint-2025.mdx"
+              }
+            ],
+            "lineage": "sol-p06-firedancer",
+            "rationale": "Full Firedancer client live on mainnet since Dec 2025, holding a low double-digit share of stake with the Firedancer family near 40%; diversity is real though not yet balanced.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Solana Pay is a working decentralized payment rail with real merchants settling real volume at fractions-of-a-cent fees.",
+            "effective_at": "2022-02-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Solana Labs launched Solana Pay Feb 1, 2022: decentralized peer-to-peer payments, instant settlement, fees of fractions of a cent, 65,000 TPS scale",
+                "url": "https://www.zdnet.com/finance/blockchain/solana-labs-launches-new-digital-payment-platform-solana-pay/"
+              },
+              {
+                "summary": "Helio's Solana Pay Shopify plugin processed ~$50M in 6 months across 200+ stores; 5,000 merchants and 350k active wallets on the upgraded plugin",
+                "url": "https://cryptonews.com/news/millions-of-shopify-merchants-can-accept-hundreds-of-cryptos-as-helio-upgrades-solana-pay-plugin/"
+              }
+            ],
+            "lineage": "sol-p07-solana-pay",
+            "rationale": "Solana Pay exists, is integrated with Shopify via Helio, and processes real merchant volume; modest versus the millions-of-merchants framing but genuine usage.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The Saga crypto phone ships and sustains a Web3 mobile user base.",
+            "effective_at": "2022-06-23T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Saga launched May 2023, sold ~20,000 units versus a 50,000 breakeven target; Solana Mobile ended all technical support October 2025 after 2 years",
+                "url": "https://elevenews.com/2025/10/21/solana-mobile-shutters-saga-device-after-two-year-crypto-fueled-run/"
+              }
+            ],
+            "lineage": "sol-p08-saga",
+            "rationale": "Saga sold under half its breakeven, lived on airdrop farming (BONK), and had support ended after 2 years; the product line was retired in favor of Seeker.",
+            "state": "retired"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The Seeker phone ships at scale and anchors a decentralized mobile platform with its SKR token economy.",
+            "effective_at": "2024-01-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Seeker began shipping August 4, 2025 to 50+ countries after 150,000 preorders; SKR token TGE January 21, 2026 with staking and governance live",
+                "url": "https://www.ainvest.com/news/solana-news-today-solana-mobile-ships-150-000-seeker-phones-enhanced-crypto-security-web3-features-2508/"
+              },
+              {
+                "summary": "Seeker specs and SKR token design: SeedVault wallet, dApp Store 2.0, TEEPIN architecture, developer rewards without app-store gatekeepers",
+                "url": "https://bingx.com/en/learn/article/what-is-the-solana-seeker-mobile-and-when-will-it-launch"
+              }
+            ],
+            "lineage": "sol-p09-seeker",
+            "rationale": "150,000 units shipped to 50+ countries with the SKR economy live; real hardware in real hands, a genuine second attempt at the mobile promise.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Solana remains a leading ecosystem that keeps attracting and retaining active developers.",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Electric Capital 2024 Developer Report: Solana onboarded 7,625 new developers, the first chain since 2016 to overtake Ethereum for new devs, 83% YoY growth",
+                "url": "https://cryptobriefing.com/solana-crypto-developer-growth/"
+              }
+            ],
+            "lineage": "sol-p10-developer-ecosystem",
+            "rationale": "Independent 2024 data confirms Solana as the top ecosystem for new developers with the fastest growth among large chains; the ecosystem momentum is real.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Alpenglow ships on mainnet, cutting deterministic finality from ~12.8 seconds to ~150 milliseconds.",
+            "effective_at": "2025-05-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Alpenglow (SIMD-0326) approved by validators September 2025 with 98.27% support; Votor replaces TowerBFT targeting 100-150ms finality; testnet rollout underway",
+                "url": "https://bsc.news/post/solana-alpenglow-consensus-upgrade"
+              }
+            ],
+            "lineage": "sol-p11-alpenglow",
+            "rationale": "Approved and in staged rollout (public testnet, mainnet target late September 2026) but not yet live on mainnet; still pending.",
+            "state": "open"
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 120.9,
+        "market_cap_usd": 71032026154.72975,
+        "raw_payload": {
+          "solana": {
+            "usd": 120.9,
+            "usd_market_cap": 71032026154.72975
+          }
+        }
+      }
+    },
+    {
+      "slug": "dash",
+      "availability": "available",
+      "assessment": {
+        "capacity": 9,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Researched the Dash whitepaper (dashpay/dash wiki), official Dash docs (features, masternodes, about), the Oct 2015 Evolution vision and the Jul-Sep 2024 Genesis launch, Evan Duffield's 2017 custom-hardware scaling plan, the Venezuela merchant rise and fall, and the Jan 2026 AEON Pay integration. Each promise was scored on real usage, not announcements.",
+        "promises": [
+          {
+            "claim_type": "ongoing",
+            "core": true,
+            "criteria": "Dash is used as everyday digital cash at meaningful global scale: ordinary people routinely paying for goods and services with instant, low-fee, optionally private transactions.",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Dash whitepaper abstract: 'a digital currency that enables instant, private payments to anyone, anywhere in the world' (launched Jan 2014 as XCoin, renamed Dash Mar 2015)",
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper"
+              },
+              {
+                "summary": "Dash Core README: 'Dash is a digital currency that enables instant, private payments to anyone, anywhere in the world'",
+                "url": "https://github.com/dashpay/dash/blob/HEAD/README.md"
+              },
+              {
+                "summary": "Official Dash docs: 'Dash aims to be the most user-friendly and scalable payments-focused cryptocurrency in the world'",
+                "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/about.rst"
+              }
+            ],
+            "lineage": "dash-p01-everyday-digital-cash",
+            "rationale": "Twelve years in, Dash is fast and cheap but has no mass everyday-payment adoption; the founding mission is still pending.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A live two-tier network of incentivized masternodes (1,000 DASH collateral each) providing InstantSend, PrivateSend and governance services, paid from the block reward.",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Dash whitepaper abstract promising the two-tier incentivized masternode network; masternode payments enabled Jun 2014, mandatory Oct 2014",
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper"
+              },
+              {
+                "summary": "Official Dash docs on the masternode network (Proof of Service): ~3,850 masternodes referenced, paid per block from the subsidy",
+                "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/masternodes/understanding.rst"
+              },
+              {
+                "summary": "Live masternode payment tracker: ~2,036 masternodes earning ~1.2 DASH per payment, May 2026",
+                "url": "http://count.masternode.io/~pub/Darkcoin/masternode_payments_stats.html"
+              }
+            ],
+            "lineage": "dash-p02-masternode-network",
+            "rationale": "Live since 2014 and still paying operators from the block reward in 2026; the network never went down.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Protocol-level private transactions via masternode mixing, available to users and actually used.",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Dash whitepaper abstract: PrivateSend 'for increasing fungibility'; DarkSend shipped in the Jan 2014 launch client, rebranded PrivateSend 2016",
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper"
+              },
+              {
+                "summary": "Sep 2026 coverage describing PrivateSend as a live optional feature that mixes transactions for privacy and fungibility",
+                "url": "https://www.tradingview.com/news/coindar:2af76d3ba094b:0-dash-to-participate-in-coinferencex-the-best-event-in-singapore-on-october-5th/"
+              }
+            ],
+            "lineage": "dash-p03-privatesend",
+            "rationale": "Shipped in the 2014 launch client and still functional; matches the whitepaper's modest fungibility claim (the stronger 'strongly anonymous' intro claim is contested).",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Transactions confirm in seconds via masternode quorums as the normal experience for Dash payments.",
+            "effective_at": "2014-11-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Dash blog: Dash Core v0.11.1 release announcing InstantX, Nov 2014 - 5 masternode-level confirmations within seconds",
+                "url": "https://www.dash.org/news/11-1-instantx-release/"
+              },
+              {
+                "summary": "Official Dash docs: 'InstantSend transactions are fully confirmed within two seconds'; automatic InstantSend since v0.13",
+                "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/features.rst"
+              }
+            ],
+            "lineage": "dash-p04-instantsend",
+            "rationale": "Announced Nov 2014, automatic for most transactions since 2019; ~2-second locks are the default Dash payment experience.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A self-funding treasury drawn from the block reward, with masternode-voted budget proposals paid out via monthly superblocks.",
+            "effective_at": "2015-08-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Dash docs: 20% of the block subsidy reserved for the budget system, paid to approved proposals in monthly superblocks (was 10% before v20)",
+                "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/features.rst"
+              },
+              {
+                "summary": "2026 governance proposal in active voting phase on DashCentral (c2pool daemonless finalize) - treasury proposals still flowing",
+                "url": "https://github.com/frstrtr/c2pool/blob/HEAD/README.md"
+              }
+            ],
+            "lineage": "dash-p05-treasury-governance",
+            "rationale": "Decentralized Governance by Blockchain live since Aug 2015; proposals funded and voted every month through 2026.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "A named, third-party-observable economy of merchants accepting Dash for everyday payments.",
+            "effective_at": "2018-06-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "KFC Caracas began accepting Dash in Venezuela, Dec 2018 - peak of the Dash merchant push",
+                "url": "https://u.today/kfc-restaurant-embraces-dash-in-venezuela-more-latin-american-countries-to-follow"
+              },
+              {
+                "summary": "Aug 2018: 2,000+ merchants accepting Dash worldwide, driven by the Venezuela program",
+                "url": "https://www.crowdfundinsider.com/2018/08/138089-dash-update-more-than-2000-merchants-around-the-globe-accepts-the-crypto-as-payments-for-goods-services-thanks-to-venezuela-presence/"
+              },
+              {
+                "summary": "Jan 2026: AEON integrates Dash into AEON Pay across a claimed 50M-merchant QR network in SEA, Africa and Latin America",
+                "url": "https://www.bitget.com/news/detail/12560605151857"
+              }
+            ],
+            "lineage": "dash-p06-merchant-economy",
+            "rationale": "Venezuela's 2,000+ merchant economy wound down after 2019; the Jan 2026 AEON integration restores access but no observable Dash everyday-payment economy has emerged - announcement, not usage.",
+            "state": "lapsed"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A live decentralized data and identity layer on mainnet: blockchain usernames (DPNS), contacts, data contracts and a decentralized API.",
+            "effective_at": "2015-10-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Dash announcement (mirrored): the Evolution Genesis release, nine years in the making - decentralized data storage, identities, usernames, DAPI",
+                "url": "https://coinstats.app/news/69a58e2567ac276f6d9cb3b1766d954facd44e0379dfe94d3daaa6045bbb88e6_Introducing-Dash-Evolution/"
+              },
+              {
+                "summary": "Sep 2026: Platform v1.1 activated on mainnet with DPNS usernames, shielded transactions and adaptive blocksize; real identities and usernames registered",
+                "url": "https://www.ainvest.com/news/dash-price-surges-platform-v1-1-launch-privacy-sector-momentum-2609/"
+              }
+            ],
+            "lineage": "dash-p07-evolution-platform",
+            "rationale": "Promised Oct 2015, mainnet Genesis Jul-Sep 2024 after a 9-year delay; Platform live with registered usernames and v1.1 activated Sep 2026 - delivery is real, adoption is early.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Using Dash is as easy as PayPal for ordinary people: human-readable usernames, contacts, and a mainstream consumer wallet with a real user base.",
+            "effective_at": "2015-10-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Dash docs (still future tense): 'Dash Evolution will make using cryptocurrency as easy as using PayPal'",
+                "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/features.rst"
+              },
+              {
+                "summary": "2024 retrospective: Evolution was Evan Duffield's 2015 vision for usernames, contact lists and invoicing at the protocol level for mass adoption",
+                "url": "https://edge.app/blog/market-updates/dash-development-update-dash-evolution/"
+              }
+            ],
+            "lineage": "dash-p08-evolution-ux",
+            "rationale": "The platform shipped but the UX promise did not: docs still say 'will make' crypto as easy as PayPal, and no mainstream DashPay consumer wallet has real users.",
+            "state": "open"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "On-chain scaling toward 400MB blocks using custom open-source masternode hardware, handling mass transaction volume.",
+            "effective_at": "2017-09-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Sep 2017: Dash Labs announced to build custom open-source hardware (specialized block-processing chips), targeting 2020, for massive on-chain scaling",
+                "url": "https://www.finextra.com/pressarticle/69847/dash-sets-out-roadmap"
+              },
+              {
+                "summary": "Official Dash docs still claim 'a clear roadmap for on-chain scaling to up to 400MB blocks using custom-developed open source hardware'",
+                "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/about.rst"
+              }
+            ],
+            "lineage": "dash-p09-onchain-scaling",
+            "rationale": "The 2017 custom-hardware plan never materialized - no chips, no 400MB blocks, mainnet still 2MB - while the docs still advertise the roadmap.",
+            "state": "lapsed"
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 62.51,
+        "market_cap_usd": 802639569.7539626,
+        "raw_payload": {
+          "dash": {
+            "usd": 62.51,
+            "usd_market_cap": 802639569.7539626
+          }
+        }
+      }
+    },
+    {
+      "slug": "avax",
+      "availability": "available",
+      "assessment": {
+        "capacity": 17,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Researched the Avalanche mainnet launch announcement, the Avalanche Foundation's Rush, Multiverse and Vista programs, the Gunzilla GUNZ subnet, MapleStory Universe, the Etna/Avalanche9000 upgrade, Teleporter, the AWS partnership, and institutional pilots (Deloitte, JPMorgan, Citi, SkyBridge).",
+        "promises": [
+          {
+            "claim_type": "milestone",
+            "core": true,
+            "criteria": "C-Chain finality under 2 seconds and multi-thousand TPS capacity demonstrated in real mainnet usage",
+            "effective_at": "2020-09-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Ava Labs announcement of the September 21, 2020 mainnet launch: sub-second finality, 4,500+ TPS, full EVM support, millions of validators",
+                "url": "https://medium.com/avalancheavax/ready-for-liftoff-avalanche-mainnet-set-to-launch-on-september-21-66a1def8d3b3"
+              },
+              {
+                "summary": "Five-year mainnet retrospective: sub-second finality held, stress tests peaked above 20,000 TPS, over 100 subnets live",
+                "url": "https://genfinity.io/2025/09/09/avalanche-5-year-mainnet-anniversary/"
+              }
+            ],
+            "lineage": "avax-launch",
+            "rationale": "Mainnet delivered the promised speed in production: finality routinely under 2 seconds and millions of transactions processed daily since 2020.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Major Ethereum dapps and tooling deploy and run on the C-Chain with real users",
+            "effective_at": "2020-09-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Mainnet launch announcement promising the entirety of the Ethereum virtual machine and development toolkit",
+                "url": "https://medium.com/avalancheavax/ready-for-liftoff-avalanche-mainnet-set-to-launch-on-september-21-66a1def8d3b3"
+              },
+              {
+                "summary": "2024 ecosystem report: Aave, Benqi, Trader Joe among the leading DeFi protocols live on Avalanche with $925M TVL",
+                "url": "https://www.coinspeaker.com/citi-private-fund-tokenization/"
+              }
+            ],
+            "lineage": "avax-evm",
+            "rationale": "EVM compatibility delivered and used: Aave, Curve, Trader Joe and hundreds of dapps run on the C-Chain with real TVL.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Validator set grows into the hundreds of thousands or millions of independent block-producing nodes",
+            "effective_at": "2020-09-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Mainnet launch announcement: Avalanche enables up to millions of independent validators as full block-producing nodes",
+                "url": "https://medium.com/avalancheavax/ready-for-liftoff-avalanche-mainnet-set-to-launch-on-september-21-66a1def8d3b3"
+              }
+            ],
+            "lineage": "avax-validators",
+            "rationale": "Nowhere close: the validator set sits around 1,500 to 2,000, and the 2,000 AVAX stake keeps the millions claim aspirational.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "A cheap, fast bridge between Ethereum and Avalanche that real users move real volume through",
+            "effective_at": "2021-08-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Announcement of the next-generation Avalanche Bridge, promised 10x faster and 5x cheaper than the original AEB",
+                "url": "https://thecurrencyanalytics.com/altcoins/avalanche-avax-from-aeb-to-next-generation-avalanche-bridge-ab-with-improved-user-experience-30983"
+              },
+              {
+                "summary": "Bridge usage report: 243,000+ transactions moving $43B+ in ERC-20 assets, later $50B+ including native Bitcoin support",
+                "url": "https://crypto.news/avalanche-bridge-bitcoin-opportunities-btc-avax-defi-ecosystem/"
+              }
+            ],
+            "lineage": "avax-bridge",
+            "rationale": "Delivered and heavily used: tens of billions bridged, making it the most-used Ethereum-connected bridge by TVL at its peak.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Blue-chip DeFi protocols launch on Avalanche and TVL grows materially",
+            "effective_at": "2021-08-18T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Avalanche Foundation announcement of the $180M Avalanche Rush liquidity mining program starting with Aave and Curve",
+                "url": "https://medium.com/avalancheavax/avalanche-foundation-announces-180m-defi-incentive-program-d320fdfafff7"
+              },
+              {
+                "summary": "Rush aftermath: Avalanche TVL rose 15x to $5.19B in under two months, sixth largest chain, with Aave and Curve deployed",
+                "url": "https://ambcrypto.com/besides-decent-network-growth-how-are-avalanche-curve-faring-price-wise/"
+              }
+            ],
+            "lineage": "avax-rush",
+            "rationale": "The program ran and worked: Aave and Curve launched, TVL exploded from $180M to over $5B, and native apps like Benqi took off.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "A growing set of independent application-specific blockchains running on Avalanche with real activity",
+            "effective_at": "2022-03-08T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Avalanche Foundation Multiverse announcement: subnets as the next growth engine for gaming, DeFi, NFTs and institutions",
+                "url": "https://medium.com/avalancheavax/avalanche-foundation-launches-multiverse-an-up-to-290m-incentive-program-to-accelerate-growth-of-c815ac5692c7"
+              },
+              {
+                "summary": "Five-year retrospective: over 100 active subnets for gaming, finance and enterprise tokenization",
+                "url": "https://genfinity.io/2025/09/09/avalanche-5-year-mainnet-anniversary/"
+              }
+            ],
+            "lineage": "avax-subnets",
+            "rationale": "The signature differentiator shipped: 100+ subnets and L1s launched, several with genuine users and transaction volume.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "The $290M Multiverse program funds and launches named subnet projects across gaming, DeFi and institutions",
+            "effective_at": "2022-03-08T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "CoinDesk coverage of the Multiverse launch: 4M AVAX to accelerate subnet adoption, first cohorts named",
+                "url": "https://www.coindesk.com/business/2022/03/08/avalanche-commits-4m-avax-to-attract-gaming-defi-and-nfts-subnets?outputType=amp"
+              }
+            ],
+            "lineage": "avax-multiverse",
+            "rationale": "Program launched and deployed: DeFi Kingdoms, institutional DeFi partners and later gaming subnets all funded and shipped.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "DeFi Kingdoms launches its own Avalanche subnet with real players transacting",
+            "effective_at": "2022-03-08T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Multiverse announcement naming DeFi Kingdoms as the first subnet recipient, up to $15M in incentives",
+                "url": "https://www.coindesk.com/business/2022/03/08/avalanche-commits-4m-avax-to-attract-gaming-defi-and-nfts-subnets?outputType=amp"
+              }
+            ],
+            "lineage": "avax-dfk",
+            "rationale": "The flagship subnet went live with its own CRYSTAL token and a real player base; the game later faded but the launch delivered.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Deloitte's Close As You Go platform processes real FEMA disaster claims on Avalanche",
+            "effective_at": "2021-11-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "November 2021 announcement: Deloitte and Ava Labs partner on Close As You Go for FEMA reimbursement on Avalanche",
+                "url": "https://news.bitcoin.com/big-four-accounting-firm-deloitte-forges-partnership-with-ava-labs-to-leverage-avalanche-blockchain/"
+              },
+              {
+                "summary": "Avalanche's institutional roundup describing Close As You Go as live technology for disaster recovery payments",
+                "url": "https://medium.com/avalancheavax/institutions-are-building-the-future-with-avalanche-4daf8062ad1"
+              }
+            ],
+            "lineage": "avax-deloitte",
+            "rationale": "Announced and positioned as live, but no public evidence of real FEMA claims processed on-chain has surfaced since 2021.",
+            "state": "open"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Named institutional pilots on Evergreen and Spruce subnets run to completion as announced",
+            "effective_at": "2023-11-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "JPMorgan Onyx Everest and Citi FX and private-fund pilots on Avalanche Evergreen and Spruce subnets",
+                "url": "https://insidebitcoins.com/news/citibank-says-blockchain-may-make-asset-management-more-efficient-after-tokenization-experiment-on-avalanche"
+              },
+              {
+                "summary": "Citi private fund tokenization test on the Avalanche Spruce test network with Wellington and DTCC participation",
+                "url": "https://www.coinspeaker.com/citi-private-fund-tokenization/"
+              }
+            ],
+            "lineage": "avax-institutional-pilots",
+            "rationale": "The announced pilots completed: JPMorgan's Everest FX test and Citi's FX and fund tokenization tests all ran on Avalanche subnets.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "A growing pipeline of real tokenized assets issued and used on Avalanche",
+            "effective_at": "2023-07-25T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Avalanche Foundation launches Vista, a $50M program to buy tokenized assets and pioneer tokenization on Avalanche",
+                "url": "https://www.coindesk.com/markets/2023/07/25/avalanche-foundation-commits-50m-to-bring-more-tokenized-assets-to-blockchain"
+              },
+              {
+                "summary": "SkyBridge $300M tokenization report noting nearly $2B in tokenized assets already on Avalanche",
+                "url": "https://www.ainvest.com/news/skybridge-tokenizes-300m-fund-avalanche-erc-3643-2508/"
+              }
+            ],
+            "lineage": "avax-vista",
+            "rationale": "Tokenization is genuinely happening on Avalanche: KKR and Apollo funds via Securitize, IntainMARKETS, and roughly $2B in tokenized assets.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "Off the Grid runs on the GUNZ subnet with a real player-driven on-chain item economy",
+            "effective_at": "2023-04-05T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Official Avalanche blog announcing Gunzilla's GUNZ subnet for the AAA shooter Off the Grid",
+                "url": "https://www.avax.network/about/blog/gunzilla-launches-aaa-shooter-as-an-avalanche-l1"
+              },
+              {
+                "summary": "GUNZ mainnet live with 20M NFTs traded on OpenSea, 22,000 daily active wallets, game in Early Access",
+                "url": "https://coinmarketcap.com/community/articles/69702359535ae753eaaba4f4/"
+              }
+            ],
+            "lineage": "avax-gunz",
+            "rationale": "Real usage at scale: mainnet live since March 2025, millions of in-game NFTs traded, tens of thousands of daily players.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "MapleStory Universe launches on its Avalanche L1 with real players and on-chain activity",
+            "effective_at": "2024-03-01T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Nexon moved MapleStory Universe from Polygon to a custom Avalanche Layer 1 in March 2024",
+                "url": "https://en.wikipedia.org/wiki/MapleStory_Universe"
+              },
+              {
+                "summary": "MapleStory N launched May 15, 2025 on the Henesys L1: biggest NFT mint in Avalanche history, 549% active-address spike",
+                "url": "https://cryptonews.com.au/news/maplestory-n-launches-with-record-breaking-nft-mint-and-soaring-nxpc-token-129051/"
+              }
+            ],
+            "lineage": "avax-maplestory",
+            "rationale": "One of the biggest web3 game launches ever: live game on its own Avalanche L1 with record mints and real player volume.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Cross-subnet messaging goes live and gets used by real applications",
+            "effective_at": "2024-03-06T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Teleporter launch with the Durango upgrade: EVM-compatible interface for arbitrary contract calls across subnets",
+                "url": "https://thearabianpost.com/avalanche-unveils-teleporter-to-bridge-fragmented-subnet-ecosystem/"
+              }
+            ],
+            "lineage": "avax-teleporter",
+            "rationale": "Shipped with Durango and adopted: ICM and Teleporter now underpin cross-L1 token transfers and messaging across the ecosystem.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "Etna activates on mainnet and sovereign L1s launch without the 2,000 AVAX validator stake",
+            "effective_at": "2024-12-16T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "Ava Labs Etna upgrade docs: ACP-77 sovereign L1s, ~1.33 AVAX per month continuous fee, 99.9% cheaper L1 launches",
+                "url": "https://github.com/ava-labs/builders-hub/blob/HEAD/content/blog/etna-enhancing-sovereignty-avalanche-l1s.mdx"
+              },
+              {
+                "summary": "Etna overview: Beam and Dexalot migrated, five-validator L1s now cost under 7 AVAX per month in protocol fees",
+                "url": "https://www.datawallet.com/crypto/avalanche-subnets-explained"
+              }
+            ],
+            "lineage": "avax-etna",
+            "rationale": "Activated December 16, 2024 as promised: existing subnets migrated to sovereign L1s and new cheap L1 launches followed.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "milestone",
+            "core": false,
+            "criteria": "One-click Avalanche node deployment and subnet deployment go live on the AWS Marketplace",
+            "effective_at": "2023-01-11T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "AWS partnership announcement: one-click node deployment, GovCloud support, subnet deployment as a service",
+                "url": "https://cointelegraph.com/news/ava-labs-partners-with-aws-to-offer-one-click-node-deployment"
+              }
+            ],
+            "lineage": "avax-aws",
+            "rationale": "Delivered: AWS listed Avalanche node tooling in its marketplace with GovCloud for compliance-driven enterprise and government users.",
+            "state": "fulfilled"
+          },
+          {
+            "claim_type": "ongoing",
+            "core": false,
+            "criteria": "SkyBridge's $300M in hedge funds actually tokenized and live on Avalanche",
+            "effective_at": "2025-08-19T00:00:00Z",
+            "evidence": [
+              {
+                "summary": "SkyBridge announces tokenization of its Digital Macro Master Fund and Legion Strategies on Avalanche via Tokeny and Apex",
+                "url": "https://tokeny.com/skybridge-capital-partners-with-tokeny-to-tokenize-300min-hedge-funds-on-avalanche/"
+              }
+            ],
+            "lineage": "avax-skybridge",
+            "rationale": "Announced August 2025 with Tokeny and Apex Group; no public confirmation yet that the funds are live on-chain.",
+            "state": "open"
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 10.41,
+        "market_cap_usd": 4612289862.952314,
+        "raw_payload": {
+          "avalanche-2": {
+            "usd": 10.41,
+            "usd_market_cap": 4612289862.952314
+          }
+        }
+      }
+    }
+  ],
+  "reviewed_by": "Muse (single analyst; full promise research for all 8 projects; Alex waived line-item review 2026-09-25)",
+  "policy_ref": "docs/implementation.md (promise-heart rule v3 adopted 2026-09-25)"
+}

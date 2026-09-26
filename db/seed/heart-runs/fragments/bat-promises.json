@@ -1,0 +1,310 @@
+{
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    {
+      "claim_type": "ongoing",
+      "core": true,
+      "criteria": "BAT is adopted beyond Brave as the web-wide unit of account for attention, or its protocols become web standards.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper (Brave Software, Jan 7 2018): BAT as the token for a decentralized ad exchange, with BAT and its protocols as a future part of web standards.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        }
+      ],
+      "lineage": "bat-p01-attention-standard",
+      "rationale": "BAT works inside Brave's ecosystem but is not a web-wide standard; the whitepaper's standards vision remains unmet.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ordinary users can opt into private ads in Brave and actually receive BAT for their attention.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper: users get privacy and security when viewing ads plus a share of tokens.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        },
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Brave Rewards grew to tens of millions of users.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        },
+        {
+          "summary": "Brave Community payout thread: July 2026 Brave Ads user payouts processing normally.",
+          "url": "https://community.brave.app/t/ads-payout-status-update/287895/87"
+        }
+      ],
+      "lineage": "bat-p02-user-rewards",
+      "rationale": "Brave Rewards has paid tens of millions of users since 2019; July 2026 payouts processed normally.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Publishers and creators can register and actually receive BAT for attention to their content and tips.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper: publishers are rewarded in BAT based on measured user attention.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        },
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): over 2 million verified websites and content creators in Brave Creators.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p03-creator-payouts",
+      "rationale": "Over 2 million verified websites and creators receive BAT through Brave Creators.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Advertisers can run campaigns on Brave Ads with private attribution and real reporting.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper: advertisers get less expensive attention, less fraud, and better attribution.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        },
+        {
+          "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): Brave Ads served 2.5K+ campaigns from 400+ advertisers in 190+ countries.",
+          "url": "https://brave.com/blog/bat-roadmap-2-0/"
+        },
+        {
+          "summary": "basicattentiontoken.org: 400+ advertisers to date on the private ad network.",
+          "url": "https://basicattentiontoken.org/"
+        }
+      ],
+      "lineage": "bat-p04-advertiser-platform",
+      "rationale": "Brave Ads serves thousands of campaigns from 400+ advertisers with anonymous accounting.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ad confirmation events are validated on-chain with a decentralized audit trail that participants can verify.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper section 3.5: beyond 1.0, make transfer and verification fully distributed on Ethereum using state channels and zero-knowledge proofs.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        },
+        {
+          "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): Themis research on moving Brave/BAT ad operations on-chain.",
+          "url": "https://brave.com/blog/bat-roadmap-2-0/"
+        }
+      ],
+      "lineage": "bat-p05-onchain-ad-confirmations",
+      "rationale": "Themis produced research papers and an RFCC but no production on-chain deployment.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The 300M BAT user growth pool is distributed as grants to early adopters of Brave and BAT.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper section 5.3: 300M BAT endowment for early adopters, up to 5 BAT per user.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        },
+        {
+          "summary": "BAT Ecosystem Growth page: Brave's BAT purchases fund user rewards for viewing ads.",
+          "url": "https://basicattentiontoken.org/growth/"
+        }
+      ],
+      "lineage": "bat-p06-user-growth-pool",
+      "rationale": "UGP grants were distributed to users for years; Brave's growth page documents ongoing BAT purchases funding user rewards.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A native Brave Wallet ships on desktop and mobile, unifying Brave Rewards, custodial accounts, and non-custodial accounts.",
+      "effective_at": "2021-02-22T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): Brave Wallet plan to unify Rewards, custodial, and non-custodial accounts.",
+          "url": "https://brave.com/blog/bat-roadmap-2-0/"
+        },
+        {
+          "summary": "State of the BAT 2022 (Brave): desktop Brave Wallet released Nov 2021, mobile beta Dec 2021.",
+          "url": "https://brave.com/blog/state-of-the-bat-2022/"
+        }
+      ],
+      "lineage": "bat-p07-brave-wallet",
+      "rationale": "Desktop wallet shipped November 2021; mobile beta December 2021.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Brave ships an in-browser DEX aggregator letting users swap tokens with BAT fee and balance advantages.",
+      "effective_at": "2021-02-22T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): DEX aggregator with BAT transaction-fee and balance-holder discounts.",
+          "url": "https://brave.com/blog/bat-roadmap-2-0/"
+        },
+        {
+          "summary": "The Cryptonomist, Jul 8 2021: Brave Swap with 0x API integration live in the desktop browser.",
+          "url": "https://cryptonomist.ch/2021/07/08/brave-swap-partners-with-0x-project-to-foster-defi/"
+        },
+        {
+          "summary": "State of the BAT 2022 (Brave): Brave Swap integrated into desktop and mobile Brave Wallets.",
+          "url": "https://brave.com/blog/state-of-the-bat-2022/"
+        }
+      ],
+      "lineage": "bat-p08-brave-swap",
+      "rationale": "Brave Swap with 0x integration went live in the wallet in July 2021.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "BAT becomes usable on blockchains beyond Ethereum.",
+      "effective_at": "2021-02-22T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): multi-chain support with many assets and blockchains.",
+          "url": "https://brave.com/blog/bat-roadmap-2-0/"
+        },
+        {
+          "summary": "State of the BAT 2022 (Brave): BAT bridged to BSC, Avalanche, Polygon, Gnosis Chain, and Solana with real wallet holdings.",
+          "url": "https://brave.com/blog/state-of-the-bat-2022/"
+        }
+      ],
+      "lineage": "bat-p09-crosschain-bat",
+      "rationale": "BAT bridged to BSC, Avalanche, Polygon, Gnosis Chain, and Solana with real wallet holdings.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "BAT can be spent on value-added services and partner offerings beyond ad rewards and tipping.",
+      "effective_at": "2018-01-07T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT whitepaper section 3.5: plan to explore value-added services offered to users on the browser platform through BAT.",
+          "url": "https://static.coinpaprika.com/storage/cdn/whitepapers/519.pdf"
+        },
+        {
+          "summary": "BAT Roadmap 2.0 (Brave, Feb 22 2021): research into BAT utility for search, e-commerce, and VPN.",
+          "url": "https://brave.com/blog/bat-roadmap-2-0/"
+        }
+      ],
+      "lineage": "bat-p10-bat-spend-utility",
+      "rationale": "No durable broad spend utility yet; Roadmap 4.0 extends utility to purchases, offers, and loyalty but has not shipped.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "BravePay stablecoin protocol launches, giving users self-custody private on-chain payments.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): BravePay stablecoin protocol layer for self-custody private transactions.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p11-bravepay",
+      "rationale": "Announced July 2026; no public launch yet.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The Brave Rewards Card launches in virtual and physical form and pays BAT rewards on everyday purchases.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Brave Rewards Card for everyday purchases in eligible countries, earning BAT rewards.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p12-rewards-card",
+      "rationale": "Announced July 2026; card partner and availability still to be announced.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The unified Brave Wallet ships, combining saved payment methods, self-custody multi-chain crypto, and Brave Rewards.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): unified Brave Wallet redesign merging cards, crypto accounts, and Rewards.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p13-unified-wallet",
+      "rationale": "Announced July 2026; community testing planned for fall 2026.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Verified creators receive verifiable micro-royalty payments when AI products use their content.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Creator Contribution Protocol for compensating creators when AI uses their content.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p14-creator-ai-protocol",
+      "rationale": "Announced July 2026; still in research and development with a dedicated post planned later in 2026.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Brave supports x402 and Machine Payments Protocol transactions for agentic payments.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): browser support for x402 and MPP agentic payments.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p15-agentic-payments",
+      "rationale": "Announced July 2026; implementation planned, not shipped.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "A share of net revenue from Brave Wallet features, the Rewards Card, and BravePay funds BAT buybacks supporting user rewards and creator contributions, with public disclosure.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): percentage of net revenue funds BAT buybacks for user rewards and creator contributions via the UGP Reserve.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p16-bat-buybacks",
+      "rationale": "Announced July 2026; buybacks are tied to future revenue sources that do not exist yet.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Brave Rewards delivers an Offer Wall, loyalty tiers, and BravePass tied to purchases, wallet activity, and loyalty.",
+      "effective_at": "2026-07-09T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "BAT Roadmap 4.0 (Brave, Jul 9 2026): Rewards evolves beyond ads into offers, purchases, wallet activity, and loyalty.",
+          "url": "https://brave.com/blog/bat-roadmap-4-0/"
+        }
+      ],
+      "lineage": "bat-p17-rewards-evolution",
+      "rationale": "Announced July 2026 as the evolution beyond browser-based rewards; not shipped.",
+      "state": "open"
+    }
+  ],
+  "rationale": "Researched the BAT whitepaper (Brave Software, Jan 7 2018), BAT Roadmap 2.0 (Feb 2021), BAT Roadmap 4.0 (Jul 2026), State of the BAT 2022, and the current basicattentiontoken.org site; fulfillment checked against live products and Brave's own delivery recaps.",
+  "slug": "bat"
+}

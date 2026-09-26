@@ -54,6 +54,7 @@ export interface VitalsData {
   repoUrl: string;
   stars: number | null;
   forks: number | null;
+  watchers: number | null;
   openIssues: number | null;
   openPRs: number | null;
   lastPushAt: string | null;
@@ -139,6 +140,7 @@ export function summarizeWeeks(weeks: VitalsWeek[]): {
 interface GhRepo {
   stargazers_count: number;
   forks_count: number;
+  subscribers_count: number;
   open_issues_count: number;
   pushed_at: string;
 }
@@ -156,6 +158,7 @@ export async function fetchVitals(slug: string): Promise<VitalsData> {
     repoUrl: `https://github.com/${meta.github}`,
     stars: null,
     forks: null,
+    watchers: null,
     openIssues: null,
     openPRs: null,
     lastPushAt: null,
@@ -184,6 +187,7 @@ export async function fetchVitals(slug: string): Promise<VitalsData> {
   if (repo) {
     base.stars = repo.stargazers_count;
     base.forks = repo.forks_count;
+    base.watchers = repo.subscribers_count;
     base.openIssues = repo.open_issues_count;
     base.lastPushAt = repo.pushed_at;
   } else {

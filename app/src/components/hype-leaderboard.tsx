@@ -5,7 +5,6 @@ import Link from "next/link";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import { RedditIcon, TelegramIcon, MegaphoneIcon } from "@/components/icons";
 import type { VerdictCategory } from "@/lib/verdict";
-import { searchMeta } from "@/lib/search-sections";
 
 export interface HypeRow {
   slug: string;
@@ -57,7 +56,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
   }, [rows, sortKey]);
 
   return (
-    <div className="panel search-section" {...searchMeta({ id: "hype-leaderboard", title: "HYPE leaderboard", kind: "HYPE", keywords: "attention mentions hearts" })}>
+    <div className="panel">
       <div className="sort-toggle" role="group" aria-label="Sort HYPE leaderboard">
         <span>Sort</span>
         <button
@@ -75,7 +74,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
       </div>
       <div className="hype-rows">
         {sorted.map((r) => (
-          <div key={r.slug} className="hype-row search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} HYPE ranking`, kind: "HYPE", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
+          <div key={r.slug} className="hype-row">
             <Link href={`/projects/${r.slug}`} className="hype-coin">
               <img
                 src={`/icons/${r.symbol.toLowerCase()}.svg`}

@@ -1,0 +1,356 @@
+{
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    {
+      "claim_type": "ongoing",
+      "core": true,
+      "criteria": "XRP is used by real financial institutions for live cross-border settlement at meaningful scale, with XRP acting as the bridge asset for on-demand liquidity.",
+      "effective_at": "2017-05-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ripple escrow announcement (16 May 2017): XRP is a digital asset designed for enterprise use, with companies able to use XRP for on-demand liquidity as a bridge currency at lower cost.",
+          "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/"
+        },
+        {
+          "summary": "Ripple Q4 2018 XRP Markets Report: xRapid commercially available since early October 2018, with MercuryFX, Cuallix and Catalyst Corporate Federal Credit Union signed on as customers.",
+          "url": "https://ripple.com/insights/q4-2018-xrp-markets-report/"
+        },
+        {
+          "summary": "Daily Hodl (Nov 2019): RippleNet surpassed 300 clients with 10x YoY transaction growth; two dozen customers signed on to On-Demand Liquidity, including MoneyGram settling currencies in seconds.",
+          "url": "https://dailyhodl.com/2019/11/07/ripple-hits-300-clients-as-moneygram-announces-expansion-of-xrp-powered-on-demand-liquidity/"
+        },
+        {
+          "summary": "Ripple USD launch PR (Dec 2024): Ripple Payments has processed $70B+ across 90+ payout markets, the company's own latest primary volume figure for the payments business.",
+          "url": "https://www.businesswire.com/news/home/20241216911945/en/5762080/Raising-the-Standard-for-Stablecoins-Ripple-USD-Launches-Globally-with-Unmatched-Utility-Experience-and-Compliance"
+        }
+      ],
+      "lineage": "xrp-p01-bridge-liquidity",
+      "rationale": "Ripple's own reports show commercial xRapid customers (2018), two dozen ODL customers with MoneyGram settling in seconds (2019), and $70B+ processed through Ripple Payments across 90+ payout markets (2024).",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "55 billion XRP are locked in escrow contracts on the XRP Ledger, removing them from circulating supply.",
+      "effective_at": "2017-05-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ripple escrow announcement (16 May 2017): Ripple commits to placing 55 billion XRP into 55 escrow contracts of one billion XRP each.",
+          "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/"
+        },
+        {
+          "summary": "CryptoNinjas (Dec 2017): Ripple's 55 billion XRP escrow lockup is complete on the XRP Ledger.",
+          "url": "https://www.cryptoninjas.net/2017/12/08/ripples-55-billion-xrp-lockup-complete/"
+        }
+      ],
+      "lineage": "xrp-p02-escrow-55b",
+      "rationale": "The full 55 billion XRP escrow was completed on-ledger in December 2017 as announced.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Each month up to one billion XRP is released from escrow and any unused amount is returned to the back of the escrow queue.",
+      "effective_at": "2017-05-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ripple escrow announcement (16 May 2017): unused XRP from each monthly release returns to the back of the escrow queue, keeping supply releases predictable.",
+          "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/"
+        },
+        {
+          "summary": "CryptoNinjas (Dec 2017): confirms the escrow structure and the monthly release with re-escrow of unused amounts.",
+          "url": "https://www.cryptoninjas.net/2017/12/08/ripples-55-billion-xrp-lockup-complete/"
+        }
+      ],
+      "lineage": "xrp-p03-re-escrow",
+      "rationale": "The monthly release and re-escrow mechanism has operated on the XRP Ledger as stated since December 2017.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "xRapid is commercially available and real customers use XRP for live cross-border payments.",
+      "effective_at": "2018-10-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ripple Q4 2018 XRP Markets Report: xRapid became commercially available in early October 2018, with MercuryFX, Cuallix and Catalyst Corporate Federal Credit Union signed on.",
+          "url": "https://ripple.com/insights/q4-2018-xrp-markets-report/"
+        }
+      ],
+      "lineage": "xrp-p04-xrapid-commercial",
+      "rationale": "Ripple reported xRapid commercially available in early October 2018 with three named customers in production.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Xpring invests in, incubates, acquires or grants funding to projects building on XRP or the XRP Ledger.",
+      "effective_at": "2018-05-14T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CryptoDaily (May 2018): Ripple announces Xpring to invest in, incubate, acquire and provide grants to projects using XRP and the XRP Ledger.",
+          "url": "https://cryptodaily.co.uk/2018/05/ripples-xpring-great-xrp/"
+        },
+        {
+          "summary": "CoinTelegraph: Xpring announced roughly $500 million invested across 20+ XRP ecosystem firms before the program was folded into RippleX.",
+          "url": "https://cointelegraph.com/news/ripple-incubator-xpring-announces-500-million-invested-in-xrp-projects"
+        }
+      ],
+      "lineage": "xrp-p05-xpring",
+      "rationale": "Xpring deployed about $500 million across 20+ XRP ecosystem firms before being reorganized into RippleX.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ripple funds university blockchain research partnerships at meaningful scale, with active partner programs and funded projects.",
+      "effective_at": "2018-06-04T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CoinDesk (Jun 2018): Ripple commits more than $50 million plus technical resources to 17 universities for blockchain research (UBRI).",
+          "url": "https://www.coindesk.com/markets/2018/06/04/ripple-pumps-50-million-into-academic-research-on-blockchain"
+        },
+        {
+          "summary": "CoinDesk (Feb 2019): Ripple teams with 10 new universities, growing the University Blockchain Research Initiative to 29 partners.",
+          "url": "https://www.coindesk.com/markets/2019/02/07/ripple-teams-with-10-new-universities-for-blockchain-research-initiative"
+        }
+      ],
+      "lineage": "xrp-p06-ubri",
+      "rationale": "UBRI scaled from 17 to 29+ university partners with real funding and research programs deployed.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Games using Interledger with XRP as settlement reach players at meaningful scale.",
+      "effective_at": "2019-03-12T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CoinDesk (Mar 2019): Ripple's Xpring and Forte create a $100 million fund to develop games using the Interledger Protocol with XRP as settlement.",
+          "url": "https://www.coindesk.com/markets/2019/03/12/ripples-xpring-helps-launch-100-million-fund-for-game-developers"
+        },
+        {
+          "summary": "Daily Hodl (Nov 2020): Forte describes its platform as chain-agnostic, open to Ethereum, EOS and Tron, with no meaningful XRP-settled game usage reported.",
+          "url": "https://dailyhodl.com/2020/11/23/ripple-backed-startup-pushing-to-bring-xrp-to-140-billion-gaming-industry-announces-slew-of-partnerships/"
+        }
+      ],
+      "lineage": "xrp-p07-forte-gaming",
+      "rationale": "Forte went chain-agnostic and no meaningful XRP-settled game usage ever materialized; the XRP gaming push died out.",
+      "state": "lapsed"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "The $250 million Creator Fund backs creators building NFT and tokenization uses on the XRP Ledger, with funded projects going live.",
+      "effective_at": "2021-09-29T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ripple press (Mar 2022): Ripple's $250M Creator Fund drew nearly 4,000 applications and signed its first creators building NFT projects on the XRP Ledger.",
+          "url": "http://ripple.com/ripple-press/ripple-signs-first-creators-extends-nft-partnerships-with-creator-fund/"
+        },
+        {
+          "summary": "Business Wire (Mar 2022): mirror of the first-creator announcement, confirming fund disbursement to NFT builders on XRPL.",
+          "url": "https://www.businesswire.com/news/home/20220310005468/en"
+        }
+      ],
+      "lineage": "xrp-p08-creator-fund",
+      "rationale": "Nearly 4,000 applications and funded creators launched real NFT projects on the XRP Ledger.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Native NFT support (XLS-20) is live on the XRP Ledger mainnet with real minting and marketplace use.",
+      "effective_at": "2022-10-31T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "FXStreet (Nov 2022): Ripple CTO David Schwartz announced XLS-20 activation on XRP Ledger mainnet on 31 October 2022.",
+          "url": "https://www.fxstreet.com/amp/cryptocurrencies/news/xrp-price-nfts-arrive-on-xrp-ledger-mainnet-what-to-expect-202211021114"
+        },
+        {
+          "summary": "Bitcoinist: NFTs on the XRP Ledger gained momentum with real marketplace activity after activation.",
+          "url": "https://bitcoinist.com/nfts-on-xrp-ledger-gain-momentum/"
+        }
+      ],
+      "lineage": "xrp-p09-xls20-nfts",
+      "rationale": "XLS-20 activated on mainnet on 31 October 2022 and real NFT minting and marketplace use followed.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ripple disburses material funding to developers building on the XRP Ledger through grants and accelerator programs.",
+      "effective_at": "2022-03-17T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Business Wire (Mar 2022): Ripple commits 1 billion XRP to grants, accelerator and diversity/sustainability programs over 10-20 years; the existing fund had already awarded $6M to 50+ projects.",
+          "url": "https://www.businesswire.com/news/home/20220317005422/en/Ripple-Commits-1-Billion-XRP-to-Grants-Program-Accelerator-to-Advance-XRP-Ledger-Development"
+        },
+        {
+          "summary": "U.Today (May 2024): RippleX announced XRPL Grants Wave 7 awardees, seven projects from seven countries receiving over $700,000, showing the rolling program still disbursing years later.",
+          "url": "https://u.today/ripplex-releases-funds-to-developers-details"
+        }
+      ],
+      "lineage": "xrp-p10-developer-fund",
+      "rationale": "Grants are actively disbursing years after launch, from $6M to 50+ projects at announcement through Wave 7 in 2024.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A native automated market maker (XLS-30) is live on the XRP Ledger mainnet with real integrations and trading use.",
+      "effective_at": "2024-03-22T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CryptoTimes (Mar 2024): Ripple CTO announced mainnet activation of the XLS-30 automated market maker on 22 March 2024.",
+          "url": "https://www.cryptotimes.io/2024/03/23/ripple-unveils-new-automated-trading-system-warns-of-risks/"
+        },
+        {
+          "summary": "Messari State of XRP Ledger Q4 2025: reports real AMM integrations and usage on the XRP Ledger.",
+          "url": "https://messari.io/report/state-of-xrp-ledger-q4-2025"
+        }
+      ],
+      "lineage": "xrp-p11-xls30-amm",
+      "rationale": "XLS-30 activated on mainnet in March 2024 and saw real integrations and usage through 2025.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ripple deploys $100 million into carbon markets and ships carbon-credit tokenization tools on the XRP Ledger with real usage.",
+      "effective_at": "2022-05-19T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Business Wire (May 2022): Ripple commits $100 million to carbon markets and carbon-credit tokenization tools on the XRP Ledger.",
+          "url": "https://www.businesswire.com/news/home/20220519005440/en"
+        }
+      ],
+      "lineage": "xrp-p12-carbon-markets",
+      "rationale": "Commitment stated in May 2022; no verified deployed tokenization usage found, so it stays open.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Ripple reaches net-zero carbon emissions by 2030 or sooner.",
+      "effective_at": "2022-05-19T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Business Wire (May 2022): Ripple commits to net zero by 2030 or sooner as part of its climate pledge.",
+          "url": "https://www.businesswire.com/news/home/20220519005440/en"
+        }
+      ],
+      "lineage": "xrp-p13-net-zero-2030",
+      "rationale": "The target date is 2030; there is no evidence of achievement yet, so it stays open.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Ripple USD (RLUSD) launches on the XRP Ledger and Ethereum as a 1:1 USD-backed stablecoin.",
+      "effective_at": "2024-12-17T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Business Wire (Apr 2024): Ripple announces RLUSD, a USD-backed stablecoin for the XRP Ledger and Ethereum, 1:1 backed by dollar deposits, short-term US treasuries and cash equivalents, with monthly third-party attestations.",
+          "url": "https://www.businesswire.com/news/home/20240404802548/en/Ripple-to-Issue-USD-backed-Stablecoin-Bringing-More-Utility-and-Liquidity-to-XRP-Ledger?ref=blockhead.co"
+        },
+        {
+          "summary": "Business Wire (Dec 2024): RLUSD launches globally on the XRP Ledger and Ethereum on 17 December 2024.",
+          "url": "https://www.businesswire.com/news/home/20241216911945/en/5762080/Raising-the-Standard-for-Stablecoins-Ripple-USD-Launches-Globally-with-Unmatched-Utility-Experience-and-Compliance"
+        },
+        {
+          "summary": "Adbytes.Media (Aug 2026): Ripple's transparency page showed ~$1.87B RLUSD in circulation backed by ~$1.98B in reserves, evidencing real post-launch adoption.",
+          "url": "https://adbytes.media/blog/ripples-rlusd-crosses-2-billion-as-supply-grows-not-price"
+        }
+      ],
+      "lineage": "xrp-p14-rlusd-launch",
+      "rationale": "RLUSD launched on both chains in December 2024 and grew to roughly $2 billion in circulation by August 2026.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "RLUSD reserves are backed 1:1 and independently attested on a monthly basis.",
+      "effective_at": "2024-04-04T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Business Wire (Apr 2024): Ripple commits to monthly third-party attestations of RLUSD reserves.",
+          "url": "https://www.businesswire.com/news/home/20240404802548/en/Ripple-to-Issue-USD-backed-Stablecoin-Bringing-More-Utility-and-Liquidity-to-XRP-Ledger?ref=blockhead.co"
+        },
+        {
+          "summary": "BSC News (Mar 2026): Deloitte attestation for February 2026 showed reserves exceeded circulating RLUSD at two snapshots ($1.61B vs 1.54B; $1.57B vs 1.50B), part of the ongoing monthly series.",
+          "url": "https://bsc.news/post/ripple-rlusd-stablecoin-fully-backed-deloitte"
+        }
+      ],
+      "lineage": "xrp-p15-rlusd-attestations",
+      "rationale": "Deloitte has issued recurring monthly attestations showing RLUSD reserves exceed tokens in circulation.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "RLUSD expands to additional blockchains and DeFi protocols beyond the XRP Ledger and Ethereum.",
+      "effective_at": "2024-04-04T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Business Wire (Apr 2024): Ripple says RLUSD will launch on the XRP Ledger and Ethereum and expand to additional blockchains and DeFi protocols over time.",
+          "url": "https://www.businesswire.com/news/home/20240404802548/en/Ripple-to-Issue-USD-backed-Stablecoin-Bringing-More-Utility-and-Liquidity-to-XRP-Ledger?ref=blockhead.co"
+        }
+      ],
+      "lineage": "xrp-p16-rlusd-expansion",
+      "rationale": "RLUSD remains on the XRP Ledger and Ethereum; no verified expansion to additional chains, so it stays open.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The XRPL EVM sidechain mainnet, with XRP as its native gas token, hosts real dApps and meaningful usage.",
+      "effective_at": "2025-06-30T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ripple blog: XRPL EVM Sidechain mainnet is live, built with Peersyst and connected via Axelar, with XRP as the native gas token; named application partners (Strobe, Securd, Vertex) were listed as coming soon at launch.",
+          "url": "https://ripple.com/insights/xrpl-evm-sidechain-mainnet-is-live/"
+        }
+      ],
+      "lineage": "xrp-p17-evm-sidechain",
+      "rationale": "Mainnet launched in June 2025 but named applications were still coming soon; no demonstrated real usage yet, so it stays open.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Native on-ledger lending (XLS-66) is activated on the XRP Ledger mainnet and real loans are originated.",
+      "effective_at": "2024-10-18T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "XRPLF standards repo: XLS-0066 lending protocol proposal created 18 October 2024, still in Draft status as of September 2026.",
+          "url": "https://github.com/xrplf/xrpl-standards/blob/HEAD/XLS-0066-lending-protocol/README.md"
+        }
+      ],
+      "lineage": "xrp-p18-xrpl-lending",
+      "rationale": "XLS-66 remains a draft proposal with no mainnet activation and no real loans, so it stays open.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Codius delivers a working smart-contract hosting platform adopted by developers.",
+      "effective_at": "2014-07-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Bitcoin Magazine: Codius was announced by Ripple in July 2014 as a smart-contract hosting platform; Ripple discontinued development in 2015, citing a small market.",
+          "url": "https://bitcoinmagazine.com/business/ripple-discontinues-smart-contract-platform-codius-citing-small-market-1435182153"
+        },
+        {
+          "summary": "CoinDesk (Jun 2018): Ripple released Codius in beta in 2014 and shelved it the following year; former CTO Stefan Thomas later revived it outside Ripple.",
+          "url": "https://www.coindesk.com/markets/2018/06/06/ripple-smart-contracts-creator-targets-ethereum-with-new-tech-launch"
+        }
+      ],
+      "lineage": "xrp-p19-codius",
+      "rationale": "Ripple explicitly discontinued Codius in 2015 for lack of demand; it was never adopted as promised and was later revived outside Ripple.",
+      "state": "retired"
+    }
+  ],
+  "rationale": "XRP's scoreable claims are dominated by Ripple's public commitments on supply discipline, cross-border liquidity, ecosystem funding, and XRPL feature delivery; this inventory captures each attributable promise once, scoring real usage rather than announcements.",
+  "slug": "xrp"
+}

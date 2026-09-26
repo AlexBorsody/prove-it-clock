@@ -1,0 +1,190 @@
+{
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    {
+      "claim_type": "ongoing",
+      "core": true,
+      "criteria": "Dash is used as everyday digital cash at meaningful global scale: ordinary people routinely paying for goods and services with instant, low-fee, optionally private transactions.",
+      "effective_at": "2014-01-18T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Dash whitepaper abstract: 'a digital currency that enables instant, private payments to anyone, anywhere in the world' (launched Jan 2014 as XCoin, renamed Dash Mar 2015)",
+          "url": "https://github.com/dashpay/dash/wiki/Whitepaper"
+        },
+        {
+          "summary": "Dash Core README: 'Dash is a digital currency that enables instant, private payments to anyone, anywhere in the world'",
+          "url": "https://github.com/dashpay/dash/blob/HEAD/README.md"
+        },
+        {
+          "summary": "Official Dash docs: 'Dash aims to be the most user-friendly and scalable payments-focused cryptocurrency in the world'",
+          "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/about.rst"
+        }
+      ],
+      "lineage": "dash-p01-everyday-digital-cash",
+      "rationale": "Twelve years in, Dash is fast and cheap but has no mass everyday-payment adoption; the founding mission is still pending.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A live two-tier network of incentivized masternodes (1,000 DASH collateral each) providing InstantSend, PrivateSend and governance services, paid from the block reward.",
+      "effective_at": "2014-01-18T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Dash whitepaper abstract promising the two-tier incentivized masternode network; masternode payments enabled Jun 2014, mandatory Oct 2014",
+          "url": "https://github.com/dashpay/dash/wiki/Whitepaper"
+        },
+        {
+          "summary": "Official Dash docs on the masternode network (Proof of Service): ~3,850 masternodes referenced, paid per block from the subsidy",
+          "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/masternodes/understanding.rst"
+        },
+        {
+          "summary": "Live masternode payment tracker: ~2,036 masternodes earning ~1.2 DASH per payment, May 2026",
+          "url": "http://count.masternode.io/~pub/Darkcoin/masternode_payments_stats.html"
+        }
+      ],
+      "lineage": "dash-p02-masternode-network",
+      "rationale": "Live since 2014 and still paying operators from the block reward in 2026; the network never went down.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Protocol-level private transactions via masternode mixing, available to users and actually used.",
+      "effective_at": "2014-01-18T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Dash whitepaper abstract: PrivateSend 'for increasing fungibility'; DarkSend shipped in the Jan 2014 launch client, rebranded PrivateSend 2016",
+          "url": "https://github.com/dashpay/dash/wiki/Whitepaper"
+        },
+        {
+          "summary": "Sep 2026 coverage describing PrivateSend as a live optional feature that mixes transactions for privacy and fungibility",
+          "url": "https://www.tradingview.com/news/coindar:2af76d3ba094b:0-dash-to-participate-in-coinferencex-the-best-event-in-singapore-on-october-5th/"
+        }
+      ],
+      "lineage": "dash-p03-privatesend",
+      "rationale": "Shipped in the 2014 launch client and still functional; matches the whitepaper's modest fungibility claim (the stronger 'strongly anonymous' intro claim is contested).",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Transactions confirm in seconds via masternode quorums as the normal experience for Dash payments.",
+      "effective_at": "2014-11-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Dash blog: Dash Core v0.11.1 release announcing InstantX, Nov 2014 - 5 masternode-level confirmations within seconds",
+          "url": "https://www.dash.org/news/11-1-instantx-release/"
+        },
+        {
+          "summary": "Official Dash docs: 'InstantSend transactions are fully confirmed within two seconds'; automatic InstantSend since v0.13",
+          "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/features.rst"
+        }
+      ],
+      "lineage": "dash-p04-instantsend",
+      "rationale": "Announced Nov 2014, automatic for most transactions since 2019; ~2-second locks are the default Dash payment experience.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A self-funding treasury drawn from the block reward, with masternode-voted budget proposals paid out via monthly superblocks.",
+      "effective_at": "2015-08-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Dash docs: 20% of the block subsidy reserved for the budget system, paid to approved proposals in monthly superblocks (was 10% before v20)",
+          "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/features.rst"
+        },
+        {
+          "summary": "2026 governance proposal in active voting phase on DashCentral (c2pool daemonless finalize) - treasury proposals still flowing",
+          "url": "https://github.com/frstrtr/c2pool/blob/HEAD/README.md"
+        }
+      ],
+      "lineage": "dash-p05-treasury-governance",
+      "rationale": "Decentralized Governance by Blockchain live since Aug 2015; proposals funded and voted every month through 2026.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "A named, third-party-observable economy of merchants accepting Dash for everyday payments.",
+      "effective_at": "2018-06-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "KFC Caracas began accepting Dash in Venezuela, Dec 2018 - peak of the Dash merchant push",
+          "url": "https://u.today/kfc-restaurant-embraces-dash-in-venezuela-more-latin-american-countries-to-follow"
+        },
+        {
+          "summary": "Aug 2018: 2,000+ merchants accepting Dash worldwide, driven by the Venezuela program",
+          "url": "https://www.crowdfundinsider.com/2018/08/138089-dash-update-more-than-2000-merchants-around-the-globe-accepts-the-crypto-as-payments-for-goods-services-thanks-to-venezuela-presence/"
+        },
+        {
+          "summary": "Jan 2026: AEON integrates Dash into AEON Pay across a claimed 50M-merchant QR network in SEA, Africa and Latin America",
+          "url": "https://www.bitget.com/news/detail/12560605151857"
+        }
+      ],
+      "lineage": "dash-p06-merchant-economy",
+      "rationale": "Venezuela's 2,000+ merchant economy wound down after 2019; the Jan 2026 AEON integration restores access but no observable Dash everyday-payment economy has emerged - announcement, not usage.",
+      "state": "lapsed"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A live decentralized data and identity layer on mainnet: blockchain usernames (DPNS), contacts, data contracts and a decentralized API.",
+      "effective_at": "2015-10-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Dash announcement (mirrored): the Evolution Genesis release, nine years in the making - decentralized data storage, identities, usernames, DAPI",
+          "url": "https://coinstats.app/news/69a58e2567ac276f6d9cb3b1766d954facd44e0379dfe94d3daaa6045bbb88e6_Introducing-Dash-Evolution/"
+        },
+        {
+          "summary": "Sep 2026: Platform v1.1 activated on mainnet with DPNS usernames, shielded transactions and adaptive blocksize; real identities and usernames registered",
+          "url": "https://www.ainvest.com/news/dash-price-surges-platform-v1-1-launch-privacy-sector-momentum-2609/"
+        }
+      ],
+      "lineage": "dash-p07-evolution-platform",
+      "rationale": "Promised Oct 2015, mainnet Genesis Jul-Sep 2024 after a 9-year delay; Platform live with registered usernames and v1.1 activated Sep 2026 - delivery is real, adoption is early.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Using Dash is as easy as PayPal for ordinary people: human-readable usernames, contacts, and a mainstream consumer wallet with a real user base.",
+      "effective_at": "2015-10-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Dash docs (still future tense): 'Dash Evolution will make using cryptocurrency as easy as using PayPal'",
+          "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/features.rst"
+        },
+        {
+          "summary": "2024 retrospective: Evolution was Evan Duffield's 2015 vision for usernames, contact lists and invoicing at the protocol level for mass adoption",
+          "url": "https://edge.app/blog/market-updates/dash-development-update-dash-evolution/"
+        }
+      ],
+      "lineage": "dash-p08-evolution-ux",
+      "rationale": "The platform shipped but the UX promise did not: docs still say 'will make' crypto as easy as PayPal, and no mainstream DashPay consumer wallet has real users.",
+      "state": "open"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "On-chain scaling toward 400MB blocks using custom open-source masternode hardware, handling mass transaction volume.",
+      "effective_at": "2017-09-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Sep 2017: Dash Labs announced to build custom open-source hardware (specialized block-processing chips), targeting 2020, for massive on-chain scaling",
+          "url": "https://www.finextra.com/pressarticle/69847/dash-sets-out-roadmap"
+        },
+        {
+          "summary": "Official Dash docs still claim 'a clear roadmap for on-chain scaling to up to 400MB blocks using custom-developed open source hardware'",
+          "url": "https://github.com/dashpay/docs/blob/HEAD/docs/user/introduction/about.rst"
+        }
+      ],
+      "lineage": "dash-p09-onchain-scaling",
+      "rationale": "The 2017 custom-hardware plan never materialized - no chips, no 400MB blocks, mainnet still 2MB - while the docs still advertise the roadmap.",
+      "state": "lapsed"
+    }
+  ],
+  "rationale": "Researched the Dash whitepaper (dashpay/dash wiki), official Dash docs (features, masternodes, about), the Oct 2015 Evolution vision and the Jul-Sep 2024 Genesis launch, Evan Duffield's 2017 custom-hardware scaling plan, the Venezuela merchant rise and fall, and the Jan 2026 AEON Pay integration. Each promise was scored on real usage, not announcements.",
+  "slug": "dash"
+}

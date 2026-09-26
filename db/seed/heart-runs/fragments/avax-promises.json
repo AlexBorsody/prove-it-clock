@@ -1,0 +1,306 @@
+{
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    {
+      "claim_type": "milestone",
+      "core": true,
+      "criteria": "C-Chain finality under 2 seconds and multi-thousand TPS capacity demonstrated in real mainnet usage",
+      "effective_at": "2020-09-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Ava Labs announcement of the September 21, 2020 mainnet launch: sub-second finality, 4,500+ TPS, full EVM support, millions of validators",
+          "url": "https://medium.com/avalancheavax/ready-for-liftoff-avalanche-mainnet-set-to-launch-on-september-21-66a1def8d3b3"
+        },
+        {
+          "summary": "Five-year mainnet retrospective: sub-second finality held, stress tests peaked above 20,000 TPS, over 100 subnets live",
+          "url": "https://genfinity.io/2025/09/09/avalanche-5-year-mainnet-anniversary/"
+        }
+      ],
+      "lineage": "avax-launch",
+      "rationale": "Mainnet delivered the promised speed in production: finality routinely under 2 seconds and millions of transactions processed daily since 2020.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Major Ethereum dapps and tooling deploy and run on the C-Chain with real users",
+      "effective_at": "2020-09-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Mainnet launch announcement promising the entirety of the Ethereum virtual machine and development toolkit",
+          "url": "https://medium.com/avalancheavax/ready-for-liftoff-avalanche-mainnet-set-to-launch-on-september-21-66a1def8d3b3"
+        },
+        {
+          "summary": "2024 ecosystem report: Aave, Benqi, Trader Joe among the leading DeFi protocols live on Avalanche with $925M TVL",
+          "url": "https://www.coinspeaker.com/citi-private-fund-tokenization/"
+        }
+      ],
+      "lineage": "avax-evm",
+      "rationale": "EVM compatibility delivered and used: Aave, Curve, Trader Joe and hundreds of dapps run on the C-Chain with real TVL.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Validator set grows into the hundreds of thousands or millions of independent block-producing nodes",
+      "effective_at": "2020-09-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Mainnet launch announcement: Avalanche enables up to millions of independent validators as full block-producing nodes",
+          "url": "https://medium.com/avalancheavax/ready-for-liftoff-avalanche-mainnet-set-to-launch-on-september-21-66a1def8d3b3"
+        }
+      ],
+      "lineage": "avax-validators",
+      "rationale": "Nowhere close: the validator set sits around 1,500 to 2,000, and the 2,000 AVAX stake keeps the millions claim aspirational.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "A cheap, fast bridge between Ethereum and Avalanche that real users move real volume through",
+      "effective_at": "2021-08-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Announcement of the next-generation Avalanche Bridge, promised 10x faster and 5x cheaper than the original AEB",
+          "url": "https://thecurrencyanalytics.com/altcoins/avalanche-avax-from-aeb-to-next-generation-avalanche-bridge-ab-with-improved-user-experience-30983"
+        },
+        {
+          "summary": "Bridge usage report: 243,000+ transactions moving $43B+ in ERC-20 assets, later $50B+ including native Bitcoin support",
+          "url": "https://crypto.news/avalanche-bridge-bitcoin-opportunities-btc-avax-defi-ecosystem/"
+        }
+      ],
+      "lineage": "avax-bridge",
+      "rationale": "Delivered and heavily used: tens of billions bridged, making it the most-used Ethereum-connected bridge by TVL at its peak.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Blue-chip DeFi protocols launch on Avalanche and TVL grows materially",
+      "effective_at": "2021-08-18T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Avalanche Foundation announcement of the $180M Avalanche Rush liquidity mining program starting with Aave and Curve",
+          "url": "https://medium.com/avalancheavax/avalanche-foundation-announces-180m-defi-incentive-program-d320fdfafff7"
+        },
+        {
+          "summary": "Rush aftermath: Avalanche TVL rose 15x to $5.19B in under two months, sixth largest chain, with Aave and Curve deployed",
+          "url": "https://ambcrypto.com/besides-decent-network-growth-how-are-avalanche-curve-faring-price-wise/"
+        }
+      ],
+      "lineage": "avax-rush",
+      "rationale": "The program ran and worked: Aave and Curve launched, TVL exploded from $180M to over $5B, and native apps like Benqi took off.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "A growing set of independent application-specific blockchains running on Avalanche with real activity",
+      "effective_at": "2022-03-08T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Avalanche Foundation Multiverse announcement: subnets as the next growth engine for gaming, DeFi, NFTs and institutions",
+          "url": "https://medium.com/avalancheavax/avalanche-foundation-launches-multiverse-an-up-to-290m-incentive-program-to-accelerate-growth-of-c815ac5692c7"
+        },
+        {
+          "summary": "Five-year retrospective: over 100 active subnets for gaming, finance and enterprise tokenization",
+          "url": "https://genfinity.io/2025/09/09/avalanche-5-year-mainnet-anniversary/"
+        }
+      ],
+      "lineage": "avax-subnets",
+      "rationale": "The signature differentiator shipped: 100+ subnets and L1s launched, several with genuine users and transaction volume.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "The $290M Multiverse program funds and launches named subnet projects across gaming, DeFi and institutions",
+      "effective_at": "2022-03-08T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "CoinDesk coverage of the Multiverse launch: 4M AVAX to accelerate subnet adoption, first cohorts named",
+          "url": "https://www.coindesk.com/business/2022/03/08/avalanche-commits-4m-avax-to-attract-gaming-defi-and-nfts-subnets?outputType=amp"
+        }
+      ],
+      "lineage": "avax-multiverse",
+      "rationale": "Program launched and deployed: DeFi Kingdoms, institutional DeFi partners and later gaming subnets all funded and shipped.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "DeFi Kingdoms launches its own Avalanche subnet with real players transacting",
+      "effective_at": "2022-03-08T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Multiverse announcement naming DeFi Kingdoms as the first subnet recipient, up to $15M in incentives",
+          "url": "https://www.coindesk.com/business/2022/03/08/avalanche-commits-4m-avax-to-attract-gaming-defi-and-nfts-subnets?outputType=amp"
+        }
+      ],
+      "lineage": "avax-dfk",
+      "rationale": "The flagship subnet went live with its own CRYSTAL token and a real player base; the game later faded but the launch delivered.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Deloitte's Close As You Go platform processes real FEMA disaster claims on Avalanche",
+      "effective_at": "2021-11-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "November 2021 announcement: Deloitte and Ava Labs partner on Close As You Go for FEMA reimbursement on Avalanche",
+          "url": "https://news.bitcoin.com/big-four-accounting-firm-deloitte-forges-partnership-with-ava-labs-to-leverage-avalanche-blockchain/"
+        },
+        {
+          "summary": "Avalanche's institutional roundup describing Close As You Go as live technology for disaster recovery payments",
+          "url": "https://medium.com/avalancheavax/institutions-are-building-the-future-with-avalanche-4daf8062ad1"
+        }
+      ],
+      "lineage": "avax-deloitte",
+      "rationale": "Announced and positioned as live, but no public evidence of real FEMA claims processed on-chain has surfaced since 2021.",
+      "state": "open"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Named institutional pilots on Evergreen and Spruce subnets run to completion as announced",
+      "effective_at": "2023-11-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "JPMorgan Onyx Everest and Citi FX and private-fund pilots on Avalanche Evergreen and Spruce subnets",
+          "url": "https://insidebitcoins.com/news/citibank-says-blockchain-may-make-asset-management-more-efficient-after-tokenization-experiment-on-avalanche"
+        },
+        {
+          "summary": "Citi private fund tokenization test on the Avalanche Spruce test network with Wellington and DTCC participation",
+          "url": "https://www.coinspeaker.com/citi-private-fund-tokenization/"
+        }
+      ],
+      "lineage": "avax-institutional-pilots",
+      "rationale": "The announced pilots completed: JPMorgan's Everest FX test and Citi's FX and fund tokenization tests all ran on Avalanche subnets.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "A growing pipeline of real tokenized assets issued and used on Avalanche",
+      "effective_at": "2023-07-25T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Avalanche Foundation launches Vista, a $50M program to buy tokenized assets and pioneer tokenization on Avalanche",
+          "url": "https://www.coindesk.com/markets/2023/07/25/avalanche-foundation-commits-50m-to-bring-more-tokenized-assets-to-blockchain"
+        },
+        {
+          "summary": "SkyBridge $300M tokenization report noting nearly $2B in tokenized assets already on Avalanche",
+          "url": "https://www.ainvest.com/news/skybridge-tokenizes-300m-fund-avalanche-erc-3643-2508/"
+        }
+      ],
+      "lineage": "avax-vista",
+      "rationale": "Tokenization is genuinely happening on Avalanche: KKR and Apollo funds via Securitize, IntainMARKETS, and roughly $2B in tokenized assets.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "Off the Grid runs on the GUNZ subnet with a real player-driven on-chain item economy",
+      "effective_at": "2023-04-05T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Official Avalanche blog announcing Gunzilla's GUNZ subnet for the AAA shooter Off the Grid",
+          "url": "https://www.avax.network/about/blog/gunzilla-launches-aaa-shooter-as-an-avalanche-l1"
+        },
+        {
+          "summary": "GUNZ mainnet live with 20M NFTs traded on OpenSea, 22,000 daily active wallets, game in Early Access",
+          "url": "https://coinmarketcap.com/community/articles/69702359535ae753eaaba4f4/"
+        }
+      ],
+      "lineage": "avax-gunz",
+      "rationale": "Real usage at scale: mainnet live since March 2025, millions of in-game NFTs traded, tens of thousands of daily players.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "MapleStory Universe launches on its Avalanche L1 with real players and on-chain activity",
+      "effective_at": "2024-03-01T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Nexon moved MapleStory Universe from Polygon to a custom Avalanche Layer 1 in March 2024",
+          "url": "https://en.wikipedia.org/wiki/MapleStory_Universe"
+        },
+        {
+          "summary": "MapleStory N launched May 15, 2025 on the Henesys L1: biggest NFT mint in Avalanche history, 549% active-address spike",
+          "url": "https://cryptonews.com.au/news/maplestory-n-launches-with-record-breaking-nft-mint-and-soaring-nxpc-token-129051/"
+        }
+      ],
+      "lineage": "avax-maplestory",
+      "rationale": "One of the biggest web3 game launches ever: live game on its own Avalanche L1 with record mints and real player volume.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Cross-subnet messaging goes live and gets used by real applications",
+      "effective_at": "2024-03-06T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Teleporter launch with the Durango upgrade: EVM-compatible interface for arbitrary contract calls across subnets",
+          "url": "https://thearabianpost.com/avalanche-unveils-teleporter-to-bridge-fragmented-subnet-ecosystem/"
+        }
+      ],
+      "lineage": "avax-teleporter",
+      "rationale": "Shipped with Durango and adopted: ICM and Teleporter now underpin cross-L1 token transfers and messaging across the ecosystem.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "Etna activates on mainnet and sovereign L1s launch without the 2,000 AVAX validator stake",
+      "effective_at": "2024-12-16T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "Ava Labs Etna upgrade docs: ACP-77 sovereign L1s, ~1.33 AVAX per month continuous fee, 99.9% cheaper L1 launches",
+          "url": "https://github.com/ava-labs/builders-hub/blob/HEAD/content/blog/etna-enhancing-sovereignty-avalanche-l1s.mdx"
+        },
+        {
+          "summary": "Etna overview: Beam and Dexalot migrated, five-validator L1s now cost under 7 AVAX per month in protocol fees",
+          "url": "https://www.datawallet.com/crypto/avalanche-subnets-explained"
+        }
+      ],
+      "lineage": "avax-etna",
+      "rationale": "Activated December 16, 2024 as promised: existing subnets migrated to sovereign L1s and new cheap L1 launches followed.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "milestone",
+      "core": false,
+      "criteria": "One-click Avalanche node deployment and subnet deployment go live on the AWS Marketplace",
+      "effective_at": "2023-01-11T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "AWS partnership announcement: one-click node deployment, GovCloud support, subnet deployment as a service",
+          "url": "https://cointelegraph.com/news/ava-labs-partners-with-aws-to-offer-one-click-node-deployment"
+        }
+      ],
+      "lineage": "avax-aws",
+      "rationale": "Delivered: AWS listed Avalanche node tooling in its marketplace with GovCloud for compliance-driven enterprise and government users.",
+      "state": "fulfilled"
+    },
+    {
+      "claim_type": "ongoing",
+      "core": false,
+      "criteria": "SkyBridge's $300M in hedge funds actually tokenized and live on Avalanche",
+      "effective_at": "2025-08-19T00:00:00Z",
+      "evidence": [
+        {
+          "summary": "SkyBridge announces tokenization of its Digital Macro Master Fund and Legion Strategies on Avalanche via Tokeny and Apex",
+          "url": "https://tokeny.com/skybridge-capital-partners-with-tokeny-to-tokenize-300min-hedge-funds-on-avalanche/"
+        }
+      ],
+      "lineage": "avax-skybridge",
+      "rationale": "Announced August 2025 with Tokeny and Apex Group; no public confirmation yet that the funds are live on-chain.",
+      "state": "open"
+    }
+  ],
+  "rationale": "Researched the Avalanche mainnet launch announcement, the Avalanche Foundation's Rush, Multiverse and Vista programs, the Gunzilla GUNZ subnet, MapleStory Universe, the Etna/Avalanche9000 upgrade, Teleporter, the AWS partnership, and institutional pilots (Deloitte, JPMorgan, Citi, SkyBridge).",
+  "slug": "avax"
+}

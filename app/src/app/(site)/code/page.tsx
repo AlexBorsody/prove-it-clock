@@ -3,7 +3,6 @@ import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import Icon from "@/components/chrome-icons";
 import { GithubMark, StarIcon, ForkIcon } from "@/components/icons";
-import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -14,18 +13,19 @@ interface CodeRow {
   commits90d: number | null;
   stars: number | null;
   forks: number | null;
+  watchers: number | null;
   repoUrl: string;
   failed: boolean;
 }
 
 /**
- * CODE ranking: every tracked project, sortable by stars, forks, or commits
+ * CODE ranking: every tracked project, sortable by stars, forks, follows, or commits
  * in the last 90 days. Stars sort by default. Development context only;
  * CODE never moves the heart score. A failed fetch is shown honestly,
  * never as zero.
  */
-type SortKey = "stars" | "forks" | "commits";
-const SORTS: SortKey[] = ["stars", "forks", "commits"];
+type SortKey = "stars" | "forks" | "watchers" | "commits";
+const SORTS: SortKey[] = ["stars", "forks", "watchers", "commits"];
 
 export default async function CodePage({
   searchParams,
@@ -34,7 +34,13 @@ export default async function CodePage({
 }) {
   const sp = await searchParams;
   const sort: SortKey =
-    sp.sort === "forks" ? "forks" : sp.sort === "commits" ? "commits" : "stars";
+    sp.sort === "forks"
+      ? "forks"
+      : sp.sort === "watchers"
+        ? "watchers"
+        : sp.sort === "commits"
+          ? "commits"
+          : "stars";
   let projects: any[] = [];
   try {
     const rankings = await readHeartRankings(HEARTS_METHODOLOGY, 1, 100);
@@ -55,6 +61,7 @@ export default async function CodePage({
         commits90d: vitals?.commits90d ?? null,
         stars: vitals?.stars ?? null,
         forks: vitals?.forks ?? null,
+        watchers: vitals?.watchers ?? null,
         repoUrl: meta ? `https://github.com/${meta.github}` : "",
         failed,
       };
@@ -62,23 +69,31 @@ export default async function CodePage({
   );
 
   const sortVal = (r: CodeRow) =>
-    sort === "stars" ? r.stars : sort === "forks" ? r.forks : r.commits90d;
+    sort === "stars"
+      ? r.stars
+      : sort === "forks"
+        ? r.forks
+        : sort === "watchers"
+          ? r.watchers
+          : r.commits90d;
   rows.sort((a, b) => (sortVal(b) ?? -1) - (sortVal(a) ?? -1));
 
   const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
   const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
   const sortLabel =
-    sort === "commits" ? "commits in the last 90 days" : `GitHub ${sort}`;
+    sort === "commits"
+      ? "commits in the last 90 days"
+      : sort === "watchers"
+        ? "GitHub follows"
+        : `GitHub ${sort}`;
 
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "code-overview", title: "CODE activity", kind: "CODE", keywords: "development GitHub commits" })}>
       <h1 className="page-title">CODE</h1>
       <p className="page-sub">
-        Who is actually building. Stars and forks are all-time; commits cover
-        the last 90 days.
+        Who is actually building. Stars, forks, and follows are all-time;
+        commits cover the last 90 days.
       </p>
-      </div>
       <div className="sort-seg" role="group" aria-label="Sort CODE ranking">
         {SORTS.map((k) => (
           <Link
@@ -87,7 +102,7 @@ export default async function CodePage({
             className={sort === k ? "active" : undefined}
             aria-current={sort === k ? "true" : undefined}
           >
-            {k === "stars" ? "Stars" : k === "forks" ? "Forks" : "Commits"}
+            {k === "stars" ? "Stars" : k === "forks" ? "Forks" : k === "watchers" ? "Follows" : "Commits"}
           </Link>
         ))}
       </div>
@@ -103,14 +118,14 @@ export default async function CodePage({
           </p>
         </div>
       ) : (
-        <div className="panel search-section" data-tour="code" {...searchMeta({ id: "code-ranking", title: "CODE ranking", kind: "CODE", keywords: "development GitHub commits" })}>
+        <div className="panel" data-tour="code">
           <p className="explain" style={{ marginTop: 0 }}>
             Ranked by {sortLabel}. CODE is context: it never moves the heart score.
             A failed GitHub fetch is shown as-is, never as zero activity.
           </p>
           <div className="code-rows">
             {rows.map((r, i) => (
-              <div key={r.slug} className="code-row search-section" {...searchMeta({ id: `code-project-${r.slug}`, title: `${r.name} CODE activity`, kind: "CODE", project: r.slug, keywords: `${r.symbol} GitHub commits stars forks` })}>
+              <div key={r.slug} className="code-row">
                 <span className="code-rank num">{i + 1}</span>
                 <Link href={`/projects/${r.slug}`} className="code-coin-link">
                   <img
