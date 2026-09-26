@@ -1059,6 +1059,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 /* ---- Shitcoin Score: circular 1-10 gauge ---- */
 .shitcoin-meter { margin-top: 18px; }
+.shitcoin-meter:not(.compact) {
+  background: var(--bg-elev); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px;
+}
 .shitcoin-meter.compact {
   margin-top: 0;
   display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
@@ -1096,6 +1100,27 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 /* ---- Consolidated promises section: subheads, embedded stats ---- */
 .panel h2.with-tip { display: flex; align-items: center; justify-content: space-between; }
+
+/* ---- InfoTip: tap-to-reveal tooltip bubble ---- */
+.info-tip { position: relative; display: inline-flex; }
+.info-tip-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: none; border: none; padding: 6px; margin: 0 0 1px;
+  color: var(--text-faint); cursor: pointer; border-radius: 6px;
+  min-width: 32px; min-height: 32px; -webkit-tap-highlight-color: transparent;
+}
+.info-tip-btn:hover { color: var(--text); }
+.info-tip-text {
+  position: absolute; top: calc(100% + 6px);
+  width: max-content; max-width: 250px;
+  background: var(--bg-raised); border: 1px solid var(--border-strong);
+  border-radius: 8px; padding: 10px 12px; z-index: 50;
+  font-size: 13px; line-height: 1.5; color: var(--text); font-weight: 400;
+  text-transform: none; letter-spacing: normal; text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.info-tip-text.align-left { left: 0; }
+.info-tip-text.align-right { right: 0; }
 .promise-subhead {
   font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text); margin: 28px 0 12px; font-weight: 800;

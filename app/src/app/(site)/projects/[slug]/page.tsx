@@ -24,6 +24,7 @@ import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
 import { CodeActivityChart } from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
+import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -173,7 +174,7 @@ export default async function ProjectPage({ params, searchParams }: {
           verdict meter, and the stats. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
-        <h2 className="with-tip"><span>Promises</span> <Icon name="info" size={15} title={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
+        <h2 className="with-tip"><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} align="right" /></h2>
         {healthTotal > 0 ? (
           <div className="promise-health">
             <h3 className="promise-subhead">Delivery health</h3>
@@ -239,7 +240,7 @@ export default async function ProjectPage({ params, searchParams }: {
 
       {/* Supporting metrics: CODE, HYPE, then Market. */}
       <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
-        <h2>CODE <Icon name="info" size={14} title={`Who is actually working on ${latest.name}.`} /></h2>
+        <h2>CODE <InfoTip text={`Who is actually working on ${latest.name}.`} /></h2>
         <div className="code-rows">
           <CodeRow
             row={codeRowData}
