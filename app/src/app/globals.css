@@ -1334,3 +1334,11 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .code-metrics-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .code-metrics-four .code-metric:last-child { grid-column: auto; display: flex; align-items: flex-start; min-height: 96px; }
 }
+
+/* The card's primary link fills its background; specific actions stay above it. */
+.project-card { position: relative; isolation: isolate; }
+.project-card .project-card-link { position: static; }
+.project-card .project-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+.project-card a:not(.project-card-link), .project-card button, .project-card details { position: relative; z-index: 2; }
+.project-card .project-card-link:hover::after { box-shadow: inset 0 0 0 1px var(--border-strong); }
+.project-card .project-card-link:focus-visible::after { outline: 2px solid var(--accent); outline-offset: 2px; }

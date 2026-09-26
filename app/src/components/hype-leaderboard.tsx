@@ -45,8 +45,8 @@ type SortKey = "mentions" | "hearts";
 
 export function HypeRowCard({ row: r }: { row: HypeRow }) {
   return (
-    <article className="hype-row search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} HYPE ranking`, kind: "HYPE", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
-      <Link href={`/projects/${r.slug}`} className="hype-coin">
+    <article className="hype-row project-card search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} HYPE ranking`, kind: "HYPE", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
+      <Link href={`/projects/${r.slug}`} className="hype-coin project-card-link">
         <img
           src={`/icons/${r.symbol.toLowerCase()}.svg`}
           alt=""

@@ -11,3 +11,4 @@
 - Layout follow-up: moved the project HYPE summary directly below CODE, before Promises. Existing content, anchors and data are preserved.
 - Layout follow-up: Market now sits last, after Evidence and methodology. Alex suggested a future Prove Value overlay on this chart; its data and design are still to be decided.
 - Promise-first layout: hero/verdict → Promise stats → Promises → Recently happened → Evidence and methodology → CODE → HYPE → Market. Keeps the complete promise story together before supporting metrics.
+- Card navigation: CODE cards, mobile scoreboard cards and reusable HYPE list cards now use the existing project-name link across their full background. Separate source links, verdict links and promise toggles remain independent; no nested anchors or click-only navigation.

@@ -213,8 +213,8 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
         {sorted.map((r) => {
           const open = expanded === r.slug;
           return (
-            <div key={r.slug} className="mcard" id={`scoreboard-mobile-project-${r.slug}`}>
-              <Link href={`/projects/${r.slug}`} className="mcard-head">
+            <div key={r.slug} className="mcard project-card" id={`scoreboard-mobile-project-${r.slug}`}>
+              <Link href={`/projects/${r.slug}`} className="mcard-head project-card-link">
                 <img
                   src={`/icons/${r.symbol.toLowerCase()}.svg`}
                   alt=""

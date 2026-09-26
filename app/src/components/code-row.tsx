@@ -52,7 +52,7 @@ export default function CodeRow({
   const r = row;
   return (
     <article
-      className={`code-row search-section${rank == null ? " code-row-unranked" : ""}`}
+      className={`code-row project-card search-section${rank == null ? " code-row-unranked" : ""}`}
       {...searchMeta({
         id: search.id,
         title: search.title,
@@ -62,7 +62,7 @@ export default function CodeRow({
       })}
     >
       {rank != null ? <span className="code-rank num">{rank}</span> : null}
-      <Link href={`/projects/${r.slug}`} className="code-coin-link">
+      <Link href={`/projects/${r.slug}`} className="code-coin-link project-card-link">
         <img
           src={`/icons/${r.symbol.toLowerCase()}.svg`}
           alt=""
