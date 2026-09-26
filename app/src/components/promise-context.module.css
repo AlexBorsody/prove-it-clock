@@ -33,3 +33,4 @@
 .facts dd.earned .metricLink { background: #173C37; }
 .facts dd.open .metricLink { background: #2B2E3F; }
 .facts dd.lapsed .metricLink, .facts dd.retired .metricLink { background: #411F2A; }
+.facts dd.total .metricLink { background: #2B2E3F; }

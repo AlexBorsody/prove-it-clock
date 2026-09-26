@@ -22,7 +22,7 @@ export default function PromiseStats({ slug, name, promises, earned, methodology
     { label: "Lapsed hearts", value: counts.lapsed, tone: "lapsed", filter: "lapsed" },
     ...(counts.retired ? [{ label: "Retired hearts", value: counts.retired, tone: "retired", filter: "retired" as const }] : []),
     ...(counts.unknown ? [{ label: "Unknown state", value: counts.unknown, tone: "open", filter: "unknown" as const }] : []),
-    { label: "Promises tracked", value: promises.length, tone: "", filter: "all" },
+    { label: "Promises tracked", value: promises.length, tone: "total", filter: "all" },
   ];
   const version = methodology.match(/\bv\d+(?:\.\d+)*\b/i)?.[0] ?? methodology;
   const facts = <>
