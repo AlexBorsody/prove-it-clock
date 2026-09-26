@@ -33,12 +33,6 @@ const STEPS: TourStep[] = [
     title: "CODE + HYPE = context",
     body: "CODE shows whether they are still building. HYPE shows whether attention outruns substance.",
   },
-  {
-    route: "/projects/btc",
-    selector: '[data-tour="timeline"]',
-    title: "Timeline = the special sauce",
-    body: "Watch credibility rise and fall as real events happen. Every move links to evidence.",
-  },
 ];
 
 function markSeen() {

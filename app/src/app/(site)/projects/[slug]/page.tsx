@@ -5,7 +5,6 @@ import {
   readHeartHistory,
   readHeartRankings,
   readHypeSnapshotsFor,
-  readHypeSnapshots,
   latestHypeBySlug,
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
@@ -25,7 +24,7 @@ import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
-import DeliveryTimeline, { CodeActivityChart } from "@/components/delivery-timeline";
+import { CodeActivityChart } from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -84,7 +83,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
   const promiseRefs = promiseReferences(slug, promises);
-  const available = points.filter((p: any) => p.availability === "available");
   const filledPct = latest.capacity > 0 ? latest.earned / latest.capacity : 0;
 
   // Rank across all published projects by hearts filled %, same tiebreak
@@ -144,49 +142,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
   const repo = VITALS_REPOS[slug];
 
-/** Backfilled heart history: one published run is one dot, which leaves the
- *  timeline dead. Reconstruct the line from promise effective_at dates: for
- *  each year-end, hearts earned vs promises that existed by then. */
-function backfillHeartHistory(
-  promises: any[]
-): { as_of: string; filled: number; capacity: number }[] {
-  const dated = promises.filter(
-    (p: any) => typeof p.effective_at === "string" && p.effective_at.length >= 4
-  );
-  if (dated.length === 0) return [];
-  const years: number[] = [];
-  const minY = Math.min(
-    ...dated.map((p: any) => parseInt(String(p.effective_at).slice(0, 4), 10)).filter((y) => !isNaN(y))
-  );
-  const maxY = new Date().getFullYear();
-  for (let y = minY; y <= maxY; y++) years.push(y);
-  return years.map((y) => {
-    const cutoff = `${y}-12-31T23:59:59Z`;
-    const inScope = dated.filter((p: any) => String(p.effective_at) <= cutoff);
-    let filled = 0;
-    for (const p of inScope) {
-      try {
-        if (normalizePromiseState(p.state) === "fulfilled") filled++;
-      } catch {
-        /* unknown state: counts in capacity, earns nothing */
-      }
-    }
-    return { as_of: `${y}-12-31`, filled, capacity: inScope.length };
-  });
-}
-
-  const backfilled = backfillHeartHistory(promises);
-  const heartPoints =
-    backfilled.length > 0
-      ? backfilled
-      : available.map((p: any) => ({ as_of: p.as_of, filled: p.earned, capacity: p.capacity }));
   const codeWeeks = vitals?.weeks?.map((w: any) => ({ week: w.week, total: w.total })) ?? null;
-  const hypePoints = hypeSnaps
-    .filter((s: any) => s.news_mentions_7d != null)
-    .map((s: any) => ({ as_of: s.as_of, mentions: s.news_mentions_7d as number }));
-
   const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
-  const hypeCollecting = baselineWeeks < 8;
 
   // Shared row components: the project page renders the same CodeRow and
   // HypeRowCard as the /code and /hype list views. One component, two
@@ -252,6 +209,7 @@ function backfillHeartHistory(
         ) : null}
       </div>
 
+      <span id="hearts" aria-hidden="true" />
       <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} />
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
@@ -276,16 +234,6 @@ function backfillHeartHistory(
           <ButtonLink href="/code">See the CODE ranking</ButtonLink>
         </p>
       </section>
-
-      {/* 3. Delivery timeline. */}
-      <div className="panel section-alt search-section" {...searchMeta({ id: `project-${slug}-timeline`, title: `${latest.name} delivery timeline`, kind: "History", project: slug, keywords: `${latest.symbol} hearts code hype history` })} data-tour="timeline">
-        <span id="hearts" aria-hidden="true" />
-        <h2>Delivery timeline</h2>
-        <p className="panel-sub">
-          Hearts earned over time. Rises and falls are the story: when the evidence changed, the line moved.
-        </p>
-        <DeliveryTimeline hearts={heartPoints} hypePoints={hypePoints} />
-      </div>
 
       {/* 4. Promises, with machinery hidden under the hood. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>

@@ -9,20 +9,8 @@ import {
   YAxis,
   CartesianGrid,
 } from "recharts";
-import HeartsTimeline, { type HeartPoint } from "@/components/hearts-timeline";
-
-/**
- * Delivery Timeline: hearts through time, with the HYPE activity strip
- * below. Activity is display only; it never changes the hearts.
- */
 
 export interface CodeWeek { week: string | number; total: number }
-export interface HypePoint { as_of: string; mentions: number }
-
-function fmtDate(iso: string): string {
-  const d = new Date(iso);
-  return isNaN(d.getTime()) ? iso.slice(0, 10) : d.toISOString().slice(0, 10);
-}
 
 const TOOLTIP_STYLE = {
   background: "#151c28",
@@ -60,22 +48,6 @@ function CodeTooltip({
     <div style={{ ...TOOLTIP_STYLE, maxWidth: 220 }}>
       <div>Week of {codeWeekLabel(p.week, true)}</div>
       <strong>{p.total.toLocaleString()} commits</strong>
-    </div>
-  );
-}
-
-function HypeTooltip({
-  active,
-  payload,
-}: {
-  active?: boolean;
-  payload?: Array<{ payload: { date: string; mentions: number } }>;
-}) {
-  if (!active || !payload || payload.length === 0) return null;
-  const p = payload[0].payload;
-  return (
-    <div style={TOOLTIP_STYLE}>
-      {p.date}: {p.mentions} mentions
     </div>
   );
 }
@@ -119,53 +91,6 @@ export function CodeActivityChart({ codeWeeks }: { codeWeeks: CodeWeek[] | null 
       ) : (
         <p className="tl-note">No commit data available for this project.</p>
       )}
-    </div>
-  );
-}
-
-export default function DeliveryTimeline({
-  hearts,
-  hypePoints,
-}: {
-  hearts: HeartPoint[];
-  hypePoints: HypePoint[];
-}) {
-  const hypeData = hypePoints.map((p) => ({
-    date: fmtDate(p.as_of),
-    mentions: p.mentions,
-  }));
-
-  return (
-    <div>
-      <HeartsTimeline points={hearts} />
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: 16,
-          marginTop: 16,
-        }}
-      >
-        <div className="tl-card">
-          <h3>HYPE activity</h3>
-          <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>
-            News mentions per snapshot. Attention, not endorsement.
-          </p>
-          {hypePoints.length >= 2 ? (
-            <div style={{ width: "100%", height: 120 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={hypeData} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
-                  <Tooltip content={<HypeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
-                  <Bar dataKey="mentions" fill="#f0b429" maxBarSize={28} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          ) : (
-            <p className="tl-note">Collecting HYPE snapshots.</p>
-          )}
-        </div>
-      </div>
     </div>
   );
 }

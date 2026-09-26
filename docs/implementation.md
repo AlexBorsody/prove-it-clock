@@ -241,9 +241,10 @@ cleanly.
 6. Evidence / Methodology bottom section: sources, tracked repos, data
    coverage, methodology version, run id. Replaces the "under the hood"
    drawer (same content, visible by default).
-7. Legacy v0.2.0 timeline section: DECIDED 2026-09-25 (Alex): keep it.
-   The detail page carries both the Delivery Timeline and the legacy
-   timeline; no merge.
+7. Project timeline graphs: DECIDED 2026-09-26 (Alex): remove the
+   Delivery Timeline and its HYPE activity chart. They are not the intended
+   distinctive ranking graph; its design remains pending. Supersedes the
+   September 25 instruction to keep both timelines.
 8. Market panel (2026-09-26): reusable `MarketPanel` fetches CoinGecko
    spot/market-cap data and OHLC history; `MarketChart` renders the same
    interactive chart inline and expanded. Default shaded price line,
@@ -383,8 +384,9 @@ clean.
 2. **HYPE word:** once the 8-week baseline exists the word is vs
    baseline; until then, show just "collecting" or rank vs the
    cross-project median that week?
-3. **Legacy v0.2.0 timeline:** DECIDED 2026-09-25 (Alex): keep both
-   timelines on the detail page.
+3. **Project timeline graphs:** DECIDED 2026-09-26 (Alex): remove the
+   current Delivery Timeline and HYPE activity charts. Replacement ranking
+   visualization remains to be designed.
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
 5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
    waits for real USAGE data. No provisional scores, per the gating rule.
