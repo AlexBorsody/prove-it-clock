@@ -38,9 +38,10 @@ framework, scoring formula, database project or extra product surface is needed.
 
 ## Codex queue
 
-- Search: integrated with current main; 13 focused checks pass. Alex has
-  clarified Vercel is shared dev and requested the missing search rollout.
-  Responsive fixes are ready; verify the deployed site before marking complete.
+- Search: live on Vercel from `3864b57`. Production build/type checks and
+  13 focused tests passed. Live index: 307 sections across 25 pages, no failed
+  pages; repeated requests reuse the cached timestamp. Searched “double spending”
+  and verified navigation/focus to the exact Bitcoin promise container.
 - Done locally: [public API v3 audit](2026-09-25-codex-api-audit.md), commit
   `884fa4a` on `codex/public-api-v3`. Explicit methodology now reaches score and
   history reads; canonical enum/source URL contract tests, typecheck and the
@@ -50,9 +51,9 @@ framework, scoring formula, database project or extra product surface is needed.
   will document the publish-time rejection without changing that policy.
 
 Local search work originally lived at `1a0bb4f`; the integrated commit is
-`165342e`. Earlier API planning (`10cd3fa`) and AI research notes (`96ec44a`)
-remain on the local `codex/api-review` branch; this review does not silently
-reinsert them into Muse's reorganized vision.
+`165342e`. Earlier API planning (`10cd3fa`) remains in Git history. AI research notes
+are preserved in `docs/archive/ai-promise-research-2026-09-25.md`, linked from
+the existing vision research section; current scoring rules stay unchanged.
 
 ## Current ownership — search and responsive layout
 
@@ -67,3 +68,10 @@ Responsive changes: six navigation tabs fit phone widths; CODE metrics move
 to a second row; evidence links wrap and the promise rules table scrolls within
 its container. Tour controls are explicit and its mobile panel stays on-screen.
 Keep the existing upper-left Home heart. No database or scoring changes.
+
+Live responsive checks: CODE and navigation at 320/430/768/1280px; exact
+search link and Home icon; 320px project rules table scrolls inside its panel;
+Compare, methodology and API pages stay within the viewport. Tour Close/Next
+controls are visible on a 320px screen. Follow-up CSS wraps homepage hearts
+and HYPE ranking rows after those two remaining overflows were reproduced.
+Manual recheck: 320px homepage, HYPE ranking, then Tour → Next → Close.

@@ -420,8 +420,8 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   border: 1px solid var(--border-strong); background: transparent;
   color: var(--text); text-shadow: none;
 }
-.wt-driver-pop .driver-popover-next-btn,
-.wt-driver-pop .driver-popover-done-btn {
+.wt-driver-pop .driver-popover-footer .driver-popover-next-btn,
+.wt-driver-pop .driver-popover-footer .driver-popover-done-btn {
   background: var(--accent); border-color: var(--accent); color: #14100a;
 }
 .wt-driver-pop .driver-popover-close-btn { color: var(--text-faint); }
@@ -708,8 +708,13 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .bubble-label { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 13.5px; }
 
 @media (max-width: 560px) {
-  .hype-row { grid-template-columns: 1fr 1fr; row-gap: 8px; }
-  .hype-verdict { grid-column: 2; justify-self: end; }
+  .hype-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+  .hype-row > * { min-width: 0; overflow-wrap: anywhere; }
+  .hype-row > .hype-coin { grid-column: 1 / -1; }
+  .hype-row > .hype-verdict {
+    grid-column: 1 / -1; display: flex; flex-wrap: wrap;
+    align-items: center; justify-content: space-between; gap: 8px;
+  }
 }
 
 /* ---- Phase 2b: compare ---- */
@@ -1100,7 +1105,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .mcard-head { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; margin-bottom: 10px; }
 .mcard-name { font-weight: 800; font-size: 17px; color: var(--text); }
 .mcard-ticker { font-size: 13px; font-weight: 700; color: var(--text-faint); letter-spacing: 0.06em; }
-.mcard-hearts { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.mcard-hearts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 8px; }
 .compact-hearts { display: inline-flex; gap: 3px; font-size: 13px; }
 .compact-hearts .ch { color: #3d434f; display: inline-flex; }
 .compact-hearts .ch.filled { color: var(--green); }
