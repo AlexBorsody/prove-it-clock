@@ -6,33 +6,51 @@ and the vision disagree, the vision wins and the plan gets fixed.
 
 ## Where the system stands
 
-- 8 projects published, earned-only, claim-type rule v2
-  (`hearts claim-type rule v2 (adopted 2026-09-25; time decay removed;
-  allowance removed 2026-09-25)`). Current run: `hearts-8project-2026-09-25d`
-  plus 21 restated historical runs, all in Supabase via `publish_heart_run`.
-  Original allowance-era runs remain as the immutable audit archive.
+- Renamed to **Prove Value** 2026-09-26 (Alex: "I'd actually change the
+  name to prove value"). User-facing copy, tab title, docs all say Prove
+  Value; repo name `prove-it-clock` and the Vercel URL unchanged.
+- 8 projects published, promise-heart rule v3
+  (`hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one
+  heart; capacity = promise count)`). Current run:
+  `hearts-promise-2026-09-26` (id `4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85`),
+  all in Supabase via `publish_heart_run`. Older methodology runs remain
+  as the immutable audit archive.
 - Live site serves the latest run from `heart_runs` / `heart_rankings`.
 - CODE data: GitHub fetcher exists (`/api/vitals/[slug]`, 8 curated repos,
-  6h revalidation). HYPE data: `social_snapshots` table + daily collector,
-  1 week collected. USE data: none yet.
+  6h revalidation). Sort switch: Stars (default) / Forks / Follows / Commits;
+  Follows uses `subscribers_count`. HYPE data: `social_snapshots` table +
+  daily collector. USE data: none yet.
+- UI 2026-09-26: slim sticky header with no brand wordmark (brand lives in
+  the tab title only); search is a lone icon button that expands into a
+  full-width field (Fuse.js over name/symbol/slug, coin icons, keyboard
+  nav). Homepage goes straight to the rankings, no hero text. Bottom tabs:
+  Scoreboard / HYPE / Compare / Methodology / API / Tour (walkthrough
+  replay). Pixel-heart Home icon. Project grid: PROMISES / CODE / USE /
+  HYPE power meters (Marvel-card pattern); CODE and HYPE bars scale to the
+  current leader; CODE/HYPE rows are buttons into /code and /hype.
 - UI 2026-09-25: teaching homepage (the question + four factors), mobile
   project cards, Shitcoin warning as a 1-10 meter (number only, no category
   labels). Every metric taps to its data: meter -> project verdict breakdown
   ("What feeds this meter" lists each failed promise), HYPE -> /hype,
   CODE -> /code.
 
-Current earned scores (2026-09-25, earned-only):
+Current earned scores (2026-09-26, promise-heart rule v3):
 
-| Project | Hearts | Promise states | Meter |
-|---|---|---|---|
-| BTC | 5/20 | 3 fulfilled, 1 active | 1 |
-| ETH | 5/20 | 4 fulfilled, 1 active | 1 |
-| SOL | 5/20 | 4 fulfilled, 2 active | 1 |
-| LINK | 4/20 | 3 fulfilled, 1 active | 1 |
-| AVAX | 5/20 | 3 fulfilled, 1 active | 1 |
-| BAT | 3/10 | 2 fulfilled, 1 active | 1 |
-| XRP | 2/20 | 2 fulfilled, 1 active, 1 retired | 7 |
-| DASH | 5/20 | 5 fulfilled, 1 active, 1 lapsed | 7 |
+| Project | Hearts | Verdict |
+|---|---|---|
+| BTC | 9/16 | Shitcoin risk (meter 7) |
+| ETH | 7/12 | Shitcoin risk (meter 7) |
+| SOL | 7/11 | Shitcoin risk (meter 7) |
+| LINK | 11/14 | Not a shitcoin (meter 1) |
+| AVAX | 14/17 | Not a shitcoin (meter 1) |
+| BAT | 7/17 | Not a shitcoin (meter 1) |
+| XRP | 12/19 | Shitcoin risk (meter 7) |
+| DASH | 5/9 | Shitcoin risk (meter 7) |
+
+Failed lineages driving the risk verdicts: BTC p11 (anonymity), p12
+(block-size raise); ETH p08 (full sharding), p09 (ASIC resistance), p10
+(Plasma); XRP p07 (Forte gaming), p19 (Codius); SOL p08 (Saga); DASH p06
+(merchant economy), p09 (onchain scaling).
 
 ## Site search
 
@@ -177,15 +195,23 @@ cleanly.
    stat strip: PROMISES / CODE / USE / HYPE per vision.md. USE stat shows
    the honest "metrics coming" state. HYPE stat shows absolute mentions +
    baseline week.
-2. Delivery Timeline: hearts step-line on top; CODE/HYPE activity strip
-   below with toggle. USE toggle hidden until its metrics exist. Failed
-   collection never renders as zero.
+2. Delivery Timeline: hearts line on top; CODE/HYPE activity strip
+   below. USE toggle hidden until its metrics exist. Failed
+   collection never renders as zero. History backfill (2026-09-26): one
+   published run is one dot, so the page reconstructs yearly history
+   from promise `effective_at` dates (`backfillHeartHistory` in the
+   project page): for each year-end, hearts earned vs promises that
+   existed by then. Falls back to published-run points when no dated
+   promises exist.
 3. HYPE mindshare bump chart: per-project rank by mentions over time,
    30d/90d toggle, coin icons on rank lines. Gated on 8 weeks of snapshots
    like all HYPE trends; before that, the section does not render.
 4. Delivery-health gauge in the header stat strip: hearts filled %,
    green/amber/red. Never sentiment.
-5. Promises list with status icons. Canonical promise states: open /
+5. Promises list. Every state renders as a pill: green fulfilled, grey
+   open/active/neutral, red lapsed/retired. Evidence links sit behind
+   `Sources (n)` disclosure toggles; the source list uses individual rows,
+   not wrapping dot separators. Canonical promise states: open /
    active / fulfilled / lapsed / retired. Legacy DB values normalize at the
    boundary (unfulfilled -> open, old active -> fulfilled); display labels
    match the states. Note: every stored "active" today means the legacy
@@ -199,6 +225,14 @@ cleanly.
 7. Legacy v0.2.0 timeline section: DECIDED 2026-09-25 (Alex): keep it.
    The detail page carries both the Delivery Timeline and the legacy
    timeline; no merge.
+8. Market panel (2026-09-26): live price, 7d change pill, market cap, and a
+   7-day candlestick chart from CoinGecko OHLC (4h candles), client-side
+   fetch, fails silent. Green/red candle bodies and wicks, horizontal
+   gridlines, price labels on the y axis, date labels on the x axis,
+   dashed last-price line. Click/tap the chart to expand it in a modal
+   (Close / Escape / backdrop click dismisses). Component:
+   `app/src/components/market-panel.tsx`. Market data is context only: it
+   never feeds hearts, the verdict, or the Index.
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
@@ -459,16 +493,20 @@ The section keeps the name **Shitcoin warning**. It renders as a 1-10 circular
 meter showing the number only, never a category label. It is a
 delivery-accountability rating, not a fraud or investment-risk rating.
 
-Underneath, the rule is categorical, from promise states:
+Underneath, the rule is categorical, from promise states
+(`app/src/lib/verdict.ts`, `verdictFor`):
 
-- **No concern** (meter 1): no retired or lapsed promise on record.
+- **Not a shitcoin** (meter 1): no retired or lapsed promise on record.
 - **Watch** (meter 4): reserved for verified overdue promises once deadline
-  evidence has been researched. No v1 trigger.
-- **Delivery concern** (meter 7): a supporting promise retired or lapsed.
-- **Core delivery failure** (meter 10): the core promise retired or lapsed.
+  evidence has been researched. No v1 trigger; the function never returns it.
+- **Shitcoin risk** (meter 7): a supporting promise retired or lapsed.
+- **Shitcoin** (meter 10): the core promise retired or lapsed.
 
 The 1-10 positions are fixed per category, not computed from a scoring
-formula. A real 1-10 rule is an open methodology question.
+formula. The formula itself is under review (2026-09-26): it has no sense of
+proportion (one failed promise out of 19 reads the same as 8 out of 12), no
+recency, and no redemption path. Review brief:
+`~/workspace/your_files/prove-value-shitcoin-formula-question.md`.
 
 Tapping the meter opens the project's verdict section, which lists exactly
 what feeds it: each failed promise, its state, and whether it was core.

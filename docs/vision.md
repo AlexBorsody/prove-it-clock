@@ -32,12 +32,13 @@ failed promise, its state, and whether it was core. Clean projects read "No
 failed promises in the record. The meter sits at 1."
 
 The dial position comes from the rule-based category underneath
-(No concern / Watch / Delivery concern / Core delivery failure, from promise
+(Not a shitcoin / Watch / Shitcoin risk / Shitcoin, from promise
 states). The 1-10 positions are fixed per category today, not a computed
-formula; a real scoring rule is an open methodology question.
+formula; the formula itself is an open methodology question (under review
+2026-09-26: no proportion, no recency, no redemption path).
 
-CODE and USE are evidence. HYPE is context. None of them move the verdict
-directly in v1.
+CODE and USE are evidence. HYPE is context. Market data is context.
+None of them move the verdict directly in v1.
 
 ## Game framing
 
@@ -87,13 +88,11 @@ waits on the data.
 
 ## Homepage = scoreboard (borrow the CoinMarketCap pattern)
 
-The homepage teaches the product in ten seconds, then shows the ranking.
-
-Teaching block: the question "Did crypto projects actually deliver what they
-promised?", one line on what Prove Value tracks, and four factors: HEARTS
-(promises actually delivered), SHITCOIN WARNING (documented delivery failures),
-CODE (is development still active?), HYPE (how much attention surrounds the
-proof?). Then "Compare projects".
+The homepage goes straight to the rankings. No hero text, no brand wordmark
+in the app chrome (brand lives in the browser tab title only); the slim
+sticky header carries a search icon button (upper right) that expands into
+a full-width field, and the bottom tab bar carries Scoreboard / HYPE /
+Compare / Methodology / API / Tour.
 
 The scoreboard, CoinMarketCap coin-list pattern, mobile-first:
 
@@ -109,7 +108,8 @@ The scoreboard, CoinMarketCap coin-list pattern, mobile-first:
 Every metric is tappable and opens its data: the meter opens the project's
 verdict breakdown, HYPE opens the HYPE ranking with its sources, CODE opens
 the CODE ranking with the GitHub stats. Ranking first, metrics one tap away.
-No price column: we sit next to the market, we don't price it.
+Market data (price, 7d candles) appears on detail pages as context; it never
+feeds the rankings.
 
 ## Compare view = context
 
@@ -131,7 +131,14 @@ their context. Entry point: a Compare button on the homepage.
    release) / USE (per-project metric when defined; honest "metrics coming"
    until then) / HYPE (mentions/week; "baseline collecting, week N/8" until
    week 9, no trend percentages before that).
-2. **Delivery Timeline.** Hearts step-line on top through time. Activity
+2. **Market.** Live price, 7d change, market cap, and a 7-day candlestick
+   chart (CoinGecko OHLC, 4h candles) with date labels on the x axis;
+   click/tap expands it in a modal. Market data is context for the reader,
+   never an input to hearts, the verdict, or the Index.
+3. **Delivery Timeline.** Hearts line on top through time. With only one
+   published run per methodology the line is a single dot, so the page
+   backfills yearly history from promise `effective_at` dates: for each
+   year-end, hearts earned vs promises that existed by then. Activity
    strip below with CODE / HYPE toggle (USE joins when its metrics exist).
    Failed collection never renders as zero. The legacy v0.2.0 timeline
    stays on the page below it (Alex's call): both timelines, no merge.
@@ -177,8 +184,9 @@ What we steal:
 What we do not steal:
 
 - Sentiment gauges (Bullish/Bearish, Fear & Greed): HYPE is volume-only.
-- Price columns, price charts, market-cap breakdowns: we sit next to the
-  market, we don't price it.
+- Price as signal: the Market panel shows price and 7d candles as reader
+  context, but market data never feeds hearts, the verdict, or the Index.
+  We sit next to the market; we don't let it score.
 - Prediction markets, KOL leaderboards: not our product.
 
 ## Positioning: what CoinMarketCap doesn't do
@@ -236,12 +244,25 @@ CMC cannot follow without attacking its own customers.
 ## Parked (not in v1)
 
 HYPE trend percentages. Watch verdict triggers. CODE/USE/HYPE timeline
-strips beyond CODE. Renamed to Prove Value 2026-09-26 (was "Prove the Hype" and friends parked). Valuation. **Beyond crypto:** the
+strips beyond CODE. Valuation. **Beyond crypto:** the
 instrument is asset-class agnostic, and tech stocks are the natural next
 market (Tesla's robotaxi and Full Self-Driving promises, SpaceX's Mars and
 Starship timelines are the reference cases). After crypto is proven, not
 before. Anything not in this doc waits for Alex, not for a spare
 afternoon.
+
+## Changelog
+
+- 2026-09-26: renamed Prove-It to **Prove Value** (repo and URL unchanged).
+- 2026-09-26: Market panel added to detail pages (price, 7d change, market
+  cap, 7-day CoinGecko candlesticks, expand modal). Context only.
+- 2026-09-26: Delivery Timeline backfilled from promise `effective_at`
+  dates (yearly earned vs contemporary capacity).
+- 2026-09-26: promise states render as pills; evidence links behind
+  `Sources (n)` disclosures.
+- 2026-09-26: CODE ranking gains Follows sort (`subscribers_count`).
+- 2026-09-26: Shitcoin warning formula under review (no proportion, no
+  recency, no redemption path).
 
 ## Research direction: AI-assisted promise assessment
 
