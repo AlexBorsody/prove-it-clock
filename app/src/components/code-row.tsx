@@ -25,13 +25,12 @@ export interface CodeRowData {
 const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
 const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
 
-function MetricLink({ href, label, active, children }: { href?: string; label: string; active?: boolean; children: ReactNode }) {
-  const cls = `code-metric${active ? " active" : ""}`;
-  return href ? (
-    <a className={cls} href={href} target="_blank" rel="noreferrer" aria-label={label}>
+function MetricLink({ href, label, active, children }: { href: string; label: string; active?: boolean; children: ReactNode }) {
+  return (
+    <Link href={href} className={`code-metric${active ? " active" : ""}`} aria-label={label}>
       {children}
-    </a>
-  ) : <div className={cls}>{children}</div>;
+    </Link>
+  );
 }
 
 export default function CodeRow({
@@ -84,19 +83,19 @@ export default function CodeRow({
         </a>
       ) : null}
       <div className={`code-metrics${showWatchers ? " code-metrics-four" : ""}`}>
-        <MetricLink href={r.repoUrl ? `${r.repoUrl}/stargazers` : undefined} label={`${r.name} stars on GitHub`} active={activeSort === "stars"}>
+        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "stars"}>
           <span className="code-metric-label"><StarIcon /> Stars</span>
           <span className="code-metric-value num">{compact(r.stars)}</span>
         </MetricLink>
-        <MetricLink href={r.repoUrl ? `${r.repoUrl}/forks` : undefined} label={`${r.name} forks on GitHub`} active={activeSort === "forks"}>
+        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "forks"}>
           <span className="code-metric-label"><ForkIcon /> Forks</span>
           <span className="code-metric-value num">{compact(r.forks)}</span>
         </MetricLink>
-        {showWatchers && <MetricLink href={r.repoUrl ? `${r.repoUrl}/watchers` : undefined} label={`${r.name} watchers on GitHub`} active={activeSort === "watchers"}>
+        {showWatchers && <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "watchers"}>
           <span className="code-metric-label">Watchers</span>
           <span className="code-metric-value num">{compact(r.watchers)}</span>
         </MetricLink>}
-        <MetricLink href={r.repoUrl ? `${r.repoUrl}/commits` : undefined} label={`${r.name} commit history on GitHub`} active={activeSort === "commits"}>
+        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "commits"}>
           <span className="code-metric-label"><CommitIcon /> Commits</span>
           <span className="code-metric-value num">
             {r.failed || r.commits90d == null ? "—" : r.commits90d.toLocaleString()}
@@ -104,11 +103,9 @@ export default function CodeRow({
           <span className="code-metric-period">{r.failed ? "Unavailable" : "90 days"}</span>
         </MetricLink>
       </div>
-      {r.repoUrl ? (
-        <a className="code-team" href={`${r.repoUrl}/graphs/contributors`} target="_blank" rel="noreferrer">
-          <span>{r.teamLine}</span><span className="code-team-action">View contributors ↗</span>
-        </a>
-      ) : <p className="code-team">{r.teamLine}</p>}
+      <Link className="code-team" href={`/projects/${r.slug}#project-${r.slug}-code`}>
+        <span>{r.teamLine}</span><span className="code-team-action">View details →</span>
+      </Link>
 
     </article>
   );

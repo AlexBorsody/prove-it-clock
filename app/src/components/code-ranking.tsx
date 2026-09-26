@@ -30,9 +30,6 @@ export default function CodeRanking({ rows }: { rows: CodeRowData[] }) {
       <noscript><button type="submit">Sort</button></noscript>
     </form>
     {rows.length > 0 && <div className="panel search-section" {...searchMeta({ id: "code-ranking", title: "CODE ranking", kind: "CODE", keywords: "development GitHub commits watchers" })}>
-      <p className="explain" style={{ marginTop: 0 }} aria-live="polite">
-        Ranked by {CODE_SORT_LABELS[sort].toLowerCase()}{sort === "commits" ? " over 90 days" : ""}, highest first. Missing data appears last.
-      </p>
       <div className="code-rows">{sorted.map((row, i) => <CodeRow key={row.slug} row={row} rank={i + 1} showWatchers activeSort={sort} search={{ id: `code-project-${row.slug}`, title: `${row.name} CODE activity` }} />)}</div>
     </div>}
   </>;
