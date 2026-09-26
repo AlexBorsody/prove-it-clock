@@ -33,12 +33,10 @@ export default function PromiseStats({ slug, name, promises, earned, methodology
       <div><dt>Assessment as of</dt><dd>{date(asOf)}</dd></div>
     </dl>
   </>;
-  const inspect = <Link className={styles.textLink} href={promiseFilterHref(slug, "all")}>Inspect the promises ↗</Link>;
   if (bare) {
     return <div className={`promise-stats-bare search-section ${styles.stats}`} {...searchMeta({ id: `project-${slug}-stats`, title: `${name} promise stats`, kind: "Promises", project: slug, keywords: "earned open lapsed retired hearts methodology research" })}>
       <h3 className="promise-subhead">Promise stats</h3>
       {facts}
-      {inspect}
     </div>;
   }
   return <section className={`panel promise-stats-section search-section ${styles.stats}`} {...searchMeta({ id: `project-${slug}-stats`, title: `${name} promise stats`, kind: "Promises", project: slug, keywords: "earned open lapsed retired hearts methodology research" })}>
@@ -46,6 +44,5 @@ export default function PromiseStats({ slug, name, promises, earned, methodology
     <p className={styles.sub}>One promise. One heart. Earned by delivery.</p>
     {facts}
     <p className={styles.note}>Open hearts are still unearned. Retired promises were withdrawn. News matches never change these counts.</p>
-    {inspect}
   </section>;
 }
