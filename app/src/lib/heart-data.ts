@@ -1,7 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
-/** Methodology string for the hearts instrument (promise-heart rule, adopted 2026-09-25). */
-export const HEARTS_METHODOLOGY = 'hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)';
+/** Methodology string for the hearts instrument.
+ * Points at the methodology whose runs are published in production.
+ * Change this only when publishing the first run under the new string,
+ * otherwise the site finds no runs and every page goes empty. */
+export const HEARTS_METHODOLOGY = 'hearts claim-type rule v2 (adopted 2026-09-25; time decay removed; allowance removed 2026-09-25)';
 
 /** Separate read client: prefer RLS-protected credentials over the writer key. */
 export function heartReadClient() {

@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "How the scoring works | Prove-It" };
 
 import Icon from "@/components/chrome-icons";
+import { HEARTS_METHODOLOGY } from "@/lib/heart-data";
 
 type IconName = Parameters<typeof Icon>[0]["name"];
 
@@ -268,8 +269,7 @@ export default function MethodologyPage() {
         <p style={{ marginBottom: 0 }}>
           <b>Methodology string.</b>{" "}
           <span style={{ fontFamily: "var(--mono)", fontSize: "0.85em" }}>
-            hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart;
-            capacity = promise count)
+            {HEARTS_METHODOLOGY}
           </span>
         </p>
       </Section>
