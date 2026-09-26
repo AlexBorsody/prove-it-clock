@@ -955,18 +955,15 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .cell-link:hover .word { text-decoration: underline; }
 
 /* CODE ranking page. */
-.code-sort-heading { display: flex; justify-content: space-between; gap: 12px; margin: 4px 0 8px; color: var(--text-dim); font-size: 14px; }
-.sort-seg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0 0 18px; }
-.sort-seg a {
-  display: flex; align-items: center; justify-content: center; gap: 4px;
-  min-width: 0; min-height: 48px; padding: 10px 8px; border: 1px solid var(--border);
-  border-radius: 10px; background: var(--bg-panel); font-size: 16px; font-weight: 700;
-  color: var(--text-dim); text-decoration: none; -webkit-tap-highlight-color: transparent;
+.code-sort-control { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: 100%; margin: 4px 0 18px; }
+.code-sort-control label { display: block; text-align: left; color: var(--text-dim); font-size: 15px; font-weight: 700; }
+.code-sort-control select {
+  width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px;
+  border: 1px solid var(--border-strong); border-radius: 10px;
+  background: var(--bg-panel); color: var(--text); font: inherit; font-size: 16px;
+  cursor: pointer; color-scheme: dark;
 }
-.sort-seg a:hover { border-color: var(--text-dim); color: var(--text); }
-.sort-seg a.active { background: var(--accent); border-color: var(--accent); color: #10151e; }
-.sort-seg a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-@media (max-width: 420px) { .sort-seg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.code-sort-control select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .code-rows { display: flex; flex-direction: column; }
 .code-row {
   display: grid;

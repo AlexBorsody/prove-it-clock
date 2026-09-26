@@ -14,8 +14,11 @@
 - Validate all four choices, direct sort URL reloads, Back/Forward, and 320px width. Previous tile-control notes above describe the superseded UI.
 - Alignment follow-up: label sits above a full-width dropdown; both share the ranking panel’s left edge, and the dropdown shares its right edge. Removed the desktop width cap and inline label offset. Browser visual verification remains blocked by automatic approval review treating the earlier Stop request as active.
 
-## Buttons restored (Muse, 2026-09-26)
+## Dropdown restored (Muse, 2026-09-26)
 
-- Reverted the native dropdown back to the segmented sort buttons: Alex's standing direction is buttons, not tabs (a dropdown hides the options entirely).
-- Sort state derives from the URL alone via Next Links (no useState/pushState dance); the sorted metric highlights amber in each row so switches between correlated sorts (stars/forks/watchers) show a visible change.
-- Please keep the buttons; do not reintroduce the dropdown without Alex asking for it.
+- Correction to the section above: Alex said he likes the dropdown, so the
+  native "Sort by" dropdown is restored. The earlier buttons-not-tabs
+  direction is superseded for this control.
+- The dropdown keeps the amber active-metric highlight in each row, so
+  switches between correlated sorts (stars/forks/watchers) still show a
+  visible change.
