@@ -8,6 +8,7 @@ import { fitCamera, zoomCamera } from '../src/lib/atlas/camera';
 import { promiseId, type PublishedHeartDataset, type AtlasNode } from '../src/lib/atlas/types';
 import { layoutFor } from '../data/atlas-layout';
 import { ASSIGNMENTS } from '../data/atlas-assignments';
+import { projectAtlas } from '../src/lib/atlas/project';
 const artifact=JSON.parse(readFileSync(new URL('../../db/seed/heart-runs/hearts-promise-2026-09-26.json',import.meta.url),'utf8'));
 function fixture(): PublishedHeartDataset {
   return {run:{id:'test-published',as_of:artifact.as_of,methodology:artifact.methodology,review_status:'published'},projects:artifact.projects.map((p:any)=>({...structuredClone(p),run_id:'test-published',methodology:artifact.methodology,name:p.slug,symbol:p.slug.toUpperCase()}))};
@@ -81,4 +82,25 @@ test('camera fit/zoom keeps coordinates finite, bounded and anchored at the foca
   const c=fitCamera([{x:10,y:10},{x:100,y:400}],2);assert.equal(c.width/c.height,2);
   const z=zoomCamera(c,.5,{x:.25,y:.75});assert.equal(c.x+c.width*.25,z.x+z.width*.25);assert.equal(c.y+c.height*.75,z.y+z.height*.75);
   assert.equal(zoomCamera(c,0).width,150);assert.equal(zoomCamera(c,1e6).width,8000);
+});
+test('project Atlas scopes nodes, coordinates and coverage without rebuilding the layout',()=>{
+  const data=adaptAtlas(fixture())!;
+  const before=JSON.stringify(data);
+  data.coverage.unavailableProjects=['missing'];
+  data.coverage.layoutPending=[data.nodes[0].id];
+  for(const slug of new Set(data.nodes.map(n=>n.projectSlug))) {
+    const scoped=projectAtlas(data,slug);
+    assert.ok(scoped.nodes.length>0);
+    assert.ok(scoped.nodes.every(n=>n.projectSlug===slug));
+    assert.equal(scoped.positions.length,scoped.nodes.length);
+    assert.equal(scoped.dataRevision,data.dataRevision);
+    assert.deepEqual(scoped.positions,data.positions.filter(p=>scoped.nodes.some(n=>n.id===p.nodeId)));
+    assert.ok(scoped.regions.every(r=>data.regions.includes(r)));
+    assert.ok(scoped.coverage.layoutPending.every(id=>scoped.nodes.some(n=>n.id===id)));
+    assert.deepEqual(scoped.coverage.unavailableProjects,[]);
+  }
+  assert.deepEqual(projectAtlas(data,'missing').coverage.unavailableProjects,['missing']);
+  assert.deepEqual(projectAtlas(data,'absent').nodes,[]);
+  data.coverage.unavailableProjects=[];data.coverage.layoutPending=[];
+  assert.equal(JSON.stringify(data),before);
 });

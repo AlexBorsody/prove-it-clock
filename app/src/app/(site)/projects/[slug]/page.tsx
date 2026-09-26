@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import Link from "next/link";
 import {
   HEARTS_METHODOLOGY,
@@ -26,6 +27,7 @@ import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-ch
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";
+import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
@@ -218,7 +220,6 @@ export default async function ProjectPage({ params, searchParams }: {
             })()}
           </p>
         )}
-        <p><Link href={`/atlas?project=${slug}`} className="btn">See this project’s promises on the Atlas ↗</Link></p>
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
         <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />
@@ -226,6 +227,12 @@ export default async function ProjectPage({ params, searchParams }: {
         </div>
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
+
+      <section className="panel atlas-section search-section" {...searchMeta({ id: `project-${slug}-atlas`, title: `${latest.name} Promise Atlas`, kind: "Atlas", project: slug, keywords: `${latest.symbol} promise map categories evidence` })}>
+        <Suspense fallback={<><h2>{latest.name} Promise Atlas</h2><p role="status">Loading the promise map…</p></>}>
+          <ProjectAtlas slug={slug} name={latest.name} />
+        </Suspense>
+      </section>
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 

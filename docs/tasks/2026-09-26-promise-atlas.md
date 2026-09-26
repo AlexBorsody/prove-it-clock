@@ -183,3 +183,34 @@ active. Atlas must interpret the actual record methodology explicitly.
 - No database writes, scoring publications or methodology changes. The seven
   Unclassified assignments and missing original-source attribution remain
   visible review work, not hidden omissions.
+
+### Per-project Atlas — requested 2026-09-26
+
+- Added the shared interactive Atlas immediately after the promise panel on
+  every `/projects/[slug]` page. It displays only that project's published
+  promises and occupied category regions, with the existing evidence panel,
+  category/status/search controls and accessible list.
+- The server reads the current published ledger, adapts/layouts once, then
+  scopes the dataset before sending it to the client. Positions and versions
+  match the global Atlas, including new/unmapped records. No new DB schema.
+- Embedded controls stay local to the panel, preserving the project page's
+  existing promise/evidence query parameters. “Open full Atlas” carries the
+  current project, filters and selected promise to a shareable Atlas URL.
+- Added project-specific section/list/detail IDs. Load failures and missing
+  published assessments remain explicit. Review/test/release results follow.
+- Verification: 11 Atlas/cache tests and TypeScript passed. The isolated
+  production build passed after copying the archive Markdown needed by the
+  existing case-study build into the test directory (the initial isolated
+  build lacked those files; no app workaround was added).
+- Browser checks against the read-only captured published run: BTC shows
+  16 promises; Lapsed narrows to 1; selecting it opens the assessment evidence
+  on the same page. Its existing `?promises=kept` parameter remains intact.
+  No duplicate HTML IDs were found. At desktop 1280px and mobile 360px the
+  BTC document width matched the viewport; evidence controls remained usable.
+- The core BTC promise opened on mobile, and “Open full Atlas” carried BTC
+  plus its selected promise into the global view (16/115 records). ETH shows
+  its own 12 promises and its energy-use promise under Unclassified. No
+  browser console errors were recorded. Physical pinch remains unverified.
+- Muse's verdict-layer brief was pulled and reviewed in its task document.
+  This embedded map remains below the promise panel, leaving the approved
+  verdict-card position above the promise list available.

@@ -9,9 +9,9 @@ function SourceList({ sources }: { sources: AtlasSource[] }) {
     {source.quote && <blockquote>“{source.quote}”</blockquote>}
   </li>)}</ul>;
 }
-export default function AtlasDetails({ node, close }: { node:AtlasNode; close:()=>void }) {
+export default function AtlasDetails({ node, close, titleId='atlas-detail-title' }: { node:AtlasNode; close:()=>void; titleId?:string }) {
   return <>
-    <div className={styles.detailHeading}><div><span className={styles.eyebrow}>{node.symbol} · Published promise</span><h2 id="atlas-detail-title">{node.projectName}</h2></div><button type="button" aria-label="Close promise details" onClick={close}>✕</button></div>
+    <div className={styles.detailHeading}><div><span className={styles.eyebrow}>{node.symbol} · Published promise</span><h2 id={titleId}>{node.projectName}</h2></div><button type="button" aria-label="Close promise details" onClick={close}>✕</button></div>
     <div className={styles.chips}><span>{categoryLabel(node.primaryCategory)}</span>{node.core&&<span>◎ Core promise</span>}</div>
     {node.secondaryCategories.length>0&&<p className={styles.muted}>Also: {node.secondaryCategories.map(categoryLabel).join(' · ')}</p>}
     <h3>{node.claimTextKind==='published-criteria'?'Published fulfillment criteria':'Recorded claim'}</h3>

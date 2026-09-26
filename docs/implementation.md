@@ -1,6 +1,11 @@
 # Prove Value: Implementation Plan
 
 **Updated 2026-09-26.** [vision.md](vision.md) is the product authority.
+The [verdict-layer tasks](tasks/2026-09-26-verdict-layer.md) are the latest
+product direction: a published-ledger summary near the top of project pages,
+with category rankings. They supersede the Atlas brief's restriction on
+category performance rankings; the Atlas remains the supporting evidence
+view. Implementation caveats and handoff are recorded in that task's review.
 The [Promise Atlas v1 plan](#promise-atlas-v1-implementation) below and its
 [task queue](tasks/2026-09-26-promise-atlas.md) supersede older embeddings-first
 and Index formula instructions. Atlas build progress and acceptance results are recorded in that queue; the
@@ -182,6 +187,15 @@ store. A public API is optional: server props are enough for v1. If an endpoint
 is later needed, document it in the existing OpenAPI spec, not a parallel spec.
 No new database tables, migrations, collectors or publications are required.
 Server credentials never enter the dataset or browser bundle.
+
+Project detail pages also render `ProjectAtlas` after the promise panel.
+This server component reuses the published-ledger reader and adapter, then
+`projectAtlas` scopes the already positioned dataset to that coin. It sends
+only that project's nodes/evidence/positions to the browser; occupied regions
+retain their global coordinates. `AtlasExplorer`'s embedded mode reuses all
+map/evidence/list controls with local filter state, so interacting does not
+overwrite project-page query parameters. Its full-Atlas link carries current
+filters and selection. This adds no database writes or scoring rules.
 
 ### Published dataset contract
 
