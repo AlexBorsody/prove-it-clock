@@ -91,6 +91,18 @@ export function MegaphoneIcon({ className }: { className?: string }) {
   );
 }
 
+export function NewsIcon({ className }: { className?: string }) {
+  return (
+    <Svg label="News articles" className={className}>
+      <path
+        fillRule="evenodd"
+        d="M2.5 2h11A1.5 1.5 0 0 1 15 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 12.5v-9A1.5 1.5 0 0 1 2.5 2Zm0 1.5v9h11v-9h-11Z"
+      />
+      <path d="M4.5 5.75a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5H5.25a.75.75 0 0 1-.75-.75ZM4.5 8.25a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5H5.25a.75.75 0 0 1-.75-.75Zm.75 1.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" />
+    </Svg>
+  );
+}
+
 export function FlameIcon({ className }: { className?: string }) {
   return (
     <Svg label="High hype" className={className}>

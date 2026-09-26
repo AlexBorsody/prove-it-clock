@@ -12,6 +12,7 @@ import {
 } from "@/lib/social";
 import {
   MegaphoneIcon,
+  NewsIcon,
   RedditIcon,
   TelegramIcon,
   FlameIcon,
@@ -133,7 +134,7 @@ export default function SocialVitals({
 
       <div className="vitals-grid">
         <Metric
-          icon={<MegaphoneIcon />}
+          icon={<NewsIcon />}
           label="News mentions, 7d"
           value={latest.news_mentions_7d}
           previous={prev?.news_mentions_7d ?? null}

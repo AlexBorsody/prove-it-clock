@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import ShitcoinMeter from "@/components/shitcoin-meter";
-import { RedditIcon, TelegramIcon, MegaphoneIcon } from "@/components/icons";
+import { RedditIcon, TelegramIcon, NewsIcon } from "@/components/icons";
 import type { VerdictCategory } from "@/lib/verdict";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -24,7 +24,7 @@ export function SourceIcons({ sources }: { sources: string[] }) {
   const items = [
     { key: "reddit", label: "Reddit audience size", Icon: RedditIcon },
     { key: "telegram", label: "Telegram audience size", Icon: TelegramIcon },
-    { key: "news", label: "News articles", Icon: MegaphoneIcon },
+    { key: "news", label: "News articles", Icon: NewsIcon },
   ];
   return (
     <span className="hype-sources" title="Collected metrics: news articles and community sizes">
