@@ -3,7 +3,7 @@ import Link from "next/link";
 import BottomNav from "@/components/bottom-nav";
 import Walkthrough from "@/components/walkthrough";
 import ProjectSearch from "@/components/project-search";
-import Icon from "@/components/chrome-icons";
+import { BrandMark } from "@/components/heart-meter";
 import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 
 /**
@@ -26,7 +26,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <header className="appbar">
         <div className="appbar-inner">
           <Link href="/" className="appbar-home" aria-label="Home">
-            <Icon name="heart" size={20} />
+            <BrandMark size={34} />
           </Link>
           <span className="appbar-left" aria-hidden="true" />
           <ProjectSearch projects={projects} />
