@@ -39,6 +39,18 @@ formula; a real scoring rule is an open methodology question.
 CODE and USE are evidence. HYPE is context. None of them move the verdict
 directly in v1.
 
+## Game framing
+
+Each project is a game character. Its promise is the goal, its hearts show
+its condition, and the graph records its journey. The meter starts at zero:
+every heart is earned by keeping a promise, one or two at a time, each
+defined and evidenced beforehand. A heart stays earned only while its
+evidence condition holds: milestones are permanent, ongoing claims lapse
+when evidence stops, dead lineages retire visibly, and history is never
+rewritten. The meter reads full only when the core promise itself is kept.
+No free hearts, no double-counting, no subdivided busywork. (Precise rules:
+[implementation.md](implementation.md), Hearts algorithm appendix.)
+
 ## The Prove-It Index (provisional name)
 
 Hearts are the simple public accountability mechanic: did they keep their

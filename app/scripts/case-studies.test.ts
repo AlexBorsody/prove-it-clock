@@ -31,3 +31,15 @@ test("every allowlisted document exists and contains an actual Markdown title", 
     assert.match(await readCaseStudy(slug), /^# .+/);
   }
 });
+
+test("the algorithm page renders only the implementation appendix section", async () => {
+  const body = await readCaseStudy("algorithm");
+  assert.match(body, /claim-type rule v2/);
+  assert.doesNotMatch(body, /Phase 1: Data layer/);
+  assert.doesNotMatch(body, /ALGORITHM-START/);
+});
+
+test("legacy hearts-algorithm.md links still resolve to the algorithm page", () => {
+  assert.equal(resolveCaseStudyLink("../hearts-algorithm.md", "btc"), "/case-studies/algorithm");
+  assert.equal(resolveCaseStudyLink("../hearts-algorithm.md#computation", "overview"), "/case-studies/algorithm#computation");
+});

@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(process.cwd(), ".."),
   outputFileTracingIncludes: {
     "/case-studies": ["../docs/case-studies/*.md"],
-    "/case-studies/*": ["../docs/case-studies/*.md", "../docs/hearts-algorithm.md"],
+    "/case-studies/*": ["../docs/case-studies/*.md", "../docs/implementation.md"],
   },
 };
 

@@ -9,9 +9,8 @@ true: scores change because evidence changes, not because time passes.
 
 ## Read first
 
-- [Vision](docs/vision.md): the product. Homepage = scoreboard, detail page = why.
-- [Game design](docs/game_design.md): product concept and adopted heart rules.
-- [Hearts algorithm](docs/hearts-algorithm.md): the rule, precisely.
+- [Vision](docs/vision.md): the product and game rules. Homepage = scoreboard, detail page = why.
+- [Implementation](docs/implementation.md): build order, with the hearts algorithm as an appendix.
 - [Implementation](docs/implementation.md): the build plan and architecture.
 - [Case studies](docs/case-studies/): BAT and XRP evidence worksheets; [review.md](docs/case-studies/review.md) records the methodology decisions.
 - [Daily logs](docs/tasks/): outcomes, decisions, verification.

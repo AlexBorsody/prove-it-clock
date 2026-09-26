@@ -20,7 +20,7 @@
 // the replacement. (The old pipeline called this "superseded"; it is not a
 // canonical state, just a retired lineage with a replacement link.)
 //
-// Design truth lives in docs/hearts-algorithm.md ("Per-project inputs");
+// Design truth lives in docs/implementation.md, Hearts algorithm appendix ("Per-project inputs");
 // this file mirrors it for the pipeline. Updated 2026-09-25.
 
 export type MilestoneState = "open" | "active" | "fulfilled" | "lapsed" | "retired";
