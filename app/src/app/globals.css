@@ -148,7 +148,7 @@ a[href^="http"]::after {
   border-color: var(--border-strong);
 }
 .panel h2 {
-  margin: 0 0 6px; font-size: 19px; letter-spacing: 0.04em;
+  margin: 0 0 6px; font-size: 21px; letter-spacing: 0.04em;
   text-transform: uppercase; color: var(--text); font-weight: 800;
 }
 .panel h2 .tag { margin-left: 8px; }

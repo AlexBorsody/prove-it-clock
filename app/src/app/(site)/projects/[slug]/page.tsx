@@ -250,10 +250,7 @@ export default async function ProjectPage({ params, searchParams }: {
 
       {/* Supporting metrics: CODE, HYPE, then Market. */}
       <section className="panel code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
-        <h2>CODE</h2>
-        <p className="panel-sub">
-          Who is actually working {latest.name}.
-        </p>
+        <h2>CODE <Icon name="info" size={14} title={`Who is actually working on ${latest.name}.`} /></h2>
         <div className="code-rows">
           <CodeRow
             row={codeRowData}
