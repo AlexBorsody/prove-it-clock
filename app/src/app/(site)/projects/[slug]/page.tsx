@@ -135,7 +135,42 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
   const repo = VITALS_REPOS[slug];
 
-  const heartPoints = available.map((p: any) => ({ as_of: p.as_of, filled: p.earned, capacity: p.capacity }));
+/** Backfilled heart history: one published run is one dot, which leaves the
+ *  timeline dead. Reconstruct the line from promise effective_at dates: for
+ *  each year-end, hearts earned vs promises that existed by then. */
+function backfillHeartHistory(
+  promises: any[]
+): { as_of: string; filled: number; capacity: number }[] {
+  const dated = promises.filter(
+    (p: any) => typeof p.effective_at === "string" && p.effective_at.length >= 4
+  );
+  if (dated.length === 0) return [];
+  const years: number[] = [];
+  const minY = Math.min(
+    ...dated.map((p: any) => parseInt(String(p.effective_at).slice(0, 4), 10)).filter((y) => !isNaN(y))
+  );
+  const maxY = new Date().getFullYear();
+  for (let y = minY; y <= maxY; y++) years.push(y);
+  return years.map((y) => {
+    const cutoff = `${y}-12-31T23:59:59Z`;
+    const inScope = dated.filter((p: any) => String(p.effective_at) <= cutoff);
+    let filled = 0;
+    for (const p of inScope) {
+      try {
+        if (normalizePromiseState(p.state) === "fulfilled") filled++;
+      } catch {
+        /* unknown state: counts in capacity, earns nothing */
+      }
+    }
+    return { as_of: `${y}-12-31`, filled, capacity: inScope.length };
+  });
+}
+
+  const backfilled = backfillHeartHistory(promises);
+  const heartPoints =
+    backfilled.length > 0
+      ? backfilled
+      : available.map((p: any) => ({ as_of: p.as_of, filled: p.earned, capacity: p.capacity }));
   const codeWeeks = vitals?.weeks?.map((w: any) => ({ week: w.week, total: w.total })) ?? null;
   const hypePoints = hypeSnaps
     .filter((s: any) => s.news_mentions_7d != null)
