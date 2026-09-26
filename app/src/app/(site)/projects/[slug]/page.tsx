@@ -12,13 +12,15 @@ import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../../data/verdict-lines";
 import { potentialRationale } from "../../../../../data/potential";
-import { fetchVitals } from "@/lib/vitals";
+import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
+import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
 import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
+import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
@@ -42,10 +44,11 @@ export default async function ProjectPage({ params, searchParams }: {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
-  const [historyData, rankings, vitals, hypeSnaps] = await Promise.all([
+  const [historyData, rankings, vitals, team, hypeSnaps] = await Promise.all([
     readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
     readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
     fetchVitals(slug).catch(() => null),
+    fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
   ]);
 
@@ -117,6 +120,24 @@ export default async function ProjectPage({ params, searchParams }: {
 
   const codeWeeks = vitals?.weeks?.map((w: any) => ({ week: w.week, total: w.total })) ?? null;
   const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
+
+  // Shared row components: the project page renders the same CodeRow and
+  // HypeRowCard as the /code and /hype list views. One component, two
+  // surfaces; never duplicate the markup.
+  const meta = VITALS_REPOS[slug];
+  const codeFailed = vitals == null || (vitals.commits90d == null && vitals.partial);
+  const codeRowData: CodeRowData = {
+    slug,
+    name: latest.name,
+    symbol: latest.symbol,
+    commits90d: vitals?.commits90d ?? null,
+    stars: vitals?.stars ?? null,
+    forks: vitals?.forks ?? null,
+    watchers: vitals?.watchers ?? null,
+    repoUrl: meta ? `https://github.com/${meta.github}` : "",
+    teamLine: team ? teamLine(team) : "TEAM: Unknown · couldn't reach GitHub",
+    failed: codeFailed,
+  };
 
   // HypeRowCard on this page shares its row type with the /hype list view.
   const hypeRow: HypeRow = {
@@ -270,7 +291,13 @@ export default async function ProjectPage({ params, searchParams }: {
         <p className="panel-sub">
           Who is actually working {latest.name}.
         </p>
-        <div>
+        <div className="code-rows">
+          <CodeRow
+            row={codeRowData}
+            search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
+          />
+        </div>
+        <div style={{ marginTop: 12 }}>
           <CodeActivityChart codeWeeks={codeWeeks} />
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
