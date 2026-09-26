@@ -1341,7 +1341,8 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 /* Promise metrics lead directly to their supporting records. */
 .evidence-link { text-decoration: underline; text-underline-offset: 3px; }
-.comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; }
+.comp-tags .tag { border: none; text-decoration: none; }
+.comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 0; padding: 4px 12px; }
 .comp-sources { scroll-margin-top: 110px; }
 .comp-sources:target { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 4px; }
 .comp-sources > summary, .comp-sources li a { min-height: 44px; padding: 10px 0; font-size: 15px; }
