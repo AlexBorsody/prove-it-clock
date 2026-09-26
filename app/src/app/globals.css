@@ -22,6 +22,11 @@
 
 * { box-sizing: border-box; }
 
+/* Section headings: always pure white, always bold. The h-tag hierarchy
+   carries the visual structure: h1 page > h2 section > h3 subsection. */
+h1, h2, h3 { color: #ffffff; }
+h1 { font-weight: 800; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -106,7 +111,7 @@ a[href^="http"]::after {
 }
 .psearch-row {
   display: flex; align-items: center; gap: 12px; width: 100%;
-  padding: 11px 14px; background: none; border: none; cursor: pointer;
+  padding: 13px 14px; background: none; border: none; cursor: pointer;
   color: var(--text); font-size: 16px; font-family: inherit; text-align: left;
 }
 .psearch-row.active { background: var(--bg-raised); }
@@ -149,7 +154,7 @@ a[href^="http"]::after {
 }
 .panel h2 {
   margin: 0 0 6px; font-size: 21px; letter-spacing: 0.04em;
-  text-transform: uppercase; color: var(--text); font-weight: 800;
+  text-transform: uppercase; color: #ffffff; font-weight: 800;
 }
 .panel h2 .tag { margin-left: 8px; }
 .panel-sub { color: var(--text-faint); font-size: 15px; margin: 0 0 16px; }
@@ -164,7 +169,7 @@ a[href^="http"]::after {
 .tag {
   display: inline-block; font-size: 13px; font-weight: 700;
   letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 2px 8px; border-radius: 20px; border: none;
+  padding: 7px 8px; border-radius: 20px; border: none;
   background: #323546; /* CMC dark neutral chip */
   color: var(--text-dim); vertical-align: middle; text-decoration: none;
 }
@@ -518,7 +523,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 
 /* ---- social: our own hype-vs-substance layer, display only ---- */
 .social-section { border-top: 1px solid var(--border); margin-top: 18px; padding-top: 16px; }
-.social-heading { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 6px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.social-heading { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 6px; color: #ffffff; display: flex; align-items: center; gap: 8px; }
 .social-heading-icon { width: 16px; height: 16px; color: var(--text-dim); }
 .hype-verdict-icon { width: 18px; height: 18px; margin-right: 8px; vertical-align: -3px; color: var(--hype-color); }
 .social-trend { font-size: 12.5px; color: var(--text-faint); margin-left: 6px; vertical-align: middle; }
@@ -585,33 +590,6 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 }
 
 .scoreboard-actions { margin: 0 0 14px; display: flex; justify-content: flex-end; }
-.btn {
-  display: inline-block;
-  background: var(--accent);
-  border: none;
-  color: #14100a;
-  font-weight: 800;
-  font-size: 15px;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-.btn:hover { background: #ffcb4d; color: #14100a; }
-
-/* Categorical verdict badge: green / amber / red / grey. */
-.verdict-badge {
-  display: inline-block;
-  font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 4px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-.verdict-badge.v-ok { color: var(--green); background: #173C37; }
-.verdict-badge.v-watch { color: var(--text-dim); background: #323546; }
-.verdict-badge.v-concern { color: var(--amber); background: #433936; }
-.verdict-badge.v-fail { color: var(--red); background: #411F2A; }
-.verdict-badge.compact { font-size: 12.5px; padding: 3px 9px; }
 
 /* Mini hearts meter for table rows. */
 .mini-meter { display: flex; align-items: center; gap: 8px; }
@@ -758,7 +736,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   border: none;
   color: var(--text-dim);
   font-size: 14px; font-weight: 700;
-  padding: 8px 16px; border-radius: 20px;
+  padding: 15px 16px; border-radius: 20px;
   cursor: pointer;
 }
 .compare-picker button:hover:not(:disabled) { background: #263049; color: var(--text); }
@@ -1124,7 +1102,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .info-tip-text.align-right { right: 0; }
 .promise-subhead {
   font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--text); margin: 28px 0 12px; font-weight: 800;
+  color: #ffffff; margin: 28px 0 12px; font-weight: 800;
   border-top: 1px solid var(--border); padding-top: 18px;
 }
 .promise-stats-bare { margin: 6px 0 4px; }
@@ -1138,7 +1116,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .ph-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
 .ph-btn {
   display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 8px 14px; border-radius: 10px;
+  padding: 13px 14px; border-radius: 10px;
   border: 1px solid var(--border); text-decoration: none;
   font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--text-dim); -webkit-tap-highlight-color: transparent;
@@ -1152,7 +1130,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 /* ---- Mini tags for compare promise-state counts ---- */
 .mini-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
-.mini-tags .tag { font-size: 12px; padding: 3px 8px; }
+.mini-tags .tag { font-size: 12px; padding: 7px 8px; }
 
 /* ---- 8-bit signature: chunky pixel hearts, hard edges on heart elements ---- */
 .hearts { gap: 5px; }
@@ -1177,7 +1155,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 /* Scoreboard CTA stays quiet: small, right-aligned, never full-bleed. */
 .scoreboard-actions .btn {
-  font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 10px;
+  font-size: 13px; font-weight: 700; padding: 13px 14px; border-radius: 10px;
   background: var(--bg-raised); color: var(--text-dim); border: 1px solid var(--border-strong);
 }
 
@@ -1251,7 +1229,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   display: inline-block;
   font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
   color: var(--text-dim); text-transform: uppercase; text-align: center;
-  padding: 9px 16px; cursor: pointer;
+  padding: 15px 16px; cursor: pointer;
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px;
   list-style: none;
 }
@@ -1270,7 +1248,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .metric-btn {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--bg-elev); border: 1px solid var(--border-strong);
-  border-radius: 999px; padding: 7px 12px;
+  border-radius: 999px; padding: 11px 12px;
   color: var(--text); font-weight: 700; font-size: 12.5px;
   text-decoration: none; white-space: nowrap;
 }
@@ -1279,7 +1257,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: var(--bg-elev); border: 1px solid var(--border-strong);
-  border-radius: 12px; padding: 10px 18px;
+  border-radius: 12px; padding: 17px 18px;
   color: var(--text); font-weight: 800; font-size: 14px;
   text-decoration: none; cursor: pointer; white-space: nowrap;
 }
@@ -1288,7 +1266,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .gauge-btn {
   display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
   background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: 14px; padding: 4px 6px;
+  border-radius: 14px; padding: 5px 6px;
   text-decoration: none;
 }
 .gauge-btn:active { transform: scale(0.97); }
@@ -1301,7 +1279,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .hero-factor { font-size: 15px; }
   .panel-sub { font-size: 16px; }
   .explain { font-size: 16px; }
-  .metric-btn { font-size: 13.5px; padding: 9px 14px; }
+  .metric-btn { font-size: 13.5px; padding: 13px 14px; }
   .mcard-stats { font-size: 13.5px; }
   .mcard-count { font-size: 15px; }
   .shitcoin-caption { font-size: 10px; }
@@ -1342,7 +1320,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 /* Promise metrics lead directly to their supporting records. */
 .evidence-link { text-decoration: underline; text-underline-offset: 3px; }
 .comp-tags .tag { border: none; text-decoration: none; }
-.comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 0; padding: 4px 12px; }
+.comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 0; padding: 11px 12px; }
 .comp-sources { scroll-margin-top: 110px; }
 .comp-sources:target { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 4px; }
 .comp-sources > summary, .comp-sources li a { min-height: 44px; padding: 10px 0; font-size: 15px; }
@@ -1355,7 +1333,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   display: block;
   width: 100%;
   margin: 4px 0 12px;
-  padding: 11px 14px;
+  padding: 13px 14px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--bg-panel);

@@ -1,9 +1,7 @@
 /**
  * Prove-It timeline — pure presentational SVG, zero dependencies, no client JS.
  *
- * This is the shared renderer behind both the interactive project-page chart
- * (`timeline-chart.tsx`, a client wrapper that adds legend toggles and the
- * event panel) and the server-rendered embeddable widget
+ * This is the shared renderer behind the server-rendered embeddable widget
  * (`app/(embed)/embed/projects/[slug]/timeline`).
  *
  * Render contract (never change without a methodology reason):

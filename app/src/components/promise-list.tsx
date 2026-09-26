@@ -49,7 +49,6 @@ export default function PromiseList({
     .map((pr, i) => ({ pr, i }))
     .filter(({ pr }) => matchesPromiseFilter(pr.state, filter));
   const shown = expanded ? visible : visible.slice(0, PAGE_SIZE);
-  const hidden = visible.length - shown.length;
 
   return <>
     {shown.map(({ pr, i }) => {
@@ -93,7 +92,7 @@ export default function PromiseList({
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
       >
-        {expanded ? "Show less" : `Show ${hidden} more promise${hidden === 1 ? "" : "s"}`}
+        {expanded ? "Show less" : "Show all promises"}
       </button>
     )}
   </>;
