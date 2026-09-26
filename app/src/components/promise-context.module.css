@@ -38,3 +38,21 @@
 .facts dd.open .metricLink { background: #2B2E3F; }
 .facts dd.lapsed .metricLink, .facts dd.retired .metricLink { background: #411F2A; }
 .facts dd.total .metricLink { background: #2B2E3F; }
+
+/* Tactile: tags feel physical on hover + tap. */
+.tags a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+@media (hover: hover) {
+  .tags a:hover { filter: brightness(1.25); }
+}
+.tags a:active {
+  transform: scale(0.96);
+  filter: brightness(0.9);
+  transition-duration: 80ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tags a:active { transform: none; }
+}

@@ -26,3 +26,22 @@
 .dialog h2 { font-size: 18px; margin: 0; }
 @media (max-width: 540px) { .plot { height: 260px; } .toolbar { gap: 8px; } .controls button, .action { padding: 6px 12px; } .dialog { padding: 16px; width: calc(100vw - 20px); } .readout { min-height: 114px; } .action { font-size: 11px; } }
 @media (prefers-reduced-motion: no-preference) { .controls button { transition: background .15s ease; } }
+
+/* Tactile: pills feel physical on hover + tap. */
+.controls button, .action {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+@media (hover: hover) {
+  .controls button:hover, .action:hover { filter: brightness(1.25); }
+}
+.controls button:active, .action:active {
+  transform: scale(0.96);
+  filter: brightness(0.9);
+  transition-duration: 80ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .controls button:active, .action:active { transform: none; }
+}

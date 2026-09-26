@@ -39,3 +39,21 @@
 .coverage strong { font-size: 12px; margin-bottom: 4px; }
 .loading { padding: 50px 0; color: var(--text-muted, #aaa); }
 @media (max-width: 700px) { .grid { grid-template-columns: 1fr; gap: 20px; } .articles { grid-template-columns: 1fr; } .coverage { grid-template-columns: 1fr; gap: 12px; } .stats { grid-template-columns: 1fr 1fr; } .stats > div:last-child { grid-column: 1 / -1; } .date { font-size: 9px; } .chart { gap: 4px; } }
+
+/* Tactile: chips feel physical on hover + tap. */
+.coins button, .more, .reset, .publishers button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+@media (hover: hover) {
+  .coins button:hover, .more:hover, .reset:hover, .publishers button:hover { filter: brightness(1.25); }
+}
+.coins button:active, .more:active, .reset:active, .publishers button:active {
+  transform: scale(0.96);
+  filter: brightness(0.9);
+  transition-duration: 80ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .coins button:active, .more:active, .reset:active, .publishers button:active { transform: none; }
+}
