@@ -14,7 +14,7 @@
  *   7 days. Free, no signup.
  *
  * Deliberately NOT collected:
- * - X/Twitter: API is paywalled ($100+/mo tier). See docs/social-pipeline.md
+ * - X/Twitter: API is paywalled ($100+/mo tier). See docs/implementation.md (HYPE pipeline appendix)
  *   for the upgrade path. No scraper: unreliable and against ToS.
  */
 
