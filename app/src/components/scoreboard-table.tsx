@@ -24,6 +24,7 @@ export interface ScoreboardRow {
   /** Honest CODE failure text ("Couldn't reach GitHub" / "No commit data"), or null when fine. */
   codeNote: string | null;
   codeCommits: number | null;
+  codeStars: number | null;
   use: "coming";
   hypeMentions: number | null;
   hypeCollecting: boolean;
@@ -61,6 +62,16 @@ function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) 
   if (code === "Active") return <span className="word good">Active</span>;
   if (code === "Quiet") return <span className="word dim">Quiet</span>;
   return <span className="word dim">-</span>;
+}
+
+const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
+
+/** Homepage CODE sub-line: stars plus 90-day commits, omitting unknowns. */
+function codeSub(row: ScoreboardRow): string | null {
+  const parts: string[] = [];
+  if (row.codeStars != null) parts.push(`★ ${compactNum.format(row.codeStars)}`);
+  if (row.codeCommits != null) parts.push(`${row.codeCommits.toLocaleString()} commits / 90d`);
+  return parts.length ? parts.join(" · ") : null;
 }
 
 function HypeCell({ mentions, collecting }: { mentions: number | null; collecting: boolean }) {
@@ -162,7 +173,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                       <GithubMark />
                       <CodeWordCell code={r.code} note={r.codeNote} />
                     </Link>
-                    <span className="cell-sub">commits / 90d</span>
+                    {codeSub(r) ? <span className="cell-sub">{codeSub(r)}</span> : null}
                   </td>
                   <td><span className="word dim">coming</span></td>
                   <td className="num">
@@ -237,7 +248,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                 <Link href="/code" className="mcard-stat metric-btn">
                   <GithubMark />
                   {r.codeNote ? r.codeNote : `CODE ${r.code}`}
-                  {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits / 90d`}
+                  {!r.codeNote && codeSub(r) ? ` · ${codeSub(r)}` : null}
                 </Link>
                 <Link href="/hype" className="mcard-stat metric-btn num">
                   <Icon name="megaphone" size={14} />

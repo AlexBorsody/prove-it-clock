@@ -56,6 +56,7 @@ export default async function Home() {
         ).category,
         code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
         codeCommits: vitals?.commits90d ?? null,
+        codeStars: vitals?.stars ?? null,
         codeNote:
           vitals == null
             ? "No commit data"
