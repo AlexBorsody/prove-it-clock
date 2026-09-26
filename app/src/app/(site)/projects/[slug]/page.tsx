@@ -19,7 +19,8 @@ import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
-import { HypeRowCard, type HypeRow } from "@/components/hype-leaderboard";
+import { type HypeRow } from "@/components/hype-leaderboard";
+import HypeSummaryCard from "@/components/hype-summary-card";
 import DeliveryTimeline from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
@@ -438,15 +439,13 @@ function backfillHeartHistory(
         </details>
       </div>
 
-      {/* 5. HYPE: the same row component as the /hype ranking. */}
+      {/* 5. HYPE: the summary card (full row lives on /hype). */}
       <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
         <h2>HYPE</h2>
         <p className="panel-sub">
           How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
         </p>
-        <div className="hype-rows">
-          <HypeRowCard row={hypeRow} />
-        </div>
+        <HypeSummaryCard row={hypeRow} />
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
           <Link href="/hype">See the HYPE leaderboard</Link>
         </p>
