@@ -18,7 +18,14 @@ and the vision disagree, the vision wins and the plan gets fixed.
 - Live site serves the latest run from `heart_runs` / `heart_rankings`.
 - CODE data: GitHub fetcher exists (`/api/vitals/[slug]`, 8 curated repos,
   6h revalidation). Sort switch: Stars (default) / Forks / Follows / Commits;
-  Follows uses `subscribers_count`. HYPE data: `social_snapshots` table +
+  Follows uses `subscribers_count`. TEAM read (`app/src/lib/team.ts`, shown
+  on /code rows): active contributors 90d / 365d, top-3 share of trailing-52w
+  commits, and contributors recurring across quarters, from
+  `/repos/{repo}/stats/contributors` (bots excluded). Read: Broad /
+  Concentrated (top 3 >= 50%) / Thin (< 5 active in 90d) / Unknown (fetch
+  failed or GitHub returned an empty body while computing, which must never
+  render as a false zero). TEAM is development context only; it never moves
+  hearts or the verdict. HYPE data: `social_snapshots` table +
   daily collector. USE data: none yet.
 - UI 2026-09-26: slim sticky header with no brand wordmark (brand lives in
   the tab title only); search is a lone icon button that expands into a

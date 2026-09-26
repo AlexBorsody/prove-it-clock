@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
+import { fetchTeam, teamLine } from "@/lib/team";
 import Icon from "@/components/chrome-icons";
 import { GithubMark, StarIcon, ForkIcon } from "@/components/icons";
 import { searchMeta } from "@/lib/search-sections";
@@ -16,6 +17,7 @@ interface CodeRow {
   forks: number | null;
   watchers: number | null;
   repoUrl: string;
+  teamLine: string;
   failed: boolean;
 }
 
@@ -53,7 +55,10 @@ export default async function CodePage({
   const rows: CodeRow[] = await Promise.all(
     projects.map(async (p) => {
       const meta = VITALS_REPOS[p.slug];
-      const vitals = await fetchVitals(p.slug).catch(() => null);
+      const [vitals, team] = await Promise.all([
+        fetchVitals(p.slug).catch(() => null),
+        fetchTeam(p.slug).catch(() => null),
+      ]);
       const failed = vitals == null || (vitals.commits90d == null && vitals.partial);
       return {
         slug: p.slug,
@@ -64,6 +69,7 @@ export default async function CodePage({
         forks: vitals?.forks ?? null,
         watchers: vitals?.watchers ?? null,
         repoUrl: meta ? `https://github.com/${meta.github}` : "",
+        teamLine: team ? teamLine(team) : "TEAM: Unknown · couldn't reach GitHub",
         failed,
       };
     })
@@ -94,7 +100,8 @@ export default async function CodePage({
       <h1 className="page-title">CODE</h1>
       <p className="page-sub">
         Who is actually building. Stars, forks, and follows are all-time;
-        commits cover the last 90 days.
+        commits cover the last 90 days. TEAM reads contributor spread:
+        Broad, Concentrated, Thin, or Unknown.
       </p>
       </div>
       <div className="sort-seg" role="group" aria-label="Sort CODE ranking">
@@ -168,6 +175,7 @@ export default async function CodePage({
                   <span className="cell-sub">
                     {r.failed ? "Couldn't reach GitHub" : "commits / 90d"}
                   </span>
+                  <span className="cell-sub">{r.teamLine}</span>
                 </span>
               </div>
             ))}
