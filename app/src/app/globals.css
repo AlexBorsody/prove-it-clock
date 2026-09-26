@@ -173,7 +173,7 @@ a[href^="http"]::after {
 .tag.mixed { color: var(--blue); background: #1E274F; } /* CMC dark info tint */
 .tag.warn { color: var(--accent); background: #433936; } /* CMC dark reminder tint */
 .tag.bad { color: var(--red); background: #411F2A; } /* CMC dark negative tint */
-.tag.na { color: var(--text-faint); background: transparent; }
+.tag.na { color: var(--text-faint); background: #2B2E3F; } /* neutral pill, not ghost text */
 
 /* ---- leaderboard table ---- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-panel); }
@@ -234,7 +234,12 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
 .comp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
 .comp-hearts { font-size: 14.5px; color: var(--text-dim); margin-left: 2px; font-weight: 600; }
 .comp-desc { color: var(--text-dim); font-size: 15px; margin: 0 0 6px; font-weight: 500; }
-.comp-meta { font-family: var(--mono); font-size: 13.5px; color: var(--text-faint); overflow-wrap: anywhere; }
+.comp-sources { margin-top: 10px; }
+.comp-sources > summary { cursor: pointer; color: var(--text-faint); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.comp-sources > summary:hover { color: var(--text-dim); }
+.comp-sources ul { margin: 8px 0 0; padding: 0; list-style: none; }
+.comp-sources li { margin: 4px 0; }
+.comp-sources a { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
 
 /* ---- timeline ---- */
 .timeline { position: relative; margin: 8px 0 0 6px; padding-left: 22px; border-left: 2px solid var(--border-strong); }

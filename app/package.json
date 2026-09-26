@@ -4,7 +4,6 @@
     "@types/swagger-ui-react": "^5.18.0",
     "driver.js": "^1.8.0",
     "fuse.js": "^7.5.0",
-    "linkedom": "0.18.13",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -40,8 +39,7 @@
     "hearts:publish": "node --import tsx scripts/publish-hearts.ts",
     "social:collect": "tsx scripts/collect-social.ts",
     "test:social": "node --import tsx --test scripts/social.test.ts",
-    "test:db": "node --import tsx --test scripts/heart-database.test.ts",
-    "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs"
+    "test:db": "node --import tsx --test scripts/heart-database.test.ts"
   },
   "version": "0.1.0"
 }

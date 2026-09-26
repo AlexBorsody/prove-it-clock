@@ -3,7 +3,6 @@ import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import Icon from "@/components/chrome-icons";
 import { GithubMark, StarIcon, ForkIcon } from "@/components/icons";
-import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -90,13 +89,11 @@ export default async function CodePage({
 
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "code-overview", title: "CODE activity", kind: "CODE", keywords: "development GitHub commits follows" })}>
       <h1 className="page-title">CODE</h1>
       <p className="page-sub">
         Who is actually building. Stars, forks, and follows are all-time;
         commits cover the last 90 days.
       </p>
-      </div>
       <div className="sort-seg" role="group" aria-label="Sort CODE ranking">
         {SORTS.map((k) => (
           <Link
@@ -121,14 +118,14 @@ export default async function CodePage({
           </p>
         </div>
       ) : (
-        <div className="panel search-section" data-tour="code" {...searchMeta({ id: "code-ranking", title: "CODE ranking", kind: "CODE", keywords: "development GitHub commits follows" })}>
+        <div className="panel" data-tour="code">
           <p className="explain" style={{ marginTop: 0 }}>
             Ranked by {sortLabel}. CODE is context: it never moves the heart score.
             A failed GitHub fetch is shown as-is, never as zero activity.
           </p>
           <div className="code-rows">
             {rows.map((r, i) => (
-              <div key={r.slug} className="code-row search-section" {...searchMeta({ id: `code-project-${r.slug}`, title: `${r.name} CODE activity`, kind: "CODE", project: r.slug, keywords: `${r.symbol} GitHub commits stars forks follows` })}>
+              <div key={r.slug} className="code-row">
                 <span className="code-rank num">{i + 1}</span>
                 <Link href={`/projects/${r.slug}`} className="code-coin-link">
                   <img

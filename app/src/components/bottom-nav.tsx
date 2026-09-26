@@ -8,11 +8,11 @@ import Icon, { type ChromeIconName } from "@/components/chrome-icons";
  * Bottom tab bar, app-style: Scoreboard / HYPE / Compare / Methodology / API.
  * Tour is a button, not a route, so it stays out of the TABS list.
  */
-const TABS: Array<{ href: string; label: string; shortLabel?: string; icon: ChromeIconName }> = [
-  { href: "/", label: "Scoreboard", shortLabel: "Scores", icon: "grid" },
+const TABS: Array<{ href: string; label: string; icon: ChromeIconName }> = [
+  { href: "/", label: "Scoreboard", icon: "grid" },
   { href: "/hype", label: "HYPE", icon: "megaphone" },
   { href: "/compare", label: "Compare", icon: "sliders" },
-  { href: "/methodology", label: "Methodology", shortLabel: "Method", icon: "book" },
+  { href: "/methodology", label: "Methodology", icon: "book" },
   { href: "/developers", label: "API", icon: "code" },
 ];
 
@@ -28,15 +28,9 @@ export default function BottomNav() {
             href={t.href}
             className={active ? "active" : undefined}
             aria-current={active ? "page" : undefined}
-            aria-label={t.label}
           >
             <Icon name={t.icon} size={22} />
-            {t.shortLabel ? (
-              <>
-                <span className="bottomnav-label-full" aria-hidden="true">{t.label}</span>
-                <span className="bottomnav-label-short" aria-hidden="true">{t.shortLabel}</span>
-              </>
-            ) : <span aria-hidden="true">{t.label}</span>}
+            <span>{t.label}</span>
           </Link>
         );
       })}

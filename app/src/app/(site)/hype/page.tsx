@@ -10,7 +10,6 @@ import { verdictFor } from "@/lib/verdict";
 import HypeLeaderboard, { type HypeRow } from "@/components/hype-leaderboard";
 import HypeBubbles from "@/components/hype-bubbles";
 import Icon from "@/components/chrome-icons";
-import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -56,12 +55,10 @@ export default async function HypePage() {
 
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "hype-overview", title: "HYPE attention", kind: "HYPE", keywords: "news social mentions" })}>
       <h1 className="page-title">HYPE</h1>
       <p className="page-sub">
         Observed attention. Never proof of support or delivery.
       </p>
-      </div>
 
       {rows.length === 0 ? (
         <div className="panel">
@@ -75,7 +72,7 @@ export default async function HypePage() {
         </div>
       ) : (
         <>
-          <div className="panel search-section" {...searchMeta({ id: "hype-bubbles", title: "Hype bubbles", kind: "HYPE", keywords: "attention news mentions baseline" })} style={{ marginBottom: 18 }}>
+          <div className="panel" style={{ marginBottom: 18 }}>
             <h2>Hype bubbles</h2>
             <p className="explain">
               HYPE is attention, not quality: bigger bubble means more crypto news mentions this week.

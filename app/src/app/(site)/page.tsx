@@ -14,7 +14,6 @@ import { fetchVitals } from "@/lib/vitals";
 import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
 import HypeShareChart from "@/components/hype-share-chart";
 import Icon from "@/components/chrome-icons";
-import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -92,7 +91,7 @@ export default async function Home() {
       <h1 className="sr-only">Prove-It: did crypto projects actually deliver what they promised?</h1>
 
       {rows.length === 0 ? (
-        <div className="panel search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
+        <div className="panel">
           <h2>
             <Icon name="inbox" size={18} style={{ marginRight: 10 }} />
             No scores published
@@ -104,7 +103,7 @@ export default async function Home() {
       ) : (
         <>
           <ScoreboardTable rows={rows} />
-          <div className="panel search-section" {...searchMeta({ id: "scoreboard-hype-share", title: "HYPE share", kind: "Scoreboard", keywords: "attention news mentions history" })} style={{ marginTop: 18 }}>
+          <div className="panel" style={{ marginTop: 18 }}>
             <h2>HYPE share</h2>
             <p className="explain">
               Each project's slice of observed attention over time. Attention, not endorsement.

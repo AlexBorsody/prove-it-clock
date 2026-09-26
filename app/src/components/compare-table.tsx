@@ -6,7 +6,6 @@ import ShitcoinMeter from "@/components/shitcoin-meter";
 import HeartMeter from "@/components/heart-meter";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
-import { searchMeta } from "@/lib/search-sections";
 
 export interface CompareProject {
   slug: string;
@@ -145,7 +144,7 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
 
   return (
     <>
-      <div className="panel search-section" {...searchMeta({ id: "compare-project-picker", title: "Choose projects to compare", kind: "Compare", keywords: "projects side by side" })}>
+      <div className="panel">
         <div className="compare-picker" role="group" aria-label="Choose projects to compare">
         {projects.map((p) => {
           const on = selected.includes(p.slug);
@@ -166,7 +165,7 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
         })}
         </div>
       </div>
-      <div className="table-wrap search-section" {...searchMeta({ id: "compare-metrics", title: "Project comparison", kind: "Compare", keywords: "hearts promises code use hype" })}>
+      <div className="table-wrap">
         <table className="board compare">
           <thead>
             <tr>
@@ -190,7 +189,7 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
           </thead>
           <tbody>
             {ROWS.map((r) => (
-              <tr key={r.key} className="search-section" {...searchMeta({ id: `compare-${r.key}`, title: `Compare ${r.label}`, kind: "Compare", keywords: r.key })}>
+              <tr key={r.key}>
                 <th className="rowhead">
                   <Link href={`/methodology#${r.anchor}`}>{r.label}</Link>
                 </th>

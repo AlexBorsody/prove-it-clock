@@ -75,28 +75,3 @@ Compare, methodology and API pages stay within the viewport. Tour Close/Next
 controls are visible on a 320px screen. Follow-up CSS wraps homepage hearts
 and HYPE ranking rows after those two remaining overflows were reproduced.
 Manual recheck: 320px homepage, HYPE ranking, then Tour → Next → Close.
-
-## Shared-dev sync repair — September 26
-
-The `a3daeda` sync removed search wiring and mobile controls; `1bac0dd`
-restored the new helper files but left out LinkeDOM, the header integration,
-page section tags and document tracing. That Vercel build failed. Codex is
-restoring those reviewed pieces while preserving CODE Follows/watchers and
-all September 26 research fragments and publication artifacts.
-
-Local checkout now uses `main`, tracking `origin/main`; the older local-only
-main commit is preserved on `backup/main-before-sync-20260926`. Local 3101
-returns `503 Heart database unavailable`; no Supabase read settings exist in
-`app/.env.local`. Vercel returns eight published projects. Use Vercel for data
-acceptance until local read access is configured, not the stale 3101 build.
-
-Working agreement: fetch/merge before editing and again before pushing; use
-Git to integrate work, not directory copies over shared files. Record ownership
-here, preserve other changes, and verify the deployed commit, API and search
-before calling a task done. Local development uses `next dev` with database
-read settings; a running `next start` does not rebuild after a pull.
-
-Read Muse's latest `2026-09-26-codex-promise-pipeline.md` and the durable
-research methodology in implementation.md. Next bounded task: fragment
-scaffolder, then validated merge tooling, then queue execution. No research
-or hosted publication is part of this sync repair; timeline stays on hold.

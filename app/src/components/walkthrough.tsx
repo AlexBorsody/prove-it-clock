@@ -143,7 +143,6 @@ export default function Walkthrough() {
             element: el,
             popover: {
               title: s.title,
-              showButtons: i === 0 ? ["next", "close"] : ["previous", "next", "close"],
               description:
                 `<div class="wt-stepnum num">Step ${i + 1} of ${STEPS.length}</div>` +
                 `<p>${s.body}</p>`,

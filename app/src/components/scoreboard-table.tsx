@@ -10,7 +10,6 @@ import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
-import { searchMeta } from "@/lib/search-sections";
 
 export interface ScoreboardRow {
   slug: string;
@@ -102,7 +101,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
   }
 
   return (
-    <div data-tour="hearts" className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
+    <div data-tour="hearts">
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>
@@ -123,7 +122,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
           <tbody>
             {sorted.map((r) => (
               <Fragment key={r.slug}>
-                <tr className="search-section" {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
+                <tr>
                   <td className="num" style={{ color: "var(--text-faint)" }}>{r.rank}</td>
                   <td>
                     <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
@@ -208,11 +207,11 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
           </tbody>
         </table>
       </div>
-      <div className="board-cards" data-search-ignore="true">
+      <div className="board-cards">
         {sorted.map((r) => {
           const open = expanded === r.slug;
           return (
-            <div key={r.slug} className="mcard" id={`scoreboard-mobile-project-${r.slug}`}>
+            <div key={r.slug} className="mcard">
               <Link href={`/projects/${r.slug}`} className="mcard-head">
                 <img
                   src={`/icons/${r.symbol.toLowerCase()}.svg`}
