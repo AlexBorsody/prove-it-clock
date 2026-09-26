@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
@@ -43,15 +43,13 @@ export default function PromiseList({
   filter: PromiseFilter;
   evidence?: string;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(() => !!evidence);
+  useEffect(() => { if (evidence) setExpanded(true); }, [evidence]);
   const refs = promiseReferences(slug, promises);
   const visible = promises
     .map((pr, i) => ({ pr, i }))
     .filter(({ pr }) => matchesPromiseFilter(pr.state, filter));
-  const shown = expanded ? visible : visible.slice(0, PAGE_SIZE);
-
-  return <>
-    {shown.map(({ pr, i }) => {
+  const renderPromise = ({ pr, i }: { pr: any; i: number }) => {
       const d = promiseDisplay(pr);
       const h = promiseHeart(pr);
       // Escape every non-ID character (including underscores) without
@@ -84,16 +82,14 @@ export default function PromiseList({
           </details>
         </div>
       );
-    })}
+    };
+  return <>
+    {visible.slice(0, PAGE_SIZE).map(renderPromise)}
     {visible.length > PAGE_SIZE && (
-      <button
-        type="button"
-        className="promise-show-more"
-        onClick={() => setExpanded((v) => !v)}
-        aria-expanded={expanded}
-      >
-        {expanded ? "Show less" : "Show all promises"}
-      </button>
+      <details className="promise-more" open={expanded} onToggle={event => setExpanded(event.currentTarget.open)}>
+        <summary className="promise-show-more">{expanded ? "Show less" : "Show all promises"}</summary>
+        {visible.slice(PAGE_SIZE).map(renderPromise)}
+      </details>
     )}
   </>;
 }

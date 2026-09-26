@@ -7,7 +7,7 @@
  * - /_next/static/*      cache-first   (content-hashed, immutable)
  * - navigations (HTML)   network-first, cache fallback when offline
  * - /api/*               network only  (never serve stale data)
- * - other same-origin    cache-first   (icons, manifest, images)
+ * - other same-origin    network only (includes dynamic Next RSC data)
  * - cross-origin         untouched
  */
 const fs = require("fs");
@@ -40,7 +40,7 @@ async function cacheFirst(request) {
   const response = await fetch(request);
   if (response.ok) {
     const cache = await caches.open(CACHE);
-    cache.put(request, response.clone());
+    await cache.put(request, response.clone());
   }
   return response;
 }
@@ -50,7 +50,7 @@ async function networkFirst(request) {
     const response = await fetch(request);
     if (response.ok) {
       const cache = await caches.open(CACHE);
-      cache.put(request, response.clone());
+      await cache.put(request, response.clone());
     }
     return response;
   } catch (err) {
@@ -75,7 +75,8 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(networkFirst(request));
     return;
   }
-  event.respondWith(cacheFirst(request));
+  // Next client navigations are fetches outside /api, not document navigations.
+  // Let them and other non-immutable resources reach the network.
 });
 `;
 

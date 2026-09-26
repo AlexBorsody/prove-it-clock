@@ -21,7 +21,7 @@ export default function BottomNav() {
   return (
     <nav className="bottomnav" aria-label="Primary">
       {TABS.map((t) => {
-        const active = t.href === "/metrics" ? isMetricsPath(pathname) : t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
+        const active = t.href === "/metrics" ? isMetricsPath(pathname) : t.href === "/" ? (pathname === "/" || pathname === "/atlas") : pathname.startsWith(t.href);
         return (
           <Link
             key={t.href}

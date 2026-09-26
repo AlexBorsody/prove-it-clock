@@ -1,10 +1,15 @@
 # Prove Value: Implementation Plan
 
-**2026-09-25.** [vision.md](vision.md) is the authority; this doc is the
-build order. No code gets written that is not in this plan. When the plan
-and the vision disagree, the vision wins and the plan gets fixed.
+**Updated 2026-09-26.** [vision.md](vision.md) is the product authority.
+The [Promise Atlas v1 plan](#promise-atlas-v1-implementation) below and its
+[task queue](tasks/2026-09-26-promise-atlas.md) supersede older embeddings-first
+and Index formula instructions. Atlas build progress and acceptance results are recorded in that queue; the
+rest of this document includes earlier implementation history.
 
-## Where the system stands
+## Prior system status (recorded before this planning pass)
+
+The following snapshot is historical context, not a fresh hosted-data audit.
+Atlas task A1 must establish current coverage from the published reader.
 
 - Renamed to **Prove Value** 2026-09-26 (Alex: "I'd actually change the
   name to prove value"). User-facing copy, tab title, docs all say Prove
@@ -100,7 +105,304 @@ provides shared daily caching. Verify with `npm run test:search`, typecheck/buil
 then search body text, follow a cross-page result, and open a closed methodology
 section from its result. Repeated index requests should retain `generated_at`.
 
-## Phase 0: Vision and plan (this session)
+## Promise Atlas v1 implementation
+
+**Implemented 2026-09-26 from Alex's build brief; verification is recorded in the task queue.**
+The [vision](vision.md#promise-atlas-v1) defines the product and taxonomy.
+The [task queue](tasks/2026-09-26-promise-atlas.md) is the ordered execution
+record. This replaces the earlier embeddings-first Atlas plan and Index
+formula instructions. Do not build that superseded pipeline as a prerequisite.
+
+### Current code inspection and first audit
+
+Inspected main at `4bd9db5`; origin matched at the planning pass.
+
+- Published reads: `app/src/lib/heart-data.ts`, `heart_runs` and the
+  published-only `heart_rankings` view. `HEARTS_METHODOLOGY` selects the
+  runtime methodology; use it rather than an Atlas-specific hardcoded copy.
+- Scored promises live in `assessment.promises`. Current storage includes
+  lineage, criteria, claim type, core, state, effective_at, rationale and
+  evidence `{url, summary}`. The publication contract is in
+  `heart-publication.ts`; SQL enforcement is in migration 006.
+- `normalizePromiseState` maps legacy `active` to fulfilled without taking
+  methodology. Do not call it blindly from the Atlas adapter. Current v3
+  publication rejects `active` as ambiguous.
+- The existing research contract defines `criteria` as what counts as
+  fulfilled. Preserve that as the stored fulfillment test; do not require a
+  newly named `fulfillment_test` field. No separate exact claim text,
+  claim-source role, source locator or quotation is required by this schema.
+- `promiseAnchor` / `promiseEvidenceHref` provide stable project links.
+  `PromiseList` currently renders three promises by default; a later
+  promise deep link needs to reveal its target before Atlas can rely on it.
+- Next/React/Supabase and SVG are already available. Reuse their conventions;
+  no new visualization framework or dependency is required by the plan.
+
+A read-only audit of the checked-in artifact
+`db/seed/heart-runs/hearts-promise-2026-09-26.json` found 8 projects, 115
+promises, no duplicate `(project, lineage)` IDs, and states fulfilled 72 /
+open 33 / lapsed 5 / retired 5. All 115 have `criteria`; none has a dedicated
+claim-source field. The file says published, but this is **artifact coverage,
+not verification of the current hosted dataset or original-source coverage**.
+Evidence URLs may contain original claims without storing their roles.
+No Atlas category assignments/configuration exists in the inspected tree.
+
+Task A1 must repeat the audit against the actual current published run:
+count projects/promises, duplicate or absent identities, observed state
+values, source-role coverage, stored tests, missing assessments and existing
+assignments. Record run/methodology/as-of and data-quality gaps in the task
+notes. If live read access is unavailable, record that limitation and keep
+artifact results explicitly separate. Do not infer production counts from
+this document or use a seed fallback after a database failure.
+
+### Data path and file responsibilities
+
+```text
+Published run + scored assessments (server, one pinned run)
+  -> Atlas adapter / validation
+  -> versioned taxonomy + assignments + coordinate manifest
+  -> serializable Atlas dataset
+  -> map, filters, accessible list and evidence details
+```
+
+| Location | Responsibility |
+|---|---|
+| `app/src/lib/heart-data.ts` | Reuse/extend published reads; select run once and page its rows by that run ID |
+| `app/src/lib/atlas/` | Small types, adapter, validation, filtering and layout helpers; server reader kept separate from client-safe functions |
+| `app/data/atlas-taxonomy.ts` | Stable category IDs, definitions, tags and taxonomy version |
+| `app/data/atlas-assignments.ts` | Stable promise ID to primary/secondary category, tags, rationale and actual author/reviewer |
+| `app/data/atlas-layout.ts` | Region geometry, slots, retained coordinates and layout version |
+| `app/src/components/atlas/` | Map, controls, legend/info, details and accessible list; shared data and selection state |
+| `app/src/app/(site)/atlas/page.tsx` | Server-loaded public route with explicit load-error state |
+| `app/scripts/atlas-audit.ts` and `atlas.test.ts` | Read-only coverage report and focused integrity/interaction-helper tests |
+
+These responsibilities now have implementations; the coordinate membership
+manifest is `app/data/atlas-slots.json`. Reuse domain
+shapes from `HeartPublication` where suitable; do not create another promise
+store. A public API is optional: server props are enough for v1. If an endpoint
+is later needed, document it in the existing OpenAPI spec, not a parallel spec.
+No new database tables, migrations, collectors or publications are required.
+Server credentials never enter the dataset or browser bundle.
+
+### Published dataset contract
+
+Select the newest published run for the active runtime methodology using the
+existing tie-break order. Load all rows from that same run, through pagination
+where required. Do not reselect the latest run independently on each page;
+a concurrent publication must not mix runs. Do not pull history to create
+more current nodes or reuse the homepage's enrichment calls to GitHub/HYPE.
+
+Use canonical promise ID if present; otherwise a collision-safe encoded tuple
+of project identifier and lineage. IDs cannot depend on statement text,
+array position, status, category or run ID. Preserve the run separately as
+provenance. Duplicate IDs are an integrity error, not silently overwritten.
+Absent identity is an audit error requiring ledger repair, not a random ID.
+An unavailable assessment is a coverage gap, not a project with zero failures.
+
+Minimal display contract (adapt to existing types; no scoring fields added):
+
+```ts
+type AtlasState = "kept" | "open" | "in_progress" | "lapsed" | "retired" | "unknown";
+interface AtlasSource {
+  url: string;
+  title?: string;
+  publishedAt?: string;
+  locator?: string;
+  quote?: string;
+}
+interface AtlasNode {
+  id: string;
+  lineageId: string;
+  sourceRunId: string;
+  projectSlug: string;
+  projectName: string;
+  symbol: string;
+  claimText: string;
+  claimTextKind: "quote" | "published-description" | "published-criteria";
+  state: AtlasState;
+  originalState: string;
+  core: boolean;
+  assessmentExplanation: string | null;
+  assessedAt: string | null;
+  snapshotAsOf: string;
+  claimSources: AtlasSource[];
+  outcomeEvidence: AtlasSource[];
+  fulfillmentTest: string | null;
+  primaryCategory: string | null;
+  secondaryCategories: string[];
+  tags: string[];
+  assignmentRationale: string | null;
+  projectHref: string;
+  promiseHref: string | null;
+  qualityFlags: string[];
+}
+interface AtlasPosition { nodeId: string; x: number; y: number }
+interface AtlasDataset {
+  dataRevision: string;
+  methodologyVersion: string; // Published ledger methodology, unchanged.
+  taxonomyVersion: string;
+  assignmentVersion: string;
+  layoutVersion: string;
+  asOf: string;
+  positioningMethod: "curated-category";
+  nodes: AtlasNode[];
+  positions: AtlasPosition[];
+  regions: { id: string; label: string; x: number; y: number; width: number; height: number }[];
+}
+```
+
+`dataRevision` identifies the immutable run and its content, not the fetch
+clock. Versions for taxonomy/assignments/layout are independent of the ledger
+methodology. Keep load and coverage diagnostics alongside the dataset; never
+serialize credential-bearing exceptions. No weight or importance field in v1.
+
+### State, claim and evidence adaptation
+
+| Input under current v3 | Atlas label / color |
+|---|---|
+| `fulfilled` | Kept / green |
+| `open` or documented legacy alias `unfulfilled` | Open / grey |
+| `lapsed` | Lapsed / red |
+| `retired` | Retired / red |
+| `active`, absent or unrecognized value | Unknown / grey, with quality flag |
+
+Keep original state unchanged. Mapping is dispatched by the record's exact
+methodology. Only a methodology that explicitly defines in-progress `active`
+may map it to In progress; only a documented older earning definition may
+map it to Kept. Unsupported methodology is flagged and states stay Unknown
+until its mapping is reviewed. Do not change normalization or scoring for
+other routes in order to build Atlas.
+
+Use explicit stored claim text where available, else show `criteria` as
+“Published fulfillment criteria,” not a quotation, and flag missing original
+claim text. `criteria` is a stored test in the inspected contract. If no
+explicit test exists in a future record, show: “No explicit fulfillment test
+is stored in this published record.” Do not derive a new test from a headline.
+
+Populate original claim sources only from explicit provenance roles. Keep
+existing `evidence` entries as the assessment's references without upgrading
+any to the original claim. Where roles are unseparated, label that limitation
+under outcome evidence and flag it in the audit. Never treat `evidence[0]`, a
+project homepage or a guessed whitepaper URL as the claim source. All valid
+references remain available; missing provenance does not remove the promise.
+
+Render claim text and quotes as text, not executable HTML. Validate URLs as
+HTTP(S), rejecting credentials and unsafe schemes; show invalid-link warnings
+without navigating. Reuse external-link affordances and safe rel attributes.
+Preserve exact source locators/quotes when stored. Do not enrich or classify
+sources by fetching arbitrary external URLs in the public route.
+
+Use an explicitly stored assessment date when present; otherwise show
+“Assessment date not separately recorded” alongside labeled snapshot as-of.
+`effective_at` currently records the promise date and is not a research date.
+History links use actual existing records only; no synthetic playback.
+
+### Assignments, coordinates and maintenance
+
+Use the eight category definitions plus Unclassified in the vision. Stable
+category IDs are `money`, `payments`, `platform`, `defi`, `privacy`,
+`interoperability`, `governance`, `real-world`; `primaryCategory: null` maps to
+Unclassified. Optional tag IDs: `scale`, `inclusion`, `sovereignty`.
+
+Assignments contain primary category, distinct secondary categories, tags,
+rationale, actual author and optional actual reviewer. Codex's initial file
+is labeled Codex-authored, not Alex-reviewed. Validate all IDs, avoid repeating
+the primary in secondaries, and keep a short ambiguous/unmapped list for
+review. Assignment changes record old/new categories, rationale, author and
+version in task/change notes. Never derive core or outcome from assignment.
+
+Fixed category regions share world coordinates. Initially assign uniform
+non-overlapping slots by project identifier then promise ID. Retain a versioned
+manifest so inserting a new ID does not re-sort and move old nodes. Removed
+nodes leave slots; new IDs take vacant slots. Deterministic overflow slots in
+Unclassified keep unmapped new promises visible between manifest updates;
+record their data revision and report them for maintenance. Region expansion
+or reassignment requiring relocation produces an explicit layout revision.
+No silent missing-coordinate drops; same inputs/versions reproduce positions.
+
+Filtering, search and selection never compute a new layout. The renderer
+receives nodes, positions and region labels; it has no dependency on taxonomy
+assignment logic or a future AI provider. V2 can supply semantic-projection
+coordinates behind that small boundary; no plugin framework or vectors now.
+
+### Route, controls and evidence details
+
+Server-load `/atlas` using the published reader only. Show a readable static
+SVG overview first. Uniform nodes, core rings, selection outlines and exact
+state labels follow the vision. More labels appear at closer zoom without
+covering all points with full sentences. Region counts count primaries only.
+
+Use a single client controller for filters, selection and camera. Project
+multi-select, category association, exact state and ordinary case-insensitive
+text search (claim, project, ticker) operate on the same nodes as the list.
+Secondary category matches stay at their primary coordinates and carry a
+“Secondary category match” label. Counts describe matching dataset coverage.
+
+Validate query parameters, accept repeated `project` values, one `category`,
+repeated `state` values, bounded `q` text and one stable `promise` ID. Ignore
+unsupported filter values safely. Use replace for typed search updates and
+intentional history entries for selection/filter actions; Back/Forward restores
+both controls and selection. A selected valid promise that conflicts with
+filters clears the conflicting filters with a short notice, opens details and
+moves only the camera to reveal it. An unknown ID shows an unavailable-record
+message. Selection must not silently disappear behind filters.
+
+Pan uses pointer capture and a movement threshold; dragging does not select.
+Pinch zoom and zoom buttons preserve a sensible focal point and bound scale.
+Confine touch-action handling to the map; page scroll works outside it. Reset
+view changes camera only, Fit results fits matching bounds, and Reset filters
+clears filters. Empty-space click clears selection without resetting camera.
+Respect reduced motion. Do not run a continuous force simulation.
+
+Desktop details stay alongside the map. Mobile uses an inline full-width
+panel or sheet with reachable close control above bottom nav/safe areas.
+Hover previews are supplemental. A list of the filtered nodes offers keyboard
+selection and source access without traversing every SVG node. Preserve focus
+on updates; closing details returns it to the selected list action or map
+control. A modal sheet, if chosen, also needs focus containment and Escape.
+
+Drawer order: project/category/core identity; claim and quote/description
+label; exact status and existing rationale; assessment date/snapshot date;
+fulfillment test; original claim sources; outcome evidence; existing project
+and individual promise/history links. Load these references with the dataset
+so selection works without another chain of requests.
+
+Successful zero matches: “No promises match these filters.” Database/load
+failure: “The promise ledger could not be loaded.” No published run is an
+explicit unpublished-ledger state. Never catch a read error and replace it
+with an empty array or a claim that no failures exist.
+
+### Product integration and acceptance
+
+- Add the homepage and project links specified in the vision. Use a compact
+  Scores / Atlas secondary navigation pattern, reusing MetricsNav styling
+  where suitable. Keep five usable bottom controls; retain the heart Home
+  icon and current homepage ordering. Atlas is not another Metrics tab.
+- Preserve project deep-link targets. Fix the narrow PromiseList reveal
+  behavior required for links to later promises; do not launch a general
+  page redesign. Render searchable Atlas/list sections using the existing
+  search metadata contract, with unique stable anchors.
+- Expose all five versions and data date through an information panel. Add
+  the curated-layout disclosure near the legend and an implementation-audit
+  summary for missing sources, tests, mappings and unsupported states.
+- Review service-worker treatment of Next page-data requests before shipping:
+  the current catch-all cache-first path can retain stale ledger data. Ensure
+  Atlas refreshes reach the current dataset; this is freshness verification,
+  not permission for an offline rewrite.
+- Tests cover same-run pagination, draft exclusion, duplicate IDs, state
+  mapping by methodology, source-role separation, missing data, safe URLs,
+  assignment coverage, deterministic positions, insert stability, fixed
+  coordinates under filters, query round-trips and selected-node reveal.
+- Run build, typecheck, focused Atlas tests and the existing hearts/publication
+  regression checks. Browser-check at 320px and desktop: pan/pinch/buttons,
+  tap versus drag, reset/fit, keyboard/list/focus, Back/Forward, direct links,
+  missing data, ordinary/core/open/failed examples and source destinations.
+- Use the established deployment workflow only when executing release work.
+  No unrelated scoring publication, live schema mutation or new domains.
+  Report route, changed files, verified dataset coverage, unresolved source
+  and classification gaps, actual checks and remaining limitations. Browser
+  testing and deployment claims require actual verification.
+
+## Phase 0: Vision and plan (earlier application build)
 
 Docs written, tree clean. Alex said go 2026-09-25 ("get started building
 one step at a time"). Build proceeds phase by phase below.
@@ -214,14 +516,9 @@ cleanly.
    stat strip: PROMISES / CODE / USAGE / HYPE per vision.md. USAGE stat shows
    the honest "metrics coming" state. HYPE stat shows absolute mentions +
    baseline week.
-2. Delivery Timeline: hearts line on top; CODE/HYPE activity strip
-   below. USAGE toggle hidden until its metrics exist. Failed
-   collection never renders as zero. History backfill (2026-09-26): one
-   published run is one dot, so the page reconstructs yearly history
-   from promise `effective_at` dates (`backfillHeartHistory` in the
-   project page): for each year-end, hearts earned vs promises that
-   existed by then. Falls back to published-run points when no dated
-   promises exist.
+2. Delivery Timeline: removed by the later decision in item 7. The old
+   effective-date reconstruction is superseded: current promise states
+   cannot establish historical fulfillment. Atlas does not restore it.
 3. HYPE mindshare bump chart: per-project rank by mentions over time,
    30d/90d toggle, coin icons on rank lines. Gated on 8 weeks of snapshots
    like all HYPE trends; before that, the section does not render.
@@ -320,8 +617,8 @@ rest waits in the plan.
 
 Currently gated:
 
-- **Prove Value Index**: hidden until USAGE metrics and the CODE score
-  definition both exist and are reviewed.
+- **Prove Value Index**: separate future work requiring an approved
+  methodology/specification. Additional inputs alone do not authorize it.
 - **USAGE stat card / home row**: renders "metrics coming" until per-project
   USAGE metrics are defined. Never a number before that.
 - **HYPE trend percentages**: gated on 8 complete weeks of snapshots.
@@ -335,37 +632,13 @@ Currently gated:
   Parked means no spec and no build; gated means spec'd and waiting on
   data.
 
-## Phase 5: Prove Value Index (gated)
+## Phase 5: Prove Value Index (superseded; not authorized)
 
-Builds only after the USAGE metrics and the CODE score definition exist.
-The formula is locked in vision.md; this phase is data plumbing and UI.
-
-1. **Research first.** Per-project USAGE metrics (intended use only) and the
-   CODE score 0-1 definition (sustained activity on curated repos: what
-   counts, what "stalled/resumed" means, anti-gaming notes). Both written
-   up, reviewed, and versioned before any Index code.
-2. **Event log.** New append-only table `index_events`: project_slug,
-   occurred_at, event_type (promise_fulfilled, promise_lapsed, promise_retired,
-   deadline_missed, major_release, usage_milestone, dev_resumed,
-   dev_stalled, hype_spike), title, note, evidence_url. Promise events
-   backfill from published heart runs; releases from the GitHub releases
-   API; dev resumed/stalled from commit activity; hype spikes from
-   social_snapshots once the baseline exists. Deadline_missed and
-   usage_milestone have no v1 triggers and stay empty until their data
-   exists.
-3. **Computation.** Pure function `indexFor(project, asOf) -> { score,
-   components: { promises, use, code }, events }`. Promises = 60 *
-   earned/capacity from the active-methodology runs. Integer 0-100.
-   Tested like the verdict function.
-4. **UI.** Detail-page section per vision.md: 0-100 line through time,
-   weights disclosed beside it, clickable markers showing the event note
-   and evidence link. Hype-spike markers render as context-only. The
-   section does not render until all three scoring components have real
-   inputs.
-
-Acceptance: formula matches vision.md exactly; every plotted move has a
-marker; every marker has an evidence link or a stated reason; `next build`
-clean.
+The earlier composite formula, event-log schema and Index build order are
+superseded by Alex's Promise Atlas v1 brief (2026-09-26). Do not implement
+weights, decay, new scores or a ranking line graph from the old plan.
+Any Index needs a separate reviewed methodology and implementation spec.
+Curated Atlas v1 does not depend on that research or on embeddings.
 
 ## Invariants (unchanged)
 
@@ -388,8 +661,8 @@ clean.
    current Delivery Timeline and HYPE activity charts. Replacement ranking
    visualization remains to be designed.
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
-5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
-   waits for real USAGE data. No provisional scores, per the gating rule.
+5. **Index gating:** SUPERSEDED 2026-09-26 by Atlas v1. Index remains
+   separate future work requiring a new approved spec, not just more data.
 
 ## Appendix: Hearts algorithm (promise-heart rule v3)
 
@@ -726,3 +999,26 @@ existing pages. `/metrics` opens CODE by redirecting to `/code`; the existing
 links keep working. The Metrics bottom item is active for all three views.
 This is a navigation-only change: datasets, page components and project-detail
 components remain intact. Project details carry the promise/evidence message.
+
+
+## Atlas maintenance (2026-09-26)
+
+`npm run atlas:audit` reads the configured published ledger without writes.
+`-- --file /path/to/response.json` audits a captured published `/api/hearts`
+response instead; the report labels which source it used. `npm run test:atlas`
+checks adaptation, same-run pagination, state/source integrity, classifications,
+layout/filter behavior and dynamic-page cache policy.
+
+To classify a new record, add its stable ID and rationale to
+`app/data/atlas-assignments.ts`, recording the actual author/reviewer. Increment
+assignment version and record old/new categories and reason in the task notes.
+Unmapped IDs remain visible in Unclassified. To retain new coordinates, append
+IDs to the corresponding arrays in `atlas-slots.json`, preserving existing slot
+order and holes; do not regenerate/sort the old arrays. Layout relocation or
+region expansion requires a layout version change. Taxonomy definition changes
+have their own version. None of these changes republishes a heart score.
+
+The live/public audit found missing explicit original-claim provenance in all
+115 current records and seven unresolved category assignments. See the task
+queue for exact IDs and limitations. The grading workstream supplies any missing
+claim text/roles/locators; Atlas does not infer them from an evidence array.

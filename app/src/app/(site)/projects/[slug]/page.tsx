@@ -218,6 +218,7 @@ export default async function ProjectPage({ params, searchParams }: {
             })()}
           </p>
         )}
+        <p><Link href={`/atlas?project=${slug}`} className="btn">See this project’s promises on the Atlas ↗</Link></p>
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
         <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />

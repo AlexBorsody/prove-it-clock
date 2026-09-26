@@ -174,7 +174,11 @@ export default function Walkthrough() {
     const onReplay = () => showStep(0);
     window.addEventListener(REPLAY_EVENT, onReplay);
     let t: number | undefined;
-    if (!wasSeen()) t = window.setTimeout(() => showStep(0), 700);
+    // A shared Atlas link must remain on its selected promise on first visit.
+    // The explicit Tour button can still start the project walkthrough.
+    if (!wasSeen()) t = window.setTimeout(() => {
+      if (window.location.pathname !== "/atlas") showStep(0);
+    }, 700);
     return () => {
       window.removeEventListener(REPLAY_EVENT, onReplay);
       if (t) window.clearTimeout(t);

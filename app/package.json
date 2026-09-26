@@ -42,7 +42,9 @@
     "test:social": "node --import tsx --test scripts/social.test.ts",
     "test:db": "node --import tsx --test scripts/heart-database.test.ts",
     "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs",
-    "prebuild": "node scripts/generate-sw.js"
+    "prebuild": "node scripts/generate-sw.js",
+    "test:atlas": "node --import tsx --test scripts/atlas.test.ts scripts/atlas-sw.test.cjs",
+    "atlas:audit": "node --import tsx scripts/atlas-audit.ts"
   },
   "version": "0.1.0"
 }

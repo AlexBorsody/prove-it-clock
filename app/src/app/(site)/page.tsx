@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   HEARTS_METHODOLOGY,
   readHeartRankings,
@@ -89,6 +90,7 @@ export default async function Home() {
 
   return (
     <>
+      <p><Link href="/atlas" className="btn">Explore the Promise Atlas ↗</Link></p>
       <h1 className="sr-only">Prove Value: did crypto projects actually deliver what they promised?</h1>
 
       {rows.length === 0 ? (

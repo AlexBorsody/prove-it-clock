@@ -1,113 +1,171 @@
-# Promise atlas: the special sauce build
+# Promise Atlas v1: build tasks
 
-Alex's locked direction (2026-09-26, late night): kill the single 1-10
-leaderboard as the headline. The ranking layer becomes the promise atlas
-plus per-category rankings, computed from the vector store. Hearts stay
-dumb (promise in, heart out) and become drill-down/metadata.
+**2026-09-26, Alex's revised brief. A1–A6 implemented and locally verified; release verification below.**
+This replaces the previous embeddings-first task sequence. Build a curated,
+stable map of the published promise ledger. No scoring changes, vectors,
+Index, weights, category performance rankings or homepage replacement.
 
-Full background: `~/workspace/your_files/prove-value-index-sauce-question.md`
-(the sauce spec, both addenda) and `prove-value-vision.md` (the Index and
-the Atlas section, implementation steps 1-8). Read both before building.
+Product: [vision](../vision.md#promise-atlas-v1).
+Technical contract: [implementation](../implementation.md#promise-atlas-v1-implementation).
+Keep progress, real validation results and questions here as each slice lands.
+Do not invent methodology or call Codex assignments Alex-reviewed.
 
-## Standing rules (do not break)
+## Ordered tasks
 
-- The ledger is sacred: every promise keeps its exact source link.
-- No scoring changes. No new meters. No new tabs until the atlas view
-  itself ships (this brief authorizes the atlas view only).
-- Market data never feeds any score. HYPE is context only.
-- No em dashes in public copy. Green = good/kept, red = bad/lapsed,
-  grey = neutral/open. App UI, never web. No timestamps, no count labels.
-- Everything as components going forward. No monolithic page code.
-- Deterministic and reproducible: pin the embedding model, record the
-  model version and projection parameters with the methodology string,
-  fixed random seeds everywhere.
+### A1. Inspect and audit the published ledger
 
-## What is blocked (do NOT build these yet)
+- [x] Recheck Git status/latest main and preserve other agents' changes.
+- [x] Read the active methodology, publication/read contracts, navigation and
+  dependency setup. Pin one published run; enumerate all its rows.
+- [x] Record current counts, duplicate/missing IDs, states, source roles,
+  fulfillment-test coverage, unavailable assessments and existing categories.
+- [x] Separate confirmed live results from checked-in artifact observations.
 
-These are methodology, not code. They are with Alex + ChatGPT review.
-Build everything below so these can land later without a rebuild.
+Done when: coverage and data-quality gaps are documented against a named
+run/methodology. Missing credentials become a stated limitation, not fake data.
 
-- Promise-type taxonomy (payments, store of value, inclusion, privacy,
-  ...). Habib's lane. Until it lands, grouping is provisional (see phase 4).
-- Promise weight definition (function-vector interaction x prominence).
-  Until it lands, every promise has weight 1.0. The viz must read weight
-  from the API so real weights flow in with no code change.
-- The Index itself: I(p,t) = alpha*V + beta*P, alpha/beta, category
-  anchors, fulfillment thresholds, time decay. Do not compute the index.
-  Do not build the index line graph yet. Phase 5 below is explicitly
-  parked pending the review.
+### A2. Establish the server reader and Atlas adapter
 
-## Phase 1: embeddings pipeline
+- [x] Reuse published reads with one run ID across all pages. No enrichment
+  calls to market/social/GitHub; no new database or public API required.
+- [x] Stable identities; explicit methodology-dependent state mapping;
+  original claim sources separate from outcome evidence; quality flags.
+- [x] Preserve stored criteria/rationale/core and original state. Distinguish
+  assessment date from snapshot as-of and promise effective date.
+- [x] Add focused adapter tests for duplicates, drafts, source gaps, missing
+  tests, unknown states, pagination, outage versus empty, and safe links.
 
-For every promise in the ledger (all 8 published projects), generate one
-embedding vector from the promise statement text. Store it server-side
-(new Supabase table, e.g. promise_embeddings: promise_id, model,
-model_version, vector, created_at). Script it so re-running is idempotent
-and so a model change is a versioned migration, not a silent overwrite.
-Pin the model; record model + version in the methodology string.
+Done when: every valid current scored promise is represented once without
+altering the ledger; integrity errors are visible and missing provenance is
+reported. No silent dropping or invented sources/tests.
 
-Validation: every scored promise has exactly one vector for the pinned
-model version; re-run produces identical vectors.
+### A3. Version taxonomy and initial assignments
 
-## Phase 2: similarity + projection API
+- [x] Add the eight approved categories, Unclassified, and three tags.
+- [x] Prepare per-promise primary/secondary assignments and rationales with
+  actual authorship. Keep genuinely ambiguous assignments Unclassified.
+- [x] Validate category/tag IDs and publish the short ambiguous/unmapped list.
+- [x] Record assignment changes separately from ledger and layout revisions.
 
-New read-only endpoint (e.g. /api/atlas) serving:
+Done when: all nodes have an assignment or explicit Unclassified coverage;
+primary counts never double-count secondary associations.
 
-- nodes: one per promise. Fields: promise id, project, statement,
-  state (kept/open/lapsed from the ledger), weight (1.0 provisional),
-  source links (already in the ledger, pass through).
-- positions: 2D coordinates from cosine similarity between promise
-  vectors, projected deterministically (UMAP with fixed seed, or equivalent;
-  record algorithm + seed + parameters with the methodology string).
-  Promises that mean similar things must cluster together.
-- cluster assignment per node from the same projection (provisional
-  grouping until the taxonomy lands; label clusters neutrally, e.g.
-  "Cluster A", never invented category names).
+### A4. Build the stable static map
 
-No scoring in this endpoint. It serves geometry and ledger facts only.
+- [x] Fixed world regions, retained slot/coordinate manifest and versions.
+- [x] Uniform SVG nodes, exact status colors, core ring and readable labels.
+- [x] New nodes retain existing positions; overflow is visible and reported.
+- [x] Assert deterministic output and no overlapping nodes at supported scale.
 
-## Phase 3: the atlas view
+Done when: same inputs/versions reproduce positions and filters cannot change
+node coordinates. A usable overview precedes gesture/animation work.
 
-New view (route of your choice, component-based): every promise in the
-ledger as a node.
+### A5. Add discovery, evidence and accessible interaction
 
-- Position from the phase 2 projection. Area = weight (uniform for now,
-  so uniform circles; the sizing code must still be live for later).
-  Color = state: green kept, red lapsed, grey open.
-- No edges. No invented relationships. Position, size, and color carry
-  all the meaning.
-- Click a node: the promise, its source links, its state. Reuse the
-  existing promise-detail presentation, do not invent a new one.
-- This is the multi-dimensional view: what kinds of promises exist in
-  crypto, how they relate, and how fulfilled each region is.
+- [x] Project/category/status/text filters with counts, reset and empty state.
+- [x] URL validation, shareable selection, Back/Forward, hidden-selection reveal.
+- [x] Preview, full evidence drawer/panel and filtered accessible list.
+- [x] Drag/pinch/buttons, tap threshold, reset view, fit results, reduced motion,
+  focus return and safe mobile scrolling outside the map.
 
-This view ships alongside the existing home view first. It does not
-replace the headline yet; the headline swap waits for taxonomy + review.
-No leaderboard removal in this phase.
+Done when: selecting a visual pattern leads to the actual claim/test/evidence;
+mobile and keyboard users can complete the same journey.
 
-Validation: production build and type checks pass; nodes render for all
-8 projects; click-through reaches the exact source link; 320px layout
-without horizontal overflow.
+### A6. Integrate, verify and hand off
 
-## Phase 4: per-project promise constellation (provisional grouping)
+- [x] Homepage entry, project-filter links, secondary Scores / Atlas navigation.
+- [x] Verify individual promise links reveal later collapsed rows; search IDs
+  remain unique and source links stay separate from primary card navigation.
+- [x] Information panel includes methodology/taxonomy/assignment/layout/data
+  versions, data date and placement limitations.
+- [x] Check page-data cache freshness across published revisions.
+- [x] Build, typecheck, focused tests and existing hearts/publication checks.
+- [x] Browser verification at narrow mobile (320px) and desktop, including
+  ordinary/core/open/failed/missing-data records and source destinations.
+- [x] Record exact coverage, unresolved classification/source issues, checks
+  actually run, and release status through the established workflow.
 
-On each project page, a constellation: one circle per promise of that
-project, area = weight, color = state, grouped by the phase 2 cluster
-assignment (provisional; the taxonomy will replace grouping later with
-no layout-code change if you key grouping off a `group` field from the
-API). D3 circle packing or equivalent. This rhymes with the HYPE bubbles:
-one visual language, two instruments.
+Done when: the brief's data, layout, interaction, evidence and accessibility
+acceptance checks pass. Do not report a deployment or browser check by inference.
 
-## Phase 5: PARKED (do not build)
+## Planning-pass observations (not live acceptance)
 
-Index computation, the index line graph, per-category ranking views,
-split-heart glyph, retiring the single leaderboard as the headline.
-These unlock after the methodology review lands. The phases above must
-not need rework when they do.
+Inspected main/origin `4bd9db5`. Local artifact
+`db/seed/heart-runs/hearts-promise-2026-09-26.json`: 115 promises across 8
+projects; 72 fulfilled, 33 open, 5 lapsed, 5 retired; no duplicate project +
+lineage IDs. All have stored criteria. Separate claim-source roles and exact
+claim text are not modeled in the current required publication shape.
+These counts are not a hosted-data audit. The live public-run audit below now confirms this coverage.
 
-## Sequencing
+`criteria` already means the fulfillment test: do not mark it missing merely
+because no field is named `fulfillment_test`. Missing original-claim provenance
+stays flagged while its existing assessment references remain accessible.
+The legacy state helper maps active to fulfilled; current v3 publication rejects
+active. Atlas must interpret the actual record methodology explicitly.
 
-Phase 1, then 2, then 3, then 4. Validate each phase before moving on.
-If anything in the sauce spec or vision doc contradicts this brief, the
-brief wins for build order but flag the contradiction in the phase's
-validation notes.
+## Questions / grading handoff
+
+- Original claim attribution: the grading workstream should supply explicit
+  claim-source roles, quotes/locators and claim text where missing. Atlas will
+  expose gaps without blocking map/list work or inventing attribution.
+- No ambiguous category decisions submitted yet; list actual cases after A3.
+- No new fulfillment rubric or warning formula is decided in this workstream.
+
+## Build progress — Codex, 2026-09-26
+
+- A1 live read audit: the public `/api/hearts` response returned published run
+  `4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85`, as-of `2026-09-26T03:06:37+00:00`,
+  methodology promise-heart rule v3. Total 8 rows / 115 promises, no duplicate
+  identities, 72 fulfilled / 33 open / 5 lapsed / 5 retired. No unavailable
+  assessments. This verifies the public dataset, not hosted SQL migrations.
+- All 115 have stored criteria and assessment references. None separately
+  identifies the original claim text/source; those gaps are exposed in the
+  drawer. `atlas:audit` can inspect configured DB reads or a captured public
+  response (`--file`). No publication or database mutation was performed.
+- A2 adapter/reader implemented: one pinned run across pagination, explicit
+  state mapping, provenance/quality flags, safe source links and load errors.
+- A3 assignments prepared by Codex with rationales, version 1; not reviewed by
+  Alex. Seven stay Unclassified: ETH energy reduction; LINK BUILD/SCALE;
+  SOL developer retention; XRP Xpring, UBRI, developer funding, and net-zero.
+  These span subjects or fall outside the initial category definitions.
+- A4/A5 implemented: retained SVG slots, uniform state-colored nodes/core rings,
+  fixed positions under filters, project/category/status/text controls, URL
+  state, pan/zoom, evidence panel and a keyboard-accessible list.
+- A6 integration underway: secondary Scores/Atlas navigation, entry links,
+  later-promise reveal through native disclosures, and network-backed dynamic
+  page-data requests. Removed redundant `docs/vitals.md` at Alex's request;
+  no references pointed to it, and CODE remains documented in implementation.
+- Focused verification: 10 Atlas/cache tests pass and TypeScript passes.
+  All 82 tests and production builds pass. No hosted schema changes were made.
+
+
+### Verification results
+
+- Entire existing suite plus new Atlas tests: **82 passed**, including local
+  PostgreSQL publication/access tests. Focused Atlas/cache suite: **10 passed**.
+- Production build passed (Atlas route approximately 8 kB; first-load JS 114 kB). Existing
+  global `themeColor` metadata warnings remain unrelated to Atlas.
+- Browser checks use an isolated production-build server and a read-only local
+  PostgREST fixture of the captured public run, because this checkout has no
+  database credentials. No app fallback to fixture/seed data was added.
+- At 1280px and 320px: no horizontal document overflow. Category/state/search
+  filtering and zero matches verified. Map click selected a lapsed promise;
+  its original-source warning and separate assessment references rendered.
+- Keyboard list selection opened an open Lightning promise. Closing details
+  returned focus to its list button. Its full-record link reached P16 on the
+  project page with both the enclosing disclosure and evidence open.
+- Found and fixed first-visit tour interception of `/atlas`; explicit Tour
+  replay remains available. Enlarged overview category labels for mobile.
+- Fresh-origin core-promise link with a conflicting ETH filter revealed BTC,
+  cleared conflicting filters with a notice, and stayed on Atlas. Back/Forward
+  restored filters. Retired filter showed 5 records. Fit/zoom changed the
+  camera; dragging panned without opening a promise. No horizontal overflow.
+- No-credential server rendered “The promise ledger could not be loaded.”
+  The error did not become a zero-match or no-failures claim.
+- Browser logs exposed an SVG title hydration warning. Converted title children
+  to a single string; a fresh development render reports no Atlas errors.
+- Browser input verified pointer drag and zoom buttons, not a physical
+  two-finger touchscreen pinch. Pinch handling is implemented but a real-device
+  gesture check remains a release follow-up. Original-source gaps and the seven
+  classification decisions remain with the grading/review workstream.
+- Commit/push and live-route verification are the remaining release actions.

@@ -145,3 +145,26 @@ export async function readHypeSnapshotsFor(slug: string): Promise<HypeSnapshot[]
   if (error) throw error;
   return (data ?? []) as HypeSnapshot[];
 }
+
+/** Atlas needs one entire published snapshot, without market/social enrichment. */
+export async function readPublishedPromiseLedger() {
+  const { readAtlasLedger } = await import('./atlas/reader');
+  const db = heartReadClient();
+  return readAtlasLedger({
+    async latest() {
+      const {data,error}=await db.from('heart_runs')
+        .select('id,as_of,methodology,review_status').eq('review_status','published').eq('methodology',HEARTS_METHODOLOGY)
+        .order('as_of',{ascending:false}).order('recorded_at',{ascending:false}).order('id',{ascending:false}).limit(1).maybeSingle();
+      if(error) throw error;
+      return data;
+    },
+    async page(runId,from,to) {
+      const {data,error,count}=await db.from('heart_rankings')
+        .select('run_id,as_of,methodology,slug,name,symbol,availability,unavailable_reason,assessment',{count:'exact'})
+        .eq('run_id',runId).order('slug').range(from,to);
+      if(error) throw error;
+      if(count==null) throw new Error('Missing published ledger count');
+      return {rows:data ?? [],total:count};
+    },
+  });
+}
