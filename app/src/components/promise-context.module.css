@@ -25,4 +25,12 @@
 .more { width: 100%; min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg-raised); color: var(--text); font: inherit; font-size: 13px; cursor: pointer; }
 .empty { padding: 25px 0; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
 @media (max-width: 540px) { .facts > div { gap: 12px; } .facts dd { font-size: 14px; } .timeline { padding-left: 8px; } .timeline li { padding-left: 18px; } .tags a { min-height: 44px; } }
-.metricLink { display: inline-flex; align-items: center; justify-content: flex-end; min-width: 44px; min-height: 44px; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.metricLink {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 12px; border-radius: 8px;
+  color: inherit; text-decoration: none; font-weight: 700;
+  background: var(--bg-raised); white-space: nowrap;
+}
+.facts dd.earned .metricLink { background: #173C37; }
+.facts dd.open .metricLink { background: #2B2E3F; }
+.facts dd.lapsed .metricLink, .facts dd.retired .metricLink { background: #411F2A; }
