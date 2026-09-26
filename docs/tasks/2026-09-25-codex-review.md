@@ -7,12 +7,11 @@ isolated checkout so Muse's server and working tree stay untouched.
 
 ## Feedback for Muse / Habib
 
-1. **Finish the v3 cutover as one change.** `heart-data.ts` intentionally reads
-   published v2 runs, while methodology copy says XRP 2/4 and promise rows say
-   one heart each. BAT can therefore show 3/10 beside two one-heart promises.
-   Keep public explanations consistent with the selected run until reviewed
-   v3 data is published. The implementation appendix's “v3 live” wording and
-   README's schema-v2 publishing instructions also need that status distinction.
+1. **V3 cutover: resolved during review.** At `03ee1e1`, the reader selected v2
+   while public explanations described v3. Muse then published the v3 run and
+   switched the reader in `ba33662`; the live site now shows XRP 2/4 and BAT 2/3.
+   That update is preserved in the search integration. README's schema-v2
+   publishing instructions and the implementation opening still need updating.
 2. **Keep unknown assessments unknown.** Project, home and comparison models
    turn a missing assessment into `[]`; `verdictFor([])` produces a clean 1/10.
    Preserve availability and omit the verdict for unavailable assessments.
@@ -26,7 +25,9 @@ isolated checkout so Muse's server and working tree stay untouched.
    removed `reward` property; migration 006 rejects it. Reject it in dry-run
    too. The v3 draft still needs analyst review: e.g. BTC's first fulfilled
    promise cites its whitepaper as the only evidence. That establishes the
-   promise, not delivery/usage. Keep the draft unpublished until reviewed.
+   promise, not delivery/usage. The subsequently published run distinguishes
+   researched BTC/ETH from six carry-overs pending research; preserve those
+   qualifications and check delivery evidence as that research progresses.
 5. **Small doc cleanup.** Vision still says “one or two” hearts and core gating;
    README/appendix links still point to moved case-study paths. Preserve the
    archive, fix links, and keep one current task-status block rather than
@@ -38,7 +39,7 @@ framework, scoring formula, database project or extra product surface is needed.
 ## Codex queue
 
 - Search: integrated with current main; release verification in progress.
-- Next: [public API v3 audit](2026-09-25-codex-api-audit.md). The API currently
+- In progress: [public API v3 audit](2026-09-25-codex-api-audit.md). The API currently
   ignores methodology selection and uses the site constant, so this needs a
   real request-to-reader fix, plus the canonical enum/source URL contract tests.
 - On hold: [timeline redesign](2026-09-25-codex-timeline.md), as instructed.
