@@ -1139,9 +1139,9 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .hearts { gap: 5px; }
 
 /* ---- Coin identity: gray ticker + rank chip (CMC information architecture) ---- */
-.coin-symbol { color: var(--text-faint); font-size: 20px; font-weight: 600; }
+.coin-symbol { color: var(--text); font-size: 20px; font-weight: 700; }
 .rank-chip {
-  font-size: 14px; font-weight: 700; color: var(--text-dim);
+  font-size: 14px; font-weight: 700; color: var(--text);
   background: var(--bg-raised); border-radius: 8px; padding: 4px 10px;
 }
 
