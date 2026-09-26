@@ -1009,8 +1009,11 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .shitcoin-meter-meaning { font-size: 14px; color: var(--text-dim); margin: 8px 0 0; }
 .mcard-gauge { margin-left: auto; display: inline-flex; flex-shrink: 0; }
 .mcard-gauge .shitcoin-meter.compact {
-  display: inline-flex; flex-direction: row; align-items: center; gap: 8px;
+  display: inline-flex; flex-direction: row; align-items: center; gap: 6px;
 }
+/* Tight badge on phone cards: smaller dial caption so the gauge never
+   crowds the hearts row. */
+.mcard-gauge .shitcoin-caption { font-size: 9px; letter-spacing: 0.05em; }
 
 /* ---- Potential: one-line vision rationale under the hearts meter ---- */
 .potential-line { font-size: 13.5px; color: var(--text-dim); margin: 4px 0 0; }

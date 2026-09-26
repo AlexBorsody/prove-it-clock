@@ -236,7 +236,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                   <span className="num mcard-count">{r.earned}/{r.capacity}</span>
                 </button>
                 <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
-                  <ShitcoinMeter category={r.verdict} compact size={38} />
+                  <ShitcoinMeter category={r.verdict} compact size={32} />
                 </Link>
               </div>
               <div className="mcard-stats">
