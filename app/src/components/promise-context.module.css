@@ -27,7 +27,7 @@
 .why p { padding: 4px 0; }
 .more { width: 100%; min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg-raised); color: var(--text); font: inherit; font-size: 13px; cursor: pointer; }
 .empty { padding: 25px 0; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
-@media (max-width: 540px) { .facts > div { gap: 12px; } .facts dd { font-size: 14px; } .timeline { padding-left: 8px; } .timeline li { padding-left: 18px; } .tags a { min-height: 44px; } }
+@media (max-width: 540px) { .facts > div { gap: 12px; } .facts dd { font-size: 14px; } .timeline { padding-left: 8px; } .timeline li { padding-left: 18px; } .timeline li::before { left: 8px; } .timeline time { margin-left: 10px; } .tags a { min-height: 44px; } }
 .metricLink {
   display: inline-flex; align-items: center; gap: 4px;
   padding: 4px 12px; border-radius: 8px;
