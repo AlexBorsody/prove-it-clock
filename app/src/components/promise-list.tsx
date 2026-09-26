@@ -10,25 +10,11 @@ import {
   promiseReferences,
   promiseEvidenceHref,
   matchesPromiseFilter,
+  promiseDisplay,
   type PromiseFilter,
 } from "@/lib/promise-context";
 
 const PAGE_SIZE = 3;
-
-/** Display promise state using the canonical five: open / active / fulfilled / lapsed / retired. Legacy DB values normalize at the boundary. */
-export function promiseDisplay(pr: any): { label: string; tone: "good" | "dim" | "bad" } {
-  let s: string;
-  try {
-    s = normalizePromiseState(pr.state);
-  } catch {
-    return { label: "Unknown", tone: "dim" };
-  }
-  if (s === "fulfilled") return { label: "Fulfilled", tone: "good" };
-  if (s === "active") return { label: "Active", tone: "dim" };
-  if (s === "open") return { label: "Open", tone: "dim" };
-  if (s === "lapsed") return { label: "Lapsed", tone: "bad" };
-  return { label: "Retired", tone: "bad" };
-}
 
 /** One promise = one heart: the heart this promise earned, is chasing, or lost. */
 export function promiseHeart(pr: any): { filled: boolean; color: string; label: string } {

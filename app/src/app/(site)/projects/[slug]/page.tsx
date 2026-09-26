@@ -16,7 +16,7 @@ import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
-import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
+import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
@@ -24,7 +24,7 @@ import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
 import { CodeActivityChart } from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
-import PromiseList, { promiseDisplay } from "@/components/promise-list";
+import PromiseList from "@/components/promise-list";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";

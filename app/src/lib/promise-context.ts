@@ -29,6 +29,21 @@ export function promiseFilterHref(slug: string, filter: PromiseFilter): string {
   return `/projects/${slug}?promises=${filter}#promises`;
 }
 
+/** Display promise state using the canonical five: open / active / fulfilled / lapsed / retired. Legacy DB values normalize at the boundary. */
+export function promiseDisplay(pr: { state: string }): { label: string; tone: "good" | "dim" | "bad" } {
+  let s: string;
+  try {
+    s = normalizePromiseState(pr.state);
+  } catch {
+    return { label: "Unknown", tone: "dim" };
+  }
+  if (s === "fulfilled") return { label: "Fulfilled", tone: "good" };
+  if (s === "active") return { label: "Active", tone: "dim" };
+  if (s === "open") return { label: "Open", tone: "dim" };
+  if (s === "lapsed") return { label: "Lapsed", tone: "bad" };
+  return { label: "Retired", tone: "bad" };
+}
+
 export function promiseEvidenceHref(slug: string, lineage: string): string {
   return `/projects/${slug}?evidence=${encodeURIComponent(lineage)}#${promiseAnchor(slug, lineage)}-evidence`;
 }
