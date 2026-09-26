@@ -1261,6 +1261,9 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   text-decoration: none; white-space: nowrap;
 }
 .metric-btn:active { transform: scale(0.97); }
+/* ---- Button element rule: horizontal padding always exceeds vertical.
+   Low top/bottom on every button by default; specific classes refine it. */
+button { padding-block: 8px; padding-inline: 14px; }
 /* Text CTA links are buttons too: filled background, rounded corners. */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -1330,7 +1333,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .comp-tags .tag { border: none; text-decoration: none; }
 .comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 0; padding: 8px 14px; }
 .comp-sources { scroll-margin-top: 110px; }
-.comp-sources:target { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 4px; }
 .comp-sources > summary, .comp-sources li a { min-height: 44px; padding: 10px 0; font-size: 15px; }
 .comp-sources li a { display: block; }
 .promise-filter-status { font-size: 15px; color: var(--text-dim); }
