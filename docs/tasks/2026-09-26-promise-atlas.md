@@ -1,6 +1,6 @@
 # Promise Atlas v1: build tasks
 
-**2026-09-26, Alex's revised brief. A1–A6 implemented and locally verified; release verification below.**
+**2026-09-26, Alex's revised brief. A1–A6 implemented, pushed and verified on Vercel.**
 This replaces the previous embeddings-first task sequence. Build a curated,
 stable map of the published promise ledger. No scoring changes, vectors,
 Index, weights, category performance rankings or homepage replacement.
@@ -108,7 +108,7 @@ active. Atlas must interpret the actual record methodology explicitly.
 - Original claim attribution: the grading workstream should supply explicit
   claim-source roles, quotes/locators and claim text where missing. Atlas will
   expose gaps without blocking map/list work or inventing attribution.
-- No ambiguous category decisions submitted yet; list actual cases after A3.
+- Seven ambiguous assignments remain Unclassified; see the build audit below.
 - No new fulfillment rubric or warning formula is decided in this workstream.
 
 ## Build progress — Codex, 2026-09-26
@@ -131,7 +131,7 @@ active. Atlas must interpret the actual record methodology explicitly.
 - A4/A5 implemented: retained SVG slots, uniform state-colored nodes/core rings,
   fixed positions under filters, project/category/status/text controls, URL
   state, pan/zoom, evidence panel and a keyboard-accessible list.
-- A6 integration underway: secondary Scores/Atlas navigation, entry links,
+- A6 integration complete: secondary Scores/Atlas navigation, entry links,
   later-promise reveal through native disclosures, and network-backed dynamic
   page-data requests. Removed redundant `docs/vitals.md` at Alex's request;
   no references pointed to it, and CODE remains documented in implementation.
@@ -168,4 +168,18 @@ active. Atlas must interpret the actual record methodology explicitly.
   two-finger touchscreen pinch. Pinch handling is implemented but a real-device
   gesture check remains a release follow-up. Original-source gaps and the seven
   classification decisions remain with the grading/review workstream.
-- Commit/push and live-route verification are the remaining release actions.
+
+### Release verification
+
+- Implementation commit `ae4fd51` pushed to `main`; Vercel reported success.
+- Opened [the live Atlas](https://prove-it-clock.vercel.app/atlas) in the browser:
+  all 115 published promises loaded. Bitcoin + Lapsed filters returned one
+  promise; selecting it opened the recorded rationale, source-role warning,
+  assessment reference and full-record link. No production console errors
+  were recorded during these checks.
+- Live page document width matched the 320px mobile viewport. Desktop/mobile
+  interaction coverage above remains applicable; physical pinch is still the
+  explicitly unverified device check.
+- No database writes, scoring publications or methodology changes. The seven
+  Unclassified assignments and missing original-source attribution remain
+  visible review work, not hidden omissions.
