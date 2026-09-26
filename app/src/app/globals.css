@@ -166,7 +166,7 @@ a[href^="http"]::after {
   letter-spacing: 0.06em; text-transform: uppercase;
   padding: 2px 8px; border-radius: 20px; border: none;
   background: #323546; /* CMC dark neutral chip */
-  color: var(--text-dim); vertical-align: middle;
+  color: var(--text-dim); vertical-align: middle; text-decoration: none;
 }
 .tag.measured { color: var(--green); background: #173C37; } /* CMC dark positive tint */
 .tag.modeling { color: var(--purple); background: #25015A; } /* CMC dark purple tint */
@@ -1138,7 +1138,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .ph-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
 .ph-btn {
   display: flex; align-items: center; justify-content: center; gap: 6px;
-  min-height: 48px; padding: 10px 8px; border-radius: 10px;
+  padding: 8px 14px; border-radius: 10px;
   border: 1px solid var(--border); text-decoration: none;
   font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--text-dim); -webkit-tap-highlight-color: transparent;
@@ -1355,7 +1355,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   display: block;
   width: 100%;
   margin: 4px 0 12px;
-  padding: 14px;
+  padding: 11px 14px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--bg-panel);
