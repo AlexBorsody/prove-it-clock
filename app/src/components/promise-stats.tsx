@@ -24,11 +24,9 @@ export default function PromiseStats({ slug, name, promises, earned, methodology
     ...(counts.unknown ? [{ label: "Unknown state", value: counts.unknown, tone: "open", filter: "unknown" as const }] : []),
     { label: "Promises tracked", value: promises.length, tone: "total", filter: "all" },
   ];
-  const version = methodology.match(/\bv\d+(?:\.\d+)*\b/i)?.[0] ?? methodology;
   const facts = <>
     <dl className={styles.facts}>
       {rows.map(row => <div key={row.label}><dt>{row.label}</dt><dd className={styles[row.tone]}>{available ? <Link className={styles.metricLink} href={promiseFilterHref(slug, row.filter)} aria-label={`${row.label}: ${row.value}. View promise evidence`}>{row.value} ↗</Link> : "Unavailable"}</dd></div>)}
-      <div><dt>Methodology</dt><dd><Link href="/methodology" title={methodology}>{version || "Not recorded"}</Link></dd></div>
       <div><dt>Last research</dt><dd>{date(researchAt)}</dd></div>
       <div><dt>Assessment as of</dt><dd>{date(asOf)}</dd></div>
     </dl>
