@@ -395,7 +395,7 @@ Scored assessments live in [case-studies/](case-studies/) ([BAT](case-studies/ba
 used to sit in this doc are retired: the case studies are the examples now.
 <!-- ALGORITHM-END -->
 
-## Appendix: HYPE pipeline
+## Appendix: Social pipeline
 
 Our proprietary attention-metrics layer. Not a CoinGecko clone: we juxtapose
 **hype** (observed attention) against **substance** (hearts earned). A project
