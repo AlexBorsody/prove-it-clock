@@ -5,13 +5,15 @@ import { usePathname } from "next/navigation";
 import Icon, { type ChromeIconName } from "@/components/chrome-icons";
 
 /**
- * Bottom tab bar, app-style: Scoreboard / HYPE / Compare / Methodology.
+ * Bottom tab bar, app-style: Scoreboard / HYPE / Compare / Methodology / API.
+ * Tour is a button, not a route, so it stays out of the TABS list.
  */
 const TABS: Array<{ href: string; label: string; icon: ChromeIconName }> = [
   { href: "/", label: "Scoreboard", icon: "grid" },
   { href: "/hype", label: "HYPE", icon: "megaphone" },
   { href: "/compare", label: "Compare", icon: "sliders" },
   { href: "/methodology", label: "Methodology", icon: "book" },
+  { href: "/developers", label: "API", icon: "code" },
 ];
 
 export default function BottomNav() {

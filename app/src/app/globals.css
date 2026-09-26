@@ -1066,6 +1066,11 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
 }
 .mcard-hearts-toggle:active { transform: scale(0.97); }
+.api-docs {
+  background: #fff; border-radius: 14px; padding: 8px;
+  border: 1px solid var(--border-strong); overflow: hidden;
+}
+.api-docs .swagger-ui { font-family: inherit; }
 .hearts-cell-toggle {
   display: inline-flex; align-items: center; gap: 8px;
   background: none; border: none; padding: 4px 6px; margin: -4px -6px;
