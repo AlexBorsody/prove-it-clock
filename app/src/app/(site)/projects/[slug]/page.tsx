@@ -173,18 +173,7 @@ export default async function ProjectPage({ params, searchParams }: {
           verdict meter, and the stats. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
-        <h2>Promises</h2>
-        <details className="promise-help">
-          <summary>
-            <Icon name="help" size={15} />
-            <span>About promises</span>
-          </summary>
-          <div className="promise-help-body">
-            <p>What {latest.name} promised, and what actually happened. One promise, one heart.</p>
-            <p>One promise. One heart. Earned by delivery.</p>
-            <p>Open hearts are still unearned. Retired promises were withdrawn. News matches never change these counts.</p>
-          </div>
-        </details>
+        <h2 className="with-tip"><span>Promises</span> <Icon name="info" size={15} title={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
         {healthTotal > 0 ? (
           <div className="promise-health">
             <h3 className="promise-subhead">Delivery health</h3>

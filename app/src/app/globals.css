@@ -227,13 +227,15 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
   padding: 14px 16px;
   margin: 0 0 14px;
 }
-.promise-head { display: flex; align-items: center; gap: 10px; }
+.promise-head { display: flex; align-items: flex-start; gap: 10px; }
 .comp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .comp-name { font-weight: 700; font-size: 17px; }
-.comp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
+/* Everything under the title aligns to the title's left edge: the heart
+   touch target is 44px wide plus the 10px flex gap. */
+.comp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px 54px; }
 .comp-hearts { font-size: 14.5px; color: var(--text-dim); margin-left: 2px; font-weight: 600; }
-.comp-desc { color: var(--text-dim); font-size: 15px; margin: 0 0 6px; font-weight: 500; }
-.comp-sources { margin-top: 10px; }
+.comp-desc { color: var(--text-dim); font-size: 15px; margin: 0 0 6px 54px; font-weight: 500; }
+.comp-sources { margin-top: 10px; margin-left: 54px; }
 .comp-sources > summary { cursor: pointer; color: var(--text-faint); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
 .comp-sources > summary:hover { color: var(--text-dim); }
 .comp-sources ul { margin: 8px 0 0; padding: 0; list-style: none; }
@@ -1092,17 +1094,8 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 /* ---- Potential: one-line vision rationale under the hearts meter ---- */
 .potential-line { font-size: 13.5px; color: var(--text-dim); margin: 4px 0 0; }
 
-/* ---- Consolidated promises section: collapsible help, subheads, embedded stats ---- */
-.promise-help { margin: 2px 0 16px; }
-.promise-help > summary {
-  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-  color: var(--text-faint); font-size: 13px; font-weight: 600;
-  min-height: 44px; -webkit-tap-highlight-color: transparent;
-}
-.promise-help > summary::-webkit-details-marker { display: none; }
-.promise-help > summary:hover { color: var(--text-dim); }
-.promise-help-body { display: grid; gap: 6px; margin: 2px 0 4px; }
-.promise-help-body p { margin: 0; font-size: 14px; color: var(--text-dim); }
+/* ---- Consolidated promises section: subheads, embedded stats ---- */
+.panel h2.with-tip { display: flex; align-items: center; justify-content: space-between; }
 .promise-subhead {
   font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text); margin: 28px 0 12px; font-weight: 800;
