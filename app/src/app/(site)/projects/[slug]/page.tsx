@@ -211,11 +211,11 @@ export default async function ProjectPage({ params, searchParams }: {
           <p className="promise-filter-status" role="status">
             {(() => {
               const n = promises.filter((pr) => matchesPromiseFilter(pr.state, filter)).length;
-              const label = filter.replace("-", " ");
+              const label = filter === "in-play" ? "active" : filter.replace("-", " ");
               const showAll = <Link href={promiseFilterHref(slug, "all")}>Show all promises</Link>;
               return n === 0
                 ? <>No {label} promises yet. {showAll}</>
-                : <>Showing {n} {label} promise{n === 1 ? "" : "s"}. {showAll}</>;
+                : showAll;
             })()}
           </p>
         )}
