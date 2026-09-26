@@ -31,7 +31,7 @@ and the vision disagree, the vision wins and the plan gets fixed.
   the tab title only); search is a lone icon button that expands into a
   full-width field (Fuse.js over name/symbol/slug, coin icons, keyboard
   nav). Homepage goes straight to the rankings, no hero text. Bottom tabs:
-  Scoreboard / HYPE / CODE / Compare / Methodology / API / Tour (walkthrough
+  Scoreboard / Metrics / Methodology / API / Tour (walkthrough
   replay). Pixel-heart Home icon. Project grid: PROMISES / CODE / USAGE /
   HYPE power meters (Marvel-card pattern); CODE and HYPE bars scale to the
   current leader; CODE/HYPE rows are buttons into /code and /hype.
@@ -714,3 +714,13 @@ cd app
 npm run social:collect -- --dry-run   # real sources, no DB write
 npm run test:social
 ```
+
+## Metrics navigation (2026-09-26)
+
+CODE, HYPE and Compare are supporting views grouped under one Metrics bottom-nav
+item. The shared MetricsNav supplies CODE / HYPE / Compare links above those
+existing pages. `/metrics` opens CODE by redirecting to `/code`; the existing
+`/code`, `/hype`, `/compare` URLs, sorting queries, search anchors and project
+links keep working. The Metrics bottom item is active for all three views.
+This is a navigation-only change: datasets, page components and project-detail
+components remain intact. Project details carry the promise/evidence message.

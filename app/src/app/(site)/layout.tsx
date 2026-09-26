@@ -1,5 +1,6 @@
 import "../globals.css";
 import Link from "next/link";
+import MetricsNav from "@/components/metrics-nav";
 import BottomNav from "@/components/bottom-nav";
 import Walkthrough from "@/components/walkthrough";
 import ProjectSearch from "@/components/project-search";
@@ -31,7 +32,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           <ProjectSearch paths={paths} />
         </div>
       </header>
-      <main className="with-bottomnav">{children}</main>
+      <main className="with-bottomnav"><MetricsNav />{children}</main>
       <BottomNav />
       <Walkthrough />
       <SearchAnchor />

@@ -91,8 +91,8 @@ waits on the data.
 The homepage goes straight to the rankings. No hero text, no brand wordmark
 in the app chrome (brand lives in the browser tab title only); the slim
 sticky header carries a search icon button (upper right) that expands into
-a full-width field, and the bottom tab bar carries Scoreboard / HYPE /
-Compare / Methodology / API / Tour.
+a full-width field, and the bottom tab bar carries Scoreboard / Metrics /
+Methodology / API / Tour.
 
 The scoreboard, CoinMarketCap coin-list pattern, mobile-first:
 
@@ -167,8 +167,8 @@ What we steal:
   (each project's slice of total mentions), on the homepage or a HYPE view.
 - **Mindshare bump chart**: HYPE rank over time per project, 30d/90d
   toggle, coin icons on rank lines. Built from our own snapshots.
-- **Bottom tab bar**: Scoreboard / HYPE / Compare / Methodology.
-- **HYPE leaderboard** (the HYPE tab, CMC Alpha > Socials pattern): rows of
+- **Bottom tab bar**: Scoreboard / Metrics / Methodology / API / Tour.
+- **HYPE leaderboard** (inside Metrics, CMC Alpha > Socials pattern): rows of
   coin icon + name, hearts, HYPE mentions + change vs baseline, verdict
   badge. No price column, no sentiment column. Sortable by mentions or by
   hearts, so the hype-vs-substance gap is visible in one glance.
@@ -280,3 +280,9 @@ and tested against real outcomes.
 
 Real USAGE metrics per project, and the CODE score definition. The Index
 formula is locked; these two inputs are the build's critical path.
+
+### Metrics are supporting context (2026-09-26)
+
+One bottom navigation item, Metrics, contains CODE, HYPE and Compare as nested
+views. Their existing pages and modular components stay intact. Project details
+are the main message: what was promised, what happened, and the evidence.

@@ -2,17 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isMetricsPath } from "@/lib/metric-navigation";
 import Icon, { type ChromeIconName } from "@/components/chrome-icons";
 
 /**
- * Bottom tab bar, app-style: Scoreboard / HYPE / CODE / Compare / Methodology / API.
+ * Bottom tab bar, app-style: Scoreboard / Metrics / Methodology / API.
  * Tour is a button, not a route, so it stays out of the TABS list.
  */
 const TABS: Array<{ href: string; label: string; shortLabel?: string; icon: ChromeIconName }> = [
   { href: "/", label: "Scoreboard", shortLabel: "Scores", icon: "grid" },
-  { href: "/hype", label: "HYPE", icon: "megaphone" },
-  { href: "/code", label: "CODE", icon: "code" },
-  { href: "/compare", label: "Compare", icon: "sliders" },
+  { href: "/metrics", label: "Metrics", icon: "chart" },
   { href: "/methodology", label: "Methodology", shortLabel: "Method", icon: "book" },
   { href: "/developers", label: "API", icon: "code" },
 ];
@@ -22,7 +21,7 @@ export default function BottomNav() {
   return (
     <nav className="bottomnav" aria-label="Primary">
       {TABS.map((t) => {
-        const active = t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
+        const active = t.href === "/metrics" ? isMetricsPath(pathname) : t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
         return (
           <Link
             key={t.href}

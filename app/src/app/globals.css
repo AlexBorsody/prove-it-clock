@@ -1012,7 +1012,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .stat-head { display: flex; align-items: center; gap: 8px; }
 .stat-head .icon { color: var(--text-dim); }
 
-/* Seven tabs stay usable on phones and narrow tablet windows. */
+/* Primary navigation stays usable on phones and narrow tablet windows. */
 @media (max-width: 800px) {
   .bottomnav { padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 2px; }
   .bottomnav a, .bottomnav .tabbtn {
@@ -1268,5 +1268,5 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 
 @media (max-width: 380px) {
   .bottomnav { padding-inline: 4px; gap: 0; }
-  .bottomnav a, .bottomnav .tabbtn { font-size: 10px; padding-inline: 1px; }
+  .bottomnav a, .bottomnav .tabbtn { font-size: 11.5px; padding-inline: 2px; }
 }
