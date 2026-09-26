@@ -216,41 +216,8 @@ export default async function ProjectPage({ params, searchParams }: {
 
       <span id="hearts" aria-hidden="true" />
       <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} />
-      <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
-      {/* 2. CODE: the row component from the /code ranking, plus the activity chart. */}
-      <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
-        <h2>CODE</h2>
-        <p className="panel-sub">
-          Who is actually working {latest.name}.
-        </p>
-        <div className="code-rows">
-          <CodeRow
-            row={codeRowData}
-            search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
-          />
-        </div>
-        <div style={{ marginTop: 12 }}>
-          <CodeActivityChart codeWeeks={codeWeeks} />
-        </div>
-        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <ButtonLink href="/code">See the CODE ranking</ButtonLink>
-        </p>
-      </section>
-
-      {/* HYPE: shared summary, directly after CODE. */}
-      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
-        <h2>HYPE</h2>
-        <p className="panel-sub">
-          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
-        </p>
-        <HypeSummaryCard row={hypeRow} />
-        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
-        </p>
-      </section>
-
-      {/* 4. Promises, with machinery hidden under the hood. */}
+      {/* Promises stay directly below their summary stats. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2>Promises</h2>
@@ -338,7 +305,9 @@ export default async function ProjectPage({ params, searchParams }: {
         </details>
       </div>
 
-      {/* 6. Evidence and methodology. */}
+      <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
+
+      {/* Evidence and methodology. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-evidence`, title: `${latest.name} evidence and methodology`, kind: "Evidence", project: slug, keywords: `${latest.symbol} sources scoring history` })}>
         <h2>Evidence and methodology</h2>
         <p className="panel-sub">
@@ -359,6 +328,38 @@ export default async function ProjectPage({ params, searchParams }: {
           <Link href="/methodology">How the scoring works</Link>
         </p>
       </div>
+
+      {/* Supporting metrics: CODE, HYPE, then Market. */}
+      <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
+        <h2>CODE</h2>
+        <p className="panel-sub">
+          Who is actually working {latest.name}.
+        </p>
+        <div className="code-rows">
+          <CodeRow
+            row={codeRowData}
+            search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
+          />
+        </div>
+        <div style={{ marginTop: 12 }}>
+          <CodeActivityChart codeWeeks={codeWeeks} />
+        </div>
+        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
+          <ButtonLink href="/code">See the CODE ranking</ButtonLink>
+        </p>
+      </section>
+
+      {/* HYPE: shared summary, directly after CODE. */}
+      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
+        <h2>HYPE</h2>
+        <p className="panel-sub">
+          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
+        </p>
+        <HypeSummaryCard row={hypeRow} />
+        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
+          <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
+        </p>
+      </section>
 
       <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
     </>
