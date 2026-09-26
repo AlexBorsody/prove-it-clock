@@ -69,6 +69,7 @@ export default async function ComparePage() {
         },
         code: {
           word: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
+          stars: vitals?.stars ?? null,
           commits90d: vitals?.commits90d ?? null,
           lastCommitAt: vitals?.lastCommitAt ?? null,
           openPRs: vitals?.openPRs ?? null,

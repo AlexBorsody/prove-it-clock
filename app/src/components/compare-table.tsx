@@ -18,7 +18,7 @@ export interface CompareProject {
   verdict: VerdictCategory;
   verdictLine: string;
   promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number };
-  code: { word: CodeWord; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null; unreachable: boolean };
+  code: { word: CodeWord; stars: number | null; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null; unreachable: boolean };
   use: "coming";
   hype: { mentions: number | null; collecting: boolean; baselineWeeks: number };
 }
@@ -39,6 +39,9 @@ function fmtDate(iso: string): string {
   const d = new Date(iso);
   return isNaN(d.getTime()) ? iso.slice(0, 10) : d.toISOString().slice(0, 10);
 }
+
+const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
+const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
 
 function Cell({ row, p }: { row: string; p: CompareProject }) {
   switch (row) {
@@ -90,6 +93,9 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
         <div>
           {word}
           <span className="cell-sub">
+            {p.code.stars != null ? `${compact(p.code.stars)} stars` : "No star data"}
+          </span>
+          <span className="cell-sub">
             {p.code.commits90d != null ? `${p.code.commits90d} commits / 90d` : "No commit data"}
           </span>
           <span className="cell-sub">
@@ -107,11 +113,10 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
       ) : (
         <div className="num">
           <b>{p.hype.mentions.toLocaleString()}</b>
+          <span className="cell-sub">news mentions · last 7 days</span>
           {p.hype.collecting ? (
-            <span className="cell-sub">collecting, week {p.hype.baselineWeeks}/8</span>
-          ) : (
-            <span className="cell-sub">mentions / 7d</span>
-          )}
+            <span className="cell-sub">baseline collecting · week {p.hype.baselineWeeks} of 8</span>
+          ) : null}
         </div>
       );
     default:
