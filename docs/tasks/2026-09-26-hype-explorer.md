@@ -27,3 +27,5 @@ BAT browser check caught unrelated stories matched through publisher site naviga
 Muse owns the upcoming modular component refactor (per Alex). Reuse `/api/v1/mentions/{slug}`
 and pure `hype-mentions.ts` aggregations for project-specific views; the current explorer owns
 its selector state. Codex will review that refactor afterward; no competing refactor started.
+
+Merge note: fc118a3 added the modular-card brief but also reversed the six tracked integration files from ea19b2d. Preserved its new brief and retained the HYPE explorer wiring, CODE tab, mobile styles and OpenAPI endpoint to avoid removing the shipped feature.
