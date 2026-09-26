@@ -8,12 +8,11 @@
 .facts dd.lapsed, .facts dd.retired { color: var(--red); }
 .note { color: var(--text-faint); font-size: 12px; line-height: 1.6; margin: 10px 0; }
 .textLink { display: inline-block; margin-top: 4px; min-height: 36px; padding-top: 8px; font-size: 13px; }
-.timeline { list-style: none; padding: 0 0 0 17px; margin: 24px 0 0; }
-.timeline li { position: relative; padding: 0 0 24px 22px; border-left: 1px solid var(--border-strong, #384357); }
-.timeline li:last-child { border-left-color: transparent; padding-bottom: 6px; }
-.timeline li::before { content: ''; position: absolute; width: 9px; height: 9px; background: var(--green); border: 4px solid var(--bg-panel, #131a28); border-radius: 50%; left: -9px; top: 1px; }
-.timeline time { color: var(--text-faint); font-size: 11px; }
-.timeline h3 { margin: 9px 0 9px; font-size: 16px; line-height: 1.5; overflow-wrap: anywhere; }
+.timeline { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 22px; }
+.timeline li { position: relative; padding-left: 18px; }
+.timeline li::before { content: ''; position: absolute; left: 0; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+.timeline time { display: block; color: var(--text-faint); font-size: 12px; margin-bottom: 4px; }
+.timeline h3 { margin: 0 0 6px; font-size: 16px; line-height: 1.4; overflow-wrap: anywhere; }
 .timeline h3 a { color: var(--text); text-decoration: none; }
 .timeline h3 a:hover { color: var(--accent); }
 .publisher { display: inline-block; font-size: 11px; color: var(--text-dim); }
