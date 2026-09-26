@@ -4,7 +4,8 @@
  * never duplicate this markup.
  */
 import Link from "next/link";
-import { GithubMark, StarIcon, ForkIcon } from "@/components/icons";
+import type { ReactNode } from "react";
+import { GithubMark, StarIcon, ForkIcon, CommitIcon } from "@/components/icons";
 import { searchMeta } from "@/lib/search-sections";
 
 export interface CodeRowData {
@@ -23,6 +24,14 @@ export interface CodeRowData {
 const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
 const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
 
+function MetricLink({ href, label, children }: { href?: string; label: string; children: ReactNode }) {
+  return href ? (
+    <a className="code-metric" href={href} target="_blank" rel="noreferrer" aria-label={label}>
+      {children}
+    </a>
+  ) : <div className="code-metric">{children}</div>;
+}
+
 export default function CodeRow({
   row,
   rank,
@@ -36,7 +45,7 @@ export default function CodeRow({
   const r = row;
   return (
     <article
-      className="code-row search-section"
+      className={`code-row search-section${rank == null ? " code-row-unranked" : ""}`}
       {...searchMeta({
         id: search.id,
         title: search.title,
@@ -67,25 +76,29 @@ export default function CodeRow({
           <GithubMark className="github-btn-icon" />
         </a>
       ) : null}
-      <span className="code-social">
-        <span className="code-social-row" title="Stars">
-          <StarIcon className="code-social-icon" />
-          <span className="num">{compact(r.stars)}</span>
-        </span>
-        <span className="code-social-row" title="Forks">
-          <ForkIcon className="code-social-icon" />
-          <span className="num">{compact(r.forks)}</span>
-        </span>
-      </span>
-      <span className="code-commits">
-        <span className="code-commits-num num">
-          {r.failed ? "-" : (r.commits90d ?? 0).toLocaleString()}
-        </span>
-        <span className="cell-sub">
-          {r.failed ? "Couldn't reach GitHub" : "commits / 90d"}
-        </span>
-        <span className="cell-sub">{r.teamLine}</span>
-      </span>
+      <div className="code-metrics">
+        <MetricLink href={r.repoUrl ? `${r.repoUrl}/stargazers` : undefined} label={`${r.name} stars on GitHub`}>
+          <span className="code-metric-label"><StarIcon /> Stars</span>
+          <span className="code-metric-value num">{compact(r.stars)}</span>
+        </MetricLink>
+        <MetricLink href={r.repoUrl ? `${r.repoUrl}/forks` : undefined} label={`${r.name} forks on GitHub`}>
+          <span className="code-metric-label"><ForkIcon /> Forks</span>
+          <span className="code-metric-value num">{compact(r.forks)}</span>
+        </MetricLink>
+        <MetricLink href={r.repoUrl ? `${r.repoUrl}/commits` : undefined} label={`${r.name} commit history on GitHub`}>
+          <span className="code-metric-label"><CommitIcon /> Commits</span>
+          <span className="code-metric-value num">
+            {r.failed || r.commits90d == null ? "—" : r.commits90d.toLocaleString()}
+          </span>
+          <span className="code-metric-period">{r.failed ? "Unavailable" : "90 days"}</span>
+        </MetricLink>
+      </div>
+      {r.repoUrl ? (
+        <a className="code-team" href={`${r.repoUrl}/graphs/contributors`} target="_blank" rel="noreferrer">
+          <span>{r.teamLine}</span><span className="code-team-action">View contributors ↗</span>
+        </a>
+      ) : <p className="code-team">{r.teamLine}</p>}
+
     </article>
   );
 }

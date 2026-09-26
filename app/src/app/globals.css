@@ -968,19 +968,20 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .code-rows { display: flex; flex-direction: column; }
 .code-row {
   display: grid;
-  grid-template-columns: 26px minmax(0, 1fr) auto auto auto;
-  grid-template-areas: "rank coin github social commits";
-  gap: 10px; align-items: center;
-  padding: 14px 4px; border-top: 1px solid var(--border);
+  grid-template-columns: 26px minmax(0, 1fr) 44px;
+  grid-template-areas: "rank coin github" ". metrics metrics" ". team team";
+  gap: 14px 10px; align-items: center;
+  padding: 20px 4px; border-top: 1px solid var(--border);
+}
+.code-row-unranked {
+  grid-template-columns: minmax(0, 1fr) 44px;
+  grid-template-areas: "coin github" "metrics metrics" "team team";
 }
 .code-row:first-child { border-top: none; }
 .code-rank { grid-area: rank; font-weight: 700; font-size: 16px; color: var(--text-faint); }
-.code-coin-link { grid-area: coin; display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; min-width: 0; }
-.code-row > .github-btn { grid-area: github; justify-self: end; }
-.code-name {
-  font-weight: 700; font-size: 18px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
-}
+.code-coin-link { grid-area: coin; display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: inherit; min-width: 0; }
+.code-row > .github-btn { grid-area: github; justify-self: end; width: 44px; height: 44px; }
+.code-name { font-weight: 700; font-size: 20px; overflow-wrap: anywhere; min-width: 0; }
 /* GitHub repo button: clearly a button. */
 .github-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -990,22 +991,38 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 }
 .github-btn:active { transform: scale(0.94); }
 .github-btn-icon { width: 20px; height: 20px; }
-.code-social { grid-area: social; display: flex; flex-direction: column; gap: 3px; }
-.code-social-row {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 13px; font-weight: 700; color: var(--text-dim); white-space: nowrap;
+.code-metrics { grid-area: metrics; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.code-metric {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 5px;
+  min-width: 0; min-height: 96px; padding: 12px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); text-decoration: none;
 }
-.code-social-icon { width: 14px; height: 14px; flex-shrink: 0; }
-.code-commits { grid-area: commits; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 0; text-align: right; }
-.code-commits-num { font-size: 24px; font-weight: 800; }
+.code-metric-label { display: flex; align-items: center; gap: 5px; font-size: 14px; color: var(--text-dim); }
+.code-metric-label svg { width: 16px; height: 16px; flex-shrink: 0; }
+.code-metric-value { font-size: 26px; font-weight: 800; line-height: 1.2; white-space: nowrap; }
+.code-metric[href]::after, .code-team[href]::after { content: none; }
+.code-metric-period { font-size: 13px; color: var(--text-dim); }
+.code-team { grid-area: team; display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 8px 0; font-size: 16px; line-height: 1.5; color: var(--text-dim); text-decoration: none; }
+.code-team-action { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.code-row a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.code-metric[href]:hover { border-color: var(--text-dim); }
+.code-metric[href]:hover .code-metric-label, .code-team:hover .code-team-action, .code-coin-link:hover .code-name { text-decoration: underline; }
 @media (max-width: 640px) {
-  .code-row {
-    grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1fr) 44px;
-    grid-template-areas: "rank coin coin github" ". social commits commits";
-    gap: 8px; padding: 14px 2px;
-  }
-  .code-name { font-size: 16px; white-space: normal; overflow-wrap: anywhere; }
-  .code-commits-num { font-size: 20px; }
+  .code-row { gap: 12px 8px; padding: 18px 0; }
+  .code-metrics { gap: 6px; }
+  .code-metric { padding: 10px 8px; }
+  .code-metric-value { font-size: 24px; }
+}
+@media (max-width: 420px) {
+  .code-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .code-metric:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; min-height: 72px; align-items: center; }
+  .code-metric:last-child .code-metric-value { grid-column: 2; grid-row: 1 / 3; }
+  .code-metric:last-child .code-metric-period { grid-column: 1; }
+}
+@media (max-width: 380px) {
+  .code-row:not(.code-row-unranked) { grid-template-areas: "rank coin github" "metrics metrics metrics" "team team team"; }
+  .code-metric-label { flex-wrap: wrap; gap: 3px; }
 }
 
 /* Stat strip cells with metric icons. */
