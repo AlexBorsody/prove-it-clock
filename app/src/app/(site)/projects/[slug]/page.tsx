@@ -18,7 +18,7 @@ import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
-import { promiseAnchor, promiseReferences } from "@/lib/promise-context";
+import { promiseAnchor, promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
@@ -65,8 +65,12 @@ function claimLabel(t: string): string {
   return t;
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProjectPage({ params, searchParams }: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ promises?: string; evidence?: string }>;
+}) {
+  const [{ slug }, query] = await Promise.all([params, searchParams]);
+  const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
   const [historyData, rankings, vitals, team, hypeSnaps] = await Promise.all([
     readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
@@ -119,6 +123,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         }
       })(),
       core: !!pr?.core,
+      evidenceHref: pr ? promiseEvidenceHref(slug, String(pr.lineage)) : undefined,
     };
   });
   const verdictEmptyText =
@@ -247,21 +252,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <div className="promise-health-label">Delivery health</div>
             <div
               className="ph-track"
-              role="img"
+              role="group"
               aria-label={`Delivery health: ${health.kept} kept, ${health.inPlay} in play, ${health.failed} failed`}
             >
-              <span className="ph-seg kept" style={{ width: `${(health.kept / healthTotal) * 100}%` }} />
-              <span className="ph-seg inplay" style={{ width: `${(health.inPlay / healthTotal) * 100}%` }} />
-              <span className="ph-seg failed" style={{ width: `${(health.failed / healthTotal) * 100}%` }} />
+              <Link href={promiseFilterHref(slug, "kept")} className="ph-seg kept" aria-label={`Evidence for ${health.kept} kept promises`} style={{ width: `${(health.kept / healthTotal) * 100}%` }} tabIndex={-1} />
+              <Link href={promiseFilterHref(slug, "in-play")} className="ph-seg inplay" aria-label={`Evidence for ${health.inPlay} in play promises`} style={{ width: `${(health.inPlay / healthTotal) * 100}%` }} tabIndex={-1} />
+              <Link href={promiseFilterHref(slug, "failed")} className="ph-seg failed" aria-label={`Evidence for ${health.failed} failed promises`} style={{ width: `${(health.failed / healthTotal) * 100}%` }} tabIndex={-1} />
             </div>
             <div className="ph-legend">
-              <span className="tag measured">{health.kept} kept</span>
-              <span className="tag na">{health.inPlay} in play</span>
-              <span className="tag bad">{health.failed} failed</span>
+              <Link className="tag measured evidence-link" href={promiseFilterHref(slug, "kept")} aria-current={filter === "kept" ? "page" : undefined}>{health.kept} kept ↗</Link>
+              <Link className="tag na evidence-link" href={promiseFilterHref(slug, "in-play")} aria-current={filter === "in-play" ? "page" : undefined}>{health.inPlay} in play ↗</Link>
+              <Link className="tag bad evidence-link" href={promiseFilterHref(slug, "failed")} aria-current={filter === "failed" ? "page" : undefined}>{health.failed} failed ↗</Link>
             </div>
           </div>
         ) : null}
+        {filter !== "all" && (
+          <p className="promise-filter-status" role="status">
+            Showing {promises.filter(pr => matchesPromiseFilter(pr.state, filter)).length} {filter.replace("-", " ")} promises. {" "}
+            <Link href={promiseFilterHref(slug, "all")}>Show all promises</Link>
+          </p>
+        )}
         {promises.map((pr, i) => {
+          if (!matchesPromiseFilter(pr.state, filter)) return null;
           const d = promiseDisplay(pr);
           const h = promiseHeart(pr);
           // Escape every non-ID character (including underscores) without
@@ -271,27 +283,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           return (
             <div className="comp-row search-section" key={pr.lineage ?? i} {...searchMeta({ id: anchor, title: `${latest.name}: ${pr.criteria ?? pr.lineage ?? "Promise"}`, kind: "Promise", project: slug, keywords: `${latest.symbol} ${pr.lineage ?? ""} ${pr.claim_type ?? ""} ${d.label}` })}>
               <div className="promise-head">
-                <Icon name="heart" size={20} filled={h.filled} title={h.label} style={{ color: h.color }} />
+                <Link className="promise-heart-evidence" href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${h.label}. View evidence`}>
+                  <Icon name="heart" size={20} filled={h.filled} title={h.label} style={{ color: h.color }} />
+                </Link>
                 <div className="comp-name">{pr.criteria}</div>
               </div>
               <div className="comp-tags">
                 <span className="tag na">{label}</span>
-                <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>{d.label}</span>
+                <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${d.label}. View evidence`}>{d.label} ↗</Link>
                 {pr.core ? <span className="tag na">Main promise</span> : null}
               </div>
               <p className="comp-desc">{pr.rationale}</p>
-              {pr.evidence?.length > 0 && (
-                <details className="comp-sources">
-                  <summary>Sources ({pr.evidence.length})</summary>
-                  <ul>
+                <details className="comp-sources" id={`${anchor}-evidence`} open={filter !== "all" || query.evidence === String(pr.lineage ?? i)}>
+                  <summary>Evidence ({pr.evidence?.length ?? 0})</summary>
+                  {pr.evidence?.length > 0 ? <ul>
                     {pr.evidence.map((e: any, j: number) => (
                       <li key={j}>
                         <a href={e.url} target="_blank" rel="noreferrer">{e.summary ?? e.url}</a>
                       </li>
                     ))}
-                  </ul>
+                  </ul> : <p className="comp-desc">No supporting sources are linked to this assessment yet.</p>}
                 </details>
-              )}
             </div>
           );
         })}
@@ -307,7 +319,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 <tr key={i}>
                   <td className="num">{pr.lineage}</td>
                   <td>{claimLabel(pr.claim_type)}</td>
-                  <td>{promiseDisplay(pr).label}</td>
+                  <td><Link href={promiseEvidenceHref(slug, String(pr.lineage ?? i))}>{promiseDisplay(pr).label} ↗</Link></td>
                 </tr>
               ))}
             </tbody>

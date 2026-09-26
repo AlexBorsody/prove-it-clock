@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { promiseAnchor, promiseReferences, promiseCounts, relatedMentions } from '../src/lib/promise-context';
+import { promiseAnchor, promiseReferences, promiseCounts, relatedMentions, matchesPromiseFilter, promiseEvidenceHref } from '../src/lib/promise-context';
 import type { NewsMention } from '../src/lib/hype-mentions';
 const promises = [
  {lineage:'btc-p09-fixed-supply', criteria:'total supply remains fixed at 21 million',state:'fulfilled'},
@@ -29,4 +29,23 @@ test('stats preserve legacy meanings, separate retired and unknown states', () =
  const states=['fulfilled','active','unfulfilled','open','lapsed','retired','surprise'];
  const counts=promiseCounts(states.map((state,i)=>({state,lineage:String(i),criteria:'test'})));
  assert.deepEqual(counts,{fulfilled:2,open:2,active:0,lapsed:1,retired:1,unknown:1});
+});
+
+test('evidence filters match displayed totals without mixing unknown with open', () => {
+ const states=['fulfilled','active','unfulfilled','open','lapsed','retired','surprise'];
+ const matching=(filter: Parameters<typeof matchesPromiseFilter>[1])=>states.filter(s=>matchesPromiseFilter(s,filter));
+ assert.deepEqual(matching('kept'),['fulfilled','active']);
+ assert.deepEqual(matching('failed'),['lapsed','retired']);
+ assert.deepEqual(matching('open'),['unfulfilled','open']);
+ assert.deepEqual(matching('in-play'),['unfulfilled','open','surprise']);
+ assert.deepEqual(matching('lapsed'),['lapsed']);
+ assert.deepEqual(matching('retired'),['retired']);
+ assert.deepEqual(matching('unknown'),['surprise']);
+ assert.deepEqual(matching('all'),states);
+});
+test('evidence links preserve lineage and target the exact source disclosure', () => {
+ const lineage='a_b & c';
+ const url=new URL(promiseEvidenceHref('btc',lineage),'https://example.com');
+ assert.equal(url.searchParams.get('evidence'),lineage);
+ assert.equal(url.hash,`#${promiseAnchor('btc',lineage)}-evidence`);
 });

@@ -1287,3 +1287,14 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .bottomnav { padding-inline: 4px; gap: 0; }
   .bottomnav a, .bottomnav .tabbtn { font-size: 11.5px; padding-inline: 2px; }
 }
+
+/* Promise metrics lead directly to their supporting records. */
+.evidence-link { text-decoration: underline; text-underline-offset: 3px; }
+.comp-tags .evidence-link, .ph-legend .evidence-link { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; }
+.ph-legend [aria-current="page"] { outline: 2px solid currentColor; outline-offset: 2px; }
+.comp-sources { scroll-margin-top: 110px; }
+.comp-sources:target { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 4px; }
+.comp-sources > summary, .comp-sources li a { min-height: 44px; padding: 10px 0; font-size: 15px; }
+.comp-sources li a { display: block; }
+.promise-filter-status { font-size: 15px; color: var(--text-dim); }
+.promise-heart-evidence { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; flex-shrink: 0; }

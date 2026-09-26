@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { VerdictCategory } from "@/lib/verdict";
 import Icon from "@/components/chrome-icons";
 
@@ -65,6 +66,7 @@ export interface ShitcoinInput {
   criteria: string;
   state: string;
   core: boolean;
+  evidenceHref?: string;
 }
 
 export default function ShitcoinMeter({
@@ -88,7 +90,7 @@ export default function ShitcoinMeter({
   return (
     <div
       className={`shitcoin-meter${compact ? " compact" : ""}`}
-      role="img"
+      role={compact ? "img" : "group"}
       aria-label={`Shitcoin warning ${score} of 10`}
       title={`Shitcoin warning ${score}/10`}
     >
@@ -114,7 +116,9 @@ export default function ShitcoinMeter({
             <ul className="shitcoin-inputs-list">
               {inputs.map((inp, i) => (
                 <li key={i}>
-                  <span className="shitcoin-input-criteria">{inp.criteria}</span>
+                  {inp.evidenceHref ? (
+                    <Link className="shitcoin-input-criteria evidence-link" href={inp.evidenceHref}>{inp.criteria} — View evidence ↗</Link>
+                  ) : <span className="shitcoin-input-criteria">{inp.criteria}</span>}
                   <span className="shitcoin-input-state num">
                     {inp.state}
                     {inp.core ? " · core" : ""}

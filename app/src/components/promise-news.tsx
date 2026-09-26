@@ -32,7 +32,7 @@ export default function PromiseNews({ slug, name, symbol, promises }: { slug: st
       <time dateTime={article.published_at}>{new Date(article.published_at).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "UTC" })} UTC</time>
       <h3><a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a></h3>
       <span className={styles.publisher}>{article.publisher}</span>
-      <div className={styles.tags}>{matches.map(match => <a key={match.promise.lineage} href={`#${match.promise.anchor}`} title={match.promise.criteria} aria-label={`Related to ${match.promise.label}: ${match.promise.criteria}`}>Relates to {match.promise.label}</a>)}</div>
+      <div className={styles.tags}>{matches.map(match => <a key={match.promise.lineage} href={`/projects/${slug}?promises=all#${match.promise.anchor}`} title={match.promise.criteria} aria-label={`Related to ${match.promise.label}: ${match.promise.criteria}`}>Relates to {match.promise.label}</a>)}</div>
       <details className={styles.why}><summary>Why this match?</summary>{matches.map(match => <p key={match.promise.lineage}><b>{match.promise.label}</b> · Shared topic words: {match.terms.join(", ")}.<br /><span>{match.promise.lineage.replace(/^.*?-p\d+-/i, "").replace(/-/g, " ")}</span><br />{match.promise.criteria}</p>)}</details>
     </li>)}</ol>}
     {related.length > limit && <button className={styles.more} onClick={() => setLimit(value => value + 5)}>Show more</button>}

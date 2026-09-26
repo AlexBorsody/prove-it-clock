@@ -11,6 +11,28 @@ export function promiseAnchor(slug: string, lineage: string): string {
   return `project-${slug}-promise-${id}`;
 }
 
+export const PROMISE_FILTERS = ["all", "kept", "open", "in-play", "failed", "lapsed", "retired", "unknown"] as const;
+export type PromiseFilter = typeof PROMISE_FILTERS[number];
+
+export function matchesPromiseFilter(state: string, filter: PromiseFilter): boolean {
+  if (filter === "all") return true;
+  let normalized: string;
+  try { normalized = normalizePromiseState(state); } catch { normalized = "unknown"; }
+  if (filter === "kept") return normalized === "fulfilled";
+  if (filter === "open") return ["open", "active"].includes(normalized);
+  if (filter === "in-play") return ["open", "active", "unknown"].includes(normalized);
+  if (filter === "failed") return ["lapsed", "retired"].includes(normalized);
+  return normalized === filter;
+}
+
+export function promiseFilterHref(slug: string, filter: PromiseFilter): string {
+  return `/projects/${slug}?promises=${filter}#promises`;
+}
+
+export function promiseEvidenceHref(slug: string, lineage: string): string {
+  return `/projects/${slug}?evidence=${encodeURIComponent(lineage)}#${promiseAnchor(slug, lineage)}-evidence`;
+}
+
 export function promiseReferences(slug: string, promises: TrackedPromise[]): PromiseReference[] {
   return promises.map((promise, index) => ({
     lineage: promise.lineage,
