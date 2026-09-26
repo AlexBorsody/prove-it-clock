@@ -205,25 +205,31 @@ export default async function ProjectPage({ params, searchParams }: {
           </div>
         </div>
         {rationale ? <p className="potential-line">{rationale}</p> : null}
-        <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
-          <span id="verdict" aria-hidden="true" />
-          <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
-        </div>
         {oneLiner ? (
           <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>{oneLiner}</p>
         ) : null}
       </div>
 
       <span id="hearts" aria-hidden="true" />
-      <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} />
 
-      {/* Promises stay directly below their summary stats. */}
+      {/* All promise content lives in one consolidated panel below:
+          help expander, delivery health, the promise list, the delivery
+          verdict meter, and the stats. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2>Promises</h2>
-        <p className="panel-sub">
-          What {latest.name} promised, and what actually happened. One promise, one heart.
-        </p>
+        <details className="promise-help">
+          <summary>
+            <Icon name="help" size={15} />
+            <span>About promises</span>
+          </summary>
+          <div className="promise-help-body">
+            <p>What {latest.name} promised, and what actually happened. One promise, one heart.</p>
+            <p>One promise. One heart. Earned by delivery.</p>
+            <p>A delivery rating against promises, never fraud or investment risk.</p>
+            <p>Open hearts are still unearned. Retired promises were withdrawn. News matches never change these counts.</p>
+          </div>
+        </details>
         {healthTotal > 0 ? (
           <div className="promise-health">
             <div className="promise-health-label">Delivery health</div>
@@ -236,10 +242,25 @@ export default async function ProjectPage({ params, searchParams }: {
               <Link href={promiseFilterHref(slug, "in-play")} className="ph-seg inplay" aria-label={`Evidence for ${health.inPlay} in play promises`} style={{ width: `${(health.inPlay / healthTotal) * 100}%` }} tabIndex={-1} />
               <Link href={promiseFilterHref(slug, "failed")} className="ph-seg failed" aria-label={`Evidence for ${health.failed} failed promises`} style={{ width: `${(health.failed / healthTotal) * 100}%` }} tabIndex={-1} />
             </div>
-            <div className="ph-legend">
-              <Link className="tag measured evidence-link" href={promiseFilterHref(slug, "kept")} aria-current={filter === "kept" ? "page" : undefined}>{health.kept} kept ↗</Link>
-              <Link className="tag na evidence-link" href={promiseFilterHref(slug, "in-play")} aria-current={filter === "in-play" ? "page" : undefined}>{health.inPlay} in play ↗</Link>
-              <Link className="tag bad evidence-link" href={promiseFilterHref(slug, "failed")} aria-current={filter === "failed" ? "page" : undefined}>{health.failed} failed ↗</Link>
+            <div className="ph-legend" role="group" aria-label="Show promise evidence by delivery state">
+              {([
+                { key: "kept", label: "kept", count: health.kept },
+                { key: "in-play", label: "in play", count: health.inPlay },
+                { key: "failed", label: "failed", count: health.failed },
+              ] as const).map((b) => {
+                const active = filter === b.key;
+                return (
+                  <Link
+                    key={b.key}
+                    className={`ph-btn ${b.key}${active ? " active" : ""}`}
+                    href={promiseFilterHref(slug, active ? "all" : b.key)}
+                    aria-pressed={active}
+                    aria-label={active ? `Show all promises` : `Show evidence for ${b.count} ${b.label} promises`}
+                  >
+                    <span className="num">{b.count}</span> {b.label} {active ? "✓" : "↗"}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         ) : null}
@@ -284,6 +305,12 @@ export default async function ProjectPage({ params, searchParams }: {
             </div>
           );
         })}
+        <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
+          <span id="verdict" aria-hidden="true" />
+          <h3 className="promise-subhead">Delivery verdict</h3>
+          <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} hideExplainer />
+        </div>
+        <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
         <details className="panel fold search-section" {...searchMeta({ id: `project-${slug}-promise-rules`, title: `${latest.name} promise rules`, kind: "Methodology", project: slug, keywords: `${latest.symbol} lineage rewards states` })} style={{ marginTop: 18 }}>
           <summary>Under the hood</summary>
           <div className="table-wrap" tabIndex={0} role="region" aria-label="Promise rules">

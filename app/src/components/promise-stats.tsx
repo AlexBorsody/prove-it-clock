@@ -7,9 +7,13 @@ function date(value?: string | null) {
   return value && Number.isFinite(Date.parse(value)) ? new Date(value).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }) : "Not recorded";
 }
 
-export default function PromiseStats({ slug, name, promises, earned, methodology, asOf, researchAt, available = true }: {
+export default function PromiseStats({ slug, name, promises, earned, methodology, asOf, researchAt, available = true, bare = false }: {
   slug: string; name: string; promises: TrackedPromise[]; earned: number; methodology: string;
   asOf: string; researchAt?: string | null; available?: boolean;
+  /** Bare: render the facts without the panel wrapper, heading explainer, or
+   *  note, for embedding inside a consolidated section. The explainer lines
+   *  live in that section's help expander instead. */
+  bare?: boolean;
 }) {
   const counts = promiseCounts(promises);
   const rows: { label: string; value: number; tone: string; filter: PromiseFilter }[] = [
@@ -21,16 +25,27 @@ export default function PromiseStats({ slug, name, promises, earned, methodology
     { label: "Promises tracked", value: promises.length, tone: "", filter: "all" },
   ];
   const version = methodology.match(/\bv\d+(?:\.\d+)*\b/i)?.[0] ?? methodology;
-  return <section className={`panel promise-stats-section search-section ${styles.stats}`} {...searchMeta({ id: `project-${slug}-stats`, title: `${name} promise stats`, kind: "Promises", project: slug, keywords: "earned open lapsed retired hearts methodology research" })}>
-    <h2>Promise stats</h2>
-    <p className={styles.sub}>One promise. One heart. Earned by delivery.</p>
+  const facts = <>
     <dl className={styles.facts}>
       {rows.map(row => <div key={row.label}><dt>{row.label}</dt><dd className={styles[row.tone]}>{available ? <Link className={styles.metricLink} href={promiseFilterHref(slug, row.filter)} aria-label={`${row.label}: ${row.value}. View promise evidence`}>{row.value} ↗</Link> : "Unavailable"}</dd></div>)}
       <div><dt>Methodology</dt><dd><Link href="/methodology" title={methodology}>{version || "Not recorded"}</Link></dd></div>
       <div><dt>Last research</dt><dd>{date(researchAt)}</dd></div>
       <div><dt>Assessment as of</dt><dd>{date(asOf)}</dd></div>
     </dl>
+  </>;
+  const inspect = <Link className={styles.textLink} href={promiseFilterHref(slug, "all")}>Inspect the promises ↗</Link>;
+  if (bare) {
+    return <div className={`promise-stats-bare search-section ${styles.stats}`} {...searchMeta({ id: `project-${slug}-stats`, title: `${name} promise stats`, kind: "Promises", project: slug, keywords: "earned open lapsed retired hearts methodology research" })}>
+      <h3 className="promise-subhead">Promise stats</h3>
+      {facts}
+      {inspect}
+    </div>;
+  }
+  return <section className={`panel promise-stats-section search-section ${styles.stats}`} {...searchMeta({ id: `project-${slug}-stats`, title: `${name} promise stats`, kind: "Promises", project: slug, keywords: "earned open lapsed retired hearts methodology research" })}>
+    <h2>Promise stats</h2>
+    <p className={styles.sub}>One promise. One heart. Earned by delivery.</p>
+    {facts}
     <p className={styles.note}>Open hearts are still unearned. Retired promises were withdrawn. News matches never change these counts.</p>
-    <Link className={styles.textLink} href={promiseFilterHref(slug, "all")}>Inspect the promises ↗</Link>
+    {inspect}
   </section>;
 }
