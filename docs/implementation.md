@@ -31,7 +31,7 @@ and the vision disagree, the vision wins and the plan gets fixed.
   the tab title only); search is a lone icon button that expands into a
   full-width field (Fuse.js over name/symbol/slug, coin icons, keyboard
   nav). Homepage goes straight to the rankings, no hero text. Bottom tabs:
-  Scoreboard / HYPE / CODE / Compare / Methodology / API / Tour (walkthrough
+  Scoreboard / HYPE / Compare / Methodology / API / Tour (walkthrough
   replay). Pixel-heart Home icon. Project grid: PROMISES / CODE / USE /
   HYPE power meters (Marvel-card pattern); CODE and HYPE bars scale to the
   current leader; CODE/HYPE rows are buttons into /code and /hype.
@@ -157,18 +157,6 @@ published runs, sorting works, dark theme throughout, no em dashes, no
 timestamps, no count labels.
 
 ## Phase 2a: HYPE leaderboard tab
-
-News explorer (2026-09-26): `/api/v1/mentions/{slug}` returns a cached,
-rolling seven-day Google News RSS sample for the eight configured projects.
-HYPE shows daily publication bars, publisher breakdowns and linked headlines;
-selecting a day or publisher filters the list. Counts are returned feed items,
-not exhaustive internet mentions. UTC edge days are partial. Cache the fetch
-timestamp with the records for one hour; provider errors are unavailable, not zero.
-This source view is independent of Supabase; existing daily numeric snapshots
-remain the saved comparison. Headline records are not persisted historical evidence.
-Reddit/Telegram currently measure audience size only; X is not connected.
-The endpoint is documented in OpenAPI. No scoring or methodology changes.
-
 
 CMC Alpha > Socials pattern per vision.md: rows of coin, hearts, HYPE
 mentions + change vs baseline, Shitcoin warning dial. Sortable by mentions

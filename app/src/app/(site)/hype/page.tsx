@@ -8,7 +8,6 @@ import {
 } from "@/lib/heart-data";
 import { verdictFor } from "@/lib/verdict";
 import HypeLeaderboard, { type HypeRow } from "@/components/hype-leaderboard";
-import HypeExplorer from "@/components/hype-explorer";
 import HypeBubbles from "@/components/hype-bubbles";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
@@ -64,22 +63,20 @@ export default async function HypePage() {
       </p>
       </div>
 
-      <HypeExplorer />
-
       {rows.length === 0 ? (
         <div className="panel">
           <h2>
             <Icon name="inbox" size={18} style={{ marginRight: 10 }} />
-            Saved snapshots unavailable
+            No HYPE data yet
           </h2>
           <p className="panel-sub" style={{ marginBottom: 0 }}>
-            Saved comparisons are unavailable. The news explorer above loads independently.
+            The social pipeline has not collected snapshots yet.
           </p>
         </div>
       ) : (
         <>
           <div className="panel search-section" {...searchMeta({ id: "hype-bubbles", title: "Hype bubbles", kind: "HYPE", keywords: "attention news mentions baseline" })} style={{ marginBottom: 18 }}>
-            <h2>Saved attention vs. delivery</h2>
+            <h2>Hype bubbles</h2>
             <p className="explain">
               HYPE is attention, not quality: bigger bubble means more crypto news mentions this week.
               "Collecting, week N/8" means the baseline is still being built. It never changes the heart score.
