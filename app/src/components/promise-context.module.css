@@ -8,9 +8,13 @@
 .facts dd.lapsed, .facts dd.retired { color: var(--red); }
 .note { color: var(--text-faint); font-size: 12px; line-height: 1.6; margin: 10px 0; }
 .textLink { display: inline-block; margin-top: 4px; min-height: 36px; padding-top: 8px; font-size: 13px; }
-.timeline { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 22px; }
-.timeline li { position: relative; padding-left: 18px; }
-.timeline li::before { content: ''; position: absolute; left: 0; top: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+.timeline { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 14px; }
+.timeline li {
+  position: relative;
+  border: 1px solid var(--border-strong); border-radius: 12px; background: var(--bg-elev);
+  padding: 14px 16px 14px 38px;
+}
+.timeline li::before { content: ''; position: absolute; left: 16px; top: 20px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 .timeline time { display: block; color: var(--text-faint); font-size: 12px; margin-bottom: 4px; }
 .timeline h3 { margin: 0 0 6px; font-size: 16px; line-height: 1.4; overflow-wrap: anywhere; }
 .timeline h3 a { color: var(--text); text-decoration: none; }
