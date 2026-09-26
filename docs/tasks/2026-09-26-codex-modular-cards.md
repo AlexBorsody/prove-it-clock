@@ -45,3 +45,21 @@ surfaces. Never duplicate the markup.
 - `npm run typecheck` and `npm run build` must pass.
 - Push via the usual safe procedure (fetch remote main first; Codex may be
   mid-push on charts, so coordinate, never force-push a stale tree).
+
+## Semantic section HTML (Alex 2026-09-26, from DevTools inspection)
+
+Every page section must render inspectable, linkable HTML: a unique `id`
+and a descriptive class, not a bare `<div class="panel">`.
+
+- Project page sections: `<section id="project-{slug}-{name}"
+  class="panel {name}-section ...">` where name is market, power, timeline,
+  promises, hype, code, verdict, evidence. The searchMeta ids already follow
+  this pattern (`project-{slug}-power` etc.); keep them and add the matching
+  `{name}-section` class.
+- `MarketPanel` currently renders `<div className="panel">` with no id and
+  the page renders it bare (`<MarketPanel slug={slug} />`, no searchMeta).
+  Fix: the component takes the section identity itself and renders
+  `<section id="project-{slug}-market" class="panel market-section">`.
+  Same rule for the new CODE section and the HypeRowCard section.
+- New shared row components (`CodeRow`, `HypeRowCard`) render
+  `<article class="{name}-row">` with the existing row classes kept.
