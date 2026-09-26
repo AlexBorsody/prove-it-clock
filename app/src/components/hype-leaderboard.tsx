@@ -20,7 +20,7 @@ export interface HypeRow {
   sources: string[];
 }
 
-function SourceIcons({ sources }: { sources: string[] }) {
+export function SourceIcons({ sources }: { sources: string[] }) {
   const items = [
     { key: "reddit", label: "Reddit audience size", Icon: RedditIcon },
     { key: "telegram", label: "Telegram audience size", Icon: TelegramIcon },
