@@ -29,12 +29,6 @@ import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
-function claimLabel(t: string): string {
-  if (t === "milestone") return "One-time";
-  if (t === "ongoing") return "Ongoing";
-  return t;
-}
-
 export default async function ProjectPage({ params, searchParams }: {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ promises?: string; evidence?: string }>;
@@ -250,25 +244,6 @@ export default async function ProjectPage({ params, searchParams }: {
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
-        <details className="panel fold search-section" {...searchMeta({ id: `project-${slug}-promise-rules`, title: `${latest.name} promise rules`, kind: "Methodology", project: slug, keywords: `${latest.symbol} lineage rewards states` })} style={{ marginTop: 18 }}>
-          <summary>Under the hood</summary>
-          <div className="table-wrap" tabIndex={0} role="region" aria-label="Promise rules">
-          <table className="spec">
-            <thead>
-              <tr><th>Lineage</th><th>Type</th><th>State</th></tr>
-            </thead>
-            <tbody>
-              {promises.map((pr: any, i: number) => (
-                <tr key={i}>
-                  <td className="num">{pr.lineage}</td>
-                  <td>{claimLabel(pr.claim_type)}</td>
-                  <td><Link href={promiseEvidenceHref(slug, String(pr.lineage ?? i))}>{promiseDisplay(pr).label} ↗</Link></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
-        </details>
       </div>
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
