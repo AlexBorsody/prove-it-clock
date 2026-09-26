@@ -85,6 +85,7 @@ async function gh<T>(path: string): Promise<T | null> {
   try {
     const res = await fetch(`${GITHUB_API}${path}`, {
       headers: ghHeaders(),
+      signal: AbortSignal.timeout(3000),
       next: { revalidate: REVALIDATE_SECONDS },
     });
     if (!res.ok) return null;
@@ -94,31 +95,17 @@ async function gh<T>(path: string): Promise<T | null> {
   }
 }
 
-/**
- * Commit activity stats are computed asynchronously by GitHub: the first hit
- * can return 202 while it crunches. Retry a few times, then give up and let
- * the UI degrade (tiles still show, sparkline hides).
- */
+/** GitHub may still be computing. Return unknown now and retry on a later visit. */
 async function ghCommitActivity(repo: string): Promise<VitalsWeek[] | null> {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const res = await fetch(`${GITHUB_API}/repos/${repo}/stats/commit_activity`, {
-        headers: ghHeaders(),
-        next: { revalidate: REVALIDATE_SECONDS },
-      });
-      if (res.status === 202) {
-        await new Promise((r) => setTimeout(r, 1500));
-        continue;
-      }
-      if (!res.ok) return null;
-      const weeks = (await res.json()) as Array<{ week: number; total: number }>;
-      if (!Array.isArray(weeks)) return null;
-      return weeks.map((w) => ({ week: w.week, total: w.total }));
-    } catch {
-      return null;
-    }
-  }
-  return null;
+  try {
+    const res = await fetch(`${GITHUB_API}/repos/${repo}/stats/commit_activity`, {
+      headers: ghHeaders(), signal: AbortSignal.timeout(3000),
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+    if (res.status === 202 || !res.ok) return null;
+    const weeks = await res.json();
+    return Array.isArray(weeks) ? weeks.map(w => ({week:w.week,total:w.total})) : null;
+  } catch { return null; }
 }
 
 /**

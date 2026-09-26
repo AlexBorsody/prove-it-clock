@@ -21,7 +21,9 @@ const normalize = (text: string) => text.replace(/\s+/g, ' ').trim();
 export function extractSearchSections(doc: Document, path: string): SearchSection[] {
   const sections: SearchSection[] = [];
   const ids = new Set<string>();
-  for (const element of doc.querySelectorAll<HTMLElement>('main [data-search="section"]')) {
+  // Streamed server sections may arrive outside <main> before React places them.
+  // Index explicit authored tags anywhere in the document; never execute scripts.
+  for (const element of doc.querySelectorAll<HTMLElement>('[data-search="section"]')) {
     if (element.closest('[data-search-ignore]')) continue;
     const id = element.id;
     const title = element.dataset.searchTitle?.trim();

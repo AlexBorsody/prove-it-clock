@@ -9,7 +9,7 @@
  * Data source: GET /repos/{owner}/{repo}/stats/contributors (free, no
  * signup). Per-contributor weekly commit counts for the trailing ~52
  * weeks. GitHub computes these stats asynchronously: the first hit can
- * return 202, so we retry like ghCommitActivity in vitals.ts.
+ * return 202, so the current request shows Unknown and a later visit retries.
  */
 
 import { VITALS_REPOS } from "./vitals";
@@ -104,25 +104,14 @@ export function summarizeContributors(contributors: GhContributor[]): {
 }
 
 async function ghContributorStats(repo: string): Promise<GhContributor[] | null> {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    try {
-      const res = await fetch(`${GITHUB_API}/repos/${repo}/stats/contributors`, {
-        headers: ghHeaders(),
-        next: { revalidate: REVALIDATE_SECONDS },
-      });
-      if (res.status === 202) {
-        await new Promise((r) => setTimeout(r, 1500));
-        continue;
-      }
-      if (!res.ok) return null;
-      const data = (await res.json()) as GhContributor[];
-      if (!Array.isArray(data)) return null;
-      return data;
-    } catch {
-      return null;
-    }
-  }
-  return null;
+  try {
+    const res = await fetch(`${GITHUB_API}/repos/${repo}/stats/contributors`, {
+      headers:ghHeaders(), signal:AbortSignal.timeout(3000), next:{revalidate:REVALIDATE_SECONDS},
+    });
+    if (res.status === 202 || !res.ok) return null;
+    const data = await res.json();
+    return Array.isArray(data) ? data : null;
+  } catch { return null; }
 }
 
 export async function fetchTeam(slug: string): Promise<TeamData> {

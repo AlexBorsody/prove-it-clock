@@ -64,3 +64,8 @@ test('crawler origin comes only from deployment configuration',()=>{
   assert.throws(()=>searchOrigin({SEARCH_SITE_URL:'https://user:password@example.org'}));
   assert.throws(()=>searchOrigin({SEARCH_SITE_URL:'https://example.org/path'}));
 });
+test('HTML-only indexing retains explicitly tagged streamed sections outside main',()=>{
+  const {document}=parseHTML('<html><body><main><p>Loading</p></main><div hidden id="stream-result"><article data-search="section" data-search-title="BTC CODE" id="code-project-btc"><p>Bitcoin Stars 90000</p></article></div><script>throw new Error("never execute")</script></body></html>');
+  const sections=extractSearchSections(document as unknown as Document,'/code');
+  assert.equal(sections.length,1);assert.equal(sections[0].href,'/code#code-project-btc');assert.match(sections[0].text,/Bitcoin Stars 90000/);
+});

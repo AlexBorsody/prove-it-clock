@@ -38,3 +38,33 @@ and takes visibly long to load.
 - A slow or rate-limited GitHub API degrades the affected tiles only; the
   rest of the page still renders promptly.
 - Build, typecheck, and relevant tests pass.
+
+## Implementation progress (Codex, 2026-09-26)
+
+- Shell and native sort control render before database/GitHub waits. Added a
+  route loading state and row-shaped placeholders; each repository streams
+  independently. Real row HTML appears before client-side sorting takes over
+  once all results settle, preserving readable content without JavaScript.
+- GitHub 202 responses no longer cause sleep/retry loops. Each request has a
+  3-second timeout; missing stats stay unknown, while repo totals can still show.
+  Successful GitHub responses retain the existing 6-hour cache. Next caches
+  HTTP 200 responses, so pending 202 results can retry on the next visit.
+- Site search indexes explicitly tagged HTML wherever it arrives in the
+  document. React streams some sections outside `<main>` before placing them;
+  the HTML-only crawler now retains these sections without executing scripts.
+  No second content list or index-only render path is introduced.
+- Preserved Muse's latest internal project metric links and removal of the
+  ranking explainer from commit `167c7c6`.
+- Pending-stat tests confirm one request per stats endpoint, timeout signals,
+  preserved repo totals and null commit/team stats. Sort regression tests pass.
+
+### Verification
+
+- Final production build and TypeScript passed. Focused combined suite: 43
+  tests passed (CODE, verdict, Atlas, ranking, search and service worker).
+- Isolated production HTTP stream with a deliberately delayed 2.2s Bitcoin
+  repository: shell 0.154s, skeleton 0.158s, first fast row 0.243s, Bitcoin row
+  2.344s. This is local HTTP arrival timing, not a production latency claim.
+- Browser verified loaded sort control, null commit stats last, working
+  internal project links, and no horizontal overflow at 320px. No JS errors
+  were recorded during those checks. Search extraction found all 8 projects.
