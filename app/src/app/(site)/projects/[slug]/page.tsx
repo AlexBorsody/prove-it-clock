@@ -240,6 +240,18 @@ export default async function ProjectPage({ params, searchParams }: {
         </p>
       </section>
 
+      {/* HYPE: shared summary, directly after CODE. */}
+      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
+        <h2>HYPE</h2>
+        <p className="panel-sub">
+          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
+        </p>
+        <HypeSummaryCard row={hypeRow} />
+        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
+          <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
+        </p>
+      </section>
+
       {/* 4. Promises, with machinery hidden under the hood. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
@@ -327,18 +339,6 @@ export default async function ProjectPage({ params, searchParams }: {
           </div>
         </details>
       </div>
-
-      {/* 5. HYPE: the summary card (full row lives on /hype). */}
-      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
-        <h2>HYPE</h2>
-        <p className="panel-sub">
-          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
-        </p>
-        <HypeSummaryCard row={hypeRow} />
-        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
-        </p>
-      </section>
 
       {/* 6. Evidence and methodology. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-evidence`, title: `${latest.name} evidence and methodology`, kind: "Evidence", project: slug, keywords: `${latest.symbol} sources scoring history` })}>

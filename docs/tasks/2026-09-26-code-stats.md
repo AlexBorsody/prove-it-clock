@@ -7,3 +7,5 @@
 - Used a temporary local preview for both ranked and unranked cards, removed before build. No database/API changes.
 - Manual check: project CODE section and Metrics → CODE share this layout; keyboard focus highlights links.
 - Validation passed: production build with lint/type checks, 320px visual review of ranked/unranked cards, GitHub link destinations, and `git diff --check`.
+
+- Layout follow-up: moved the project HYPE summary directly below CODE, before Promises. Existing content, anchors and data are preserved.
