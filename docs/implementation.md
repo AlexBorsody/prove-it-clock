@@ -34,6 +34,44 @@ Current earned scores (2026-09-25, earned-only):
 | XRP | 2/20 | 2 fulfilled, 1 active, 1 retired | 7 |
 | DASH | 5/20 | 5 fulfilled, 1 active, 1 lapsed | 7 |
 
+## API
+
+**Codex review strategy, 2026-09-25. Plan first; API code unchanged.**
+Build on Muse's public API in `8af2b9f`: `GET /api/v1/scores`,
+`GET /api/v1/scores/{slug}`, and Swagger at `/developers`.
+`app/src/lib/openapi-spec.ts`, served at `/api/v1/openapi.json`, stays the
+single [OpenAPI 3.0.3](https://spec.openapis.org/oas/v3.0.3) contract.
+Keep Next.js route handlers and the existing Supabase readers.
+
+Improve in this order:
+
+1. **Match responses to the spec.** `public-api.ts` currently returns raw legacy
+   promise states and full timestamps where the spec describes canonical states
+   and date-only values. Normalize states at the boundary, declare timestamps
+   as `date-time`, specify required/nullable fields and 400/404/503 error bodies.
+   Validate pagination instead of accepting inputs such as `page=2junk`.
+   Correct the HYPE description: absolute mentions can exist before its baseline.
+2. **Make rank agree with the scoreboard.** The API currently uses market-cap
+   order; the homepage ranks by earned/capacity, then earned hearts, then name.
+   Use that same ordering before pagination and the same rank in list/detail.
+   Update the spec with the behavior change. Unavailable assessments must not
+   become a clean warning level or a zero score; represent them explicitly.
+3. **Read only what is needed, once.** Fetch HYPE once per list request, not
+   once per project. Use latest-per-project observations; the current ascending
+   1,000-row query eventually omits the newest data. Detail/history must not
+   silently stop at 100 projects/points: use direct lookup and bounded history
+   pagination with truncation/continuation documented. Preserve null for missing
+   CODE/HYPE; distinguish failed history reads from a successful empty history.
+4. **Verify the contract.** Add focused route tests for list/detail agreement,
+   legacy states, null data, invalid pagination, unknown slug, database failure
+   and multi-page history. Validate response fixtures against the OpenAPI
+   schemas, run typecheck/build, and check Swagger on the current deployment
+   (use a relative API server URL so local docs do not call production).
+
+Keep this pass on the public v1 contract. Legacy `/api/projects` routes stay
+separate. Deliver small fixes with their spec and tests in the same commit.
+Muse owns the concurrent strategy/vision/hearts documentation reorganization.
+
 ## Phase 0: Vision and plan (this session)
 
 Docs written, tree clean. Alex said go 2026-09-25 ("get started building
