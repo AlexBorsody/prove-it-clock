@@ -13,7 +13,7 @@
     "remark-gfm": "4.0.1",
     "swagger-ui-react": "^5.33.0"
   },
-  "description": "The Prove-It Clock — evidence-driven crypto accountability. Measures the distance between crypto's promises and reality.",
+  "description": "The Prove-It Clock \u2014 evidence-driven crypto accountability. Measures the distance between crypto's promises and reality.",
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",
     "@types/node": "^20.0.0",
@@ -41,7 +41,8 @@
     "social:collect": "tsx scripts/collect-social.ts",
     "test:social": "node --import tsx --test scripts/social.test.ts",
     "test:db": "node --import tsx --test scripts/heart-database.test.ts",
-    "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs"
+    "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs",
+    "prebuild": "node scripts/generate-sw.js"
   },
   "version": "0.1.0"
 }
