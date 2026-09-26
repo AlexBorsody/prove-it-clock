@@ -329,6 +329,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         })}
         <details className="panel fold search-section" {...searchMeta({ id: `project-${slug}-promise-rules`, title: `${latest.name} promise rules`, kind: "Methodology", project: slug, keywords: `${latest.symbol} lineage rewards states` })} style={{ marginTop: 18 }}>
           <summary>Under the hood</summary>
+          <div className="table-wrap" tabIndex={0} role="region" aria-label="Promise rules">
           <table className="spec">
             <thead>
               <tr><th>Lineage</th><th>Type</th><th>State</th></tr>
@@ -343,6 +344,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               ))}
             </tbody>
           </table>
+          </div>
         </details>
       </div>
 

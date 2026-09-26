@@ -234,7 +234,7 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
 .comp-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 8px 0 10px; }
 .comp-hearts { font-size: 14.5px; color: var(--text-dim); margin-left: 2px; font-weight: 600; }
 .comp-desc { color: var(--text-dim); font-size: 15px; margin: 0 0 6px; font-weight: 500; }
-.comp-meta { font-family: var(--mono); font-size: 13.5px; color: var(--text-faint); }
+.comp-meta { font-family: var(--mono); font-size: 13.5px; color: var(--text-faint); overflow-wrap: anywhere; }
 
 /* ---- timeline ---- */
 .timeline { position: relative; margin: 8px 0 0 6px; padding-left: 22px; border-left: 2px solid var(--border-strong); }
@@ -415,7 +415,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   color: var(--accent); margin-bottom: 8px;
 }
 .wt-driver-pop .driver-popover-footer { margin-top: 12px; }
-.wt-driver-pop .driver-popover-btn {
+.wt-driver-pop .driver-popover-footer button {
   font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 10px;
   border: 1px solid var(--border-strong); background: transparent;
   color: var(--text); text-shadow: none;
@@ -426,6 +426,17 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 }
 .wt-driver-pop .driver-popover-close-btn { color: var(--text-faint); }
 .wt-driver-pop .driver-popover-arrow { border-color: var(--bg-raised); }
+@media (max-width: 640px) {
+  .wt-driver-pop {
+    left: 12px !important; right: 12px !important; top: auto !important;
+    bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+    width: auto; max-width: none; min-width: 0;
+    max-height: calc(100dvh - 32px); overflow-y: auto;
+  }
+  .wt-driver-pop .driver-popover-arrow { display: none; }
+  .wt-driver-pop .driver-popover-footer button { min-height: 44px; }
+  .wt-driver-pop .driver-popover-close-btn { width: 44px; height: 44px; }
+}
 
 /* Shitcoin score badge: the special sauce. Dark badge, thick severity bar,
    big mono number. Links to the formula on the methodology page. */
@@ -655,6 +666,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   background: none; border: none; font-family: inherit; cursor: pointer;
 }
 .bottomnav a:hover { color: var(--text); }
+.bottomnav-label-short { display: none; }
 .bottomnav a:active, .bottomnav .tabbtn:active { transform: scale(0.88); background: var(--bg-raised); color: var(--text); }
 .bottomnav a.active { color: var(--accent); background: var(--bg-raised); animation: tab-pop 260ms cubic-bezier(.2,.7,.3,1.35); }
 @keyframes tab-pop { 0% { transform: scale(0.85); } 55% { transform: scale(1.07); } 100% { transform: scale(1); } }
@@ -929,12 +941,14 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .code-row {
   display: grid;
   grid-template-columns: 26px minmax(0, 1fr) auto auto auto;
+  grid-template-areas: "rank coin github social commits";
   gap: 10px; align-items: center;
   padding: 14px 4px; border-top: 1px solid var(--border);
 }
 .code-row:first-child { border-top: none; }
-.code-rank { font-weight: 700; font-size: 16px; color: var(--text-faint); }
-.code-coin-link { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; min-width: 0; }
+.code-rank { grid-area: rank; font-weight: 700; font-size: 16px; color: var(--text-faint); }
+.code-coin-link { grid-area: coin; display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; min-width: 0; }
+.code-row > .github-btn { grid-area: github; justify-self: end; }
 .code-name {
   font-weight: 700; font-size: 18px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
@@ -948,17 +962,21 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 }
 .github-btn:active { transform: scale(0.94); }
 .github-btn-icon { width: 20px; height: 20px; }
-.code-social { display: flex; flex-direction: column; gap: 3px; }
+.code-social { grid-area: social; display: flex; flex-direction: column; gap: 3px; }
 .code-social-row {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 13px; font-weight: 700; color: var(--text-dim); white-space: nowrap;
 }
 .code-social-icon { width: 14px; height: 14px; flex-shrink: 0; }
-.code-commits { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.code-commits { grid-area: commits; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 0; text-align: right; }
 .code-commits-num { font-size: 24px; font-weight: 800; }
 @media (max-width: 640px) {
-  .code-row { grid-template-columns: 22px minmax(0, 1fr) auto auto auto; gap: 8px; padding: 14px 2px; }
-  .code-name { font-size: 16px; }
+  .code-row {
+    grid-template-columns: 22px minmax(0, 1fr) minmax(0, 1fr) 44px;
+    grid-template-areas: "rank coin coin github" ". social commits commits";
+    gap: 8px; padding: 14px 2px;
+  }
+  .code-name { font-size: 16px; white-space: normal; overflow-wrap: anywhere; }
   .code-commits-num { font-size: 20px; }
 }
 
@@ -966,13 +984,15 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .stat-head { display: flex; align-items: center; gap: 8px; }
 .stat-head .icon { color: var(--text-dim); }
 
-/* Bottom tab bar: fit four tabs at 390px. */
-@media (max-width: 420px) {
+/* Six tabs stay usable on phones and narrow tablet windows. */
+@media (max-width: 680px) {
   .bottomnav { padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); gap: 2px; }
   .bottomnav a, .bottomnav .tabbtn {
-    min-width: 0; flex: 1 1 0; padding: 8px 4px; font-size: 11.5px;
-    white-space: nowrap;
+    min-width: 0; min-height: 52px; flex: 1 1 0; padding: 8px 2px; font-size: 11.5px;
+    white-space: nowrap; letter-spacing: 0;
   }
+  .bottomnav-label-full { display: none; }
+  .bottomnav-label-short { display: inline; }
 }
 
 /* Recharts dark tooltips. */
@@ -1173,7 +1193,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .hero-factor { font-size: 15px; }
   .panel-sub { font-size: 16px; }
   .explain { font-size: 16px; }
-  .bottomnav a { font-size: 13px; }
   .metric-btn { font-size: 13.5px; padding: 9px 14px; }
   .mcard-stats { font-size: 13.5px; }
   .mcard-count { font-size: 15px; }

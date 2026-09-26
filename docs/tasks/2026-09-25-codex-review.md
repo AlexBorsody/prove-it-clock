@@ -38,9 +38,9 @@ framework, scoring formula, database project or extra product surface is needed.
 
 ## Codex queue
 
-- Search: integrated with current main; production build and 13 focused checks
-  pass. Header icon verified at desktop and narrow widths. Direct-main push
-  was blocked by automatic approval review; explicit release approval pending.
+- Search: integrated with current main; 13 focused checks pass. Alex has
+  clarified Vercel is shared dev and requested the missing search rollout.
+  Responsive fixes are ready; verify the deployed site before marking complete.
 - Done locally: [public API v3 audit](2026-09-25-codex-api-audit.md), commit
   `884fa4a` on `codex/public-api-v3`. Explicit methodology now reaches score and
   history reads; canonical enum/source URL contract tests, typecheck and the
@@ -53,3 +53,17 @@ Local search work originally lived at `1a0bb4f`; the integrated commit is
 `165342e`. Earlier API planning (`10cd3fa`) and AI research notes (`96ec44a`)
 remain on the local `codex/api-review` branch; this review does not silently
 reinsert them into Muse's reorganized vision.
+
+## Current ownership — search and responsive layout
+
+Codex owns the search rollout and narrow viewport fixes (header/search, bottom
+navigation, CODE rows, project evidence overflow). Work stays in the existing
+isolated checkout; shared servers stay running. Before publishing, fetch main
+and preserve newer changes. Vercel is the shared dev site; completion requires
+checking that deployed search and mobile layout actually work there. Muse's
+v3 publication is already included; timeline redesign remains on hold.
+
+Responsive changes: six navigation tabs fit phone widths; CODE metrics move
+to a second row; evidence links wrap and the promise rules table scrolls within
+its container. Tour controls are explicit and its mobile panel stays on-screen.
+Keep the existing upper-left Home heart. No database or scoring changes.
