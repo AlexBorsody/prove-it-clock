@@ -3,16 +3,16 @@ import { join } from "node:path";
 
 // Explicit allowlist: route parameters must never become filesystem paths.
 export const CASE_STUDY_DOCUMENTS = {
-  overview: { title: "Research protocol", file: "case-studies/README.md" },
-  bat: { title: "BAT evidence", file: "case-studies/bat.md" },
-  xrp: { title: "XRP evidence", file: "case-studies/xrp.md" },
-  btc: { title: "BTC evidence", file: "case-studies/btc.md" },
-  link: { title: "LINK evidence", file: "case-studies/link.md" },
-  eth: { title: "ETH evidence", file: "case-studies/eth.md" },
-  sol: { title: "SOL evidence", file: "case-studies/sol.md" },
-  dash: { title: "DASH evidence", file: "case-studies/dash.md" },
-  avax: { title: "AVAX evidence", file: "case-studies/avax.md" },
-  review: { title: "Review questions & checks", file: "case-studies/review.md" },
+  overview: { title: "Research protocol", file: "archive/case-studies-2026-09-25/README.md" },
+  bat: { title: "BAT evidence", file: "archive/case-studies-2026-09-25/bat.md" },
+  xrp: { title: "XRP evidence", file: "archive/case-studies-2026-09-25/xrp.md" },
+  btc: { title: "BTC evidence", file: "archive/case-studies-2026-09-25/btc.md" },
+  link: { title: "LINK evidence", file: "archive/case-studies-2026-09-25/link.md" },
+  eth: { title: "ETH evidence", file: "archive/case-studies-2026-09-25/eth.md" },
+  sol: { title: "SOL evidence", file: "archive/case-studies-2026-09-25/sol.md" },
+  dash: { title: "DASH evidence", file: "archive/case-studies-2026-09-25/dash.md" },
+  avax: { title: "AVAX evidence", file: "archive/case-studies-2026-09-25/avax.md" },
+  review: { title: "Review questions & checks", file: "archive/case-studies-2026-09-25/review.md" },
   // The algorithm lives as an appendix section inside implementation.md
   // (docs reorganization 2026-09-25); the route extracts just that section.
   algorithm: { title: "Adopted heart rules", file: "implementation.md" },

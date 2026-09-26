@@ -1,5 +1,9 @@
 # BAT/XRP case-study review
 
+> **Historical.** Worksheets from the 2026-09-25 analyst scoring session,
+> kept for the record. Promise data now lives in the published runs;
+> current scoring follows the methodology page.
+
 **Completed 2026-09-25.** Scores published to production under the adopted
 claim-type rule v2; backdated runs (2013-2021) published 2026-09-25 for the
 timeline graph. What follows is the original research brief, kept for the record.

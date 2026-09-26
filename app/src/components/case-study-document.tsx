@@ -8,8 +8,18 @@ import {
 
 export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug }) {
   const markdown = await readCaseStudy(slug);
+  const isHistorical = CASE_STUDY_DOCUMENTS[slug].file.startsWith("archive/");
   return (
     <main className="research">
+      {isHistorical ? (
+        <aside className="research-notice" aria-label="Historical record">
+          <strong>
+            <Icon name="doc" size={15} style={{ marginRight: 8 }} />
+            Historical record: worksheet from the 2026-09-25 scoring session
+          </strong>
+          <p>Promise data now lives in the published runs. Current scoring follows the methodology page.</p>
+        </aside>
+      ) : null}
       <aside className="research-notice" aria-label="Research status">
         <strong>
           <Icon name="flask" size={15} style={{ marginRight: 8 }} />
