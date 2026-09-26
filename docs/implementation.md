@@ -381,6 +381,67 @@ nobody touches, a mainnet nobody transacts on, a feature with no users:
 unfulfilled. Teams routinely declare victory at the demo stage. We score
 the usage, not the press release.
 
+## Promise research methodology
+
+The repeatable recipe for onboarding a project. One checklist, one fragment
+format, one merge, one publish path. Works for crypto and for stocks
+(earnings calls, investor days, 10-K strategy sections, CEO public
+statements are promise sources too: "robotaxi next year" is a promise).
+
+**1. Identify promise sources.** Crypto: whitepaper, official docs, official
+blog, founder/team public statements (tweets, interviews, talks), roadmap
+and launch announcements. Stocks: earnings calls, investor-day decks, 10-K
+strategy sections, CEO public statements, product launches. Primary sources
+first; secondary only to verify usage.
+
+**2. Extract discrete promises.** One attributable statement = one candidate
+promise. Deduplicate restatements. Assign lineage `<slug>-pNN-short-slug`
+(unique, stable). Aim for the real number of distinct public promises:
+comprehensive, not padded.
+
+**3. Classify.** `claim_type`: `milestone` (a shipped thing) or `ongoing`
+(a standing claim). `core`: exactly one `true` per project, the main
+promise (a label, not a gate). `effective_at`: ISO date the promise was
+stated, never in the future.
+
+**4. Score on the adoption test.** `fulfilled`: real usage exists now.
+`open`: still pending. `lapsed`: ongoing promise with no meaningful progress
+for a long stretch. `retired`: explicitly dropped by the project. Never
+`active` (rejected at the publish boundary). `milestone` can never be
+`lapsed`.
+
+**5. Write criteria, rationale, evidence.** `criteria`: what would count as
+fulfilled, in plain words. `rationale`: one line explaining the state.
+`evidence`: at least one entry per promise with the EXACT source URL and a
+summary of what the source is. No guessed URLs.
+
+**6. Write the fragment** to `db/seed/heart-runs/fragments/<slug>-promises.json`:
+
+```json
+{
+  "slug": "<slug>",
+  "rationale": "one or two sentences on what sources were researched",
+  "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+  "promises": [
+    { "lineage": "<slug>-pNN-short-slug",
+      "claim_type": "milestone|ongoing",
+      "criteria": "what would count as fulfilled, in plain words",
+      "core": true,
+      "state": "open|fulfilled|lapsed|retired",
+      "effective_at": "2020-03-12T00:00:00Z",
+      "rationale": "one line explaining the state",
+      "evidence": [{"url": "https://exact-source-url", "summary": "what this source is"}] }
+  ]
+}
+```
+
+**7. Merge and publish.** Fragments merge into a run artifact (capacity =
+promise count, earned = fulfilled count per project); dry-run validate;
+publish via `publish_heart_run`; never point `HEARTS_METHODOLOGY` at a
+string with no published run. Published runs need non-null `reviewed_by` +
+`policy_ref` (DB CHECK); drafts don't. Researcher agents write fragments
+only, never app code or the artifact directly.
+
 ## Computation at time t
 
 ```
