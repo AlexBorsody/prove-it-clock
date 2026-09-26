@@ -10,8 +10,6 @@ import {
 } from "@/lib/heart-data";
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
-import { verdictLine } from "../../../../../data/verdict-lines";
-import { potentialRationale } from "../../../../../data/potential";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
@@ -102,8 +100,6 @@ export default async function ProjectPage({ params, searchParams }: {
     verdict === "Watch"
       ? "A promise is overdue and under review. The meter sits at 4 until the review resolves."
       : "No failed promises in the record. The meter sits at 1.";
-  const oneLiner = verdictLine(slug);
-  const rationale = potentialRationale(slug);
 
   // Delivery health: kept vs in play vs failed promises, shown as a bar.
   const health = { kept: 0, inPlay: 0, failed: 0 };
@@ -173,14 +169,7 @@ export default async function ProjectPage({ params, searchParams }: {
         </h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
-          <div className="num" style={{ fontSize: 28, fontWeight: 700 }}>
-            {latest.earned}<span style={{ color: "var(--text-faint)", fontSize: 20 }}> of {latest.capacity} potential</span>
-          </div>
         </div>
-        {rationale ? <p className="potential-line">{rationale}</p> : null}
-        {oneLiner ? (
-          <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>{oneLiner}</p>
-        ) : null}
       </div>
 
       <span id="hearts" aria-hidden="true" />
