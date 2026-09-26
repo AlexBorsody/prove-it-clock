@@ -908,6 +908,16 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .cell-link:hover .word { text-decoration: underline; }
 
 /* CODE ranking page. */
+.sort-seg {
+  display: inline-flex; border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden; margin: 4px 0 14px;
+}
+.sort-seg a {
+  padding: 8px 16px; font-size: 13px; font-weight: 700; color: var(--text-dim);
+  text-decoration: none; -webkit-tap-highlight-color: transparent;
+}
+.sort-seg a + a { border-left: 1px solid var(--border); }
+.sort-seg a.active { background: var(--bg-elev); color: var(--text); }
 .code-rows { display: flex; flex-direction: column; }
 .code-row {
   display: grid;
