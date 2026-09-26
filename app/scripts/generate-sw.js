@@ -80,5 +80,14 @@ self.addEventListener("fetch", (event) => {
 `;
 
 const out = path.join(__dirname, "..", "public", "sw.js");
+
+// Clear any previously generated worker first: every build starts clean,
+// so a failed generation can never leave a stale sw.js behind.
+try {
+  fs.unlinkSync(out);
+} catch (err) {
+  if (err.code !== "ENOENT") throw err;
+}
+
 fs.writeFileSync(out, sw);
 console.log("sw.js generated, cache:", "prove-value-" + BUILD_ID);
