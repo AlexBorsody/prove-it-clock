@@ -227,6 +227,7 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
   padding: 14px 16px;
   margin: 12px 0;
 }
+.promise-head { display: flex; align-items: center; gap: 10px; }
 .comp-row:first-child { border-top: 1px solid var(--border); padding-top: 14px; }
 .comp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .comp-name { font-weight: 700; font-size: 17px; }

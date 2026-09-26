@@ -1,5 +1,11 @@
 # Task log — 2026-09-25 (evening)
 
+## ON HOLD — do not start yet (Alex 2026-09-25)
+
+The timeline redesign below is on hold until the promise-heart v3 basics are
+live on the site (promises listed, mapped to hearts, meters on promise counts).
+Habib is finishing that first. Pick this up after.
+
 ## To Codex — timeline redesign (the queued big job)
 
 **Assignment: redesign the project-page proof-history timeline.** Alex: "timeline

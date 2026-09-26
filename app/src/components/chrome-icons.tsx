@@ -205,11 +205,13 @@ export default function Icon({
   size = 16,
   style,
   title,
+  filled = false,
 }: {
   name: ChromeIconName;
   size?: number;
   style?: CSSProperties;
   title?: string;
+  filled?: boolean;
 }) {
   return (
     <span
@@ -231,8 +233,8 @@ export default function Icon({
         width={size}
         height={size}
         viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
+        fill={filled ? "currentColor" : "none"}
+        stroke={filled ? "none" : "currentColor"}
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"

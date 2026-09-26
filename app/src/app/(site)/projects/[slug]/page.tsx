@@ -37,6 +37,20 @@ function promiseDisplay(pr: any): { label: string; tone: "good" | "dim" | "bad" 
   return { label: "Retired", tone: "bad" };
 }
 
+/** One promise = one heart: the heart this promise earned, is chasing, or lost. */
+function promiseHeart(pr: any): { filled: boolean; color: string; label: string } {
+  let s: string;
+  try {
+    s = normalizePromiseState(pr.state);
+  } catch {
+    return { filled: false, color: "var(--text-faint)", label: "No heart yet" };
+  }
+  if (s === "fulfilled") return { filled: true, color: "var(--green)", label: "Earned 1 heart" };
+  if (s === "lapsed" || s === "retired")
+    return { filled: false, color: "var(--red)", label: "Heart lost" };
+  return { filled: false, color: "var(--text-faint)", label: "No heart yet" };
+}
+
 function claimLabel(t: string): string {
   if (t === "milestone") return "One-time";
   if (t === "ongoing") return "Ongoing";
@@ -258,7 +272,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="panel" id="promises">
         <h2>Promises</h2>
         <p className="panel-sub">
-          What {latest.name} promised, and what actually happened. Each kept promise earns hearts.
+          What {latest.name} promised, and what actually happened. One promise, one heart.
         </p>
         {healthTotal > 0 ? (
           <div className="promise-health">
@@ -281,9 +295,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         ) : null}
         {promises.map((pr, i) => {
           const d = promiseDisplay(pr);
+          const h = promiseHeart(pr);
           return (
             <div className="comp-row" key={i}>
-              <div className="comp-name">{pr.criteria}</div>
+              <div className="promise-head">
+                <Icon name="heart" size={20} filled={h.filled} title={h.label} style={{ color: h.color }} />
+                <div className="comp-name">{pr.criteria}</div>
+              </div>
               <div className="comp-tags">
                 <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>{d.label}</span>
                 {pr.core ? <span className="tag na">Main promise</span> : null}
@@ -306,14 +324,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <summary>Under the hood</summary>
           <table className="spec">
             <thead>
-              <tr><th>Lineage</th><th>Type</th><th>Reward</th><th>State</th></tr>
+              <tr><th>Lineage</th><th>Type</th><th>State</th></tr>
             </thead>
             <tbody>
               {promises.map((pr: any, i: number) => (
                 <tr key={i}>
                   <td className="num">{pr.lineage}</td>
                   <td>{claimLabel(pr.claim_type)}</td>
-                  <td className="num">{pr.reward ?? 0}</td>
                   <td>{promiseDisplay(pr).label}</td>
                 </tr>
               ))}
