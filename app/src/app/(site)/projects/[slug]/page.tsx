@@ -247,7 +247,6 @@ export default async function ProjectPage({ params, searchParams }: {
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
         <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />
-          <h3 className="promise-subhead">Delivery verdict</h3>
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />

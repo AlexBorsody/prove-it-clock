@@ -1070,8 +1070,8 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .shitcoin-dial { display: block; }
 .shitcoin-gauge-meta { display: flex; flex-direction: column; gap: 2px; }
 .shitcoin-meter-label {
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text-dim); font-weight: 700;
+  font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text); font-weight: 700;
 }
 .shitcoin-gauge-cat { font-size: 15px; font-weight: 800; }
 .shitcoin-warn {
@@ -1229,10 +1229,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 /* Meter evidence is collapsed until requested; the toggle looks like a button. */
 .shitcoin-inputs { margin-top: 10px; }
 .shitcoin-inputs-label {
-  display: block;
-  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+  display: inline-block;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
   color: var(--text-dim); text-transform: uppercase; text-align: center;
-  min-height: 44px; padding: 14px 16px; cursor: pointer;
+  padding: 10px 16px; cursor: pointer;
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px;
   list-style: none;
 }

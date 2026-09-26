@@ -86,7 +86,7 @@ export default function ShitcoinMeter({
   emptyText?: string;
 }) {
   const { score, color, warn } = GAUGE[category];
-  const dialSize = size ?? (compact ? 40 : 84);
+  const dialSize = size ?? (compact ? 40 : 112);
   return (
     <div
       className={`shitcoin-meter${compact ? " compact" : ""}`}
