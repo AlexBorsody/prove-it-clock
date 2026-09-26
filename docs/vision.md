@@ -1,4 +1,4 @@
-# Prove-It: Product Vision
+# Prove Value: Product Vision
 
 **2026-09-25. Alex-approved.** This is the clean vision. Everything we build
 conforms to it; anything that does not fit waits for a vision revision, not
@@ -51,10 +51,10 @@ rewritten. The meter reads full only when the core promise itself is kept.
 No free hearts, no double-counting, no subdivided busywork. (Precise rules:
 [implementation.md](implementation.md), Hearts algorithm appendix.)
 
-## The Prove-It Index (provisional name)
+## The Prove Value Index (provisional name)
 
 Hearts are the simple public accountability mechanic: did they keep their
-promises? The Prove-It Index is the broader historical health and
+promises? The Prove Value Index is the broader historical health and
 credibility algorithm underneath. One number, 0-100, plotted through time
 on the project detail page.
 
@@ -90,7 +90,7 @@ waits on the data.
 The homepage teaches the product in ten seconds, then shows the ranking.
 
 Teaching block: the question "Did crypto projects actually deliver what they
-promised?", one line on what Prove-It tracks, and four factors: HEARTS
+promised?", one line on what Prove Value tracks, and four factors: HEARTS
 (promises actually delivered), SHITCOIN WARNING (documented delivery failures),
 CODE (is development still active?), HYPE (how much attention surrounds the
 proof?). Then "Compare projects".
@@ -135,7 +135,7 @@ their context. Entry point: a Compare button on the homepage.
    strip below with CODE / HYPE toggle (USE joins when its metrics exist).
    Failed collection never renders as zero. The legacy v0.2.0 timeline
    stays on the page below it (Alex's call): both timelines, no merge.
-3. **Prove-It Index.** The 0-100 composite plotted through time, with
+3. **Prove Value Index.** The 0-100 composite plotted through time, with
    clickable event markers on every meaningful move. Weights disclosed
    beside the graph. Gated on USE data (see above); the section does not
    render until the Index can be computed honestly.
@@ -198,18 +198,18 @@ anything a failure. We can.
 - **Verdicts.** A 1-10 delivery-accountability meter backed by a published
   rule is something an aggregator funded by listings can never publish.
 
-One line: CoinMarketCap ranks by price. Prove-It ranks by proof.
+One line: CoinMarketCap ranks by price. Prove Value ranks by proof.
 
 The niche is the audience, not a feature. CMC serves people asking "what
 should I buy": every feature is a buy signal (price, momentum, sentiment,
-RSI). Prove-It serves people asking "should I believe this": verdicts,
+RSI). Prove Value serves people asking "should I believe this": verdicts,
 proof history, hype next to an empty meter. The burned skeptics, the
 journalists, the diligence analysts. Different job, different user, and
 CMC cannot follow without attacking its own customers.
 
 ## Data rules
 
-- Hearts are the simple public score. The Prove-It Index is the deeper 0-100 composite; it never appears on the homepage.
+- Hearts are the simple public score. The Prove Value Index is the deeper 0-100 composite; it never appears on the homepage.
 - Earned only: no allowance, no free hearts, no time decay.
 - A heart stays earned only while its evidence condition holds. Milestones
   are permanent; ongoing claims lapse when evidence stops; dead
@@ -236,8 +236,7 @@ CMC cannot follow without attacking its own customers.
 ## Parked (not in v1)
 
 HYPE trend percentages. Watch verdict triggers. CODE/USE/HYPE timeline
-strips beyond CODE. The rebrand ("Prove the Hype" and friends); the product
-keeps the Prove-It name for now. Valuation. **Beyond crypto:** the
+strips beyond CODE. Renamed to Prove Value 2026-09-26 (was "Prove the Hype" and friends parked). Valuation. **Beyond crypto:** the
 instrument is asset-class agnostic, and tech stocks are the natural next
 market (Tesla's robotaxi and Full Self-Driving promises, SpaceX's Mars and
 Starship timelines are the reference cases). After crypto is proven, not

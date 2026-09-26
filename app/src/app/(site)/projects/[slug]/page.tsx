@@ -16,6 +16,7 @@ import { potentialRationale } from "../../../../../data/potential";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
+import PriceStrip from "@/components/price-strip";
 import DeliveryTimeline from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
@@ -181,6 +182,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {latest.earned}<span style={{ color: "var(--text-faint)", fontSize: 20 }}> of {latest.capacity} potential</span>
           </div>
         </div>
+        <PriceStrip slug={slug} />
         {rationale ? <p className="potential-line">{rationale}</p> : null}
         <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />

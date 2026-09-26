@@ -5,13 +5,13 @@ import { searchMeta } from "@/lib/search-sections";
 
 export const metadata: Metadata = {
   title: "API Docs",
-  description: "Prove-It Scores API: read-only endpoints for hearts, the Shitcoin warning dial, CODE, and HYPE.",
+  description: "Prove Value Scores API: read-only endpoints for hearts, the Shitcoin warning dial, CODE, and HYPE.",
 };
 
 export default function DevelopersPage() {
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "developers-overview", title: "Prove-It API", kind: "API", keywords: "OpenAPI developer scores endpoints" })}>
+      <div className="search-section" {...searchMeta({ id: "developers-overview", title: "Prove Value API", kind: "API", keywords: "OpenAPI developer scores endpoints" })}>
       <h1 className="page-title">API</h1>
       <p className="page-sub">
         Read-only scores, free to use. Hearts are earned only; the Shitcoin warning dial reads

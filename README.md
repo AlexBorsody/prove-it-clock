@@ -1,4 +1,4 @@
-# Prove-It
+# Prove Value
 
 Did the project do what it said it would? One instrument per crypto project: a
 **heart meter** (filled / capacity) plus its **history graph**. A heart remains

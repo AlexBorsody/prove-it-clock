@@ -1,4 +1,4 @@
-# Prove-It: Implementation Plan
+# Prove Value: Implementation Plan
 
 **2026-09-25.** [vision.md](vision.md) is the authority; this doc is the
 build order. No code gets written that is not in this plan. When the plan
@@ -222,7 +222,7 @@ rest waits in the plan.
 
 Currently gated:
 
-- **Prove-It Index**: hidden until USE metrics and the CODE score
+- **Prove Value Index**: hidden until USE metrics and the CODE score
   definition both exist and are reviewed.
 - **USE stat card / home row**: renders "metrics coming" until per-project
   USE metrics are defined. Never a number before that.
@@ -237,7 +237,7 @@ Currently gated:
   Parked means no spec and no build; gated means spec'd and waiting on
   data.
 
-## Phase 5: Prove-It Index (gated)
+## Phase 5: Prove Value Index (gated)
 
 Builds only after the USE metrics and the CODE score definition exist.
 The formula is locked in vision.md; this phase is data plumbing and UI.
@@ -505,7 +505,7 @@ with massive hype and few hearts reads as all sizzle, no steak. That
 contrast is the differentiator; raw community numbers are not.
 
 **Display only.** Hype metrics never feed the hearts scoring algorithm and
-carry 0% weight in the Prove-It Index. Hype is context: observed attention,
+carry 0% weight in the Prove Value Index. Hype is context: observed attention,
 never proof of support or adoption. Per [vision.md](vision.md), no trend
 percentages publish until 8 complete weeks of snapshots exist; until then,
 absolute mentions plus "baseline collecting, week N/8".

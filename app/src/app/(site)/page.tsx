@@ -89,7 +89,7 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="sr-only">Prove-It: did crypto projects actually deliver what they promised?</h1>
+      <h1 className="sr-only">Prove Value: did crypto projects actually deliver what they promised?</h1>
 
       {rows.length === 0 ? (
         <div className="panel search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>

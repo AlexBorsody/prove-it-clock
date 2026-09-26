@@ -11,7 +11,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   if (!isCaseStudySlug(slug) || slug === "overview") notFound();
-  return { title: `${CASE_STUDY_DOCUMENTS[slug].title} | Prove-It`, robots: { index: false, follow: false } };
+  return { title: `${CASE_STUDY_DOCUMENTS[slug].title} | Prove Value`, robots: { index: false, follow: false } };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {

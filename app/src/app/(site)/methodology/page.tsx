@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "How the scoring works | Prove-It" };
+export const metadata = { title: "How the scoring works | Prove Value" };
 
 import Icon from "@/components/chrome-icons";
 import { HEARTS_METHODOLOGY } from "@/lib/heart-data";
@@ -149,10 +149,10 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="chart" title="The Prove-It Index" id="index" tag="gated" alt>
+      <Section icon="chart" title="The Prove Value Index" id="index" tag="gated" alt>
         <p>
           Hearts are the simple public mechanic: did they keep their promises?
-          The Prove-It Index is the deeper health and credibility algorithm
+          The Prove Value Index is the deeper health and credibility algorithm
           underneath. One number, 0-100, plotted through time. We are building
           it now. It is not live yet.
         </p>
@@ -175,9 +175,9 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="flask" title="Prove-It Data" id="data">
+      <Section icon="flask" title="Prove Value Data" id="data">
         <p>
-          Prove-It runs its own independently operated data collection. We do
+          Prove Value runs its own independently operated data collection. We do
           not rent our inputs from aggregators and relabel them. For each
           metric family we publish:
         </p>
