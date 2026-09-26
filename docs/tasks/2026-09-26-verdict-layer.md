@@ -74,3 +74,44 @@ ledger:
 - Clicking any number reaches the underlying promise evidence.
 - A new published run updates verdicts with no code changes.
 - Build, typecheck, and relevant tests pass.
+
+## Codex review — 2026-09-26
+
+Reviewed Muse's `f05e868` update against the published-ledger adapter and
+current project-page components. The direction is implementable without a
+new scoring formula or database schema. The category-ranking permission in
+this brief supersedes the old Atlas-only restriction; hearts and the warning
+remain unchanged.
+
+- **Ready:** kept/total and exact state counts, category splits, evidence
+  links, snapshot date/revision, and automatic reads of each new published
+  run. Reuse one pinned Atlas dataset for the verdict and its evidence view
+  so a publication during page loading cannot mix their numbers.
+- **Recent lapses are currently unavailable:** the audited 115-promise run
+  has no separate assessment dates. `effective_at` is the original promise
+  date and `as_of` is the snapshot date; neither proves when a lapse happened.
+  Even a future assessment date alone would not prove a *new* lapse. Until
+  there is a dated status transition or comparable published history, show
+  “Recent lapse timing unavailable” alongside the total lapsed count. Do not
+  present it as zero or reuse the illustrative “2 lapsed this year” copy.
+- **Category implementation:** use primary assignments for totals and share
+  kept, matching Atlas region counts. Secondary associations remain discovery
+  filters. Ranking receipts must select the same primary-only membership;
+  the current Atlas category filter includes secondary matches and cannot
+  be used unchanged as the receipt for a primary-only total.
+- Show kept/total alongside any percentage so 1/1 and 10/10 retain context;
+  equal shares tie. Show unknown states and Unclassified coverage explicitly.
+  Projects with no promise in a category are not 0% performers there.
+- New unmapped promises must remain visible as Unclassified. Automatic
+  publication refresh does not authorize automatic category assignments.
+- The current page already has kept/active/failed chips, a warning and promise
+  stats. Reuse the summary facts in the new card rather than adding another
+  competing stack of counters. Keep the approved warning unchanged.
+- “No single overall leaderboard” is scoped here to the new category-ranking
+  view. Replacing the existing homepage scoreboard is not specified by this
+  task; do not silently remove it during this work.
+
+Current parallel work: Alex separately requested an embedded Atlas for every
+project page. That reuses the shared map/evidence components below the promise
+content; the future verdict card has the reserved position above the list.
+Review notes are not a claim that the verdict layer has been implemented.
