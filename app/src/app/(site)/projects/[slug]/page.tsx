@@ -249,7 +249,7 @@ export default async function ProjectPage({ params, searchParams }: {
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
       {/* Supporting metrics: CODE, HYPE, then Market. */}
-      <section className="panel code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
+      <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE <Icon name="info" size={14} title={`Who is actually working on ${latest.name}.`} /></h2>
         <div className="code-rows">
           <CodeRow
