@@ -1,0 +1,41 @@
+.explorer { min-width: 0; margin-bottom: 22px; }
+.explorer h2 { margin: 6px 0 8px; font-size: 26px; }
+.explorer h3 { font-size: 15px; margin: 0 0 8px; }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--green, #4ade80); }
+.badge { border: 1px solid var(--border, #333); padding: 7px 10px; border-radius: 20px; font-size: 11px; }
+.coins { display: flex; flex-wrap: wrap; gap: 7px; margin: 20px 0; }
+.coins button, .more, .reset { font: inherit; color: var(--text); border: 1px solid var(--border, #333); background: transparent; border-radius: 8px; padding: 9px 12px; cursor: pointer; }
+.coins button { display: flex; gap: 7px; align-items: center; font-size: 12px; min-height: 44px; }
+.explorer button:focus-visible, .explorer a:focus-visible { outline: 2px solid #4ade80; outline-offset: 3px; }
+.coins button[aria-pressed=true] { background: #4ade801a; border-color: #4ade80; }
+.stats { display: grid; grid-template-columns: 1fr 1fr 1.3fr; border-block: 1px solid var(--border, #333); padding: 22px 0; gap: 16px; }
+.stats strong { display: block; font-size: clamp(20px, 3vw, 32px); font-weight: 600; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.stats span, .hint, .articleMeta, .coverage span { color: var(--text-muted, #aaa); font-size: 12px; line-height: 1.6; }
+.grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; margin: 28px 0; }
+.grid > div { min-width: 0; }
+.chart { display: flex; gap: 6px; height: 205px; margin-top: 20px; }
+.day { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; background: none; border: 0; color: var(--text); cursor: pointer; padding: 0; }
+.barSpace { height: 165px; width: 100%; position: relative; display: flex; align-items: flex-end; background: #ffffff04; border-bottom: 1px solid var(--border, #333); }
+.bar { width: 100%; background: linear-gradient(0deg, #166534, #4ade80); border-radius: 5px 5px 0 0; opacity: .7; }
+.day:hover .bar, .day[aria-pressed=true] .bar { opacity: 1; box-shadow: 0 0 0 2px #86efac; }
+.count { position: absolute; top: 6px; left: 0; right: 0; font-size: 12px; color: #fff; text-shadow: 0 1px 3px #000; }
+.date { font-size: 10px; width: 100%; white-space: nowrap; }
+.publishers { max-height: 240px; overflow-y: auto; padding: 3px; }
+.publishers button { display: flex; justify-content: space-between; text-align: left; align-items: center; gap: 12px; width: 100%; position: relative; padding: 11px 9px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--text); cursor: pointer; margin-bottom: 5px; min-height: 44px; }
+.publisherBar { position: absolute; inset: 0 auto 0 0; background: #4ade8014; border-radius: 4px; }
+.publishers button > span:not(.publisherBar), .publishers strong { position: relative; overflow-wrap: anywhere; }
+.publishers button[aria-pressed=true], .publishers button:hover { border-color: #4ade80; }
+.articles { list-style: none; padding: 0; margin: 8px 0 18px; display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+.articles li { padding: 16px 0; border-bottom: 1px solid var(--border, #333); min-width: 0; }
+.articleMeta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 5px; }
+.articleMeta time { flex-shrink: 0; }
+.articles a { color: var(--text); font-size: 14px; line-height: 1.55; text-decoration: none; overflow-wrap: anywhere; }
+.articles a:hover { color: #4ade80; }
+.more { width: 100%; margin-bottom: 15px; min-height: 44px; }
+.reset { font-size: 12px; min-height: 44px; }
+.coverage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; border-top: 1px solid var(--border, #333); margin-top: 20px; padding-top: 18px; }
+.coverage strong, .coverage span { display: block; }
+.coverage strong { font-size: 12px; margin-bottom: 4px; }
+.loading { padding: 50px 0; color: var(--text-muted, #aaa); }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; gap: 20px; } .articles { grid-template-columns: 1fr; } .coverage { grid-template-columns: 1fr; gap: 12px; } .stats { grid-template-columns: 1fr 1fr; } .stats > div:last-child { grid-column: 1 / -1; } .date { font-size: 9px; } .chart { gap: 4px; } }
