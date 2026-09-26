@@ -71,7 +71,7 @@ function HypeCell({ mentions, collecting }: { mentions: number | null; collectin
   return (
     <span>
       {mentions.toLocaleString()}
-      {collecting ? <span className="cell-sub">collecting</span> : null}
+      <span className="cell-sub">{collecting ? "collecting" : "mentions / 7d"}</span>
     </span>
   );
 }
@@ -165,6 +165,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                       <GithubMark />
                       <CodeWordCell code={r.code} note={r.codeNote} />
                     </Link>
+                    <span className="cell-sub">commits / 90d</span>
                   </td>
                   <td><span className="word dim">coming</span></td>
                   <td className="num">
@@ -244,11 +245,11 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                 <Link href="/code" className="mcard-stat metric-btn">
                   <GithubMark />
                   {r.codeNote ? r.codeNote : `CODE ${r.code}`}
-                  {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits`}
+                  {r.codeNote || r.codeCommits == null ? null : ` · ${r.codeCommits.toLocaleString()} commits / 90d`}
                 </Link>
                 <Link href="/hype" className="mcard-stat metric-btn num">
                   <Icon name="megaphone" size={14} />
-                  HYPE · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions`}
+                  HYPE · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions / 7d`}
                 </Link>
               </div>
               <button
