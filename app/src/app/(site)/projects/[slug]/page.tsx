@@ -22,7 +22,7 @@ import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
-import { CodeActivityChart } from "@/components/delivery-timeline";
+import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";

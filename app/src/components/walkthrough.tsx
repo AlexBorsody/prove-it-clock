@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { driver, type Driver } from "driver.js";
 import "driver.js/dist/driver.css";
 
 const SEEN_KEY = "proveit-walkthrough-seen";
@@ -75,7 +74,7 @@ function waitForElement(
 
 export default function Walkthrough() {
   const router = useRouter();
-  const drvRef = useRef<Driver | null>(null);
+  const drvRef = useRef<import("driver.js").Driver | null>(null);
   const stepRef = useRef(0);
   const activeRef = useRef(false);
   const transitioningRef = useRef(false);
@@ -105,7 +104,7 @@ export default function Walkthrough() {
       const last = i === STEPS.length - 1;
       const route = detailRoute();
 
-      const render = () => {
+      const render = async () => {
         const el = document.querySelector(s.selector) as HTMLElement | null;
         if (!el || !activeRef.current) {
           // Section missing on this render: skip forward, never strand the user.
@@ -113,6 +112,10 @@ export default function Walkthrough() {
           return;
         }
         el.scrollIntoView({ block: "center", behavior: "smooth" });
+        // Load the tour library only when a tour actually starts, so it
+        // never costs page-load JS for visitors who never take the tour.
+        const { driver } = await import("driver.js");
+        if (!activeRef.current) return;
         const drv = driver({
           allowClose: true,
           overlayColor: "rgba(2,6,16,0.78)",

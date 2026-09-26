@@ -12,7 +12,7 @@ import {
 import { verdictFor } from "@/lib/verdict";
 import { fetchVitals } from "@/lib/vitals";
 import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
-import HypeShareChart from "@/components/hype-share-chart";
+import { LazyHypeShareChart as HypeShareChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
 

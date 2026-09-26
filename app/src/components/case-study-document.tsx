@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Markdown, { defaultUrlTransform } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Blockquote, Root, RootContent } from "mdast";
@@ -112,7 +113,7 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
         >{markdown}</Markdown>
       </article>
       <p className="research-source">
-        Scoring follows the <a href="/methodology">published methodology</a>.
+        Scoring follows the <Link href="/methodology">published methodology</Link>.
         Checklist boxes are read-only.
       </p>
     </main>
