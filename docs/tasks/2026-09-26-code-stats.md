@@ -9,3 +9,4 @@
 - Validation passed: production build with lint/type checks, 320px visual review of ranked/unranked cards, GitHub link destinations, and `git diff --check`.
 
 - Layout follow-up: moved the project HYPE summary directly below CODE, before Promises. Existing content, anchors and data are preserved.
+- Layout follow-up: Market now sits last, after Evidence and methodology. Alex suggested a future Prove Value overlay on this chart; its data and design are still to be decided.

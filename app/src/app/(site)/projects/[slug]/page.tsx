@@ -218,8 +218,6 @@ export default async function ProjectPage({ params, searchParams }: {
       <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} />
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
-      <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
-
       {/* 2. CODE: the row component from the /code ranking, plus the activity chart. */}
       <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE</h2>
@@ -361,6 +359,8 @@ export default async function ProjectPage({ params, searchParams }: {
           <Link href="/methodology">How the scoring works</Link>
         </p>
       </div>
+
+      <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
     </>
   );
 }
