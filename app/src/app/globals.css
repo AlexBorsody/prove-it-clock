@@ -59,8 +59,8 @@ a[href^="http"]::after {
 .appbar {
   position: sticky; top: 0; z-index: 60;
   padding: 12px 0;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
 }
 .appbar-inner { display: flex; align-items: center; gap: 8px; }
 .appbar-home {
