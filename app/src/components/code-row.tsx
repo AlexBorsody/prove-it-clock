@@ -6,6 +6,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { GithubMark, StarIcon, ForkIcon, CommitIcon } from "@/components/icons";
+import type { CodeSort } from "@/lib/code-ranking";
 import { searchMeta } from "@/lib/search-sections";
 
 export interface CodeRowData {
@@ -24,12 +25,13 @@ export interface CodeRowData {
 const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
 const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
 
-function MetricLink({ href, label, children }: { href?: string; label: string; children: ReactNode }) {
+function MetricLink({ href, label, active, children }: { href?: string; label: string; active?: boolean; children: ReactNode }) {
+  const cls = `code-metric${active ? " active" : ""}`;
   return href ? (
-    <a className="code-metric" href={href} target="_blank" rel="noreferrer" aria-label={label}>
+    <a className={cls} href={href} target="_blank" rel="noreferrer" aria-label={label}>
       {children}
     </a>
-  ) : <div className="code-metric">{children}</div>;
+  ) : <div className={cls}>{children}</div>;
 }
 
 export default function CodeRow({
@@ -37,11 +39,14 @@ export default function CodeRow({
   rank,
   search,
   showWatchers = false,
+  activeSort,
 }: {
   row: CodeRowData;
   /** Rank number; omitted on the project detail page. */
   rank?: number;
   showWatchers?: boolean;
+  /** Highlights the metric the ranking is sorted by. Unset on the detail page. */
+  activeSort?: CodeSort;
   search: { id: string; title: string };
 }) {
   const r = row;
@@ -79,19 +84,19 @@ export default function CodeRow({
         </a>
       ) : null}
       <div className={`code-metrics${showWatchers ? " code-metrics-four" : ""}`}>
-        <MetricLink href={r.repoUrl ? `${r.repoUrl}/stargazers` : undefined} label={`${r.name} stars on GitHub`}>
+        <MetricLink href={r.repoUrl ? `${r.repoUrl}/stargazers` : undefined} label={`${r.name} stars on GitHub`} active={activeSort === "stars"}>
           <span className="code-metric-label"><StarIcon /> Stars</span>
           <span className="code-metric-value num">{compact(r.stars)}</span>
         </MetricLink>
-        <MetricLink href={r.repoUrl ? `${r.repoUrl}/forks` : undefined} label={`${r.name} forks on GitHub`}>
+        <MetricLink href={r.repoUrl ? `${r.repoUrl}/forks` : undefined} label={`${r.name} forks on GitHub`} active={activeSort === "forks"}>
           <span className="code-metric-label"><ForkIcon /> Forks</span>
           <span className="code-metric-value num">{compact(r.forks)}</span>
         </MetricLink>
-        {showWatchers && <MetricLink href={r.repoUrl ? `${r.repoUrl}/watchers` : undefined} label={`${r.name} watchers on GitHub`}>
+        {showWatchers && <MetricLink href={r.repoUrl ? `${r.repoUrl}/watchers` : undefined} label={`${r.name} watchers on GitHub`} active={activeSort === "watchers"}>
           <span className="code-metric-label">Watchers</span>
           <span className="code-metric-value num">{compact(r.watchers)}</span>
         </MetricLink>}
-        <MetricLink href={r.repoUrl ? `${r.repoUrl}/commits` : undefined} label={`${r.name} commit history on GitHub`}>
+        <MetricLink href={r.repoUrl ? `${r.repoUrl}/commits` : undefined} label={`${r.name} commit history on GitHub`} active={activeSort === "commits"}>
           <span className="code-metric-label"><CommitIcon /> Commits</span>
           <span className="code-metric-value num">
             {r.failed || r.commits90d == null ? "—" : r.commits90d.toLocaleString()}
