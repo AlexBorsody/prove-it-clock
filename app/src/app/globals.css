@@ -1081,7 +1081,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .panel h2.with-tip { display: flex; align-items: center; justify-content: space-between; }
 
 /* ---- InfoTip: tap-to-reveal tooltip bubble ---- */
-.info-tip { position: relative; display: inline-flex; }
+.info-tip { position: relative; display: inline-flex; vertical-align: middle; }
 .info-tip-btn {
   display: inline-flex; align-items: center; justify-content: center;
   background: none; border: none; padding: 6px; margin: 0 0 1px;
