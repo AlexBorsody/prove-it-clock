@@ -212,7 +212,7 @@ export default async function ProjectPage({ params, searchParams }: {
         </details>
         {healthTotal > 0 ? (
           <div className="promise-health">
-            <div className="promise-health-label">Delivery health</div>
+            <h3 className="promise-subhead">Delivery health</h3>
             <div
               className="ph-track"
               role="group"
