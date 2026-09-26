@@ -214,3 +214,9 @@ active. Atlas must interpret the actual record methodology explicitly.
 - Muse's verdict-layer brief was pulled and reviewed in its task document.
   This embedded map remains below the promise panel, leaving the approved
   verdict-card position above the promise list available.
+- Released in `14d5f95`; Muse review feedback is in `05844ce`. Both were
+  pushed after fetching the latest main. Vercel reported a successful
+  deployment. Live BTC project-page browser check loaded 16/16 promises,
+  filtered to its one lapsed promise, and opened its recorded assessment
+  and evidence without leaving the project route. No production console
+  errors appeared in that check. Temporary local test servers were stopped.
