@@ -8,32 +8,35 @@ import "driver.js/dist/driver.css";
 const SEEN_KEY = "proveit-walkthrough-seen";
 const REPLAY_EVENT = "proveit:walkthrough";
 
-type TourStep = { route: string; selector: string; title: string; body: string };
+type TourStep = { selector: string; title: string; body: string };
 
 /**
- * A real guided tour: each step navigates to the page that owns the
- * concept and spotlights the actual section, not a modal description.
+ * The tour lives on a project detail page: that page is the sauce.
+ * Every step spotlights the actual section, not a modal description.
  */
 const STEPS: TourStep[] = [
   {
-    route: "/",
-    selector: '[data-tour="hearts"]',
-    title: "Hearts = proof delivered",
-    body: "Every heart maps to a promise and evidence. Tap the hearts on any row to see what earned them.",
+    selector: '[data-tour="promises"]',
+    title: "Promises, kept or broken",
+    body: "This is the whole point. Everything Bitcoin promised, and what actually happened. A filled heart means the promise was kept. Tap any promise to see the proof.",
   },
   {
-    route: "/projects/btc",
     selector: '[data-tour="shitcoin"]',
-    title: "Shitcoin warning = what went wrong",
-    body: "Abandoned or failed promises trigger the verdict. Tap the gauge for the full breakdown.",
+    title: "The warning light",
+    body: "When promises fail or get quietly dropped, it shows up here. Tap the gauge to see exactly what went wrong.",
   },
   {
-    route: "/code",
     selector: '[data-tour="code"]',
-    title: "CODE + HYPE = context",
-    body: "CODE shows whether they are still building. HYPE shows whether attention outruns substance.",
+    title: "Are they still building?",
+    body: "Real activity from GitHub. If the code stops moving but the price keeps climbing, that is the tell.",
   },
 ];
+
+/** Tour the project page the user is already on; otherwise start with Bitcoin. */
+function detailRoute(): string {
+  const m = window.location.pathname.match(/^\/projects\/[^/]+/);
+  return m ? m[0] : "/projects/btc";
+}
 
 function markSeen() {
   try {
@@ -100,6 +103,7 @@ export default function Walkthrough() {
       activeRef.current = true;
       const s = STEPS[i];
       const last = i === STEPS.length - 1;
+      const route = detailRoute();
 
       const render = () => {
         const el = document.querySelector(s.selector) as HTMLElement | null;
@@ -148,8 +152,8 @@ export default function Walkthrough() {
         }, 380);
       };
 
-      if (window.location.pathname !== s.route) {
-        router.push(s.route);
+      if (window.location.pathname !== route) {
+        router.push(route);
         waitForElement(
           s.selector,
           render,

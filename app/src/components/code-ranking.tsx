@@ -29,7 +29,7 @@ export default function CodeRanking({ rows }: { rows: CodeRowData[] }) {
       </select>
       <noscript><button type="submit">Sort</button></noscript>
     </form>
-    {rows.length > 0 && <div className="panel search-section" data-tour="code" {...searchMeta({ id: "code-ranking", title: "CODE ranking", kind: "CODE", keywords: "development GitHub commits watchers" })}>
+    {rows.length > 0 && <div className="panel search-section" {...searchMeta({ id: "code-ranking", title: "CODE ranking", kind: "CODE", keywords: "development GitHub commits watchers" })}>
       <p className="explain" style={{ marginTop: 0 }} aria-live="polite">
         Ranked by {CODE_SORT_LABELS[sort].toLowerCase()}{sort === "commits" ? " over 90 days" : ""}, highest first. Missing data appears last.
       </p>

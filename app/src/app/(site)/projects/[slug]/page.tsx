@@ -12,50 +12,22 @@ import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../../data/verdict-lines";
 import { potentialRationale } from "../../../../../data/potential";
-import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
+import { fetchVitals } from "@/lib/vitals";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
-import { promiseAnchor, promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
+import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
 import { CodeActivityChart } from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
+import PromiseList, { promiseDisplay } from "@/components/promise-list";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
-
-/** Display promise state using the canonical five: open / active / fulfilled / lapsed / retired. Legacy DB values normalize at the boundary. */
-function promiseDisplay(pr: any): { label: string; tone: "good" | "dim" | "bad" } {
-  let s: string;
-  try {
-    s = normalizePromiseState(pr.state);
-  } catch {
-    return { label: "Unknown", tone: "dim" };
-  }
-  if (s === "fulfilled") return { label: "Fulfilled", tone: "good" };
-  if (s === "active") return { label: "Active", tone: "dim" };
-  if (s === "open") return { label: "Open", tone: "dim" };
-  if (s === "lapsed") return { label: "Lapsed", tone: "bad" };
-  return { label: "Retired", tone: "bad" };
-}
-
-/** One promise = one heart: the heart this promise earned, is chasing, or lost. */
-function promiseHeart(pr: any): { filled: boolean; color: string; label: string } {
-  let s: string;
-  try {
-    s = normalizePromiseState(pr.state);
-  } catch {
-    return { filled: false, color: "var(--text-faint)", label: "No heart yet" };
-  }
-  if (s === "fulfilled") return { filled: true, color: "var(--green)", label: "Earned 1 heart" };
-  if (s === "lapsed" || s === "retired")
-    return { filled: false, color: "var(--red)", label: "Heart lost" };
-  return { filled: false, color: "var(--text-faint)", label: "No heart yet" };
-}
 
 function claimLabel(t: string): string {
   if (t === "milestone") return "One-time";
@@ -142,7 +114,6 @@ export default async function ProjectPage({ params, searchParams }: {
 
   const hypeLatest = latestHypeBySlug(hypeSnaps)[slug];
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
-  const repo = VITALS_REPOS[slug];
 
   const codeWeeks = vitals?.weeks?.map((w: any) => ({ week: w.week, total: w.total })) ?? null;
   const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
@@ -196,7 +167,7 @@ export default async function ProjectPage({ params, searchParams }: {
       {/* All promise content lives in one consolidated panel below:
           help expander, delivery health, the promise list, the delivery
           verdict meter, and the stats. */}
-      <div className="panel search-section" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
+      <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2>Promises</h2>
         <details className="promise-help">
@@ -263,41 +234,7 @@ export default async function ProjectPage({ params, searchParams }: {
             })()}
           </p>
         )}
-        {promises.map((pr, i) => {
-          if (!matchesPromiseFilter(pr.state, filter)) return null;
-          const d = promiseDisplay(pr);
-          const h = promiseHeart(pr);
-          // Escape every non-ID character (including underscores) without
-          // collapsing distinct lineage names onto the same anchor.
-          const anchor = promiseAnchor(slug, String(pr.lineage ?? i));
-          const label = promiseRefs[i].label;
-          return (
-            <div className="comp-row search-section" key={pr.lineage ?? i} {...searchMeta({ id: anchor, title: `${latest.name}: ${pr.criteria ?? pr.lineage ?? "Promise"}`, kind: "Promise", project: slug, keywords: `${latest.symbol} ${pr.lineage ?? ""} ${pr.claim_type ?? ""} ${d.label}` })}>
-              <div className="promise-head">
-                <Link className="promise-heart-evidence" href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${h.label}. View evidence`}>
-                  <Icon name="heart" size={20} filled={h.filled} title={h.label} style={{ color: h.color }} />
-                </Link>
-                <div className="comp-name">{pr.criteria}</div>
-              </div>
-              <div className="comp-tags">
-                <span className="tag na">{label}</span>
-                <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${d.label}. View evidence`}>{d.label} ↗</Link>
-                {pr.core ? <span className="tag na">Main promise</span> : null}
-              </div>
-              <p className="comp-desc">{pr.rationale}</p>
-                <details className="comp-sources" id={`${anchor}-evidence`} open={filter !== "all" || query.evidence === String(pr.lineage ?? i)}>
-                  <summary>Evidence ({pr.evidence?.length ?? 0})</summary>
-                  {pr.evidence?.length > 0 ? <ul>
-                    {pr.evidence.map((e: any, j: number) => (
-                      <li key={j}>
-                        <a href={e.url} target="_blank" rel="noreferrer">{e.summary ?? e.url}</a>
-                      </li>
-                    ))}
-                  </ul> : <p className="comp-desc">No supporting sources are linked to this assessment yet.</p>}
-                </details>
-            </div>
-          );
-        })}
+        <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
         <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />
           <h3 className="promise-subhead">Delivery verdict</h3>
@@ -327,30 +264,8 @@ export default async function ProjectPage({ params, searchParams }: {
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
-      {/* Evidence and methodology. */}
-      <div className="panel search-section" {...searchMeta({ id: `project-${slug}-evidence`, title: `${latest.name} evidence and methodology`, kind: "Evidence", project: slug, keywords: `${latest.symbol} sources scoring history` })}>
-        <h2>Evidence and methodology</h2>
-        <p className="panel-sub">
-          Every promise above was checked against public evidence: code,
-          docs, announcements, and independent reporting.
-        </p>
-        <p className="panel-sub">
-          Methodology {latest.methodology} scored {latest.earned} of{" "}
-          {latest.capacity} hearts. No free hearts: history recalculated.
-        </p>
-        <p className="panel-sub">
-          Run ID <span className="mono-wrap">{latest.run_id}</span>
-          {repo ? (
-            <> · <a href={`https://github.com/${repo.github}`} target="_blank" rel="noreferrer">{repo.github}</a></>
-          ) : null}
-        </p>
-        <p className="panel-sub" style={{ marginBottom: 0 }}>
-          <Link href="/methodology">How the scoring works</Link>
-        </p>
-      </div>
-
       {/* Supporting metrics: CODE, HYPE, then Market. */}
-      <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
+      <section className="panel code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE</h2>
         <p className="panel-sub">
           Who is actually working {latest.name}.

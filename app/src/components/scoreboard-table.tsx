@@ -102,7 +102,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
   }
 
   return (
-    <div data-tour="hearts" className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
+    <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>

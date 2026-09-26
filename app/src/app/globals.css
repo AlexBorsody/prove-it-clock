@@ -1226,13 +1226,18 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .hero-factors { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; }
 }
 
-/* Meter evidence is collapsed until requested. */
+/* Meter evidence is collapsed until requested; the toggle looks like a button. */
 .shitcoin-inputs { margin-top: 10px; }
 .shitcoin-inputs-label {
+  display: block;
   font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--text-dim); text-transform: uppercase; min-height: 44px;
-  padding: 10px 0; cursor: pointer;
+  color: var(--text-dim); text-transform: uppercase; text-align: center;
+  min-height: 44px; padding: 14px 16px; cursor: pointer;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px;
+  list-style: none;
 }
+.shitcoin-inputs-label::-webkit-details-marker { display: none; }
+.shitcoin-inputs-label::marker { content: ""; }
 .shitcoin-inputs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .shitcoin-inputs-list li {
   display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
@@ -1324,6 +1329,22 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .comp-sources li a { display: block; }
 .promise-filter-status { font-size: 15px; color: var(--text-dim); }
 .promise-heart-evidence { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; flex-shrink: 0; }
+
+/* Show more / less toggle under the promise list. */
+.promise-show-more {
+  display: block;
+  width: 100%;
+  margin: 4px 0 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-panel);
+  color: var(--text-dim);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.promise-show-more:hover { border-color: var(--text-dim); color: var(--text); }
 
 /* The CODE ranking exposes every sort value; project cards remain compact. */
 .code-metrics-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
