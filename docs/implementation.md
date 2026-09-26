@@ -244,16 +244,21 @@ cleanly.
 7. Legacy v0.2.0 timeline section: DECIDED 2026-09-25 (Alex): keep it.
    The detail page carries both the Delivery Timeline and the legacy
    timeline; no merge.
-8. Market panel (2026-09-26): live price, 7d change pill, market cap, and a
-   7-day candlestick chart from CoinGecko OHLC (4h candles), client-side
-   fetch, fails silent. Green/red candle bodies and wicks, horizontal
-   gridlines, price labels on the y axis, date labels on the x axis,
-   dashed last-price line. Click/tap the chart to expand it in a modal
-   (Close / Escape / backdrop click dismisses). Component:
-   `app/src/components/market-panel.tsx`, renders
-   `<section class="panel market-section" id="project-{slug}-market">`.
-   Market data is context only: it never feeds hearts, the verdict, or
-   the Index.
+8. Market panel (2026-09-26): reusable `MarketPanel` fetches CoinGecko
+   spot/market-cap data and OHLC history; `MarketChart` renders the same
+   interactive chart inline and expanded. Default shaded price line,
+   optional candles, 1D / 1W / 1M. Mouse/touch scrubbing and arrow keys
+   select the nearest actual sample, updating price, UTC time and change
+   from the first plotted close. Candle mode includes OHLC readouts.
+   The latest plotted close is distinct from the spot quote; no interpolated
+   prices or claims of live ticks. Client history cache: 15 minutes per
+   project/range. Abort stale requests, validate data, show loading/retry
+   states instead of silently hiding failures. Native dialog provides focus
+   containment, Escape/backdrop dismissal and focus restoration. Chart
+   resizes to its container and simplifies date ticks on phones.
+   Components: `components/market-panel.tsx`, `components/market-chart.tsx`.
+   Preserve `<section class="panel market-section" id="project-{slug}-market">`.
+   Market data never feeds hearts, the verdict, or the Index.
 9. Modular metric components (2026-09-26, Alex's rule): every metric with
    a list view ships its row as a shared component in
    `app/src/components/`, and the project detail page renders the SAME
