@@ -111,7 +111,7 @@ a[href^="http"]::after {
 }
 .psearch-row {
   display: flex; align-items: center; gap: 12px; width: 100%;
-  padding: 13px 14px; background: none; border: none; cursor: pointer;
+  padding: 10px 14px; background: none; border: none; cursor: pointer;
   color: var(--text); font-size: 16px; font-family: inherit; text-align: left;
 }
 .psearch-row.active { background: var(--bg-raised); }
@@ -453,7 +453,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
    big mono number. Links to the formula on the methodology page. */
 .shitcoin-badge {
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 8px 14px 8px 12px; border-radius: 12px;
+  padding: 6px 14px 6px 12px; border-radius: 12px;
   background: #101012;
   border: 1px solid var(--border-strong);
   border-left: 5px solid var(--sev-color);
@@ -553,7 +553,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .vitals-down p { color: var(--text-dim); font-size: 15px; margin: 0 0 12px; }
 .vitals-retry {
   background: var(--bg-raised); color: var(--text); border: none;
-  border-radius: 10px; padding: 10px 18px; font-weight: 700; font-size: 15px;
+  border-radius: 10px; padding: 7px 18px; font-weight: 700; font-size: 15px;
   cursor: pointer;
 }
 .vitals-retry:hover { background: #1e1e22; }
@@ -989,7 +989,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .code-team-action {
   align-self: flex-start;
   display: inline-block;
-  padding: 10px 13px;
+  padding: 7px 13px;
   background: var(--bg-raised); border: 1px solid var(--border); border-radius: 10px;
   color: var(--text); text-decoration: none; font-weight: 700; font-size: 14px;
 }
@@ -1124,7 +1124,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .ph-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
 .ph-btn {
   display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 10px 13px; border-radius: 10px;
+  padding: 7px 13px; border-radius: 10px;
   border: 1px solid var(--border); text-decoration: none;
   font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--text-dim); -webkit-tap-highlight-color: transparent;
@@ -1256,19 +1256,19 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .metric-btn {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--bg-elev); border: 1px solid var(--border-strong);
-  border-radius: 999px; padding: 8px 14px;
+  border-radius: 999px; padding: 6px 14px;
   color: var(--text); font-weight: 700; font-size: 12.5px;
   text-decoration: none; white-space: nowrap;
 }
 .metric-btn:active { transform: scale(0.97); }
 /* ---- Button element rule: horizontal padding always exceeds vertical.
    Low top/bottom on every button by default; specific classes refine it. */
-button { padding-block: 8px; padding-inline: 14px; }
+button { padding-block: 6px; padding-inline: 14px; }
 /* Text CTA links are buttons too: filled background, rounded corners. */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: var(--bg-elev); border: 1px solid var(--border-strong);
-  border-radius: 12px; padding: 10px 18px;
+  border-radius: 12px; padding: 7px 18px;
   color: var(--text); font-weight: 800; font-size: 14px;
   text-decoration: none; cursor: pointer; white-space: nowrap;
 }
@@ -1290,7 +1290,7 @@ button { padding-block: 8px; padding-inline: 14px; }
   .hero-factor { font-size: 15px; }
   .panel-sub { font-size: 16px; }
   .explain { font-size: 16px; }
-  .metric-btn { font-size: 13.5px; padding: 9px 15px; }
+  .metric-btn { font-size: 13.5px; padding: 7px 15px; }
   .mcard-stats { font-size: 13.5px; }
   .mcard-count { font-size: 15px; }
   .shitcoin-caption { font-size: 10px; }
@@ -1331,7 +1331,7 @@ button { padding-block: 8px; padding-inline: 14px; }
 /* Promise metrics lead directly to their supporting records. */
 .evidence-link { text-decoration: underline; text-underline-offset: 3px; }
 .comp-tags .tag { border: none; text-decoration: none; }
-.comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 0; padding: 8px 14px; }
+.comp-tags .evidence-link { display: inline-flex; align-items: center; min-height: 0; padding: 6px 14px; }
 .comp-sources { scroll-margin-top: 110px; }
 .comp-sources > summary, .comp-sources li a { min-height: 44px; padding: 10px 0; font-size: 15px; }
 .comp-sources li a { display: block; }
