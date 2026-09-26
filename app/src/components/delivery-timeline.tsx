@@ -5,6 +5,9 @@ import {
   BarChart,
   Bar,
   Tooltip,
+  XAxis,
+  YAxis,
+  CartesianGrid,
 } from "recharts";
 import HeartsTimeline, { type HeartPoint } from "@/components/hearts-timeline";
 
@@ -13,7 +16,7 @@ import HeartsTimeline, { type HeartPoint } from "@/components/hearts-timeline";
  * below. Activity is display only; it never changes the hearts.
  */
 
-export interface CodeWeek { week: string; total: number }
+export interface CodeWeek { week: string | number; total: number }
 export interface HypePoint { as_of: string; mentions: number }
 
 function fmtDate(iso: string): string {
@@ -30,6 +33,20 @@ const TOOLTIP_STYLE = {
   padding: "6px 10px",
 };
 
+function codeWeekDate(week: CodeWeek["week"]): Date {
+  return typeof week === "number" || /^\d+$/.test(week)
+    ? new Date(Number(week) * 1000)
+    : new Date(week);
+}
+
+function codeWeekLabel(week: CodeWeek["week"], full = false): string {
+  const date = codeWeekDate(week);
+  if (isNaN(date.getTime())) return String(week);
+  return full
+    ? date.toISOString().slice(0, 10)
+    : date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
 function CodeTooltip({
   active,
   payload,
@@ -39,13 +56,10 @@ function CodeTooltip({
 }) {
   if (!active || !payload || payload.length === 0) return null;
   const p = payload[0].payload;
-  const wn = typeof p.week === "string" ? parseInt(p.week, 10) : p.week;
-  const weekLabel = !isNaN(wn) && wn > 0
-    ? new Date(wn * 1000).toISOString().slice(0, 10)
-    : fmtDate(String(p.week));
   return (
-    <div style={TOOLTIP_STYLE}>
-      Week of {weekLabel}: {p.total} commits
+    <div style={{ ...TOOLTIP_STYLE, maxWidth: 220 }}>
+      <div>Week of {codeWeekLabel(p.week, true)}</div>
+      <strong>{p.total.toLocaleString()} commits</strong>
     </div>
   );
 }
@@ -73,17 +87,32 @@ function HypeTooltip({
  */
 export function CodeActivityChart({ codeWeeks }: { codeWeeks: CodeWeek[] | null }) {
   return (
-    <div className="tl-card">
-      <h3>CODE activity</h3>
-      <p className="panel-sub" style={{ fontSize: 14, color: "#8b96a8" }}>
-        Commits per week on the tracked repo. Display only, it never changes the hearts.
-      </p>
+    <div className="tl-card" role="region" aria-label="Weekly repository commits">
       {codeWeeks && codeWeeks.length > 0 ? (
-        <div style={{ width: "100%", height: 120 }}>
+        <div style={{ width: "100%", minWidth: 0, height: 200 }}>
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={codeWeeks} margin={{ top: 4, right: 4, bottom: 4, left: 4 }}>
-              <Tooltip content={<CodeTooltip />} cursor={{ fill: "#1f2937", opacity: 0.4 }} />
-              <Bar dataKey="total" fill="#58a6ff" maxBarSize={28} />
+            <BarChart data={codeWeeks} accessibilityLayer margin={{ top: 12, right: 12, bottom: 8, left: 0 }}>
+              <CartesianGrid vertical={false} stroke="#2d3a4f" strokeDasharray="3 3" />
+              <XAxis
+                dataKey="week"
+                tickFormatter={(week) => codeWeekLabel(week)}
+                tick={{ fill: "#8b96a8", fontSize: 11 }}
+                tickLine={false}
+                axisLine={{ stroke: "#2d3a4f" }}
+                minTickGap={32}
+                tickMargin={10}
+              />
+              <YAxis
+                allowDecimals={false}
+                domain={[0, "auto"]}
+                width={58}
+                tick={{ fill: "#8b96a8", fontSize: 11 }}
+                tickLine={false}
+                axisLine={false}
+                label={{ value: "Commits", angle: -90, position: "insideLeft", fill: "#8b96a8", fontSize: 11 }}
+              />
+              <Tooltip content={<CodeTooltip />} cursor={{ fill: "#58a6ff", opacity: 0.12 }} />
+              <Bar dataKey="total" name="Commits" fill="#58a6ff" radius={[2, 2, 0, 0]} maxBarSize={28} />
             </BarChart>
           </ResponsiveContainer>
         </div>
