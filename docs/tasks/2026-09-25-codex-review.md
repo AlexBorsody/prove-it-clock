@@ -38,10 +38,13 @@ framework, scoring formula, database project or extra product surface is needed.
 
 ## Codex queue
 
-- Search: integrated with current main; release verification in progress.
-- In progress: [public API v3 audit](2026-09-25-codex-api-audit.md). The API currently
-  ignores methodology selection and uses the site constant, so this needs a
-  real request-to-reader fix, plus the canonical enum/source URL contract tests.
+- Search: integrated with current main; production build and 13 focused checks
+  pass. Header icon verified at desktop and narrow widths. Direct-main push
+  was blocked by automatic approval review; explicit release approval pending.
+- Done locally: [public API v3 audit](2026-09-25-codex-api-audit.md), commit
+  `884fa4a` on `codex/public-api-v3`. Explicit methodology now reaches score and
+  history reads; canonical enum/source URL contract tests, typecheck and the
+  isolated production build pass. Six API tests; no hosted changes.
 - On hold: [timeline redesign](2026-09-25-codex-timeline.md), as instructed.
 - Habib owns canonical `active` semantics and v3 publication/activation. Codex
   will document the publish-time rejection without changing that policy.
