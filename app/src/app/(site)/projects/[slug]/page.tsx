@@ -222,7 +222,7 @@ export default async function ProjectPage({ params, searchParams }: {
       <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE</h2>
         <p className="panel-sub">
-          Who is actually building {latest.name}. Development context only: CODE never moves the heart score.
+          Who is actually working {latest.name}.
         </p>
         <div className="code-rows">
           <CodeRow
