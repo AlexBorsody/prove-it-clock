@@ -983,13 +983,14 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .code-coin-link { grid-area: coin; display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; color: inherit; min-width: 0; }
 .code-row > .github-btn { grid-area: github; justify-self: end; width: 44px; height: 44px; }
 .code-name { font-weight: 700; font-size: 20px; overflow-wrap: anywhere; min-width: 0; }
-/* GitHub repo button: clearly a button. */
+/* GitHub repo link: plain icon, the ↗ arrow marks it as a link. */
 .github-btn {
   display: inline-flex; align-items: center; justify-content: center;
   width: 40px; height: 40px; flex-shrink: 0;
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: 12px; color: var(--text); text-decoration: none;
+  background: none; border: none;
+  border-radius: 12px; color: var(--text-dim); text-decoration: none;
 }
+.github-btn:hover { color: var(--text); }
 .github-btn:active { transform: scale(0.94); }
 .github-btn-icon { width: 20px; height: 20px; }
 .code-metrics { grid-area: metrics; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
