@@ -12,6 +12,27 @@ export const openApiSpec = {
   },
   servers: [{ url: "https://prove-it-clock.vercel.app/api/v1" }],
   paths: {
+    "/mentions/{slug}": {
+      get: {
+        summary: "Explore a project's news sources",
+        description: "Current rolling seven-day Google News RSS sample with project-matching headlines, cached for one hour. Returns article links, publishers and publication times. Not exhaustive coverage, social posts, or persisted historical evidence. Unknown projects return 404; provider failures return 503, never a zero count.",
+        parameters: [{ name: "slug", in: "path", required: true, schema: { type: "string", enum: ["btc", "eth", "xrp", "sol", "link", "avax", "dash", "bat"] } }],
+        responses: {
+          "200": { description: "News feed sample", content: { "application/json": { schema: {
+            type: "object", required: ["slug", "provider", "fetched_at", "window_start", "window_end", "source_url", "articles", "feed_items"],
+            properties: {
+              slug: { type: "string" }, provider: { type: "string", enum: ["Google News RSS"] },
+              fetched_at: { type: "string", format: "date-time" }, window_start: { type: "string", format: "date-time" }, window_end: { type: "string", format: "date-time" },
+              source_url: { type: "string", format: "uri" }, feed_items: { type: "integer", description: "Raw feed items before validation and URL deduplication" },
+              articles: { type: "array", items: { type: "object", required: ["url", "title", "publisher", "publisher_url", "published_at"], properties: {
+                url: { type: "string", format: "uri" }, title: { type: "string" }, publisher: { type: "string" }, publisher_url: { type: "string", format: "uri", nullable: true }, published_at: { type: "string", format: "date-time" }
+              } } }
+            }
+          } } } },
+          "404": { description: "Unknown project" }, "503": { description: "News provider unavailable; retry later" }
+        }
+      }
+    },
     "/scores": {
       get: {
         summary: "List scored projects",

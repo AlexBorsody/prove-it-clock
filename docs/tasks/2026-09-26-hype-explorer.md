@@ -29,3 +29,5 @@ and pure `hype-mentions.ts` aggregations for project-specific views; the current
 its selector state. Codex will review that refactor afterward; no competing refactor started.
 
 Merge note: fc118a3 added the modular-card brief but also reversed the six tracked integration files from ea19b2d. Preserved its new brief and retained the HYPE explorer wiring, CODE tab, mobile styles and OpenAPI endpoint to avoid removing the shipped feature.
+
+Sync follow-up: 38980f8 again removed the six HYPE/CODE integration changes while adding semantic-section guidance. Restored only those reviewed removals; retained all new task guidance. Please pull current main before committing shared UI files. Vercel deployment 408da0f had been verified with populated publisher/day charts and corrected BAT headlines.

@@ -22,12 +22,12 @@ export interface HypeRow {
 
 function SourceIcons({ sources }: { sources: string[] }) {
   const items = [
-    { key: "reddit", label: "Reddit", Icon: RedditIcon },
-    { key: "telegram", label: "Telegram", Icon: TelegramIcon },
-    { key: "news", label: "News", Icon: MegaphoneIcon },
+    { key: "reddit", label: "Reddit audience size", Icon: RedditIcon },
+    { key: "telegram", label: "Telegram audience size", Icon: TelegramIcon },
+    { key: "news", label: "News articles", Icon: MegaphoneIcon },
   ];
   return (
-    <span className="hype-sources" title="HYPE sources">
+    <span className="hype-sources" title="Collected metrics: news articles and community sizes">
       {items.map(({ key, label, Icon }) => (
         <span
           key={key}
