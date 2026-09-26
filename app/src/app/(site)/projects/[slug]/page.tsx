@@ -161,7 +161,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {rank > 0 ? <span className="rank-chip num">#{rank}</span> : null}
         </h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-          <HeartMeter filled={latest.earned} capacity={latest.capacity} allowance={0} size={34} />
+          <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
           <div className="num" style={{ fontSize: 28, fontWeight: 700 }}>
             {latest.earned}<span style={{ color: "var(--text-faint)", fontSize: 20 }}> of {latest.capacity} potential</span>
           </div>
@@ -287,7 +287,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <div className="comp-tags">
                 <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>{d.label}</span>
                 {pr.core ? <span className="tag na">Main promise</span> : null}
-                {pr.reward ? <span className="comp-hearts num">{pr.reward} heart{pr.reward > 1 ? "s" : ""}</span> : null}
               </div>
               <p className="comp-desc">{pr.rationale}</p>
               {pr.evidence?.length > 0 && (

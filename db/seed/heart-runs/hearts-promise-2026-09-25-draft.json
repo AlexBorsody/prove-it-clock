@@ -1,0 +1,1077 @@
+{
+  "schema_version": 3,
+  "run_key": "hearts-promise-2026-09-25",
+  "as_of": "2026-09-25T22:00:00-04:00",
+  "methodology": "hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)",
+  "review_status": "draft",
+  "projects": [
+    {
+      "slug": "btc",
+      "availability": "available",
+      "assessment": {
+        "capacity": 16,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "16 promises researched from the Bitcoin whitepaper, Satoshi's public writings, and community-adopted claims. Each fulfilled promise earns one heart.",
+        "promises": [
+          {
+            "lineage": "btc-p01-peer-to-peer-electronic-cash",
+            "claim_type": "ongoing",
+            "criteria": "an ordinary user can send and receive BTC wallet-to-wallet with no bank, processor, or other intermediary in the loop.",
+            "core": true,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "base-layer transfers have run intermediary-free since 2009.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p02-double-spending-solved-without-a-trusted-party",
+            "claim_type": "ongoing",
+            "criteria": "no confirmed transaction is ever reversed by a conflicting spend accepted under the proof-of-work consensus rules.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "no double-spend of economically finalized transactions in 17 years of mainnet history.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p03-immutable-history-via-proof-of-work",
+            "claim_type": "ongoing",
+            "criteria": "no rewrite of deeply confirmed history; reorganizations limited to a handful of blocks.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "deepest reorgs were a few blocks (e.g., March 2013); finalized history never rewritten.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p04-security-under-an-honest-majority-cpu-assumption",
+            "claim_type": "ongoing",
+            "criteria": "zero successful majority (51%) attacks against Bitcoin; attacker catch-up probability decays as the paper's section 11 calculates.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "no 51% attack on Bitcoin to date; the hashpower majority has remained honest.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p05-nodes-can-leave-and-rejoin-at-will",
+            "claim_type": "ongoing",
+            "criteria": "a node offline for an extended period can sync and converge on the same chain tip as the rest of the network.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "initial block download and SPV sync do exactly this.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p06-pseudonymous-privacy",
+            "claim_type": "ongoing",
+            "criteria": "ordinary on-chain activity cannot be systematically linked to real-world identities by third parties.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "the protocol still uses pseudonymous keys, but chain-analysis firms and KYC on-ramps now routinely deanonymize flows at scale.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper section 10, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p07-permissionless-participation",
+            "claim_type": "ongoing",
+            "criteria": "anyone can run a node or mine without registering identity or seeking approval.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "no identity gate exists at the protocol level (mining economics concentrate, but permission is never required).",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper section 12, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p08-eventually-completely-inflation-free",
+            "claim_type": "ongoing",
+            "criteria": "block subsidy reaches zero (around 2140) and fee revenue alone sustains mining; the monetary base stops growing.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "the subsidy was still 3.125 BTC per block in 2026; the fee-only era is a century out and untested.",
+            "evidence": [
+              {
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "summary": "Bitcoin whitepaper section 6, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p09-21-million-hard-cap",
+            "claim_type": "ongoing",
+            "criteria": "total BTC ever mined never exceeds 21,000,000; issuance follows the halving schedule.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-01-03T00:00:00Z",
+            "rationale": "supply was about 19.9M in 2026, on schedule, cap enforced by consensus code.",
+            "evidence": [
+              {
+                "url": "https://mmalmi.github.io/satoshi/",
+                "summary": "Satoshi correspondence with Martti Malmi, 2009-2011"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p10-lost-coins-don-t-break-the-money",
+            "claim_type": "ongoing",
+            "criteria": "coins lost through destroyed keys stay unspendable without affecting issuance, consensus, or the 21M cap.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2010-06-21T00:00:00Z",
+            "rationale": "millions of BTC are estimated lost and the protocol is unaffected; the scarcity thesis is intact.",
+            "evidence": [
+              {
+                "url": "https://bitcointalk.org/index.php?topic=198.msg1647#msg1647",
+                "summary": "Satoshi forum post, 2010-06-21"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p11-participants-can-be-anonymous",
+            "claim_type": "ongoing",
+            "criteria": "ordinary users can transact without their real-world identity being discoverable from chain data.",
+            "core": false,
+            "state": "lapsed",
+            "effective_at": "2008-10-31T00:00:00Z",
+            "rationale": "the whitepaper itself only ever promised pseudonymity (section 10), and in practice chain analysis plus regulated on-ramps have made strong anonymity the exception, not the rule.",
+            "evidence": [
+              {
+                "url": "https://www.metzdowd.com/pipermail/cryptography/2008-October/014810.html",
+                "summary": "Bitcoin announcement, cryptography mailing list, 2008-10-31"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p12-block-size-limit-can-be-raised-later",
+            "claim_type": "milestone",
+            "criteria": "base-layer block capacity is raised through a planned, phased change when needed.",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2010-10-04T00:00:00Z",
+            "rationale": "walked back by the community: the limit was never raised by hard fork; scaling went via SegWit (2017) and large-block advocates split to Bitcoin Cash. Walked back: the limit was never raised by hard fork; scaling went via SegWit (2017).",
+            "evidence": [
+              {
+                "url": "https://satoshi.nakamotoinstitute.org/posts/bitcointalk/485/",
+                "summary": "Satoshi forum post, 2010-10-04"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p13-fees-will-replace-the-block-subsidy",
+            "claim_type": "ongoing",
+            "criteria": "transaction fees exceed the block subsidy as the dominant share of miner revenue.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2010-02-14T00:00:00Z",
+            "rationale": "the subsidy still dominates block rewards outside demand spikes; the transition is decades away.",
+            "evidence": [
+              {
+                "url": "http://satoshi.nakamotoinstitute.org/posts/bitcointalk/57/",
+                "summary": "Satoshi forum post, 2010-02-14"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p14-money-without-trusted-third-parties",
+            "claim_type": "ongoing",
+            "criteria": "the base layer operates with no central server, mint, or trusted intermediary required to transact or verify.",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2009-02-11T00:00:00Z",
+            "rationale": "the protocol has no trusted parties (caveat: most users voluntarily reintroduce them via custodial exchanges).",
+            "evidence": [
+              {
+                "url": "https://satoshi.nakamotoinstitute.org/emails/p2p-research/35/",
+                "summary": "Satoshi on the P2P Foundation forum, 2009-02-11"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p15-digital-gold-an-aspirational-store-of-value",
+            "claim_type": "ongoing",
+            "criteria": "BTC retains purchasing power over multi-year horizons with volatility converging toward gold-like stability.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2020-07-01T00:00:00Z",
+            "rationale": "long-run purchasing power is up enormously, but 70%+ drawdowns (e.g., 2021-2022) keep it \"aspirational,\" as the source itself frames it.",
+            "evidence": [
+              {
+                "url": "https://fidelitydigitalassets-dev.fidelitymicrosite.com/sites/g/files/djuvja3256/files/acquiadam/bitinvthessisstoreofvalue.pdf",
+                "summary": "Fidelity Digital Assets research report, 2020-07"
+              }
+            ]
+          },
+          {
+            "lineage": "btc-p16-instant-near-free-payments-via-lightning",
+            "claim_type": "milestone",
+            "criteria": "median Lightning payment settles in seconds for sub-cent fees with high first-attempt routing success.",
+            "core": false,
+            "state": "open",
+            "effective_at": "2016-01-01T00:00:00Z",
+            "rationale": "the network has run since 2018 with growing capacity and sub-cent fees, but routing reliability and UX still limit everyday use. ---",
+            "evidence": [
+              {
+                "url": "https://lightning.network/lightning-network-summary.pdf?ref=hajisatoshi.ghost.io",
+                "summary": "Lightning Network summary, 2016-01"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 83819,
+        "market_cap_usd": 1683869293593.8555,
+        "raw_payload": {
+          "bitcoin": {
+            "usd": 83819,
+            "usd_market_cap": 1683869293593.8555
+          }
+        }
+      }
+    },
+    {
+      "slug": "eth",
+      "availability": "available",
+      "assessment": {
+        "capacity": 12,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "12 promises researched from the Ethereum whitepaper, founder and team statements, and the official roadmap. Each fulfilled promise earns one heart.",
+        "promises": [
+          {
+            "lineage": "eth-p01-general-purpose-smart-contracts",
+            "claim_type": "milestone",
+            "criteria": "arbitrary user-deployed programs execute on-chain; thousands of dapps and token contracts live on mainnet",
+            "core": true,
+            "state": "fulfilled",
+            "effective_at": "2015-07-30T00:00:00Z",
+            "rationale": "smart contracts and dapps are Ethereum's defining, shipped reality",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/whitepaper/",
+                "summary": "Ethereum whitepaper, 2014"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p02-transition-from-proof-of-work-to-proof-of-stake",
+            "claim_type": "milestone",
+            "criteria": "consensus layer switched from mining to staked-ETH validation on mainnet",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2022-09-15T00:00:00Z",
+            "rationale": "the Merge executed September 15, 2022, after years of delays; the difficulty bomb was postponed through Byzantium, Constantinople, Muir Glacier, London, Arrow Glacier, and Gray Glacier (see https://blog.ethereum.org/2022/06/16/gray-glacier-announcement, EF blog, June 16, 2022)",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/roadmap/merge/",
+                "summary": "Official Ethereum roadmap; Merge completed 2022-09-15"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p03-cut-energy-use-by-99-95",
+            "claim_type": "milestone",
+            "criteria": "post-Merge energy use at or below ~0.05% of pre-Merge proof-of-work levels",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2022-09-15T00:00:00Z",
+            "rationale": "the post-Merge network uses roughly 99.95% less energy, as the official roadmap records",
+            "evidence": [
+              {
+                "url": "https://blog.ethereum.org/2021/05/18/country-power-no-more/",
+                "summary": "Ethereum Foundation blog, 2021-05-18"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p04-eip-1559-fee-market-reform",
+            "claim_type": "milestone",
+            "criteria": "base-fee mechanism live on mainnet; fee estimation more predictable than the old first-price auction",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2021-08-05T00:00:00Z",
+            "rationale": "EIP-1559 shipped with London; fees became more predictable, though not permanently low (low fees were never the promise)",
+            "evidence": [
+              {
+                "url": "https://eips.ethereum.org/EIPS/eip-1559",
+                "summary": "EIP-1559; activated in the London upgrade, 2021-08-05"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p05-rollup-centric-scaling-strategy",
+            "claim_type": "ongoing",
+            "criteria": "rollups adopted as the ecosystem's scaling path, with protocol development organized around supporting them (major L2s live, data-availability upgrades shipped)",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-10-01T00:00:00Z",
+            "rationale": "the ecosystem went rollup-centric (Optimism, Arbitrum, Base, zkSync era chains); the strategy held",
+            "evidence": [
+              {
+                "url": "https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698",
+                "summary": "Founder roadmap post, 2020-10"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p06-100-000-tps-via-rollups-plus-sharding",
+            "claim_type": "ongoing",
+            "criteria": "sustained combined throughput at or above ~100,000 transactions per second",
+            "core": false,
+            "state": "open",
+            "effective_at": "2020-10-05T00:00:00Z",
+            "rationale": "scaling is underway (rollups + blobs), but the ~100k TPS target has not been reached",
+            "evidence": [
+              {
+                "url": "https://twitter.com/VitalikButerin/status/1312905884549300224?s=20",
+                "summary": "Founder tweet, 2020-10-05"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p07-proto-danksharding-blobs-to-cut-layer-2-data-costs",
+            "claim_type": "milestone",
+            "criteria": "EIP-4844 active on mainnet; rollups posting data in blobs at lower cost than calldata",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2024-03-13T00:00:00Z",
+            "rationale": "blobs shipped with Dencun and L2 data costs fell",
+            "evidence": [
+              {
+                "url": "https://eips.ethereum.org/EIPS/eip-4844",
+                "summary": "EIP-4844; activated in the Dencun upgrade, 2024-03-13"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p08-full-sharding",
+            "claim_type": "milestone",
+            "criteria": "execution sharding implemented and live on mainnet",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2014-01-01T00:00:00Z",
+            "rationale": "the original execution-sharding design never shipped; it was superseded by the rollup-centric data-availability roadmap Superseded by the rollup-centric data-availability roadmap.",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/whitepaper/",
+                "summary": "Ethereum whitepaper, 2014"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p09-asic-resistant-decentralized-mining",
+            "claim_type": "ongoing",
+            "criteria": "no dominant specialized ASICs for Ethereum mining; mining viable on commodity GPUs",
+            "core": false,
+            "state": "lapsed",
+            "effective_at": "2014-01-01T00:00:00Z",
+            "rationale": "Ethash ASICs arrived (e.g., 2018) and mining itself ended entirely with the Merge; the decentralized-mining era rose and fell",
+            "evidence": [
+              {
+                "url": "https://ethereum.org/en/whitepaper/",
+                "summary": "Ethereum whitepaper mining section, 2014"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p10-plasma-general-purpose-scaling",
+            "claim_type": "milestone",
+            "criteria": "general-purpose Plasma chains carrying large-scale smart-contract load on Ethereum",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2017-08-01T00:00:00Z",
+            "rationale": "general-purpose Plasma never materialized; rollups displaced it as the scaling approach Superseded: general-purpose Plasma never materialized; rollups displaced it.",
+            "evidence": [
+              {
+                "url": "https://plasma.io/plasma.pdf",
+                "summary": "Plasma paper, 2017-08"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p11-account-abstraction-erc-4337",
+            "claim_type": "milestone",
+            "criteria": "EntryPoint live on mainnet; smart-contract wallets usable in production",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2023-03-01T00:00:00Z",
+            "rationale": "ERC-4337 is final and the EntryPoint has been live on mainnet since March 2023",
+            "evidence": [
+              {
+                "url": "https://eips.ethereum.org/EIPS/eip-4337",
+                "summary": "EIP-4337; EntryPoint deployed on mainnet, 2023-03"
+              }
+            ]
+          },
+          {
+            "lineage": "eth-p12-stateless-validation",
+            "claim_type": "ongoing",
+            "criteria": "stateless clients validating on mainnet without a full local state database",
+            "core": false,
+            "state": "open",
+            "effective_at": "2026-03-01T00:00:00Z",
+            "rationale": "statelessness is still a roadmap item; the specific Verkle-tree design was displaced by the binary-state-tree plan",
+            "evidence": [
+              {
+                "url": "https://www.theblock.co/news/ecosystems/2026-03-01-vitalik-buterin-lays-out-a-two-part-plan-to-overhaul-ethereums-execution-layer-from-the-ground-up-391681",
+                "summary": "Reporting on the execution-layer overhaul plan, 2026-03-01"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 2683.7,
+        "market_cap_usd": 327589413397.1717,
+        "raw_payload": {
+          "ethereum": {
+            "usd": 2683.7,
+            "usd_market_cap": 327589413397.1717
+          }
+        }
+      }
+    },
+    {
+      "slug": "xrp",
+      "availability": "available",
+      "assessment": {
+        "capacity": 4,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Carried over from the 2026-09-25 analyst assessment; reward weighting removed under the promise-heart rule (one promise = one heart). Full promise research pending.",
+        "promises": [
+          {
+            "lineage": "bank-settlement",
+            "claim_type": "milestone",
+            "criteria": "Banks settle in XRP at meaningful scale",
+            "core": true,
+            "state": "open",
+            "effective_at": "2012-06-01T00:00:00Z",
+            "rationale": "Twelve years of pilots; correspondent banking untouched. Ripple-the-company's footprint earns XRP-the-asset nothing.",
+            "evidence": [
+              {
+                "url": "https://xrpl.org/",
+                "summary": "XRPL positioned as global settlement infrastructure; bank-scale XRP settlement not realized"
+              }
+            ]
+          },
+          {
+            "lineage": "xrpl-ledger",
+            "claim_type": "milestone",
+            "criteria": "Working XRP settlement ledger",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2012-06-01T00:00:00Z",
+            "rationale": "Ledger launched June 2012, time cannot unship it.",
+            "evidence": [
+              {
+                "url": "https://xrpl.org/about/history",
+                "summary": "XRPL history: ledger launch June 2012"
+              }
+            ]
+          },
+          {
+            "lineage": "xrp-payments",
+            "claim_type": "ongoing",
+            "criteria": "Commercial XRP payments product with named customers",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2018-10-01T00:00:00Z",
+            "rationale": "xRapid live 2018-10-01 with MercuryFX, Cuallix, Catalyst; xRapid to ODL to Ripple Payments is one continuing lineage (revalidated 2026-09-25; volume figures are secondary sources citing Ripple, primary verification still open per review).",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/markets/2018/10/01/ripple-event-reveal-3-companies-are-now-using-xrp-for-real-payments",
+                "summary": "xRapid launch with three named companies using XRP for real payments"
+              },
+              {
+                "url": "https://www.coingabbar.com/en/crypto-blogs-details/what-is-ripple-xrp-odl-how-it-changes-cross-border-payments",
+                "summary": "ODL volume claims via secondary source citing Ripple (2024 and Q1 2026 figures)"
+              }
+            ]
+          },
+          {
+            "lineage": "moneygram-corridor",
+            "claim_type": "ongoing",
+            "criteria": "Major MoneyGram/ODL corridor",
+            "core": false,
+            "state": "retired",
+            "effective_at": "2021-03-07T00:00:00Z",
+            "rationale": "ODL use ceased early December 2020; MoneyGram contract terminated 2021-03-07. Rise and fall stays visible: +1 in 2019, -1 in 2021.",
+            "evidence": [
+              {
+                "url": "https://www.sec.gov/Archives/edgar/data/1273931/000127393122000039/mgi-20211231x.htm",
+                "summary": "MoneyGram 2021 10-K: ODL cessation December 2020; termination 2021-03-07"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 1.56,
+        "market_cap_usd": 98264927470.77997,
+        "raw_payload": {
+          "ripple": {
+            "usd": 1.56,
+            "usd_market_cap": 98264927470.77997
+          }
+        }
+      }
+    },
+    {
+      "slug": "bat",
+      "availability": "available",
+      "assessment": {
+        "capacity": 3,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Carried over from the 2026-09-25 analyst assessment; reward weighting removed under the promise-heart rule (one promise = one heart). Full promise research pending.",
+        "promises": [
+          {
+            "lineage": "attention-standard",
+            "claim_type": "milestone",
+            "criteria": "BAT becomes a web-wide attention standard",
+            "core": true,
+            "state": "open",
+            "effective_at": "2017-05-01T00:00:00Z",
+            "rationale": "Stated aim in the 2017 whitepaper; not realized.",
+            "evidence": [
+              {
+                "url": "https://basicattentiontoken.org/wp-content/uploads/2017/05/BasicAttentionTokenWhitePaper-4.pdf",
+                "summary": "Founding whitepaper states the attention-standard aim; the promise set the lineages are carved from"
+              }
+            ]
+          },
+          {
+            "lineage": "ad-loop",
+            "claim_type": "ongoing",
+            "criteria": "Users earn BAT for private opt-in ads",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2019-04-24T00:00:00Z",
+            "rationale": "Brave Ads launched 2019-04-24; still funded via BAT buybacks for user rewards per BAT Roadmap 4.0 (revalidated 2026-09-25).",
+            "evidence": [
+              {
+                "url": "https://brave.com/blog/brave-ads-launch/",
+                "summary": "Brave Ads launch: production ad loop with user revenue share"
+              },
+              {
+                "url": "https://brave.com/blog/bat-roadmap-4-0/",
+                "summary": "BAT Roadmap 4.0: BAT buybacks fund user rewards; current development"
+              },
+              {
+                "url": "https://www.coindesk.com/markets/2019/04/24/view-ads-get-bat-brave-delivers-on-ico-promise-of-paid-web-browsing",
+                "summary": "Independent corroboration of ad launch and 70% revenue share"
+              }
+            ]
+          },
+          {
+            "lineage": "creator-payouts",
+            "claim_type": "ongoing",
+            "criteria": "Creators/publishers earn BAT",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2017-10-12T00:00:00Z",
+            "rationale": "BAT Mercury launched 2017-10-12; self-custody Solana payouts opened broadly (page updated 2026-07-16; revalidated 2026-09-25). Subsidy caveat: payouts substantially funded by Brave's user-growth pool, disclosed not hidden.",
+            "evidence": [
+              {
+                "url": "https://brave.com/blog/bat-mercury-launch/",
+                "summary": "BAT Mercury launch: creator BAT payments (earliest direct evidence)"
+              },
+              {
+                "url": "https://brave.com/blog/payouts-on-solana/",
+                "summary": "Self-custody Solana payouts opened broadly; page updated 2026-07-16"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 0.09071,
+        "market_cap_usd": 135681062.12321946,
+        "raw_payload": {
+          "basic-attention-token": {
+            "usd": 0.09071,
+            "usd_market_cap": 135681062.12321946
+          }
+        }
+      }
+    },
+    {
+      "slug": "link",
+      "availability": "available",
+      "assessment": {
+        "capacity": 4,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Carried over from the 2026-09-25 analyst assessment; reward weighting removed under the promise-heart rule (one promise = one heart). Full promise research pending.",
+        "promises": [
+          {
+            "lineage": "link-core",
+            "claim_type": "ongoing",
+            "criteria": "Chainlink becomes the broadly relied-on connectivity layer between smart contracts, blockchains, and external systems",
+            "core": true,
+            "state": "open",
+            "effective_at": "2017-09-04T00:00:00Z",
+            "rationale": "DeFi reliance strong; enterprise record is pilots/PoCs only (SWIFT 2023, DTCC 2024, UBS/SBI 2024), no confirmed production bank deployments.",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/business/2024/05/16/dtcc-chainlink-complete-pilot-to-accelerate-fund-tokenization-with-jpmorgan-templeton-bny-mellon-participating",
+                "summary": "DTCC Smart NAV pilot 2024, pilot, not production"
+              }
+            ]
+          },
+          {
+            "lineage": "link-mainnet",
+            "claim_type": "milestone",
+            "criteria": "Decentralized oracle network live on a public mainnet",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2019-05-30T00:00:00Z",
+            "rationale": "Launch announced at Consensus 2019; three completed security audits; 'first functioning, decentralized oracle network'.",
+            "evidence": [
+              {
+                "url": "https://decrypt.co/7042/chainlink-mainnet-live-ethereum-may",
+                "summary": "Decrypt May 2019: mainnet live on Ethereum 2019-05-30"
+              }
+            ]
+          },
+          {
+            "lineage": "link-feeds",
+            "claim_type": "ongoing",
+            "criteria": "Named production applications continuously consume Chainlink Data Feeds",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-01-09T00:00:00Z",
+            "rationale": "Aave Oracle Network live 2020-01-09 with 16 feeds; all Synths migrated to Chainlink oracles 2020; relationship expanding (Aave SVR proposal Dec 2024).",
+            "evidence": [
+              {
+                "url": "https://en.cryptonomist.ch/2020/01/09/aave-oracle-network-on-chainlink/",
+                "summary": "Aave Oracle Network live on Ethereum mainnet 2020-01-09"
+              },
+              {
+                "url": "https://blog.synthetix.io/all-synths-are-now-powered-by-chainlink-decentralised-oracles/",
+                "summary": "Synthetix: all synths powered by Chainlink oracles, Sept 2020"
+              },
+              {
+                "url": "https://CoinTelegraph.com/news/aave-mulls-chainlink-integration-return-mev-fees",
+                "summary": "CoinTelegraph Dec 2024: Aave proposes Chainlink SVR integration"
+              }
+            ]
+          },
+          {
+            "lineage": "link-ccip",
+            "claim_type": "ongoing",
+            "criteria": "Named production users move messages/assets across chains via CCIP",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2023-07-17T00:00:00Z",
+            "rationale": "CCIP Mainnet Early Access 2023-07-17 on Avalanche, Ethereum, Optimism, Polygon; Synthetix live.",
+            "evidence": [
+              {
+                "url": "https://www.crowdfundinsider.com/2023/07/210203-chainlink-cross-chain-interoperability-protocol-ccip-launches-on-mainnet/",
+                "summary": "Crowdfund Insider July 2023: CCIP mainnet launch, Synthetix live"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:20:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 13.81,
+        "market_cap_usd": 10332614622.713522,
+        "raw_payload": {
+          "chainlink": {
+            "usd": 13.81,
+            "usd_market_cap": 10332614622.713522
+          }
+        }
+      }
+    },
+    {
+      "slug": "sol",
+      "availability": "available",
+      "assessment": {
+        "capacity": 6,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Carried over from the 2026-09-25 analyst assessment; reward weighting removed under the promise-heart rule (one promise = one heart). Full promise research pending.",
+        "promises": [
+          {
+            "lineage": "sol-core",
+            "claim_type": "ongoing",
+            "criteria": "Solana becomes the web-scale blockchain: high-throughput, low-cost, reliable infrastructure at global scale",
+            "core": true,
+            "state": "open",
+            "effective_at": "2017-11-01T00:00:00Z",
+            "rationale": "Core promise: Solana becomes the web-scale blockchain: high-throughput, low-cost, reliable infrastructure at global scale. State as of 2026-09-25: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/solana-labs/whitepaper/raw/refs/heads/master/solana-whitepaper-en.pdf",
+                "summary": "Whitepaper: Proof of History enables web-scale throughput; 710k TPS theoretical on 1gbps"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-mainnet",
+            "claim_type": "milestone",
+            "criteria": "High-performance blockchain live on a public mainnet",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "rationale": "Lineage: High-performance blockchain live on a public mainnet. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://messari.io/project/solana/profile",
+                "summary": "Mainnet Beta launched March 2020"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-throughput",
+            "claim_type": "ongoing",
+            "criteria": "Sustained high-throughput, low-cost transaction processing in live production",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-03-16T00:00:00Z",
+            "rationale": "Lineage: Sustained high-throughput, low-cost transaction processing in live production. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://www.coingabbar.com/en/crypto-blogs-details/solana-network-outage-causes-and-current-status",
+                "summary": "Production reality ~3,000-5,000 TPS at ~$0.00025 average fee; full halts Sep 2021, Jan 2022, Apr-Jun 2022, Feb 2023, Feb 2024; none since Feb 2024"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-ecosystem",
+            "claim_type": "ongoing",
+            "criteria": "Thriving application ecosystem: named production apps with real users and volume",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-09-01T00:00:00Z",
+            "rationale": "Lineage: Thriving application ecosystem: named production apps with real users and volume. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://phemex.com/news/article/solana-dominates-2025-dex-volumes-with-100-billion-monthly-activity-50681",
+                "summary": "Led all chains in DEX volume six straight months in 2025, $100B+/month; 2025 app revenues $1.3-1.5B"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-payments",
+            "claim_type": "ongoing",
+            "criteria": "Real-world merchant payments via Solana Pay at meaningful scale",
+            "core": false,
+            "state": "open",
+            "effective_at": "2022-02-01T00:00:00Z",
+            "rationale": "Lineage: Real-world merchant payments via Solana Pay at meaningful scale. State as of 2026-09-25: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://techcrunch.com/2023/08/23/solana-pay-plug-in-with-shopify-for-usdc-payments/",
+                "summary": "Solana Pay launched Feb 2022; Shopify plugin Aug 2023 gives merchant access, not merchant volume"
+              }
+            ]
+          },
+          {
+            "lineage": "sol-mobile",
+            "claim_type": "milestone",
+            "criteria": "Solana mobile hardware shipped into customers' hands",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2023-05-01T00:00:00Z",
+            "rationale": "Lineage: Solana mobile hardware shipped into customers' hands. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://cryptohead.io/news/solana-ships-seeker-smartphone-to-over-50-countries/",
+                "summary": "Saga launched May 2023; Seeker shipped 4 Aug 2025, 150,000+ preorders across 50+ countries"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 120.9,
+        "market_cap_usd": 71032026154.72975,
+        "raw_payload": {
+          "solana": {
+            "usd": 120.9,
+            "usd_market_cap": 71032026154.72975
+          }
+        }
+      }
+    },
+    {
+      "slug": "dash",
+      "availability": "available",
+      "assessment": {
+        "capacity": 7,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Carried over from the 2026-09-25 analyst assessment; reward weighting removed under the promise-heart rule (one promise = one heart). Full promise research pending.",
+        "promises": [
+          {
+            "lineage": "dash-core",
+            "claim_type": "ongoing",
+            "criteria": "Dash becomes the world's everyday digital cash: private, instant payments at mass scale",
+            "core": true,
+            "state": "open",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Core promise: Dash becomes the world's everyday digital cash: private, instant payments at mass scale. State as of 2026-09-25: unfulfilled.",
+            "evidence": [
+              {
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper",
+                "summary": "Whitepaper: a decentralized, strongly anonymous cryptocurrency with tamper-proof instant transactions"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-masternodes",
+            "claim_type": "milestone",
+            "criteria": "Incentivized two-tier masternode network live",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2014-09-01T00:00:00Z",
+            "rationale": "Lineage: Incentivized two-tier masternode network live. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://CoinTelegraph.com/news/dash-masternodes-now-receiving-half-the-block-reward",
+                "summary": "45/45/10 miner/masternode/treasury split; 1,000 Dash collateral requirement"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-privatesend",
+            "claim_type": "milestone",
+            "criteria": "PrivateSend: protocol-level private transactions via masternode mixing",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2014-01-18T00:00:00Z",
+            "rationale": "Lineage: PrivateSend: protocol-level private transactions via masternode mixing. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://github.com/dashpay/dash/wiki/Whitepaper",
+                "summary": "PrivateSend for increasing fungibility via improved CoinJoin; shipped in the launch client"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-instantsend",
+            "claim_type": "milestone",
+            "criteria": "InstantSend: instant transaction confirmation via masternode quorums",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2014-11-01T00:00:00Z",
+            "rationale": "Lineage: InstantSend: instant transaction confirmation via masternode quorums. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://bitcoinist.com/dash-digital-cash-system/",
+                "summary": "InstantX secures transactions in under 4 seconds via masternode quorums"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-treasury",
+            "claim_type": "milestone",
+            "criteria": "Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2015-08-01T00:00:00Z",
+            "rationale": "Lineage: Self-funding DAO treasury: 10% of block reward, masternode-voted budget proposals. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://cointelegraph.com/news/dashs-past-and-future-an-editorial",
+                "summary": "Treasury system added August 2015: decentralized governance by blockchain, funded from the block reward"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-merchants",
+            "claim_type": "ongoing",
+            "criteria": "Named production merchant economy using Dash for everyday payments",
+            "core": false,
+            "state": "lapsed",
+            "effective_at": "2021-06-01T00:00:00Z",
+            "rationale": "Lineage: Named production merchant economy using Dash for everyday payments. State as of 2026-09-25: lapsed.",
+            "evidence": [
+              {
+                "url": "https://u.today/kfc-restaurant-embraces-dash-in-venezuela-more-latin-american-countries-to-follow",
+                "summary": "2,000 merchants in Venezuela Dec 2018, including KFC Caracas"
+              },
+              {
+                "url": "https://www.crowdfundinsider.com/2018/08/138089-dash-update-more-than-2000-merchants-around-the-globe-accepts-the-crypto-as-payments-for-goods-services-thanks-to-venezuela-presence/",
+                "summary": "2,288 merchants worldwide Aug 2018, up from 639 in Feb 2018"
+              }
+            ]
+          },
+          {
+            "lineage": "dash-evolution",
+            "claim_type": "milestone",
+            "criteria": "Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2024-07-29T00:00:00Z",
+            "rationale": "Lineage: Evolution/Platform: decentralized data layer + usernames (DPNS) live on mainnet. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://crash.dash.org/news/evolution-genesis/",
+                "summary": "Evolution Mainnet Beta 2024-07-29: first queryable decentralized database and decentralized API"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 62.51,
+        "market_cap_usd": 802639569.7539626,
+        "raw_payload": {
+          "dash": {
+            "usd": 62.51,
+            "usd_market_cap": 802639569.7539626
+          }
+        }
+      }
+    },
+    {
+      "slug": "avax",
+      "availability": "available",
+      "assessment": {
+        "capacity": 4,
+        "allowance": 0,
+        "allowance_rationale": "No allowance under the promise-heart rule: one promise earns one heart.",
+        "rationale": "Carried over from the 2026-09-25 analyst assessment; reward weighting removed under the promise-heart rule (one promise = one heart). Full promise research pending.",
+        "promises": [
+          {
+            "lineage": "avax-core",
+            "claim_type": "ongoing",
+            "criteria": "Avalanche becomes the platform where DeFi and traditional finance run at scale",
+            "core": true,
+            "state": "open",
+            "effective_at": "2018-05-16T00:00:00Z",
+            "rationale": "Core promise: Avalanche becomes the platform where DeFi and traditional finance run at scale. State as of 2026-09-25: unfulfilled.",
+            "evidence": [
+              {
+                "url": "http://coindesk.com/markets/2020/09/16/ava-labs-sets-avalanche-mainnet-launch-for-sept-21",
+                "summary": "Sirer at mainnet launch: DeFi in the short term, long-term sights set on traditional finance"
+              }
+            ]
+          },
+          {
+            "lineage": "avax-mainnet",
+            "claim_type": "milestone",
+            "criteria": "High-throughput PoS smart-contract platform live on mainnet with fast finality",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2020-09-21T00:00:00Z",
+            "rationale": "Lineage: High-throughput PoS smart-contract platform live on mainnet with fast finality. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "http://coindesk.com/markets/2020/09/16/ava-labs-sets-avalanche-mainnet-launch-for-sept-21",
+                "summary": "Mainnet launch 21 Sept 2020; 4,500 TPS claim; EVM-compatible C-Chain; subnets architecture"
+              }
+            ]
+          },
+          {
+            "lineage": "avax-defi",
+            "claim_type": "ongoing",
+            "criteria": "Named production DeFi applications with real usage on the C-Chain",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2021-02-01T00:00:00Z",
+            "rationale": "Lineage: Named production DeFi applications with real usage on the C-Chain. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://www.coindesk.com/markets/2021/08/18/avalanches-avax-token-jumps-on-180m-incentive-program",
+                "summary": "Avalanche Rush $180M brought Aave and Curve to Avalanche, Aug 2021"
+              },
+              {
+                "url": "https://dailyhodl.com/2022/02/08/ethereum-competitor-avalanche-avax-surpasses-10000000000-in-total-value-locked/",
+                "summary": "TVL ATH nearly $13.8B Dec 2021; Aave, Trader Joe, Benqi, Curve live"
+              }
+            ]
+          },
+          {
+            "lineage": "avax-subnets",
+            "claim_type": "ongoing",
+            "criteria": "Named live subnets/L1s with observable real usage",
+            "core": false,
+            "state": "fulfilled",
+            "effective_at": "2022-03-01T00:00:00Z",
+            "rationale": "Lineage: Named live subnets/L1s with observable real usage. State as of 2026-09-25: active.",
+            "evidence": [
+              {
+                "url": "https://www.coinbase.com/developer-platform/discover/dev-foundations/intro-to-avalanche-subnets",
+                "summary": "DeFi Kingdoms Crystalvale first subnet (~200k tx/day); Crabada Swimmer Subnet launched 9 May 2022"
+              },
+              {
+                "url": "https://www.coindesk.com/tech/2024/12/16/avalanche-blockchain-s-largest-ever-upgrade-avalanche9000-is-live",
+                "summary": "Avalanche9000/Etna live Dec 2024: sovereign L1s via ACP-77"
+              }
+            ]
+          }
+        ]
+      },
+      "market": {
+        "observed_at": "2026-09-25T17:52:00Z",
+        "source_url": "https://api.coingecko.com/api/v3/simple/price",
+        "price_usd": 10.41,
+        "market_cap_usd": 4612289862.952314,
+        "raw_payload": {
+          "avalanche-2": {
+            "usd": 10.41,
+            "usd_market_cap": 4612289862.952314
+          }
+        }
+      }
+    }
+  ]
+}

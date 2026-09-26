@@ -1,7 +1,6 @@
-/** Adopted September 25 rules: claim-type rule, no time decay. Separate from legacy v0.2.0 output. */
+/** Promise-heart rule (adopted 2026-09-25): one promise = one heart.
+ *  Capacity is the promise count; every fulfilled promise earns exactly
+ *  one heart. No tiers, no weighting, no allowance. */
 export const HEART_RULES = Object.freeze({
-  capacityTiers: Object.freeze([5, 10, 20] as const),
-  checklistItems: 3,
+  maxPromises: 1000,
 });
-
-export type HeartCapacity = (typeof HEART_RULES.capacityTiers)[number];

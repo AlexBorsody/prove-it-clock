@@ -34,7 +34,7 @@ test("every allowlisted document exists and contains an actual Markdown title", 
 
 test("the algorithm page renders only the implementation appendix section", async () => {
   const body = await readCaseStudy("algorithm");
-  assert.match(body, /claim-type rule v2/);
+  assert.match(body, /promise-heart rule v3/);
   assert.doesNotMatch(body, /Phase 1: Data layer/);
   assert.doesNotMatch(body, /ALGORITHM-START/);
 });

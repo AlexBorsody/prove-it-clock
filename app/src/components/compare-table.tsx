@@ -44,7 +44,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
     case "hearts":
       return (
         <div>
-          <HeartMeter filled={p.earned} capacity={p.capacity} allowance={0} size={15} />
+          <HeartMeter filled={p.earned} capacity={p.capacity} size={15} />
           <div className="mini-meter" style={{ marginBottom: 6, marginTop: 8 }}>
             <div className="mini-meter-track">
               <div className="mini-meter-fill" style={{ width: `${Math.round(p.filledPct * 100)}%` }} />

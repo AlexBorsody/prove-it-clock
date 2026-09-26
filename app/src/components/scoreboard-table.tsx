@@ -149,7 +149,7 @@ export default function ScoreboardTable({ rows }: { rows: ScoreboardRow[] }) {
                       aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
                       title="Show what earned these hearts"
                     >
-                      <HeartMeter filled={r.earned} capacity={r.capacity} allowance={0} size={16} />
+                      <HeartMeter filled={r.earned} capacity={r.capacity} size={16} />
                       {" "}
                       <span className="num">{r.earned} of {r.capacity} potential</span>
                     </button>

@@ -27,35 +27,23 @@ function PixelHeart() {
 export default function HeartMeter({
   filled,
   capacity,
-  allowance = 0,
   size = 22,
 }: {
   filled: number;
   capacity: number;
-  allowance?: number;
   size?: number;
 }) {
-  const free = Math.max(0, Math.min(allowance, filled));
-  const earned = filled - free;
+  const earned = Math.max(0, Math.min(filled, capacity));
   return (
     <span
       className="hearts"
       style={{ fontSize: size }}
       role="img"
-      aria-label={
-        free > 0
-          ? `${filled} of ${capacity} hearts (${earned} earned, ${free} allowance)`
-          : `${filled} of ${capacity} hearts, ${earned} earned`
-      }
+      aria-label={`${earned} of ${capacity} hearts earned`}
     >
       {Array.from({ length: capacity }, (_, i) => {
-        const isAllowance = i >= earned && i < filled;
         return (
-          <span
-            key={i}
-            className={i < earned ? "heart on" : isAllowance ? "heart allowance" : "heart"}
-            style={isAllowance ? { color: "var(--text-dim)" } : undefined}
-          >
+          <span key={i} className={i < earned ? "heart on" : "heart"}>
             <PixelHeart />
           </span>
         );

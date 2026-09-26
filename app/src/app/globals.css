@@ -896,6 +896,12 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   background: var(--bg-raised); border-radius: 10px; padding: 10px 12px;
 }
 .promise-row-criteria { font-size: 14px; font-weight: 600; line-height: 1.35; }
+.promise-row-source {
+  font-size: 14px; font-weight: 600; line-height: 1.35;
+  color: var(--text); text-decoration: underline;
+  text-decoration-color: var(--border-strong); text-underline-offset: 3px;
+}
+.promise-row-source:hover { text-decoration-color: var(--accent); }
 .promise-row-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .promise-rows-empty { color: var(--text-faint); font-size: 14px; margin: 4px 0; }
 .promise-rows-more {
