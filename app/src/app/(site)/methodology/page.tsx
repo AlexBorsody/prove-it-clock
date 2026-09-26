@@ -65,8 +65,8 @@ export default function MethodologyPage() {
       <h1 className="page-title">How the scoring works</h1>
       <p className="page-sub">
         Crypto projects make promises. We check whether they kept them.
-        Projects are ranked within promise categories, not on a single
-        leaderboard. Hearts are the receipts. The index is the trend.
+        Explore delivery within promise categories. Hearts are the receipts.
+        The category-relative Index is a separate feature in development.
       </p>
       </div>
 
@@ -100,15 +100,15 @@ export default function MethodologyPage() {
 
       <Section icon="grid" title="Rankings live in categories" id="rankings" alt>
         <p>
-          There is no single leaderboard. A payment coin and a smart contract
-          platform made different promises, so ranking them against each other
-          never made sense. Projects are ranked within promise categories:
-          money, payments, platform, scale, and the rest. Each project gets a
-          category-relative index, plotted over time.
+          A payment coin and a smart contract platform made different promises.
+          Select a subject on the scoreboard to compare the share kept within
+          that category. Counts use primary assignments only. Equal shares tie;
+          projects with no promises in that category are unranked.
         </p>
         <p style={{ marginBottom: 0 }}>
-          An overall aggregate exists for context, but it is never the
-          headline. Compare like with like, or do not compare at all.
+          Kept and total counts stay visible beside the percentage. This does
+          not measure a promise's importance, scale or difficulty. Overall
+          remains the default view while category rankings are introduced.
         </p>
       </Section>
 
@@ -145,7 +145,7 @@ export default function MethodologyPage() {
       </Section>
 
       <Section icon="grid" title="PROMISES / CODE / USAGE / HYPE" id="pillars">
-        <p>Four pillars feed the index. PROMISES is the receipts; the other three explain the trend.</p>
+        <p>PROMISES records delivery. CODE, USAGE and HYPE provide separate context. A future Index needs its own published methodology.</p>
         <ul>
           <li>
             <b>PROMISES</b> is the score. Hearts, earned only, one per kept
@@ -192,17 +192,17 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="flask" title="The promise atlas" id="atlas" tag="in development">
+      <Section icon="flask" title="The promise atlas" id="atlas">
         <p>
-          Every promise, mapped. The atlas places each promise by how similar
-          it is to every other promise, so clusters form naturally: the
-          money promises gather together, the platform promises gather
-          together. Node size reflects impact. Green kept, red lapsed, grey
-          open.
+          Every scored promise, mapped by subject using curated categories
+          and stable positions. Nodes have equal size. Green means kept;
+          red means lapsed or retired; grey means open, in progress or unknown.
+          Select a promise to see its exact status, fulfillment test and evidence.
         </p>
         <p style={{ marginBottom: 0 }}>
-          Positions come from the promises themselves. We draw no invented
-          connections between promises that are not really connected.
+          Distance does not measure similarity, value or importance. The
+          current Atlas uses no AI clustering. Semantic positioning is future
+          work and would not establish fulfillment or economic value.
         </p>
       </Section>
 

@@ -1,0 +1,14 @@
+.controls { display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px; }
+.controls label { flex:1;min-width:0;display:grid;gap:8px;font-size:14px;color:var(--text-dim); }
+.controls select { width:100%;min-width:0;min-height:48px;padding:10px 12px;font:inherit;font-size:16px;color:var(--text);background:var(--bg-panel);border:1px solid var(--border);border-radius:10px; }
+.note,.coverage { color:var(--text-dim);font-size:13px;line-height:1.6; }
+.coverage { margin:8px 0 16px;overflow-wrap:anywhere; }
+.coverage summary { cursor:pointer;min-height:36px;align-content:center; }
+.heading { min-height:44px;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer; }
+.receipt { display:grid;gap:6px;min-height:44px;align-content:center; }
+.receipt strong { color:var(--green); }
+.receipt span { color:var(--text-dim);font-size:13px; }
+.rank { font-size:13px;color:var(--text-dim);margin:0 0 8px; }
+@media(max-width:540px) { .controls { flex-direction:column; } }
+.cards :global(.mcard-stat) { max-width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.5; }
+.cards :global(.mcard-stat svg) { flex-shrink:0; }

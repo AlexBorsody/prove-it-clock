@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import { readPublishedPromiseLedger } from '@/lib/heart-data';
-import { adaptAtlas } from '@/lib/atlas/adapter';
+import { getPublishedAtlas } from '@/lib/atlas/data';
 import { projectAtlas } from '@/lib/atlas/project';
 import AtlasExplorer from './atlas-explorer';
 
 export default async function ProjectAtlas({ slug, name }: { slug: string; name: string }) {
   let data;
   try {
-    const published = adaptAtlas(await readPublishedPromiseLedger());
+    const published = await getPublishedAtlas();
     data = published ? projectAtlas(published, slug) : null;
   } catch {
     return <><h2>{name} Promise Atlas</h2><p role="alert">The promise ledger could not be loaded.</p><Link href={`/atlas?project=${slug}`}>Open the Atlas ↗</Link></>;

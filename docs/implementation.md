@@ -11,6 +11,35 @@ The [Promise Atlas v1 plan](#promise-atlas-v1-implementation) below and its
 and Index formula instructions. Atlas build progress and acceptance results are recorded in that queue; the
 rest of this document includes earlier implementation history.
 
+## Delivery verdict and homepage rankings (2026-09-26)
+
+The new delivery summary is a read-only view of the active published ledger.
+`getPublishedLedger()` uses React's request cache: the project header, promise
+list, delivery card and embedded Atlas use one immutable run per render.
+`getPublishedAtlas()` adapts that same dataset; `summarizeDelivery()` supplies
+both the card and homepage categories. No new table, RPC, publication or score.
+
+- `promise-verdict.ts`: exact state totals, primary-category counts and receipt
+  URLs. Missing assessments return unavailable, not zero. Atlas's pinned state
+  mapping preserves unknown. Evidence links add `scope=primary` so their
+  population agrees with each category's denominator.
+- `scoreboard-ranking.ts`: category kept share, competition ties, nonmembers
+  unranked, numeric context sorting and missing values last. Overall remains
+  the default. The client stores category/sort in URL parameters.
+- `delivery-verdict.tsx`: near the top of each project, replacing the old
+  PromiseStats block. Exact lapsed/retired/open counts stay separate. Data date
+  and revision are disclosed. No inferred recent-lapse count.
+- Market capitalization comes from one bounded CoinGecko universe batch,
+  joined by existing canonical provider IDs. Projects outside that response
+  remain unavailable. Context metrics never feed delivery counts.
+- New publications refresh on new server requests. An already-open tab is not
+  a live subscription; reload to see a newer revision. Receipt URLs intentionally
+  show the current published ledger, not an archived immutable snapshot.
+
+The existing warning formula is untouched. Correct arithmetic does not certify
+research quality: the [verdict task audit](tasks/2026-09-26-verdict-layer.md#research-sign-off-still-required)
+records outstanding source/claim concerns for editorial review.
+
 ## Prior system status (recorded before this planning pass)
 
 The following snapshot is historical context, not a fresh hosted-data audit.

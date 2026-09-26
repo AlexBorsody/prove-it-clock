@@ -6,7 +6,7 @@ import { MARKET_RANGES, parseCandles, formatPrice, type Candle, type MarketDays 
 import MarketChart from "./market-chart";
 import styles from "./market-panel.module.css";
 
-const IDS: Record<string, string> = { btc: "bitcoin", eth: "ethereum", xrp: "ripple", bat: "basic-attention-token", link: "chainlink", sol: "solana", dash: "dash", avax: "avalanche-2" };
+import { MARKET_IDS as IDS } from '@/lib/market-ids';
 const historyCache = new Map<string, { at: number; candles: Candle[] }>();
 const TTL = 15 * 60_000;
 

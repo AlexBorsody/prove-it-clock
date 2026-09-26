@@ -18,8 +18,9 @@ import type {
 const BASE = "https://api.coingecko.com/api/v3";
 const PROVIDER = "coingecko" as const;
 
-async function getJson(endpoint: string): Promise<{ fetch: RawFetch }> {
+async function getJson(endpoint: string, options: RequestInit = {}): Promise<{ fetch: RawFetch }> {
   const res = await fetch(`${BASE}${endpoint}`, {
+    ...options,
     headers: { "User-Agent": "prove-it-clock/0.1 (research pipeline)" },
   });
   if (!res.ok) {
@@ -105,7 +106,7 @@ export async function fetchUniverseMarkets(size = 20): Promise<UniverseRow[]> {
   const endpoint =
     `/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${size}&page=1` +
     `&price_change_percentage=24h,30d&precision=full`;
-  const { fetch } = await getJson(endpoint);
+  const { fetch } = await getJson(endpoint, { signal: AbortSignal.timeout(3000), next: { revalidate: 90 } });
   return fetch.payload as UniverseRow[];
 }
 

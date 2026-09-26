@@ -160,7 +160,7 @@ export async function readPublishedPromiseLedger() {
     },
     async page(runId,from,to) {
       const {data,error,count}=await db.from('heart_rankings')
-        .select('run_id,as_of,methodology,slug,name,symbol,availability,unavailable_reason,assessment',{count:'exact'})
+        .select('run_id,as_of,methodology,slug,name,symbol,availability,unavailable_reason,assessment,earned,capacity,market_cap_rank',{count:'exact'})
         .eq('run_id',runId).order('slug').range(from,to);
       if(error) throw error;
       if(count==null) throw new Error('Missing published ledger count');

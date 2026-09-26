@@ -115,3 +115,67 @@ Current parallel work: Alex separately requested an embedded Atlas for every
 project page. That reuses the shared map/evidence components below the promise
 content; the future verdict card has the reserved position above the list.
 Review notes are not a claim that the verdict layer has been implemented.
+
+## Implementation progress (Codex, 2026-09-26)
+
+- Added a shared, pure delivery summary over the Atlas's methodology-pinned
+  adapter. The card, category rankings and primary-only evidence filters agree.
+- Project header, promise list, card and embedded Atlas now read the same
+  request-cached published run. Removed the duplicate PromiseStats block.
+- Counts and category rows link to evidence; snapshot date/revision are visible.
+  Unknown, unavailable and Unclassified remain distinct from failure or zero.
+- New run data is read automatically on the next server request. No new DB
+  schema or live publication was needed or performed.
+- Focused fixture checks verify all 115 promises, 72 kept across 8 projects,
+  each state/category receipt, source roles, duplicate IDs, unknown states,
+  unmapped records, category ties and a changed published run. Browser checks
+  followed BTC's 5/7 Payments receipt to exactly 7 records and its 1 lapsed
+  receipt to exactly 1 record with assessment references.
+
+### Research sign-off still required
+
+These are review questions from the stored record, not new ratings or a fresh
+independent source investigation. Keep published assessments unchanged pending
+Muse/Alex's editorial decision.
+
+1. **BTC P11 (`btc-p11-participants-can-be-anonymous`)**: the test requires
+   identity not to be discoverable from chain data. Its lapsed rationale says
+   the whitepaper only promised pseudonymity. Confirm the test is no broader
+   than the original attributable promise; add the exact quotation/locator and
+   separate outcome evidence. The implementation cannot resolve that mismatch.
+2. **BTC P12 (`btc-p12-block-size-limit-can-be-raised-later`)**: the test says
+   block capacity is raised; the retirement rationale relies on no hard fork
+   while acknowledging SegWit. Confirm whether a specific mechanism was part
+   of the original commitment or was added by the assessment.
+3. **Source roles across the run**: all 115 records lack separately identified
+   original claim sources and assessment dates. BTC P11/P12 and ETH P08/P09/P10
+   cite origin documents for later outcome assertions; the ledger needs distinct
+   delivery references. Do not present origin citations as independently
+   verified outcome proof.
+4. Seven primary classifications remain Unclassified, and initial assignments
+   remain Codex-authored, not human-reviewed. They stay visible and counted.
+5. Recent lapses require dated state transitions or comparable recorded
+   snapshots. This implementation explicitly reports timing unavailable.
+
+Engineering sign-off can establish faithful, repeatable calculations. Editorial
+sign-off must establish that admitted promises, tests and outcome evidence are
+fair. A cleaner graph cannot fix an overstated promise or unsupported failure.
+
+### Latest-main integration
+
+Pulled Muse's `dbb5a9a` during the build. Kept the new tour copy and future
+Index direction, but corrected present-tense methodology claims to match
+actual v1: curated positions, uniform nodes, primary category kept share,
+Overall still available. No semantic/impact sizing or Index was implemented.
+Restored the Atlas first-visit tour guard so linked evidence remains in place;
+explicit Tour replay still works.
+
+### Engineering acceptance
+
+Production build/TypeScript and 43 focused regression tests passed. Verified
+BTC mobile card at 360px: 9/16 kept, 5 open, 1 lapsed, 1 retired; Payments 5/7.
+Followed the lapsed receipt into the Atlas drawer and confirmed exact status,
+stored rationale, source-role warning and full-record link. Seven Unclassified
+records remain visible. All counts are from the 115-record published-run
+fixture; no hosted schema change or scoring publication was performed.
+Editorial acceptance remains open for the research findings above.

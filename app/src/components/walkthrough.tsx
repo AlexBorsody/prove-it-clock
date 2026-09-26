@@ -174,7 +174,10 @@ export default function Walkthrough() {
     const onReplay = () => showStep(0);
     window.addEventListener(REPLAY_EVENT, onReplay);
     let t: number | undefined;
-    if (!wasSeen()) t = window.setTimeout(() => showStep(0), 700);
+    // Preserve shared evidence links; the Tour button remains available explicitly.
+    if (!wasSeen()) t = window.setTimeout(() => {
+      if (window.location.pathname !== "/atlas") showStep(0);
+    }, 700);
     return () => {
       window.removeEventListener(REPLAY_EVENT, onReplay);
       if (t) window.clearTimeout(t);

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
-  HEARTS_METHODOLOGY,
-  readHeartRankings,
+  readPublishedPromiseLedger,
   readHypeSnapshots,
   latestHypeBySlug,
   hypeBaselineWeeks,
@@ -16,20 +15,32 @@ import { LazyHypeShareChart as HypeShareChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
 
+import { adaptAtlas } from '@/lib/atlas/adapter';
+import { summarizeDelivery } from '@/lib/promise-verdict';
+import { fetchUniverseMarkets, type UniverseRow } from '@/providers/coingecko';
+import { marketCapFor } from '@/lib/market-ids';
+import type { AtlasDataset } from '@/lib/atlas/types';
+
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   let projects: any[] = [];
   let hypeSnaps: HypeSnapshot[] = [];
+  let atlas: AtlasDataset | null = null;
+  let markets: UniverseRow[] = [];
+  let loadFailed=false;
   try {
-    const [rankings, hype] = await Promise.all([
-      readHeartRankings(HEARTS_METHODOLOGY, 1, 100),
+    const [ledger, hype, marketRows] = await Promise.all([
+      readPublishedPromiseLedger(),
       readHypeSnapshots().catch(() => [] as HypeSnapshot[]),
+      fetchUniverseMarkets(20).catch(() => [] as UniverseRow[]),
     ]);
-    projects = rankings.projects;
+    projects = ledger.projects;
+    atlas = adaptAtlas(ledger);
+    markets = marketRows;
     hypeSnaps = hype;
   } catch {
-    // fall through to the empty state below
+    loadFailed=true;
   }
 
   const hypeLatest = latestHypeBySlug(hypeSnaps);
@@ -57,6 +68,8 @@ export default async function Home() {
         code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
         codeCommits: vitals?.commits90d ?? null,
         codeStars: vitals?.stars ?? null,
+        marketCap: marketCapFor(p.slug,markets),
+        delivery: atlas ? summarizeDelivery(atlas,p.slug) : null,
         codeNote:
           vitals == null
             ? "No commit data"
@@ -89,15 +102,15 @@ export default async function Home() {
         <div className="panel search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
           <h2>
             <Icon name="inbox" size={18} style={{ marginRight: 10 }} />
-            No scores published
+            {loadFailed ? "Promise ledger unavailable" : "No scores published"}
           </h2>
           <p className="panel-sub" style={{ marginBottom: 0 }}>
-            The heart database is not reachable or no run is published yet.
+            {loadFailed ? "The promise ledger could not be loaded." : "No run is published for the active methodology yet."}
           </p>
         </div>
       ) : (
         <>
-          <ScoreboardTable rows={rows} />
+          <ScoreboardTable rows={rows} asOf={atlas?.asOf} dataRevision={atlas?.dataRevision} />
           <div className="panel search-section" {...searchMeta({ id: "scoreboard-hype-share", title: "HYPE share", kind: "Scoreboard", keywords: "attention news mentions history" })} style={{ marginTop: 18 }}>
             <h2>HYPE share</h2>
             <p className="explain">

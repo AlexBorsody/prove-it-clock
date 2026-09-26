@@ -2,20 +2,18 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Link from "next/link";
 import {
-  HEARTS_METHODOLOGY,
-  readHeartHistory,
-  readHeartRankings,
   readHypeSnapshotsFor,
   latestHypeBySlug,
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
+import { getPublishedLedger } from "@/lib/atlas/data";
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
-import PromiseStats from "@/components/promise-stats";
+import DeliveryVerdict from "@/components/delivery-verdict";
 import PromiseNews from "@/components/promise-news";
 import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
@@ -39,18 +37,18 @@ export default async function ProjectPage({ params, searchParams }: {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
-  const [historyData, rankings, vitals, team, hypeSnaps] = await Promise.all([
-    readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
-    readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
+  const [ledger, vitals, team, hypeSnaps] = await Promise.all([
+    getPublishedLedger().catch(() => null),
     fetchVitals(slug).catch(() => null),
     fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
   ]);
 
-  const points: any[] = historyData.points ?? [];
-  if (!points.length) notFound();
-
-  const latest = points[0];
+  if (!ledger) return <section className="panel"><h1>Promise ledger unavailable</h1><p role="alert">The promise ledger could not be loaded.</p></section>;
+  const projects = ledger.projects as any[];
+  const latest = projects.find(project => project.slug === slug);
+  if (!latest) notFound();
+  if (latest.availability === 'unavailable') return <section className="panel"><h1>{latest.name}</h1><p>No current published assessment is available.</p></section>;
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
   const promiseRefs = promiseReferences(slug, promises);
@@ -58,7 +56,7 @@ export default async function ProjectPage({ params, searchParams }: {
 
   // Rank across all published projects by hearts filled %, same tiebreak
   // as the scoreboard (earned desc, then name).
-  const ranked = [...(rankings.projects ?? [])].sort((a, b) => {
+  const ranked = projects.filter(project => project.availability === "available").sort((a, b) => {
     const pa = a.capacity > 0 ? a.earned / a.capacity : 0;
     const pb = b.capacity > 0 ? b.earned / b.capacity : 0;
     return pb - pa || b.earned - a.earned || a.name.localeCompare(b.name);
@@ -171,9 +169,13 @@ export default async function ProjectPage({ params, searchParams }: {
 
       <span id="hearts" aria-hidden="true" />
 
+      <Suspense fallback={<section className="panel"><h2>Delivery verdict</h2><p role="status">Loading published promises…</p></section>}>
+        <DeliveryVerdict slug={slug} name={latest.name}/>
+      </Suspense>
+
       {/* All promise content lives in one consolidated panel below:
           help expander, delivery health, the promise list, the delivery
-          verdict meter, and the stats. */}
+          verdict meter. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
@@ -225,7 +227,6 @@ export default async function ProjectPage({ params, searchParams }: {
           <span id="verdict" aria-hidden="true" />
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
-        <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
 
       <section className="panel atlas-section search-section" {...searchMeta({ id: `project-${slug}-atlas`, title: `${latest.name} Promise Atlas`, kind: "Atlas", project: slug, keywords: `${latest.symbol} promise map categories evidence` })}>
