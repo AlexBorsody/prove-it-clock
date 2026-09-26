@@ -63,6 +63,13 @@ a[href^="http"]::after {
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 .appbar-inner { display: flex; align-items: center; gap: 8px; }
+.appbar-home {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 12px; flex: none;
+  color: var(--text); text-decoration: none;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.appbar-home:active { transform: scale(0.92); }
 .appbar-left { flex: 1; min-width: 0; }
 .psearch { position: relative; }
 .psearch-expanded { flex: 1; min-width: 0; }
@@ -1133,7 +1140,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .gauge-btn {
   display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
   background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: 14px; padding: 8px 10px;
+  border-radius: 14px; padding: 4px 6px;
   text-decoration: none;
 }
 .gauge-btn:active { transform: scale(0.97); }
