@@ -43,6 +43,53 @@ function SourceIcons({ sources }: { sources: string[] }) {
 
 type SortKey = "mentions" | "hearts";
 
+export function HypeRowCard({ row: r }: { row: HypeRow }) {
+  return (
+    <article className="hype-row search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} HYPE ranking`, kind: "HYPE", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
+      <Link href={`/projects/${r.slug}`} className="hype-coin">
+        <img
+          src={`/icons/${r.symbol.toLowerCase()}.svg`}
+          alt=""
+          width={34}
+          height={34}
+          className="coin-icon"
+        />
+        <span>
+          <span className="proj-name" style={{ color: "var(--text)" }}>{r.name}</span>
+          <br />
+          <span className="proj-cat num">{r.symbol}</span>
+        </span>
+      </Link>
+      <div className="hype-hearts num">
+        <span className="hype-val">{r.earned} of {r.capacity}</span>
+        <span className="cell-sub">potential hearts</span>
+      </div>
+      <div className="hype-mentions num">
+        {r.mentions == null ? (
+          <span style={{ color: "var(--text-faint)" }}>-</span>
+        ) : (
+          <>
+            <span className="hype-val">{r.mentions.toLocaleString()}</span>
+            {r.baselineWeeks < 8 ? (
+              <span className="cell-sub">
+                collecting, week {r.baselineWeeks}/8
+              </span>
+            ) : (
+              <span className="cell-sub">mentions / 7d</span>
+            )}
+          </>
+        )}
+      </div>
+      <div className="hype-verdict">
+        <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
+          <ShitcoinMeter category={r.verdict} compact size={38} />
+        </Link>
+        <SourceIcons sources={r.sources} />
+      </div>
+    </article>
+  );
+}
+
 export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("mentions");
 
@@ -75,48 +122,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
       </div>
       <div className="hype-rows">
         {sorted.map((r) => (
-          <div key={r.slug} className="hype-row search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} HYPE ranking`, kind: "HYPE", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
-            <Link href={`/projects/${r.slug}`} className="hype-coin">
-              <img
-                src={`/icons/${r.symbol.toLowerCase()}.svg`}
-                alt=""
-                width={34}
-                height={34}
-                className="coin-icon"
-              />
-              <span>
-                <span className="proj-name" style={{ color: "var(--text)" }}>{r.name}</span>
-                <br />
-                <span className="proj-cat num">{r.symbol}</span>
-              </span>
-            </Link>
-            <div className="hype-hearts num">
-              <span className="hype-val">{r.earned} of {r.capacity}</span>
-              <span className="cell-sub">potential hearts</span>
-            </div>
-            <div className="hype-mentions num">
-              {r.mentions == null ? (
-                <span style={{ color: "var(--text-faint)" }}>-</span>
-              ) : (
-                <>
-                  <span className="hype-val">{r.mentions.toLocaleString()}</span>
-                  {r.baselineWeeks < 8 ? (
-                    <span className="cell-sub">
-                      collecting, week {r.baselineWeeks}/8
-                    </span>
-                  ) : (
-                    <span className="cell-sub">mentions / 7d</span>
-                  )}
-                </>
-              )}
-            </div>
-            <div className="hype-verdict">
-              <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
-                <ShitcoinMeter category={r.verdict} compact size={38} />
-              </Link>
-              <SourceIcons sources={r.sources} />
-            </div>
-          </div>
+          <HypeRowCard key={r.slug} row={r} />
         ))}
       </div>
     </div>

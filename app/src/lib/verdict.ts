@@ -11,7 +11,7 @@
  * - "Watch" is reserved for verified overdue promises after deadline
  *   research; it has no v1 trigger and this function never returns it.
  *
- * CODE, USE and HYPE never move the verdict directly in v1.
+ * CODE, USAGE and HYPE never move the verdict directly in v1.
  */
 
 export type VerdictCategory =

@@ -118,13 +118,13 @@ export default function MethodologyPage() {
           </li>
         </ul>
         <p style={{ marginBottom: 0 }}>
-          CODE and HYPE never move the verdict directly. USE can support a
+          CODE and HYPE never move the verdict directly. USAGE can support a
           promise state only when it measures a predefined, promise-specific
           condition.
         </p>
       </Section>
 
-      <Section icon="grid" title="PROMISES / CODE / USE / HYPE" id="pillars">
+      <Section icon="grid" title="PROMISES / CODE / USAGE / HYPE" id="pillars">
         <p>Four pillars. One of them is the score; the other three explain it.</p>
         <ul>
           <li>
@@ -136,7 +136,7 @@ export default function MethodologyPage() {
             curated repos. Activity is not proof of progress.
           </li>
           <li>
-            <b>USE</b> asks: is anyone using it for its stated purpose? It must
+            <b>USAGE</b> asks: is anyone using it for its stated purpose? It must
             measure intended use, never generic chain activity.
           </li>
           <li>
@@ -145,7 +145,7 @@ export default function MethodologyPage() {
           </li>
         </ul>
         <p style={{ marginBottom: 0 }}>
-          CODE and USE are evidence. HYPE is context.
+          CODE and USAGE are evidence. HYPE is context.
         </p>
       </Section>
 
@@ -158,7 +158,7 @@ export default function MethodologyPage() {
         </p>
         <ul>
           <li><b>Promises: 60%</b></li>
-          <li><b>USE: 25%</b></li>
+          <li><b>USAGE: 25%</b></li>
           <li><b>CODE: 15%</b></li>
           <li><b>HYPE: 0%.</b> Context only. It never improves the score.</li>
         </ul>
@@ -169,7 +169,7 @@ export default function MethodologyPage() {
           stalled, major hype spike (context only).
         </p>
         <p style={{ marginBottom: 0 }}>
-          The Index does not publish until USE metrics exist, because 25% of
+          The Index does not publish until USAGE metrics exist, because 25% of
           the score cannot be fiction. The formula is locked; the build waits
           on the data.
         </p>

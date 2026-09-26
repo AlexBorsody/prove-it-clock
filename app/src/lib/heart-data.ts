@@ -63,7 +63,7 @@ export function codeWord(vitals: { commits90d: number | null } | null): CodeWord
   return vitals.commits90d > 0 ? "Active" : "Quiet";
 }
 
-/** USE has no metrics yet. The slot renders "coming", never a number. */
+/** USAGE has no metrics yet. The slot renders "coming", never a number. */
 export function useWord(): "coming" {
   return "coming";
 }

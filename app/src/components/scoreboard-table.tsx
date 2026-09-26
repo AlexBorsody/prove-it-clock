@@ -41,7 +41,7 @@ const HEADERS: Array<{ key: SortKey | null; label: string }> = [
   { key: "hearts", label: "Hearts" },
   { key: "verdict", label: "Shitcoin warning" },
   { key: "code", label: "Code" },
-  { key: "use", label: "Use" },
+  { key: "use", label: "Usage" },
   { key: "hype", label: "Hype" },
   { key: null, label: "Proof history" },
   { key: null, label: "" },
@@ -54,7 +54,7 @@ function sortVal(row: ScoreboardRow, key: SortKey): number | string {
     case "hearts": return row.filledPct;
     case "verdict": return row.verdict;
     case "code": return row.code === "Active" ? 0 : row.code === "Quiet" ? 1 : 2;
-    case "use": return 0; // every row is "coming" until USE metrics exist
+    case "use": return 0; // every row is "coming" until USAGE metrics exist
     case "hype": return row.hypeMentions ?? -1;
   }
 }

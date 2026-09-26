@@ -31,7 +31,7 @@ const ROWS: Array<{ key: string; label: string; anchor: string }> = [
   { key: "verdict", label: "Verdict", anchor: "verdict" },
   { key: "promises", label: "Promises", anchor: "pillars" },
   { key: "code", label: "CODE", anchor: "pillars" },
-  { key: "use", label: "USE", anchor: "pillars" },
+  { key: "use", label: "USAGE", anchor: "pillars" },
   { key: "hype", label: "HYPE", anchor: "pillars" },
 ];
 

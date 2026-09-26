@@ -26,13 +26,13 @@ and the vision disagree, the vision wins and the plan gets fixed.
   failed or GitHub returned an empty body while computing, which must never
   render as a false zero). TEAM is development context only; it never moves
   hearts or the verdict. HYPE data: `social_snapshots` table +
-  daily collector. USE data: none yet.
+  daily collector. USAGE data: none yet.
 - UI 2026-09-26: slim sticky header with no brand wordmark (brand lives in
   the tab title only); search is a lone icon button that expands into a
   full-width field (Fuse.js over name/symbol/slug, coin icons, keyboard
   nav). Homepage goes straight to the rankings, no hero text. Bottom tabs:
   Scoreboard / HYPE / CODE / Compare / Methodology / API / Tour (walkthrough
-  replay). Pixel-heart Home icon. Project grid: PROMISES / CODE / USE /
+  replay). Pixel-heart Home icon. Project grid: PROMISES / CODE / USAGE /
   HYPE power meters (Marvel-card pattern); CODE and HYPE bars scale to the
   current leader; CODE/HYPE rows are buttons into /code and /hype.
 - UI 2026-09-25: teaching homepage (the question + four factors), mobile
@@ -128,7 +128,7 @@ one step at a time"). Build proceeds phase by phase below.
 3. Summary helpers in `heart-data.ts`: CODE word (Active = commits in
    last 90d across tracked repos; Quiet = none; Unknown = fetch failed),
    HYPE word (absolute mentions/week; "collecting" until 8-week baseline,
-   no trend percentages before week 9), USE word ("coming" until metrics
+   no trend percentages before week 9), USAGE word ("coming" until metrics
    are defined).
 4. Sparkline data: expose each project's published earned hearts for the
    active methodology via the existing `/api/hearts` routes. No new
@@ -141,7 +141,7 @@ match the table above exactly.
 
 CoinMarketCap-style dense table (vision.md): rank (# by hearts filled %),
 coin (icon + name, links to detail), hearts meter (earned-only), Shitcoin
-warning dial (1-10, number only), CODE / USE / HYPE compact columns,
+warning dial (1-10, number only), CODE / USAGE / HYPE compact columns,
 Proof history sparkline column on desktop. Sortable by column. Mobile
 renders one card per project instead of the table. Compare button above
 the table opens Phase 2b.
@@ -191,7 +191,7 @@ projects as columns:
 - Shitcoin warning dial (1-10, number only) + one-liner
 - Promises: N fulfilled · N active · N open · N lapsed · N retired
 - CODE: activity word + commits 90d + contributors + last release
-- USE: per-project metric, or honest "coming"
+- USAGE: per-project metric, or honest "coming"
 - HYPE: mentions/week + baseline status
 - Index: mini sparkline + current score (renders only when the Index
   itself renders)
@@ -211,11 +211,11 @@ cleanly.
    hearts, Shitcoin warning dial, one-line why from `verdict-lines.ts`),
    then the verdict inputs ("What feeds this meter": each failed promise
    with state and core flag, or the clean/overdue note), then the
-   stat strip: PROMISES / CODE / USE / HYPE per vision.md. USE stat shows
+   stat strip: PROMISES / CODE / USAGE / HYPE per vision.md. USAGE stat shows
    the honest "metrics coming" state. HYPE stat shows absolute mentions +
    baseline week.
 2. Delivery Timeline: hearts line on top; CODE/HYPE activity strip
-   below. USE toggle hidden until its metrics exist. Failed
+   below. USAGE toggle hidden until its metrics exist. Failed
    collection never renders as zero. History backfill (2026-09-26): one
    published run is one dot, so the page reconstructs yearly history
    from promise `effective_at` dates (`backfillHeartHistory` in the
@@ -250,8 +250,25 @@ cleanly.
    gridlines, price labels on the y axis, date labels on the x axis,
    dashed last-price line. Click/tap the chart to expand it in a modal
    (Close / Escape / backdrop click dismisses). Component:
-   `app/src/components/market-panel.tsx`. Market data is context only: it
-   never feeds hearts, the verdict, or the Index.
+   `app/src/components/market-panel.tsx`, renders
+   `<section class="panel market-section" id="project-{slug}-market">`.
+   Market data is context only: it never feeds hearts, the verdict, or
+   the Index.
+9. Modular metric components (2026-09-26, Alex's rule): every metric with
+   a list view ships its row as a shared component in
+   `app/src/components/`, and the project detail page renders the SAME
+   component. One component, two surfaces; never duplicate the markup.
+   `CodeRow` (`components/code-row.tsx`) is used by `/code` and the
+   detail page's CODE section; `HypeRowCard`
+   (`components/hype-leaderboard.tsx`) is used by `/hype` and the detail
+   page's HYPE section. Rows render `<article class="{metric}-row">`.
+   Page sections render `<section class="panel {name}-section">` with a
+   unique search id (`project-{slug}-code`, `project-{slug}-hype`,
+   `project-{slug}-market`, ...). A future `/team` list follows the same
+   rule.
+10. USAGE naming (2026-09-26, Alex): the "Use" factor displays as
+    "Usage" everywhere user-facing (power grid, scoreboard column,
+    methodology). Code keys (`key: "use"`, icon `name="use"`) unchanged.
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
@@ -275,27 +292,27 @@ rest waits in the plan.
 
 Currently gated:
 
-- **Prove Value Index**: hidden until USE metrics and the CODE score
+- **Prove Value Index**: hidden until USAGE metrics and the CODE score
   definition both exist and are reviewed.
-- **USE stat card / home row**: renders "metrics coming" until per-project
-  USE metrics are defined. Never a number before that.
+- **USAGE stat card / home row**: renders "metrics coming" until per-project
+  USAGE metrics are defined. Never a number before that.
 - **HYPE trend percentages**: gated on 8 complete weeks of snapshots.
   Until then, absolute mentions + "baseline collecting, week N/8".
 - **Watch verdict**: no v1 trigger. Renders nothing until deadline
   evidence is researched and reviewed.
 - **Overdue promise state**: defined in the data model, never rendered
   until deadline evidence exists.
-- **USE timeline toggle**: hidden until USE metrics exist.
+- **USAGE timeline toggle**: hidden until USAGE metrics exist.
 - **Valuation, rebrand, timeline strips beyond CODE**: parked, not gated.
   Parked means no spec and no build; gated means spec'd and waiting on
   data.
 
 ## Phase 5: Prove Value Index (gated)
 
-Builds only after the USE metrics and the CODE score definition exist.
+Builds only after the USAGE metrics and the CODE score definition exist.
 The formula is locked in vision.md; this phase is data plumbing and UI.
 
-1. **Research first.** Per-project USE metrics (intended use only) and the
+1. **Research first.** Per-project USAGE metrics (intended use only) and the
    CODE score 0-1 definition (sustained activity on curated repos: what
    counts, what "stalled/resumed" means, anti-gaming notes). Both written
    up, reviewed, and versioned before any Index code.
@@ -333,7 +350,7 @@ clean.
 
 ## Open questions for Alex
 
-1. **USE on the home row:** DECIDED 2026-09-25: show "coming" as the
+1. **USAGE on the home row:** DECIDED 2026-09-25: show "coming" as the
    honest placeholder per the gating rule (never hide the slot, never
    show a number).
 2. **HYPE word:** once the 8-week baseline exists the word is vs
@@ -343,7 +360,7 @@ clean.
    timelines on the detail page.
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
 5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
-   waits for real USE data. No provisional scores, per the gating rule.
+   waits for real USAGE data. No provisional scores, per the gating rule.
 
 ## Appendix: Hearts algorithm (promise-heart rule v3)
 
@@ -531,7 +548,7 @@ Tapping the meter opens the project's verdict section, which lists exactly
 what feeds it: each failed promise, its state, and whether it was core.
 Humans resolve ambiguous evidence. Software picks the category and
 templates the explanation from reviewed promise records. CODE and HYPE
-never move the verdict directly; USE may support a promise state only
+never move the verdict directly; USAGE may support a promise state only
 when it measures a predefined promise-specific condition.
 
 ## Gaming defenses

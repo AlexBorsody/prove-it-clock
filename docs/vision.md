@@ -19,7 +19,7 @@ Four pillars. One of them is the score; the other three explain it.
   lineage, while its evidence condition holds.
 - **CODE** = are they building? Observable GitHub activity on curated repos.
   Activity is not proof of progress.
-- **USE** = is anyone using it for its stated purpose? Per-project metrics.
+- **USAGE** = is anyone using it for its stated purpose? Per-project metrics.
   Intended use only, never generic chain activity.
 - **HYPE** = is anyone talking about it? Observed mention counts. Attention
   is not support and never evidence of delivery.
@@ -37,7 +37,7 @@ states). The 1-10 positions are fixed per category today, not a computed
 formula; the formula itself is an open methodology question (under review
 2026-09-26: no proportion, no recency, no redemption path).
 
-CODE and USE are evidence. HYPE is context. Market data is context.
+CODE and USAGE are evidence. HYPE is context. Market data is context.
 None of them move the verdict directly in v1.
 
 ## Game framing
@@ -62,7 +62,7 @@ on the project detail page.
 Weights:
 
 - **Promises: 60%** = 60 * (earned hearts / capacity)
-- **USE: 25%** = 25 * use_score, where use_score is 0-1 from the
+- **USAGE: 25%** = 25 * use_score, where use_score is 0-1 from the
   per-project intended-use metrics
 - **CODE: 15%** = 15 * code_score, where code_score is 0-1 from
   sustained activity on curated repos (definition required before build)
@@ -79,7 +79,7 @@ why the score moved:
 - Development resumed / stalled
 - Major hype spike (context only, never moves the score)
 
-Gating rule: the Index does not publish until USE metrics exist, because
+Gating rule: the Index does not publish until USAGE metrics exist, because
 25% of the score cannot be fiction. "Missing data means unknown, never
 zero" applies to the Index too: a component with no data renders as
 unknown, and the Index stays unpublished until all three scoring
@@ -102,7 +102,7 @@ The scoreboard, CoinMarketCap coin-list pattern, mobile-first:
   sparkline on the card.
 - Desktop: dense table. Columns: # (ranked by hearts filled %), Coin (icon +
   name, links to detail), Hearts (earned / capacity meter), Shitcoin warning
-  dial, CODE (activity word + commits), USE ("coming"), HYPE (mentions),
+  dial, CODE (activity word + commits), USAGE ("coming"), HYPE (mentions),
   Proof history (heart-history sparkline). Sortable by column.
 
 Every metric is tappable and opens its data: the meter opens the project's
@@ -114,7 +114,7 @@ feeds the rankings.
 ## Compare view = context
 
 Pick 2-4 projects, see them side by side. Metrics as rows, projects as
-columns: hearts, shitcoin warning + one-liner, promise counts, CODE stats, USE
+columns: hearts, shitcoin warning + one-liner, promise counts, CODE stats, USAGE
 metric (or "coming"), HYPE mentions + baseline status, Index (once it
 exists). Every row header links to the methodology note explaining what
 the metric means and what it does not. Numbers never appear without
@@ -128,7 +128,7 @@ their context. Entry point: a Compare button on the homepage.
    core flag, or the clean/overdue note. Below it a stat strip in
    the CMC pattern: PROMISES (earned/capacity; N fulfilled · N active · N open · N lapsed ·
    N retired) / CODE (commits · releases · contributors, 90d; last
-   release) / USE (per-project metric when defined; honest "metrics coming"
+   release) / USAGE (per-project metric when defined; honest "metrics coming"
    until then) / HYPE (mentions/week; "baseline collecting, week N/8" until
    week 9, no trend percentages before that).
 2. **Market.** Live price, 7d change, market cap, and a 7-day candlestick
@@ -139,12 +139,12 @@ their context. Entry point: a Compare button on the homepage.
    published run per methodology the line is a single dot, so the page
    backfills yearly history from promise `effective_at` dates: for each
    year-end, hearts earned vs promises that existed by then. Activity
-   strip below with CODE / HYPE toggle (USE joins when its metrics exist).
+   strip below with CODE / HYPE toggle (USAGE joins when its metrics exist).
    Failed collection never renders as zero. The legacy v0.2.0 timeline
    stays on the page below it (Alex's call): both timelines, no merge.
 3. **Prove Value Index.** The 0-100 composite plotted through time, with
    clickable event markers on every meaningful move. Weights disclosed
-   beside the graph. Gated on USE data (see above); the section does not
+   beside the graph. Gated on USAGE data (see above); the section does not
    render until the Index can be computed honestly.
 4. **Promises.** Each lineage with its status: Open / Active / Fulfilled /
    Lapsed / Retired. Overdue is defined in the data model but has no v1
@@ -243,7 +243,7 @@ CMC cannot follow without attacking its own customers.
 
 ## Parked (not in v1)
 
-HYPE trend percentages. Watch verdict triggers. CODE/USE/HYPE timeline
+HYPE trend percentages. Watch verdict triggers. CODE/USAGE/HYPE timeline
 strips beyond CODE. Valuation. **Beyond crypto:** the
 instrument is asset-class agnostic, and tech stocks are the natural next
 market (Tesla's robotaxi and Full Self-Driving promises, SpaceX's Mars and
@@ -278,5 +278,5 @@ and tested against real outcomes.
 
 ## Next research (gates the Index)
 
-Real USE metrics per project, and the CODE score definition. The Index
+Real USAGE metrics per project, and the CODE score definition. The Index
 formula is locked; these two inputs are the build's critical path.

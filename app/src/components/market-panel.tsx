@@ -5,6 +5,7 @@
  * labels on the x axis. Click the chart to expand it. Fails silent.
  */
 import { useEffect, useState } from "react";
+import { searchMeta } from "@/lib/search-sections";
 
 const COINGECKO_IDS: Record<string, string> = {
   btc: "bitcoin",
@@ -151,7 +152,7 @@ function CandleChart({ candles, big }: { candles: Candle[]; big?: boolean }) {
   );
 }
 
-export default function MarketPanel({ slug }: { slug: string }) {
+export default function MarketPanel({ slug, name, symbol }: { slug: string; name: string; symbol: string }) {
   const [price, setPrice] = useState<number | null>(null);
   const [change7d, setChange7d] = useState<number | null>(null);
   const [mcap, setMcap] = useState<number | null>(null);
@@ -205,7 +206,7 @@ export default function MarketPanel({ slug }: { slug: string }) {
 
   return (
     <>
-      <div className="panel">
+      <section className="panel market-section search-section" {...searchMeta({ id: `project-${slug}-market`, title: `${name} market data`, kind: "Market", project: slug, keywords: `${symbol} price chart market cap` })}>
         <h2>Market</h2>
         {price != null && (
           <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", marginBottom: 12 }}>
@@ -247,7 +248,7 @@ export default function MarketPanel({ slug }: { slug: string }) {
         <p style={{ color: "var(--text-faint)", fontSize: 12, margin: "8px 0 0" }}>
           7-day candles · tap chart to expand · Price data: CoinGecko
         </p>
-      </div>
+      </section>
 
       {expanded && candles && (
         <div

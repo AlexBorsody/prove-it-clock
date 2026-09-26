@@ -3,7 +3,7 @@ import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { fetchTeam, teamLine } from "@/lib/team";
 import Icon from "@/components/chrome-icons";
-import { GithubMark, StarIcon, ForkIcon } from "@/components/icons";
+import CodeRow from "@/components/code-row";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
@@ -85,8 +85,6 @@ export default async function CodePage({
           : r.commits90d;
   rows.sort((a, b) => (sortVal(b) ?? -1) - (sortVal(a) ?? -1));
 
-  const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
-  const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
   const sortLabel =
     sort === "commits"
       ? "commits in the last 90 days"
@@ -135,49 +133,12 @@ export default async function CodePage({
           </p>
           <div className="code-rows">
             {rows.map((r, i) => (
-              <div key={r.slug} className="code-row search-section" {...searchMeta({ id: `code-project-${r.slug}`, title: `${r.name} CODE activity`, kind: "CODE", project: r.slug, keywords: `${r.symbol} GitHub commits stars forks follows` })}>
-                <span className="code-rank num">{i + 1}</span>
-                <Link href={`/projects/${r.slug}`} className="code-coin-link">
-                  <img
-                    src={`/icons/${r.symbol.toLowerCase()}.svg`}
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="coin-icon"
-                  />
-                  <span className="code-name">{r.name}</span>
-                </Link>
-                {r.repoUrl ? (
-                  <a
-                    href={r.repoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="github-btn"
-                    aria-label={`${r.name} repo on GitHub`}
-                  >
-                    <GithubMark className="github-btn-icon" />
-                  </a>
-                ) : null}
-                <span className="code-social">
-                  <span className="code-social-row" title="Stars">
-                    <StarIcon className="code-social-icon" />
-                    <span className="num">{compact(r.stars)}</span>
-                  </span>
-                  <span className="code-social-row" title="Forks">
-                    <ForkIcon className="code-social-icon" />
-                    <span className="num">{compact(r.forks)}</span>
-                  </span>
-                </span>
-                <span className="code-commits">
-                  <span className="code-commits-num num">
-                    {r.failed ? "-" : (r.commits90d ?? 0).toLocaleString()}
-                  </span>
-                  <span className="cell-sub">
-                    {r.failed ? "Couldn't reach GitHub" : "commits / 90d"}
-                  </span>
-                  <span className="cell-sub">{r.teamLine}</span>
-                </span>
-              </div>
+              <CodeRow
+                key={r.slug}
+                row={r}
+                rank={i + 1}
+                search={{ id: `code-project-${r.slug}`, title: `${r.name} CODE activity` }}
+              />
             ))}
           </div>
         </div>

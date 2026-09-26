@@ -14,12 +14,14 @@ import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../../data/verdict-lines";
 import { potentialRationale } from "../../../../../data/potential";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
+import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import MarketPanel from "@/components/market-panel";
+import CodeRow, { type CodeRowData } from "@/components/code-row";
+import { HypeRowCard, type HypeRow } from "@/components/hype-leaderboard";
 import DeliveryTimeline from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
-import { GithubMark } from "@/components/icons";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
@@ -62,10 +64,11 @@ function claimLabel(t: string): string {
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  const [historyData, rankings, vitals, hypeSnaps] = await Promise.all([
+  const [historyData, rankings, vitals, team, hypeSnaps] = await Promise.all([
     readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
     readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
     fetchVitals(slug).catch(() => null),
+    fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
   ]);
 
@@ -179,6 +182,36 @@ function backfillHeartHistory(
   const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
   const hypeCollecting = baselineWeeks < 8;
 
+  // Shared row components: the project page renders the same CodeRow and
+  // HypeRowCard as the /code and /hype list views. One component, two
+  // surfaces; never duplicate the markup.
+  const meta = VITALS_REPOS[slug];
+  const codeFailed = vitals == null || (vitals.commits90d == null && vitals.partial);
+  const codeRowData: CodeRowData = {
+    slug,
+    name: latest.name,
+    symbol: latest.symbol,
+    commits90d: vitals?.commits90d ?? null,
+    stars: vitals?.stars ?? null,
+    forks: vitals?.forks ?? null,
+    watchers: vitals?.watchers ?? null,
+    repoUrl: meta ? `https://github.com/${meta.github}` : "",
+    teamLine: team ? teamLine(team) : "TEAM: Unknown · couldn't reach GitHub",
+    failed: codeFailed,
+  };
+  const hypeRow: HypeRow = {
+    slug,
+    name: latest.name,
+    symbol: latest.symbol,
+    earned: latest.earned,
+    capacity: latest.capacity,
+    filledPct,
+    verdict,
+    mentions: hypeMentions,
+    baselineWeeks,
+    sources: hypeLatest?.sources_ok ?? [],
+  };
+
   // Power-grid denominators: CODE and HYPE bars scale to the current
   // leader across tracked projects. Vitals are cached upstream (6h), the
   // same fetch pattern /code uses.
@@ -227,9 +260,9 @@ function backfillHeartHistory(
         ) : null}
       </div>
 
-      <MarketPanel slug={slug} />
+      <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
 
-      {/* 2. Power grid: Marvel-card meters for PROMISES / CODE / USE / HYPE. */}
+      {/* 2. Power grid: Marvel-card meters for PROMISES / CODE / USAGE / HYPE. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-power`, title: `${latest.name} power grid`, kind: "Project", project: slug, keywords: `${latest.symbol} hearts promises code use hype` })}>
         <h2>Power grid</h2>
         <div className="power-grid">
@@ -243,7 +276,7 @@ function backfillHeartHistory(
             </span>
             <span className="cell-sub">{Math.round(filledPct * 100)}% earned</span>
           </a>
-          <Link href="/code" className="power-row power-link search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })} aria-label="CODE ranking">
+          <Link href="/code" className="power-row power-link search-section" {...searchMeta({ id: `project-${slug}-power-code`, title: `${latest.name} CODE overview`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })} aria-label="CODE ranking">
             <span className="power-head">
               <span className="power-label"><Icon name="code" size={14} /> Code</span>
               <span className="power-val num">
@@ -266,7 +299,7 @@ function backfillHeartHistory(
           </Link>
           <div className="power-row power-off">
             <span className="power-head">
-              <span className="power-label"><Icon name="use" size={14} /> Use</span>
+              <span className="power-label"><Icon name="use" size={14} /> Usage</span>
               <span className="power-val"><span className="word dim">coming</span></span>
             </span>
             <span className="power-bar" aria-hidden="true"><span className="power-fill" style={{ width: "0%" }} /></span>
@@ -295,9 +328,26 @@ function backfillHeartHistory(
           </Link>
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          Hearts measure promises kept. CODE, USE and HYPE add context; only hearts move the meter.
+          Hearts measure promises kept. CODE, USAGE and HYPE add context; only hearts move the meter.
         </p>
       </div>
+
+      {/* 2b. CODE: the same row component as the /code ranking. */}
+      <section className="panel code-section search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
+        <h2>CODE</h2>
+        <p className="panel-sub">
+          Who is actually building {latest.name}. Development context only: CODE never moves the heart score.
+        </p>
+        <div className="code-rows">
+          <CodeRow
+            row={codeRowData}
+            search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
+          />
+        </div>
+        <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
+          <Link href="/code">See the CODE ranking</Link>
+        </p>
+      </section>
 
       {/* 3. Delivery timeline. */}
       <div className="panel section-alt search-section" {...searchMeta({ id: `project-${slug}-timeline`, title: `${latest.name} delivery timeline`, kind: "History", project: slug, keywords: `${latest.symbol} hearts code hype history` })} data-tour="timeline">
@@ -388,28 +438,19 @@ function backfillHeartHistory(
         </details>
       </div>
 
-      {/* 5. HYPE. */}
-      <div className="panel section-alt search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
+      {/* 5. HYPE: the same row component as the /hype ranking. */}
+      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
         <h2>HYPE</h2>
         <p className="panel-sub">
           How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
         </p>
-        <div className="num" style={{ fontSize: 34, fontWeight: 700 }}>
-          {hypeMentions != null ? hypeMentions.toLocaleString() : "-"}
-        </div>
-        <div style={{ marginTop: 8 }}>
-          {hypeMentions != null && hypeCollecting ? (
-            <span className="tag na">collecting, week {baselineWeeks}/8</span>
-          ) : hypeMentions != null ? (
-            <span className="tag na">mentions / 7d</span>
-          ) : (
-            <span className="tag na">no data yet</span>
-          )}
+        <div className="hype-rows">
+          <HypeRowCard row={hypeRow} />
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
           <Link href="/hype">See the HYPE leaderboard</Link>
         </p>
-      </div>
+      </section>
 
       {/* 6. Evidence and methodology. */}
       <div className="panel search-section" {...searchMeta({ id: `project-${slug}-evidence`, title: `${latest.name} evidence and methodology`, kind: "Evidence", project: slug, keywords: `${latest.symbol} sources scoring history` })}>
