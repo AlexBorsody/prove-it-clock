@@ -8,9 +8,12 @@ queue live in [implementation.md](implementation.md) and
 
 ## The product in one line
 
-Did crypto projects actually deliver what they promised? The core product
-is a sourced promise ledger: claim, attribution, fulfillment test, evidence
-and outcome. Hearts record delivery, not token prices or economic value.
+Did crypto projects actually deliver what they promised? The product is the
+living verdict per project: a grade that moves as promises are kept or
+broken, split by promise category, every number clickable to its receipt.
+The core is a sourced promise ledger: claim, attribution, fulfillment test,
+evidence and outcome. Hearts record delivery, not token prices or economic
+value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
 
@@ -180,6 +183,47 @@ history is authorized here. Any future ranking requires a separate approved
 methodology. [Implementation](implementation.md#promise-atlas-v1-implementation)
 and the [task queue](tasks/2026-09-26-promise-atlas.md) govern the build.
 
+## Verdict layer
+
+**Approved direction: Alex, 2026-09-26 (product iteration).** The Atlas v1
+is good infrastructure but a reference work: no stakes, no reason to open
+it twice. The product is the verdict. This section supersedes the Atlas
+brief's "no category performance ranking" line; per-category deliverability
+rankings are authorized as specified below.
+
+- **The user:** someone holding or eyeing a coin, asking "is this team full
+  of shit?"
+- **The product:** a living verdict per project. "LINK: 11 of 14 kept.
+  2 lapsed this year." Per category, so a payments coin is not judged as a
+  platform.
+- **The loop:** promises get re-assessed, verdicts move, rankings
+  reshuffle, holders find out. Motion plus conflict plus stakes.
+- The shitcoin badge was the right instinct with a random implementation.
+  The verdict is that badge done right: derived from the graded ledger,
+  updating, per category.
+- **Methodology work freezes until the verdict needs a ruling.** No more
+  frameworks for their own sake.
+
+### What the verdict builds on
+
+- Per-project verdict card from the published ledger: kept/total, recently
+  lapsed, per-category split (Atlas taxonomy). Every number links to the
+  underlying promise evidence.
+- Verdict on each project detail page, near the top, above the promise
+  list.
+- Per-category rankings reachable from the homepage. No single overall
+  leaderboard.
+- Verdicts update automatically when a new published run lands; the data
+  revision ("as of <date>") is shown next to the verdict.
+- The verdict reads the published ledger only. It never writes, re-grades,
+  or reinterprets. State mapping reuses the Atlas adapter's
+  methodology-pinned interpretation. Missing data is shown as missing,
+  never invented.
+- Plain words: kept, lapsed, open. No em dashes. Green kept, red lapsed,
+  grey open. Delivery accountability only, never investment advice.
+
+Task brief: [tasks/2026-09-26-verdict-layer.md](tasks/2026-09-26-verdict-layer.md).
+
 ## Prove Value Index: separate future work
 
 The earlier 60/25/15 proposal is superseded as a build instruction. No Index
@@ -338,6 +382,12 @@ before. Anything not in this doc waits for Alex, not for a spare
 afternoon.
 
 ## Changelog
+
+- 2026-09-26 (later): product iteration. The Atlas v1 is infrastructure,
+  not the product. The product is the living verdict per project (per
+  category, updating, every number clickable to its receipt). Per-category
+  deliverability rankings authorized. Methodology frozen until the verdict
+  needs a ruling.
 
 - 2026-09-26: adopted Promise Atlas v1: curated categories, stable uniform
   nodes, evidence details, separate versions; embeddings and Index postponed.
