@@ -1,10 +1,69 @@
 import Markdown, { defaultUrlTransform } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import type { Blockquote, Root, RootContent } from "mdast";
 import Icon from "@/components/chrome-icons";
+import { searchMeta } from "@/lib/search-sections";
 import {
   CASE_STUDY_DOCUMENTS, caseStudyHref, readCaseStudy, resolveCaseStudyLink,
   type CaseStudySlug,
 } from "@/lib/case-studies";
+
+type TextNode = { type: string; value?: string; alt?: string | null; children?: TextNode[] };
+
+function nodeText(node: TextNode): string {
+  return node.value ?? node.alt ?? node.children?.map(nodeText).join("") ?? "";
+}
+
+/** Index actual Markdown blocks, keeping every heading with its following body. */
+function searchableResearchSections(slug: CaseStudySlug) {
+  return function remarkSearchSections() {
+    return function transform(tree: Root) {
+      const sections: RootContent[] = [];
+      const used = new Map<string, number>([["introduction", 1]]);
+      let children: RootContent[] = [];
+      let title = CASE_STUDY_DOCUMENTS[slug].title as string;
+      let anchor = "introduction";
+
+      function flush() {
+        if (!children.length) return;
+        sections.push({
+          type: "blockquote",
+          data: {
+            hName: "section",
+            hProperties: {
+              ...searchMeta({
+                id: `case-study-${slug}-${anchor}`,
+                title: `${CASE_STUDY_DOCUMENTS[slug].title}: ${title}`,
+                kind: "Research",
+                project: ["overview", "review", "algorithm"].includes(slug) ? undefined : slug,
+              }),
+              className: ["research-section", "search-section"],
+            },
+          },
+          children: children as Blockquote["children"],
+        });
+        children = [];
+      }
+
+      for (const node of tree.children) {
+        if (node.type === "heading") {
+          flush();
+          title = nodeText(node);
+          const base = title.toLowerCase().replace(/[^\p{Letter}\p{Number}]+/gu, "-").replace(/^-|-$/g, "") || "section";
+          const count = used.get(base) ?? 0;
+          used.set(base, count + 1);
+          anchor = count ? `${base}-${count}` : base;
+          // Keep conventional Markdown fragments working alongside namespaced
+          // container anchors used by site search.
+          node.data = { ...node.data, hProperties: { ...node.data?.hProperties, id: anchor } };
+        }
+        children.push(node);
+      }
+      flush();
+      tree.children = sections;
+    };
+  };
+}
 
 export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug }) {
   const markdown = await readCaseStudy(slug);
@@ -30,7 +89,7 @@ export default async function CaseStudyDocument({ slug }: { slug: CaseStudySlug 
       </nav>
       <article className="research-document">
         <Markdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, searchableResearchSections(slug)]}
           skipHtml
           urlTransform={(url) => defaultUrlTransform(resolveCaseStudyLink(url, slug))}
           components={{

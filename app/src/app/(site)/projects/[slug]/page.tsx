@@ -19,6 +19,7 @@ import ShitcoinMeter from "@/components/shitcoin-meter";
 import DeliveryTimeline from "@/components/delivery-timeline";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
+import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -147,7 +148,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <>
       {/* 1. Header: icon, name, rank, big hearts, Shitcoin warning, one-liner. */}
-      <div className="panel card section-hero">
+      <div className="panel card section-hero search-section" {...searchMeta({ id: `project-${slug}-overview`, title: `${latest.name} overview`, kind: "Project", project: slug, keywords: `${latest.symbol} hearts potential ranking` })}>
         <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <img
             src={`/icons/${latest.symbol.toLowerCase()}.svg`}
@@ -167,7 +168,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
         {rationale ? <p className="potential-line">{rationale}</p> : null}
-        <div id="verdict" data-tour="shitcoin">
+        <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
+          <span id="verdict" aria-hidden="true" />
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
         {oneLiner ? (
@@ -176,7 +178,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 2. Power grid: Marvel-card meters for PROMISES / CODE / USE / HYPE. */}
-      <div className="panel">
+      <div className="panel search-section" {...searchMeta({ id: `project-${slug}-power`, title: `${latest.name} power grid`, kind: "Project", project: slug, keywords: `${latest.symbol} hearts promises code use hype` })}>
         <h2>Power grid</h2>
         <div className="power-grid">
           <a href="#promises" className="power-row power-link">
@@ -189,7 +191,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </span>
             <span className="cell-sub">{Math.round(filledPct * 100)}% earned</span>
           </a>
-          <Link href="/code" className="power-row power-link" aria-label="CODE ranking">
+          <Link href="/code" className="power-row power-link search-section" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })} aria-label="CODE ranking">
             <span className="power-head">
               <span className="power-label"><Icon name="code" size={14} /> Code</span>
               <span className="power-val num">
@@ -246,7 +248,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 3. Delivery timeline. */}
-      <div className="panel section-alt" data-tour="timeline">
+      <div className="panel section-alt search-section" {...searchMeta({ id: `project-${slug}-timeline`, title: `${latest.name} delivery timeline`, kind: "History", project: slug, keywords: `${latest.symbol} hearts code hype history` })} data-tour="timeline">
+        <span id="hearts" aria-hidden="true" />
         <h2>Delivery timeline</h2>
         <p className="panel-sub">
           Hearts earned over time. Rises and falls are the story: when the evidence changed, the line moved.
@@ -255,7 +258,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 4. Promises, with machinery hidden under the hood. */}
-      <div className="panel" id="promises">
+      <div className="panel search-section" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
+        <span id="promises" aria-hidden="true" />
         <h2>Promises</h2>
         <p className="panel-sub">
           What {latest.name} promised, and what actually happened. Each kept promise earns hearts.
@@ -281,8 +285,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         ) : null}
         {promises.map((pr, i) => {
           const d = promiseDisplay(pr);
+          // Escape every non-ID character (including underscores) without
+          // collapsing distinct lineage names onto the same anchor.
+          const lineageId = String(pr.lineage ?? i).replace(/[^a-zA-Z0-9-]/gu, (character) => `_${character.codePointAt(0)!.toString(16)}_`);
           return (
-            <div className="comp-row" key={i}>
+            <div className="comp-row search-section" key={pr.lineage ?? i} {...searchMeta({ id: `project-${slug}-promise-${lineageId}`, title: `${latest.name}: ${pr.criteria ?? pr.lineage ?? "Promise"}`, kind: "Promise", project: slug, keywords: `${latest.symbol} ${pr.lineage ?? ""} ${pr.claim_type ?? ""} ${d.label}` })}>
               <div className="comp-name">{pr.criteria}</div>
               <div className="comp-tags">
                 <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>{d.label}</span>
@@ -303,7 +310,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
           );
         })}
-        <details className="panel fold" style={{ marginTop: 18 }}>
+        <details className="panel fold search-section" {...searchMeta({ id: `project-${slug}-promise-rules`, title: `${latest.name} promise rules`, kind: "Methodology", project: slug, keywords: `${latest.symbol} lineage rewards states` })} style={{ marginTop: 18 }}>
           <summary>Under the hood</summary>
           <table className="spec">
             <thead>
@@ -324,7 +331,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 5. HYPE. */}
-      <div className="panel section-alt">
+      <div className="panel section-alt search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
         <h2>HYPE</h2>
         <p className="panel-sub">
           How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
@@ -347,7 +354,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
 
       {/* 6. Evidence and methodology. */}
-      <div className="panel">
+      <div className="panel search-section" {...searchMeta({ id: `project-${slug}-evidence`, title: `${latest.name} evidence and methodology`, kind: "Evidence", project: slug, keywords: `${latest.symbol} sources scoring history` })}>
         <h2>Evidence and methodology</h2>
         <p className="panel-sub">
           Every promise above was checked against public evidence: code,

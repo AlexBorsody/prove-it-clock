@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "How the scoring works | Prove-It" };
 
 import Icon from "@/components/chrome-icons";
+import { searchMeta } from "@/lib/search-sections";
 
 type IconName = Parameters<typeof Icon>[0]["name"];
 
@@ -13,6 +14,7 @@ function Section({
   open,
   alt,
   id,
+  searchTitle,
   children,
 }: {
   icon: IconName;
@@ -20,12 +22,14 @@ function Section({
   tag?: string;
   open?: boolean;
   alt?: boolean;
-  id?: string;
+  id: string;
+  searchTitle?: string;
   children: React.ReactNode;
 }) {
   return (
-    <details id={id} className={"panel fold" + (alt ? " section-alt" : "")} open={open}>
+    <details {...searchMeta({ id: `methodology-${id}`, title: searchTitle ?? (typeof title === "string" ? title : "Scoring methodology"), kind: "Methodology" })} className={"panel fold search-section" + (alt ? " section-alt" : "")} open={open}>
       <summary className="fold-head">
+        <span id={id} aria-hidden="true" />
         <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
           <Icon name={icon} size={16} />
           {title}
@@ -56,12 +60,14 @@ function Section({
 export default function MethodologyPage() {
   return (
     <div className="methodology-page">
+      <div className="search-section" {...searchMeta({ id: "methodology-overview", title: "How the scoring works", kind: "Methodology", keywords: "scoring hearts evidence promises" })}>
       <h1 className="page-title">How the scoring works</h1>
       <p className="page-sub">
         Crypto projects make promises. We check whether they kept them.
         Every score is a heart meter plus its history. The graph shows hearts
         being earned <i>and</i> lost over time.
       </p>
+      </div>
 
       <Section icon="heart" title="Hearts are earned, never given" id="hearts" open>
         <p>
@@ -142,7 +148,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="chart" title="The Prove-It Index" tag="gated" alt>
+      <Section icon="chart" title="The Prove-It Index" id="index" tag="gated" alt>
         <p>
           Hearts are the simple public mechanic: did they keep their promises?
           The Prove-It Index is the deeper health and credibility algorithm
@@ -168,7 +174,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="flask" title="Prove-It Data">
+      <Section icon="flask" title="Prove-It Data" id="data">
         <p>
           Prove-It runs its own independently operated data collection. We do
           not rent our inputs from aggregators and relabel them. For each
@@ -186,7 +192,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="shield-check" title="Nothing unfinished ships" alt>
+      <Section icon="shield-check" title="Nothing unfinished ships" id="publication" alt>
         <p>
           A section, metric, or verdict that lacks real data or a reviewed
           definition never renders publicly. No "coming soon" panels, no
@@ -198,7 +204,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="person" title="Who scored it">
+      <Section icon="person" title="Who scored it" id="analysts">
         <p>
           Every score names the analyst who did the research, with evidence
           linked. If a second researcher independently reproduces the work,
@@ -210,7 +216,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="book" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20 potential</>} alt>
+      <Section icon="book" id="xrp-example" searchTitle="Worked example: XRP at 2 of 20 potential" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20 potential</>} alt>
         <p>
           <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20 potential</b>, earned only. One heart for the ledger
           milestone (permanent), one for XRP payments as an ongoing claim
@@ -222,7 +228,7 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="wrench" title="Under the hood: the precise rules">
+      <Section icon="wrench" title="Under the hood: the precise rules" id="rules">
         <p>
           <b>Capacity.</b> Fixed tiers of 5, 10, or 20. 20 is for projects
           trying to rewire global infrastructure, 10 for owning a sector, 5

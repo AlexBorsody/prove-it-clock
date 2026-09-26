@@ -72,6 +72,45 @@ Keep this pass on the public v1 contract. Legacy `/api/projects` routes stay
 separate. Deliver small fixes with their spec and tests in the same commit.
 Muse owns the concurrent strategy/vision/hearts documentation reorganization.
 
+## Site search
+
+Search indexes the actual text of tagged HTML containers. Each has a stable,
+namespaced `id` plus `data-search-title`, `data-search-kind`, optional project
+and keywords. Shared `search-section` classes handle presentation; IDs identify
+individual targets. `searchMeta()` supplies the contract. Preserve IDs when copy
+changes and add the same tags to new content sections.
+
+The dropdown searches titles, metadata and body text with the existing Fuse.js,
+shows snippets and all matches in a scrolling list, and links to `page#section`.
+Deep links open enclosing details panels and focus/highlight the target.
+The server uses LinkeDOM to read rendered HTML; no page scripts run in the crawler.
+Static docs and live project sections use the same path. New page types go in
+`siteSearchPaths()`; published project routes are discovered from the database.
+
+`GET /api/search-index` stores a shared index in Next's Data Cache. Crawl attempts
+are cached for a rolling 24 hours, including failures. A search or every fifth
+page visit in the browser session checks the index; after 24 hours, Next serves
+the cached attempt while refreshing in the background. Each newer complete
+index becomes the saved fallback. Failed or partial refreshes keep that last
+complete index; on the first build, partial coverage is explicitly shown.
+Cache scope is the deployment origin. Requests in one process share an active
+crawl; simultaneous cold starts across instances can still duplicate it. Fresh
+deployments/cache resets can warm again. This is request-triggered refresh,
+not an unattended daily scheduler.
+
+Set `SEARCH_SITE_URL` to this deployment's origin for non-Vercel hosting or a
+custom local port; Vercel defaults to `VERCEL_URL`, development to localhost:3000.
+Only allowlisted same-origin pages are read, with bounded concurrency/time and
+no redirects. A protected preview must make its public pages reachable to its
+own indexer. No external search service or database migration is needed.
+
+Library review: [Fuse.js](https://www.fusejs.io/) fits this small dynamic site;
+[Pagefind](https://pagefind.app/docs/running-pagefind/) primarily indexes generated
+static HTML. [Next Data Cache](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)
+provides shared daily caching. Verify with `npm run test:search`, typecheck/build,
+then search body text, follow a cross-page result, and open a closed methodology
+section from its result. Repeated index requests should retain `generated_at`.
+
 ## Phase 0: Vision and plan (this session)
 
 Docs written, tree clean. Alex said go 2026-09-25 ("get started building

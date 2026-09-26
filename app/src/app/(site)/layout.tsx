@@ -2,6 +2,9 @@ import "../globals.css";
 import BottomNav from "@/components/bottom-nav";
 import Walkthrough from "@/components/walkthrough";
 import ProjectSearch from "@/components/project-search";
+import SearchAnchor from "@/components/search-anchor";
+import { siteSearchPaths } from "@/lib/search-sections";
+import { CASE_STUDY_DOCUMENTS } from "@/lib/case-studies";
 import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
 
 /**
@@ -13,23 +16,20 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   const rankings = await readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({
     projects: [] as any[],
   }));
-  const projects = (rankings.projects ?? []).map((p: any) => ({
-    slug: p.slug,
-    name: p.name,
-    symbol: p.symbol,
-  }));
+  const paths = siteSearchPaths((rankings.projects ?? []).map((p: {slug:string}) => p.slug), Object.keys(CASE_STUDY_DOCUMENTS));
 
   return (
     <div className="shell">
       <header className="appbar">
         <div className="appbar-inner">
           <span className="appbar-left" aria-hidden="true" />
-          <ProjectSearch projects={projects} />
+          <ProjectSearch paths={paths} />
         </div>
       </header>
       <main className="with-bottomnav">{children}</main>
       <BottomNav />
       <Walkthrough />
+      <SearchAnchor />
     </div>
   );
 }
