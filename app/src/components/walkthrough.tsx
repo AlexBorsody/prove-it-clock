@@ -17,12 +17,12 @@ const STEPS: TourStep[] = [
   {
     selector: '[data-tour="promises"]',
     title: "Promises, kept or broken",
-    body: "This is the whole point. Everything Bitcoin promised, and what actually happened. A filled heart means the promise was kept. Tap any promise to see the proof.",
+    body: "This is the whole point. Everything this project promised, and what actually happened. A filled heart means the promise was kept. Tap any promise to see the proof.",
   },
   {
     selector: '[data-tour="shitcoin"]',
     title: "The warning light",
-    body: "When promises fail or get quietly dropped, it shows up here. Tap the gauge to see exactly what went wrong.",
+    body: "When promises fail or get quietly dropped, it shows up here. Tap What feeds this meter to see exactly what went wrong.",
   },
   {
     selector: '[data-tour="code"]',
@@ -174,11 +174,7 @@ export default function Walkthrough() {
     const onReplay = () => showStep(0);
     window.addEventListener(REPLAY_EVENT, onReplay);
     let t: number | undefined;
-    // A shared Atlas link must remain on its selected promise on first visit.
-    // The explicit Tour button can still start the project walkthrough.
-    if (!wasSeen()) t = window.setTimeout(() => {
-      if (window.location.pathname !== "/atlas") showStep(0);
-    }, 700);
+    if (!wasSeen()) t = window.setTimeout(() => showStep(0), 700);
     return () => {
       window.removeEventListener(REPLAY_EVENT, onReplay);
       if (t) window.clearTimeout(t);

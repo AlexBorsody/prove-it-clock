@@ -65,12 +65,18 @@ export default function MethodologyPage() {
       <h1 className="page-title">How the scoring works</h1>
       <p className="page-sub">
         Crypto projects make promises. We check whether they kept them.
-        Every score is a heart meter plus its history. The graph shows hearts
-        being earned <i>and</i> lost over time.
+        Projects are ranked within promise categories, not on a single
+        leaderboard. Hearts are the receipts. The index is the trend.
       </p>
       </div>
 
-      <Section icon="heart" title="Hearts are earned, never given" id="hearts" open>
+      <Section icon="heart" title="Hearts are the receipts" id="hearts" open>
+        <p>
+          One promise, one heart. A heart is a receipt that says a specific
+          promise was kept, with the evidence linked. Hearts are the
+          drill-down detail, not the headline: they tell you <i>what</i>
+          happened, promise by promise.
+        </p>
         <p>
           Every heart on the meter was <b style={{ color: "var(--green)" }}>earned</b> by
           keeping a promise. There are no free hearts, no head start, no points
@@ -89,6 +95,20 @@ export default function MethodologyPage() {
         <p className="update-marker">
           <b>Methodology update:</b> free hearts removed. Historical scores
           recalculated. This is not a change in project performance.
+        </p>
+      </Section>
+
+      <Section icon="grid" title="Rankings live in categories" id="rankings" alt>
+        <p>
+          There is no single leaderboard. A payment coin and a smart contract
+          platform made different promises, so ranking them against each other
+          never made sense. Projects are ranked within promise categories:
+          money, payments, platform, scale, and the rest. Each project gets a
+          category-relative index, plotted over time.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          An overall aggregate exists for context, but it is never the
+          headline. Compare like with like, or do not compare at all.
         </p>
       </Section>
 
@@ -125,7 +145,7 @@ export default function MethodologyPage() {
       </Section>
 
       <Section icon="grid" title="PROMISES / CODE / USAGE / HYPE" id="pillars">
-        <p>Four pillars. One of them is the score; the other three explain it.</p>
+        <p>Four pillars feed the index. PROMISES is the receipts; the other three explain the trend.</p>
         <ul>
           <li>
             <b>PROMISES</b> is the score. Hearts, earned only, one per kept
@@ -149,29 +169,40 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="chart" title="The Prove Value Index" id="index" tag="gated" alt>
+      <Section icon="chart" title="The Prove Value Index" id="index" tag="in development" alt>
         <p>
-          Hearts are the simple public mechanic: did they keep their promises?
-          The Prove Value Index is the deeper health and credibility algorithm
-          underneath. One number, 0-100, plotted through time. We are building
-          it now. It is not live yet.
+          Hearts tell you what happened, promise by promise. The Prove Value
+          Index is the trend underneath: one category-relative number per
+          project, plotted through time. It combines two things: the
+          intrinsic value of what the project built (code, usage) and how
+          well it fulfilled its promises (evidence, weighted by how central
+          each promise is to what the project is for).
         </p>
-        <ul>
-          <li><b>Promises: 60%</b></li>
-          <li><b>USAGE: 25%</b></li>
-          <li><b>CODE: 15%</b></li>
-          <li><b>HYPE: 0%.</b> Context only. It never improves the score.</li>
-        </ul>
         <p>
           Every meaningful move gets a clickable event marker explaining
-          exactly why the score moved: promise fulfilled, lapsed, or retired, deadline
-          missed, major release, usage milestone, development resumed or
-          stalled, major hype spike (context only).
+          exactly why the score moved: promise fulfilled, lapsed, or retired,
+          deadline missed, major release, usage milestone, development resumed
+          or stalled.
         </p>
         <p style={{ marginBottom: 0 }}>
-          The Index does not publish until USAGE metrics exist, because 25% of
-          the score cannot be fiction. The formula is locked; the build waits
-          on the data.
+          The Index is in development. The formula, weights, and category
+          definitions are being finalized now, and every parameter will be
+          published and versioned before the first score goes live. Nothing
+          about the Index is estimated or provisional when it ships.
+        </p>
+      </Section>
+
+      <Section icon="flask" title="The promise atlas" id="atlas" tag="in development">
+        <p>
+          Every promise, mapped. The atlas places each promise by how similar
+          it is to every other promise, so clusters form naturally: the
+          money promises gather together, the platform promises gather
+          together. Node size reflects impact. Green kept, red lapsed, grey
+          open.
+        </p>
+        <p style={{ marginBottom: 0 }}>
+          Positions come from the promises themselves. We draw no invented
+          connections between promises that are not really connected.
         </p>
       </Section>
 
