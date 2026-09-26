@@ -75,7 +75,6 @@ export default function ShitcoinMeter({
   size,
   inputs,
   emptyText,
-  hideExplainer = false,
 }: {
   category: VerdictCategory;
   /** Compact: dial + meter name, for dense rows/cards. */
@@ -85,9 +84,6 @@ export default function ShitcoinMeter({
   inputs?: ShitcoinInput[];
   /** Text when nothing failed. Shown on the full meter only. */
   emptyText?: string;
-  /** Hide the "delivery rating" explainer line; it lives in the host
-   *  section's help expander instead. */
-  hideExplainer?: boolean;
 }) {
   const { score, color, warn } = GAUGE[category];
   const dialSize = size ?? (compact ? 40 : 84);
@@ -134,11 +130,6 @@ export default function ShitcoinMeter({
             <p className="shitcoin-inputs-empty">{emptyText}</p>
           )}
         </details>
-      )}
-      {!compact && !hideExplainer && (
-        <p className="shitcoin-meter-meaning">
-          A delivery rating against promises, never fraud or investment risk.
-        </p>
       )}
     </div>
   );

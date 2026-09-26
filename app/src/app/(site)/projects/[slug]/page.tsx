@@ -13,14 +13,12 @@ import { normalizePromiseState } from "@/lib/hearts";
 import { verdictLine } from "../../../../../data/verdict-lines";
 import { potentialRationale } from "../../../../../data/potential";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
-import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
 import { promiseAnchor, promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
-import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
 import ButtonLink from "@/components/button-link";
@@ -72,11 +70,10 @@ export default async function ProjectPage({ params, searchParams }: {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
-  const [historyData, rankings, vitals, team, hypeSnaps] = await Promise.all([
+  const [historyData, rankings, vitals, hypeSnaps] = await Promise.all([
     readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
     readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
     fetchVitals(slug).catch(() => null),
-    fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
   ]);
 
@@ -150,23 +147,7 @@ export default async function ProjectPage({ params, searchParams }: {
   const codeWeeks = vitals?.weeks?.map((w: any) => ({ week: w.week, total: w.total })) ?? null;
   const hypeMentions: number | null = hypeLatest?.news_mentions_7d ?? null;
 
-  // Shared row components: the project page renders the same CodeRow and
-  // HypeRowCard as the /code and /hype list views. One component, two
-  // surfaces; never duplicate the markup.
-  const meta = VITALS_REPOS[slug];
-  const codeFailed = vitals == null || (vitals.commits90d == null && vitals.partial);
-  const codeRowData: CodeRowData = {
-    slug,
-    name: latest.name,
-    symbol: latest.symbol,
-    commits90d: vitals?.commits90d ?? null,
-    stars: vitals?.stars ?? null,
-    forks: vitals?.forks ?? null,
-    watchers: vitals?.watchers ?? null,
-    repoUrl: meta ? `https://github.com/${meta.github}` : "",
-    teamLine: team ? teamLine(team) : "TEAM: Unknown · couldn't reach GitHub",
-    failed: codeFailed,
-  };
+  // HypeRowCard on this page shares its row type with the /hype list view.
   const hypeRow: HypeRow = {
     slug,
     name: latest.name,
@@ -226,7 +207,6 @@ export default async function ProjectPage({ params, searchParams }: {
           <div className="promise-help-body">
             <p>What {latest.name} promised, and what actually happened. One promise, one heart.</p>
             <p>One promise. One heart. Earned by delivery.</p>
-            <p>A delivery rating against promises, never fraud or investment risk.</p>
             <p>Open hearts are still unearned. Retired promises were withdrawn. News matches never change these counts.</p>
           </div>
         </details>
@@ -249,6 +229,13 @@ export default async function ProjectPage({ params, searchParams }: {
                 { key: "failed", label: "failed", count: health.failed },
               ] as const).map((b) => {
                 const active = filter === b.key;
+                if (b.count === 0) {
+                  return (
+                    <span key={b.key} className={`ph-btn ${b.key} disabled`} aria-disabled="true">
+                      <span className="num">{b.count}</span> {b.label}
+                    </span>
+                  );
+                }
                 return (
                   <Link
                     key={b.key}
@@ -266,8 +253,14 @@ export default async function ProjectPage({ params, searchParams }: {
         ) : null}
         {filter !== "all" && (
           <p className="promise-filter-status" role="status">
-            Showing {promises.filter(pr => matchesPromiseFilter(pr.state, filter)).length} {filter.replace("-", " ")} promises. {" "}
-            <Link href={promiseFilterHref(slug, "all")}>Show all promises</Link>
+            {(() => {
+              const n = promises.filter((pr) => matchesPromiseFilter(pr.state, filter)).length;
+              const label = filter.replace("-", " ");
+              const showAll = <Link href={promiseFilterHref(slug, "all")}>Show all promises</Link>;
+              return n === 0
+                ? <>No {label} promises yet. {showAll}</>
+                : <>Showing {n} {label} promise{n === 1 ? "" : "s"}. {showAll}</>;
+            })()}
           </p>
         )}
         {promises.map((pr, i) => {
@@ -308,7 +301,7 @@ export default async function ProjectPage({ params, searchParams }: {
         <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />
           <h3 className="promise-subhead">Delivery verdict</h3>
-          <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} hideExplainer />
+          <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
         <details className="panel fold search-section" {...searchMeta({ id: `project-${slug}-promise-rules`, title: `${latest.name} promise rules`, kind: "Methodology", project: slug, keywords: `${latest.symbol} lineage rewards states` })} style={{ marginTop: 18 }}>
@@ -362,13 +355,7 @@ export default async function ProjectPage({ params, searchParams }: {
         <p className="panel-sub">
           Who is actually working {latest.name}.
         </p>
-        <div className="code-rows">
-          <CodeRow
-            row={codeRowData}
-            search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
-          />
-        </div>
-        <div style={{ marginTop: 12 }}>
+        <div>
           <CodeActivityChart codeWeeks={codeWeeks} />
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>

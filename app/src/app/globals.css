@@ -1080,7 +1080,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   color: var(--red); font-size: 14px; margin: 10px 0 0;
 }
 .shitcoin-warn svg { flex-shrink: 0; margin-top: 1px; }
-.shitcoin-meter-meaning { font-size: 14px; color: var(--text-dim); margin: 8px 0 0; }
 .mcard-gauge { display: inline-flex; flex-shrink: 0; }
 /* Warning sits on its own row under the hearts: left-aligned, never wrapping. */
 .mcard-warning { margin: 0 0 8px; }
@@ -1134,6 +1133,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .ph-btn.in-play { color: var(--text-faint); background: #2B2E3F; border-color: transparent; }
 .ph-btn.failed { color: var(--red); background: #411F2A; border-color: transparent; }
 .ph-btn.active { outline: 2px solid currentColor; outline-offset: 2px; }
+.ph-btn.disabled { opacity: 0.45; }
 
 /* ---- Mini tags for compare promise-state counts ---- */
 .mini-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
