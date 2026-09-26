@@ -1200,11 +1200,12 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .hero-factors { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; }
 }
 
-/* Shitcoin meter inputs: tap the meter, see exactly what feeds it. */
+/* Meter evidence is collapsed until requested. */
 .shitcoin-inputs { margin-top: 10px; }
 .shitcoin-inputs-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-  color: var(--text-faint); text-transform: uppercase; margin-bottom: 6px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+  color: var(--text-dim); text-transform: uppercase; min-height: 44px;
+  padding: 10px 0; cursor: pointer;
 }
 .shitcoin-inputs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .shitcoin-inputs-list li {

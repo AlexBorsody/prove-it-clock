@@ -7,3 +7,5 @@
 - Missing evidence is explicitly labeled. Existing source URLs are used without inventing citations.
 - Focused checks: six promise-context tests passed, including filter/count consistency and escaped evidence anchors. Manual acceptance: tap kept/failed counts, inspect sources, tap a status and a verdict reason, then use Show all and browser Back.
 - Production build (including lint/type checks) and `git diff --check` passed.
+
+- Space-saving follow-up: “What feeds this meter?” is a native details/summary disclosure, collapsed by default with a 44px tap target. Expanding retains every verdict-to-evidence link and the empty-state explanation.

@@ -110,8 +110,8 @@ export default function ShitcoinMeter({
         </p>
       )}
       {!compact && inputs && (
-        <div className="shitcoin-inputs">
-          <div className="shitcoin-inputs-label">What feeds this meter</div>
+        <details className="shitcoin-inputs">
+          <summary className="shitcoin-inputs-label">What feeds this meter?</summary>
           {inputs.length > 0 ? (
             <ul className="shitcoin-inputs-list">
               {inputs.map((inp, i) => (
@@ -129,7 +129,7 @@ export default function ShitcoinMeter({
           ) : (
             <p className="shitcoin-inputs-empty">{emptyText}</p>
           )}
-        </div>
+        </details>
       )}
       {!compact && (
         <p className="shitcoin-meter-meaning">
