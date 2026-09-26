@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { relatedMentions, type PromiseReference } from "@/lib/promise-context";
 import type { MentionFeed } from "@/lib/hype-mentions";
 import { searchMeta } from "@/lib/search-sections";
-import InfoTip from "@/components/info-tip";
 import styles from "./promise-context.module.css";
 
 export default function PromiseNews({ slug, name, symbol, promises }: { slug: string; name: string; symbol: string; promises: PromiseReference[] }) {
@@ -23,8 +22,7 @@ export default function PromiseNews({ slug, name, symbol, promises }: { slug: st
   }, [slug, retry]);
   const related = useMemo(() => relatedMentions(feed?.articles ?? [], promises, `${slug} ${name} ${symbol}`), [feed, promises, slug, name, symbol]);
   return <section className={`panel recent-promises-section search-section ${styles.recent}`} {...searchMeta({ id: `project-${slug}-recent`, title: `${name} recently happened`, kind: "News", project: slug, keywords: "recent news related promises automatic keyword matches" })}>
-    <h2>Recently happened</h2>
-    <p className={styles.sub}>News related to {name}’s promises. <InfoTip text="Automatically linked by shared keywords. Related coverage, not verified delivery." /></p>
+    <h2>Recent promise news</h2>
     {!feed && !failed && <p role="status" className={styles.empty}>Finding related coverage…</p>}
     {failed && <div role="status" className={styles.empty}><p>News is temporarily unavailable.</p><button onClick={() => setRetry(v => v + 1)} className={styles.more}>Try again</button></div>}
     {feed && !related.length && <p className={styles.empty}>No clear headline matches in the current seven-day feed. That does not mean no progress was made.</p>}

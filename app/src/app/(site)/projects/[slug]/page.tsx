@@ -177,7 +177,6 @@ export default async function ProjectPage({ params, searchParams }: {
         <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
         {healthTotal > 0 ? (
           <div className="promise-health">
-            <h3 className="promise-subhead">Delivery health</h3>
             <div className="ph-legend" role="group" aria-label="Show promise evidence by delivery state">
               {([
                 { key: "kept", label: "kept", count: health.kept },
