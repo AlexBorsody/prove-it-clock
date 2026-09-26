@@ -27,40 +27,67 @@ function PixelHeart() {
 export default function HeartMeter({
   filled,
   capacity,
-  allowance = 0,
   size = 22,
 }: {
   filled: number;
   capacity: number;
-  allowance?: number;
   size?: number;
 }) {
-  const free = Math.max(0, Math.min(allowance, filled));
-  const earned = filled - free;
+  const earned = Math.max(0, Math.min(filled, capacity));
   return (
     <span
       className="hearts"
       style={{ fontSize: size }}
       role="img"
-      aria-label={
-        free > 0
-          ? `${filled} of ${capacity} hearts (${earned} earned, ${free} allowance)`
-          : `${filled} of ${capacity} hearts, ${earned} earned`
-      }
+      aria-label={`${earned} of ${capacity} hearts earned`}
     >
       {Array.from({ length: capacity }, (_, i) => {
-        const isAllowance = i >= earned && i < filled;
         return (
-          <span
-            key={i}
-            className={i < earned ? "heart on" : isAllowance ? "heart allowance" : "heart"}
-            style={isAllowance ? { color: "var(--text-dim)" } : undefined}
-          >
+          <span key={i} className={i < earned ? "heart on" : "heart"}>
             <PixelHeart />
           </span>
         );
       })}
     </span>
+  );
+}
+
+/**
+ * BrandMark: the 8-bit pixel heart on a filled green circle.
+ * Header home button.
+ */
+export function BrandMark({ size = 36 }: { size?: number }) {
+  const S = 4; // pixel size inside a 48x48 viewBox
+  const OX = (48 - 7 * S) / 2;
+  const OY = (48 - 6 * S) / 2;
+  const rects: Array<React.ReactNode> = [];
+  ROWS.forEach((row, y) => {
+    for (let x = 0; x < row.length; x++) {
+      if (row[x] === "X")
+        rects.push(
+          <rect
+            key={`${x}-${y}`}
+            x={OX + x * S}
+            y={OY + y * S}
+            width={S}
+            height={S}
+          />
+        );
+    }
+  });
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      width={size}
+      height={size}
+      aria-hidden="true"
+      style={{ display: "block" }}
+    >
+      <circle cx="24" cy="24" r="24" fill="var(--green)" />
+      <g fill="#101012" style={{ shapeRendering: "crispEdges" }}>
+        {rects}
+      </g>
+    </svg>
   );
 }
 

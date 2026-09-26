@@ -11,7 +11,10 @@ export interface SearchIndex {
 
 /** Only a deployment-owned origin; never trust request Host or a supplied URL. */
 export function searchOrigin(env: Record<string,string|undefined> = process.env): string {
-  const configured = env.SEARCH_SITE_URL || (env.VERCEL_URL ? `https://${env.VERCEL_URL}` : undefined)
+  // Generated deployment URLs may be protected even when production is public.
+  const vercelHost = env.VERCEL_ENV === 'production'
+    ? env.VERCEL_PROJECT_PRODUCTION_URL || env.VERCEL_URL : env.VERCEL_URL;
+  const configured = env.SEARCH_SITE_URL || (vercelHost ? `https://${vercelHost}` : undefined)
     || (env.NODE_ENV === 'development' ? `http://localhost:${env.PORT || '3000'}` : undefined);
   if (!configured) throw new Error('Set SEARCH_SITE_URL to this deployment origin');
   const url = new URL(configured);

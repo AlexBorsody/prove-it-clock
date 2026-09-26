@@ -136,7 +136,10 @@ export const openApiSpec = {
                       description: "Only fulfilled promises earn hearts. Lapsed or retired promises visibly fall.",
                     },
                     core: { type: "boolean", description: "Whether this is a main promise of the project." },
-                    reward_hearts: { type: "integer" },
+                    source_url: {
+                      type: ["string", "null"],
+                      description: "Where the promise was stated: whitepaper, tweet, interview, or article.",
+                    },
                   },
                 },
               },

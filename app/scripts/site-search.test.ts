@@ -57,6 +57,8 @@ test('crawler uses only allowlisted HTML and reports failed coverage',async()=>{
 });
 test('crawler origin comes only from deployment configuration',()=>{
   assert.equal(searchOrigin({VERCEL_URL:'preview.example.org'}),'https://preview.example.org');
+  assert.equal(searchOrigin({VERCEL_ENV:'production',VERCEL_URL:'protected.example.org',VERCEL_PROJECT_PRODUCTION_URL:'public.example.org'}),'https://public.example.org');
+  assert.equal(searchOrigin({VERCEL_ENV:'preview',VERCEL_URL:'preview.example.org',VERCEL_PROJECT_PRODUCTION_URL:'public.example.org'}),'https://preview.example.org');
   assert.equal(searchOrigin({SEARCH_SITE_URL:'http://127.0.0.1:3101'}),'http://127.0.0.1:3101');
   assert.throws(()=>searchOrigin({}),/SEARCH_SITE_URL/);
   assert.throws(()=>searchOrigin({SEARCH_SITE_URL:'https://user:password@example.org'}));

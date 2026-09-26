@@ -1,8 +1,7 @@
 import { calculateHeartBalance, normalizePromiseState, type HeartPromiseInput } from './hearts';
-import type { HeartCapacity } from './hearts-config';
 
 export interface HeartPublication {
-  schema_version: 2;
+  schema_version: 3;
   run_key: string;
   as_of: string;
   methodology: string;
@@ -14,7 +13,9 @@ export interface HeartPublication {
     availability: 'available' | 'unavailable';
     unavailable_reason?: string;
     assessment?: {
-      capacity: HeartCapacity;
+      /** Promise count. The meter holds one slot per promise. */
+      capacity: number;
+      /** Always 0 under the promise-heart rule; kept for row compatibility. */
       allowance: number;
       allowance_rationale: string;
       rationale: string;
@@ -22,7 +23,6 @@ export interface HeartPublication {
         lineage: string;
         claim_type: 'milestone' | 'ongoing';
         criteria: string;
-        reward: 0 | 1 | 2;
         core: boolean;
         state: 'open' | 'active' | 'fulfilled' | 'lapsed' | 'retired';
         effective_at: string;
@@ -62,7 +62,7 @@ function source(value: unknown) {
 /** Runtime guard for operator artifacts. SQL independently enforces publication invariants. */
 export function validateHeartPublication(value: unknown): asserts value is HeartPublication {
   record(value);
-  if (value.schema_version !== 2) throw new Error('Unsupported publication schema');
+  if (value.schema_version !== 3) throw new Error('Unsupported publication schema');
   nonempty(value.run_key); nonempty(value.methodology);
   if (value.run_key.length > 200) throw new Error('run_key too long');
   const asOf = timestamp(value.as_of);
@@ -82,23 +82,30 @@ export function validateHeartPublication(value: unknown): asserts value is Heart
       const a = project.assessment; record(a);
       nonempty(a.rationale); nonempty(a.allowance_rationale);
       if (!Array.isArray(a.promises) || !a.promises.length) throw new Error('Missing promises');
+      // Promise-heart rule: capacity is the promise count, allowance is gone.
+      if (!Number.isSafeInteger(a.capacity) || (a.capacity as number) <= 0) throw new Error('Invalid capacity');
+      if ((a.capacity as number) !== a.promises.length) throw new Error('Capacity must equal the promise count');
+      if (a.allowance !== 0) throw new Error('Allowance must be 0 under the promise-heart rule');
       const promises: HeartPromiseInput[] = [];
       for (const p of a.promises) {
         record(p); nonempty(p.lineage); nonempty(p.criteria); nonempty(p.rationale);
         if (promises.some(q => q.lineage === p.lineage)) throw new Error('Duplicate lineage');
         if (!['milestone','ongoing'].includes(String(p.claim_type))) throw new Error('Invalid claim_type');
-        if (![0,1,2].includes(p.reward as number) || typeof p.core !== 'boolean') throw new Error('Invalid promise');
-        // Canonical states; legacy publication values ("unfulfilled"/"active") normalize at the boundary.
+        if (typeof p.core !== 'boolean') throw new Error('core must be an explicit boolean');
+        // v3 publishes canonical states only. The legacy "active" (earning sense)
+        // is ambiguous with the canonical in-progress sense: relabel before publishing.
+        if (p.state === 'active') throw new Error('Ambiguous promise state: relabel active before publishing');
+        // Canonical states; the legacy "unfulfilled" normalizes to "open" at the boundary.
         const state = normalizePromiseState(p.state);
         if (p.claim_type === 'milestone' && state === 'lapsed') throw new Error('Milestone promises cannot lapse');
         if (timestamp(p.effective_at) > asOf) throw new Error('Future promise event');
         if (!Array.isArray(p.evidence) || !p.evidence.length) throw new Error('Missing evidence');
         for (const e of p.evidence) { record(e); source(e.url); nonempty(e.summary); }
         promises.push({lineage: p.lineage as string, claimType: p.claim_type as 'milestone'|'ongoing',
-          state, reward: p.reward as 0|1|2, core: p.core as boolean});
+          state, core: p.core as boolean});
       }
       // Single arithmetic authority: TypeScript and SQL must agree.
-      calculateHeartBalance({capacity: a.capacity as HeartCapacity, allowance: a.allowance as number, promises});
+      calculateHeartBalance({promises});
     } else throw new Error('Invalid availability');
     if (project.market != null) {
       const m = project.market; record(m); source(m.source_url); record(m.raw_payload);

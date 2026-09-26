@@ -34,44 +34,6 @@ Current earned scores (2026-09-25, earned-only):
 | XRP | 2/20 | 2 fulfilled, 1 active, 1 retired | 7 |
 | DASH | 5/20 | 5 fulfilled, 1 active, 1 lapsed | 7 |
 
-## API
-
-**Codex review strategy, 2026-09-25. Plan first; API code unchanged.**
-Build on Muse's public API in `8af2b9f`: `GET /api/v1/scores`,
-`GET /api/v1/scores/{slug}`, and Swagger at `/developers`.
-`app/src/lib/openapi-spec.ts`, served at `/api/v1/openapi.json`, stays the
-single [OpenAPI 3.0.3](https://spec.openapis.org/oas/v3.0.3) contract.
-Keep Next.js route handlers and the existing Supabase readers.
-
-Improve in this order:
-
-1. **Match responses to the spec.** `public-api.ts` currently returns raw legacy
-   promise states and full timestamps where the spec describes canonical states
-   and date-only values. Normalize states at the boundary, declare timestamps
-   as `date-time`, specify required/nullable fields and 400/404/503 error bodies.
-   Validate pagination instead of accepting inputs such as `page=2junk`.
-   Correct the HYPE description: absolute mentions can exist before its baseline.
-2. **Make rank agree with the scoreboard.** The API currently uses market-cap
-   order; the homepage ranks by earned/capacity, then earned hearts, then name.
-   Use that same ordering before pagination and the same rank in list/detail.
-   Update the spec with the behavior change. Unavailable assessments must not
-   become a clean warning level or a zero score; represent them explicitly.
-3. **Read only what is needed, once.** Fetch HYPE once per list request, not
-   once per project. Use latest-per-project observations; the current ascending
-   1,000-row query eventually omits the newest data. Detail/history must not
-   silently stop at 100 projects/points: use direct lookup and bounded history
-   pagination with truncation/continuation documented. Preserve null for missing
-   CODE/HYPE; distinguish failed history reads from a successful empty history.
-4. **Verify the contract.** Add focused route tests for list/detail agreement,
-   legacy states, null data, invalid pagination, unknown slug, database failure
-   and multi-page history. Validate response fixtures against the OpenAPI
-   schemas, run typecheck/build, and check Swagger on the current deployment
-   (use a relative API server URL so local docs do not call production).
-
-Keep this pass on the public v1 contract. Legacy `/api/projects` routes stay
-separate. Deliver small fixes with their spec and tests in the same commit.
-Muse owns the concurrent strategy/vision/hearts documentation reorganization.
-
 ## Site search
 
 Search indexes the actual text of tagged HTML containers. Each has a stable,
@@ -99,7 +61,9 @@ deployments/cache resets can warm again. This is request-triggered refresh,
 not an unattended daily scheduler.
 
 Set `SEARCH_SITE_URL` to this deployment's origin for non-Vercel hosting or a
-custom local port; Vercel defaults to `VERCEL_URL`, development to localhost:3000.
+custom local port; Vercel production uses `VERCEL_PROJECT_PRODUCTION_URL`
+(generated deployment URLs may be protected), previews use `VERCEL_URL`, and
+development defaults to localhost:3000.
 Only allowlisted same-origin pages are read, with bounded concurrency/time and
 no redirects. A protected preview must make its public pages reachable to its
 own indexer. No external search service or database migration is needed.
@@ -327,3 +291,264 @@ clean.
 4. **Verdict one-liners:** approve the eight drafts in Phase 1, or edit?
 5. **Index gating:** DECIDED 2026-09-25 (Alex): gate it. The public Index
    waits for real USE data. No provisional scores, per the gating rule.
+
+## Appendix: Hearts algorithm (promise-heart rule v3)
+
+The scoring rule, precisely. Also rendered on the site at
+`/case-studies/algorithm`.
+
+<!-- ALGORITHM-START -->
+# Hearts: promise-heart rule v3
+
+**Adopted 2026-09-25 (Alex).** Every tracked promise earns exactly one heart
+when fulfilled, zero otherwise. Capacity is the promise count: 16 promises
+means a 16-heart meter. Amended 2026-09-25 (Alex): community-promise rule for
+founderless protocols ("Where promises come from"). Historical runs were
+restated under the new rule and republished; original runs remain as an
+immutable audit history. One meter per project: **filled / capacity**.
+Live in production: append-only runs in Supabase, published via RPC, served by
+the site. Methodology string:
+`hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)`.
+
+> Methodology update: fixed capacity tiers {5, 10, 20} and reward weights
+> {0, 1, 2} removed. One promise = one heart. Historical scores restated.
+> This is not a change in project performance.
+
+## The idea
+
+Every promise the project made gets one heart slot. Keep the promise, earn
+the heart; fail it, earn nothing. **A heart remains earned only while the
+evidence condition under which it was awarded remains true**: milestone
+claims ("shipped mainnet") are permanent once achieved; ongoing claims
+("advertisers are buying ads") must be revalidated. Scores change because
+evidence changes, not because time passes. No weighting, no free hearts,
+no decay.
+
+## Constants (versioned, never per-project)
+
+REMOVED 2026-09-25: `CAPACITY_TIERS` {5, 10, 20}; `REWARDS` {0, 1, 2};
+`MAX_ALLOWANCE` (was min(3, floor(capacity / 5))). Time-based decay is
+deliberately absent: no grace period, no per-year drain. (Adopted 2026-09-25:
+generic decay killed as arbitrary; see case-studies/review.md.)
+
+## Per-project inputs (analyst-set, rationale required, versioned)
+
+**Capacity**: the promise count. No tiers, no headroom.
+
+**Promise lineages**: each lineage is typed at carving:
+- **milestone**: "shipped X". Fulfillment is permanent; time cannot unship it.
+- **ongoing**: "X is true" (activity, volume, participation). The heart exists
+  only while the evidence condition is currently satisfied.
+
+States: open / active / fulfilled / lapsed / retired. A milestone
+goes open → fulfilled (permanent). An ongoing claim goes open → active →
+fulfilled while the evidence condition holds, and lapses when evidence stops
+supporting it: lapsing is reversible, so the graph
+can fall and rise again on real events. A fulfilled-then-dead lineage
+**retires** its hearts as a separate visible event: the graph rises at
+fulfillment and falls at retirement; history is never rewritten. A replaced
+promise is recorded as retired with a note pointing at the new lineage (no
+double count). One lineage is the **core promise**: a label for the main
+promise, not a gate; it earns its heart like every other promise.
+
+## Where promises come from
+
+The default source is the issuer: the whitepaper, the launch announcement,
+the claims the team put in writing. That is what the instrument holds the
+project to. Any attributable public statement qualifies: whitepapers, tweets,
+interviews, articles, websites, founder statements.
+
+Founderless protocols have no issuer, so the rule adapts: promises can be the
+claims the community actually converged on, Schelling points rather than issuer
+commitments. A community narrative counts as a promise only if all three hold:
+
+1. **Dominant and long-standing:** the claim has been the shared story for
+   years, not a passing meme.
+2. **Measurable with real evidence:** there is data that shows the claim
+   holding, not just people repeating it.
+3. **Broad consensus:** the wider ecosystem converged on it, not one
+   marketing team.
+
+Hype alone never qualifies. The bar is deliberately high: the instrument
+scores claims people actually rely on, whether an issuer wrote them down or a
+community converged on them.
+
+## The adoption test
+
+Shipping the tech is not enough. A promise counts as fulfilled only if the
+thing was delivered **and** real people actually use it. A proof of concept
+nobody touches, a mainnet nobody transacts on, a feature with no users:
+unfulfilled. Teams routinely declare victory at the demo stage. We score
+the usage, not the press release.
+
+## Computation at time t
+
+```
+capacity(t) = promise count
+earned(t)   = Σ fulfilled lineages at t (one heart each)
+filled(t)   = earned(t)
+```
+
+No clocks, no timers. Display `filled / capacity`, earned hearts only.
+Every point carries provenance (observed / reconstructed / missing).
+
+## Shitcoin warning: the verdict
+
+The section keeps the name **Shitcoin warning**. It renders as a 1-10 circular
+meter showing the number only, never a category label. It is a
+delivery-accountability rating, not a fraud or investment-risk rating.
+
+Underneath, the rule is categorical, from promise states:
+
+- **No concern** (meter 1): no retired or lapsed promise on record.
+- **Watch** (meter 4): reserved for verified overdue promises once deadline
+  evidence has been researched. No v1 trigger.
+- **Delivery concern** (meter 7): a supporting promise retired or lapsed.
+- **Core delivery failure** (meter 10): the core promise retired or lapsed.
+
+The 1-10 positions are fixed per category, not computed from a scoring
+formula. A real 1-10 rule is an open methodology question.
+
+Tapping the meter opens the project's verdict section, which lists exactly
+what feeds it: each failed promise, its state, and whether it was core.
+Humans resolve ambiguous evidence. Software picks the category and
+templates the explanation from reviewed promise records. CODE and HYPE
+never move the verdict directly; USE may support a promise state only
+when it measures a predefined promise-specific condition.
+
+## Gaming defenses
+
+Open promises pay zero: only fulfillment pays. Abandoning a fulfilled lineage
+retires its hearts visibly and can never improve the meter. Announcements
+change nothing: only evidence does. POC-stage delivery is not fulfillment
+(the adoption test). Nothing can exceed capacity.
+
+## Valuation: postponed to v2
+
+v1 shows the meter **beside** market cap and lets the market provide the
+valuation. No fair-value calculation until the case studies survive scrutiny.
+
+## Case studies
+
+Scored assessments live in [case-studies/](case-studies/) ([BAT](case-studies/bat.md),
+[XRP](case-studies/xrp.md)); the methodology decisions behind them are recorded in
+[case-studies/review.md](case-studies/review.md). The illustrative sketches that
+used to sit in this doc are retired: the case studies are the examples now.
+<!-- ALGORITHM-END -->
+
+## Appendix: Social pipeline
+
+Our proprietary attention-metrics layer. Not a CoinGecko clone: we juxtapose
+**hype** (observed attention) against **substance** (hearts earned). A project
+with massive hype and few hearts reads as all sizzle, no steak. That
+contrast is the differentiator; raw community numbers are not.
+
+**Display only.** Hype metrics never feed the hearts scoring algorithm and
+carry 0% weight in the Prove-It Index. Hype is context: observed attention,
+never proof of support or adoption. Per [vision.md](vision.md), no trend
+percentages publish until 8 complete weeks of snapshots exist; until then,
+absolute mentions plus "baseline collecting, week N/8".
+
+## What is shown
+
+Per project, in the HYPE stat card:
+
+- News mentions in the last 7 days (trend vs baseline once the baseline exists)
+- Reddit subscribers (once credentials exist; the tile hides until then)
+- Telegram members (best-effort; the tile hides when unavailable)
+- A **hype-vs-substance read**: one plain-language line contrasting hype
+  against hearts earned.
+
+### The read rules
+
+Hype is measured against the median 7-day news mentions across all tracked
+projects in the latest collector batch (our own dataset, our own baseline):
+
+- **high**: mentions at least 2x the cross-project median
+- **low**: mentions at most half the median
+- **moderate**: everything between
+
+Then:
+
+- high hype + under 40% of hearts filled: **"All sizzle, no steak."**
+- low hype + at least 60% of hearts filled: **"Quietly proven."**
+- anything else: neutral juxtaposition, no judgment.
+
+No composite score is computed from hype. The two numbers sit side by side.
+Hype needs at least 4 projects with news data in the batch; otherwise no
+hype judgment is made.
+
+## Architecture
+
+```
+GitHub Action (daily 06:30 UTC, manual via workflow_dispatch)
+  -> app/scripts/collect-social.ts
+    -> app/src/lib/social-collect.ts (Reddit OAuth, Telegram preview, News RSS)
+    -> INSERT into public.social_snapshots (service role)
+  -> app/src/app/api/social/[slug]/route.ts (anon key, RLS public read)
+    -> latest 2 snapshots + cross-project median
+  -> HYPE stat card + hype-vs-substance read
+```
+
+Scheduler choice: GitHub Actions over Vercel Cron. The collector fans out
+to three free APIs per project with politeness delays and can run past
+serverless duration limits. Runs are idempotent: one snapshot row per
+project per run. A failed collection never renders as zero; the tile shows
+the last good value marked stale, or hides.
+
+## Data sources
+
+| Source | Metric | Access | Notes |
+|---|---|---|---|
+| Reddit OAuth API | subreddit subscribers | Free app registration | Needs `REDDIT_CLIENT_ID` + `REDDIT_CLIENT_SECRET`; without them the metric is skipped, not faked |
+| Telegram `t.me/s/` preview | channel members | None | Best-effort: only channels with public previews enabled expose a count; anything else yields null and the tile hides |
+| Google News RSS | mentions, last 7d | None | Counts items with pubDate in the window |
+| X/Twitter | followers, mentions | **Paywalled** | See upgrade path below. No scraper: unreliable and against ToS |
+
+Per-project source handles live in `SOCIAL_SOURCES` in
+`app/src/lib/social.ts`.
+
+## Credentials and env vars (names only)
+
+Collector / GitHub Action secrets:
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY` (writes only; reads go through RLS + anon key)
+- `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` (optional; free at
+  reddit.com/prefs/apps, type "script")
+
+App runtime (already configured):
+
+- `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` (or `SUPABASE_ANON_KEY`)
+
+## Database
+
+Migration `db/migrations/004_social_snapshots.sql` creates
+`public.social_snapshots` (one row per project per run) with RLS: public
+SELECT, writes via service role only. Apply via the Supabase dashboard SQL
+editor; raw Postgres on 5432 is blocked from the build workspace.
+
+## X/Twitter upgrade path (future, paid)
+
+When hype becomes a paid-tier feature, X is the missing venue that
+matters most (crypto conversation lives there). The path:
+
+1. X API Basic tier (~$100+/mo at time of writing): `GET /2/users/by/username/:u`
+   for follower counts; filtered stream or recent search for mention volume
+   per project handle.
+2. Add an `x_followers` / `x_mentions_7d` column pair to
+   `social_snapshots` (new migration), a fetcher in `social-collect.ts`,
+   and a tile in the HYPE card. The read rules stay unchanged;
+   X mentions fold into the hype median.
+3. Alternative: LunarCrush API (crypto-native social metrics, has a free
+   tier but requires API-key signup) as a second paid/free source.
+
+Until then, X is documented as absent, not approximated.
+
+## Local verification
+
+```bash
+cd app
+npm run social:collect -- --dry-run   # real sources, no DB write
+npm run test:social
+```

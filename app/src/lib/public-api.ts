@@ -39,7 +39,7 @@ export interface PromiseScore {
   criteria: string;
   state: string;
   core: boolean;
-  reward_hearts: number;
+  source_url: string | null;
 }
 
 export interface ScoreDetail extends ScoreSummary {
@@ -115,7 +115,7 @@ export async function getScoreDetail(slug: string): Promise<ScoreDetail | null> 
     criteria: pr.criteria ?? pr.lineage ?? "Promise",
     state: pr.state ?? "open",
     core: !!pr.core,
-    reward_hearts: pr.reward ?? 0,
+    source_url: pr.evidence?.[0]?.url ?? null,
   }));
   const pts = (history.points ?? []).filter((pt: any) => pt.availability === "available");
   const hist = [...pts]

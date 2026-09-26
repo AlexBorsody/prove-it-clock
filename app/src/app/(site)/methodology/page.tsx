@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 export const metadata = { title: "How the scoring works | Prove-It" };
 
 import Icon from "@/components/chrome-icons";
+import { HEARTS_METHODOLOGY } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
 
 type IconName = Parameters<typeof Icon>[0]["name"];
@@ -216,30 +217,28 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
-      <Section icon="book" id="xrp-example" searchTitle="Worked example: XRP at 2 of 20 potential" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 20 potential</>} alt>
+      <Section icon="book" id="xrp-example" searchTitle="Worked example: XRP at 2 of 4 promises kept" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 4 promises kept</>} alt>
         <p>
-          <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 20 potential</b>, earned only. One heart for the ledger
+          <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 4</b>, earned only. One heart for the ledger
           milestone (permanent), one for XRP payments as an ongoing claim
-          (currently active). The MoneyGram corridor earned a heart in 2019
+          (currently kept). The MoneyGram corridor earned a heart in 2019
           and retired it in 2021 when the partnership ended: the rise and the
           fall, visible on the graph. Bank settlement never delivered, so the
-          core promise stays open and the last heart stays empty. Verdict:
+          core promise stays open. Verdict:
           Shitcoin risk.
         </p>
       </Section>
 
       <Section icon="wrench" title="Under the hood: the precise rules" id="rules">
         <p>
-          <b>Capacity.</b> Fixed tiers of 5, 10, or 20. 20 is for projects
-          trying to rewire global infrastructure, 10 for owning a sector, 5
-          for a niche or single-application promise. Capacity is headroom,
-          never a target.
+          <b>Capacity.</b> The promise count. Every project gets one meter
+          slot per promise it made: 16 promises means 16 hearts to earn.
+          Capacity is headroom, never a target.
         </p>
         <p>
-          <b>Rewards.</b> Each promise lineage is worth 0, 1, or 2 hearts,
-          decided <i>before</i> anyone checks the evidence: 0 is tracked but
-          trivial, 1 is a kept promise, 2 is a major promise declared upfront.
-          Rewards are never raised retroactively.
+          <b>One promise, one heart.</b> Each fulfilled promise earns exactly
+          one heart. No weighting, no tiers, no free hearts. Every promise
+          counts the same.
         </p>
         <p>
           <b>Milestone vs ongoing.</b> Milestones ("shipped X") keep their
@@ -248,9 +247,9 @@ export default function MethodologyPage() {
           lapse when the evidence stops and come back if it resumes.
         </p>
         <p>
-          <b>The core promise.</b> One promise per project is the main one. It
-          earns no hearts itself. While it is open or active, the meter cannot go
-          above capacity minus 1.
+          <b>The core promise.</b> One promise per project is flagged as the
+          main one. It is a label, not a gate: it earns its heart like every
+          other promise.
         </p>
         <p>
           <b>What counts as proof.</b> The promise's own success criterion,
@@ -258,6 +257,14 @@ export default function MethodologyPage() {
           product, a verifiable payout, a named customer on the record. The
           project's own announcement alone never counts. Borderline cases stay
           open.
+        </p>
+        <p>
+          <b>The adoption test.</b> Shipping the tech is not enough. A promise
+          counts as fulfilled only if the thing was delivered <i>and</i> real
+          people actually use it. A proof of concept nobody touches, a
+          mainnet nobody transacts on, a feature with no users: unfulfilled.
+          Teams routinely declare victory at the demo stage. We score the
+          usage, not the press release.
         </p>
         <p>
           <b>History.</b> Scores are published as dated snapshots. Old
@@ -268,8 +275,7 @@ export default function MethodologyPage() {
         <p style={{ marginBottom: 0 }}>
           <b>Methodology string.</b>{" "}
           <span style={{ fontFamily: "var(--mono)", fontSize: "0.85em" }}>
-            hearts claim-type rule v2 (adopted 2026-09-25; time decay removed;
-            allowance removed 2026-09-25)
+            {HEARTS_METHODOLOGY}
           </span>
         </p>
       </Section>

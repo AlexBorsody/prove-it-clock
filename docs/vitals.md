@@ -7,7 +7,7 @@ activity, not proof of meaningful progress.
 
 The main project page shows CODE statistics only; the tracked repo list lives
 in the Evidence / Methodology section, auditable and challengeable. HYPE data
-lives in [social-pipeline.md](social-pipeline.md). USE metrics are parked.
+lives in the HYPE pipeline appendix of [implementation.md](implementation.md#appendix-social-pipeline). USE metrics are parked.
 
 ## What is shown
 

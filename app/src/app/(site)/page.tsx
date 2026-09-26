@@ -78,7 +78,7 @@ export default async function Home() {
           criteria: pr.criteria ?? pr.lineage ?? "Promise",
           state: pr.state ?? "open",
           core: !!pr.core,
-          reward: pr.reward ?? 0,
+          sourceUrl: pr.evidence?.[0]?.url ?? null,
         })),
       };
     })
