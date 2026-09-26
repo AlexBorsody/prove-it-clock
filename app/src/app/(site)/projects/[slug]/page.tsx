@@ -178,19 +178,10 @@ export default async function ProjectPage({ params, searchParams }: {
         {healthTotal > 0 ? (
           <div className="promise-health">
             <h3 className="promise-subhead">Delivery health</h3>
-            <div
-              className="ph-track"
-              role="group"
-              aria-label={`Delivery health: ${health.kept} kept, ${health.inPlay} in play, ${health.failed} failed`}
-            >
-              <Link href={promiseFilterHref(slug, "kept")} className="ph-seg kept" aria-label={`Evidence for ${health.kept} kept promises`} style={{ width: `${(health.kept / healthTotal) * 100}%` }} tabIndex={-1} />
-              <Link href={promiseFilterHref(slug, "in-play")} className="ph-seg inplay" aria-label={`Evidence for ${health.inPlay} in play promises`} style={{ width: `${(health.inPlay / healthTotal) * 100}%` }} tabIndex={-1} />
-              <Link href={promiseFilterHref(slug, "failed")} className="ph-seg failed" aria-label={`Evidence for ${health.failed} failed promises`} style={{ width: `${(health.failed / healthTotal) * 100}%` }} tabIndex={-1} />
-            </div>
             <div className="ph-legend" role="group" aria-label="Show promise evidence by delivery state">
               {([
                 { key: "kept", label: "kept", count: health.kept },
-                { key: "in-play", label: "in play", count: health.inPlay },
+                { key: "in-play", label: "active", count: health.inPlay },
                 { key: "failed", label: "failed", count: health.failed },
               ] as const).map((b) => {
                 const active = filter === b.key;

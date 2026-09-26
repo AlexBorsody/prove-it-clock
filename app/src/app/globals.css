@@ -1115,12 +1115,8 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 }
 .promise-stats-bare { margin: 6px 0 4px; }
 
-/* ---- Delivery health: stacked promise-state bar, flat segments ---- */
+/* ---- Delivery health: promise-state filter buttons ---- */
 .promise-health { margin: 2px 0 18px; }
-.ph-track { display: flex; height: 12px; border-radius: 3px; overflow: hidden; background: var(--bg-raised); }
-.ph-seg.kept { background: var(--green); }
-.ph-seg.inplay { background: var(--text-faint); }
-.ph-seg.failed { background: var(--red); }
 .ph-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
 .ph-btn {
   display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -1132,7 +1128,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .ph-btn .num { font-size: 17px; }
 .ph-btn.kept { color: var(--green); background: #173C37; border-color: transparent; }
 .ph-btn.in-play { color: var(--text-faint); background: #2B2E3F; border-color: transparent; }
-.ph-btn.failed { color: var(--red); background: #411F2A; border-color: transparent; }
+.ph-btn.failed { color: #ff7b72; background: #411F2A; border-color: transparent; }
 .ph-btn.active { outline: 2px solid currentColor; outline-offset: 2px; }
 .ph-btn.disabled { opacity: 0.45; }
 
