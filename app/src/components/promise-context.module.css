@@ -1,0 +1,27 @@
+.stats, .recent { min-width: 0; }
+.sub { color: var(--text-dim); font-size: 14px; line-height: 1.6; margin: 0 0 12px; }
+.facts { margin: 20px 0 16px; }
+.facts > div { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 15px 0; border-bottom: 1px solid var(--border); }
+.facts dt { color: var(--text-dim); font-size: 14px; }
+.facts dd { margin: 0; text-align: right; color: var(--text); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.facts dd.earned { color: var(--green); }
+.facts dd.lapsed, .facts dd.retired { color: var(--red); }
+.note { color: var(--text-faint); font-size: 12px; line-height: 1.6; margin: 10px 0; }
+.textLink { display: inline-block; margin-top: 4px; min-height: 36px; padding-top: 8px; font-size: 13px; }
+.timeline { list-style: none; padding: 0 0 0 17px; margin: 24px 0 0; }
+.timeline li { position: relative; padding: 0 0 24px 22px; border-left: 1px solid var(--border-strong, #384357); }
+.timeline li:last-child { border-left-color: transparent; padding-bottom: 6px; }
+.timeline li::before { content: ''; position: absolute; width: 9px; height: 9px; background: var(--green); border: 4px solid var(--bg-panel, #131a28); border-radius: 50%; left: -9px; top: 1px; }
+.timeline time { color: var(--text-faint); font-size: 11px; }
+.timeline h3 { margin: 9px 0 9px; font-size: 16px; line-height: 1.5; overflow-wrap: anywhere; }
+.timeline h3 a { color: var(--text); text-decoration: none; }
+.timeline h3 a:hover { color: var(--accent); }
+.publisher { display: inline-block; font-size: 11px; color: var(--text-dim); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 9px 0; }
+.tags a { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 10px; font-size: 11px; border: 1px solid var(--border); border-radius: 7px; color: var(--text); background: var(--bg-raised); }
+.why { font-size: 11px; color: var(--text-dim); line-height: 1.7; }
+.why summary { cursor: pointer; padding: 6px 0; }
+.why p { padding: 4px 0; }
+.more { width: 100%; min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--bg-raised); color: var(--text); font: inherit; font-size: 13px; cursor: pointer; }
+.empty { padding: 25px 0; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+@media (max-width: 540px) { .facts > div { gap: 12px; } .facts dd { font-size: 14px; } .timeline { padding-left: 8px; } .timeline li { padding-left: 18px; } .tags a { min-height: 44px; } }

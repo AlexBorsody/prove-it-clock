@@ -278,6 +278,28 @@ cleanly.
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
 
+
+### Promise context cards (2026-09-26)
+
+Project pages lead with shared `PromiseStats` and `PromiseNews` components
+before market context. Stats read the same published assessment as the meter:
+earned, open, lapsed, retired, total tracked, stored methodology and assessment
+as-of. A distinct research timestamp is not currently stored: show “Not recorded”
+for last research rather than relabel a publication or promise-effective date.
+
+Recently happened reuses `/api/v1/mentions/{slug}`. Match headline words against
+published promise criteria and lineage topics, excluding stop words, market
+boilerplate and project names/aliases. Require two distinct shared topic terms;
+show at most three promise references per story, with the terms inspectable.
+These are automatic topic suggestions, never accepted evidence or state changes.
+Weak/unmatched headlines are omitted. Empty coverage and provider errors remain
+explicit. No human action is needed per story and no scoring write occurs.
+
+Stable anchors come from `promiseAnchor`; cards and full promise rows share the
+same identifiers. P labels use the existing lineage number where present. News
+records retain the existing hourly feed cache; no claim of persisted event history.
+
+
 ## Phase 4: Verify and ship
 
 1. Methodology page: DONE 2026-09-25 (rewritten, collapsible sections,

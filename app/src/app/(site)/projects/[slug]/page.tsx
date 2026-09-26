@@ -17,6 +17,9 @@ import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
+import PromiseStats from "@/components/promise-stats";
+import PromiseNews from "@/components/promise-news";
+import { promiseAnchor, promiseReferences } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
@@ -80,6 +83,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const latest = points[0];
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
+  const promiseRefs = promiseReferences(slug, promises);
   const available = points.filter((p: any) => p.availability === "available");
   const filledPct = latest.capacity > 0 ? latest.earned / latest.capacity : 0;
 
@@ -248,6 +252,9 @@ function backfillHeartHistory(
         ) : null}
       </div>
 
+      <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} />
+      <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
+
       <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
 
       {/* 2. CODE: the row component from the /code ranking, plus the activity chart. */}
@@ -311,14 +318,16 @@ function backfillHeartHistory(
           const h = promiseHeart(pr);
           // Escape every non-ID character (including underscores) without
           // collapsing distinct lineage names onto the same anchor.
-          const lineageId = String(pr.lineage ?? i).replace(/[^a-zA-Z0-9-]/gu, (character) => `_${character.codePointAt(0)!.toString(16)}_`);
+          const anchor = promiseAnchor(slug, String(pr.lineage ?? i));
+          const label = promiseRefs[i].label;
           return (
-            <div className="comp-row search-section" key={pr.lineage ?? i} {...searchMeta({ id: `project-${slug}-promise-${lineageId}`, title: `${latest.name}: ${pr.criteria ?? pr.lineage ?? "Promise"}`, kind: "Promise", project: slug, keywords: `${latest.symbol} ${pr.lineage ?? ""} ${pr.claim_type ?? ""} ${d.label}` })}>
+            <div className="comp-row search-section" key={pr.lineage ?? i} {...searchMeta({ id: anchor, title: `${latest.name}: ${pr.criteria ?? pr.lineage ?? "Promise"}`, kind: "Promise", project: slug, keywords: `${latest.symbol} ${pr.lineage ?? ""} ${pr.claim_type ?? ""} ${d.label}` })}>
               <div className="promise-head">
                 <Icon name="heart" size={20} filled={h.filled} title={h.label} style={{ color: h.color }} />
                 <div className="comp-name">{pr.criteria}</div>
               </div>
               <div className="comp-tags">
+                <span className="tag na">{label}</span>
                 <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>{d.label}</span>
                 {pr.core ? <span className="tag na">Main promise</span> : null}
               </div>
