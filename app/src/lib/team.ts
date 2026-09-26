@@ -155,14 +155,14 @@ export async function fetchTeam(slug: string): Promise<TeamData> {
   };
 }
 
-/** "TEAM: Broad · 34 active contributors · top 3 produced 21% of commits" */
+/** "TEAM: Broad · top 3 produced 21% of commits · 34 active contributors" */
 export function teamLine(t: TeamData): string {
   if (t.read === "Unknown" || t.active90d == null || t.top3Share == null) {
     return "TEAM: Unknown · couldn't reach GitHub";
   }
   const pct = Math.round(t.top3Share * 100);
   return (
-    `TEAM: ${t.read} · ${t.active90d} active contributor${t.active90d === 1 ? "" : "s"}` +
-    ` · top 3 produced ${pct}% of commits`
+    `TEAM: ${t.read} · top 3 produced ${pct}% of commits` +
+    ` · ${t.active90d} active contributor${t.active90d === 1 ? "" : "s"}`
   );
 }
