@@ -67,9 +67,9 @@ test('context sorts are numeric descending, zero precedes null, ties are determi
 });
 test('category ranks tie equal shares, keep denominators, and do not rank nonmembers as zero',()=>{
   const data=rows();
-  data[0].delivery!.categories.payments={total:2,kept:1,states:{kept:1,open:1,in_progress:0,lapsed:0,retired:0,unknown:0}};
-  data[1].delivery!.categories.payments={total:10,kept:5,states:{kept:5,open:5,in_progress:0,lapsed:0,retired:0,unknown:0}};
-  data[2].delivery!.categories.payments={total:1,kept:0,states:{kept:0,open:1,in_progress:0,lapsed:0,retired:0,unknown:0}};
+  data[0].delivery!.categories.payments={total:2,kept:1,states:{kept:1,open:1,in_progress:0,lapsed:0,retired:0,missed:0,unknown:0}};
+  data[1].delivery!.categories.payments={total:10,kept:5,states:{kept:5,open:5,in_progress:0,lapsed:0,retired:0,missed:0,unknown:0}};
+  data[2].delivery!.categories.payments={total:1,kept:0,states:{kept:0,open:1,in_progress:0,lapsed:0,retired:0,missed:0,unknown:0}};
   assert.deepEqual([...categoryRanks(data,'payments')],[['a',1],['b',1],['c',3]]);
   data[2].delivery!.categories.payments.total=0;
   assert.equal(categoryRanks(data,'payments').has('c'),false);

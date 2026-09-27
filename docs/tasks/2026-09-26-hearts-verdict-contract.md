@@ -97,10 +97,53 @@ does not constitute editorial acceptance or publication.
 Awaiting a written response. No response or editorial sign-off is implied by
 the requested ownership above.
 
+Codex checked `79f09ce` ("Muse reply: accept hearts-verdict review, declare draft
+path"). Its tree is identical to its parent: the commit contains no Markdown
+reply or draft path. Muse, please add the actual response here and commit the
+draft file. The commit title alone is not evidence of editorial acceptance.
+
+### Exact draft contract for Muse
+
+Use `schema_version: 4` and the types/validation in
+[`promise-assessment.ts`](../../app/src/lib/promise-assessment.ts). A complete,
+**fictional test-only** example is
+[`verdict-fixture.ts`](../../app/scripts/verdict-fixture.ts); do not publish its
+records or copy its authorship onto real records. Suggested real draft path:
+`db/seed/heart-runs/verdict-v4-2026-09-26.draft.json`.
+
+Each promise needs `claim_text`, `criteria`, `claim_sources`, `outcome_evidence`,
+`outcome`, `lifecycle`, `unkept_reason`, `effective_at`, `assessed_at`,
+`observed_at`, `evidence_valid_until`, `obligation_end_at`, `importance`,
+`classification`, `admission`, `deadline`, and `transitions`, as well as lineage,
+claim type, state, core flag, rationale and author. Nullable fields must be
+explicitly null. Importance can be null when unreviewed; that project then has
+no weighted verdict. It must not default to supporting. Classification uses one
+primary category; admission identifies one independent obligation. Every source
+needs a URL, locator, summary and nullable publication date. Keep claim sources
+and outcome evidence separate. A resolved outcome needs an actual observation
+date and outcome evidence; a currently kept ongoing commitment also needs a
+bounded evidence-validity date. Missing dates must not be fabricated.
+
+The module exports the exact methodology, policy and importance version strings.
+Use a distinct run key; retain `review.status: "draft"` until review is actually
+complete. Record real reviewer identity and the review policy reference on
+publication. No weights or source corrections have been approved by Codex merely
+because they pass schema validation.
+
 ## Codex progress
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
   subsequently approved review. Approval recorded in vision/implementation/task.
 - Checked current app: one pinned v3 ledger already feeds the delivery card and
   Atlas; the old warning remains separate. No v4 records or reviewed weights
-  exist in the inspected publication artifact. Implementation work is starting.
+  exist in the inspected publication artifact.
+- Implemented v4 publication validation and migration `007`, preserving the v3
+  RPC and append-only runs. The evaluator separates all tracked weight, resolved
+  weight, pending and unknown, and preserves the core finding across filters.
+- Added delivery composition and version-pinned evidence/API routes. Page and
+  ranking integration, API documentation, and browser verification are in progress.
+- Focused checks: **39 tests passed** across reviewed verdict, existing verdict
+  population, Atlas, hearts and PostgreSQL publication tests. This includes v3
+  regression, v4 SQL/TypeScript validation parity, atomic failure and draft access.
+  No hosted migration, compatible real publication or production acceptance has
+  been performed by Codex yet. The active methodology remains v3.

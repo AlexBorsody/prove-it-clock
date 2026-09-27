@@ -1,4 +1,5 @@
 import { calculateHeartBalance, normalizePromiseState, type HeartPromiseInput } from './hearts';
+import { validateVerdictPublication, type VerdictPublication } from './promise-assessment';
 
 export interface HeartPublication {
   schema_version: 3;
@@ -60,8 +61,9 @@ function source(value: unknown) {
 }
 
 /** Runtime guard for operator artifacts. SQL independently enforces publication invariants. */
-export function validateHeartPublication(value: unknown): asserts value is HeartPublication {
+export function validateHeartPublication(value: unknown): asserts value is HeartPublication | VerdictPublication {
   record(value);
+  if (value.schema_version === 4) { validateVerdictPublication(value); return; }
   if (value.schema_version !== 3) throw new Error('Unsupported publication schema');
   nonempty(value.run_key); nonempty(value.methodology);
   if (value.run_key.length > 200) throw new Error('run_key too long');

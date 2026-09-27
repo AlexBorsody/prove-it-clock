@@ -46,7 +46,7 @@
 .node { cursor:pointer; }
 .dot { fill:var(--atlas-grey);stroke:#0c1422;stroke-width:1.5; }
 .node[data-state=kept] .dot { fill:var(--atlas-green); }
-.node[data-state=lapsed] .dot,.node[data-state=retired] .dot { fill:var(--atlas-red); }
+.node[data-state=lapsed] .dot,.node[data-state=retired] .dot,.node[data-state=missed] .dot { fill:var(--atlas-red); }
 .node:hover .dot { stroke:white;stroke-width:2; }
 .coreRing { fill:none;stroke:#bac5d7;stroke-width:1; }
 .selectedRing { fill:none;stroke:var(--accent);stroke-width:2; }
@@ -73,7 +73,7 @@
 .status { color:var(--atlas-grey);font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:6px; }
 .status::before { content:'';width:6px;height:6px;display:inline-block;background:currentColor;border-radius:50%; }
 .status[data-state=kept] { color:var(--atlas-green); }
-.status[data-state=lapsed],.status[data-state=retired] { color:var(--atlas-red); }
+.status[data-state=lapsed],.status[data-state=retired],.status[data-state=missed] { color:var(--atlas-red); }
 .warning,.notice { color:#efca83;background:#c69a2420;border:1px solid #745728;padding:12px;border-radius:10px;font-size:13px; }
 .sources { padding-left:18px; }
 .sources li { padding:6px 0; }

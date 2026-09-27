@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { VERDICT_METHODOLOGY, validateVerdictVersions } from './promise-assessment';
 
 /** Methodology string for the hearts instrument.
  * Points at the methodology whose runs are published in production.
@@ -147,16 +148,24 @@ export async function readHypeSnapshotsFor(slug: string): Promise<HypeSnapshot[]
 }
 
 /** Atlas needs one entire published snapshot, without market/social enrichment. */
-export async function readPublishedPromiseLedger() {
+export async function readPublishedPromiseLedger(selection: {runId?:string;methodology?:string} = {}) {
   const { readAtlasLedger } = await import('./atlas/reader');
   const db = heartReadClient();
   return readAtlasLedger({
     async latest() {
-      const {data,error}=await db.from('heart_runs')
-        .select('id,as_of,methodology,review_status').eq('review_status','published').eq('methodology',HEARTS_METHODOLOGY)
-        .order('as_of',{ascending:false}).order('recorded_at',{ascending:false}).order('id',{ascending:false}).limit(1).maybeSingle();
+      let query = db.from('heart_runs')
+        .select('id,as_of,methodology,review_status,versions:payload->versions')
+        .eq('review_status','published').eq('methodology',selection.methodology ?? HEARTS_METHODOLOGY);
+      if (selection.runId) query = query.eq('id',selection.runId);
+      const {data,error}=await query.order('as_of',{ascending:false}).order('recorded_at',{ascending:false})
+        .order('id',{ascending:false}).limit(1).maybeSingle();
       if(error) throw error;
-      return data;
+      if (!data) return null;
+      if (data.methodology === VERDICT_METHODOLOGY) {
+        validateVerdictVersions(data.versions);
+        return {...data,versions:data.versions};
+      }
+      return {...data,versions:null};
     },
     async page(runId,from,to) {
       const {data,error,count}=await db.from('heart_rankings')

@@ -2,17 +2,19 @@ import { CATEGORIES, TAGS, TAXONOMY_VERSION } from '../../../data/atlas-taxonomy
 import { ASSIGNMENTS, ASSIGNMENT_VERSION } from '../../../data/atlas-assignments';
 import { promiseAnchor } from '../promise-context';
 import { layoutFor, LAYOUT_VERSION } from '../../../data/atlas-layout';
+import { VERDICT_METHODOLOGY, validateReviewedPromise, validateVerdictVersions, type ReviewedPromise } from '../promise-assessment';
 import { promiseId, type AtlasAssignment, type AtlasDataset, type AtlasNode, type AtlasSource, type AtlasState, type PublishedHeartDataset } from './types';
 
 // Version-specific interpretation. The v3 writer rejects ambiguous "active".
 const V3 = 'hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)';
 export function atlasState(value: unknown, methodology: string): AtlasState {
-  if (methodology !== V3) return 'unknown';
+  if (methodology !== V3 && methodology !== VERDICT_METHODOLOGY) return 'unknown';
   switch (value) {
     case 'fulfilled': return 'kept';
     case 'open': case 'unfulfilled': return 'open';
     case 'lapsed': return 'lapsed';
     case 'retired': return 'retired';
+    case 'missed': return methodology === VERDICT_METHODOLOGY ? 'missed' : 'unknown';
     default: return 'unknown';
   }
 }
@@ -49,6 +51,8 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
   if (!run) return null;
   if (!run.id || !run.methodology || !Number.isFinite(Date.parse(run.as_of)) || (run.review_status && run.review_status !== 'published')) throw new Error('Atlas requires a published run');
   validateAssignments(assignments);
+  const reviewed = run.methodology === VERDICT_METHODOLOGY;
+  if (reviewed) validateVerdictVersions(run.versions);
   const nodes: AtlasNode[] = []; const ids = new Set<string>(); const projects = new Set<string>(); const unavailableProjects: string[] = [];
   for (const value of input.projects) {
     const p = record(value); const slug = text(p.slug);
@@ -60,8 +64,14 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
     const assessment = record(p.assessment);
     if (!Array.isArray(assessment.promises)) throw new Error('Missing scored promises');
     const lineages = new Set<string>();
+    const obligations = new Set<string>();
     for (const value of assessment.promises) {
       const pr = record(value); const lineage = text(pr.lineage);
+      if (reviewed) {
+        validateReviewedPromise(pr, run.as_of);
+        if (obligations.has(pr.admission.obligation_id)) throw new Error('Duplicate independent obligation');
+        obligations.add(pr.admission.obligation_id);
+      }
       if (!lineage) throw new Error('Missing promise lineage');
       if (lineages.has(lineage)) throw new Error(`Duplicate promise lineage: ${lineage}`);
       lineages.add(lineage);
@@ -79,7 +89,10 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
       if (!explicitClaim) flags.push('Original claim text not separately recorded');
       if (!criteria) flags.push('No explicit fulfillment test stored');
       if (!outcomeEvidence.length) flags.push('No outcome evidence linked');
-      const a = Object.hasOwn(assignments, id) ? assignments[id] : undefined;
+      const reviewedRecord = reviewed ? pr as unknown as ReviewedPromise : undefined;
+      const a = reviewedRecord ? { primary: reviewedRecord.classification.primary === 'unclassified' ? null : reviewedRecord.classification.primary,
+        secondary: [], tags: [], rationale: reviewedRecord.classification.rationale, author: reviewedRecord.classification.author }
+        : Object.hasOwn(assignments, id) ? assignments[id] : undefined;
       if (!a || !a.primary) flags.push('Classification needs review');
       if (typeof pr.core !== 'boolean') flags.push('Core designation not recorded');
       nodes.push({ id, lineageId: lineage, sourceRunId: run.id,
@@ -92,13 +105,14 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
         primaryCategory: a?.primary ?? null, secondaryCategories: a?.secondary ?? [], tags: a?.tags ?? [],
         assignmentRationale: a?.rationale ?? null, assignmentAuthor: a?.author ?? null,
         projectHref: `/projects/${slug}`, promiseHref: `/projects/${slug}?evidence=${encodeURIComponent(lineage)}#${promiseAnchor(slug, lineage)}-evidence`,
-        qualityFlags: flags });
+        qualityFlags: flags, ...(reviewedRecord ? { reviewed: reviewedRecord } : {}) });
     }
   }
   nodes.sort((a,b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
   const layout = layoutFor(nodes);
   return { dataRevision: run.id, methodologyVersion: run.methodology, taxonomyVersion: TAXONOMY_VERSION,
-    assignmentVersion: ASSIGNMENT_VERSION, layoutVersion: LAYOUT_VERSION, asOf: run.as_of,
+    assignmentVersion: run.versions?.assignments ?? ASSIGNMENT_VERSION, layoutVersion: LAYOUT_VERSION, asOf: run.as_of,
     positioningMethod: 'curated-category', nodes, positions: layout.positions, regions: layout.regions,
-    coverage: { projects: projects.size, unavailableProjects, layoutPending: layout.pending } };
+    coverage: { projects: projects.size, unavailableProjects, layoutPending: layout.pending },
+    ...(reviewed ? { verdictVersions: run.versions! } : {}) };
 }
