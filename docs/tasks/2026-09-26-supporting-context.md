@@ -34,4 +34,5 @@ Do not overwrite the other task's staged changes in the shared checkout.
 - Production build and type checking passed. Existing shared themeColor metadata warnings remain.
 - Actual browser smoke check at 360×800: Context label and active HYPE tab fit; clicking the bottom Context tab followed `/metrics` to CODE as before. Existing header heart icon is intact.
 - Local preview has no DB credentials. Full-data project/scoreboard/Compare layouts still need review in the Vercel PR preview; no such browser verification is claimed here.
+- Vercel reports the PR preview ready. Opening the actual BTC preview reached Vercel login protection, so full-data browser verification remains pending authenticated review. Public production was not changed.
 - Source search confirms no remaining Hype Share component references. No live-score or database changes are part of this slice.
