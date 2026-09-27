@@ -115,6 +115,9 @@ new scoring publication. The obsolete draft remains preserved locally. PR #13's
 warning removal is also merged; the timeline branch includes both changes.
 
 Timeline owner: Codex, isolated branch `codex/promise-event-timeline`.
+Draft [PR #15](https://github.com/AlexBorsody/prove-it-clock/pull/15) contains
+implementation commit `acb485f`. Ready for code/schema review; hosted rollout
+and the first reviewed real event batch remain pending.
 
 - Migration `007_promise_event_history.sql` adds immutable per-project history
   revisions beside the existing heart publications. The writer is an atomic,
