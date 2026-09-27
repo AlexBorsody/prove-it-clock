@@ -1,5 +1,5 @@
 import type { CategoryId, AtlasTag } from '../../../data/atlas-taxonomy';
-import type { ReviewedPromise, VerdictVersions } from '../promise-assessment';
+import type { ReviewedPromise, VerdictVersions, ImportanceModel, Importance } from '../promise-assessment';
 export const ATLAS_STATES = ['kept', 'open', 'in_progress', 'lapsed', 'retired', 'missed', 'unknown'] as const;
 export type AtlasState = typeof ATLAS_STATES[number];
 export const STATE_LABELS: Record<AtlasState, string> = { kept: 'Kept', open: 'Open', in_progress: 'In progress', lapsed: 'Lapsed', retired: 'Retired', missed: 'Missed', unknown: 'Unknown' };
@@ -20,6 +20,7 @@ export interface AtlasNode {
   assignmentRationale: string | null; assignmentAuthor: string | null;
   projectHref: string; promiseHref: string; qualityFlags: string[];
   reviewed?: ReviewedPromise;
+  importance?: Importance | null;
 }
 export interface AtlasPosition { nodeId: string; x: number; y: number }
 export interface AtlasRegion { id: CategoryId; label: string; x: number; y: number; width: number; height: number }
@@ -31,6 +32,6 @@ export interface AtlasDataset {
   coverage: { projects: number; unavailableProjects: string[]; layoutPending: string[] };
   verdictVersions?: VerdictVersions;
 }
-export interface PublishedRun { id: string; as_of: string; methodology: string; review_status?: string; versions?: VerdictVersions | null }
+export interface PublishedRun { id: string; as_of: string; methodology: string; review_status?: string; versions?: VerdictVersions | null; importance_model?: ImportanceModel | null }
 export interface PublishedHeartDataset { run: PublishedRun | null; projects: unknown[] }
 export const promiseId = (project: string, lineage: string) => `${encodeURIComponent(project)}:${encodeURIComponent(lineage)}`;

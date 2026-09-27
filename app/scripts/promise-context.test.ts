@@ -28,7 +28,10 @@ test('anchors and labels survive reordered promises and escape without collision
 test('stats preserve legacy meanings, separate retired and unknown states', () => {
  const states=['fulfilled','active','unfulfilled','open','lapsed','retired','surprise'];
  const counts=promiseCounts(states.map((state,i)=>({state,lineage:String(i),criteria:'test'})));
- assert.deepEqual(counts,{fulfilled:2,open:2,active:0,lapsed:1,retired:1,unknown:1});
+ assert.deepEqual(counts,{fulfilled:2,open:2,active:0,lapsed:1,retired:1,missed:0,unknown:1});
+ assert.equal(promiseCounts([{state:'missed',lineage:'dated-deadline',criteria:'Recorded deadline'}]).missed,1);
+ assert.equal(matchesPromiseFilter('missed','failed'),true);
+ assert.equal(matchesPromiseFilter('missed','unknown'),false);
 });
 
 test('evidence filters match displayed totals without mixing unknown with open', () => {

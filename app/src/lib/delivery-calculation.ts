@@ -35,7 +35,7 @@ export function calculateDelivery(nodes: AtlasNode[]): DeliveryCalculation {
   for (const node of nodes) {
     if (ids.has(node.id)) throw new Error('Duplicate delivery record'); ids.add(node.id);
     const group = groups[deliveryOutcome(node)]; group.count++; group.recordIds.push(node.id);
-    const p = node.reviewed, importance = p?.importance;
+    const p = node.reviewed, importance = node.importance;
     if (p) {
       const unit = `${node.projectSlug}:${p.admission.obligation_id}`;
       if (units.has(unit)) throw new Error('Duplicate independent obligation'); units.add(unit);
@@ -61,9 +61,10 @@ export function calculateDelivery(nodes: AtlasNode[]): DeliveryCalculation {
     outcomeCoverage:resolvedWeight / totalWeight,
     resolvedShare:resolvedWeight > 0 ? groups.kept.weight! / resolvedWeight : null};
 }
-export interface ReceiptRevision {runId:string;methodology:string}
+export interface ReceiptRevision {runId:string;methodology:string;assignments?:string}
 export function verdictReceipt(slug: string, revision: ReceiptRevision, filter: {category?:CategoryId;group?:DeliveryOutcome;promise?:string} = {}) {
   const q = new URLSearchParams({run:revision.runId,methodology:revision.methodology});
+  if (revision.assignments) q.set('assignments',revision.assignments);
   if (filter.category) q.set('category',filter.category);
   if (filter.group) q.set('group',filter.group);
   if (filter.promise) q.set('promise',filter.promise);

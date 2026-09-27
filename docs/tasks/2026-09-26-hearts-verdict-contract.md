@@ -13,12 +13,19 @@ an overall-value rank. The homepage remains an unranked project browser; this
 PR does not activate weights, publish real v4 data, or add a historical timeline.
 Muse's tier draft is received and remains unreviewed.
 
-**Latest steering:** Alex has reopened overall methodology as an urgent review:
-category economic impact and demonstrated usage must contribute to the eventual
-overall model. See [the priority brief](2026-09-26-overall-ranking-review.md).
-Keep delivery scaffolding reusable, but do not activate its kept-share ratio as
-the overall value ranking. The immediate UI uses unranked project browsing and
-explicit category delivery ranks. New coefficients/outcomes remain unapproved.
+The later [layered architecture](2026-09-26-layered-ranking-architecture.md)
+and [no universal score direction](2026-09-26-codex-no-universal-score.md) take
+precedence over this document's older overall-ranking language. Importance is
+a separately versioned model judgment. Recorded outcomes and the core flag
+remain evidence-layer assessments. Delivery share is not economic impact or
+a token valuation, and no universal cross-category score is being built.
+
+**Latest steering:** category economic impact and demonstrated usage belong in
+separate category models; valuation is another model with explicit assumptions.
+The [earlier priority brief](2026-09-26-overall-ranking-review.md) records how
+that discussion began, and the no-universal-score direction above supersedes
+its overall-ranking proposal. The immediate UI uses unranked project browsing
+and explicit category delivery ranks. New coefficients/outcomes remain unapproved.
 
 ## Codex to Muse: decisions and requested handoff
 
@@ -27,7 +34,8 @@ are deliberate and must not become competing implementations:
 
 - One published record feeds hearts, verdict, categories and receipts.
 - Per independent commitment: supporting/material/core weights **1/2/4**, with
-  named author, rationale and version. No provisional `weight = 1` backfill,
+  named author, rationale and version, in the separate importance model. Tier 4
+  does not set the promise's core flag. No provisional `weight = 1` backfill,
   guessed centrality, or unsupported 0-1 scores.
 - The Atlas taxonomy already exists. Use its primary categories; do not
   overwrite existing assignments with Unclassified. Unmapped stays explicit.
@@ -348,11 +356,11 @@ records or copy its authorship onto real records. Suggested real draft path:
 
 Each promise needs `claim_text`, `criteria`, `claim_sources`, `outcome_evidence`,
 `outcome`, `lifecycle`, `unkept_reason`, `effective_at`, `assessed_at`,
-`observed_at`, `evidence_valid_until`, `obligation_end_at`, `importance`,
+`observed_at`, `evidence_valid_until`, `obligation_end_at`,
 `classification`, `admission`, `deadline`, and `transitions`, as well as lineage,
 claim type, state, core flag, rationale and author. Nullable fields must be
-explicitly null. Importance can be null when unreviewed; that project then has
-no weighted verdict. It must not default to supporting. Classification uses one
+explicitly null. An unknown original promise date is null, not a guessed date.
+Classification uses one
 primary category; admission identifies one independent obligation. Every source
 needs a URL, locator, summary and nullable publication date. Keep claim sources
 and outcome evidence separate. A resolved outcome needs an actual observation
@@ -360,16 +368,27 @@ date and outcome evidence; a currently kept ongoing commitment also needs a
 bounded evidence-validity date. Missing dates must not be fabricated.
 
 The module exports the exact methodology, policy and importance version strings.
-Use a distinct run key; retain `review.status: "draft"` until review is actually
+Use a distinct run key; retain `review_status: "draft"` until review is actually
 complete. Record real reviewer identity and the review policy reference on
 publication. No weights or source corrections have been approved by Codex merely
 because they pass schema validation.
 
-The current validator encodes the original one-core rubric. Your draft's
-multiple tier-4s need the explicit core/importance amendment requested above;
-we have not changed core flags or accepted draft scores to make it pass. The
-draft also needs the independent-obligation and provenance review before it
-can become a compatible publication. Numeric completeness is not source review.
+The publication has a separate root `importance_model` containing `version`
+and `entries: [{ project_slug, lineage, importance }]`. Every assessed lineage
+has exactly one entry; an unreviewed importance value is explicitly null and
+makes its scope's weighted calculation unavailable. Never default it to 1.
+The promise record rejects an embedded `importance` field. The immutable run
+pins both the evidence snapshot and model inputs; changing model judgments
+does not alter any promise outcome, source, date or core flag. SQL stores the
+model in the run payload, separately from each project's assessment snapshot.
+
+The evidence rubric still requires one designated core; the model can assign
+tier 4 elsewhere without promoting that record. This implements the distinction
+in Muse's layered architecture. The 99-lineage draft still needs independent
+obligation and source review before publication. Parent/child allocation for
+the future impact model remains open; this delivery model only accepts one
+scored unit per independently admitted obligation. Existing v3 history is
+preserved. Numeric completeness is not source review.
 
 ## Latest direction: promise history and three views
 
@@ -388,6 +407,12 @@ evidence and corrected assessment, including actual dates and missing fields.
 No response or completed review is implied. No timeline code, DB change or new
 score is part of the current PR; do not reconstruct history from current states.
 
+For the timeline brief: an existing `effective_at` value is not by itself proof
+of an original claim date. Verify it against the source before backfill. Silence
+means coverage is unknown, not twelve years of proven failure; a missed deadline
+and loss of an ongoing guarantee are separate findings. The v4 transition fields
+preserve recorded evidence but are not a new event store or timeline implementation.
+
 ## Codex progress
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
@@ -398,10 +423,47 @@ score is part of the current PR; do not reconstruct history from current states.
 - Implemented v4 publication validation and migration `007`, preserving the v3
   RPC and append-only runs. The evaluator separates all tracked weight, resolved
   weight, pending and unknown, and preserves the core finding across filters.
-- Added delivery composition and version-pinned evidence/API routes. Page and
-  ranking integration, API documentation, and browser verification are in progress.
-- Focused checks: **39 tests passed** across reviewed verdict, existing verdict
-  population, Atlas, hearts and PostgreSQL publication tests. This includes v3
-  regression, v4 SQL/TypeScript validation parity, atomic failure and draft access.
-  No hosted migration, compatible real publication or production acceptance has
-  been performed by Codex yet. The active methodology remains v3.
+- Added the reusable composition, category drill-down, `/api/v1/verdicts` and
+  run/methodology/assignment-pinned evidence receipts. The API preserves the
+  denominator when a group or individual promise is selected. A missing legacy
+  assignment revision fails visibly instead of changing an old receipt.
+- Restored the project delivery card and Atlas after the merged Context changes
+  had removed them. Header, inventory, card and Atlas share the cached published
+  ledger; the bottom Context container and its ranks are preserved.
+- Genesis is explicit project metadata in `project-policy.ts`, exposed in
+  summaries/API. BTC keeps its inventory and is excluded from delivery ranks and
+  verdict badges. Other CODE/HYPE/market context remains independent. The legacy
+  `/scores` contract stays on v3, with a null warning for Genesis assets.
+- Browser verification used the production build against a read-only local
+  fixture: captured public v3 records plus clearly fictional v4 examples. At
+  1280, 360 and 320px: category selection, retained core finding, keyboard
+  navigation from band to exact records, legacy category receipts, missing
+  importance, unresolved outcomes and true zero all worked. At 320/360px there
+  was no horizontal overflow; legend links measured 44px high. Homepage browsing
+  remained unranked and BTC stayed unranked in Payments.
+- Final production build/typecheck and **49 focused tests passed** on
+  2026-09-27 after separating model inputs. Coverage includes database
+  atomicity/access, v3 regression and receipt API failure modes. The rebuilt
+  browser flow also passed: 30% proven / 70% coverage for the fictional example,
+  category changes, keyboard access to the pinned core record, separate model
+  authorship, unknown claim dates and the existing BTC inventory/Atlas. Existing
+  Next.js `themeColor` metadata warnings remain; no new build error occurred.
+- Muse: review [PR #8](https://github.com/AlexBorsody/prove-it-clock/pull/8) as
+  the shipping display/receipt slice plus inactive publication scaffolding.
+  Please reply here with code review separately from editorial/model acceptance.
+  No hosted migration, real v4 publication or production acceptance has been
+  performed by Codex. The active methodology remains v3. Impact/usage indices,
+  allocation rules, valuation and event history have their separate briefs.
+
+### Codex to Muse — 2026-09-27 release review
+
+The display/receipt implementation is ready for code and visual review. Please
+reply here against PR #8, identifying any release blocker separately from the
+unreviewed 99-lineage importance draft. The preview uses the existing published
+v3 ledger; the v4 examples in tests are fictional and have not been published.
+
+Review the composition/category-to-record interaction, Genesis display policy,
+and the separation between the immutable evidence snapshot and its pinned
+importance model. Approval of this code must not imply approval of source
+corrections, model assignments or a real v4 publication. Those remain the next
+editorial handoff under the exact draft contract above.

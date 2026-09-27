@@ -2,7 +2,7 @@ import { CATEGORIES, TAGS, TAXONOMY_VERSION } from '../../../data/atlas-taxonomy
 import { ASSIGNMENTS, ASSIGNMENT_VERSION } from '../../../data/atlas-assignments';
 import { promiseAnchor } from '../promise-context';
 import { layoutFor, LAYOUT_VERSION } from '../../../data/atlas-layout';
-import { VERDICT_METHODOLOGY, validateReviewedPromise, validateVerdictVersions, type ReviewedPromise } from '../promise-assessment';
+import { VERDICT_METHODOLOGY, validateReviewedPromise, validateVerdictVersions, validateImportanceModel, importanceKey, type ReviewedPromise } from '../promise-assessment';
 import { promiseId, type AtlasAssignment, type AtlasDataset, type AtlasNode, type AtlasSource, type AtlasState, type PublishedHeartDataset } from './types';
 
 // Version-specific interpretation. The v3 writer rejects ambiguous "active".
@@ -52,7 +52,9 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
   if (!run.id || !run.methodology || !Number.isFinite(Date.parse(run.as_of)) || (run.review_status && run.review_status !== 'published')) throw new Error('Atlas requires a published run');
   validateAssignments(assignments);
   const reviewed = run.methodology === VERDICT_METHODOLOGY;
-  if (reviewed) validateVerdictVersions(run.versions);
+  if (reviewed) { validateVerdictVersions(run.versions); validateImportanceModel(run.importance_model); }
+  const model=new Map((reviewed ? run.importance_model!.entries : []).map(entry=>[importanceKey(entry.project_slug,entry.lineage),entry.importance]));
+  const usedModelKeys=new Set<string>();
   const nodes: AtlasNode[] = []; const ids = new Set<string>(); const projects = new Set<string>(); const unavailableProjects: string[] = [];
   for (const value of input.projects) {
     const p = record(value); const slug = text(p.slug);
@@ -71,6 +73,9 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
         validateReviewedPromise(pr, run.as_of);
         if (obligations.has(pr.admission.obligation_id)) throw new Error('Duplicate independent obligation');
         obligations.add(pr.admission.obligation_id);
+        const key=importanceKey(slug,pr.lineage);
+        if(!model.has(key)) throw new Error('Missing published importance assignment');
+        usedModelKeys.add(key);
       }
       if (!lineage) throw new Error('Missing promise lineage');
       if (lineages.has(lineage)) throw new Error(`Duplicate promise lineage: ${lineage}`);
@@ -79,7 +84,7 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
       if (ids.has(id)) throw new Error(`Duplicate promise ID: ${id}`);
       ids.add(id);
       const flags: string[] = []; const state = atlasState(pr.state, run.methodology);
-      if (state === 'unknown') flags.push('State needs methodology review');
+      if (state === 'unknown') flags.push(reviewed ? 'Outcome not established by the recorded evidence' : 'State needs methodology review');
       const claimSources = sources(pr.claim_sources, flags);
       const separated = Array.isArray(pr.outcome_evidence);
       const outcomeEvidence = sources(separated ? pr.outcome_evidence : pr.evidence, flags);
@@ -105,9 +110,10 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
         primaryCategory: a?.primary ?? null, secondaryCategories: a?.secondary ?? [], tags: a?.tags ?? [],
         assignmentRationale: a?.rationale ?? null, assignmentAuthor: a?.author ?? null,
         projectHref: `/projects/${slug}`, promiseHref: `/projects/${slug}?evidence=${encodeURIComponent(lineage)}#${promiseAnchor(slug, lineage)}-evidence`,
-        qualityFlags: flags, ...(reviewedRecord ? { reviewed: reviewedRecord } : {}) });
+        qualityFlags: flags, ...(reviewedRecord ? { reviewed: reviewedRecord,importance:model.get(importanceKey(slug,lineage))! } : {}) });
     }
   }
+  if(reviewed && model.size!==usedModelKeys.size) throw new Error('Importance model contains records outside this published ledger');
   nodes.sort((a,b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
   const layout = layoutFor(nodes);
   return { dataRevision: run.id, methodologyVersion: run.methodology, taxonomyVersion: TAXONOMY_VERSION,

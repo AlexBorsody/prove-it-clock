@@ -11,17 +11,22 @@ export function promiseAnchor(slug: string, lineage: string): string {
   return `project-${slug}-promise-${id}`;
 }
 
-export const PROMISE_FILTERS = ["all", "kept", "open", "in-play", "failed", "lapsed", "retired", "unknown"] as const;
+export const PROMISE_FILTERS = ["all", "kept", "open", "in-play", "failed", "lapsed", "retired", "missed", "unknown"] as const;
 export type PromiseFilter = typeof PROMISE_FILTERS[number];
+/** Display extension only; the immutable v3 scoring normalizer stays unchanged. */
+export function displayPromiseState(state:string) {
+  if(state==='missed') return 'missed';
+  return normalizePromiseState(state);
+}
 
 export function matchesPromiseFilter(state: string, filter: PromiseFilter): boolean {
   if (filter === "all") return true;
   let normalized: string;
-  try { normalized = normalizePromiseState(state); } catch { normalized = "unknown"; }
+  try { normalized = displayPromiseState(state); } catch { normalized = "unknown"; }
   if (filter === "kept") return normalized === "fulfilled";
   if (filter === "open") return ["open", "active"].includes(normalized);
   if (filter === "in-play") return ["open", "active", "unknown"].includes(normalized);
-  if (filter === "failed") return ["lapsed", "retired"].includes(normalized);
+  if (filter === "failed") return ["lapsed", "retired", "missed"].includes(normalized);
   return normalized === filter;
 }
 
@@ -29,11 +34,11 @@ export function promiseFilterHref(slug: string, filter: PromiseFilter): string {
   return `/projects/${slug}?promises=${filter}#promises`;
 }
 
-/** Display promise state using the canonical five: open / active / fulfilled / lapsed / retired. Legacy DB values normalize at the boundary. */
+/** Legacy states plus an explicit, sourced missed deadline in reviewed records. */
 export function promiseDisplay(pr: { state: string }): { label: string; tone: "good" | "dim" | "bad" } {
   let s: string;
   try {
-    s = normalizePromiseState(pr.state);
+    s = displayPromiseState(pr.state);
   } catch {
     return { label: "Unknown", tone: "dim" };
   }
@@ -41,6 +46,7 @@ export function promiseDisplay(pr: { state: string }): { label: string; tone: "g
   if (s === "active") return { label: "Active", tone: "dim" };
   if (s === "open") return { label: "Open", tone: "dim" };
   if (s === "lapsed") return { label: "Lapsed", tone: "bad" };
+  if (s === "missed") return { label: "Missed", tone: "bad" };
   return { label: "Retired", tone: "bad" };
 }
 
@@ -58,9 +64,9 @@ export function promiseReferences(slug: string, promises: TrackedPromise[]): Pro
 }
 
 export function promiseCounts(promises: TrackedPromise[]) {
-  const counts = { fulfilled: 0, open: 0, active: 0, lapsed: 0, retired: 0, unknown: 0 };
+  const counts = { fulfilled: 0, open: 0, active: 0, lapsed: 0, retired: 0, missed: 0, unknown: 0 };
   for (const promise of promises) {
-    try { counts[normalizePromiseState(promise.state)]++; }
+    try { counts[displayPromiseState(promise.state)]++; }
     catch { counts.unknown++; }
   }
   return counts;

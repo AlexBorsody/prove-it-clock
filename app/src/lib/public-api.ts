@@ -7,7 +7,7 @@
  * names.
  */
 import {
-  HEARTS_METHODOLOGY,
+  LEGACY_HEARTS_METHODOLOGY as HEARTS_METHODOLOGY,
   readHeartRankings,
   readHeartHistory,
   readHypeSnapshots,
@@ -15,6 +15,7 @@ import {
 } from "@/lib/heart-data";
 import { verdictFor } from "@/lib/verdict";
 import { fetchVitals } from "@/lib/vitals";
+import { projectFlags } from './project-policy';
 
 /** Fixed dial positions per verdict category. Source of truth: shitcoin-meter.tsx GAUGE. */
 const WARNING_LEVEL: Record<string, number> = {
@@ -30,7 +31,8 @@ export interface ScoreSummary {
   symbol: string;
   rank: number;
   hearts: { earned: number; capacity: number };
-  shitcoin_warning: { level: number; scale: 10; label: "Shitcoin warning" };
+  genesis: boolean;
+  shitcoin_warning: { level: number; scale: 10; label: "Shitcoin warning" } | null;
   code: { commits_90d: number | null };
   hype: { mentions_7d: number | null };
 }
@@ -67,7 +69,8 @@ function toSummary(p: RawProject, rank: number, ctx: { vitals: any; hype: any })
     symbol: p.symbol,
     rank,
     hearts: { earned: p.earned, capacity: p.capacity },
-    shitcoin_warning: {
+    genesis: projectFlags(p.slug).genesis,
+    shitcoin_warning: projectFlags(p.slug).genesis ? null : {
       level: WARNING_LEVEL[category] ?? 1,
       scale: 10,
       label: "Shitcoin warning",

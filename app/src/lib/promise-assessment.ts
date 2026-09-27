@@ -12,6 +12,12 @@ export interface Importance {
   tier: keyof typeof IMPORTANCE_WEIGHTS; weight: 1 | 2 | 4;
   rationale: string; author: string;
 }
+/** A versioned delivery-model judgment, never a field of the evidence record. */
+export interface ImportanceModel {
+  version: typeof IMPORTANCE_VERSION;
+  entries: Array<{ project_slug: string; lineage: string; importance: Importance | null }>;
+}
+export const importanceKey=(project:string,lineage:string)=>JSON.stringify([project,lineage]);
 export interface VerdictVersions {
   policy: typeof VERDICT_POLICY; importance: typeof IMPORTANCE_VERSION;
   taxonomy: typeof TAXONOMY_VERSION; assignments: string; admission: string;
@@ -21,9 +27,9 @@ export interface ReviewedPromise {
   claim_text: string; attribution: 'issuer' | 'community'; criteria: string;
   state: 'fulfilled' | 'open' | 'lapsed' | 'retired' | 'missed' | 'unknown';
   outcome: DeliveryOutcome; lifecycle: Lifecycle; unkept_reason: UnkeptReason | null;
-  effective_at: string; assessed_at: string; observed_at: string | null;
+  effective_at: string | null; assessed_at: string; observed_at: string | null;
   evidence_valid_until: string | null; obligation_end_at: string | null;
-  rationale: string; author: string; importance: Importance | null;
+  rationale: string; author: string;
   classification: { primary: CategoryId; rationale: string; author: string };
   admission: { obligation_id: string; rationale: string; author: string };
   claim_sources: EvidenceSource[]; outcome_evidence: EvidenceSource[];
@@ -33,7 +39,8 @@ export interface ReviewedPromise {
 }
 export interface VerdictPublication {
   schema_version: 4; run_key: string; as_of: string; methodology: typeof VERDICT_METHODOLOGY;
-  versions: VerdictVersions; review_status: 'draft' | 'published'; reviewed_by?: string; policy_ref?: string;
+  versions: VerdictVersions; importance_model: ImportanceModel;
+  review_status: 'draft' | 'published'; reviewed_by?: string; policy_ref?: string;
   projects: Array<{ slug: string; availability: 'available' | 'unavailable'; unavailable_reason?: string;
     assessment?: { capacity: number; allowance: 0; allowance_rationale: string; rationale: string;
       research_scope: string; promises: ReviewedPromise[] } | null }>;
@@ -55,20 +62,35 @@ function timestamp(value: unknown, name: string, max?: number): number {
 function nullableTime(value: unknown, name: string, max?: number) {
   if (value !== null) timestamp(value, name, max);
 }
-function source(value: unknown) {
+function source(value: unknown, latest?:number) {
   const e = record(value); nonempty(e.url, 'source URL'); nonempty(e.summary, 'source summary'); nonempty(e.locator, 'source locator');
   let u: URL; try { u = new URL(e.url); } catch { fail('invalid source URL'); }
   if (!['http:', 'https:'].includes(u.protocol) || u.username || u.password) fail('unsafe source URL');
-  nullableTime(e.published_at, 'source publication date');
+  nullableTime(e.published_at, 'source publication date',latest);
 }
-function sources(value: unknown, required: boolean) {
+function sources(value: unknown, required: boolean, latest?:number) {
   if (!Array.isArray(value) || (required && !value.length)) fail('missing source list');
-  value.forEach(source);
+  value.forEach(value=>source(value,latest));
 }
 export function validateVerdictVersions(value: unknown): asserts value is VerdictVersions {
   const v = record(value);
   if (v.policy !== VERDICT_POLICY || v.importance !== IMPORTANCE_VERSION || v.taxonomy !== TAXONOMY_VERSION) fail('unsupported policy versions');
   nonempty(v.assignments, 'assignment version'); nonempty(v.admission, 'admission version');
+}
+export function validateImportanceModel(value:unknown): asserts value is ImportanceModel {
+  const model=record(value),keys=new Set<string>();
+  if(model.version!==IMPORTANCE_VERSION || !Array.isArray(model.entries)) fail('importance model/version');
+  for(const value of model.entries) {
+    const entry=record(value);
+    nonempty(entry.project_slug,'model project');nonempty(entry.lineage,'model lineage');
+    if(!/^[a-z0-9-]+$/.test(entry.project_slug)) fail('model project');
+    const key=importanceKey(entry.project_slug,entry.lineage);
+    if(keys.has(key)) fail('duplicate importance assignment');keys.add(key);
+    if(entry.importance===null) continue;
+    const w=record(entry.importance);
+    if(!Object.hasOwn(IMPORTANCE_WEIGHTS,w.tier) || w.weight!==IMPORTANCE_WEIGHTS[w.tier as keyof typeof IMPORTANCE_WEIGHTS]) fail('importance tier/weight mismatch');
+    nonempty(w.rationale,'importance rationale');nonempty(w.author,'importance author');
+  }
 }
 export function validateReviewedPromise(value: unknown, asOf: string): asserts value is ReviewedPromise {
   const p = record(value), end = timestamp(asOf, 'as_of');
@@ -82,7 +104,8 @@ export function validateReviewedPromise(value: unknown, asOf: string): asserts v
   if (p.unkept_reason === 'retired_unmet' && p.lifecycle !== 'retired') fail('unmet retirement lifecycle');
   if (p.outcome === 'pending' && p.lifecycle !== 'current') fail('pending obligation must be current');
   if (p.outcome === 'kept' && p.lifecycle === 'retired') fail('archive completed delivery instead of retiring it unmet');
-  timestamp(p.effective_at, 'promise date', end); const assessed = timestamp(p.assessed_at, 'assessment date', end);
+  const assessed = timestamp(p.assessed_at, 'assessment date', end);
+  nullableTime(p.effective_at, 'promise date', assessed);
   nullableTime(p.observed_at, 'observation date', assessed);
   nullableTime(p.evidence_valid_until, 'evidence validity'); nullableTime(p.obligation_end_at, 'obligation end', end);
   if (p.outcome === 'kept' || p.outcome === 'unkept') {
@@ -93,11 +116,7 @@ export function validateReviewedPromise(value: unknown, asOf: string): asserts v
     if (p.lifecycle === 'completed' && p.obligation_end_at == null) fail('completed ongoing obligation needs its original end');
     if (p.lifecycle === 'current' && (p.evidence_valid_until == null || Date.parse(p.evidence_valid_until) < end)) fail('ongoing kept needs evidence valid at snapshot');
   }
-  if (p.importance !== null) {
-    const w = record(p.importance);
-    if (!Object.hasOwn(IMPORTANCE_WEIGHTS, w.tier) || w.weight !== IMPORTANCE_WEIGHTS[w.tier as keyof typeof IMPORTANCE_WEIGHTS] || (w.tier === 'core') !== p.core) fail('importance tier/weight/core mismatch');
-    nonempty(w.rationale, 'importance rationale'); nonempty(w.author, 'importance author');
-  }
+  if ('importance' in p) fail('importance belongs to the separately versioned model');
   const c = record(p.classification), a = record(p.admission);
   if (!CATEGORIES.some(cat => cat.id === c.primary)) fail('primary category');
   for (const [obj, label] of [[c, 'classification'], [a, 'admission']] as const) {
@@ -105,9 +124,9 @@ export function validateReviewedPromise(value: unknown, asOf: string): asserts v
   }
   nonempty(a.obligation_id, 'independent obligation ID');
   if ('reward' in p || 'reward_hearts' in p || 'parent_id' in p) fail('rewards and scored child units are not allowed');
-  sources(p.claim_sources, true); sources(p.outcome_evidence, p.outcome === 'kept' || p.outcome === 'unkept');
+  sources(p.claim_sources, true, assessed); sources(p.outcome_evidence, p.outcome === 'kept' || p.outcome === 'unkept', assessed);
   if (p.deadline !== null) {
-    const d = record(p.deadline); timestamp(d.at, 'deadline'); source(d.source);
+    const d = record(p.deadline); timestamp(d.at, 'deadline'); source(d.source,assessed);
     if (!['target', 'essential'].includes(d.kind)) fail('deadline kind');
   }
   if (p.unkept_reason === 'missed' && (!p.deadline || Date.parse(p.deadline.at) > end)) fail('confirmed miss requires a past sourced deadline');
@@ -117,7 +136,7 @@ export function validateReviewedPromise(value: unknown, asOf: string): asserts v
     if (!['kept', 'lapsed', 'retired', 'missed', 'recovered', 'corrected'].includes(t.event)) fail('transition event');
     const recorded = timestamp(t.recorded_at, 'transition recorded date', end);
     nullableTime(t.effective_at, 'transition event date', recorded);
-    nonempty(t.rationale, 'transition rationale'); nonempty(t.author, 'transition author'); sources(t.evidence, true);
+    nonempty(t.rationale, 'transition rationale'); nonempty(t.author, 'transition author'); sources(t.evidence, true,recorded);
   }
   if (p.unkept_reason === 'missed' && !p.transitions.some((t: any) => t.event === 'missed')) fail('confirmed miss requires a recorded transition');
   if (p.outcome === 'kept' && p.deadline?.kind === 'essential' && p.transitions.some((t: any) => t.event === 'missed')) fail('late delivery cannot fulfill an essential missed deadline');
@@ -127,10 +146,11 @@ export function validateVerdictPublication(value: unknown): asserts value is Ver
   if (d.schema_version !== 4 || d.methodology !== VERDICT_METHODOLOGY) fail('schema/methodology');
   nonempty(d.run_key, 'run key'); if (d.run_key.length > 200) fail('run key too long'); timestamp(d.as_of, 'as_of');
   validateVerdictVersions(d.versions);
+  validateImportanceModel(d.importance_model);
   if (!['draft', 'published'].includes(d.review_status)) fail('review status');
   if (d.review_status === 'published') { nonempty(d.reviewed_by, 'reviewer'); nonempty(d.policy_ref, 'policy reference'); }
   if (!Array.isArray(d.projects) || !d.projects.length || d.projects.length > 1000) fail('project count');
-  const slugs = new Set<string>();
+  const slugs = new Set<string>(),modelKeys=new Set<string>();
   for (const item of d.projects) {
     const p = record(item); nonempty(p.slug, 'project slug');
     if (!/^[a-z0-9-]+$/.test(p.slug) || slugs.has(p.slug)) fail('invalid/duplicate project'); slugs.add(p.slug);
@@ -146,7 +166,9 @@ export function validateVerdictPublication(value: unknown): asserts value is Ver
       validateReviewedPromise(pr, d.as_of);
       if (ids.has(pr.lineage) || obligations.has(pr.admission.obligation_id)) fail('duplicate lineage or independent obligation');
       ids.add(pr.lineage); obligations.add(pr.admission.obligation_id); if (pr.core) core++;
+      modelKeys.add(importanceKey(p.slug,pr.lineage));
     }
     if (core !== 1) fail('exactly one core is required');
   }
+  if(d.importance_model.entries.length!==modelKeys.size || d.importance_model.entries.some(entry=>!modelKeys.has(importanceKey(entry.project_slug,entry.lineage)))) fail('importance assignments must match the published ledger exactly');
 }

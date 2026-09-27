@@ -16,7 +16,11 @@ BEGIN
   IF NOT isfinite(t) OR (latest IS NOT NULL AND t > latest) THEN RAISE EXCEPTION 'Future verdict timestamp'; END IF;
   RETURN t;
 END $$;
-CREATE FUNCTION public.verdict_sources(items jsonb, required boolean)
+CREATE FUNCTION public.verdict_text(v jsonb) RETURNS boolean
+LANGUAGE sql IMMUTABLE SET search_path = '' AS $$
+  SELECT coalesce(jsonb_typeof(v) = 'string' AND length(trim(v #>> '{}')) > 0, false)
+$$;
+CREATE FUNCTION public.verdict_sources(items jsonb, required boolean, latest timestamptz)
 RETURNS void LANGUAGE plpgsql SET search_path = '' AS $$
 DECLARE e jsonb;
 BEGIN
@@ -26,15 +30,15 @@ BEGIN
     IF jsonb_typeof(e) IS DISTINCT FROM 'object' OR
       coalesce(e->>'url','') !~ '^https?://[^/@[:space:]]+([/:?#]|$)' OR
       coalesce(e->>'url','') ~ '^https?://[^/]*@' OR
-      coalesce(length(trim(e->>'summary')),0) = 0 OR coalesce(length(trim(e->>'locator')),0) = 0 THEN
+      NOT public.verdict_text(e->'url') OR NOT public.verdict_text(e->'summary') OR NOT public.verdict_text(e->'locator') THEN
       RAISE EXCEPTION 'Source needs safe URL, summary and locator';
     END IF;
-    PERFORM public.verdict_time(e->'published_at',NULL,true);
+    PERFORM public.verdict_time(e->'published_at',latest,true);
   END LOOP;
 END $$;
 CREATE FUNCTION public.validate_verdict_promise(p jsonb, snapshot_at timestamptz)
 RETURNS void LANGUAGE plpgsql SET search_path = '' AS $$
-DECLARE k text; expected text; importance jsonb; tier_weight integer; assessed timestamptz;
+DECLARE k text; expected text; assessed timestamptz;
   tr jsonb; recorded timestamptz; deadline jsonb; has_miss boolean := false;
 BEGIN
   IF jsonb_typeof(p) IS DISTINCT FROM 'object' THEN RAISE EXCEPTION 'Invalid promise object'; END IF;
@@ -53,8 +57,8 @@ BEGIN
     (p->>'unkept_reason' = 'retired_unmet' AND p->>'lifecycle' <> 'retired') OR
     (p->>'outcome' = 'pending' AND p->>'lifecycle' <> 'current') OR
     (p->>'outcome' = 'kept' AND p->>'lifecycle' = 'retired') THEN RAISE EXCEPTION 'Outcome/lifecycle mismatch'; END IF;
-  PERFORM public.verdict_time(p->'effective_at',snapshot_at);
   assessed := public.verdict_time(p->'assessed_at',snapshot_at);
+  PERFORM public.verdict_time(p->'effective_at',assessed,true);
   PERFORM public.verdict_time(p->'observed_at',assessed,true);
   PERFORM public.verdict_time(p->'evidence_valid_until',NULL,true);
   PERFORM public.verdict_time(p->'obligation_end_at',snapshot_at,true);
@@ -66,63 +70,80 @@ BEGIN
       RAISE EXCEPTION 'Ongoing kept needs current evidence or completed bounded obligation';
     END IF;
   END IF;
-  importance := p->'importance';
-  IF importance IS DISTINCT FROM 'null'::jsonb THEN
-    tier_weight := CASE importance->>'tier' WHEN 'supporting' THEN 1 WHEN 'material' THEN 2 WHEN 'core' THEN 4 END;
-    IF jsonb_typeof(importance) IS DISTINCT FROM 'object' OR tier_weight IS NULL OR
-      jsonb_typeof(importance->'weight') IS DISTINCT FROM 'number' OR (importance->>'weight')::numeric <> tier_weight OR
-      ((importance->>'tier' = 'core') IS DISTINCT FROM (p->>'core')::boolean) OR
-      coalesce(length(trim(importance->>'rationale')),0) = 0 OR coalesce(length(trim(importance->>'author')),0) = 0 THEN
-      RAISE EXCEPTION 'Invalid importance';
-    END IF;
-  END IF;
+  IF p ? 'importance' THEN RAISE EXCEPTION 'Importance belongs to the separately versioned model'; END IF;
   IF coalesce(p->'classification'->>'primary','') NOT IN ('money','payments','platform','defi','privacy','interoperability','governance','real-world','unclassified') OR
-    coalesce(length(trim(p->'admission'->>'obligation_id')),0) = 0 THEN RAISE EXCEPTION 'Missing category or independent obligation'; END IF;
+    NOT public.verdict_text(p->'admission'->'obligation_id') THEN RAISE EXCEPTION 'Missing category or independent obligation'; END IF;
   FOREACH k IN ARRAY ARRAY['classification','admission'] LOOP
-    IF jsonb_typeof(p->k) IS DISTINCT FROM 'object' OR coalesce(length(trim(p->k->>'rationale')),0) = 0 OR
-      coalesce(length(trim(p->k->>'author')),0) = 0 THEN RAISE EXCEPTION 'Missing % rationale/author',k; END IF;
+    IF jsonb_typeof(p->k) IS DISTINCT FROM 'object' OR NOT public.verdict_text(p->k->'rationale') OR
+      NOT public.verdict_text(p->k->'author') THEN RAISE EXCEPTION 'Missing % rationale/author',k; END IF;
   END LOOP;
   IF p ? 'reward' OR p ? 'reward_hearts' OR p ? 'parent_id' THEN RAISE EXCEPTION 'No rewards or scored child units'; END IF;
-  PERFORM public.verdict_sources(p->'claim_sources',true);
-  PERFORM public.verdict_sources(p->'outcome_evidence',p->>'outcome' IN ('kept','unkept'));
+  PERFORM public.verdict_sources(p->'claim_sources',true,assessed);
+  PERFORM public.verdict_sources(p->'outcome_evidence',p->>'outcome' IN ('kept','unkept'),assessed);
   deadline := p->'deadline';
   IF deadline IS DISTINCT FROM 'null'::jsonb THEN
     IF jsonb_typeof(deadline) IS DISTINCT FROM 'object' OR coalesce(deadline->>'kind','') NOT IN ('target','essential') THEN RAISE EXCEPTION 'Invalid deadline'; END IF;
     PERFORM public.verdict_time(deadline->'at');
-    PERFORM public.verdict_sources(jsonb_build_array(deadline->'source'),true);
+    PERFORM public.verdict_sources(jsonb_build_array(deadline->'source'),true,assessed);
   END IF;
   IF p->>'unkept_reason' = 'missed' AND (deadline = 'null'::jsonb OR (deadline->>'at')::timestamptz > snapshot_at) THEN RAISE EXCEPTION 'Miss needs past sourced deadline'; END IF;
   IF jsonb_typeof(p->'transitions') IS DISTINCT FROM 'array' THEN RAISE EXCEPTION 'Explicit transitions required'; END IF;
   FOR tr IN SELECT value FROM jsonb_array_elements(p->'transitions') LOOP
     IF coalesce(tr->>'event','') NOT IN ('kept','lapsed','retired','missed','recovered','corrected') OR
-      coalesce(length(trim(tr->>'rationale')),0) = 0 OR coalesce(length(trim(tr->>'author')),0) = 0 THEN RAISE EXCEPTION 'Invalid transition'; END IF;
+      NOT public.verdict_text(tr->'rationale') OR NOT public.verdict_text(tr->'author') THEN RAISE EXCEPTION 'Invalid transition'; END IF;
     recorded := public.verdict_time(tr->'recorded_at',snapshot_at);
     PERFORM public.verdict_time(tr->'effective_at',recorded,true);
-    PERFORM public.verdict_sources(tr->'evidence',true);
+    PERFORM public.verdict_sources(tr->'evidence',true,recorded);
     IF tr->>'event' = 'missed' THEN has_miss := true; END IF;
   END LOOP;
   IF p->>'unkept_reason' = 'missed' AND NOT has_miss THEN RAISE EXCEPTION 'Miss needs recorded transition'; END IF;
   IF p->>'outcome' = 'kept' AND deadline->>'kind' = 'essential' AND has_miss THEN RAISE EXCEPTION 'Essential missed deadline remains unmet'; END IF;
 END $$;
 
+CREATE FUNCTION public.validate_importance_model(model jsonb)
+RETURNS void LANGUAGE plpgsql SET search_path = '' AS $$
+DECLARE entry jsonb; importance jsonb; tier_weight integer; k text; keys text[] := ARRAY[]::text[];
+BEGIN
+  IF jsonb_typeof(model) IS DISTINCT FROM 'object' OR model->>'version' IS DISTINCT FROM 'importance-1-2-4-v1' OR
+    jsonb_typeof(model->'entries') IS DISTINCT FROM 'array' THEN RAISE EXCEPTION 'Invalid importance model'; END IF;
+  FOR entry IN SELECT value FROM jsonb_array_elements(model->'entries') LOOP
+    IF NOT public.verdict_text(entry->'project_slug') OR entry->>'project_slug' !~ '^[a-z0-9-]+$' OR
+      NOT public.verdict_text(entry->'lineage') THEN RAISE EXCEPTION 'Invalid importance identity'; END IF;
+    k := jsonb_build_array(entry->>'project_slug',entry->>'lineage')::text;
+    IF k = ANY(keys) THEN RAISE EXCEPTION 'Duplicate importance assignment'; END IF;
+    keys := array_append(keys,k);
+    importance := entry->'importance';
+    IF importance = 'null'::jsonb THEN CONTINUE; END IF;
+    tier_weight := CASE importance->>'tier' WHEN 'supporting' THEN 1 WHEN 'material' THEN 2 WHEN 'core' THEN 4 END;
+    IF jsonb_typeof(importance) IS DISTINCT FROM 'object' OR tier_weight IS NULL OR
+      jsonb_typeof(importance->'weight') IS DISTINCT FROM 'number' OR (importance->>'weight')::numeric <> tier_weight OR
+      NOT public.verdict_text(importance->'rationale') OR NOT public.verdict_text(importance->'author') THEN
+      RAISE EXCEPTION 'Invalid importance';
+    END IF;
+  END LOOP;
+END $$;
+
 CREATE FUNCTION public.publish_heart_run(document jsonb) RETURNS uuid
 LANGUAGE plpgsql SECURITY DEFINER SET search_path = '' AS $$
 DECLARE rid uuid; existing jsonb; item jsonb; a jsonb; p jsonb; pid uuid; stamp timestamptz;
   slugs text[] := ARRAY[]::text[]; ids text[]; obligations text[]; n integer; earned_hearts integer; cores integer; core_done boolean; k text;
+  model_entry jsonb; expected_model_keys text[] := ARRAY[]::text[];
 BEGIN
   IF document->>'schema_version' = '3' THEN RETURN public.publish_heart_run_v3(document); END IF;
-  IF jsonb_typeof(document) IS DISTINCT FROM 'object' OR document->>'schema_version' IS DISTINCT FROM '4' OR
+  IF jsonb_typeof(document) IS DISTINCT FROM 'object' OR document->'schema_version' IS DISTINCT FROM '4'::jsonb OR
     document->>'methodology' IS DISTINCT FROM 'promise delivery v4 (2026-09-26; reviewed importance, outcome coverage, separate lifecycle)' OR
     document->'versions'->>'policy' IS DISTINCT FROM 'promise-verdict-v1' OR
     document->'versions'->>'importance' IS DISTINCT FROM 'importance-1-2-4-v1' OR
     document->'versions'->>'taxonomy' IS DISTINCT FROM 'atlas-taxonomy-v1' OR
-    coalesce(length(trim(document->'versions'->>'assignments')),0) = 0 OR
-    coalesce(length(trim(document->'versions'->>'admission')),0) = 0 OR
+    NOT public.verdict_text(document->'versions'->'assignments') OR
+    NOT public.verdict_text(document->'versions'->'admission') OR
+    NOT public.verdict_text(document->'run_key') OR
     coalesce(length(trim(document->>'run_key')),0) NOT BETWEEN 1 AND 200 OR
     coalesce(document->>'review_status','') NOT IN ('draft','published') THEN RAISE EXCEPTION 'Invalid verdict envelope'; END IF;
-  IF document->>'review_status' = 'published' AND (coalesce(length(trim(document->>'reviewed_by')),0) = 0 OR
-    coalesce(length(trim(document->>'policy_ref')),0) = 0) THEN RAISE EXCEPTION 'Published verdict needs reviewer and policy'; END IF;
+  IF document->>'review_status' = 'published' AND (NOT public.verdict_text(document->'reviewed_by') OR
+    NOT public.verdict_text(document->'policy_ref')) THEN RAISE EXCEPTION 'Published verdict needs reviewer and policy'; END IF;
   stamp := public.verdict_time(document->'as_of');
+  PERFORM public.validate_importance_model(document->'importance_model');
   IF jsonb_typeof(document->'projects') IS DISTINCT FROM 'array' THEN RAISE EXCEPTION 'Missing projects'; END IF;
   IF jsonb_array_length(document->'projects') NOT BETWEEN 1 AND 1000 THEN RAISE EXCEPTION 'Invalid project count'; END IF;
   PERFORM pg_advisory_xact_lock(hashtextextended(document->>'run_key',0));
@@ -134,11 +155,12 @@ BEGIN
   INSERT INTO public.heart_runs(run_key,as_of,methodology,review_status,reviewed_by,policy_ref,payload)
     VALUES(document->>'run_key',stamp,document->>'methodology',document->>'review_status',document->>'reviewed_by',document->>'policy_ref',document) RETURNING id INTO rid;
   FOR item IN SELECT value FROM jsonb_array_elements(document->'projects') LOOP
-    IF coalesce(item->>'slug','') !~ '^[a-z0-9-]+$' OR item->>'slug' = ANY(slugs) THEN RAISE EXCEPTION 'Invalid/duplicate project'; END IF;
+    IF NOT public.verdict_text(item->'slug') OR coalesce(item->>'slug','') !~ '^[a-z0-9-]+$' OR item->>'slug' = ANY(slugs) THEN RAISE EXCEPTION 'Invalid/duplicate project'; END IF;
     slugs := array_append(slugs,item->>'slug');
     SELECT id INTO pid FROM public.projects WHERE slug = item->>'slug';
     IF pid IS NULL THEN RAISE EXCEPTION 'Unknown project'; END IF;
     IF item->>'availability' = 'unavailable' THEN
+      IF NOT public.verdict_text(item->'unavailable_reason') THEN RAISE EXCEPTION 'Unavailable needs reason'; END IF;
       IF item->'assessment' IS NOT NULL AND item->'assessment' <> 'null'::jsonb THEN RAISE EXCEPTION 'Unavailable assessment'; END IF;
       INSERT INTO public.heart_snapshots(run_id,project_id,availability,unavailable_reason) VALUES(rid,pid,'unavailable',item->>'unavailable_reason');
       CONTINUE;
@@ -150,13 +172,14 @@ BEGIN
     IF n NOT BETWEEN 1 AND 1000 OR jsonb_typeof(a->'capacity') IS DISTINCT FROM 'number' OR (a->>'capacity')::numeric <> n OR
       a->'allowance' IS DISTINCT FROM '0'::jsonb THEN RAISE EXCEPTION 'Capacity/allowance mismatch'; END IF;
     FOREACH k IN ARRAY ARRAY['rationale','allowance_rationale','research_scope'] LOOP
-      IF coalesce(length(trim(a->>k)),0) = 0 THEN RAISE EXCEPTION 'Missing assessment field: %',k; END IF;
+      IF NOT public.verdict_text(a->k) THEN RAISE EXCEPTION 'Missing assessment field: %',k; END IF;
     END LOOP;
     ids := ARRAY[]::text[]; obligations := ARRAY[]::text[]; earned_hearts := 0; cores := 0; core_done := false;
     FOR p IN SELECT value FROM jsonb_array_elements(a->'promises') LOOP
       PERFORM public.validate_verdict_promise(p,stamp);
       IF p->>'lineage' = ANY(ids) OR p->'admission'->>'obligation_id' = ANY(obligations) THEN RAISE EXCEPTION 'Duplicate independent obligation'; END IF;
       ids := array_append(ids,p->>'lineage'); obligations := array_append(obligations,p->'admission'->>'obligation_id');
+      expected_model_keys := array_append(expected_model_keys,jsonb_build_array(item->>'slug',p->>'lineage')::text);
       IF p->>'outcome' = 'kept' THEN earned_hearts := earned_hearts + 1; END IF;
       IF (p->>'core')::boolean THEN cores := cores + 1; core_done := p->>'outcome' = 'kept'; END IF;
     END LOOP;
@@ -164,9 +187,14 @@ BEGIN
     INSERT INTO public.heart_snapshots(run_id,project_id,availability,capacity,allowance,core_fulfilled,earned,filled,assessment)
       VALUES(rid,pid,'available',n,0,core_done,earned_hearts,earned_hearts,a);
   END LOOP;
+  IF jsonb_array_length(document->'importance_model'->'entries') <> cardinality(expected_model_keys) THEN RAISE EXCEPTION 'Importance model coverage mismatch'; END IF;
+  FOR model_entry IN SELECT value FROM jsonb_array_elements(document->'importance_model'->'entries') LOOP
+    IF NOT (jsonb_build_array(model_entry->>'project_slug',model_entry->>'lineage')::text = ANY(expected_model_keys)) THEN RAISE EXCEPTION 'Importance assignment outside published ledger'; END IF;
+  END LOOP;
   RETURN rid;
 END $$;
-REVOKE ALL ON FUNCTION public.verdict_time(jsonb,timestamptz,boolean), public.verdict_sources(jsonb,boolean),
+REVOKE ALL ON FUNCTION public.verdict_time(jsonb,timestamptz,boolean), public.verdict_text(jsonb), public.verdict_sources(jsonb,boolean,timestamptz),
   public.validate_verdict_promise(jsonb,timestamptz), public.publish_heart_run(jsonb) FROM PUBLIC, anon, authenticated, service_role;
+REVOKE ALL ON FUNCTION public.validate_importance_model(jsonb) FROM PUBLIC, anon, authenticated, service_role;
 GRANT EXECUTE ON FUNCTION public.publish_heart_run(jsonb) TO service_role;
 COMMIT;

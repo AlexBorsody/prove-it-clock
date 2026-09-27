@@ -1,14 +1,15 @@
 import { notFound } from "next/navigation";
+import { Suspense } from 'react';
 import Link from "next/link";
 import {
-  HEARTS_METHODOLOGY,
-  readHeartHistory,
-  readHeartRankings,
   readHypeSnapshots,
   readHypeSnapshotsFor,
   latestHypeBySlug,
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
+import { getPublishedLedger } from '@/lib/atlas/data';
+import { projectFlags } from '@/lib/project-policy';
+import { VERDICT_METHODOLOGY } from '@/lib/promise-assessment';
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
@@ -16,7 +17,8 @@ import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
-import PromiseStats from "@/components/promise-stats";
+import DeliveryVerdict from '@/components/delivery-verdict';
+import ProjectAtlas from '@/components/atlas/project-atlas';
 import PromiseNews from "@/components/promise-news";
 import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
@@ -40,21 +42,23 @@ export default async function ProjectPage({ params, searchParams }: {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
-  const [historyData, rankings, vitals, team, hypeSnaps, allHypeSnaps] = await Promise.all([
-    readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
-    readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
+  const [ledger, vitals, team, hypeSnaps, allHypeSnaps] = await Promise.all([
+    getPublishedLedger().catch(() => null),
     fetchVitals(slug).catch(() => null),
     fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
     readHypeSnapshots().catch(() => [] as any[]),
   ]);
 
-  const points: any[] = historyData.points ?? [];
-  if (!points.length) notFound();
-
-  const latest = points[0];
+  if (!ledger) return <section className="panel"><h1>Promise ledger unavailable</h1><p role="alert">The published promises could not be loaded. Reload to retry.</p></section>;
+  const projects=ledger.projects as any[];
+  const latest=projects.find(project=>project.slug===slug);
+  if (!latest) notFound();
+  if (latest.availability!=='available') return <section className="panel"><h1>{latest.name}</h1><p>No current published assessment is available.</p></section>;
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
+  const {genesis}=projectFlags(slug);
+  const reviewed=ledger.run?.methodology===VERDICT_METHODOLOGY;
   const promiseRefs = promiseReferences(slug, promises);
   const filledPct = latest.capacity > 0 ? latest.earned / latest.capacity : 0;
 
@@ -62,7 +66,7 @@ export default async function ProjectPage({ params, searchParams }: {
   // projects, using the exact default sort of the destination pages.
   // Context only: these never feed the verdict.
   const codeRankRows = await Promise.all(
-    (rankings.projects ?? []).map(async (p: any) => {
+    projects.map(async (p: any) => {
       const v = p.slug === slug ? vitals : await fetchVitals(p.slug).catch(() => null);
       return {
         slug: p.slug,
@@ -183,17 +187,23 @@ export default async function ProjectPage({ params, searchParams }: {
           />
           {latest.name}
           <span className="coin-symbol">{latest.symbol}</span>
+          {genesis && <span className="tag na">Genesis asset</span>}
         </h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-          <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
+          <HeartMeter filled={latest.earned} capacity={latest.capacity} size={24} />
+          <span>Promises kept: {latest.earned} of {latest.capacity}</span>
         </div>
       </div>
 
       <span id="hearts" aria-hidden="true" />
 
+      <Suspense fallback={<section className="panel"><h2>Promise delivery</h2><p role="status">Loading published promises…</p></section>}>
+        <DeliveryVerdict slug={slug} name={latest.name}/>
+      </Suspense>
+
       {/* All promise content lives in one consolidated panel below:
           help expander, delivery health, the promise list, the delivery
-          verdict meter, and the stats. */}
+          legacy warning. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
@@ -241,12 +251,17 @@ export default async function ProjectPage({ params, searchParams }: {
           </p>
         )}
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
-        <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
+        {!genesis && !reviewed && <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
-        </div>
-        <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
+        </div>}
       </div>
+
+      <section className="panel atlas-section search-section" {...searchMeta({id:`project-${slug}-atlas`,title:`${latest.name} Promise Atlas`,kind:'Atlas',project:slug,keywords:'promise categories evidence'})}>
+        <Suspense fallback={<><h2>{latest.name} Promise Atlas</h2><p role="status">Loading the promise map…</p></>}>
+          <ProjectAtlas slug={slug} name={latest.name}/>
+        </Suspense>
+      </section>
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 

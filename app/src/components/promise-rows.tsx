@@ -1,5 +1,5 @@
 import ButtonLink from "@/components/button-link";
-import { normalizePromiseState } from "@/lib/hearts";
+import { promiseDisplay } from '@/lib/promise-context';
 
 export interface PromiseBrief {
   criteria: string;
@@ -10,17 +10,7 @@ export interface PromiseBrief {
 }
 
 function stateLabel(pr: PromiseBrief): { label: string; tone: "good" | "dim" | "bad" } {
-  let s: string;
-  try {
-    s = normalizePromiseState(pr.state);
-  } catch {
-    return { label: "Unknown", tone: "dim" };
-  }
-  if (s === "fulfilled") return { label: "Fulfilled", tone: "good" };
-  if (s === "active") return { label: "Active", tone: "dim" };
-  if (s === "open") return { label: "Open", tone: "dim" };
-  if (s === "lapsed") return { label: "Lapsed", tone: "bad" };
-  return { label: "Retired", tone: "bad" };
+  return promiseDisplay(pr);
 }
 
 /**

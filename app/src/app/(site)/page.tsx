@@ -19,6 +19,7 @@ import { summarizeDelivery } from '@/lib/promise-verdict';
 import { fetchUniverseMarkets, type UniverseRow } from '@/providers/coingecko';
 import { marketCapFor } from '@/lib/market-ids';
 import type { AtlasDataset } from '@/lib/atlas/types';
+import { revisionFor } from '@/lib/verdict-query';
 
 export const dynamic = "force-dynamic";
 
@@ -55,7 +56,7 @@ export default async function Home() {
         slug: p.slug,
         name: p.name,
         symbol: p.symbol,
-        rank: 0, // assigned below
+        rank: 0, // All-projects browsing has no overall ordinal rank.
         earned: p.earned,
         capacity: p.capacity,
         filledPct,
@@ -81,14 +82,11 @@ export default async function Home() {
           criteria: pr.criteria ?? pr.lineage ?? "Promise",
           state: pr.state ?? "open",
           core: !!pr.core,
-          sourceUrl: pr.evidence?.[0]?.url ?? null,
+          sourceUrl: pr.claim_sources?.[0]?.url ?? pr.evidence?.[0]?.url ?? null,
         })),
       };
     })
   );
-
-  rows.sort((a, b) => b.filledPct - a.filledPct || b.earned - a.earned || a.name.localeCompare(b.name));
-  rows.forEach((r, i) => { r.rank = i + 1; });
 
   return (
     <>
@@ -106,7 +104,7 @@ export default async function Home() {
           </p>
         </div>
       ) : (
-        <ScoreboardTable rows={rows} asOf={atlas?.asOf} dataRevision={atlas?.dataRevision} />
+        <ScoreboardTable rows={rows} asOf={atlas?.asOf} dataRevision={atlas?.dataRevision} revision={atlas ? revisionFor(atlas) : undefined} />
       )}
     </>
   );

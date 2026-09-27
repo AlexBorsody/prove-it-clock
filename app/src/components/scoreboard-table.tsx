@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES } from "../../data/atlas-taxonomy";
 import { deliveryReceipt, type DeliverySummary } from "@/lib/promise-verdict";
+import { verdictReceipt, type ReceiptRevision } from '@/lib/delivery-calculation';
+import { projectFlags } from '@/lib/project-policy';
 import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardCategory, parseBoardSort, sortScoreboard, categoryRanks, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
@@ -42,7 +44,7 @@ export interface ScoreboardRow {
 const HEADERS: Array<{ key: BoardSort | null; label: string }> = [
   { key: "rank", label: "#" },
   { key: "coin", label: "Coin" },
-  { key: "hearts", label: "Hearts" },
+  { key: "hearts", label: "Promises kept" },
   { key: "verdict", label: "Shitcoin warning" },
   { key: "commits", label: "Code" },
   { key: null, label: "Usage" },
@@ -78,17 +80,21 @@ function HypeCell({ mentions, collecting }: { mentions: number | null; collectin
   );
 }
 
-export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: ScoreboardRow[]; asOf?: string; dataRevision?: string }) {
+export default function ScoreboardTable({ rows, asOf, dataRevision, revision }: { rows: ScoreboardRow[]; asOf?: string; dataRevision?: string; revision?:ReceiptRevision }) {
   const params = useSearchParams();
   const category = parseBoardCategory(params.get("category"));
-  const sortKey = parseBoardSort(params.get("sort"), category);
+  const parsedSort = parseBoardSort(params.get("sort"), category);
   const categoryLabel = CATEGORIES.find(c => c.id === category)?.short ?? "All projects";
-  const headers = HEADERS.filter(header => category || header.key !== 'rank');
+  const weighted = rows.some(row=>row.delivery?.weightedMethodology);
+  const sortKey = weighted && parsedSort==='verdict' ? 'coin' : parsedSort;
+  const headers = HEADERS.filter(header => category || header.key !== 'rank').map(h=>weighted && h.key==='verdict' ? {key:null,label:'Core finding'} : weighted && h.key==='hearts' ? {...h,label:'Proven delivery'} : h);
   const [expanded, setExpanded] = useState<string | null>(null);
   const sorted = sortScoreboard(rows, sortKey, category);
   const ranks = categoryRanks(rows, category);
   const unclassified = rows.reduce((sum,r) => sum + (r.delivery?.categories.unclassified.total ?? 0), 0);
   const unknown = rows.reduce((sum,r) => sum + (r.delivery?.states.unknown ?? 0), 0);
+  const percent=(value:number)=>new Intl.NumberFormat('en',{style:'percent',maximumFractionDigits:1}).format(value);
+  const receipt=(slug:string)=>revision ? verdictReceipt(slug,revision,{category:category||undefined}) : deliveryReceipt(slug,category||undefined);
 
   function navigate(changes: Record<string,string>) {
     const url = new URL(window.location.href);
@@ -100,13 +106,26 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
   function toggle(key: BoardSort) { navigate({sort:key === 'rank' ? '' : key}); }
   function categoryCell(row: ScoreboardRow) {
     if (!row.delivery) return <span className="word dim">Assessment unavailable</span>;
-    if (!category) return null;
-    const counts = row.delivery.categories[category];
+    const counts = category ? row.delivery.categories[category] : row.delivery;
     if (!counts.total) return <span className="word dim">Unranked<span className="cell-sub">No promises in {categoryLabel}</span></span>;
-    return <Link className={styles.receipt} href={deliveryReceipt(row.slug,category)}>
+    if (row.delivery.weightedMethodology && !row.delivery.genesis) {
+      const calculation=counts.calculation;
+      return <Link className={styles.receipt} href={receipt(row.slug)}>
+        <strong>{calculation?.provenShare == null ? (calculation?.availability==='pending' ? 'No resolved outcomes' : 'Weighted delivery unavailable') : `${percent(calculation.provenShare)} proven`} ↗</strong>
+        <span>{calculation?.outcomeCoverage == null ? 'Importance review incomplete' : `${percent(calculation.outcomeCoverage)} outcome coverage`}</span>
+        <span>Promises kept: {counts.kept} of {counts.total}</span>
+      </Link>;
+    }
+    return <Link className={styles.receipt} href={receipt(row.slug)}>
       <strong>{counts.kept}/{counts.total} kept in {categoryLabel} ↗</strong>
-      <span>{Math.round(counts.kept/counts.total*100)}% kept{counts.states.unknown ? ` · ${counts.states.unknown} unknown` : ''}</span>
+      <span>{row.delivery.genesis ? 'Historical inventory · unranked' : `${Math.round(counts.kept/counts.total*100)}% kept`}{counts.states.unknown ? ` · ${counts.states.unknown} unknown` : ''}</span>
     </Link>;
+  }
+  function finding(row:ScoreboardRow) {
+    if(projectFlags(row.slug).genesis) return <span className="word dim">Genesis asset</span>;
+    if(!row.delivery) return <span className="word dim">Unavailable</span>;
+    if(row.delivery.weightedMethodology) return <Link href={revision ? verdictReceipt(row.slug,revision,{promise:row.delivery.core?.recordId??undefined}) : `/projects/${row.slug}#verdict`}>{row.delivery.core?.label??'Core assessment unavailable'}</Link>;
+    return <Link href={`/projects/${row.slug}#verdict`} aria-label={`${row.name} Shitcoin warning breakdown`} className="gauge-btn"><ShitcoinMeter category={row.verdict} compact /></Link>;
   }
 
   function toggleExpand(slug: string) {
@@ -122,10 +141,10 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
           <option value="">All projects · unranked</option>{CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
         </select></label>
         <label>Sort by<select value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value, category))}>
-          {BOARD_SORTS.filter(key => key !== 'use' && (category || key !== 'rank')).map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
+          {BOARD_SORTS.filter(key => key !== 'use' && (category || key !== 'rank') && (!weighted || key !== 'verdict')).map(key => <option key={key} value={key}>{weighted && key==='hearts' ? 'Proven delivery' : BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
         </select></label>
       </div>
-      {category && <p className={styles.note} role="status">Ranked by recorded promises kept in {categoryLabel}. Equal shares tie; projects without promises here are unranked. This measures delivery share, not overall value.</p>}
+      {category && <p className={styles.note} role="status">Ranked by {weighted ? 'proven delivery' : 'recorded promises kept'} in {categoryLabel}. Equal shares tie. Genesis assets and projects without a comparable assessment are unranked. This measures delivery share, not overall value.</p>}
       <details className={styles.coverage}><summary>Published ledger{asOf ? ` · ${asOf.slice(0,10)}` : ''}</summary>
         <p>{unclassified} unclassified promises. {unknown} unknown states. Missing context metrics are shown as unavailable and sort last.</p>
         <p>Data revision: {dataRevision ?? 'unavailable'}. Categories describe subject matter; kept share does not measure the scale or difficulty of a promise.</p>
@@ -172,7 +191,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                     </Link>
                   </td>
                   <td>
-                    {category || !r.delivery ? categoryCell(r) : <button
+                    {category || !r.delivery || r.delivery.weightedMethodology ? categoryCell(r) : <button
                       type="button"
                       className="hearts-cell-toggle"
                       onClick={() => toggleExpand(r.slug)}
@@ -182,13 +201,11 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                     >
                       <HeartMeter filled={r.earned} capacity={r.capacity} size={16} />
                       {" "}
-                      <span className="num">{r.earned} of {r.capacity} potential</span>
+                      <span className="num">Promises kept: {r.earned} of {r.capacity}</span>
                     </button>}
                   </td>
                   <td>
-                    {r.delivery ? <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
-                      <ShitcoinMeter category={r.verdict} compact />
-                    </Link> : <span className="word dim">Unavailable</span>}
+                    {finding(r)}
                   </td>
                   <td>
                     <Link href="/code" className="cell-link metric-btn" title="See CODE activity ranking">
@@ -251,7 +268,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
               </Link>
               {category && <p className={styles.rank}>{r.delivery ? (ranks.has(r.slug) ? `${categoryLabel} delivery rank ${ranks.get(r.slug)}` : "Unranked") : "Assessment unavailable"}</p>}
               <div className="mcard-hearts">
-                {category || !r.delivery ? categoryCell(r) : <button
+                {category || !r.delivery || r.delivery.weightedMethodology ? categoryCell(r) : <button
                   type="button"
                   className="mcard-hearts-toggle"
                   onClick={() => toggleExpand(r.slug)}
@@ -260,13 +277,11 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                   title="Show what earned these hearts"
                 >
                   <CompactHearts earned={r.earned} capacity={r.capacity} />
-                  <span className="num mcard-count">{r.earned}/{r.capacity}</span>
+                  <span className="num mcard-count">{r.earned}/{r.capacity} kept</span>
                 </button>}
               </div>
               <div className="mcard-warning">
-                {r.delivery ? <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
-                  <ShitcoinMeter category={r.verdict} compact size={32} />
-                </Link> : <span className="word dim">Warning unavailable</span>}
+                {finding(r)}
               </div>
               <section className={styles.context} aria-label={`${r.name} supporting context`}>
               <h3>Supporting context</h3>

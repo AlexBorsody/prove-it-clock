@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import ShitcoinMeter from "@/components/shitcoin-meter";
+import { projectFlags } from '@/lib/project-policy';
 import HeartMeter from "@/components/heart-meter";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
@@ -63,6 +64,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
         </div>
       );
     case "verdict":
+      if(projectFlags(p.slug).genesis) return <span className="word dim">Genesis asset · historical promise inventory</span>;
       return (
         <div>
           <Link href={`/projects/${p.slug}#verdict`} aria-label={`${p.name} Shitcoin warning breakdown`} className="gauge-btn">

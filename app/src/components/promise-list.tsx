@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
-import { normalizePromiseState } from "@/lib/hearts";
 import {
   promiseAnchor,
   promiseReferences,
   promiseEvidenceHref,
   matchesPromiseFilter,
   promiseDisplay,
+  displayPromiseState,
   type PromiseFilter,
 } from "@/lib/promise-context";
 
@@ -20,13 +20,13 @@ const PAGE_SIZE = 3;
 export function promiseHeart(pr: any): { filled: boolean; color: string; label: string } {
   let s: string;
   try {
-    s = normalizePromiseState(pr.state);
+    s = displayPromiseState(pr.state);
   } catch {
     return { filled: false, color: "var(--text-faint)", label: "No heart yet" };
   }
   if (s === "fulfilled") return { filled: true, color: "var(--green)", label: "Earned 1 heart" };
-  if (s === "lapsed" || s === "retired")
-    return { filled: false, color: "var(--red)", label: "Heart lost" };
+  if (s === "lapsed" || s === "retired" || s === 'missed')
+    return { filled: false, color: "var(--red)", label: "Promise unkept" };
   return { filled: false, color: "var(--text-faint)", label: "No heart yet" };
 }
 
@@ -56,6 +56,7 @@ export default function PromiseList({
       // collapsing distinct lineage names onto the same anchor.
       const anchor = promiseAnchor(slug, String(pr.lineage ?? i));
       const label = refs[i].label;
+      const outcomeEvidence=pr.outcome_evidence ?? pr.evidence ?? [];
       return (
         <div className="comp-row search-section" key={pr.lineage ?? i} {...searchMeta({ id: anchor, title: `${name}: ${pr.criteria ?? pr.lineage ?? "Promise"}`, kind: "Promise", project: slug, keywords: `${pr.lineage ?? ""} ${pr.claim_type ?? ""} ${d.label}` })}>
           <div className="promise-head">
@@ -71,9 +72,10 @@ export default function PromiseList({
           </div>
           <p className="comp-desc">{pr.rationale}</p>
           <details className="comp-sources" id={`${anchor}-evidence`} open={filter !== "all" || evidence === String(pr.lineage ?? i)}>
-            <summary>Evidence ({pr.evidence?.length ?? 0})</summary>
-            {pr.evidence?.length > 0 ? <ul>
-              {pr.evidence.map((e: any, j: number) => (
+            <summary>{pr.outcome_evidence ? 'Outcome evidence' : 'Assessment references'} ({outcomeEvidence.length})</summary>
+            {pr.claim_sources?.length > 0 && <><h4>Original claim sources</h4><ul>{pr.claim_sources.map((source:any,j:number)=><li key={j}><a href={source.url} target="_blank" rel="noreferrer">{source.summary}</a> · {source.locator}</li>)}</ul><h4>Outcome evidence</h4></>}
+            {outcomeEvidence.length > 0 ? <ul>
+              {outcomeEvidence.map((e: any, j: number) => (
                 <li key={j}>
                   <a href={e.url} target="_blank" rel="noreferrer">{e.summary ?? e.url}</a>
                 </li>

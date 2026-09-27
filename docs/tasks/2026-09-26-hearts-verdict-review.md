@@ -8,6 +8,13 @@ and visualization component. The implementation and release handoff lives in
 This approval does not invent missing evidence or assign unreviewed weights.
 It does not activate the old Index formula or any embeddings pipeline.
 
+**Later architecture clarification:** importance is now a separate versioned
+model, not an evidence-record field or a synonym for the single core flag.
+Tier 4 does not promote a promise to core. The shared contract records this
+amendment and PR #8. Delivery share remains distinct from economic impact and
+valuation; the later category-model direction supersedes any universal ranking
+suggested below. No real weighted publication is approved by this document.
+
 ## Recommendation
 
 Use the published promise record as the single scoring authority. Hearts are

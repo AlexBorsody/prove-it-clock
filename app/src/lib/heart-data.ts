@@ -1,11 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
-import { VERDICT_METHODOLOGY, validateVerdictVersions } from './promise-assessment';
+import { VERDICT_METHODOLOGY, validateVerdictVersions, validateImportanceModel } from './promise-assessment';
 
 /** Methodology string for the hearts instrument.
  * Points at the methodology whose runs are published in production.
  * Change this only when publishing the first run under the new string,
  * otherwise the site finds no runs and every page goes empty. */
-export const HEARTS_METHODOLOGY = 'hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)';
+export const LEGACY_HEARTS_METHODOLOGY = 'hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)';
+export const HEARTS_METHODOLOGY = LEGACY_HEARTS_METHODOLOGY;
 
 /** Separate read client: prefer RLS-protected credentials over the writer key. */
 export function heartReadClient() {
@@ -154,18 +155,20 @@ export async function readPublishedPromiseLedger(selection: {runId?:string;metho
   return readAtlasLedger({
     async latest() {
       let query = db.from('heart_runs')
-        .select('id,as_of,methodology,review_status,versions:payload->versions')
+        .select('id,as_of,methodology,review_status,versions:payload->versions,importance_model:payload->importance_model')
         .eq('review_status','published').eq('methodology',selection.methodology ?? HEARTS_METHODOLOGY);
       if (selection.runId) query = query.eq('id',selection.runId);
       const {data,error}=await query.order('as_of',{ascending:false}).order('recorded_at',{ascending:false})
         .order('id',{ascending:false}).limit(1).maybeSingle();
       if(error) throw error;
       if (!data) return null;
+      if (data.methodology !== (selection.methodology ?? HEARTS_METHODOLOGY) || (selection.runId && data.id !== selection.runId)) throw new Error('Published run selection mismatch');
       if (data.methodology === VERDICT_METHODOLOGY) {
         validateVerdictVersions(data.versions);
-        return {...data,versions:data.versions};
+        validateImportanceModel(data.importance_model);
+        return {...data,versions:data.versions,importance_model:data.importance_model};
       }
-      return {...data,versions:null};
+      return {...data,versions:null,importance_model:null};
     },
     async page(runId,from,to) {
       const {data,error,count}=await db.from('heart_rankings')

@@ -45,3 +45,12 @@ the altcoin verdict pipeline.
 - Whether any future asset could ever qualify as genesis-like. Default: no.
 
 Nothing here invents evidence or changes any existing published hearts.
+
+## Implementation review
+
+[PR #8](https://github.com/AlexBorsody/prove-it-clock/pull/8) adds explicit
+Bitcoin-only project policy metadata, the Genesis designation, exclusion from
+delivery/category ranks and verdict badges, and the retained published inventory.
+Context ranks are unaffected. The legacy scores API exposes `genesis: true` and
+`shitcoin_warning: null`; its heart history remains unchanged. Local browser
+verification passed; this note does not claim the PR has been merged or deployed.

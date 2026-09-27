@@ -61,7 +61,7 @@ export default function AtlasExplorer({ data, project }: { data:AtlasDataset; pr
       <AtlasMap data={data} matches={matches} selected={selected?.id??null} select={choose}/>
       {selected?<aside ref={panel} tabIndex={-1} className={styles.details} aria-labelledby={detailId} onKeyDown={e=>{if(e.key==='Escape')choose(null);}}><AtlasDetails node={selected} close={()=>choose(null)} titleId={detailId}/></aside>:!project&&<div className={styles.emptyDetails}><span aria-hidden="true">◎</span><h2>Start with a promise</h2><p>Select a point to inspect its claim, delivery test and evidence.</p><p className={styles.muted}>Different subjects. The same question: did they deliver?</p></div>}
     </div>
-    <div className={styles.legend} aria-label="Map legend"><span><i data-state="kept"/> Kept</span><span><i data-state="lapsed"/> Lapsed / retired</span><span><i data-state="open"/> Open / in progress / unknown</span><span>◎ Core promise</span></div>
+    <div className={styles.legend} aria-label="Map legend"><span><i data-state="kept"/> Kept</span><span><i data-state="lapsed"/> Lapsed / retired{data.verdictVersions ? ' / missed' : ''}</span><span><i data-state="open"/> Open / in progress / unknown</span><span>◎ Core promise</span></div>
     <p className={styles.disclosure}>Curated category layout. Position shows classification, not measured similarity or importance.</p>
     <details className={styles.info}><summary>Layout, data and limitations</summary>
       <p>Categories are curated. Distance between points does not measure value or similarity. Uniform point sizes do not represent importance. Exact statuses and source limitations appear in each record.</p>

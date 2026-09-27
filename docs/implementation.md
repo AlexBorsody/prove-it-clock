@@ -13,6 +13,15 @@ rest of this document includes earlier implementation history.
 
 ## Active implementation: hearts and verdict
 
+Implementation review: [PR #8](https://github.com/AlexBorsody/prove-it-clock/pull/8).
+It adds delivery composition and immutable-run evidence receipts, restores the
+shared project-page reader, and applies the Genesis display exclusion. V4
+publication scaffolding separates model importance from evidence records;
+it does not activate a new methodology or publish the draft weights. The
+[shared contract](tasks/2026-09-26-hearts-verdict-contract.md#codex-progress)
+records concrete validation and remaining editorial/model decisions. Later
+layered/category-model directions take precedence over older overall-score prose.
+
 Alex approved the design review and requested continued implementation plus
 direct Markdown coordination with Muse to ship the verdict visualization.
 The [ten-question review and proposed contract](tasks/2026-09-26-hearts-verdict-review.md)

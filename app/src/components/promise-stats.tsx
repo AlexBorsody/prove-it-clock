@@ -20,6 +20,7 @@ export default function PromiseStats({ slug, name, promises, earned, methodology
     { label: "Earned hearts", value: earned, tone: "earned", filter: "kept" },
     { label: "Open hearts", value: counts.open + counts.active, tone: "open", filter: "open" },
     { label: "Lapsed hearts", value: counts.lapsed, tone: "lapsed", filter: "lapsed" },
+    ...(counts.missed ? [{ label: "Missed promises", value: counts.missed, tone: "lapsed", filter: "missed" as const }] : []),
     ...(counts.retired ? [{ label: "Retired hearts", value: counts.retired, tone: "retired", filter: "retired" as const }] : []),
     ...(counts.unknown ? [{ label: "Unknown state", value: counts.unknown, tone: "open", filter: "unknown" as const }] : []),
     { label: "Promises tracked", value: promises.length, tone: "total", filter: "all" },

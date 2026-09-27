@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import ShitcoinMeter from "@/components/shitcoin-meter";
+import { projectFlags } from '@/lib/project-policy';
 import { RedditIcon, TelegramIcon, NewsIcon } from "@/components/icons";
 import type { VerdictCategory } from "@/lib/verdict";
 import { searchMeta } from "@/lib/search-sections";
@@ -81,9 +82,9 @@ export function HypeRowCard({ row: r }: { row: HypeRow }) {
         )}
       </div>
       <div className="hype-verdict">
-        <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
+        {projectFlags(r.slug).genesis ? <span className="word dim">Genesis asset</span> : <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
           <ShitcoinMeter category={r.verdict} compact size={38} />
-        </Link>
+        </Link>}
         <SourceIcons sources={r.sources} />
       </div>
     </article>
