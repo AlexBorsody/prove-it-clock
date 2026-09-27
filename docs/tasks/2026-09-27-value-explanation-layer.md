@@ -80,16 +80,35 @@ relevant product feature:
 
 ## Deliverable 3: "What gives this asset value?" (project pages)
 
-Explanatory section, not a score. Five fixed questions; answers link to
-the ledger or a named model version:
+Explanatory section, not a score. Framing question (adopted from
+review):
 
-1. What does holding this asset let you do? (capabilities/rights, sourced)
+> Is this project creating additional economic substance, or mainly
+> participating in the market for tradeable digital assets?
+
+Five fixed questions; answers link to the ledger or a named model
+version. These double as the impact model's burden of proof — for a
+monetary asset, examine the monetary proposition itself; for a project
+claiming to transform advertising, computing, finance, or settlement,
+require evidence of that additional contribution:
+
+1. What does holding this asset let you do? (capabilities/rights,
+   sourced) — *basic functionality: it actually works.*
 2. Why might someone want it? (documented value thesis)
-3. What is already demonstrated? (fulfilled promises + usage evidence)
+3. What is already demonstrated? (fulfilled promises + usage
+   evidence) — *actual demand: people use it, with trading and
+   incentive-driven activity identified rather than disguised; then
+   realized impact at demonstrated scale.*
 4. Who receives the economic benefit? (users, validators, company,
-   treasury, token holders — distinguished)
+   treasury, token holders — distinguished) — *token connection:
+   those benefits give a reason to hold this particular token.*
 5. What still depends on future success or continued demand?
-   (unresolved assumptions)
+   (unresolved assumptions) — *valuation assumptions: what growth
+   or continued demand the market price requires.*
+
+Holding and transferring a token is not proof that its broader
+promises have succeeded. Market enthusiasm never substitutes for that
+evidence.
 
 Every statement carries an evidence label: **observed evidence,
 issuer-reported, model interpretation, disputed assessment,** or
@@ -173,4 +192,20 @@ Implementation consequences:
   asset, a trillion dollars of expectation." Walk the user from
   Bitcoin's two demonstrated properties to the composition of total
   crypto market cap, and ask what the non-Bitcoin portion is resting
-  on. Link each claim to its record.
+  on. Link each claim to its record. Supporting evidence for the
+  investigation (labeled, not hardcoded conclusions): BTC ≈ $1.7T of
+  ≈ $2.99T total crypto cap, roughly 57% (CoinGecko snapshot,
+  2026-09-27); a 2023 IMF working paper found a common "crypto
+  factor" explaining about 80% of price variation in its sample —
+  grounds for asking whether investors buy the broad cycle rather
+  than pricing each project's delivery (it does not establish
+  Bitcoin alone causes the co-movement).
+- **Unequal-standards guardrail.** Bitcoin's market price cannot prove
+  its value while another token's market price proves only
+  speculation. Neither price proves fair value by itself. Bitcoin can
+  have a demonstrated monetary role while its price still contains
+  speculation — those statements are compatible, and the product must
+  hold both. "Everything else is speculation" stays a hypothesis the
+  evidence can confirm or overturn per project, never the answer
+  hardcoded into the product. That is what separates an
+  accountability instrument from another crypto faction.
