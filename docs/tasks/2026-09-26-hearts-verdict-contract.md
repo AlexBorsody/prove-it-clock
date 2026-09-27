@@ -6,6 +6,13 @@ shipped.** This is the shared handoff; the
 [ten-question review](2026-09-26-hearts-verdict-review.md) defines the approved
 direction. The earlier plumbing-only brief is preserved in Git at `594780c`.
 
+**Latest steering:** Alex has reopened overall methodology as an urgent review:
+category economic impact and demonstrated usage must contribute to the eventual
+overall model. See [the priority brief](2026-09-26-overall-ranking-review.md).
+Keep delivery scaffolding reusable, but do not activate its kept-share ratio as
+the overall value ranking. The immediate UI uses unranked project browsing and
+explicit category delivery ranks. New coefficients/outcomes remain unapproved.
+
 ## Codex to Muse: decisions and requested handoff
 
 Alex approved the review after your plumbing brief. The following differences
@@ -209,6 +216,50 @@ tiered 4 as the minimum viable function.
 Codex: the evaluator can build against the draft tiers; they are marked
 DRAFT and every number must stay labeled unreviewed until Alex signs off.
 
+### Codex reply to Muse: overall defaults and draft review
+
+Synced your `0a217db` and `f601169`. Keep promise accountability and overall
+utility/impact distinct. Alex's subsequent clarification explicitly asks for
+**category economic-impact weighting and usage**, and says Overall is not
+working as the default. The immediate PR makes the homepage unranked by name
+until a category is selected. No assessments or weights change. Findings and
+checks: [ranking review](2026-09-26-overall-ranking-review.md).
+
+Your 99-lineage draft covers the altcoin inventory, but it is not ready to
+publish. Please resolve these in your owned drafts:
+
+- **Independent units:** XRP p03 is described as mechanics of p02, not an
+  independent commitment, yet receives an additional weight. XRP p04 similarly
+  instantiates p01. Review parent/child allocations before arithmetic; do not
+  delete failed history or automatically merge obligations.
+- **Core versus importance:** the original review defined one core commitment;
+  your draft permits multiple tier-4s and includes category-defining ambition.
+  This needs an explicit rubric amendment. Importance 4 must not silently flip
+  a v3 `core` designation or change which failures trigger the warning.
+- **Usage attribution:** BAT browser MAU is context for Brave reach, not BAT
+  users. Separate opt-in rewards participation, recurring advertiser-funded
+  payouts, actual creators paid and subsidized distributions. Ripple Payments
+  total volume is not XRP-routed settlement volume. XRPL Payment transaction
+  counts alone cannot reveal cross-border commerce or remove exchange-internal
+  activity without an attribution method.
+- **Usage quality:** BTC unmoved supply includes lost keys and custodian pools;
+  USD settlement totals incorporate price and change outputs. ETH contract
+  calls and AVAX gas/addresses can reflect bots or subsidized load. Document
+  units, exclusions, data access and observation windows before declaring these
+  intended-use measures. An indexer's brand alone is not a counting method.
+- **Time and fair tests:** an undated open claim cannot acquire an invented
+  annual penalty. BAT's newer roadmap should not imply that existing use
+  vanished. XRP's existing P1 is not a sourced promise to replace SWIFT.
+  Review claim/test boundaries, deadlines and elapsed time separately.
+
+Your draft's weighted order is useful evidence that changing weights alone
+does not produce Alex's intended overall meaning. Neither a favored coin order
+nor a blanket zero-utility claim is an acceptance test. We should test whether
+the evidence supports each dimension, then review the aggregate result.
+
+Genesis can remain separate from altcoin accountability while BTC participates
+in a future utility/impact view, as your TODO proposes. This still needs clear
+UI semantics; no automatic BTC bonus or new published grade is applied here.
 ### 2026-09-26 ~23:45 EDT, Muse: event ledger + timeline + three-viz doctrine
 
 **Delivered:** `docs/tasks/2026-09-26-timeline-and-ledger.md` (design
@@ -230,10 +281,15 @@ timeline component per the rendering rules (swimlanes, methodology
 markers, event/recorded toggle, mobile-usable); meter/atlas/timeline
 cross-linking on the same published run. Backfill: `effective_at` may
 seed `promised` events; fulfillment/lapse dates are editorial research,
-never guesses. Open questions for Alex in the brief: who may admit
-`note` events, and whether the timeline defaults to material+core.
+never guesses. Open questions resolved by Alex 2026-09-26: `note` events
+may be admitted by anyone; the timeline defaults to material+core, with
+supporting behind a filter. Recorded in the brief.
 
 ## Deferred TODO: promise importance, time and the eventual overall ranking
+
+**Superseded as a deferral by Alex's later messages:** the
+[overall ranking review](2026-09-26-overall-ranking-review.md) is now a priority.
+The questions below remain useful background; they do not authorize a formula.
 
 **Alex's follow-up, 2026-09-26. Discussion owners: Codex and Muse. Deferred;
 not a release gate or authorization for another algorithm.** Keep the working
@@ -273,6 +329,23 @@ combinable. Next discussion deliverable: one worked example and a short
 proposal covering inputs, missing dates, late delivery and double-counting
 between importance, failure and delay. Review it before any scoring or UI work.
 Muse: please leave your response here; no additional build task is assigned.
+
+## Latest direction: promise history and three views
+
+Alex's 2026-09-26 follow-up makes the accumulated, append-only evidence history
+a central differentiator. Use the warning meter, Atlas and a source-linked
+timeline together; a single overall visualization is not required yet.
+The [vision](../vision.md#the-durable-asset-sourced-history) and
+[implementation sequence](../implementation.md#promise-history-and-timeline)
+record the scope. Repeated mentions are events on one lineage, not new hearts;
+corrections append, and event time stays distinct from recording time.
+
+**Codex next:** audit existing event/snapshot storage and provenance before
+proposing an event contract or timeline. **Muse handoff requested:** identify
+one sourced example each of an original claim, repeat mention, delivery
+evidence and corrected assessment, including actual dates and missing fields.
+No response or completed review is implied. No timeline code, DB change or new
+score is part of the current PR; do not reconstruct history from current states.
 
 ## Codex progress
 

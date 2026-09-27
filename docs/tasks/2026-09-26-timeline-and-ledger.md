@@ -100,9 +100,10 @@ Requirements for the schema (Codex owns the DDL):
 - Build, typecheck, and focused tests pass; mobile timeline is usable
   (horizontal scroll with sticky promise labels, no tooltip-only info).
 
-## Open questions for Alex
+## Open questions: resolved by Alex 2026-09-26
 
-1. Should `note` events (progress without state change) be admitted by
-   anyone, or analyst-only? (Spam/advocacy risk.)
-2. Does the timeline show all promises or only material+core by
-   default, with supporting behind a filter?
+1. `note` events: **admitted by anyone.** Spam/advocacy risk accepted;
+   corrections append and everything stays source-linked, so abuse is
+   visible rather than hidden.
+2. Timeline default: **material+core promises**, with supporting behind
+   a filter.

@@ -71,6 +71,7 @@ export default function MethodologyPage() {
       </Section>
 
       <Section icon="grid" title="Comparing projects" id="rankings">
+        <p>All projects opens as an unranked browser. Choose a category to see delivery rankings.</p>
         <p>
           Choose a subject to compare projects making similar kinds of promises.
           Category rankings currently use <strong>kept promises ÷ all tracked
@@ -89,8 +90,8 @@ export default function MethodologyPage() {
         </p>
         <p>
           No recorded failure does not mean every promise was kept. Open
-          promises still matter. The next verdict replaces this dial with
-          delivery and coverage, explained below.
+          promises still matter. A replacement using delivery and coverage
+          is under review, explained below.
         </p>
       </Section>
 
@@ -158,9 +159,13 @@ export default function MethodologyPage() {
         <p className={styles.version}><strong>Current rules:</strong> {HEARTS_METHODOLOGY}</p>
       </Section>
 
-      <Section icon="wrench" title="Next verdict: approved, not yet published" id="publication">
+      <Section icon="wrench" title="Overall ranking: under review" id="publication">
         <p>
-          The approved revision gives promises documented importance weights:
+          We are reviewing how category economic impact and demonstrated usage
+          should contribute to an overall ranking. Neither is scored today.
+        </p>
+        <p>
+          The working delivery model gives promises documented importance weights:
           supporting <strong>1</strong>, material <strong>2</strong>, core <strong>4</strong>.
           Each assignment needs an author and a reason.
         </p>
