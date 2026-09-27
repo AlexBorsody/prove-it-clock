@@ -23,7 +23,7 @@ export default function AtlasExplorer({ data, project }: { data:AtlasDataset; pr
   const projectsMenu=useRef<HTMLDetailsElement|null>(null);
   // Close the Projects dropdown when tapping/clicking anywhere outside it.
   useEffect(()=>{
-    const close=e=>{const d=projectsMenu.current; if(d&&d.open&&e.target instanceof Node&&!d.contains(e.target)) d.open=false;};
+    const close=(e:MouseEvent)=>{const d=projectsMenu.current; if(d&&d.open&&e.target instanceof Node&&!d.contains(e.target)) d.open=false;};
     document.addEventListener('click',close);
     return ()=>document.removeEventListener('click',close);
   },[]);
