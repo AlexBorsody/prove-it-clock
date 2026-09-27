@@ -6,6 +6,11 @@ Latest inspected main: `2b93c48`, including Muse's TRAC/NEO/FARTCOIN intake.
 Codex owns `codex/timeline-completion`; token intake remains Muse's work. Stocks
 is a watch item, not an authorized timeline schema expansion.
 
+Draft [PR #16](https://github.com/AlexBorsody/prove-it-clock/pull/16), implementation
+`61cfe04`: three existing timeline tests, TypeScript and offline batch validation
+pass. Local SQL rehearsal accepted the three real draft events. No new UI
+interaction checks or hosted release are claimed.
+
 The deployed XRP timeline was inspected in the browser and reports history
 unavailable. PR #15 delivered the component, not a verified hosted migration or
 published event batch. This corrects the broader “timeline is live” check-in.
