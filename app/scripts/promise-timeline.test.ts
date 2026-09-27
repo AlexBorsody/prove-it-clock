@@ -11,7 +11,7 @@ const source={url:'https://example.org/fictional',title:'Fictional test source',
 const base={lineage:'fixture-promise',summary:'Fictional promise timeline fixture',author:'Test fixture',source};
 const statement={...base,id:'stated',kind:'promise_stated',occurredOn:'2017-05-16',speaker:'Fictional issuer',claimType:'milestone'};
 const evidence={...base,id:'observed',kind:'evidence',occurredOn:'2018-10',stance:'supports',provenance:['Fictional issuer-reported observation; not research']};
-const assessment={...base,id:'assessed',kind:'assessment',occurredOn:'2026-09-26',runId:runA,methodology,state:'open',supersedes:null};
+const assessment={...base,id:'assessed',kind:'assessment',occurredOn:'2026-09-26',runId:runA,methodology,state:'open',supersedes:null,note:'Issuer-reported volume is not independently verified.'};
 const revision={id:'test-revision',project_slug:'xrp',ledger_run_id:runA,recorded_at:'2026-09-27T00:00:00Z'};
 test('date precision and source safety are preserved by the timeline reader',()=>{
   for(const date of ['2015','2018-10','2024-02-29'])assert.equal(validEventDate(date),true);
@@ -46,6 +46,7 @@ test('history publication is atomic, append-only, replayable, and bound to real 
     ]};
     const nextId=await publish(second);
     const latest=(await db.query<any>('SELECT * FROM promise_history_revisions WHERE id=$1',[nextId])).rows[0];
+    assert.equal(parseTimelineRow(JSON.parse(JSON.stringify(latest))).events.find(e=>e.kind==='assessment')?.note,assessment.note);
     assert.deepEqual(latest.events.slice(0,3),old.events);assert.equal(latest.events.length,5);
     // PostgREST serializes PostgreSQL timestamps as JSON strings.
     assert.equal(parseTimelineRow(JSON.parse(JSON.stringify(latest))).events.length,5);

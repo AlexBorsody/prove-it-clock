@@ -15,7 +15,7 @@ ledger entries the user has not seen yet. Newsworthy entry types:
 
 - New promise added to a project.
 - New evidence attached to a promise (delivery evidence, repeated mention).
-- Corrected assessment (a verdict changed on new evidence).
+- Corrected assessment (an assessment changed on new evidence).
 
 Market data, CODE/HYPE metric updates, and price moves are NOT promise news.
 Never notify on those.

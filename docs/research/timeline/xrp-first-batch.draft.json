@@ -58,7 +58,8 @@
         "title": "Prove Value published XRP promise record",
         "publishedOn": "2026-09-26",
         "locator": "xrp-p01-bridge-liquidity"
-      }
+      },
+      "note": "Ripple Payments volume is issuer-reported and must not be read as verified XRP-routed volume."
     }
   ]
 }

@@ -78,6 +78,45 @@ self.addEventListener("fetch", (event) => {
   // Next client navigations are fetches outside /api, not document navigations.
   // Let them and other non-immutable resources reach the network.
 });
+
+// Push notifications: payload is { title, body, url, tag }, all set server-side.
+self.addEventListener("push", (event) => {
+  let data = {};
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch (err) {
+    data = {};
+  }
+  const title = typeof data.title === "string" && data.title ? data.title : "Prove Value";
+  const body = typeof data.body === "string" ? data.body : "";
+  const url = typeof data.url === "string" && data.url.startsWith("/") ? data.url : "/";
+  const tag = typeof data.tag === "string" ? data.tag : undefined;
+  event.waitUntil(
+    self.registration.showNotification(title, { body, tag, data: { url } })
+  );
+});
+
+// Tapping a notification deep-links to the promise/evidence in the ledger.
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || "/";
+  event.waitUntil(
+    self.clients
+      .matchAll({ type: "window", includeUncontrolled: true })
+      .then((clients) => {
+        for (const client of clients) {
+          if (client.url.includes(self.location.origin) && "focus" in client) {
+            return client.focus().then((c) => {
+              if ("navigate" in c) return c.navigate(url);
+              return c;
+            });
+          }
+        }
+        if (self.clients.openWindow) return self.clients.openWindow(url);
+        return undefined;
+      })
+  );
+});
 `;
 
 const out = path.join(__dirname, "..", "public", "sw.js");

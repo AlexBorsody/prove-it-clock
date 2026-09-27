@@ -206,3 +206,25 @@ repeated. The prior preview reports Ready in Vercel's PR status; this is not
 hosted database or event-data verification. No new review comments or research
 handoff arrived. Codex retains #15; Muse's source/schema handoff above is pending.
 The shared checkout and its untracked `.vscode/` remain untouched.
+
+### PR review follow-up — September 27, late check
+
+Integrated main `419edf5`, preserving Muse's stocks, intake and notification
+work. PR #16 review now puts the Ripple Payments caveat in an assessment
+`note`, rendered beside the unchanged published rationale. The existing SQL
+round-trip test checks that it survives publication and reading. The primary
+2017 Ripple page explicitly names Brad Garlinghouse in its byline; attribution
+is retained after reopening the source, not inferred from a company post.
+
+PR #16 comment 5860919886 reports Alex's authorization for hosted migration
+007 through the dashboard. The earlier authorization hold is superseded; no
+hosted apply occurred in this review slice. Finish the batch review, then use
+the actual configured dashboard target. Do not guess a project ID.
+
+PR #17 comments 5860961167 and 5860973840 approve company category rankings
+and assign company implementation to Codex after crypto timeline PR #16 ships.
+Categories: AI, Space, Cloud, Semiconductors, EVs & Autonomy, Energy Storage;
+Robotics remains possible. Main now includes Muse's initial stocks build and
+the full authoritative brief, so do not overwrite it with the older scope PR.
+Specific ranking calculations still need to follow the company contract; no
+crypto ranking changes follow from this approval.

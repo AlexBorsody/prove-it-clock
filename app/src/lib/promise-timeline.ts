@@ -12,7 +12,7 @@ export type PromiseEvent = EventBase & (
   | {kind:'promise_stated';speaker:string;claimType:'milestone'|'ongoing'}
   | {kind:'promise_repeated';originalId:string;wordingChange:'same'|'narrowed'|'expanded'}
   | {kind:'evidence';stance:'supports'|'refutes'|'context';provenance:string[]}
-  | {kind:'assessment';runId:string;methodology:string;state:string;supersedes:string|null;correctionReason?:string}
+  | {kind:'assessment';runId:string;methodology:string;state:string;supersedes:string|null;correctionReason?:string;note?:string}
 );
 export interface PromiseTimelineData {
   revisionId:string;projectSlug:string;ledgerRunId:string;recordedAt:string;events:PromiseEvent[];
@@ -50,6 +50,7 @@ export function parseTimelineRow(row:unknown):PromiseTimelineData {
     if(e.kind==='promise_repeated'&&(!['same','narrowed','expanded'].includes(e.wordingChange)||!events.some(p=>p.id===e.originalId&&p.lineage===e.lineage&&p.kind==='promise_stated')))throw new Error('Invalid repeated statement');
     if(e.kind==='evidence'&&(!['supports','refutes','context'].includes(e.stance)||!Array.isArray(e.provenance)||!e.provenance.length||!e.provenance.every(nonempty)))throw new Error('Invalid evidence provenance');
     if(e.kind==='assessment') {
+      if(e.note!==undefined&&!nonempty(e.note))throw new Error('Invalid assessment note');
       if(!nonempty(e.runId)||!nonempty(e.methodology)||!['open','fulfilled','lapsed','retired'].includes(e.state)||!(e.supersedes===null||nonempty(e.supersedes)))throw new Error('Invalid assessment');
       if(e.supersedes&&(!nonempty(e.correctionReason)||!events.some(p=>p.id===e.supersedes&&p.lineage===e.lineage&&p.kind==='assessment')||events.some(p=>p.kind==='assessment'&&p.supersedes===e.supersedes)))throw new Error('Invalid correction chain');
     }

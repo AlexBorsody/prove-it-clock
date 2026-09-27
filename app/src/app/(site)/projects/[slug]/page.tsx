@@ -28,6 +28,7 @@ import ButtonLink from "@/components/button-link";
 import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
+import PushSubscribeToggle from "@/components/push-subscribe-toggle";
 import PromiseList from "@/components/promise-list";
 import ProjectTimeline from '@/components/project-timeline';
 import ProjectAtlas from "@/components/atlas/project-atlas";
@@ -147,6 +148,7 @@ export default async function ProjectPage({ params, searchParams }: {
         {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
+          <PushSubscribeToggle projectSlug={slug} label="Notify me" />
         </div>
       </div>
 

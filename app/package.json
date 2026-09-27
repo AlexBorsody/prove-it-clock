@@ -11,7 +11,8 @@
     "react-markdown": "10.1.0",
     "recharts": "^3.10.1",
     "remark-gfm": "4.0.1",
-    "swagger-ui-react": "^5.33.0"
+    "swagger-ui-react": "^5.33.0",
+    "web-push": "^3.6.7"
   },
   "description": "The Prove-It Clock \u2014 evidence-driven crypto accountability. Measures the distance between crypto's promises and reality.",
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/web-push": "^3.6.4",
     "tsx": "^4.19.0",
     "typescript": "^5.6.0"
   },
@@ -40,6 +42,8 @@
     "social:collect": "tsx scripts/collect-social.ts",
     "research:intake": "node --import tsx scripts/collect-promise-intake.ts",
     "test:intake": "node --import tsx --test scripts/promise-intake.test.ts",
+    "test:stocks": "node --import tsx --test scripts/stock-intake.test.ts scripts/stock-data.test.ts",
+    "intake:stocks": "node --import tsx scripts/collect-stock-intake.ts",
     "test:social": "node --import tsx --test scripts/social.test.ts",
     "test:db": "node --import tsx --test scripts/heart-database.test.ts",
     "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs",
@@ -48,6 +52,11 @@
     "atlas:audit": "node --import tsx scripts/atlas-audit.ts",
     "ranking:calibrate": "node --import tsx scripts/calibrate-ranking.ts",
     "test:calibration": "node --import tsx --test scripts/ranking-calibration.test.ts",
+    "push:fanout": "node --import tsx scripts/fanout-push.ts",
+    "scan:news": "node --import tsx scripts/scan-promise-news.ts",
+    "scan:review": "node --import tsx scripts/review-proposals.ts",
+    "vapid:generate": "node --import tsx scripts/generate-vapid.ts",
+    "test:push": "node --import tsx --test scripts/push-notifications.test.ts scripts/push-smoke.test.ts",
     "timeline:publish": "node --import tsx scripts/publish-timeline.ts"
   },
   "version": "0.1.0"
