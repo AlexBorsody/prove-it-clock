@@ -5,6 +5,14 @@ is the evidence view, not the product. The product is the living verdict
 per project. This task builds that layer. It changes no scoring rules and
 invents no methodology. Vision: [vision.md](../vision.md#verdict-layer).
 
+**Subsequent review approved for implementation:** Alex requested a ruling on
+the ten hearts/verdict methodology questions. The
+[review and proposed next contract](2026-09-26-hearts-verdict-review.md)
+records the recommendations and build sequence. This earlier task's implemented
+v1 is the migration baseline. Alex has now approved continued implementation
+and direct coordination with Muse to ship the verdict and visualization.
+The active handoff is [the shared contract](2026-09-26-hearts-verdict-contract.md).
+
 ## Goal
 
 A visitor asking "is this team full of shit?" gets an answer in five

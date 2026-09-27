@@ -11,6 +11,25 @@ The [Promise Atlas v1 plan](#promise-atlas-v1-implementation) below and its
 and Index formula instructions. Atlas build progress and acceptance results are recorded in that queue; the
 rest of this document includes earlier implementation history.
 
+## Active implementation: hearts and verdict
+
+Alex approved the design review and requested continued implementation plus
+direct Markdown coordination with Muse to ship the verdict visualization.
+The [ten-question review and proposed contract](tasks/2026-09-26-hearts-verdict-review.md)
+is the single proposal for weighted delivery, outcome coverage, core findings,
+retirement semantics and gaming defenses. Its implementation sequence remains
+active under [the shared contract](tasks/2026-09-26-hearts-verdict-contract.md).
+It does not revive the superseded Index plan.
+
+Extend the existing versioned publication/reader/evaluator path;
+do not create a second promise-scoring pipeline. The plan requires reviewed
+weights and provenance, distinct fulfillment/lifecycle facts, confirmed missed
+milestones, one pinned result across page/API/receipts, and a compatible
+published run before activation. Existing editorial questions remain in the
+[verdict task](tasks/2026-09-26-verdict-layer.md#research-sign-off-still-required).
+Preserve v3 interpretations and the rendered algorithm appendix until a
+compatible reviewed publication can activate the new contract.
+
 ## Delivery verdict and homepage rankings (2026-09-26)
 
 The new delivery summary is a read-only view of the active published ledger.

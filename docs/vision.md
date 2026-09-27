@@ -6,6 +6,13 @@ remains unchanged. Product direction lives here; build details and the ordered
 queue live in [implementation.md](implementation.md) and
 [tasks/2026-09-26-promise-atlas.md](tasks/2026-09-26-promise-atlas.md).
 
+**Methodology direction approved for implementation by Alex:** the
+[hearts and verdict proposal](tasks/2026-09-26-hearts-verdict-review.md)
+answers the ten scoring questions and defines delivery weighting, coverage,
+core findings and lifecycle rules. Codex and Muse coordinate implementation in
+[the shared contract](tasks/2026-09-26-hearts-verdict-contract.md). Published v3
+ratings remain in force until a compatible reviewed publication is activated.
+
 ## The product in one line
 
 Did crypto projects actually deliver what they promised? The product is the
@@ -223,6 +230,30 @@ rankings are authorized as specified below.
   grey open. Delivery accountability only, never investment advice.
 
 Task brief: [tasks/2026-09-26-verdict-layer.md](tasks/2026-09-26-verdict-layer.md).
+
+### Next verdict, approved for implementation
+
+The [methodology review](tasks/2026-09-26-hearts-verdict-review.md) recommends
+one published promise ledger feeding both hearts and the verdict. Hearts stay
+an unweighted inventory labeled "Promises kept." The proposed headline reports
+core findings and **Proven delivery**, the weighted share of all tracked
+commitments kept, with **Outcome coverage** alongside it. The kept share among
+resolved promises excludes open/unknown outcomes but is never a standalone
+verdict or ranking: 2 kept and 14 open must not read as perfect delivery.
+
+Proposed importance uses explicit supporting/material/core judgments (1:2:4),
+not embedding similarity or category multipliers. A confirmed core failure
+remains prominent regardless of minor successes. Retirement and fulfillment
+are separate facts; milestone delivery is not erased merely by archiving it.
+No negative credit, generic decay, direct CODE/HYPE/market contribution or
+intrinsic-value Index is proposed. The review includes anti-inflation rules,
+unavailable evidence, confirmed misses and a versioned migration plan.
+
+This would replace the fixed warning dial and change the default delivery
+ranking. Alex approved the direction and requested the verdict visualization
+be shipped through direct Markdown coordination with Muse. This authorizes
+implementation; record-specific judgments still need evidence. The existing
+v3 appendix stays unchanged until a compatible version is published.
 
 ## Prove Value Index: separate future work
 

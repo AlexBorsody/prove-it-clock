@@ -1,98 +1,106 @@
-# Hearts feed the verdict: the data contract
+# Hearts and verdict: shared implementation and release contract
 
-Date: 2026-09-26. Alex's decision, locked in conversation.
+**2026-09-26. Active. Alex approved continued implementation and asked Codex
+to talk directly to Muse through Markdown to get the verdict and visualization
+shipped.** This is the shared handoff; the
+[ten-question review](2026-09-26-hearts-verdict-review.md) defines the approved
+direction. The earlier plumbing-only brief is preserved in Git at `594780c`.
 
-## The issue this documents
+## Codex to Muse: decisions and requested handoff
 
-The atlas brief (`2026-09-26-promise-atlas.md`) says: "Hearts stay dumb
-(promise in, heart out) and become drill-down/metadata." That decision is
-superseded. If hearts are metadata only, the verdict's promise component
-needs its own promise pipeline: two research pipelines, and the first time
-they disagree there is no way to answer "where did this number come from."
+Alex approved the review after your plumbing brief. The following differences
+are deliberate and must not become competing implementations:
 
-New rule: **one promise record, two jobs.** The 8-bit hearts display shows
-the unweighted inventory (promise in, heart out — that display does not
-change). The verdict aggregates the *same records*, weighted. No duplication,
-and every future index number resolves to the exact hearts that produced it.
+- One published record feeds hearts, verdict, categories and receipts.
+- Per independent commitment: supporting/material/core weights **1/2/4**, with
+  named author, rationale and version. No provisional `weight = 1` backfill,
+  guessed centrality, or unsupported 0-1 scores.
+- The Atlas taxonomy already exists. Use its primary categories; do not
+  overwrite existing assignments with Unclassified. Unmapped stays explicit.
+- Headline/rank: **Proven delivery = kept weight / all tracked weight**.
+  **Outcome coverage = resolved weight / all tracked weight**. Resolved-only
+  kept share is explanatory detail, never a standalone verdict.
+- Missing weights make weighted output unavailable. Current v3 records keep
+  their exact interpretations; they are not silently upgraded to weighted ones.
+- Fulfillment, lifecycle and evidence availability are separate. An unmet
+  retirement remains zero; archiving a delivered milestone does not unship it.
+- Core unkept/unresolved/unavailable findings survive weighting and filters.
+  Replace the arbitrary warning dial when the compatible verdict can render.
+- No generic decay, negative scores, CODE/HYPE/market bonus, or intrinsic-value
+  Index. No synthetic history. Published snapshots alone do not establish the
+  date a failure happened; changing methodology does not create a delivery event.
 
-## What to build
+The old brief's acceptance claim that a judged-only ratio reproduces the
+inventory ratio was mathematically false when open promises exist. The review
+contains the expected arithmetic and edge cases.
 
-This brief authorizes plumbing only. It does not authorize computing the
-index, changing the hearts display, or touching the shitcoin meter.
+### Ownership and replies
 
-### 1. Heart record gains two fields
+- **Codex owns:** publication/types and SQL validation, deterministic evaluator,
+  version-pinned readers/receipts/API, reusable verdict visualization and page
+  integration, focused tests and release verification. Work continues while
+  the editorial handoff is prepared.
+- **Muse, requested:** review the record inputs and visual direction below;
+  prepare actual per-record importance reasons and source-role/outcome corrections
+  in a draft publication, with real authorship. Please write accepted/amended
+  decisions, file ownership and the draft path in the reply section before
+  editing the files Codex owns. Avoid concurrent shared-file edits.
+- **Muse, editorial priorities:** BTC P11/P12 test/source mismatches; the five
+  retired milestones (BTC P12, ETH P08/P10, XRP P19, SOL P08); source roles and
+  evidence dates across the 115 promises; independent commitment boundaries;
+  seven Unclassified assignments. Do not label anything Alex-reviewed unless
+  he actually reviewed it. Unknown inputs stay unknown.
 
-Every scored promise record carries, in addition to what it has today
-(id, project, statement, state, core flag, evidence/source links):
+## Visualization slice to ship
 
-- `weight` (float, 0-1): how central the promise is to what the project is for.
-- `category` (string): the promise category it belongs to.
+Build a reusable **delivery composition** component in the existing verdict
+card. A horizontal band partitions the complete commitment weight into kept,
+confirmed unkept, open and unknown. Green/red/neutral treatments match the
+ledger, with text labels and patterns so meaning does not depend on color.
+Selecting a segment or category exposes the exact records and evidence used.
 
-Provisional values until the methodology lands: `weight = 1.0` for every
-promise, `category = "unclassified"`. The aggregation and any API must read
-both fields from the data, never hardcode them, so real values flow in with
-no code change when the taxonomy and weight definition land.
+The factual core finding stays above the band. Proven delivery and outcome
+coverage are explicit. The unweighted heart inventory is secondary and labeled
+"Promises kept." The category breakdown uses the same calculation and primary
+membership. All zero/unavailable/pending states have usable text alternatives.
+Mobile and keyboard interactions must work; no tooltip-only evidence access.
 
-### 2. State-to-score mapping (proposed; Alex confirms)
+This is an inspectable snapshot component, not a restored Delivery Timeline or
+fabricated trend graph. A later historical visualization must use real stored
+revisions and mark methodology boundaries. It is not a prerequisite to this slice.
 
-- fulfilled/kept = 1
-- lapsed/retired = 0
-- open = excluded from the denominator, not scored as 0. An unjudged
-  promise is unknown, never a failure. The open count stays visible
-  alongside any aggregate so "9 of 9 judged kept, 7 still open" reads
-  honestly.
+Until reviewed weights exist, retain a clearly labeled unweighted published
+inventory view without inventing weighted scores. Missing data is not a clean
+verdict. Weighted activation requires compatible records; shipping code alone
+does not constitute editorial acceptance or publication.
 
-### 3. Aggregation function (pure, deterministic, unit-tested)
+## Data and release acceptance
 
-Per project, per category, per snapshot date:
+- Extend the existing append-only heart publication path, preserving v3.
+  The new contract records importance, primary category, original claim source,
+  outcome evidence, separate outcome/lifecycle, observation/review timestamps,
+  nullable deadline and transitions. Event time and recorded time are distinct.
+- Pin run, methodology, admission/weight/assignment versions. Public receipts
+  select the same published run; a new publication cannot silently change the
+  records behind a previously inspected number. Drafts never leak through reads.
+- No duplicate scored units from child checks, statements or releases. No
+  omitted failed commitments, default weights, or lost source URLs.
+- Verify arithmetic examples in the review; v3 regression checks; publication
+  validation/atomicity; category ties; missing data; same-run reads; mobile and
+  keyboard navigation from band to evidence.
+- Record actual build, test, browser, deployment and publication results here.
+  Use existing release tooling. Publish a reviewed compatible run before any
+  active-methodology switch. Never claim production acceptance from fixtures.
 
-```
-score = sum(weight * state_score) / sum(weight of judged promises)
-```
+## Muse reply
 
-Inputs are the dated heart snapshots already published (`heart_runs` /
-`heart_snapshots`); the time series comes free. Same determinism rules as
-the atlas brief: no randomness, no unpinned models, reproducible from the
-ledger. This function computes the P (promise fulfillment) input of the
-future index. It does not compute the index itself.
+Awaiting a written response. No response or editorial sign-off is implied by
+the requested ownership above.
 
-### 4. Read API for the verdict pipeline
+## Codex progress
 
-New read-only endpoint (e.g. `/api/verdict-inputs`) serving per-promise
-records: promise id, project, statement, state, state_score, weight,
-category, evidence links, snapshot date. Phase 5 (index computation) will
-read this; build it so that phase needs no rebuild here.
-
-### 5. Display contract (no UI work now)
-
-When the index ships, every number must link back to the contributing
-promise records. Build the data so that resolution is a lookup, not a
-reconstruction.
-
-## Standing rules (do not break)
-
-- The ledger is sacred: every promise keeps its exact source link.
-- No scoring changes visible to users. No new meters, no new tabs, no
-  changes to the hearts display or the shitcoin meter under this brief.
-- Market data never feeds any score. HYPE is context only.
-- No em dashes in public copy. Everything as components going forward.
-- Missing data means unknown, never zero.
-
-## What is blocked (do NOT build; methodology, with Alex + ChatGPT review)
-
-- Promise weight definition (centrality formula). Plumbing uses 1.0.
-- Promise category taxonomy. Plumbing uses "unclassified".
-- The index formula itself: I(p,t) = alpha*V + beta*P, alpha/beta,
-  category anchors, fulfillment thresholds, time decay. Do not compute it.
-- The V (intrinsic value) pipeline. This brief covers P only.
-
-## Validation
-
-- Every scored promise in the ledger carries `weight` and `category`
-  (provisional values acceptable).
-- With provisional weights, the aggregation reproduces the unweighted
-  inventory count exactly.
-- Re-running the aggregation on the same snapshots produces identical
-  output, byte for byte.
-- The endpoint serves all 8 published projects; each record resolves to
-  its evidence links.
+- Read `594780c` and reconciled the earlier plumbing defaults against Alex's
+  subsequently approved review. Approval recorded in vision/implementation/task.
+- Checked current app: one pinned v3 ledger already feeds the delivery card and
+  Atlas; the old warning remains separate. No v4 records or reviewed weights
+  exist in the inspected publication artifact. Implementation work is starting.
