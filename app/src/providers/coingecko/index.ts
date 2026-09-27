@@ -111,6 +111,22 @@ export async function fetchUniverseMarkets(size = 20): Promise<UniverseRow[]> {
 }
 
 /**
+ * Fetch market rows for specific CoinGecko IDs (one batched call), for
+ * coins outside the market-cap-ranked universe (e.g. targeted small-cap
+ * intake). Rows carry the same shape as fetchUniverseMarkets.
+ */
+export async function fetchMarketsByIds(ids: string[]): Promise<UniverseRow[]> {
+  if (!ids.length || ids.some((id) => !/^[a-z0-9][a-z0-9_-]*$/.test(id))) {
+    throw new Error('fetchMarketsByIds requires 1+ valid CoinGecko IDs.');
+  }
+  const endpoint =
+    `/coins/markets?vs_currency=usd&ids=${encodeURIComponent(ids.join(','))}` +
+    `&price_change_percentage=24h,30d&precision=full`;
+  const { fetch } = await getJson(endpoint, { signal: AbortSignal.timeout(30000), next: { revalidate: 90 } });
+  return fetch.payload as UniverseRow[];
+}
+
+/**
  * Fetch + normalize market + project-fact metrics for a batch of projects.
  * @param entries [{slug, coingeckoId}]
  */

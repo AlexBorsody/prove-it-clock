@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { collectPromiseIntake, intakeCandidates } from '../src/pipeline/promise-intake';
+import { collectPromiseIntake, collectTargetedIntake, intakeCandidates } from '../src/pipeline/promise-intake';
 
 const row = (id: string, rank: number, symbol = id) => ({ id, name: id, symbol, market_cap_rank: rank });
 test('identity uses provider IDs, never ticker or array position', () => {
@@ -57,5 +57,35 @@ test('onboarding a mapping keeps old captures valid and appears in the next dail
     const next = await collectPromiseIntake({ directory, fetchMarkets, projectMappings, now: new Date('2026-09-27T00:00:00Z') });
     assert.equal(next.snapshot.candidates[0].existingProjectSlug, 'newcoin');
     assert.equal(JSON.parse(await readFile(first.path, 'utf8')).candidates[0].existingProjectSlug, null);
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});
+
+test('targeted intake captures named IDs outside the universe, reuses 24h, never collides with the universe cache', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'targeted-intake-'));
+  let calls = 0;
+  const fetchMarketsByIds = async (ids: string[]) => { calls++; assert.deepEqual(ids, ['origintrail', 'neo']); return [row('origintrail', 216, 'TRAC'), row('neo', 201, 'NEO')]; };
+  try {
+    const first = await collectTargetedIntake({ directory, ids: ['origintrail', 'neo'], fetchMarketsByIds, now: new Date('2026-09-27T18:00:00Z') });
+    assert.equal(calls, 1); assert.equal(first.reused, false);
+    assert.equal(first.snapshot.kind, 'research-intake-targeted');
+    assert.equal(first.snapshot.coverage, 'complete');
+    assert.ok(first.path.includes('intake-targeted-'));
+    assert.deepEqual(first.snapshot.candidates.map(c => c.symbol), ['NEO', 'TRAC']);
+    const [neo, trac] = first.snapshot.candidates;
+    assert.equal(neo.existingProjectSlug, null);
+    assert.equal(neo.stage, 'needs_identity_review');
+    assert.equal(trac.existingProjectSlug, 'trac');
+    assert.equal(trac.stage, 'existing_mapping');
+    const repeated = await collectTargetedIntake({ directory, ids: ['neo', 'origintrail'], fetchMarketsByIds, now: new Date('2026-09-28T12:00:00Z') });
+    assert.equal(calls, 1); assert.equal(repeated.reused, true); assert.equal(repeated.path, first.path);
+    // A missing row is partial coverage, not an invented candidate.
+    const partial = await collectTargetedIntake({ directory, ids: ['origintrail', 'neo'], fetchMarketsByIds: async () => [row('origintrail', 216, 'TRAC')], now: new Date('2026-09-29T18:00:00Z') });
+    assert.equal(partial.snapshot.coverage, 'partial');
+    assert.equal(partial.snapshot.candidates.length, 1);
+    assert.equal(partial.snapshot.candidates[0].coingeckoId, 'origintrail');
+    // The universe cache regex never matches targeted files.
+    const { readdir } = await import('node:fs/promises');
+    const universe = (await readdir(directory)).filter(f => /^intake-\d{4}-\d{2}-\d{2}T\d{6}Z\.json$/.test(f));
+    assert.equal(universe.length, 0);
   } finally { await rm(directory, { recursive: true, force: true }); }
 });

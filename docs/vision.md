@@ -568,6 +568,31 @@ Neither Bitcoin's price nor another token's price independently proves fair
 value. Missing evidence stays visible, and findings can overturn our thesis.
 
 
+## Value lens: the hype killer (Alex, 2026-09-27)
+
+The product kills meme-coin hype by replacing it with worthy projects, not by attacking it. The instrument does the killing: a coin with no real promises scores not applicable, never a full meter, and the warning panel states the documented facts. No editorial takedowns. The neutral arbiter stance is the moat; taking sides would spend it.
+
+**Tagline (adopted 2026-09-27): "Truth fears no investigation."** Sits alongside "Truth, not hype."
+
+**Small-cap merit set (verified 2026-09-27).** Four coins at nearly identical market caps, wildly different substance:
+
+| Coin | Market cap | Rank | Substance case |
+|---|---|---|---|
+| TRAC (OriginTrail) | ~$165-187M | ~146 | Decentralized Knowledge Graph; supply-chain and AI data provenance; token demand tied to network use |
+| BAT | ~$133-141M | ~169 | Brave browser ad economy; millions of users; working rewards product |
+| NEO | ~$143-189M | ~148-214 | Legacy L1, N3 shipped; ecosystem faded; better than a meme coin, weakest of the three |
+| FARTCOIN | ~$140-195M | ~141-197 | The foil. No promises to score; verdict not applicable; warning only |
+
+The market prices all four the same. The ledger will not. That spread is the 1:1 hook made visible, and the demo the atlas was built to show.
+
+Intake: all four sit at rank ~140-200, outside the top-100 intake capture (2026-09-27). Added via targeted intake (`app/scripts/collect-targeted-intake.ts`, CoinGecko ids: origintrail, neo, fartcoin) or targeted researcher dossiers with exact source URLs per the promise display rule. Intake automation never creates scored promises; the reviewed release path still applies. BAT is already an onboarded project.
+
+**Dogfood first (Alex, 2026-09-27).** He is building this for himself first and already using it. Using it showed the ranking algorithms were not what helped; the verdict, the promise detail, and the timeline are. Rankings work continues in service of the verdict, not as the headline.
+
+**Timeline status (2026-09-27).** Event taxonomy and worked-examples brief delivered (docs/tasks/2026-09-27-timeline-foundation.md); that brief was the four-event handoff the 2026-09-26 ledger brief gated on. PR #15 "Add a sourced promise timeline with immutable history revisions" is merged; the timeline is live on project pages. Check-in note: docs/tasks/2026-09-27-codex-checkin.md.
+
+**After crypto: stocks.** Reaffirmed 2026-09-27. Tech stocks are the next market once crypto is proven, per the parked section below. Nothing changes until then.
+
 ## Data rules
 
 - Hearts remain the published delivery mechanic. Atlas explores the same
@@ -608,6 +633,7 @@ afternoon.
 
 ## Changelog
 
+- 2026-09-27: hype-killer / value-lens positioning adopted; tagline "Truth fears no investigation"; small-cap merit set (TRAC, BAT, NEO + FARTCOIN foil, all ~$140-195M) added via targeted intake; dogfood-first direction (verdict, promise detail, timeline over ranking algorithms); timeline PR #15 merged; stocks reaffirmed as the next market after crypto is proven.
 - 2026-09-26 (later): product iteration. The Atlas v1 is infrastructure,
   not the product. The product is the living verdict per project (per
   category, updating, every number clickable to its receipt). Per-category

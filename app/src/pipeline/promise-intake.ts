@@ -61,6 +61,76 @@ export interface IntakeSnapshot {
   raw: unknown;
 }
 
+export const TARGETED_INTAKE_FILE_RE = /^intake-targeted-\d{4}-\d{2}-\d{2}T\d{6}Z\.json$/;
+
+export interface TargetedIntakeSnapshot {
+  schemaVersion: 1;
+  kind: 'research-intake-targeted';
+  capturedAt: string;
+  source: string;
+  payloadSha256: string;
+  requestedIds: string[];
+  coverage: 'complete' | 'partial';
+  projectMappings: Record<string, string>;
+  candidates: IntakeCandidate[];
+  raw: unknown;
+}
+
+/**
+ * Targeted discovery for named coins outside the top-N universe (e.g. the
+ * small-cap merit set). Same rules as the universe capture: draft research
+ * candidates only — no publication client, no score defaults, no generated
+ * promises. Targeted files never collide with the universe cache.
+ */
+export async function collectTargetedIntake(options: {
+  directory: string;
+  ids: string[];
+  fetchMarketsByIds: (ids: string[]) => Promise<unknown>;
+  now?: Date;
+  projectMappings?: Record<string, string>;
+}): Promise<{ path: string; reused: boolean; snapshot: TargetedIntakeSnapshot }> {
+  const now = options.now ?? new Date();
+  const ids = [...new Set(options.ids)];
+  if (!ids.length || ids.length > INTAKE_SIZE || ids.some((id) => !/^[a-z0-9][a-z0-9_-]*$/.test(id))) {
+    throw new Error('Targeted intake requires 1-100 unique valid CoinGecko IDs.');
+  }
+  await mkdir(options.directory, { recursive: true });
+  const files = (await readdir(options.directory)).filter((file) => TARGETED_INTAKE_FILE_RE.test(file)).sort().reverse();
+  if (files[0]) {
+    const path = join(options.directory, files[0]);
+    const saved = JSON.parse(await readFile(path, 'utf8')) as TargetedIntakeSnapshot;
+    const age = now.getTime() - Date.parse(saved.capturedAt);
+    const valid = saved.schemaVersion === 1 && saved.kind === 'research-intake-targeted'
+      && Array.isArray(saved.requestedIds)
+      && saved.requestedIds.length === ids.length && ids.every((id) => saved.requestedIds.includes(id))
+      && saved.projectMappings != null
+      && Number.isFinite(age) && age >= 0 && saved.payloadSha256 === digest(saved.raw);
+    if (!valid) throw new Error('Invalid targeted intake cache; inspect it before collecting again.');
+    const candidates = intakeCandidates(saved.raw, saved.projectMappings);
+    if (JSON.stringify(candidates) !== JSON.stringify(saved.candidates)
+      || saved.coverage !== (candidates.length === ids.length ? 'complete' : 'partial')) {
+      throw new Error('Targeted intake cache does not match its source rows.');
+    }
+    if (age < DAY_MS) return { path, reused: true, snapshot: saved };
+  }
+
+  const raw = await options.fetchMarketsByIds(ids);
+  const projectMappings = { ...(options.projectMappings ?? MARKET_IDS) };
+  const candidates = intakeCandidates(raw, projectMappings);
+  const capturedAt = now.toISOString();
+  const snapshot: TargetedIntakeSnapshot = {
+    schemaVersion: 1, kind: 'research-intake-targeted', capturedAt,
+    source: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=24h,30d&precision=full`,
+    payloadSha256: digest(raw), requestedIds: ids,
+    coverage: candidates.length === ids.length ? 'complete' : 'partial',
+    projectMappings, candidates, raw,
+  };
+  const filename = `intake-targeted-${capturedAt.slice(0, 19).replaceAll(':', '')}Z.json`;
+  const path = join(options.directory, filename);
+  await writeFile(path, JSON.stringify(snapshot, null, 2) + '\n', { flag: 'wx' });
+  return { path, reused: false, snapshot };
+}
+
 function digest(payload: unknown) {
   return createHash('sha256').update(JSON.stringify(payload)).digest('hex');
 }
