@@ -220,3 +220,27 @@ active. Atlas must interpret the actual record methodology explicitly.
   filtered to its one lapsed promise, and opened its recorded assessment
   and evidence without leaving the project route. No production console
   errors appeared in that check. Temporary local test servers were stopped.
+
+### Project Atlas restoration — 2026-09-27
+
+Alex requested the embedded Atlas back. Main `13692bd` retained the component
+but no longer rendered it on project pages. Restored the existing `ProjectAtlas`
+immediately after Promises, before recent news and Supporting context, with its
+loading fallback and searchable project-specific section ID. No new component,
+data source, scoring change or database migration.
+
+- Owned by Codex on `codex/restore-project-atlas`. This isolates the same
+  restoration already in draft PR #8 so it can ship independently; preserve
+  this section when that larger verdict work is merged.
+- All 11 Atlas/cache tests and the production build (including type checking)
+  passed. Existing `themeColor` metadata warnings remain.
+- Browser checked the isolated production build with the captured published
+  ledger: BTC shows 16 promises, Lapsed narrows to one, and selecting its point
+  opens the assessment/evidence while `?promises=kept` stays intact. Its full
+  Atlas link includes BTC, the status filter and selection. ETH shows 12 of 12.
+- Desktop 1280px and mobile 360px checks: BTC has no horizontal page overflow;
+  the mobile evidence close control works. ETH's Atlas fits at 336px. A separate
+  existing ETH promise description (`eth-p02`, `.comp-desc`) overflows the page
+  to 413px; that unmodified promise-card layout needs a separate follow-up.
+- No hosted data, physical pinch or production deployment verification is
+  claimed. The temporary browser fixture changes no repository or hosted data.

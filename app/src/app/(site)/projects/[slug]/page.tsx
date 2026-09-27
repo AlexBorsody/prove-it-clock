@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react";
 import {
   HEARTS_METHODOLOGY,
   readHeartHistory,
@@ -29,6 +30,7 @@ import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-ch
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";
+import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
@@ -247,6 +249,12 @@ export default async function ProjectPage({ params, searchParams }: {
         </div>
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
+
+      <section className="panel atlas-section search-section" {...searchMeta({id:`project-${slug}-atlas`,title:`${latest.name} Promise Atlas`,kind:'Atlas',project:slug,keywords:'promise categories evidence'})}>
+        <Suspense fallback={<><h2>{latest.name} Promise Atlas</h2><p role="status">Loading the promise map…</p></>}>
+          <ProjectAtlas slug={slug} name={latest.name}/>
+        </Suspense>
+      </section>
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
