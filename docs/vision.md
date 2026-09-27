@@ -30,6 +30,22 @@ evidence and outcome. Hearts record delivery, not token prices or economic
 value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
+**The hook (Alex, 2026-09-26):** in a perfect world, proven value and
+market cap would be 1:1. They aren't, and the gap is the product. We
+measure what projects proved; the market measures what people believe.
+The distance between the two is where the money is. This is a
+presentation of two independent numbers side by side, never a blend:
+price and market data must not enter the verdict itself, or the score
+becomes circular. The verdict stays pure (promises only); the gap is
+what the user reads.
+
+**On the moat (Alex, 2026-09-26):** honestly, the moat is thin today. A
+dashboard is not a moat, and selling access is revenue, not
+defensibility. The moat is time plus trust: every month of ledger
+history is a month a competitor cannot buy back, and being the neutral
+arbiter people believe is a brand moat. The 1:1 hook is what gets people
+in the door; the door is what builds the moat.
+
 
 ### The long-term target: value and market cap align
 
