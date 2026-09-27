@@ -10,16 +10,14 @@ import {
   latestHypeBySlug,
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
-import { verdictFor, type VerdictCategory } from "@/lib/verdict";
-import { normalizePromiseState } from "@/lib/hearts";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
-import ShitcoinMeter from "@/components/shitcoin-meter";
+import DocumentedProblems from "@/components/documented-problems";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
-import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
+import { promiseReferences, promiseFilterHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
@@ -64,7 +62,7 @@ export default async function ProjectPage({ params, searchParams }: {
 
   // Supporting-context ranks: where this project stands among all tracked
   // projects, using the exact default sort of the destination pages.
-  // Context only: these never feed the verdict.
+  // Context only: these never change promise states.
   const codeRankRows = await Promise.all(
     (rankings.projects ?? []).map(async (p: any) => {
       const v = p.slug === slug ? vitals : await fetchVitals(p.slug).catch(() => null);
@@ -89,39 +87,6 @@ export default async function ProjectPage({ params, searchParams }: {
     .sort((a, b) => (b.mentions ?? -1) - (a.mentions ?? -1));
   const hypeRank = hypeOrder.findIndex((r) => r.slug === slug) + 1;
   const hypeTotal = hypeOrder.length;
-
-  const verdictResult = verdictFor(
-    promises.map((pr: any) => {
-      let state = "open";
-      try {
-        state = normalizePromiseState(pr.state);
-      } catch {
-        /* unknown -> open; never a silent pass */
-      }
-      return { lineage: pr.lineage, state, core: !!pr.core };
-    })
-  );
-  const verdict: VerdictCategory = verdictResult.category;
-  // The exact promises feeding the meter: tap the meter, see the inputs.
-  const verdictInputs = verdictResult.failedLineages.map((lineage) => {
-    const pr = promises.find((p: any) => p.lineage === lineage);
-    return {
-      criteria: pr?.criteria ?? pr?.lineage ?? lineage,
-      state: (() => {
-        try {
-          return normalizePromiseState(pr?.state ?? "open");
-        } catch {
-          return "open";
-        }
-      })(),
-      core: !!pr?.core,
-      evidenceHref: pr ? promiseEvidenceHref(slug, String(pr.lineage)) : undefined,
-    };
-  });
-  const verdictEmptyText =
-    verdict === "Watch"
-      ? "A promise is overdue and under review. The meter sits at 4 until the review resolves."
-      : "No failed promises in the record. The meter sits at 1.";
 
   // Delivery health: kept vs in play vs failed promises, shown as a bar.
   const health = { kept: 0, inPlay: 0, failed: 0 };
@@ -165,7 +130,6 @@ export default async function ProjectPage({ params, searchParams }: {
     earned: latest.earned,
     capacity: latest.capacity,
     filledPct,
-    verdict,
     mentions: hypeMentions,
     baselineWeeks,
     sources: hypeLatest?.sources_ok ?? [],
@@ -188,7 +152,7 @@ export default async function ProjectPage({ params, searchParams }: {
           {latest.name}
           <span className="coin-symbol">{latest.symbol}</span>
         </h1>
-        {genesis && <p id="verdict" className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s promise history is recorded separately from altcoin verdicts and delivery rankings.</p>}
+        {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
         </div>
@@ -197,8 +161,8 @@ export default async function ProjectPage({ params, searchParams }: {
       <span id="hearts" aria-hidden="true" />
 
       {/* All promise content lives in one consolidated panel below:
-          help expander, delivery health, the promise list, the delivery
-          verdict meter, and the stats. */}
+          help expander, delivery health, the promise list, documented
+          problems, and the stats. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
@@ -246,10 +210,7 @@ export default async function ProjectPage({ params, searchParams }: {
           </p>
         )}
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
-        {!genesis && <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
-          <span id="verdict" aria-hidden="true" />
-          <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
-        </div>}
+        <DocumentedProblems slug={slug} name={latest.name} promises={promises} asOf={latest.as_of} available={latest.availability === "available"} />
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
 

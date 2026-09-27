@@ -53,7 +53,7 @@ export default function AtlasExplorer({ data, project }: { data:AtlasDataset; pr
       <label className={styles.search}>Search promises<input type="search" value={filters.q} maxLength={160} placeholder="Claim, project or ticker" onChange={e=>filter({q:e.target.value},true)}/></label>
     </div>
     <div className={styles.resultBar}><span role="status">{matches.length} of {data.nodes.length} promises</span><button type="button" onClick={()=>filter({...EMPTY_FILTERS,primaryOnly:false})}>Reset filters</button><a href={`#${listId}`}>Browse as a list ↓</a></div>
-    {filters.primaryOnly&&filters.category&&<p className={styles.notice}>Showing primary category assignments to match the verdict total. <button type="button" onClick={()=>filter({primaryOnly:false})}>Include secondary associations</button></p>}
+    {filters.primaryOnly&&filters.category&&<p className={styles.notice}>Showing primary category assignments to match the promise count. <button type="button" onClick={()=>filter({primaryOnly:false})}>Include secondary associations</button></p>}
     {notice&&<p role="status" className={styles.notice}>{notice}</p>}
     {resolved.missing&&<p role="status" className={styles.warning}>That promise is not available in this published dataset. <button type="button" onClick={()=>choose(null)}>Clear selection</button></p>}
     {data.coverage.unavailableProjects.length>0&&<p className={styles.warning}>Assessments unavailable for: {data.coverage.unavailableProjects.join(', ')}. Missing assessments are not zero failures.</p>}

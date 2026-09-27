@@ -9,11 +9,11 @@ import styles from './delivery-verdict.module.css';
 export default async function DeliveryVerdict({slug,name}:{slug:string;name:string}) {
   let data;
   try { data=await getPublishedAtlas(); }
-  catch { return <section className="panel"><h2>Delivery verdict</h2><p role="alert">The promise ledger could not be loaded.</p></section>; }
+  catch { return <section className="panel"><h2>Delivery record</h2><p role="alert">The promise ledger could not be loaded.</p></section>; }
   const summary=data?summarizeDelivery(data,slug):null;
-  if(!data||!summary) return <section className="panel"><h2>Delivery verdict</h2><p>No current published assessment is available for {name}.</p></section>;
-  return <section className={`panel delivery-verdict-section ${styles.card}`} {...searchMeta({id:`project-${slug}-delivery`,title:`${name} delivery verdict`,kind:'Verdict',project:slug,keywords:'kept open lapsed retired categories evidence'})}>
-    <h2>Delivery verdict</h2>
+  if(!data||!summary) return <section className="panel"><h2>Delivery record</h2><p>No current published assessment is available for {name}.</p></section>;
+  return <section className={`panel delivery-verdict-section ${styles.card}`} {...searchMeta({id:`project-${slug}-delivery`,title:`${name} delivery record`,kind:'Evidence',project:slug,keywords:'kept open lapsed retired categories evidence'})}>
+    <h2>Delivery record</h2>
     <div className={styles.total}><Link href={deliveryReceipt(slug,undefined,'kept')} aria-label={`${summary.kept} kept promises. View evidence`}>{summary.kept}</Link><span>of</span><Link href={deliveryReceipt(slug)} aria-label={`${summary.total} scored promises. View evidence`}>{summary.total}</Link><span>promises kept</span></div>
     <div className={styles.states}>{(['open','in_progress','lapsed','retired','unknown'] as const).filter(state=>summary.states[state]>0).map(state=><Link key={state} href={deliveryReceipt(slug,undefined,state)} data-state={state}>{summary.states[state]} {STATE_LABELS[state].toLowerCase()} ↗</Link>)}</div>
     <p className={styles.note}>Recent lapse timing unavailable.</p>

@@ -8,9 +8,7 @@ import {
   useWord,
   type HypeSnapshot,
 } from "@/lib/heart-data";
-import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
-import { verdictLine } from "../../../../data/verdict-lines";
 import { fetchVitals } from "@/lib/vitals";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
 import { searchMeta } from "@/lib/search-sections";
@@ -46,9 +44,6 @@ export default async function ComparePage() {
         }
       });
       const count = (s: string) => states.filter((x) => x === s).length;
-      const verdict = verdictFor(
-        promises.map((pr: any, i: number) => ({ lineage: pr.lineage, state: states[i], core: !!pr.core }))
-      ).category as VerdictCategory;
       const latest = hypeLatest[p.slug];
       return {
         slug: p.slug,
@@ -57,8 +52,6 @@ export default async function ComparePage() {
         earned: p.earned,
         capacity: p.capacity,
         filledPct: p.capacity > 0 ? p.earned / p.capacity : 0,
-        verdict,
-        verdictLine: verdictLine(p.slug) ?? "",
         promiseCounts: {
           total: promises.length,
           open: count("open"),

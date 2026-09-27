@@ -7,7 +7,7 @@ import styles from "./methodology.module.css";
 export const dynamic = "force-dynamic";
 export const metadata = {
   title: "How Prove Value works",
-  description: "What was promised, what happened, and the evidence behind each verdict.",
+  description: "What was promised, what happened, and the evidence behind each assessment.",
 };
 
 function Section({ icon, title, id, open, children }: {
@@ -81,17 +81,15 @@ export default function MethodologyPage() {
         <p>The share measures recorded delivery, not difficulty, impact or token value.</p>
       </Section>
 
-      <Section icon="alert" title="What the warning means today" id="verdict">
+      <Section icon="book" title="Documented problems" id="verdict">
         <p>
-          The current warning dial uses fixed positions: <strong>1</strong> when
-          no lapsed or retired promise is recorded, <strong>7</strong> when a
-          supporting promise is lapsed or retired, and <strong>10</strong> when
-          a core promise is. It is not a percentage or a probability.
+          Project pages link to published records marked lapsed or retired,
+          with their assessment and supporting sources. These records are
+          not combined into a warning score or project label.
         </p>
         <p>
-          No recorded failure does not mean every promise was kept. Open
-          promises still matter. A replacement using delivery and coverage
-          is under review, explained below.
+          No recorded problem does not mean every promise was kept. Open and
+          unknown promises remain visible. Read the evidence and decide what it means.
         </p>
       </Section>
 
@@ -126,8 +124,7 @@ export default function MethodologyPage() {
           A project can miss an original promise and still find useful
           applications. Those are separate questions. Bitcoin&apos;s
           <strong> Genesis asset</strong> treatment keeps its promise
-          inventory visible while excluding it from altcoin verdicts and
-          rankings. Its founding role and later uses need their own evidence;
+          inventory visible. Its founding role and later uses need their own evidence;
           they do not settle every original promise&apos;s outcome.
         </p>
       </Section>
@@ -148,41 +145,25 @@ export default function MethodologyPage() {
         <p>
           Collection and drafting can be automated. An announcement establishes
           a claim, not its fulfillment. Missing source details and ambiguous
-          evidence need review; a working link alone does not validate a verdict.
+          evidence need review; a working link alone does not validate an assessment.
         </p>
         <p>
           Some current records lack a clearly identified original claim source
           or evidence date. These gaps are flagged in the Atlas. Published does
           not mean independently verified, and counts do not prove research is exhaustive.
         </p>
-        <p>Missing data stays unavailable. A failed data request is not a zero score.</p>
+        <p>Missing data stays unavailable. A failed data request is not an empty record.</p>
         <p className={styles.version}><strong>Current rules:</strong> {HEARTS_METHODOLOGY}</p>
       </Section>
 
-      <Section icon="wrench" title="Overall ranking: under review" id="publication">
+      <Section icon="book" title="Evidence, not a project score" id="publication">
         <p>
-          We are reviewing how category economic impact and demonstrated usage
-          should contribute to an overall ranking. Neither is scored today.
+          Prove Value presents claims, recorded outcomes and supporting context.
+          Hearts count promises kept; they do not measure economic value.
+          We do not combine importance weights, popularity or price into a
+          project warning score.
         </p>
-        <p>
-          The working delivery model gives promises documented importance weights:
-          supporting <strong>1</strong>, material <strong>2</strong>, core <strong>4</strong>.
-          Each assignment needs an author and a reason.
-        </p>
-        <ul>
-          <li><strong>Proven delivery:</strong> kept weight ÷ all tracked weight.</li>
-          <li><strong>Outcome coverage:</strong> resolved weight ÷ all tracked weight. Resolved means assessed as kept or unkept.</li>
-        </ul>
-        <p>
-          Open and unknown promises stay in the total without being called
-          failures. Core problems remain visible. Archiving a delivered milestone
-          does not undo its achievement; withdrawing an unmet obligation earns no credit.
-        </p>
-        <p>
-          These are product rules, not a scientifically established measure of
-          value. Weighted results require a compatible reviewed publication.
-          Missing weights are not guessed. Current scores remain under the rules above.
-        </p>
+        <p>Assessments remain judgments to inspect, with sources and visible corrections.</p>
       </Section>
     </div>
   );

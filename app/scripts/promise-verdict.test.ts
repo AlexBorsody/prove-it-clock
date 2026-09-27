@@ -13,7 +13,7 @@ const artifact=JSON.parse(readFileSync(new URL('../../db/seed/heart-runs/hearts-
 function fixture():PublishedHeartDataset {
   return {run:{id:'published-one',as_of:artifact.as_of,methodology:artifact.methodology,review_status:'published'},projects:artifact.projects.map((p:any)=>({...structuredClone(p),run_id:'published-one',methodology:artifact.methodology,name:p.slug,symbol:p.slug.toUpperCase()}))};
 }
-test('every project verdict matches published hearts and all receipt populations exactly',()=>{
+test('every project summary matches published hearts and all receipt populations exactly',()=>{
   const input=fixture(),before=JSON.stringify(input),data=adaptAtlas(input)!;
   let totals=0,kept=0;
   for(const project of input.projects as any[]) {
@@ -50,10 +50,10 @@ test('unknown, unclassified and unavailable are preserved; next run recomputes f
 function rows() {
   const summary=summarizeDelivery(adaptAtlas(fixture())!,'btc')!;
   return [
-    {slug:'a',name:'Alpha',rank:1,filledPct:.5,verdict:'Not a shitcoin',code:'Active',codeStars:5,codeCommits:10,hypeMentions:3,marketCap:20,delivery:structuredClone(summary)},
-    {slug:'b',name:'Beta',rank:2,filledPct:1,verdict:'Shitcoin',code:'Quiet',codeStars:50,codeCommits:2,hypeMentions:9,marketCap:10,delivery:structuredClone(summary)},
-    {slug:'c',name:'Gamma',rank:3,filledPct:0,verdict:'Watch',code:'Unknown',codeStars:0,codeCommits:0,hypeMentions:0,marketCap:0,delivery:structuredClone(summary)},
-    {slug:'d',name:'Delta',rank:4,filledPct:0,verdict:'Unknown',code:'Unknown',codeStars:null,codeCommits:null,hypeMentions:null,marketCap:null,delivery:null},
+    {slug:'a',name:'Alpha',rank:1,filledPct:.5,code:'Active',codeStars:5,codeCommits:10,hypeMentions:3,marketCap:20,delivery:structuredClone(summary)},
+    {slug:'b',name:'Beta',rank:2,filledPct:1,code:'Quiet',codeStars:50,codeCommits:2,hypeMentions:9,marketCap:10,delivery:structuredClone(summary)},
+    {slug:'c',name:'Gamma',rank:3,filledPct:0,code:'Unknown',codeStars:0,codeCommits:0,hypeMentions:0,marketCap:0,delivery:structuredClone(summary)},
+    {slug:'d',name:'Delta',rank:4,filledPct:0,code:'Unknown',codeStars:null,codeCommits:null,hypeMentions:null,marketCap:null,delivery:null},
   ];
 }
 test('context sorts are numeric descending, zero precedes null, ties are deterministic',()=>{
@@ -95,7 +95,7 @@ test('market cap joins by known provider ID; missing observations never become z
   for(const value of [null,NaN,Infinity,-1]) assert.equal(marketCapFor('btc',[{id:'bitcoin',market_cap:value}]),null);
   assert.equal(marketCapFor('btc',[{id:'bitcoin',market_cap:0}]),0);
 });
-test('Bitcoin is Genesis: retained as receipts but excluded from delivery and warning rankings',()=>{
+test('Bitcoin is Genesis: retained as receipts but excluded from delivery rankings',()=>{
   const data=rows().slice(0,3);
   data[1].slug='btc';data[1].name='Bitcoin';
   data[1].marketCap=100;data[1].codeStars=100;data[1].codeCommits=100;data[1].hypeMentions=100;
@@ -105,7 +105,9 @@ test('Bitcoin is Genesis: retained as receipts but excluded from delivery and wa
   for(const slug of ['eth','bat','xrp','new-coin']) assert.equal(projectFlags(slug).genesis,false);
   assert.equal(categoryRanks(data,'payments').has('btc'),false);
   assert.equal(categoryRanks(data,'payments').get('a'),1);
-  for(const sort of ['hearts','verdict'] as const) assert.equal(sortScoreboard(data,sort,'').at(-1)?.slug,'btc');
+  assert.equal(sortScoreboard(data,'hearts','').at(-1)?.slug,'btc');
+  assert.equal(parseBoardSort('verdict'),'coin');
+  assert.equal(parseBoardSort('verdict','payments'),'coin');
   assert.equal(sortScoreboard(data,'rank','payments').at(-1)?.slug,'btc');
   for(const category of ['', 'payments'] as const) {
     for(const sort of ['market-cap','stars','commits','hype','code'] as const) {

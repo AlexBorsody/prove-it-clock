@@ -1,10 +1,7 @@
 /**
  * Public v1 API data layer: clean, versioned score payloads built on the
  * same verified sources as the scoreboard.
- *
- * Public naming follows the locked copy rules: the verdict is exposed as
- * the "Shitcoin warning" dial level (1-10), never the internal category
- * names.
+ * Published promise inventory and supporting context; no project warning score.
  */
 import {
   HEARTS_METHODOLOGY,
@@ -13,17 +10,8 @@ import {
   readHypeSnapshots,
   latestHypeBySlug,
 } from "@/lib/heart-data";
-import { verdictFor } from "@/lib/verdict";
 import { projectFlags } from "@/lib/project-policy";
 import { fetchVitals } from "@/lib/vitals";
-
-/** Fixed dial positions per verdict category. Source of truth: shitcoin-meter.tsx GAUGE. */
-const WARNING_LEVEL: Record<string, number> = {
-  "Not a shitcoin": 1,
-  "Watch": 4,
-  "Shitcoin risk": 7,
-  "Shitcoin": 10,
-};
 
 export interface ScoreSummary {
   slug: string;
@@ -32,7 +20,6 @@ export interface ScoreSummary {
   rank: number;
   genesis: boolean;
   hearts: { earned: number; capacity: number };
-  shitcoin_warning: { level: number; scale: 10; label: "Shitcoin warning" } | null;
   code: { commits_90d: number | null };
   hype: { mentions_7d: number | null };
 }
@@ -60,10 +47,6 @@ type RawProject = {
 
 function toSummary(p: RawProject, rank: number, ctx: { vitals: any; hype: any }): ScoreSummary {
   const { genesis } = projectFlags(p.slug);
-  const promises: any[] = p.assessment?.promises ?? [];
-  const category = verdictFor(
-    promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
-  ).category;
   return {
     slug: p.slug,
     name: p.name,
@@ -71,11 +54,6 @@ function toSummary(p: RawProject, rank: number, ctx: { vitals: any; hype: any })
     rank,
     genesis,
     hearts: { earned: p.earned, capacity: p.capacity },
-    shitcoin_warning: genesis ? null : {
-      level: WARNING_LEVEL[category] ?? 1,
-      scale: 10,
-      label: "Shitcoin warning",
-    },
     code: { commits_90d: ctx.vitals?.commits90d ?? null },
     hype: { mentions_7d: ctx.hype?.news_mentions_7d ?? null },
   };

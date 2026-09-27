@@ -9,11 +9,9 @@ import { projectFlags } from "@/lib/project-policy";
 import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardCategory, parseBoardSort, sortScoreboard, categoryRanks, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
-import ShitcoinMeter from "@/components/shitcoin-meter";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
-import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -25,7 +23,6 @@ export interface ScoreboardRow {
   earned: number;
   capacity: number;
   filledPct: number;
-  verdict: VerdictCategory;
   code: CodeWord;
   /** Honest CODE failure text ("Couldn't reach GitHub" / "No commit data"), or null when fine. */
   codeNote: string | null;
@@ -44,7 +41,6 @@ const HEADERS: Array<{ key: BoardSort | null; label: string }> = [
   { key: "rank", label: "#" },
   { key: "coin", label: "Coin" },
   { key: "hearts", label: "Hearts" },
-  { key: "verdict", label: "Shitcoin warning" },
   { key: "commits", label: "Code" },
   { key: null, label: "Usage" },
   { key: "hype", label: "Hype" },
@@ -117,7 +113,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
   return (
     <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
       <h2>{category ? `${categoryLabel} delivery` : 'Browse projects'}</h2>
-      {!category && <p className={styles.note}>Choose a category to compare delivery. An overall value ranking is under review.</p>}
+      {!category && <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes.</p>}
       <div className={styles.controls}>
         <label>Promise category<select value={category} onChange={e => navigate({category:e.target.value,sort:''})}>
           <option value="">All projects · unranked</option>{CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
@@ -135,7 +131,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
         <table className="board">
           <thead>
             <tr className={styles.columnGroups}>
-              <th colSpan={category ? 4 : 3} scope="colgroup">Promise delivery</th>
+              <th colSpan={category ? 3 : 2} scope="colgroup">Promise delivery</th>
               <th colSpan={4} scope="colgroup">Supporting context</th>
               <th aria-label="Promise details" />
             </tr>
@@ -169,6 +165,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                         <span className="proj-name" style={{ color: "var(--text)" }}>{r.name}</span>
                         <br />
                         <span className="proj-cat num">{r.symbol}</span>
+                        {projectFlags(r.slug).genesis && <span className="cell-sub">Genesis asset</span>}
                       </span>
                     </Link>
                   </td>
@@ -185,11 +182,6 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                       {" "}
                       <span className="num">{r.earned} of {r.capacity} potential</span>
                     </button>}
-                  </td>
-                  <td>
-                    {projectFlags(r.slug).genesis ? <Link href={`/projects/${r.slug}`} className="word dim">Genesis asset</Link> : r.delivery ? <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
-                      <ShitcoinMeter category={r.verdict} compact />
-                    </Link> : <span className="word dim">Unavailable</span>}
                   </td>
                   <td>
                     <Link href="/code" className="cell-link metric-btn" title="See CODE activity ranking">
@@ -264,11 +256,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                   <span className="num mcard-count">{r.earned}/{r.capacity}</span>
                 </button>}
               </div>
-              <div className="mcard-warning">
-                {projectFlags(r.slug).genesis ? <Link href={`/projects/${r.slug}`} className="word dim">Genesis asset</Link> : r.delivery ? <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
-                  <ShitcoinMeter category={r.verdict} compact size={32} />
-                </Link> : <span className="word dim">Warning unavailable</span>}
-              </div>
+              {projectFlags(r.slug).genesis && <p className="word dim">Genesis asset</p>}
               <section className={styles.context} aria-label={`${r.name} supporting context`}>
               <h3>Supporting context</h3>
               <div className="mcard-stats">

@@ -5,7 +5,7 @@ import { searchMeta } from "@/lib/search-sections";
 
 export const metadata: Metadata = {
   title: "API Docs",
-  description: "Prove Value Scores API: read-only endpoints for hearts, the Shitcoin warning dial, CODE, and HYPE.",
+  description: "Prove Value API: read-only endpoints for promise records, hearts, CODE, and HYPE.",
 };
 
 export default function DevelopersPage() {
@@ -14,8 +14,8 @@ export default function DevelopersPage() {
       <div className="search-section" {...searchMeta({ id: "developers-overview", title: "Prove Value API", kind: "API", keywords: "OpenAPI developer scores endpoints" })}>
       <h1 className="page-title">API</h1>
       <p className="page-sub">
-        Read-only scores, free to use. Hearts are earned only; the Shitcoin warning dial reads
-        1-10. Try every endpoint live below.
+        Read-only promise records, hearts and supporting context, free to use.
+        Try every endpoint live below.
       </p>
       </div>
       <div className="panel">

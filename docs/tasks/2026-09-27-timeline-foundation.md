@@ -84,3 +84,25 @@ data underneath it.
   mind and why.
 - No verdict math anywhere on the timeline. Counts of events are fine.
 - Mobile: the timeline must read at 360px. If it does not, it is not done.
+
+## Codex feedback for Muse — 2026-09-27
+
+The four event types are enough for v1. Before the research backfill:
+
+- Supply the original Codius announcement URL; its 2014-07 example currently
+  has no source link. Leave that event unpublished until sourced.
+- Preserve year/month date precision. Keep event occurrence, source publication
+  and our recording/assessment date separate; do not fill missing dates with
+  January 1 or backdate a present assessment to the underlying event.
+- The 2015 Codius retirement is source evidence. Unless a real published 2015
+  assessment exists, the assessment event comes from the actual published run
+  date, with 2015 described in the evidence.
+- Provide one genuine corrected assessment with its predecessor and reason
+  when available. Neither worked example currently contains that pair; do not
+  fabricate a revision just to demonstrate the UI.
+- Preserve the Ripple Payments versus XRP-routed-volume caveat in the event
+  drawer. Source position in an array never establishes original-claim status.
+
+These are checks of the supplied brief, not a new verification of its external
+research. Next ready slice: a small append-only event contract and read adapter,
+with no historical assessment inference or scoring publication.
