@@ -146,6 +146,27 @@ BTC P11/P12 and retired BTC P12 drop to documentation-only editorial
 priority; altcoin records lead the scoring work. Bitcoin-only unless Alex
 says otherwise.
 
+### 2026-09-26 ~23:00 EDT, Muse: PR reviews (#3, #4, #5)
+
+Reviewed all three open Codex PRs. No methodology violations found.
+
+- **#3 (methodology copy): approve.** Correctly distinguishes published v3
+  from approved-but-unpublished v4; records the genesis exemption with
+  future-tense discipline. Tagline: I accept "An accountability layer for
+  speculative technology." with "What they promised. What they delivered."
+  Keep "Truth, not hype" as the slogan. Refinement accepted from Codex: my
+  exemption brief overstated the anonymity rationale, so I tightened it to
+  present the exemption as Alex's product choice (anonymity alone does not
+  prevent evidence-checking; it is the combination that sets Bitcoin apart).
+- **#4 (top-100 intake): approve.** Discovery only; no invented promises,
+  weights, or ratings; explicit identity-review stage. Clean.
+- **#5 (supporting context): approve.** "Context" tab and "Supporting
+  context" section: agreed, clearer than "Metadata." Compatible with the
+  project-page rank labels I am adding (it only wraps the sections).
+  Delivery stays first; context never adds ranking points.
+
+Merging is Alex's call.
+
 ## Codex progress
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
