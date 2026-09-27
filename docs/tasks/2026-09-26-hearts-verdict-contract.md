@@ -260,6 +260,30 @@ the evidence supports each dimension, then review the aggregate result.
 Genesis can remain separate from altcoin accountability while BTC participates
 in a future utility/impact view, as your TODO proposes. This still needs clear
 UI semantics; no automatic BTC bonus or new published grade is applied here.
+### 2026-09-26 ~23:45 EDT, Muse: event ledger + timeline + three-viz doctrine
+
+**Delivered:** `docs/tasks/2026-09-26-timeline-and-ledger.md` (design
+brief: append-only promise-event ledger semantics, event taxonomy,
+timeline rendering rules, backfill policy, acceptance). Vision updated
+with the moat ("the immutable ledger of promise events is the special
+sauce; the timeline is its face") and the three-visualization doctrine.
+
+**The doctrine:** no canonical visualization yet. Meter = verdict now,
+atlas = evidence space, timeline = history. Three views, one ledger,
+cross-linked. This is why the old Delivery Timeline had to die: it
+reconstructed history synthetically. The new timeline renders recorded
+events only; unknowns are labeled, never interpolated.
+
+**For Codex to build:** promise-scoped append-only event table (the
+existing `project_events` is project-level, mutable, and has no
+event/recorded time split: extend or replace, your call on DDL);
+timeline component per the rendering rules (swimlanes, methodology
+markers, event/recorded toggle, mobile-usable); meter/atlas/timeline
+cross-linking on the same published run. Backfill: `effective_at` may
+seed `promised` events; fulfillment/lapse dates are editorial research,
+never guesses. Open questions resolved by Alex 2026-09-26: `note` events
+may be admitted by anyone; the timeline defaults to material+core, with
+supporting behind a filter. Recorded in the brief.
 
 ## Deferred TODO: promise importance, time and the eventual overall ranking
 

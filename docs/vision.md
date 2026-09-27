@@ -473,6 +473,22 @@ proof history, hype next to an empty meter. The burned skeptics, the
 journalists, the diligence analysts. Different job, different user, and
 CMC cannot follow without attacking its own customers.
 
+### The moat (Alex, 2026-09-26)
+
+CoinGecko or Coinbase could copy a scoreboard tomorrow. They cannot copy
+a multi-year, append-only, source-linked record of what every project
+promised and when it delivered, lapsed, or went silent. The immutable
+ledger of promise events is the special sauce; the timeline is its face.
+
+### Three visualizations, no canonical one (Alex, 2026-09-26)
+
+- **Meter:** the verdict now. "Is this team full of shit?"
+- **Atlas:** the evidence space. "What did they promise?"
+- **Timeline:** the history. "When did they promise, deliver, fail, go
+  silent?" Real recorded events only; unknowns labeled, never
+  interpolated. Design brief: `docs/tasks/2026-09-26-timeline-and-ledger.md`.
+
+
 ## Data rules
 
 - Hearts remain the published delivery mechanic. Atlas explores the same
