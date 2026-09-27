@@ -11,6 +11,95 @@ The [Promise Atlas v1 plan](#promise-atlas-v1-implementation) below and its
 and Index formula instructions. Atlas build progress and acceptance results are recorded in that queue; the
 rest of this document includes earlier implementation history.
 
+## Layer-by-layer build sequence (Alex, 2026-09-27)
+
+Standing rule: one layer at a time, stay focused. Each layer's open
+questions get resolved before that layer builds. Habib and Alex resolve
+methodology questions; Codex writes the in-depth technical spec per
+layer. What follows is the light spec: what gets built and what gates
+it. No layer starts until its questions are answered.
+
+### Layer 1: Evidence ledger
+
+The foundation. Everything else reads it; nothing rewrites it.
+
+Light spec: append-only promise/event store (extend migrations 001/002;
+do not fork a parallel pipeline). Event types: promised, repeated
+mention, delivered, lapsed, retired, assessed, corrected. Every event
+carries promise lineage, occurred-at and recorded-at dates, source URL
+plus quotation, and author. Corrections append with a predecessor
+reference; originals stay inspectable. The timeline renders real
+recorded events only; unknowns are labeled, never interpolated.
+
+Questions to resolve first:
+- Event contract finalization. Habib owes Codex four sourced examples
+  (original claim, repeat mention, delivery evidence, corrected
+  assessment) with dates, URLs, lineage, and missing fields.
+- XRP/SWIFT: research the exact attributable claim before touching
+  xrp-p01. "Replace SWIFT" is not a ledger fact until sourced.
+
+### Layer 2: Impact model
+
+Versioned judgments about significance, reading the ledger.
+
+Light spec: a versioned model with published dimensions, normalization,
+and weights. Inputs: ledger outcomes plus usage observations. Outputs:
+potential significance and realized impact per promise/project, with
+inputs and calculation exposed. Importance weights live here as model
+judgments, never as ledger facts. Missing evidence renders as
+incomplete, never zero. No double counting across overlapping terms.
+
+Questions to resolve first:
+- The 1/2/4 importance draft is unreviewed. Needs parent/child
+  allocation rules (XRP p03/p04) and a rubric amendment separating
+  tier from the v3 core flag.
+- USE metrics need attribution rules: BAT MAU is not BAT users;
+  Ripple Payments volume is not XRP-routed volume; bot/subsidized
+  load caveats; self-reported data handling.
+
+### Layer 3: Category indices
+
+Per-category comparison. No universal score, ever.
+
+Light spec: indices computed per category from the ledger plus the
+impact model. Each index shows delivery, potential significance, and
+realized impact as inspectable components. Not applicable,
+insufficient evidence, and low performance are three separate states.
+The verdict/warning stays independent: a strong category result never
+erases a documented core failure.
+
+Questions to resolve first:
+- Promise category taxonomy (Atlas v1 needs it too).
+- Shitcoin warning formula (under review with Alex's friend).
+
+### Layer 4: Valuation
+
+Market context now; a modeled gap only when the model exists.
+
+Light spec: market cap beside the delivery/impact profile from the
+existing bounded CoinGecko batch. Context only, never an input to
+delivery or impact. A modeled valuation gap ships only with a
+versioned model publishing its assumptions, coverage, and
+uncertainty. Never average category scores into a valuation.
+
+Questions to resolve first:
+- The valuation formula itself (research, not presumed).
+- Token-vs-product benefit connection, per project (editorial).
+
+### Explanation layer (spans all layers)
+
+Light spec: `/glossary` v2 (richer entry schema; single source for
+inline definitions), `/learn/value` (six worked examples, one
+interactive), and the "What gives this asset value?" project section
+(five fixed questions, evidence labels per statement, clean empty
+states). No new scores. Full brief:
+[tasks/2026-09-27-value-explanation-layer.md](tasks/2026-09-27-value-explanation-layer.md).
+
+Questions to resolve first:
+- Per-project value-thesis content is editorial (Habib/Alex supply;
+  Codex does not invent it).
+- Exact store-of-value test wording for Bitcoin.
+
 ## Active implementation: hearts and verdict
 
 Alex approved the design review and requested continued implementation plus
