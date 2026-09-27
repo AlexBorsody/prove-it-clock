@@ -1174,7 +1174,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   border-radius: 12px; padding: 6px 18px; margin: 2px 0 12px;
   text-decoration: none; white-space: nowrap;
 }
-.context-rank-num { font-size: 30px; font-weight: 800; color: #60a5fa; line-height: 1; }
+.context-rank-num { font-size: 20px; font-weight: 800; color: #60a5fa; line-height: 1; }
 .context-rank-sub { font-size: 13px; font-weight: 600; color: #93c5fd; }
 /* ---- Button element rule: horizontal padding always exceeds vertical.
    Low top/bottom on every button by default; specific classes refine it. */
