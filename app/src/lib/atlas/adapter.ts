@@ -1,6 +1,6 @@
 import { CATEGORIES, TAGS, TAXONOMY_VERSION } from '../../../data/atlas-taxonomy';
 import { ASSIGNMENTS, ASSIGNMENT_VERSION } from '../../../data/atlas-assignments';
-import { promiseAnchor } from '../promise-context';
+import { evidenceReceipt } from '../promise-receipts';
 import { layoutFor, LAYOUT_VERSION } from '../../../data/atlas-layout';
 import { promiseId, type AtlasAssignment, type AtlasDataset, type AtlasNode, type AtlasSource, type AtlasState, type PublishedHeartDataset } from './types';
 
@@ -91,7 +91,7 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
         claimSources, outcomeEvidence, evidenceRolesSeparated: separated, fulfillmentTest: criteria,
         primaryCategory: a?.primary ?? null, secondaryCategories: a?.secondary ?? [], tags: a?.tags ?? [],
         assignmentRationale: a?.rationale ?? null, assignmentAuthor: a?.author ?? null,
-        projectHref: `/projects/${slug}`, promiseHref: `/projects/${slug}?evidence=${encodeURIComponent(lineage)}#${promiseAnchor(slug, lineage)}-evidence`,
+        projectHref: `/projects/${slug}`, promiseHref: evidenceReceipt(slug,{runId:run.id,methodology:run.methodology,assignmentVersion:ASSIGNMENT_VERSION},{promise:id}),
         qualityFlags: flags });
     }
   }

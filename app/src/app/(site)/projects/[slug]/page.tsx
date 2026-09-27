@@ -2,9 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
 import {
-  HEARTS_METHODOLOGY,
-  readHeartHistory,
-  readHeartRankings,
   readHypeSnapshots,
   readHypeSnapshotsFor,
   latestHypeBySlug,
@@ -14,10 +11,14 @@ import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
+import { getPublishedLedger, getPublishedAtlas } from '@/lib/atlas/data';
+import { summarizeDelivery } from '@/lib/promise-verdict';
+import { receiptRevision } from '@/lib/promise-receipts';
+import DeliveryComposition from '@/components/delivery-composition';
 import DocumentedProblems from "@/components/documented-problems";
 import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
-import { promiseReferences, promiseFilterHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
+import { promiseReferences, promiseFilterHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
@@ -42,19 +43,19 @@ export default async function ProjectPage({ params, searchParams }: {
   const { genesis } = projectFlags(slug);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
-  const [historyData, rankings, vitals, team, hypeSnaps, allHypeSnaps] = await Promise.all([
-    readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
-    readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
+  const [ledger, atlas, vitals, team, hypeSnaps, allHypeSnaps] = await Promise.all([
+    getPublishedLedger().catch(() => null),
+    getPublishedAtlas().catch(() => null),
     fetchVitals(slug).catch(() => null),
     fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
     readHypeSnapshots().catch(() => [] as any[]),
   ]);
 
-  const points: any[] = historyData.points ?? [];
-  if (!points.length) notFound();
-
-  const latest = points[0];
+  if (!ledger) return <section className="panel"><h1>Project record unavailable</h1><p role="alert">The promise ledger could not be loaded.</p></section>;
+  const latest = (ledger.projects as any[]).find(project=>project.slug===slug);
+  if (!latest) notFound();
+  const composition = atlas ? summarizeDelivery(atlas,slug) : null;
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
   const promiseRefs = promiseReferences(slug, promises);
@@ -64,7 +65,7 @@ export default async function ProjectPage({ params, searchParams }: {
   // projects, using the exact default sort of the destination pages.
   // Context only: these never change promise states.
   const codeRankRows = await Promise.all(
-    (rankings.projects ?? []).map(async (p: any) => {
+    (ledger.projects as any[]).map(async (p: any) => {
       const v = p.slug === slug ? vitals : await fetchVitals(p.slug).catch(() => null);
       return {
         slug: p.slug,
@@ -87,16 +88,6 @@ export default async function ProjectPage({ params, searchParams }: {
     .sort((a, b) => (b.mentions ?? -1) - (a.mentions ?? -1));
   const hypeRank = hypeOrder.findIndex((r) => r.slug === slug) + 1;
   const hypeTotal = hypeOrder.length;
-
-  // Delivery health: kept vs in play vs failed promises, shown as a bar.
-  const health = { kept: 0, inPlay: 0, failed: 0 };
-  for (const pr of promises) {
-    const tone = promiseDisplay(pr).tone;
-    if (tone === "good") health.kept++;
-    else if (tone === "bad") health.failed++;
-    else health.inPlay++;
-  }
-  const healthTotal = health.kept + health.inPlay + health.failed;
 
   const hypeLatest = latestHypeBySlug(hypeSnaps)[slug];
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
@@ -166,37 +157,7 @@ export default async function ProjectPage({ params, searchParams }: {
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
-        {healthTotal > 0 ? (
-          <div className="promise-health">
-            <div className="ph-legend" role="group" aria-label="Show promise evidence by delivery state">
-              {([
-                { key: "kept", label: "kept", count: health.kept },
-                { key: "in-play", label: "active", count: health.inPlay },
-                { key: "failed", label: "failed", count: health.failed },
-              ] as const).map((b) => {
-                const active = filter === b.key;
-                if (b.count === 0) {
-                  return (
-                    <span key={b.key} className={`ph-btn ${b.key} disabled`} aria-disabled="true">
-                      <span className="num">{b.count}</span> {b.label}
-                    </span>
-                  );
-                }
-                return (
-                  <Link
-                    key={b.key}
-                    className={`ph-btn ${b.key}${active ? " active" : ""}`}
-                    href={promiseFilterHref(slug, active ? "all" : b.key)}
-                    aria-pressed={active}
-                    aria-label={active ? `Show all promises` : `Show evidence for ${b.count} ${b.label} promises`}
-                  >
-                    <span className="num">{b.count}</span> {b.label} {active ? "✓" : "↗"}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        ) : null}
+        {atlas && composition && <DeliveryComposition slug={slug} summary={composition} revision={receiptRevision(atlas)}/>}
         {filter !== "all" && (
           <p className="promise-filter-status" role="status">
             {(() => {

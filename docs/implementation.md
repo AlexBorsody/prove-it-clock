@@ -10,6 +10,22 @@ older weighted-verdict and warning instructions below are superseded.
 The [timeline handoff](tasks/2026-09-27-timeline-foundation.md) now supplies the
 event taxonomy and examples; gaps and implementation notes belong in that brief.
 
+## Published evidence receipts (2026-09-27)
+
+The delivery composition partitions the published inventory into kept,
+lapsed/retired, open/in-progress and unknown counts. Each promise counts once.
+There are no weights, verdict categories, project-level scores or new ordering
+rules. Its evidence links use `/projects/[slug]/evidence?run=...&methodology=...`
+with the assignment revision and optional category, group or promise filter.
+
+The reader selects the exact published `heart_runs.id` and then paginates only
+that run's `heart_rankings`. Missing runs, changed category versions and database
+outages are explicit; none falls back to the newest assessment. The project
+header, composition and Atlas share the request-cached ledger. These reads use
+the existing schema; no migration, scoring publication or activation is part
+of PR #8. A receipt preserves what was recorded; it does not validate the
+research or invent event dates for the upcoming timeline.
+
 ## Prior implementation history
 
 The [verdict-layer tasks](tasks/2026-09-26-verdict-layer.md) are the latest

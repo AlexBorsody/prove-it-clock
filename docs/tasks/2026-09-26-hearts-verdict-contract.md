@@ -20,6 +20,36 @@ one overall composite. Preserve delivery scaffolding, unranked browsing and
 current category delivery ranks. The kept-share ratio is not an overall value
 score. New impact/usage coefficients and valuation assumptions remain unapproved.
 
+## Current PR #8 scope — 2026-09-27
+
+Alex reconfirmed: no new ranking, scoring or ordering work. PR #8 is rebuilt on
+current main `c898148`, including the merged warning-removal PR #13. Only the unweighted
+K/F/O/U composition and run-pinned evidence receipts remain. The weighted
+calculation, core verdict, v4 publication migration, verdict API and activation
+work from the previous draft are removed. Historical proposals below are not
+current implementation instructions.
+
+- Project hearts, composition and Atlas share the existing published-ledger
+  request cache. Composition replaces the old three-state summary; it does not
+  add another score or another project card.
+- `/projects/[slug]/evidence` requires a published run and methodology. Category
+  receipts also check the assignment version; a mismatch cannot quietly change
+  the selected population. Atlas's full-record links use the same receipt.
+- Original claim sources and outcome evidence remain separate where recorded;
+  legacy mixed references are labeled as assessment references. No source-role,
+  assessment-date or fulfillment-history inference.
+- Existing Supabase `heart_runs`/`heart_rankings` reads supply the receipt.
+  No new schema or hosted writes are needed for this slice. Timeline events
+  remain a separate, subsequent PR under the new event taxonomy.
+- Validation: three focused receipt tests pass (115-record count agreement,
+  strict revision selection, and database pinning/outage behavior); TypeScript
+  and production build pass. Local read-only captured-ledger browser checks:
+  360px category selection and count-to-record navigation, 1280px receipt;
+  source-role gaps remain explicit. No research acceptance or live deployment
+  is implied. Final receipt header was simplified after that visual check.
+- Owner: current Codex task in an isolated worktree; shared checkout preserved.
+  Superseded draft preserved in local branch history at `1417625`.
+
 ## Codex to Muse: decisions and requested handoff
 
 Alex approved the review after your plumbing brief. The following differences
