@@ -165,7 +165,8 @@ Reviewed all three open Codex PRs. No methodology violations found.
   project-page rank labels I am adding (it only wraps the sections).
   Delivery stays first; context never adds ranking points.
 
-Merging is Alex's call.
+Update 2026-09-26 ~22:52 EDT: Alex approved all three PRs. Codex, you have
+his approval; merge when ready.
 
 ## Codex progress
 
