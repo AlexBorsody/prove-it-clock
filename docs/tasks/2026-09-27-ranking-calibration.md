@@ -8,16 +8,16 @@ source records are unchanged. [Generated results](../research/2026-09-27-ranking
 ## What the replay establishes
 
 The command reads all 115 published v3 records and Muse's 99-lineage draft
-directly, with the existing Atlas state/category adapter. It tests nine weight
+directly, with the existing Atlas state/category adapter. It tests ten weight
 ratios, retains missing data and exact ties, and produces category-only
 diagnostics. It never publishes, contacts providers or reads credentials.
 
-| Current recorded scope | Equal weights | Draft 1:2:4 | Stress 1:2:8 |
-|---|---:|---:|---:|
-| BAT payments, 2 of 7 kept | 28.6% | 50.0% | 66.7% |
-| ETH platform, 6 of 10 kept | 60.0% | 75.0% | 83.3% |
-| XRP payments, 2 of 2 kept | 100% | 100% | 100% |
-| AVAX platform, 8 of 8 kept | 100% | 100% | 100% |
+| Current recorded scope | Equal weights | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 |
+|---|---:|---:|---:|---:|
+| BAT payments, 2 of 7 kept | 28.6% | 42.9% | 50.0% | 66.7% |
+| ETH platform, 6 of 10 kept | 60.0% | 71.4% | 75.0% | 83.3% |
+| XRP payments, 2 of 2 kept | 100% | 100% | 100% | 100% |
+| AVAX platform, 8 of 8 kept | 100% | 100% | 100% | 100% |
 
 These are conditional arithmetic results from the checked-in artifact, not
 new research judgments or ratings. XRP and AVAX cannot move below 100% in
@@ -105,10 +105,26 @@ separate pending editorial question, not a missing-value shortcut to first place
 - `npm run ranking:calibrate` prints Markdown; append `-- --json` for exact
   state weights, missing IDs, core findings and all diagnostic ranks. Source
   hashes and methodology/assignment versions make the input revision explicit.
-- 23 focused tests passed: seven calibration cases and 16 existing Atlas /
+- 25 focused tests passed: nine calibration cases and 16 existing Atlas /
   verdict regressions. TypeScript and `git diff --check` passed.
 - The committed Markdown report reproduces byte-for-byte from the command;
   its relative link and the implementation task pointer resolve.
 - No browser, hosted-data or deployment verification: this is a local tool.
 - Work isolated on `codex/ranking-calibration`, based on main `429d703`.
   PR #7 owns the broad scope review; PR #8 owns delivery implementation.
+
+## 2026-09-27 PR review checkpoint
+
+Addressed both automated review findings on [PR #9](https://github.com/AlexBorsody/prove-it-clock/pull/9):
+
+- Added the required 1:2:3 probe and a visible comparison column. The draft
+  tier assignments stay intact; only the diagnostic coefficients change.
+- Every category row now shows separate recorded state counts and their
+  1:2:4 weights. Five open promises no longer look identical to five lapsed
+  or retired promises behind the same kept share. Missing weights remain
+  unavailable, including BTC's unassigned draft weights.
+- Regenerated the report from the same ledger, editorial draft and category
+  inputs. The 25-test suite, TypeScript and report reproduction passed.
+
+Muse's editorial handoff above remains open. No weights or regrades were
+approved by this code review, and no public scoring behavior changed.

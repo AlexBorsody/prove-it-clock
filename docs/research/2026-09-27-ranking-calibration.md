@@ -10,96 +10,98 @@ Missing weights: 16. No substitute weights are assigned. BTC stays outside compa
 
 Formula: kept assigned weight / all assigned weight in one primary category. Open and unknown remain in the denominator without being called failures. Lapsed and retired remain separately labeled v3 states; this is not a v4 restatement.
 
-Tested ratios (low:middle:high tier): 1:1:1, 1:1:2, 1:1:4, 1:1:8, 1:2:2, 1:2:4, 1:2:8, 1:4:4, 1:4:8.
-Equal weights are the baseline; 1:2:4 replays Muse’s draft; 1:2:8 is a stress test. The ranges describe only these parameter probes, not confidence intervals. All category figures are conditional on unresolved admission, attribution and source issues.
+Tested ratios (low:middle:high tier): 1:1:1, 1:1:2, 1:1:4, 1:1:8, 1:2:2, 1:2:3, 1:2:4, 1:2:8, 1:4:4, 1:4:8.
+Equal weights are the baseline; 1:2:3 is the required less-steep comparison; 1:2:4 replays Muse’s draft; 1:2:8 is a stress test. The ranges describe only these parameter probes, not confidence intervals. All category figures are conditional on unresolved admission, attribution and source issues.
 
 ## Category sensitivity
 
 Each project occupies one row per primary category. Secondary tags never add weight. Rank ranges exclude BTC, Unclassified, missing-weight scopes and scopes without recorded resolved outcomes. A small promise sample is not evidence of broad market leadership.
 
+Recorded states show promise counts, with 1:2:4 draft weights in parentheses. States with zero records are omitted. Open, in progress, unknown, lapsed and retired remain separate; equal kept shares do not imply equal outcome coverage. Missing weights stay unavailable.
+
 ### Money / Store of Value
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| BAT | 1/2 | 50.0% | 33.3% | 33.3% | 2–2 |
-| BTC | 2/5 | 40.0% | Unavailable | Unavailable | Unranked |
-| XRP | 3/3 | 100.0% | 100.0% | 100.0% | 1–1 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| BAT | 1 kept (weight 1); 1 open (weight 2) | 50.0% | 33.3% | 33.3% | 33.3% | 2–2 |
+| BTC | 2 kept (weight unavailable); 3 open (weight unavailable) | 40.0% | Unavailable | Unavailable | Unavailable | Unranked |
+| XRP | 3 kept (weight 5) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
 
 ### Payments / Settlement
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| BAT | 2/7 | 28.6% | 50.0% | 66.7% | 3–3 |
-| BTC | 5/7 | 71.4% | Unavailable | Unavailable | Unranked |
-| DASH | 1/5 | 20.0% | 18.2% | 13.3% | 4–4 |
-| SOL | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
-| XRP | 2/2 | 100.0% | 100.0% | 100.0% | 1–1 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| BAT | 2 kept (weight 8); 5 open (weight 8) | 28.6% | 42.9% | 50.0% | 66.7% | 3–3 |
+| BTC | 5 kept (weight unavailable); 1 open (weight unavailable); 1 retired (weight unavailable) | 71.4% | Unavailable | Unavailable | Unavailable | Unranked |
+| DASH | 1 kept (weight 2); 2 open (weight 6); 2 lapsed (weight 3) | 20.0% | 20.0% | 18.2% | 13.3% | 4–4 |
+| SOL | 1 kept (weight 2) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| XRP | 2 kept (weight 6) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
 
 ### Platform / Compute
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| AVAX | 8/8 | 100.0% | 100.0% | 100.0% | 1–1 |
-| BAT | 1/2 | 50.0% | 50.0% | 50.0% | 6–7 |
-| BTC | 1/1 | 100.0% | Unavailable | Unavailable | Unranked |
-| DASH | 2/2 | 100.0% | 100.0% | 100.0% | 1–1 |
-| ETH | 6/10 | 60.0% | 75.0% | 83.3% | 3–4 |
-| LINK | 5/6 | 83.3% | 81.8% | 81.8% | 3–4 |
-| SOL | 4/7 | 57.1% | 54.5% | 52.6% | 5–6 |
-| XRP | 2/5 | 40.0% | 50.0% | 50.0% | 5–7 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| AVAX | 8 kept (weight 19) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| BAT | 1 kept (weight 2); 1 open (weight 2) | 50.0% | 50.0% | 50.0% | 50.0% | 6–7 |
+| BTC | 1 kept (weight unavailable) | 100.0% | Unavailable | Unavailable | Unavailable | Unranked |
+| DASH | 2 kept (weight 6) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| ETH | 6 kept (weight 18); 2 open (weight 3); 2 retired (weight 3) | 60.0% | 71.4% | 75.0% | 83.3% | 3–4 |
+| LINK | 5 kept (weight 9); 1 open (weight 2) | 83.3% | 81.8% | 81.8% | 81.8% | 3–4 |
+| SOL | 4 kept (weight 12); 3 open (weight 10) | 57.1% | 55.6% | 54.5% | 52.6% | 5–6 |
+| XRP | 2 kept (weight 4); 1 open (weight 2); 1 lapsed (weight 1); 1 retired (weight 1) | 40.0% | 50.0% | 50.0% | 50.0% | 5–7 |
 
 ### Financial Infrastructure / DeFi
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| AVAX | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
-| BAT | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
-| LINK | 2/2 | 100.0% | 100.0% | 100.0% | 1–1 |
-| XRP | 1/2 | 50.0% | 50.0% | 50.0% | 4–4 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| AVAX | 1 kept (weight 2) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| BAT | 1 kept (weight 1) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| LINK | 2 kept (weight 4) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| XRP | 1 kept (weight 2); 1 open (weight 2) | 50.0% | 50.0% | 50.0% | 50.0% | 4–4 |
 
 ### Privacy
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| BTC | 0/2 | 0.0% | Unavailable | Unavailable | Unranked |
-| DASH | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| BTC | 1 open (weight unavailable); 1 lapsed (weight unavailable) | 0.0% | Unavailable | Unavailable | Unavailable | Unranked |
+| DASH | 1 kept (weight 2) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
 
 ### Interoperability
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| AVAX | 2/2 | 100.0% | 100.0% | 100.0% | 1–1 |
-| BAT | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
-| LINK | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
-| XRP | 0/1 | Unresolved | Unresolved | Unresolved | Unranked |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| AVAX | 2 kept (weight 4) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| BAT | 1 kept (weight 1) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| LINK | 1 kept (weight 2) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| XRP | 1 open (weight 1) | Unresolved | Unresolved | Unresolved | Unresolved | Unranked |
 
 ### Governance
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| AVAX | 0/1 | Unresolved | Unresolved | Unresolved | Unranked |
-| BTC | 1/1 | 100.0% | Unavailable | Unavailable | Unranked |
-| DASH | 1/1 | 100.0% | 100.0% | 100.0% | 1–1 |
-| ETH | 0/1 | 0.0% | 0.0% | 0.0% | 2–2 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| AVAX | 1 open (weight 2) | Unresolved | Unresolved | Unresolved | Unresolved | Unranked |
+| BTC | 1 kept (weight unavailable) | 100.0% | Unavailable | Unavailable | Unavailable | Unranked |
+| DASH | 1 kept (weight 2) | 100.0% | 100.0% | 100.0% | 100.0% | 1–1 |
+| ETH | 1 lapsed (weight 1) | 0.0% | 0.0% | 0.0% | 0.0% | 2–2 |
 
 ### Real-world Integration
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| AVAX | 3/5 | 60.0% | 55.6% | 55.6% | 1–1 |
-| BAT | 1/4 | 25.0% | 36.4% | 42.1% | 4–5 |
-| LINK | 2/4 | 50.0% | 50.0% | 50.0% | 2–2 |
-| SOL | 1/2 | 50.0% | 50.0% | 50.0% | 2–2 |
-| XRP | 1/2 | 50.0% | 33.3% | 33.3% | 2–5 |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| AVAX | 3 kept (weight 5); 2 open (weight 4) | 60.0% | 55.6% | 55.6% | 55.6% | 1–1 |
+| BAT | 1 kept (weight 4); 3 open (weight 7) | 25.0% | 33.3% | 36.4% | 42.1% | 4–5 |
+| LINK | 2 kept (weight 6); 2 open (weight 6) | 50.0% | 50.0% | 50.0% | 50.0% | 2–2 |
+| SOL | 1 kept (weight 1); 1 retired (weight 1) | 50.0% | 50.0% | 50.0% | 50.0% | 2–2 |
+| XRP | 1 kept (weight 1); 1 open (weight 2) | 50.0% | 33.3% | 33.3% | 33.3% | 2–5 |
 
 ### Unclassified
 
-| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
-|---|---:|---:|---:|---:|---:|
-| ETH | 1/1 | 100.0% | 100.0% | 100.0% | Unranked |
-| LINK | 1/1 | 100.0% | 100.0% | 100.0% | Unranked |
-| SOL | 1/1 | 100.0% | 100.0% | 100.0% | Unranked |
-| XRP | 3/4 | 75.0% | 85.7% | 85.7% | Unranked |
+| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |
+|---|---|---:|---:|---:|---:|---:|
+| ETH | 1 kept (weight 1) | 100.0% | 100.0% | 100.0% | 100.0% | Unranked |
+| LINK | 1 kept (weight 1) | 100.0% | 100.0% | 100.0% | 100.0% | Unranked |
+| SOL | 1 kept (weight 2) | 100.0% | 100.0% | 100.0% | 100.0% | Unranked |
+| XRP | 3 kept (weight 6); 1 open (weight 1) | 75.0% | 85.7% | 85.7% | 85.7% | Unranked |
 
 ## Claims with high influence
 

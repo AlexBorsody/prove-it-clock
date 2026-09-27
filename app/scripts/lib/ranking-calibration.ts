@@ -6,9 +6,9 @@ export type DraftTier = 1 | 2 | 4;
 export interface DraftWeight { tier: DraftTier; rationale: string }
 export type DraftWeights = Map<string, DraftWeight>;
 export interface Profile { id: string; weights: Record<DraftTier, number> }
-// Parameter probes, not recommended or approved weights. Nine explicit combinations.
+// Parameter probes, not approved weights. Include the required less-steep 1:2:3 comparison.
 export const PROFILES: Profile[] = [1, 2, 4].flatMap(material =>
-  [1, 2, 4, 8].filter(high => high >= material).map(high => ({
+  (material === 2 ? [2, 3, 4, 8] : [1, 2, 4, 8].filter(high => high >= material)).map(high => ({
     id: `1:${material}:${high}`, weights: { 1: 1, 2: material, 4: high },
   })));
 
@@ -82,6 +82,14 @@ export interface Scope {
   coreFindings: Array<{ id: string; state: AtlasState }>;
   comparison: 'eligible' | 'genesis' | 'unclassified' | 'no-resolved-outcomes';
   profiles: Record<string, Measurement>;
+}
+
+/** Keep pending, unknown and recorded negative outcomes distinguishable in the report. */
+export function formatStateBreakdown(scope: Scope): string {
+  const weights = scope.profiles['1:2:4']?.stateWeights;
+  return ATLAS_STATES.filter(state => scope.states[state] > 0).map(state =>
+    `${scope.states[state]} ${state.replace('_', ' ')} (${weights == null ? 'weight unavailable' : `weight ${weights[state]}`})`,
+  ).join('; ');
 }
 
 export function calibrate(data: AtlasDataset, assignments: DraftWeights, profiles = PROFILES) {

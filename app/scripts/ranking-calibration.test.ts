@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { adaptAtlas } from '../src/lib/atlas/adapter';
 import type { AtlasNode, AtlasDataset } from '../src/lib/atlas/types';
-import { calibrate, measure, parseDraftWeights, PROFILES, type DraftWeights } from './lib/ranking-calibration';
+import { calibrate, formatStateBreakdown, measure, parseDraftWeights, PROFILES, type DraftWeights } from './lib/ranking-calibration';
 
 const artifact = JSON.parse(readFileSync(new URL('../../db/seed/heart-runs/hearts-promise-2026-09-26.json', import.meta.url), 'utf8'));
 const draft = readFileSync(new URL('../../docs/tasks/2026-09-26-verdict-weights-draft.md', import.meta.url), 'utf8');
@@ -23,7 +23,7 @@ test('real artifact and draft are replayed without changing records or claiming 
   const result = calibrate(data, weights);
   assert.equal(result.coverage.promises, 115);
   assert.equal(result.coverage.draftWeights, 99);
-  assert.equal(result.profiles.length, 9);
+  assert.equal(result.profiles.length, 10);
   assert.equal(result.coverage.missingWeightIds.length, 16);
   assert.ok(result.coverage.missingWeightIds.every(id => id.startsWith('btc:')));
   assert.ok(result.scopes.filter(s => s.project === 'btc').every(s => Object.values(s.profiles).every(p => p.rank === null)));
@@ -70,6 +70,29 @@ test('all-kept scopes saturate; category-wide multipliers cancel rather than add
   assert.equal(measure(nodes, assignments, profile).keptShare, 4 / 5);
   assert.equal(measure(nodes, assignments, { id: 'scaled', weights: { 1: 10, 2: 20, 4: 40 } }).keptShare, 4 / 5);
   for (const probe of PROFILES) assert.equal(measure(nodes.map(n => ({ ...n, state: 'kept' })), assignments, probe).keptShare, 1);
+});
+
+test('the required 1:2:3 comparison reweights draft tiers without changing their assignments', () => {
+  const nodes = [node('high', 'kept'), node('low', 'open')];
+  const assignments: DraftWeights = new Map([['high', { tier: 4, rationale: 'test' }], ['low', { tier: 1, rationale: 'test' }]]);
+  const scope = calibrate(fixture(nodes), assignments).scopes[0];
+  assert.equal(scope.profiles['1:1:1'].keptShare, 1 / 2);
+  assert.equal(scope.profiles['1:2:3'].keptShare, 3 / 4);
+  assert.equal(scope.profiles['1:2:4'].keptShare, 4 / 5);
+  assert.equal(assignments.get('high')!.tier, 4);
+});
+
+test('report state breakdown distinguishes unresolved outcomes from lapsed and retired at the same kept share', () => {
+  for (const state of ['open', 'in_progress', 'lapsed', 'retired', 'unknown'] as const) {
+    const nodes = [node('kept', 'kept'), node('other', state)];
+    const assignments: DraftWeights = new Map([['kept', { tier: 4, rationale: 'test' }], ['other', { tier: 2, rationale: 'test' }]]);
+    const scope = calibrate(fixture(nodes), assignments).scopes[0];
+    assert.equal(scope.profiles['1:2:4'].keptShare, 2 / 3);
+    assert.equal(formatStateBreakdown(scope), `1 kept (weight 4); 1 ${state.replace('_', ' ')} (weight 2)`);
+    assignments.delete('other');
+    const missing = calibrate(fixture(nodes), assignments).scopes[0];
+    assert.equal(formatStateBreakdown(missing), `1 kept (weight unavailable); 1 ${state.replace('_', ' ')} (weight unavailable)`);
+  }
 });
 
 test('core failure survives other successes and a category filter without tier-based reassignment', () => {

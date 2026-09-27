@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { CATEGORIES } from '../data/atlas-taxonomy';
 import { adaptAtlas } from '../src/lib/atlas/adapter';
-import { calibrate, parseDraftWeights } from './lib/ranking-calibration';
+import { calibrate, formatStateBreakdown, parseDraftWeights } from './lib/ranking-calibration';
 
 const artifactPath = '../../db/seed/heart-runs/hearts-promise-2026-09-26.json';
 const draftPath = '../../docs/tasks/2026-09-26-verdict-weights-draft.md';
@@ -38,15 +38,16 @@ if (process.argv.includes('--json')) {
     `Missing weights: ${result.coverage.missingWeightIds.length}. No substitute weights are assigned. BTC stays outside comparative verdicts under the Genesis decision.`, '',
     'Formula: kept assigned weight / all assigned weight in one primary category. Open and unknown remain in the denominator without being called failures. Lapsed and retired remain separately labeled v3 states; this is not a v4 restatement.', '',
     `Tested ratios (low:middle:high tier): ${result.profiles.map(profile => profile.id).join(', ')}.`,
-    'Equal weights are the baseline; 1:2:4 replays Muse’s draft; 1:2:8 is a stress test. The ranges describe only these parameter probes, not confidence intervals. All category figures are conditional on unresolved admission, attribution and source issues.', '',
+    'Equal weights are the baseline; 1:2:3 is the required less-steep comparison; 1:2:4 replays Muse’s draft; 1:2:8 is a stress test. The ranges describe only these parameter probes, not confidence intervals. All category figures are conditional on unresolved admission, attribution and source issues.', '',
     '## Category sensitivity', '',
     'Each project occupies one row per primary category. Secondary tags never add weight. Rank ranges exclude BTC, Unclassified, missing-weight scopes and scopes without recorded resolved outcomes. A small promise sample is not evidence of broad market leadership.', '',
+    'Recorded states show promise counts, with 1:2:4 draft weights in parentheses. States with zero records are omitted. Open, in progress, unknown, lapsed and retired remain separate; equal kept shares do not imply equal outcome coverage. Missing weights stay unavailable.', '',
   ];
   for (const category of CATEGORIES) {
-    out.push(`### ${category.label}`, '', '| Project | Kept / total | Equal | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |', '|---|---:|---:|---:|---:|---:|');
+    out.push(`### ${category.label}`, '', '| Project | Recorded states (draft weight) | Equal | Less steep 1:2:3 | Draft 1:2:4 | Stress 1:2:8 | Tested rank range |', '|---|---|---:|---:|---:|---:|---:|');
     for (const scope of result.scopes.filter(scope => scope.category === category.id)) {
       const value = (id: string) => scope.comparison === 'no-resolved-outcomes' ? 'Unresolved' : pct(scope.profiles[id].keptShare);
-      out.push(`| ${scope.project.toUpperCase()} | ${scope.states.kept}/${scope.promiseIds.length} | ${value('1:1:1')} | ${value('1:2:4')} | ${value('1:2:8')} | ${range(Object.values(scope.profiles).flatMap(value => value.rank == null ? [] : [value.rank]))} |`);
+      out.push(`| ${scope.project.toUpperCase()} | ${formatStateBreakdown(scope)} | ${value('1:1:1')} | ${value('1:2:3')} | ${value('1:2:4')} | ${value('1:2:8')} | ${range(Object.values(scope.profiles).flatMap(value => value.rank == null ? [] : [value.rank]))} |`);
     }
     out.push('');
   }
