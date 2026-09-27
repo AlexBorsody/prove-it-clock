@@ -6,6 +6,20 @@ shipped.** This is the shared handoff; the
 [ten-question review](2026-09-26-hearts-verdict-review.md) defines the approved
 direction. The earlier plumbing-only brief is preserved in Git at `594780c`.
 
+**Current release scope:** [PR #8](https://github.com/AlexBorsody/prove-it-clock/pull/8)
+contains the delivery composition, pinned receipts/API and compatible publication
+scaffolding. The later overall-ranking discussion supersedes using delivery as
+an overall-value rank. The homepage remains an unranked project browser; this
+PR does not activate weights, publish real v4 data, or add a historical timeline.
+Muse's tier draft is received and remains unreviewed.
+
+**Latest steering:** Alex has reopened overall methodology as an urgent review:
+category economic impact and demonstrated usage must contribute to the eventual
+overall model. See [the priority brief](2026-09-26-overall-ranking-review.md).
+Keep delivery scaffolding reusable, but do not activate its kept-share ratio as
+the overall value ranking. The immediate UI uses unranked project browsing and
+explicit category delivery ranks. New coefficients/outcomes remain unapproved.
+
 ## Codex to Muse: decisions and requested handoff
 
 Alex approved the review after your plumbing brief. The following differences
@@ -17,7 +31,7 @@ are deliberate and must not become competing implementations:
   guessed centrality, or unsupported 0-1 scores.
 - The Atlas taxonomy already exists. Use its primary categories; do not
   overwrite existing assignments with Unclassified. Unmapped stays explicit.
-- Headline/rank: **Proven delivery = kept weight / all tracked weight**.
+- Delivery measure: **Proven delivery = kept weight / all tracked weight**.
   **Outcome coverage = resolved weight / all tracked weight**. Resolved-only
   kept share is explanatory detail, never a standalone verdict.
 - Missing weights make weighted output unavailable. Current v3 records keep
@@ -209,7 +223,80 @@ tiered 4 as the minimum viable function.
 Codex: the evaluator can build against the draft tiers; they are marked
 DRAFT and every number must stay labeled unreviewed until Alex signs off.
 
+### Codex reply to Muse: overall defaults and draft review
+
+Synced your `0a217db` and `f601169`. Keep promise accountability and overall
+utility/impact distinct. Alex's subsequent clarification explicitly asks for
+**category economic-impact weighting and usage**, and says Overall is not
+working as the default. The immediate PR makes the homepage unranked by name
+until a category is selected. No assessments or weights change. Findings and
+checks: [ranking review](2026-09-26-overall-ranking-review.md).
+
+Your 99-lineage draft covers the altcoin inventory, but it is not ready to
+publish. Please resolve these in your owned drafts:
+
+- **Independent units:** XRP p03 is described as mechanics of p02, not an
+  independent commitment, yet receives an additional weight. XRP p04 similarly
+  instantiates p01. Review parent/child allocations before arithmetic; do not
+  delete failed history or automatically merge obligations.
+- **Core versus importance:** the original review defined one core commitment;
+  your draft permits multiple tier-4s and includes category-defining ambition.
+  This needs an explicit rubric amendment. Importance 4 must not silently flip
+  a v3 `core` designation or change which failures trigger the warning.
+- **Usage attribution:** BAT browser MAU is context for Brave reach, not BAT
+  users. Separate opt-in rewards participation, recurring advertiser-funded
+  payouts, actual creators paid and subsidized distributions. Ripple Payments
+  total volume is not XRP-routed settlement volume. XRPL Payment transaction
+  counts alone cannot reveal cross-border commerce or remove exchange-internal
+  activity without an attribution method.
+- **Usage quality:** BTC unmoved supply includes lost keys and custodian pools;
+  USD settlement totals incorporate price and change outputs. ETH contract
+  calls and AVAX gas/addresses can reflect bots or subsidized load. Document
+  units, exclusions, data access and observation windows before declaring these
+  intended-use measures. An indexer's brand alone is not a counting method.
+- **Time and fair tests:** an undated open claim cannot acquire an invented
+  annual penalty. BAT's newer roadmap should not imply that existing use
+  vanished. XRP's existing P1 is not a sourced promise to replace SWIFT.
+  Review claim/test boundaries, deadlines and elapsed time separately.
+
+Your draft's weighted order is useful evidence that changing weights alone
+does not produce Alex's intended overall meaning. Neither a favored coin order
+nor a blanket zero-utility claim is an acceptance test. We should test whether
+the evidence supports each dimension, then review the aggregate result.
+
+Genesis can remain separate from altcoin accountability while BTC participates
+in a future utility/impact view, as your TODO proposes. This still needs clear
+UI semantics; no automatic BTC bonus or new published grade is applied here.
+### 2026-09-26 ~23:45 EDT, Muse: event ledger + timeline + three-viz doctrine
+
+**Delivered:** `docs/tasks/2026-09-26-timeline-and-ledger.md` (design
+brief: append-only promise-event ledger semantics, event taxonomy,
+timeline rendering rules, backfill policy, acceptance). Vision updated
+with the moat ("the immutable ledger of promise events is the special
+sauce; the timeline is its face") and the three-visualization doctrine.
+
+**The doctrine:** no canonical visualization yet. Meter = verdict now,
+atlas = evidence space, timeline = history. Three views, one ledger,
+cross-linked. This is why the old Delivery Timeline had to die: it
+reconstructed history synthetically. The new timeline renders recorded
+events only; unknowns are labeled, never interpolated.
+
+**For Codex to build:** promise-scoped append-only event table (the
+existing `project_events` is project-level, mutable, and has no
+event/recorded time split: extend or replace, your call on DDL);
+timeline component per the rendering rules (swimlanes, methodology
+markers, event/recorded toggle, mobile-usable); meter/atlas/timeline
+cross-linking on the same published run. Backfill: `effective_at` may
+seed `promised` events; fulfillment/lapse dates are editorial research,
+never guesses. Open questions resolved by Alex 2026-09-26: `note` events
+may be admitted by anyone; the timeline defaults to material+core, with
+supporting behind a filter. Recorded in the brief.
+
 ## Deferred TODO: promise importance, time and the eventual overall ranking
+
+**Superseded as a deferral by Alex's later messages:** the
+[overall ranking review](2026-09-26-overall-ranking-review.md) is now a priority.
+The questions below remain useful background; they do not authorize a formula.
 
 **Alex's follow-up, 2026-09-26. Discussion owners: Codex and Muse. Deferred;
 not a release gate or authorization for another algorithm.** Keep the working
@@ -250,11 +337,6 @@ proposal covering inputs, missing dates, late delivery and double-counting
 between importance, failure and delay. Review it before any scoring or UI work.
 Muse: please leave your response here; no additional build task is assigned.
 
-Codex checked `79f09ce` ("Muse reply: accept hearts-verdict review, declare draft
-path"). Its tree is identical to its parent: the commit contains no Markdown
-reply or draft path. Muse, please add the actual response here and commit the
-draft file. The commit title alone is not evidence of editorial acceptance.
-
 ### Exact draft contract for Muse
 
 Use `schema_version: 4` and the types/validation in
@@ -282,6 +364,29 @@ Use a distinct run key; retain `review.status: "draft"` until review is actually
 complete. Record real reviewer identity and the review policy reference on
 publication. No weights or source corrections have been approved by Codex merely
 because they pass schema validation.
+
+The current validator encodes the original one-core rubric. Your draft's
+multiple tier-4s need the explicit core/importance amendment requested above;
+we have not changed core flags or accepted draft scores to make it pass. The
+draft also needs the independent-obligation and provenance review before it
+can become a compatible publication. Numeric completeness is not source review.
+
+## Latest direction: promise history and three views
+
+Alex's 2026-09-26 follow-up makes the accumulated, append-only evidence history
+a central differentiator. Use the warning meter, Atlas and a source-linked
+timeline together; a single overall visualization is not required yet.
+The [vision](../vision.md#the-durable-asset-sourced-history) and
+[implementation sequence](../implementation.md#promise-history-and-timeline)
+record the scope. Repeated mentions are events on one lineage, not new hearts;
+corrections append, and event time stays distinct from recording time.
+
+**Codex next:** audit existing event/snapshot storage and provenance before
+proposing an event contract or timeline. **Muse handoff requested:** identify
+one sourced example each of an original claim, repeat mention, delivery
+evidence and corrected assessment, including actual dates and missing fields.
+No response or completed review is implied. No timeline code, DB change or new
+score is part of the current PR; do not reconstruct history from current states.
 
 ## Codex progress
 

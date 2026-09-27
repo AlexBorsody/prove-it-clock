@@ -81,8 +81,9 @@ function HypeCell({ mentions, collecting }: { mentions: number | null; collectin
 export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: ScoreboardRow[]; asOf?: string; dataRevision?: string }) {
   const params = useSearchParams();
   const category = parseBoardCategory(params.get("category"));
-  const sortKey = parseBoardSort(params.get("sort"));
-  const categoryLabel = CATEGORIES.find(c => c.id === category)?.short ?? "Overall";
+  const sortKey = parseBoardSort(params.get("sort"), category);
+  const categoryLabel = CATEGORIES.find(c => c.id === category)?.short ?? "All projects";
+  const headers = HEADERS.filter(header => category || header.key !== 'rank');
   const [expanded, setExpanded] = useState<string | null>(null);
   const sorted = sortScoreboard(rows, sortKey, category);
   const ranks = categoryRanks(rows, category);
@@ -114,15 +115,17 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
 
   return (
     <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
+      <h2>{category ? `${categoryLabel} delivery` : 'Browse projects'}</h2>
+      {!category && <p className={styles.note}>Choose a category to compare delivery. An overall value ranking is under review.</p>}
       <div className={styles.controls}>
-        <label>Promise category<select value={category} onChange={e => navigate({category:e.target.value,sort:e.target.value ? 'hearts' : ''})}>
-          <option value="">Overall</option>{CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
+        <label>Promise category<select value={category} onChange={e => navigate({category:e.target.value,sort:''})}>
+          <option value="">All projects · unranked</option>{CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
         </select></label>
-        <label>Sort by<select value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value))}>
-          {BOARD_SORTS.filter(key => key !== 'use').map(key => <option key={key} value={key}>{key === 'rank' && category ? 'Category rank' : BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
+        <label>Sort by<select value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value, category))}>
+          {BOARD_SORTS.filter(key => key !== 'use' && (category || key !== 'rank')).map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
         </select></label>
       </div>
-      {category && <p className={styles.note} role="status">{categoryLabel}: primary assignments only. Equal kept shares tie; projects without promises in this category are unranked.</p>}
+      {category && <p className={styles.note} role="status">Ranked by recorded promises kept in {categoryLabel}. Equal shares tie; projects without promises here are unranked. This measures delivery share, not overall value.</p>}
       <details className={styles.coverage}><summary>Published ledger{asOf ? ` · ${asOf.slice(0,10)}` : ''}</summary>
         <p>{unclassified} unclassified promises. {unknown} unknown states. Missing context metrics are shown as unavailable and sort last.</p>
         <p>Data revision: {dataRevision ?? 'unavailable'}. Categories describe subject matter; kept share does not measure the scale or difficulty of a promise.</p>
@@ -131,12 +134,12 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
         <table className="board">
           <thead>
             <tr className={styles.columnGroups}>
-              <th colSpan={4} scope="colgroup">Promise delivery</th>
+              <th colSpan={category ? 4 : 3} scope="colgroup">Promise delivery</th>
               <th colSpan={4} scope="colgroup">Supporting context</th>
               <th aria-label="Promise details" />
             </tr>
             <tr>
-              {HEADERS.map((h, i) => (
+              {headers.map((h, i) => (
                 <th
                   key={i}
                   className={h.key ? "sortable" : undefined}
@@ -151,7 +154,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
             {sorted.map((r) => (
               <Fragment key={r.slug}>
                 <tr className="search-section" {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
-                  <td className="num" style={{ color: "var(--text-faint)" }}>{r.delivery ? (ranks.get(r.slug) ?? "Unranked") : "Unavailable"}</td>
+                  {category && <td className="num" style={{ color: "var(--text-faint)" }}>{r.delivery ? (ranks.get(r.slug) ?? "Unranked") : "Unavailable"}</td>}
                   <td>
                     <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
                       <img
@@ -215,7 +218,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                 </tr>
                 {expanded === r.slug ? (
                   <tr key={`${r.slug}-promises`} className="expand-row">
-                    <td colSpan={9}>
+                    <td colSpan={headers.length}>
                       <div className="expand-promises">
                         <div className="expand-promises-head">
                           All {r.name} promises ({r.promises.length})
@@ -246,7 +249,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                 <span className="mcard-name">{r.name}</span>
                 <span className="mcard-ticker num">{r.symbol}</span>
               </Link>
-              <p className={styles.rank}>{r.delivery ? (ranks.has(r.slug) ? `${category ? categoryLabel : "Overall"} rank ${ranks.get(r.slug)}` : "Unranked") : "Assessment unavailable"}</p>
+              {category && <p className={styles.rank}>{r.delivery ? (ranks.has(r.slug) ? `${categoryLabel} delivery rank ${ranks.get(r.slug)}` : "Unranked") : "Assessment unavailable"}</p>}
               <div className="mcard-hearts">
                 {category || !r.delivery ? categoryCell(r) : <button
                   type="button"

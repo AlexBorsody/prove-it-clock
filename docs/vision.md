@@ -6,7 +6,14 @@ remains unchanged. Product direction lives here; build details and the ordered
 queue live in [implementation.md](implementation.md) and
 [tasks/2026-09-26-promise-atlas.md](tasks/2026-09-26-promise-atlas.md).
 
-**Methodology direction approved for implementation by Alex:** the
+**Latest direction (2026-09-26):** overall ranking needs category economic impact
+and demonstrated usage as well as delivery. Alex says the current overall
+default is misleading. Use an unranked project browser with category delivery
+rankings while Codex and Muse review the [new priority brief](tasks/2026-09-26-overall-ranking-review.md).
+Numerical impact/usage weights are not approved. This supersedes treating the
+importance/use/time discussion as deferred-only.
+
+**Delivery scaffolding previously approved for implementation by Alex:** the
 [hearts and verdict proposal](tasks/2026-09-26-hearts-verdict-review.md)
 answers the ten scoring questions and defines delivery weighting, coverage,
 core findings and lifecycle rules. Codex and Muse coordinate implementation in
@@ -23,6 +30,48 @@ evidence and outcome. Hearts record delivery, not token prices or economic
 value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
+**The hook (Alex, 2026-09-26):** in a perfect world, proven value and
+market cap would be 1:1. They aren't, and the gap is the product. We
+measure what projects proved; the market measures what people believe.
+The distance between the two is where the money is. This is a
+presentation of two independent numbers side by side, never a blend:
+price and market data must not enter the verdict itself, or the score
+becomes circular. The verdict stays pure (promises only); the gap is
+what the user reads.
+
+**On the moat (Alex, 2026-09-26):** honestly, the moat is thin today. A
+dashboard is not a moat, and selling access is revenue, not
+defensibility. The moat is time plus trust: every month of ledger
+history is a month a competitor cannot buy back, and being the neutral
+arbiter people believe is a brand moat. The 1:1 hook is what gets people
+in the door; the door is what builds the moat.
+
+
+### The durable asset: sourced history
+
+**Alex's direction, 2026-09-26:** our advantage is the accumulated record of
+what was promised, what happened, and what the evidence supported at the time.
+A competitor can copy a chart; reconstructing a reliable history takes work.
+The value comes from coverage, provenance and visible corrections, not simply
+calling a database immutable.
+
+Use three complementary views of the same ledger:
+
+| View | Question |
+|---|---|
+| Shitcoin warning meter | Which documented delivery problems feed the current warning? |
+| Promise Atlas | What subjects did projects promise to address, and what are their recorded outcomes? |
+| Promise timeline | What was claimed, delivered, assessed or corrected, and when? |
+
+The timeline should expose source-linked events, including repeated mentions
+of an existing promise without counting another promise or heart. Preserve
+both when an event happened and when we recorded it. Append corrections and
+link them to the records they replace; keep the earlier account inspectable.
+An announcement of delivery is a claim until assessed against evidence.
+
+We do not need one canonical visualization yet. The timeline complements the
+meter and Atlas; it does not restore the removed chart reconstructed from
+current states. See the [implementation sequence](implementation.md#promise-history-and-timeline).
 
 ### Positioning proposal for Alex and Muse (2026-09-26)
 
@@ -312,15 +361,14 @@ be shipped through direct Markdown coordination with Muse. This authorizes
 implementation; record-specific judgments still need evidence. The existing
 v3 appendix stays unchanged until a compatible version is published.
 
-### Longer-term question: importance and time
+### Overall ranking: priority review
 
-Alex's goal remains an understandable overall ranking, but equal heart counts
-alone cannot distinguish a technical detail from a project's central ambition,
-or explain years of unresolved delivery. The approved weighted verdict is one
-step; how to represent time remains open. Keep delivery and category views
-usable now. Codex and Muse will discuss importance, delay and a possible
-timeline in the [deferred TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking).
-This does not add scope to the current release or approve automatic decay.
+Alex's latest direction is **category economic impact + delivery + demonstrated
+usage**, with time and progress made visible. This is the priority methodology
+discussion in the [review brief](tasks/2026-09-26-overall-ranking-review.md).
+The working product remains available; the homepage browses projects without
+an overall rank, and categories retain explicit delivery-share comparisons.
+No numerical impact weights, usage bonus or automatic decay are approved yet.
 
 ## Prove Value Index: separate future work
 
@@ -440,6 +488,22 @@ RSI). Prove Value serves people asking "should I believe this": verdicts,
 proof history, hype next to an empty meter. The burned skeptics, the
 journalists, the diligence analysts. Different job, different user, and
 CMC cannot follow without attacking its own customers.
+
+### The moat (Alex, 2026-09-26)
+
+CoinGecko or Coinbase could copy a scoreboard tomorrow. They cannot copy
+a multi-year, append-only, source-linked record of what every project
+promised and when it delivered, lapsed, or went silent. The immutable
+ledger of promise events is the special sauce; the timeline is its face.
+
+### Three visualizations, no canonical one (Alex, 2026-09-26)
+
+- **Meter:** the verdict now. "Is this team full of shit?"
+- **Atlas:** the evidence space. "What did they promise?"
+- **Timeline:** the history. "When did they promise, deliver, fail, go
+  silent?" Real recorded events only; unknowns labeled, never
+  interpolated. Design brief: `docs/tasks/2026-09-26-timeline-and-ledger.md`.
+
 
 ## Data rules
 

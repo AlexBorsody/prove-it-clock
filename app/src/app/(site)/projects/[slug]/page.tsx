@@ -58,15 +58,6 @@ export default async function ProjectPage({ params, searchParams }: {
   const promiseRefs = promiseReferences(slug, promises);
   const filledPct = latest.capacity > 0 ? latest.earned / latest.capacity : 0;
 
-  // Rank across all published projects by hearts filled %, same tiebreak
-  // as the scoreboard (earned desc, then name).
-  const ranked = [...(rankings.projects ?? [])].sort((a, b) => {
-    const pa = a.capacity > 0 ? a.earned / a.capacity : 0;
-    const pb = b.capacity > 0 ? b.earned / b.capacity : 0;
-    return pb - pa || b.earned - a.earned || a.name.localeCompare(b.name);
-  });
-  const rank = ranked.findIndex((p: any) => p.slug === slug) + 1;
-
   // Supporting-context ranks: where this project stands among all tracked
   // projects, using the exact default sort of the destination pages.
   // Context only: these never feed the verdict.
@@ -180,7 +171,7 @@ export default async function ProjectPage({ params, searchParams }: {
   // leader across tracked projects. Vitals are cached upstream (6h), the
   return (
     <>
-      {/* 1. Header: icon, name, rank, big hearts, Shitcoin warning, one-liner. */}
+      {/* 1. Header: project identity and published hearts. */}
       <div className="panel card section-hero search-section" {...searchMeta({ id: `project-${slug}-overview`, title: `${latest.name} overview`, kind: "Project", project: slug, keywords: `${latest.symbol} hearts potential ranking` })}>
         <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <img
@@ -192,7 +183,6 @@ export default async function ProjectPage({ params, searchParams }: {
           />
           {latest.name}
           <span className="coin-symbol">{latest.symbol}</span>
-          {rank > 0 ? <span className="rank-chip num">#{rank}</span> : null}
         </h1>
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
