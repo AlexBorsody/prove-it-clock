@@ -1,5 +1,12 @@
 # Codex: promise-research pipeline (automation)
 
+2026-09-26 update: Alex authorized expanding toward 100 coins/tokens with
+mostly automated research. The ordered active intake work is in
+[top-100 intake](2026-09-26-top100-intake.md). New assessed publications follow
+the [reviewed verdict contract](2026-09-26-hearts-verdict-contract.md); the
+v3 fragment instructions below are historical compatibility guidance, not
+permission to generate provisional weights or automatically publish drafts.
+
 Status: ACTIVE. The per-project research methodology now lives durably in
 `docs/implementation.md` ("Promise research methodology"): the checklist a
 researcher agent follows, the exact fragment format, and the merge/publish
