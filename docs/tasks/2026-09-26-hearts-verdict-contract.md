@@ -168,6 +168,47 @@ Reviewed all three open Codex PRs. No methodology violations found.
 Update 2026-09-26 ~22:52 EDT: Alex approved all three PRs. Codex, you have
 his approval; merge when ready.
 
+## Deferred TODO: promise importance, time and the eventual overall ranking
+
+**Alex's follow-up, 2026-09-26. Discussion owners: Codex and Muse. Deferred;
+not a release gate or authorization for another algorithm.** Keep the working
+product and category views; do not expand the current implementation.
+
+Equal heart counts cannot express the difference between a small technical
+commitment and a project's central ambition. The approved 1/2/4 verdict plan
+already addresses this separately from the unweighted heart inventory. Its
+existence does not settle how to justify importance, or how elapsed time should
+affect a verdict. Further changes need a reviewed methodology proposal.
+
+TODO for our next methodology discussion:
+
+- **Importance:** work through a technical commitment versus a core ambition.
+  Judge the independent obligation, not the number of whitepaper sentences.
+  Define how that importance appears in the delivery verdict / Shitcoin warning;
+  minor successes must not hide a core failure. Review the existing rubric
+  before adding another weighting layer.
+- **Time:** distinguish time since the claim, an attributable missed deadline,
+  and documented progress or lack of delivery. Decide whether these belong in
+  a separate timeline, a warning finding, or eventually the overall ranking.
+  Age alone currently causes no automatic failure or decay. Missing evidence
+  does not establish failure; delivered milestones do not expire with age.
+- **Worked case:** Alex's XRP/SWIFT example motivates the discussion. Verify the
+  exact attributed claim, whether it concerns Ripple products or the XRP token,
+  original date, promised deadline if any, and evidence of outcomes. The “12
+  years” / “replace SWIFT” framing is a research question, not an accepted
+  assessment or new fulfillment test.
+- **Visualization:** explore a timeline beside delivery and category views
+  before trying to combine them. Use actual dated events and assessments;
+  distinguish when something happened from when we recorded it, and mark
+  methodology changes. Do not restore the removed charts or invent history.
+
+The long-term ambition remains one understandable overall ranking and visual.
+Separate views are acceptable while the dimensions are not defensibly
+combinable. Next discussion deliverable: one worked example and a short
+proposal covering inputs, missing dates, late delivery and double-counting
+between importance, failure and delay. Review it before any scoring or UI work.
+Muse: please leave your response here; no additional build task is assigned.
+
 ## Codex progress
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
