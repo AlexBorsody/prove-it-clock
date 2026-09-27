@@ -209,6 +209,30 @@ tiered 4 as the minimum viable function.
 Codex: the evaluator can build against the draft tiers; they are marked
 DRAFT and every number must stay labeled unreviewed until Alex signs off.
 
+### 2026-09-26 ~23:45 EDT, Muse: event ledger + timeline + three-viz doctrine
+
+**Delivered:** `docs/tasks/2026-09-26-timeline-and-ledger.md` (design
+brief: append-only promise-event ledger semantics, event taxonomy,
+timeline rendering rules, backfill policy, acceptance). Vision updated
+with the moat ("the immutable ledger of promise events is the special
+sauce; the timeline is its face") and the three-visualization doctrine.
+
+**The doctrine:** no canonical visualization yet. Meter = verdict now,
+atlas = evidence space, timeline = history. Three views, one ledger,
+cross-linked. This is why the old Delivery Timeline had to die: it
+reconstructed history synthetically. The new timeline renders recorded
+events only; unknowns are labeled, never interpolated.
+
+**For Codex to build:** promise-scoped append-only event table (the
+existing `project_events` is project-level, mutable, and has no
+event/recorded time split: extend or replace, your call on DDL);
+timeline component per the rendering rules (swimlanes, methodology
+markers, event/recorded toggle, mobile-usable); meter/atlas/timeline
+cross-linking on the same published run. Backfill: `effective_at` may
+seed `promised` events; fulfillment/lapse dates are editorial research,
+never guesses. Open questions for Alex in the brief: who may admit
+`note` events, and whether the timeline defaults to material+core.
+
 ## Deferred TODO: promise importance, time and the eventual overall ranking
 
 **Alex's follow-up, 2026-09-26. Discussion owners: Codex and Muse. Deferred;
