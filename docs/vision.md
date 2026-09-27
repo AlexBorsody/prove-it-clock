@@ -22,12 +22,12 @@ ratings remain in force until a compatible reviewed publication is activated.
 
 ## The product in one line
 
-Did crypto projects actually deliver what they promised? The product is the
-living verdict per project: a grade that moves as promises are kept or
-broken, split by promise category, every number clickable to its receipt.
-The core is a sourced promise ledger: claim, attribution, fulfillment test,
-evidence and outcome. Hearts record delivery, not token prices or economic
-value. The Atlas is the evidence view, not the product.
+What economic substance supports this token's valuation? Start with a sourced
+promise ledger: claim, attribution, fulfillment test, evidence and outcome.
+Then distinguish what works, who uses it, what benefit it creates and whether
+that benefit reaches the token. Working software alone does not explain a
+multibillion-dollar valuation. Hearts record delivery; category profiles,
+Atlas and the timeline expose the evidence behind the value thesis.
 
 **Slogan: Truth, not hype.** We cut through the hype.
 **The hook (Alex, 2026-09-26):** in a perfect world, proven value and market
@@ -523,13 +523,11 @@ The distilled thesis. Everything built must serve it.
 - **The spine question:** is this project creating additional economic
   substance, or mainly participating in the market for tradeable digital
   assets?
-- **The market's foundation:** Bitcoin demonstrated two monetary
-  properties: transferability (send value without moving a physical
-  object) and durable savings demand. That is the only fully
-  demonstrated monetary foundation in crypto, roughly 57% of total
-  crypto market cap (CoinGecko snapshot, 2026-09-27). The rest of the
-  market's valuation rests predominantly on expectation. The product
-  emphasizes this; it does not soften it.
+- **The market's foundation:** emphasize Bitcoin's foundational monetary
+  role and the demand for scarce, portable digital wealth. Investigate
+  whether other projects benefit from broad monetary/speculative demand
+  before their additional promises create comparable economic substance.
+  That is a research question, not a predetermined result for every token.
 - **The burden of proof** sits on every additional value claim. Shipped
   software does not explain a multibillion-dollar token price. For a
   monetary asset, examine the monetary proposition. For a project
@@ -540,15 +538,27 @@ The distilled thesis. Everything built must serve it.
   market price can contain speculation too. One standard for all:
   neither price proves fair value by itself. That is what separates an
   accountability instrument from another crypto faction.
-- **Store of value means durable savings demand** over a stated period,
-  which is observable. It never means guaranteed purchasing-power
-  preservation, which volatility disproves. The exact test is written
-  before grading, like every other promise.
+- **Monetary tests stay distinct:** transferability, sustained savings
+  demand and purchasing-power performance are separate questions. Specify
+  the period, evidence and test before grading; a working wallet settles
+  none of the demand or future-value questions by itself.
 - **Public language:** "explain the basis of value," never "determine
   value."
 
-This is an editorial stance plus model judgments. The ledger records
-what happened; these beliefs shape what the models ask of it.
+Apply the same sequence to every value thesis:
+
+| Layer | What needs evidence |
+|---|---|
+| Functionality | The promised capability works. |
+| Demand | People use it; trading and incentive-driven activity are identified. |
+| Realized impact | That use produces the claimed benefit at a measured scale. |
+| Token connection | Those benefits create a reason to hold or acquire this token. |
+| Valuation assumptions | The growth or continued demand a valuation model requires. |
+
+These are separate questions, not automatic credits for passing the previous
+step. The ledger records what happened; models explain its significance.
+Neither Bitcoin's price nor another token's price independently proves fair
+value. Missing evidence stays visible, and findings can overturn our thesis.
 
 
 ## Data rules

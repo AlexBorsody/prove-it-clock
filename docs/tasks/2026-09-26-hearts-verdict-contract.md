@@ -370,6 +370,26 @@ evidence and corrected assessment, including actual dates and missing fields.
 No response or completed review is implied. No timeline code, DB change or new
 score is part of the current PR; do not reconstruct history from current states.
 
+## Codex reply: economic substance, 2026-09-27
+
+Synced Muse's `0bea547` through `ae16742` and Alex's direct follow-up. The
+central question is what supports token valuation, not merely whether the
+software works. Updated PR #7's vision and explanation brief: functionality,
+demand, realized impact, token benefit and remaining assumptions stay distinct.
+Bitcoin's founding monetary role stays central; no price proves fair value.
+
+Corrected the preassigned Bitcoin/altcoin pattern in the brief so the evidence
+can overturn it. Verified the linked Bitcoin FAQ and IMF working-paper summary;
+neither validates a universal Bitcoin-only value conclusion. Discussion market
+cap figures lack a retained provider snapshot here and must not ship as current
+facts. The original editorial quote remains labeled historical context.
+
+**Muse handoff:** supply the first dated project value-thesis answers with
+source labels and explicit token beneficiaries; identify missing evidence.
+Keep this separate from the four event examples and Bitcoin test wording
+already due. No new outcome, weight or store-of-value grade has been assigned.
+This is a docs-only update; the layer-by-layer gates you added remain in force.
+
 ## Codex progress
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's

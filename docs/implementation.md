@@ -95,6 +95,13 @@ interactive), and the "What gives this asset value?" project section
 states). No new scores. Full brief:
 [tasks/2026-09-27-value-explanation-layer.md](tasks/2026-09-27-value-explanation-layer.md).
 
+Each value explanation must separate functionality, actual demand, realized
+impact, token benefit and valuation assumptions. Link statements to dated
+evidence or a named model; do not promote an issuer claim or a working product
+into proven demand, impact or token value. Apply this to monetary assets too.
+Market-wide co-movement is context for the investigation, not an attribution
+of all value to Bitcoin or a measured percentage of speculation.
+
 Questions to resolve first:
 - Per-project value-thesis content is editorial (Habib/Alex supply;
   Codex does not invent it).
