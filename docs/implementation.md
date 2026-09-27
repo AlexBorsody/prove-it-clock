@@ -30,6 +30,12 @@ published run before activation. Existing editorial questions remain in the
 Preserve v3 interpretations and the rendered algorithm appendix until a
 compatible reviewed publication can activate the new contract.
 
+**Deferred discussion, not this release:** Alex wants Codex and Muse to revisit
+promise importance, elapsed time and a possible timeline / overall ranking.
+The [shared TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking)
+records the questions. Keep the approved implementation bounded; no additional
+weighting, decay or timeline work is authorized by that discussion.
+
 ## Delivery verdict and homepage rankings (2026-09-26)
 
 The new delivery summary is a read-only view of the active published ledger.

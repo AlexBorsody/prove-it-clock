@@ -296,6 +296,16 @@ be shipped through direct Markdown coordination with Muse. This authorizes
 implementation; record-specific judgments still need evidence. The existing
 v3 appendix stays unchanged until a compatible version is published.
 
+### Longer-term question: importance and time
+
+Alex's goal remains an understandable overall ranking, but equal heart counts
+alone cannot distinguish a technical detail from a project's central ambition,
+or explain years of unresolved delivery. The approved weighted verdict is one
+step; how to represent time remains open. Keep delivery and category views
+usable now. Codex and Muse will discuss importance, delay and a possible
+timeline in the [deferred TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking).
+This does not add scope to the current release or approve automatic decay.
+
 ## Prove Value Index: separate future work
 
 The earlier 60/25/15 proposal is superseded as a build instruction. No Index
