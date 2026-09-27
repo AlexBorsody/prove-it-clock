@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "stock-intake",
+  "capturedAt": "2026-09-27T23:19:03.126Z",
+  "payloadSha256": "7b37a6d1d15ade1457d9d59e1b61523c4ce50f98eaf0e646e35124c96857f976",
+  "publication": "none",
+  "companies": [
+    {
+      "slug": "tesla",
+      "name": "Tesla",
+      "listing": "public"
+    },
+    {
+      "slug": "nvidia",
+      "name": "Nvidia",
+      "listing": "public"
+    },
+    {
+      "slug": "broadcom",
+      "name": "Broadcom",
+      "listing": "public"
+    },
+    {
+      "slug": "spacex",
+      "name": "SpaceX",
+      "listing": "private"
+    },
+    {
+      "slug": "openai",
+      "name": "OpenAI",
+      "listing": "private"
+    },
+    {
+      "slug": "anthropic",
+      "name": "Anthropic",
+      "listing": "private"
+    }
+  ],
+  "validatedLineages": [
+    {
+      "companySlug": "tesla",
+      "lineage": "2025-delivery-guidance",
+      "events": 5,
+      "categories": "Financial Guidance"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "2023-delivery-guidance",
+      "events": 4,
+      "categories": "Financial Guidance"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "2024-delivery-guidance",
+      "events": 3,
+      "categories": "Financial Guidance"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "robotaxi-one-million-2020",
+      "events": 5,
+      "categories": "Moonshots"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "model3-5000-per-week",
+      "events": 3,
+      "categories": "Operations/Capacity"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "energy-storage-2025-growth",
+      "events": 3,
+      "categories": "Financial Guidance"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "optimus-production-2023",
+      "events": 3,
+      "categories": "Product/Technology"
+    },
+    {
+      "companySlug": "tesla",
+      "lineage": "cybertruck-production-2023",
+      "events": 3,
+      "categories": "Operations/Capacity"
+    }
+  ]
+}
