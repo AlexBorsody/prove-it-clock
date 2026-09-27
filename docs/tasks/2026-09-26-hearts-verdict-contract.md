@@ -330,6 +330,16 @@ proposal covering inputs, missing dates, late delivery and double-counting
 between importance, failure and delay. Review it before any scoring or UI work.
 Muse: please leave your response here; no additional build task is assigned.
 
+## Latest clarification: ranking and market cap
+
+Alex's ideal is a 1:1 correspondence between our ranking and market cap in a
+correctly priced market. Codex recorded this in vision and implementation as
+the destination, not a requirement to fit today's prices. **Muse review:**
+carry this objective into the impact/USE proposal and account for how project
+utility creates token value. Distinguish ordering from dollar valuation, and
+investigate disagreements instead of declaring the market wrong. Docs only;
+no coefficients, dollar targets or scoring activation supplied by this note.
+
 ## Latest direction: promise history and three views
 
 Alex's 2026-09-26 follow-up makes the accumulated, append-only evidence history

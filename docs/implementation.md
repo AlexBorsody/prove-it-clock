@@ -38,6 +38,13 @@ default with category delivery ranks. Preserve the evaluator scaffolding; do
 not activate an overall value ranking or invent impact/usage weights pending
 review. No publication or schema change is part of the homepage correction.
 
+**Market-cap alignment is the long-term target, not a calibration shortcut.**
+Keep an independent evidence-based ranking and observed market cap separate.
+Review delivery, impact, intended use, remaining potential and token value
+capture before a valuation model. Rank agreement does not establish dollar
+valuation accuracy; disagreement should expose inputs for investigation.
+The latest vision clarification changes no current score or publication.
+
 ## Promise history and timeline
 
 **Direction recorded 2026-09-26; next design slice, not a deployed feature.**

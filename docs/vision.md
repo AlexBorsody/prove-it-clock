@@ -31,6 +31,23 @@ value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
 
+### The long-term target: value and market cap align
+
+Alex's clarification: "in a perfect world our ranking and marketcap should be
+1:1." The intended destination is an independent account of justified value:
+in a correctly priced market, our ordering and market-cap ordering would agree.
+Delivery, economic significance, demonstrated use and credible remaining
+potential must explain that ordering. The promise ledger supplies its receipts.
+
+The gap between the two is a question to investigate, not automatic proof
+that the market is wrong. Do not tune the model to reproduce today's market
+caps or a preferred coin order. Review how a project's utility creates value
+for its token, not just whether the product is useful.
+
+Matching an order is distinct from estimating dollar market caps. The latter
+remains a longer-term methodology goal; current hearts and category delivery
+ranks are evidence toward it, not a completed valuation model.
+
 ### The durable asset: sourced history
 
 **Alex's direction, 2026-09-26:** our advantage is the accumulated record of
