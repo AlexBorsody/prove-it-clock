@@ -1,0 +1,7 @@
+.page { max-width: 860px; margin-inline: auto; }
+.steps { padding: 20px 24px 20px 46px; font-size: 18px; line-height: 1.6; color: var(--text-dim); }
+.steps li + li { margin-top: 12px; }
+.steps strong { color: var(--text); }
+.page :global(.fold-head) > svg { flex-shrink: 0; }
+.page :global(.fold-body) p:last-child { margin-bottom: 0; }
+.version { overflow-wrap: anywhere; font-size: 0.85em; }
