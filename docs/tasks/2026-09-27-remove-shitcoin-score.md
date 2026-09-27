@@ -20,6 +20,10 @@ reads as random. The receipts have teeth on their own; the badge is theater.
 
 ## What stays
 
+- The heart meter. One promise, one heart: earned, open, lapsed, retired. It is
+  a quantifiable inventory, not a judgment, and it is explicitly preserved.
+  Category sorting of promises is organization, not ranking. The Atlas stays as
+  the evidence view.
 - Promise states as facts. `lapsed` and `retired` remain on promise records;
   the promise list and timeline keep showing them with dates and sources.
 - Documented problems as inspectable items, per the direction-v2 viz contract
