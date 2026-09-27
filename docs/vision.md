@@ -504,6 +504,40 @@ ledger of promise events is the special sauce; the timeline is its face.
   silent?" Real recorded events only; unknowns labeled, never
   interpolated. Design brief: `docs/tasks/2026-09-26-timeline-and-ledger.md`.
 
+## What the product believes (Alex, 2026-09-27)
+
+The distilled thesis. Everything built must serve it.
+
+- **The spine question:** is this project creating additional economic
+  substance, or mainly participating in the market for tradeable digital
+  assets?
+- **The market's foundation:** Bitcoin demonstrated two monetary
+  properties: transferability (send value without moving a physical
+  object) and durable savings demand. That is the only fully
+  demonstrated monetary foundation in crypto, roughly 57% of total
+  crypto market cap (CoinGecko snapshot, 2026-09-27). The rest of the
+  market's valuation rests predominantly on expectation. The product
+  emphasizes this; it does not soften it.
+- **The burden of proof** sits on every additional value claim. Shipped
+  software does not explain a multibillion-dollar token price. For a
+  monetary asset, examine the monetary proposition. For a project
+  claiming to transform advertising, computing, finance, or settlement,
+  require evidence of that additional contribution.
+- **"Everything else is speculation" is a hypothesis,** tested per
+  project by the evidence, never hardcoded into the product. Bitcoin's
+  market price can contain speculation too. One standard for all:
+  neither price proves fair value by itself. That is what separates an
+  accountability instrument from another crypto faction.
+- **Store of value means durable savings demand** over a stated period,
+  which is observable. It never means guaranteed purchasing-power
+  preservation, which volatility disproves. The exact test is written
+  before grading, like every other promise.
+- **Public language:** "explain the basis of value," never "determine
+  value."
+
+This is an editorial stance plus model judgments. The ledger records
+what happened; these beliefs shape what the models ask of it.
+
 
 ## Data rules
 
