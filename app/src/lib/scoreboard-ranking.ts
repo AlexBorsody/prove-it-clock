@@ -44,8 +44,13 @@ export function sortScoreboard<T extends RankingRow>(rows:T[],sort:BoardSort,cat
     }
   }
   const clean=(v:number|string|null)=>typeof v==='number'&&!Number.isFinite(v)?null:v;
+  function categoryMember(row:T):boolean {
+    if (sort==='rank'||sort==='hearts'||sort==='verdict') return share(row,category)!=null;
+    // Genesis changes delivery eligibility, not which subjects its promises cover.
+    return !!category && (row.delivery?.categories[category]?.total??0)>0;
+  }
   return [...rows].sort((a,b)=>{
-    if(category) {const am=share(a,category)!=null,bm=share(b,category)!=null;if(am!==bm)return am?-1:1;}
+    if(category) {const am=categoryMember(a),bm=categoryMember(b);if(am!==bm)return am?-1:1;}
     const av=clean(value(a)),bv=clean(value(b));
     if(av===null||bv===null) return av===bv?a.name.localeCompare(b.name):av===null?1:-1;
     return (typeof av==='string'?av.localeCompare(String(bv)):Number(bv)-av)||a.name.localeCompare(b.name);

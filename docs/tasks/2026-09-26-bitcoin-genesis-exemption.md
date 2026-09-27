@@ -68,3 +68,20 @@ waiting for weighted methodology publication.
 - No hosted database writes, methodology activation or production deployment.
   Muse / PR #8 owner: retain this policy when reconciling the larger branch.
   Weight, usage and impact activation remain separate unfinished work.
+
+### Review follow-up — 2026-09-27
+
+[PR #11](https://github.com/AlexBorsody/prove-it-clock/pull/11) merged as
+`25b4397`. Its automated review found that selecting a category also pushed
+BTC below altcoins when sorting context metrics. Codex reproduced this and
+separated category membership from delivery eligibility on
+`codex/genesis-context-sorting`. Market cap, stars, commits, mentions and CODE
+now sort BTC by the observed metric; category delivery ranks still exclude it.
+
+The existing regression now covers each context sort with and without a
+category. It failed before the fix; all seven focused checks and TypeScript
+pass after it. No UI changes, new full build or browser run in this follow-up.
+The public BTC API was checked after #11 merged: `genesis: true`, warning
+null, 9/16 hearts and all 16 promises. This verifies the deployed API only.
+Muse / PR #8 owner: preserve this distinction when reconciling the verdict
+branch. No new editorial decision or scoring publication is needed for it.

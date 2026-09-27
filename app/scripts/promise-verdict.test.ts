@@ -97,7 +97,9 @@ test('market cap joins by known provider ID; missing observations never become z
 });
 test('Bitcoin is Genesis: retained as receipts but excluded from delivery and warning rankings',()=>{
   const data=rows().slice(0,3);
-  data[1].slug='btc';data[1].name='Bitcoin';data[1].marketCap=100;
+  data[1].slug='btc';data[1].name='Bitcoin';
+  data[1].marketCap=100;data[1].codeStars=100;data[1].codeCommits=100;data[1].hypeMentions=100;
+  data[1].code='Active';data[0].code='Quiet';
   const before=JSON.stringify(data);
   assert.equal(projectFlags('btc').genesis,true);
   for(const slug of ['eth','bat','xrp','new-coin']) assert.equal(projectFlags(slug).genesis,false);
@@ -105,6 +107,10 @@ test('Bitcoin is Genesis: retained as receipts but excluded from delivery and wa
   assert.equal(categoryRanks(data,'payments').get('a'),1);
   for(const sort of ['hearts','verdict'] as const) assert.equal(sortScoreboard(data,sort,'').at(-1)?.slug,'btc');
   assert.equal(sortScoreboard(data,'rank','payments').at(-1)?.slug,'btc');
-  assert.equal(sortScoreboard(data,'market-cap','')[0].slug,'btc');
+  for(const category of ['', 'payments'] as const) {
+    for(const sort of ['market-cap','stars','commits','hype','code'] as const) {
+      assert.equal(sortScoreboard(data,sort,category)[0].slug,'btc',`${category || 'all'} / ${sort}`);
+    }
+  }
   assert.equal(JSON.stringify(data),before);
 });
