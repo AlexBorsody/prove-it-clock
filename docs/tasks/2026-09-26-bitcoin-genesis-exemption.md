@@ -6,9 +6,11 @@ like every other project.
 
 ## Why
 
-- **Anonymous founder.** There is no accountable issuer to hold to promises
-  the way a known team or founder can be held. Every other project has people
-  who made the claims.
+- **Anonymous founder.** This is Alex's explicit product choice, not a claim
+  that anonymity prevents checking evidence: an anonymous author can still
+  make an attributable claim. But there is no accountable issuer to hold to
+  promises the way a known team or founder can be held, and combined with
+  being first and category-creating, that sets Bitcoin apart.
 - **It was first.** There was no asset class before it. It created the
   category rather than competing inside one, so judging it against category
   benchmarks is a category error. Its delivery is existential: before Bitcoin
