@@ -135,3 +135,42 @@ A useful illustrative read the section should be able to produce:
 
 A new visitor can answer: What does it do? What was promised? What is
 proven? Who benefits? What am I still being asked to believe?
+
+## Editorial stance: the market's foundation (Alex, 2026-09-27)
+
+Alex's position, recorded as a labeled editorial/model judgment, not a
+ledger fact:
+
+> Bitcoin has demonstrated two monetary properties: transferability
+> (send value without moving a physical object) and durable savings
+> demand. That is the only fully demonstrated monetary foundation in
+> crypto. The rest of the market's trillion-dollar capitalization rests
+> predominantly on expectation. The product must emphasize this, not
+> soften it with even-handed taxonomy.
+
+Implementation consequences:
+
+- **The "store of value" test must meet Alex's own precision
+  standard.** Define it as *durable demand as a savings vehicle over a
+  stated period* (observable), never as *guaranteed purchasing-power
+  preservation* (not true; volatility is documented). Write the exact
+  test before grading.
+- **Do not publish "everything else is speculation" as a global
+  fact.** Stablecoin settlement and general-purpose computation are
+  demonstrated services; the honest claim is narrower: most
+  *valuations* exceed demonstrated substance. Per the layered
+  architecture, that is a model judgment. Let the per-project "What
+  gives this asset value?" sections *show* the pattern (Bitcoin's
+  "demonstrated" column full, others' "still a bet" column dominant)
+  rather than pre-judging it in prose. The pattern emerging from the
+  instrument is more credible than the instrument asserting it.
+- **A versioned aggregate is allowed:** e.g. "share of total crypto
+  market cap whose value thesis rests primarily on future
+  expectations," with published assumptions and model version. Until
+  that model exists, show the raw components (total mcap, BTC mcap,
+  BTC dominance) as market context.
+- **`/learn/value` gets a sixth beat:** "One demonstrated monetary
+  asset, a trillion dollars of expectation." Walk the user from
+  Bitcoin's two demonstrated properties to the composition of total
+  crypto market cap, and ask what the non-Bitcoin portion is resting
+  on. Link each claim to its record.
