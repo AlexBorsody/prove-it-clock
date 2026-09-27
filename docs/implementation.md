@@ -94,6 +94,15 @@ A missing revision or database failure never becomes an empty history.
    reports unavailable; after migration and before publication it reports empty
    coverage. Neither condition claims a project failed or did nothing.
 
+## Proposed company domain — Tesla first
+
+Alex supplied a Speculative Tech / Stocks brief on September 27. The
+[scope and reuse review](tasks/2026-09-27-stocks-v1-scope.md) records the phased
+work, guidance-target versioning and unresolved ranking/ownership decisions.
+It is separate from the crypto timeline rollout. The present crypto writer
+cannot accept company records unchanged; preserve its contract while adding
+domain adapters. No company data, ranking or valuation model is activated.
+
 ## Prior implementation history
 
 The [verdict-layer tasks](tasks/2026-09-26-verdict-layer.md) are the latest
