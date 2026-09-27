@@ -29,6 +29,7 @@ import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-ch
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";
+import ProjectTimeline from '@/components/project-timeline';
 import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 import { projectFlags } from "@/lib/project-policy";
@@ -37,7 +38,7 @@ export const dynamic = "force-dynamic";
 
 export default async function ProjectPage({ params, searchParams }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ promises?: string; evidence?: string }>;
+  searchParams: Promise<{ promises?: string; evidence?: string; history?: string }>;
 }) {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const { genesis } = projectFlags(slug);
@@ -174,6 +175,10 @@ export default async function ProjectPage({ params, searchParams }: {
         <DocumentedProblems slug={slug} name={latest.name} promises={promises} asOf={latest.as_of} available={latest.availability === "available"} />
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
+
+      <Suspense fallback={<section className="panel"><h2>Promise timeline</h2><p role="status">Loading promise history…</p></section>}>
+        <ProjectTimeline slug={slug} name={latest.name} revisionId={query.history}/>
+      </Suspense>
 
       <section className="panel atlas-section search-section" {...searchMeta({id:`project-${slug}-atlas`,title:`${latest.name} Promise Atlas`,kind:'Atlas',project:slug,keywords:'promise categories evidence'})}>
         <Suspense fallback={<><h2>{latest.name} Promise Atlas</h2><p role="status">Loading the promise map…</p></>}>

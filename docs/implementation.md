@@ -26,6 +26,74 @@ the existing schema; no migration, scoring publication or activation is part
 of PR #8. A receipt preserves what was recorded; it does not validate the
 research or invent event dates for the upcoming timeline.
 
+## Promise event timeline v1 (2026-09-27)
+
+The four-event taxonomy in [the foundation brief](tasks/2026-09-27-timeline-foundation.md)
+is the current contract: `promise_stated`, `promise_repeated`, `evidence`,
+`assessment`. It supersedes the older seven-event draft below.
+
+### Storage and write contract
+
+`007_promise_event_history.sql` extends the existing Supabase publication model
+with `promise_history_revisions`. It does not alter heart publications or the
+legacy `project_events`. A revision stores a small project's complete immutable
+history; new events append to the exact previous revision. This deliberately
+avoids a second mutable promise catalog. Large histories may later need event
+normalization/pagination; this first release is for the current curated cohort.
+
+`publish_promise_history(document)` accepts:
+
+- `schema_version: 1`, a stable `revision_key`, `project_slug`, `ledger_run_id`,
+  actual `author`, and `previous_revision_id` (null for the first publication).
+- `events`: only the new events. Every event has `id`, `lineage`, `kind`,
+  `occurredOn` (`YYYY`, `YYYY-MM` or `YYYY-MM-DD`), `summary`, actual `author`,
+  and `source: { url, title, publishedOn, locator?, quote? }`.
+- Original statements also have `speaker` and the ledger's `claimType`.
+  Repeats have `originalId` and `wordingChange` (`same`, `narrowed`, `expanded`).
+  Evidence has `stance` (`supports`, `refutes`, `context`) and nonempty
+  `provenance` notes. Those notes must retain attribution/subsidy/bot caveats.
+- Assessments have `runId`, `methodology`, the exact published `state`, and
+  `supersedes` (null or a prior same-lineage assessment ID). A correction needs
+  `correctionReason`. Its date must match the run's actual server-recorded
+  publication date, never a historical delivery date inferred from its state.
+
+The RPC validates lineage against a real published project assessment. It
+serializes per-project updates, rejects conflicting retries and stale parents,
+preserves all previous events, and stamps `recordedAt` itself. The event's
+source URL/date describes its evidence; `occurredOn` describes the event;
+`recordedAt` describes arrival in this ledger. They are never interchangeable.
+No public write route is added. Anon/authenticated roles can read; only the
+existing authorized service writer can call the publication RPC. Updates,
+deletes and truncation are rejected. Database administrators remain a trust
+boundary, as with heart publications.
+
+### Read and display
+
+`readPromiseTimeline` selects one revision from Supabase, with optional exact
+revision ID. The project page server-loads it into the shared timeline component.
+No live news/provider calls, weights, scoring functions or legacy timeline
+reconstruction feed this view. Source text is rendered as text; links permit
+HTTP(S) without embedded credentials.
+
+The vertical timeline stays legible at 360px and includes keyboard-operable
+event details, type/stance labels, source provenance and visible assessment
+corrections. Filters select records only. The date switch distinguishes event
+chronology from ingestion chronology; display spacing is not elapsed time.
+Assessment details link to the run-pinned evidence receipt and promise anchor.
+A missing revision or database failure never becomes an empty history.
+
+### Release sequence
+
+1. Review the code/migration and source gaps in the foundation task. Local
+   PostgreSQL fixtures are not research acceptance or hosted schema verification.
+2. Apply 007 to the explicitly confirmed Supabase target through the established
+   migration process. No target is guessed or changed by this task.
+3. Review and publish the first real event batch through the RPC. Original
+   Codius sourcing and a real correction pair remain editorial handoffs.
+4. Check the public project timeline against that revision. Before migration it
+   reports unavailable; after migration and before publication it reports empty
+   coverage. Neither condition claims a project failed or did nothing.
+
 ## Prior implementation history
 
 The [verdict-layer tasks](tasks/2026-09-26-verdict-layer.md) are the latest
