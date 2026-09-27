@@ -47,7 +47,8 @@
     "test:atlas": "node --import tsx --test scripts/atlas.test.ts scripts/atlas-sw.test.cjs",
     "atlas:audit": "node --import tsx scripts/atlas-audit.ts",
     "ranking:calibrate": "node --import tsx scripts/calibrate-ranking.ts",
-    "test:calibration": "node --import tsx --test scripts/ranking-calibration.test.ts"
+    "test:calibration": "node --import tsx --test scripts/ranking-calibration.test.ts",
+    "timeline:publish": "node --import tsx scripts/publish-timeline.ts"
   },
   "version": "0.1.0"
 }

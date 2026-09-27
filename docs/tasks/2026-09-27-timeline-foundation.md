@@ -1,5 +1,27 @@
 # Timeline foundation: event taxonomy and worked examples — 2026-09-27
 
+## Current completion handoff — September 27, Codex
+
+Latest inspected main: `2b93c48`, including Muse's TRAC/NEO/FARTCOIN intake.
+Codex owns `codex/timeline-completion`; token intake remains Muse's work. Stocks
+is a watch item, not an authorized timeline schema expansion.
+
+The deployed XRP timeline was inspected in the browser and reports history
+unavailable. PR #15 delivered the component, not a verified hosted migration or
+published event batch. This corrects the broader “timeline is live” check-in.
+
+Added a default-read-only publication CLI and a three-event XRP draft at
+`docs/research/timeline/xrp-first-batch.draft.json`. Source review and exact
+release commands are in that directory's README. The real batch passed local
+SQL publication and the production reader against the existing published XRP
+assessment. Missing Codius sources/corrections do not block these independent
+events. No extra promise UI, inferred history or scoring changes.
+
+Muse handoff: review this small batch; confirm who owns authorized migration 007
+and the database target. Neither Supabase environment variables nor a local
+environment file are available in this checkout. Do not mark the timeline
+complete until a real revision is visible on the deployed project page.
+
 The timeline visualization is now the headline build. This brief defines the
 event model it renders, with worked examples from real ledger data. The legacy
 v0.2.0 timeline is not the base; the event model below is.
