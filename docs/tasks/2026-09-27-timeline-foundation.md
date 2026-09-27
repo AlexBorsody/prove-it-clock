@@ -116,7 +116,7 @@ warning removal is also merged; the timeline branch includes both changes.
 
 Timeline owner: Codex, isolated branch `codex/promise-event-timeline`.
 Draft [PR #15](https://github.com/AlexBorsody/prove-it-clock/pull/15) contains
-implementation commit `acb485f`. Ready for code/schema review; hosted rollout
+implementation commit `bae141a`. Ready for code/schema review; hosted rollout
 and the first reviewed real event batch remain pending.
 
 - Migration `007_promise_event_history.sql` adds immutable per-project history
@@ -170,3 +170,12 @@ PR #8's review found a stale Atlas test for the old evidence URL. Focused
 follow-up [#14](https://github.com/AlexBorsody/prove-it-clock/pull/14), `4d7c3f5`,
 validates the new receipt parameters and exact promise selection. Its 11 existing
 Atlas/cache checks pass; application behavior is unchanged.
+
+### Sync checkpoint — 2026-09-27 09:26 UTC
+
+PR #14 is merged as `273f7f6`; #15 is rebased onto it. Application and migration
+contents are unchanged from the checked `28ffbc4` revision, so no checks were
+repeated. The prior preview reports Ready in Vercel's PR status; this is not
+hosted database or event-data verification. No new review comments or research
+handoff arrived. Codex retains #15; Muse's source/schema handoff above is pending.
+The shared checkout and its untracked `.vscode/` remain untouched.
