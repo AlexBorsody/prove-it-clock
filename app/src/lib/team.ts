@@ -3,7 +3,7 @@
  * accounts? Built from the curated GitHub repos in vitals.ts.
  *
  * DISPLAY ONLY. Like all CODE data, TEAM never feeds hearts or the
- * Shitcoin warning. It answers "who is actually building" next to the
+ * promise assessments. It answers "who is actually building" next to the
  * raw commit counts.
  *
  * Data source: GET /repos/{owner}/{repo}/stats/contributors (free, no

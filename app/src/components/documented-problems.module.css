@@ -1,0 +1,8 @@
+.section { margin-top: 20px; min-width: 0; overflow-wrap: anywhere; }
+.section summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-weight: 700; }
+.date { color: var(--text-dim); font-size: 14px; }
+.list { list-style: none; padding: 0; margin: 12px 0; }
+.list li { border-top: 1px solid var(--border); padding: 14px 0; }
+.list a { display: inline-block; padding: 6px 0; font-weight: 700; }
+.list p { margin: 6px 0; }
+.state { font-weight: 700; }

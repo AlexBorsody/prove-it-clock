@@ -20,9 +20,9 @@ const STEPS: TourStep[] = [
     body: "This is the whole point. Everything this project promised, and what actually happened. A filled heart means the promise was kept. Tap any promise to see the proof.",
   },
   {
-    selector: '[data-tour="shitcoin"]',
-    title: "The warning light",
-    body: "When promises fail or get quietly dropped, it shows up here. Tap What feeds this meter to see exactly what went wrong.",
+    selector: '[data-tour="problems"]',
+    title: "Inspect documented problems",
+    body: "Open the published records marked lapsed or retired. Each links to its assessment and evidence so you can judge what happened.",
   },
   {
     selector: '[data-tour="code"]',

@@ -5,10 +5,10 @@
 export const openApiSpec = {
   openapi: "3.0.3",
   info: {
-    title: "Prove-It Scores API",
-    version: "1.0.0",
+    title: "Prove Value Promise API",
+    version: "1.1.0",
     description:
-      "Did crypto projects actually deliver what they promised? Read-only access to Prove-It hearts, the Shitcoin warning dial, CODE activity, and HYPE attention for every scored project. No authentication. Fair use: keep request volume reasonable.",
+      "Did crypto projects actually deliver what they promised? Read-only access to published promise records, hearts, CODE activity and HYPE attention. No project-level warning score. No authentication. Fair use: keep request volume reasonable.",
   },
   servers: [{ url: "https://prove-it-clock.vercel.app/api/v1" }],
   paths: {
@@ -75,7 +75,7 @@ export const openApiSpec = {
       get: {
         summary: "Get one project's scores",
         description:
-          "Full detail for a project: hearts, Shitcoin warning dial, CODE, HYPE, every tracked promise with its state and hearts earned, and the proof-history timeline.",
+          "Full detail for a project: hearts, CODE, HYPE, tracked promises with their recorded states, and published heart history.",
         parameters: [
           {
             name: "slug",
@@ -107,24 +107,13 @@ export const openApiSpec = {
           name: { type: "string", example: "Bitcoin" },
           symbol: { type: "string", example: "BTC" },
           rank: { type: "integer", description: "Market-cap rank. Rank only, never a scoring input.", example: 1 },
-          genesis: { type: "boolean", description: "Bitcoin-only Genesis designation. Its promise inventory is retained, but it has no altcoin warning or comparative delivery rank.", example: true },
+          genesis: { type: "boolean", description: "Bitcoin-only Genesis designation. Its historical promise inventory remains available.", example: true },
           hearts: {
             type: "object",
             description: "Hearts are earned only. No allowances, no time decay.",
             properties: {
               earned: { type: "integer", example: 5 },
               capacity: { type: "integer", example: 20 },
-            },
-          },
-          shitcoin_warning: {
-            type: "object",
-            nullable: true,
-            description:
-              "Null for Genesis assets. Otherwise the public Shitcoin warning dial. Fixed positions, not a computed score: 1 = clean delivery record, 4 = watch, 7 = supporting failure, 10 = core failure.",
-            properties: {
-              level: { type: "integer", minimum: 1, maximum: 10, example: 1 },
-              scale: { type: "integer", example: 10 },
-              label: { type: "string", example: "Shitcoin warning" },
             },
           },
           code: {

@@ -1,5 +1,12 @@
 # Prove Value: Product Vision
 
+**Latest decision, 2026-09-27:** [present evidence, let people decide](tasks/2026-09-27-codex-tonight-decisions.md).
+Hearts remain one promise, one heart. Remove the project warning score and
+badges; documented problems link to their assessments and sources. The Atlas,
+timeline and comparisons expose the records. Importance weights, ranking
+tuning and a replacement warning formula are parked. This supersedes the
+earlier verdict, warning and weighted-ranking plans preserved below.
+
 **Updated 2026-09-26 with Alex's Promise Atlas v1 brief.** The Atlas section
 supersedes older Index and embeddings-first instructions. Existing scoring
 remains unchanged. Product direction lives here; build details and the ordered

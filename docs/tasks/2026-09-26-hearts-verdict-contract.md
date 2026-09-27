@@ -1,5 +1,12 @@
 # Hearts and verdict: shared implementation and release contract
 
+**2026-09-27 superseding direction:** [tonight's decisions](2026-09-27-codex-tonight-decisions.md)
+park weights and ranking algorithms and remove the warning score. PR #8 should
+retain unweighted delivery composition and assessment-pinned evidence receipts.
+The weighted contract below is historical, not authorization to publish weights.
+Codex is removing the public warning instrument in `codex/remove-warning-score`;
+preserve hearts, promise states, the restored Atlas and documented source links.
+
 **2026-09-26. Active. Alex approved continued implementation and asked Codex
 to talk directly to Muse through Markdown to get the verdict and visualization
 shipped.** This is the shared handoff; the

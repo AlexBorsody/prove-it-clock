@@ -2,12 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import ShitcoinMeter from "@/components/shitcoin-meter";
 import HeartMeter from "@/components/heart-meter";
-import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
 import { projectFlags } from "@/lib/project-policy";
+import { promiseFilterHref } from "@/lib/promise-context";
 
 export interface CompareProject {
   slug: string;
@@ -16,8 +15,6 @@ export interface CompareProject {
   earned: number;
   capacity: number;
   filledPct: number;
-  verdict: VerdictCategory;
-  verdictLine: string;
   promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number };
   code: { word: CodeWord; stars: number | null; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null; unreachable: boolean };
   use: "coming";
@@ -30,7 +27,6 @@ const MAX_SEL = 4;
 const ROW_GROUPS: Array<{ label: string; rows: Array<{ key: string; label: string; anchor: string }> }> = [
   { label: "Promise delivery", rows: [
     { key: "hearts", label: "Hearts", anchor: "hearts" },
-    { key: "verdict", label: "Verdict", anchor: "verdict" },
     { key: "promises", label: "Promises", anchor: "pillars" },
   ] },
   { label: "Supporting context", rows: [
@@ -63,16 +59,6 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
           <span className="cell-sub">{Math.round(p.filledPct * 100)}% filled</span>
         </div>
       );
-    case "verdict":
-      if (projectFlags(p.slug).genesis) return <Link href={`/projects/${p.slug}`} className="word dim">Genesis asset<span className="cell-sub">Historical promise inventory</span></Link>;
-      return (
-        <div>
-          <Link href={`/projects/${p.slug}#verdict`} aria-label={`${p.name} Shitcoin warning breakdown`} className="gauge-btn">
-            <ShitcoinMeter category={p.verdict} compact size={38} />
-          </Link>
-          <p className="verdict-line">{p.verdictLine}</p>
-        </div>
-      );
     case "promises": {
       const c = p.promiseCounts;
       return (
@@ -82,8 +68,8 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
             {c.fulfilled > 0 ? <span className="tag measured">{c.fulfilled} fulfilled</span> : null}
             {c.active > 0 ? <span className="tag na">{c.active} active</span> : null}
             {c.open > 0 ? <span className="tag na">{c.open} open</span> : null}
-            {c.lapsed > 0 ? <span className="tag bad">{c.lapsed} lapsed</span> : null}
-            {c.retired > 0 ? <span className="tag bad">{c.retired} retired</span> : null}
+            {c.lapsed > 0 ? <Link className="tag bad" href={promiseFilterHref(p.slug,'lapsed')}>{c.lapsed} lapsed ↗</Link> : null}
+            {c.retired > 0 ? <Link className="tag bad" href={promiseFilterHref(p.slug,'retired')}>{c.retired} retired ↗</Link> : null}
           </div>
         </div>
       );
@@ -194,6 +180,7 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
                     />
                     <br />
                     {p.name}
+                    {projectFlags(p.slug).genesis && <span className="cell-sub">Genesis asset</span>}
                   </Link>
                 </th>
               ))}

@@ -1,6 +1,17 @@
 # Prove Value: Implementation Plan
 
 **Updated 2026-09-27.** [vision.md](vision.md) is the product authority.
+
+**Current priority:** [evidence over ranking](tasks/2026-09-27-codex-tonight-decisions.md).
+Remove the project warning score, preserve the heart inventory, and build the
+source-linked timeline. Qualitative weights and new ranking algorithms are
+parked. PR #8 retains only unweighted composition and pinned evidence receipts;
+older weighted-verdict and warning instructions below are superseded.
+The [timeline handoff](tasks/2026-09-27-timeline-foundation.md) now supplies the
+event taxonomy and examples; gaps and implementation notes belong in that brief.
+
+## Prior implementation history
+
 The [verdict-layer tasks](tasks/2026-09-26-verdict-layer.md) are the latest
 product direction: a published-ledger summary near the top of project pages,
 with category rankings. They supersede the Atlas brief's restriction on

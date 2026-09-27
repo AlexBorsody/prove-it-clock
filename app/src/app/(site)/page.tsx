@@ -8,7 +8,6 @@ import {
   useWord,
   type HypeSnapshot,
 } from "@/lib/heart-data";
-import { verdictFor } from "@/lib/verdict";
 import { fetchVitals } from "@/lib/vitals";
 import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
 import Icon from "@/components/chrome-icons";
@@ -59,9 +58,6 @@ export default async function Home() {
         earned: p.earned,
         capacity: p.capacity,
         filledPct,
-        verdict: verdictFor(
-          promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
-        ).category,
         code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
         codeCommits: vitals?.commits90d ?? null,
         codeStars: vitals?.stars ?? null,

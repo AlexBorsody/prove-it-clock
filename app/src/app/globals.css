@@ -449,32 +449,6 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   .wt-driver-pop .driver-popover-close-btn { width: 44px; height: 44px; }
 }
 
-/* Shitcoin score badge: the special sauce. Dark badge, thick severity bar,
-   big mono number. Links to the formula on the methodology page. */
-.shitcoin-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 6px 14px 6px 12px; border-radius: 12px;
-  background: #101012;
-  border: 1px solid var(--border-strong);
-  border-left: 5px solid var(--sev-color);
-  color: inherit;
-}
-.shitcoin-badge:hover { color: inherit; background: #17171a; }
-.shitcoin-num { font-size: 30px; font-weight: 800; line-height: 1; color: var(--sev-color); }
-.shitcoin-label {
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text-dim); font-weight: 700; line-height: 1.6;
-}
-.shitcoin-badge.sev-ok { --sev-color: var(--green); }
-.shitcoin-badge.sev-warn { --sev-color: var(--amber); }
-.shitcoin-badge.sev-bad { --sev-color: var(--red); }
-/* Compact variant for home cards: single-line, tighter. */
-.shitcoin-badge.compact {
-  gap: 8px; padding: 6px 10px; border-radius: 10px; border-left-width: 4px;
-}
-.shitcoin-badge.compact .shitcoin-num { font-size: 20px; }
-.shitcoin-badge.compact .shitcoin-label { font-size: 10.5px; }
-
 /* ---- icons: Octicons + brand marks, always currentColor ---- */
 .icon { display: inline-block; vertical-align: -2px; flex-shrink: 0; }
 
@@ -720,7 +694,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   .hype-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
   .hype-row > * { min-width: 0; overflow-wrap: anywhere; }
   .hype-row > .hype-coin { grid-column: 1 / -1; }
-  .hype-row > .hype-verdict {
+  .hype-row > .hype-row-sources {
     grid-column: 1 / -1; display: flex; flex-wrap: wrap;
     align-items: center; justify-content: space-between; gap: 8px;
   }
@@ -883,7 +857,6 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
   display: block; margin-top: 6px;
   font-weight: 700; font-size: 15px; color: var(--text);
 }
-.board-card .shitcoin-meter { margin-top: 10px; }
 .board-card-factors {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
   margin-top: 12px;
@@ -1045,45 +1018,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .pi-tip .pi-tip-row { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
 .pi-tip .dot { width: 9px; height: 9px; border-radius: 2px; flex: none; }
 
-/* ---- Shitcoin Score: circular 1-10 gauge ---- */
-.shitcoin-meter { margin-top: 18px; }
-.shitcoin-meter:not(.compact) {
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: 12px; padding: 6px 16px;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.shitcoin-meter.compact {
-  margin-top: 0;
-  display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
-  text-align: center;
-}
-.shitcoin-caption {
-  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text-dim); font-weight: 700; white-space: nowrap;
-}
-.shitcoin-gauge { display: inline-flex; align-items: center; gap: 10px; }
-.shitcoin-dial { display: block; }
-.shitcoin-gauge-meta { display: flex; flex-direction: column; gap: 2px; }
-.shitcoin-meter-label {
-  font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--text); font-weight: 700;
-}
-.shitcoin-gauge-cat { font-size: 15px; font-weight: 800; }
-.shitcoin-warn {
-  display: flex; align-items: flex-start; gap: 8px;
-  color: var(--red); font-size: 14px; margin: 10px 0 0;
-}
-.shitcoin-warn svg { flex-shrink: 0; margin-top: 1px; }
-.mcard-gauge { display: inline-flex; flex-shrink: 0; }
-/* Warning sits on its own row under the hearts: left-aligned, never wrapping. */
-.mcard-warning { margin: 0 0 8px; }
-.mcard-gauge .shitcoin-meter.compact {
-  display: inline-flex; flex-direction: row; align-items: center; gap: 6px;
-}
-/* Tight badge on phone cards: smaller dial caption so the gauge never
-   crowds the hearts row. */
-.mcard-gauge .shitcoin-caption { font-size: 9px; letter-spacing: 0.05em; }
-
 /* ---- Potential: one-line vision rationale under the hearts meter ---- */
 .potential-line { font-size: 13.5px; color: var(--text-dim); margin: 4px 0 0; }
 
@@ -1202,11 +1136,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .hearts-cell-toggle:active { transform: scale(0.97); }
 .mcard-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
 .mcard-dot { color: var(--text-faint); }
-.mcard-verdict { text-transform: uppercase; letter-spacing: 0.04em; }
-.mcard-verdict.v-not-a-shitcoin { color: var(--green); }
-.mcard-verdict.v-watch { color: var(--text-dim); }
-.mcard-verdict.v-shitcoin-risk { color: var(--amber); }
-.mcard-verdict.v-shitcoin { color: var(--red); }
 .mcard-stat { color: var(--text-dim); text-decoration: none; font-weight: 700; }
 .mcard-promises-toggle {
   width: 100%; background: none; border: none; padding: 12px 0;
@@ -1229,27 +1158,6 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   .hero-factors { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; }
 }
 
-/* Meter evidence is collapsed until requested; the toggle looks like a button. */
-.shitcoin-inputs { margin-top: 0; }
-.shitcoin-inputs-label {
-  display: inline-block;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--text-dim); text-transform: uppercase; text-align: center;
-  padding: 6px 15px; cursor: pointer;
-  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px;
-  list-style: none;
-}
-.shitcoin-inputs-label::-webkit-details-marker { display: none; }
-.shitcoin-inputs-label::marker { content: ""; }
-.shitcoin-inputs-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.shitcoin-inputs-list li {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: 8px; padding: 8px 10px;
-}
-.shitcoin-input-criteria { font-size: 13px; color: var(--text); }
-.shitcoin-input-state { font-size: 12px; font-weight: 700; color: var(--danger); white-space: nowrap; }
-.shitcoin-inputs-empty { font-size: 13px; color: var(--text-dim); margin: 0; }
 /* Tappable metrics are buttons: filled background, rounded, obvious. */
 .metric-btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -1280,15 +1188,6 @@ button { padding-block: 6px; padding-inline: 14px; }
   text-decoration: none; cursor: pointer; white-space: nowrap;
 }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #14100a; }
-.gauge-btn {
-  display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
-  background: var(--bg-elev); border: 1px solid var(--border);
-  border-radius: 14px; padding: 5px 6px;
-  text-decoration: none;
-}
-/* Tappable gauges: no link underline, keep the dial look. */
-.shitcoin-cell a, .mcard-gauge a, .hype-row a .shitcoin-meter, a.cmp-meter { text-decoration: none; display: inline-flex; }
-
 /* Mobile: type reads bigger, nothing tiny. */
 @media (max-width: 640px) {
   .hero-sub { font-size: 16.5px; }
@@ -1298,7 +1197,6 @@ button { padding-block: 6px; padding-inline: 14px; }
   .metric-btn { font-size: 13.5px; padding: 7px 15px; }
   .mcard-stats { font-size: 13.5px; }
   .mcard-count { font-size: 15px; }
-  .shitcoin-caption { font-size: 10px; }
 }
 
 /* Site-content search: keep every matching section accessible in the dropdown. */
@@ -1396,30 +1294,30 @@ button { padding-block: 6px; padding-inline: 14px; }
    so green/red/grey semantics and compact padding are untouched.
    The press scale is skipped for prefers-reduced-motion. */
 .btn, .metric-btn, .code-team-action, .tag,
-.evidence-link, .ph-btn, .shitcoin-inputs-label,
-.vitals-retry, .gauge-btn {
+.evidence-link, .ph-btn,
+.vitals-retry {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   transition: transform 120ms ease, filter 120ms ease;
 }
 @media (hover: hover) {
   .btn:hover, .metric-btn:hover, .code-team-action:hover, .tag:hover,
-  .evidence-link:hover, .ph-btn:hover, .shitcoin-inputs-label:hover,
-  .vitals-retry:hover, .gauge-btn:hover, .context-rank-badge:hover {
+  .evidence-link:hover, .ph-btn:hover,
+  .vitals-retry:hover, .context-rank-badge:hover {
     filter: brightness(1.18);
   }
 }
 .btn:active, .metric-btn:active, .code-team-action:active, .tag:active,
-.evidence-link:active, .ph-btn:active, .shitcoin-inputs-label:active,
-.vitals-retry:active, .gauge-btn:active, .context-rank-badge:active {
+.evidence-link:active, .ph-btn:active,
+.vitals-retry:active, .context-rank-badge:active {
   transform: scale(0.97);
   filter: brightness(0.9);
   transition-duration: 80ms;
 }
 @media (prefers-reduced-motion: reduce) {
   .btn:active, .metric-btn:active, .code-team-action:active, .tag:active,
-  .evidence-link:active, .ph-btn:active, .shitcoin-inputs-label:active,
-  .vitals-retry:active, .gauge-btn:active, .context-rank-badge:active {
+  .evidence-link:active, .ph-btn:active,
+  .vitals-retry:active, .context-rank-badge:active {
     transform: none;
   }
 }
