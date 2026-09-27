@@ -38,6 +38,47 @@ default with category delivery ranks. Preserve the evaluator scaffolding; do
 not activate an overall value ranking or invent impact/usage weights pending
 review. No publication or schema change is part of the homepage correction.
 
+## Promise history and timeline
+
+**Direction recorded 2026-09-26; next design slice, not a deployed feature.**
+The meter, Atlas and timeline expose different questions over one sourced
+ledger. Accumulated evidence history is the durable product asset.
+
+Existing local schema provides two foundations: migration `002` protects
+`heart_runs`, `heart_snapshots` and market observations against UPDATE/DELETE,
+and migration `001` defines `project_events` with event and creation dates.
+These are not yet a complete promise-event contract. Inspect and extend the
+existing storage/read paths; do not create a parallel scoring pipeline.
+This inspection verifies repository definitions, not hosted enforcement.
+
+Ordered work for Codex and Muse:
+
+1. Audit actual dated records and their provenance. Separate original claims,
+   repeated mentions, delivery evidence, published assessments and corrections.
+   Snapshot differences can establish an assessment change, not the date a
+   real-world delivery occurred. Report missing dates and source captures.
+2. Review the event contract: stable event ID and promise lineage, event type,
+   source/locator/quotation where available, event date with precision or
+   unknown, server-recorded timestamp, actual author/collector, and assessment
+   run/methodology when applicable. Retain captured-source metadata and content
+   hashes where available; hashes alone do not establish truth or capture time.
+   A correction appends a reason and predecessor reference. Repeated ingestion
+   must be idempotent; repeated statements attach to one promise lineage.
+3. Verify append-only permissions and correction handling before describing
+   the event ledger as immutable. Ordinary writers must not update, delete or
+   truncate historical records. Administrative access is a separate trust
+   boundary. Keep original publications inspectable after restatements.
+4. Build a project timeline from reviewed records: date on the x-axis, distinct
+   claim/evidence/assessment lanes, clickable markers opening sources and the
+   corresponding promise. Label discovery dates, uncertain dates, corrections
+   and methodology changes; retain undated records outside the dated plot.
+   Prefer markers to a fabricated continuous score line. An as-known view uses
+   recording time; historical event dates alone cannot recreate what we knew.
+
+This plans the next slice without choosing scoring weights, automatic decay,
+historical interpolation or a schema migration. Research input and technical
+handoff stay in the [shared contract](tasks/2026-09-26-hearts-verdict-contract.md).
+
 ## Delivery verdict and homepage rankings (2026-09-26)
 
 The new delivery summary is a read-only view of the active published ledger.
@@ -51,8 +92,10 @@ both the card and homepage categories. No new table, RPC, publication or score.
   mapping preserves unknown. Evidence links add `scope=primary` so their
   population agrees with each category's denominator.
 - `scoreboard-ranking.ts`: category kept share, competition ties, nonmembers
-  unranked, numeric context sorting and missing values last. Overall remains
-  the default. The client stores category/sort in URL parameters.
+  unranked, numeric context sorting and missing values last. All-projects
+  browsing defaults to name order without ordinal ranks; selecting a category
+  enables delivery ranks. Project headers have no overall rank badge.
+  The client stores category/sort in URL parameters.
 - `delivery-verdict.tsx`: near the top of each project, replacing the old
   PromiseStats block. Exact lapsed/retired/open counts stay separate. Data date
   and revision are disclosed. No inferred recent-lapse count.
@@ -579,7 +622,7 @@ cleanly.
 
 ## Phase 3: Detail page
 
-1. Header: CoinMarketCap-style coin header (icon, name, rank badge, big
+1. Header: CoinMarketCap-style coin header (icon, name, big
    hearts, Shitcoin warning dial, one-line why from `verdict-lines.ts`),
    then the verdict inputs ("What feeds this meter": each failed promise
    with state and core flag, or the clean/overdue note), then the

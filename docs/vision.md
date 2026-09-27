@@ -31,6 +31,32 @@ value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
 
+### The durable asset: sourced history
+
+**Alex's direction, 2026-09-26:** our advantage is the accumulated record of
+what was promised, what happened, and what the evidence supported at the time.
+A competitor can copy a chart; reconstructing a reliable history takes work.
+The value comes from coverage, provenance and visible corrections, not simply
+calling a database immutable.
+
+Use three complementary views of the same ledger:
+
+| View | Question |
+|---|---|
+| Shitcoin warning meter | Which documented delivery problems feed the current warning? |
+| Promise Atlas | What subjects did projects promise to address, and what are their recorded outcomes? |
+| Promise timeline | What was claimed, delivered, assessed or corrected, and when? |
+
+The timeline should expose source-linked events, including repeated mentions
+of an existing promise without counting another promise or heart. Preserve
+both when an event happened and when we recorded it. Append corrections and
+link them to the records they replace; keep the earlier account inspectable.
+An announcement of delivery is a claim until assessed against evidence.
+
+We do not need one canonical visualization yet. The timeline complements the
+meter and Atlas; it does not restore the removed chart reconstructed from
+current states. See the [implementation sequence](implementation.md#promise-history-and-timeline).
+
 ### Positioning proposal for Alex and Muse (2026-09-26)
 
 Alex proposed “An accountability layer for emerging speculative tech valuation.”

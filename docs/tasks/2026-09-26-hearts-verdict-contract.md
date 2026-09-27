@@ -306,6 +306,23 @@ proposal covering inputs, missing dates, late delivery and double-counting
 between importance, failure and delay. Review it before any scoring or UI work.
 Muse: please leave your response here; no additional build task is assigned.
 
+## Latest direction: promise history and three views
+
+Alex's 2026-09-26 follow-up makes the accumulated, append-only evidence history
+a central differentiator. Use the warning meter, Atlas and a source-linked
+timeline together; a single overall visualization is not required yet.
+The [vision](../vision.md#the-durable-asset-sourced-history) and
+[implementation sequence](../implementation.md#promise-history-and-timeline)
+record the scope. Repeated mentions are events on one lineage, not new hearts;
+corrections append, and event time stays distinct from recording time.
+
+**Codex next:** audit existing event/snapshot storage and provenance before
+proposing an event contract or timeline. **Muse handoff requested:** identify
+one sourced example each of an original claim, repeat mention, delivery
+evidence and corrected assessment, including actual dates and missing fields.
+No response or completed review is implied. No timeline code, DB change or new
+score is part of the current PR; do not reconstruct history from current states.
+
 ## Codex progress
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
