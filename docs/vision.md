@@ -6,12 +6,12 @@ remains unchanged. Product direction lives here; build details and the ordered
 queue live in [implementation.md](implementation.md) and
 [tasks/2026-09-26-promise-atlas.md](tasks/2026-09-26-promise-atlas.md).
 
-**Latest direction (2026-09-26):** overall ranking needs category economic impact
-and demonstrated usage as well as delivery. Alex says the current overall
-default is misleading. Use an unranked project browser with category delivery
-rankings while Codex and Muse review the [new priority brief](tasks/2026-09-26-overall-ranking-review.md).
-Numerical impact/usage weights are not approved. This supersedes treating the
-importance/use/time discussion as deferred-only.
+**Latest direction (2026-09-26):** [category indices, no universal overall
+score](tasks/2026-09-26-codex-no-universal-score.md). Each category exposes
+delivery, potential significance and realized impact, including demonstrated
+usage. Valuation is a separate model. Current unranked browsing and category
+delivery ranks remain until reviewed inputs/models can support richer indices.
+Numerical impact/usage weights and valuation assumptions remain unapproved.
 
 **Delivery scaffolding previously approved for implementation by Alex:** the
 [hearts and verdict proposal](tasks/2026-09-26-hearts-verdict-review.md)
@@ -30,14 +30,11 @@ evidence and outcome. Hearts record delivery, not token prices or economic
 value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
-**The hook (Alex, 2026-09-26):** in a perfect world, proven value and
-market cap would be 1:1. They aren't, and the gap is the product. We
-measure what projects proved; the market measures what people believe.
-The distance between the two is where the money is. This is a
-presentation of two independent numbers side by side, never a blend:
-price and market data must not enter the verdict itself, or the score
-becomes circular. The verdict stays pure (promises only); the gap is
-what the user reads.
+**The hook (Alex, 2026-09-26):** in a perfect world, proven value and market
+cap would be 1:1. Today we can show market cap beside a delivery/impact
+profile. A numerical valuation gap requires a separate token-value model,
+with assumptions and uncertainty. Market cap never determines delivery or
+impact scores. A mismatch is a question to investigate, not proof of profit.
 
 **On the moat (Alex, 2026-09-26):** honestly, the moat is thin today. A
 dashboard is not a moat, and selling access is revenue, not
@@ -50,19 +47,17 @@ in the door; the door is what builds the moat.
 ### The long-term target: value and market cap align
 
 Alex's clarification: "in a perfect world our ranking and marketcap should be
-1:1." The intended destination is an independent account of justified value:
-in a correctly priced market, our ordering and market-cap ordering would agree.
-Delivery, economic significance, demonstrated use and credible remaining
-potential must explain that ordering. The promise ledger supplies its receipts.
+1:1." The [later decision](tasks/2026-09-26-codex-no-universal-score.md)
+places that ambition in a separate valuation model, not a universal coin rank.
+Category indices compare delivery and impact within a defined function;
+equal scores in Payments and Privacy do not imply equal economic value.
 
-The gap between the two is a question to investigate, not automatic proof
-that the market is wrong. Do not tune the model to reproduce today's market
-caps or a preferred coin order. Review how a project's utility creates value
-for its token, not just whether the product is useful.
-
-Matching an order is distinct from estimating dollar market caps. The latter
-remains a longer-term methodology goal; current hearts and category delivery
-ranks are evidence toward it, not a completed valuation model.
+A future token-value range must explain how useful activity benefits the
+token and prevent overlapping categories from counting the same activity
+twice. Publish its model version, assumptions, coverage and uncertainty.
+Never average category scores into dollars or fit them to today's market cap
+or a preferred coin order. Current hearts and delivery ranks are not dollar
+valuations, and disagreement with the market can reveal errors in our model.
 
 ### The durable asset: sourced history
 

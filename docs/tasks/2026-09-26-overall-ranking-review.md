@@ -1,5 +1,11 @@
 # Overall ranking: impact, delivery and usage
 
+**Scope update, 2026-09-27:** the [no-universal-score decision](2026-09-26-codex-no-universal-score.md)
+supersedes the overall-composite proposal below. Retain the audit and immediate
+UI correction. Delivery, potential and realized impact feed category models;
+token valuation is a separate contract. Older references to an overall formula
+are discussion history, not a current build instruction.
+
 **Priority: urgent methodology review. Owners: Codex and Muse.** Alex's latest
 direction supersedes the earlier deferred-only discussion: an overall ranking
 must account for **promise-category world economic impact and demonstrated

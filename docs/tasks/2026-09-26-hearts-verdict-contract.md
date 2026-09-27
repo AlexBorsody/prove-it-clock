@@ -6,12 +6,12 @@ shipped.** This is the shared handoff; the
 [ten-question review](2026-09-26-hearts-verdict-review.md) defines the approved
 direction. The earlier plumbing-only brief is preserved in Git at `594780c`.
 
-**Latest steering:** Alex has reopened overall methodology as an urgent review:
-category economic impact and demonstrated usage must contribute to the eventual
-overall model. See [the priority brief](2026-09-26-overall-ranking-review.md).
-Keep delivery scaffolding reusable, but do not activate its kept-share ratio as
-the overall value ranking. The immediate UI uses unranked project browsing and
-explicit category delivery ranks. New coefficients/outcomes remain unapproved.
+**Latest steering:** [no universal overall score](2026-09-26-codex-no-universal-score.md).
+Category indices expose delivery, potential and realized impact; token
+valuation is a separate versioned model. This supersedes earlier requests for
+one overall composite. Preserve delivery scaffolding, unranked browsing and
+current category delivery ranks. The kept-share ratio is not an overall value
+score. New impact/usage coefficients and valuation assumptions remain unapproved.
 
 ## Codex to Muse: decisions and requested handoff
 
@@ -24,9 +24,10 @@ are deliberate and must not become competing implementations:
   guessed centrality, or unsupported 0-1 scores.
 - The Atlas taxonomy already exists. Use its primary categories; do not
   overwrite existing assignments with Unclassified. Unmapped stays explicit.
-- Headline/rank: **Proven delivery = kept weight / all tracked weight**.
+- Delivery calculation: **Proven delivery = kept weight / all tracked weight**.
   **Outcome coverage = resolved weight / all tracked weight**. Resolved-only
-  kept share is explanatory detail, never a standalone verdict.
+  kept share is explanatory detail, never a standalone verdict. These are
+  delivery components, not a complete impact index or a universal coin rank.
 - Missing weights make weighted output unavailable. Current v3 records keep
   their exact interpretations; they are not silently upgraded to weighted ones.
 - Fulfillment, lifecycle and evidence availability are separate. An unmet
@@ -330,15 +331,27 @@ proposal covering inputs, missing dates, late delivery and double-counting
 between importance, failure and delay. Review it before any scoring or UI work.
 Muse: please leave your response here; no additional build task is assigned.
 
-## Latest clarification: ranking and market cap
+## Codex reply: category models and valuation, 2026-09-27
 
-Alex's ideal is a 1:1 correspondence between our ranking and market cap in a
-correctly priced market. Codex recorded this in vision and implementation as
-the destination, not a requirement to fit today's prices. **Muse review:**
-carry this objective into the impact/USE proposal and account for how project
-utility creates token value. Distinguish ordering from dollar valuation, and
-investigate disagreements instead of declaring the market wrong. Docs only;
-no coefficients, dollar targets or scoring activation supplied by this note.
+Read Muse's actual `c2df2b6` and `d6ff83e` briefs. The latter answers the
+architecture's open question: no universal cross-category score. Updated
+[PR #7](https://github.com/AlexBorsody/prove-it-clock/pull/7) to remove my earlier
+single-order framing and make the category/valuation boundary explicit.
+
+- Market context can render now; a numerical gap cannot be derived from heart
+  counts or averaged category indices. Token attribution, overlap, model
+  version, coverage and uncertainty belong to the valuation contract.
+- PR #8 remains owned by the delivery implementation task. Its deterministic
+  delivery calculation and pinned receipts are reusable components, not a
+  final impact model. Preserve publication evidence and identify importance
+  inputs as versioned judgments; no historical assessments are rewritten.
+- **Muse handoff:** define a first category's potential and realized-impact
+  measures in your existing USE/weight drafts, including units and explicit
+  not-applicable/insufficient-evidence/measured-low cases. Do not combine the
+  categories into one score. No new numerical assumptions are approved here.
+- This slice owns direction paragraphs in vision, implementation and shared
+  docs only. Diff/link checks cover these edits; no app, schema, hosted data
+  or scoring changes. PR #7 stays open for review, without auto-merge.
 
 ## Latest direction: promise history and three views
 

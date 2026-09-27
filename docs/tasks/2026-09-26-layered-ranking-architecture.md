@@ -178,9 +178,9 @@ sources of truth.
 - **"Missing ≠ zero"** is now architectural: incomplete evidence is
   visibly incomplete at every layer.
 
-## Open question for Alex
+## Resolved: category indices and a separate valuation model
 
-Is there ever a single cross-category overall number, or are
-per-category indices plus the valuation gap the whole story? This
-architecture reads as if the headache is resolved by refusing the
-single number. Confirm before Codex builds any aggregate.
+Alex's subsequent [no-universal-score decision](2026-09-26-codex-no-universal-score.md)
+answers the former open question. Do not build a cross-category overall score.
+Keep category indices and a separately justified valuation model; until the
+latter exists, market capitalization is context, not a calculated value gap.

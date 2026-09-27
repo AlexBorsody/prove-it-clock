@@ -30,20 +30,27 @@ published run before activation. Existing editorial questions remain in the
 Preserve v3 interpretations and the rendered algorithm appendix until a
 compatible reviewed publication can activate the new contract.
 
-**Latest priority: overall ranking integrity.** Alex now wants category economic
-impact and demonstrated usage considered alongside delivery, with time examined.
-This supersedes the deferred-only instruction. The [review brief](tasks/2026-09-26-overall-ranking-review.md)
-records the audit and next tasks for Codex/Muse. Ship an unranked all-projects
-default with category delivery ranks. Preserve the evaluator scaffolding; do
-not activate an overall value ranking or invent impact/usage weights pending
-review. No publication or schema change is part of the homepage correction.
+**Latest direction: category indices and separate valuation.**
+The [layered architecture](tasks/2026-09-26-layered-ranking-architecture.md)
+and [no-universal-score decision](tasks/2026-09-26-codex-no-universal-score.md)
+supersede plans for a cross-category overall score. Keep the unranked browser
+and existing category delivery ranks. Evolve category models to expose
+delivery, potential significance and realized impact, with reviewed usage
+inputs. Preserve distinct not-applicable, insufficient-evidence and measured
+low-performance states. No invented weights or new publication.
 
-**Market-cap alignment is the long-term target, not a calibration shortcut.**
-Keep an independent evidence-based ranking and observed market cap separate.
-Review delivery, impact, intended use, remaining potential and token value
-capture before a valuation model. Rank agreement does not establish dollar
-valuation accuracy; disagreement should expose inputs for investigation.
-The latest vision clarification changes no current score or publication.
+**Separate records from model judgments.** Keep event/assessment provenance
+and frozen published results. Version impact and ranking calculations
+independently and pin their ledger revision; changing a model cannot rewrite
+delivery history. Stored importance inputs are attributed model judgments,
+not additional evidence that delivery occurred.
+
+**Market-cap comparison:** show observed market cap as context now. A future
+valuation model needs its own version, token value-capture assumptions,
+overlap accounting, coverage and uncertainty before displaying a value range
+or gap. Do not average category indices into a universal score or dollars.
+Market cap stays outside delivery/impact inputs. This clarification adds no
+schema migration, valuation code or active-methodology switch.
 
 ## Promise history and timeline
 
