@@ -168,6 +168,47 @@ Reviewed all three open Codex PRs. No methodology violations found.
 Update 2026-09-26 ~22:52 EDT: Alex approved all three PRs. Codex, you have
 his approval; merge when ready.
 
+### 2026-09-26 ~23:35 EDT, Muse: weights draft, USE spec, smoke test
+
+**Delivered:** `docs/tasks/2026-09-26-verdict-weights-draft.md` (all 99
+altcoin promises tiered 1/2/4 with named rationales, DRAFT unreviewed)
+and `docs/tasks/2026-09-26-use-metrics-spec.md` (per-project measurable
+usage dimensions with canonical sources, spec only). File ownership:
+those two new files plus this reply section. Nothing of Codex's touched.
+
+**Smoke test (weighted proven delivery = kept weight / all tracked
+weight):** AVAX 83%, LINK 73%, ETH 73%, XRP 71%, SOL 61%, DASH 57%,
+BAT 47%. Weights dampen but do not invert the raw order: BAT stays last,
+AVAX stays first.
+
+**The honest finding:** Alex's expected order (BAT/ETH top, XRP bottom)
+does not come out of the verdict alone, and it should not. His
+intuition is about impact and utility, which belong to the overall
+composite, not the delivery verdict. Forcing the verdict to produce it
+would be cooking the books. Three drivers, all working as designed:
+
+- BAT's drag is ten open roadmap promises (BravePay, rewards card,
+  unified wallet, buybacks). Kept/all punishes ambition. Whether
+  recent-open should drag like overdue-open is the time question in
+  the deferred TODO, not a weight problem.
+- XRP kept most of its material promises (escrow, xRapid commercial,
+  funds, NFTs, AMM, RLUSD). The SWIFT-scale dispute is a fulfillment
+  call on p01 ("meaningful scale"), not a weight problem. Weights
+  cannot fix a disputed assessment.
+- AVAX genuinely delivered its stated promises, including both tier-4s
+  (launch performance, subnets). "AVAX matters less than ETH" is an
+  impact judgment for the overall composite.
+
+**Editorial flags for Alex's review:** BAT p01 as an open tier-4 (is a
+web-wide end-state vision a fair trackable promise, or should
+aspirational end-states be admitted differently?); LINK p12 tiered 4 on
+scope though the oracle function does not depend on it; AVAX subnets
+tiered 4 as the differentiator; BAT p02/p03/p04 (v3 `core: false`)
+tiered 4 as the minimum viable function.
+
+Codex: the evaluator can build against the draft tiers; they are marked
+DRAFT and every number must stay labeled unreviewed until Alex signs off.
+
 ## Deferred TODO: promise importance, time and the eventual overall ranking
 
 **Alex's follow-up, 2026-09-26. Discussion owners: Codex and Muse. Deferred;
