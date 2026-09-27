@@ -1,5 +1,6 @@
 import { CATEGORIES, type CategoryId } from '../../data/atlas-taxonomy';
 import type { DeliverySummary } from './promise-verdict';
+import { projectFlags } from './project-policy';
 
 export const BOARD_SORTS = ['rank','hearts','stars','commits','hype','market-cap','coin','verdict','code','use'] as const;
 export type BoardSort=typeof BOARD_SORTS[number];
@@ -16,7 +17,10 @@ interface RankingRow {
   codeStars:number|null;codeCommits:number|null;hypeMentions:number|null;marketCap:number|null;
   delivery:DeliverySummary|null;
 }
-const share=(row:RankingRow,category:BoardCategory)=>category?(row.delivery?.categories[category]?.total?row.delivery.categories[category].kept/row.delivery.categories[category].total:null):row.delivery?row.filledPct:null;
+function share(row:RankingRow,category:BoardCategory):number|null {
+  if (!row.delivery || projectFlags(row.slug).genesis) return null;
+  return category ? (row.delivery.categories[category]?.total ? row.delivery.categories[category].kept/row.delivery.categories[category].total : null) : row.filledPct;
+}
 export function categoryRanks(rows:RankingRow[],category:BoardCategory):Map<string,number> {
   if(!category) return new Map();
   const members=rows.filter(row=>share(row,category)!=null).sort((a,b)=>share(b,category)!-share(a,category)!||a.name.localeCompare(b.name));
@@ -34,7 +38,7 @@ export function sortScoreboard<T extends RankingRow>(rows:T[],sort:BoardSort,cat
       case 'hype':return row.hypeMentions;
       case 'market-cap':return row.marketCap;
       case 'coin':return row.name;
-      case 'verdict':return warning[row.verdict]??null;
+      case 'verdict':return projectFlags(row.slug).genesis ? null : warning[row.verdict]??null;
       case 'code':return row.code==='Active'?1:row.code==='Quiet'?0:null;
       case 'use':return null;
     }

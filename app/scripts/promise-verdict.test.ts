@@ -8,6 +8,7 @@ import { deliveryReceipt, summarizeDelivery } from '../src/lib/promise-verdict';
 import { matchesAtlas, parseAtlasQuery } from '../src/lib/atlas/filters';
 import { sortScoreboard, categoryRanks, parseBoardSort, parseBoardCategory } from '../src/lib/scoreboard-ranking';
 import { marketCapFor } from '../src/lib/market-ids';
+import { projectFlags } from '../src/lib/project-policy';
 const artifact=JSON.parse(readFileSync(new URL('../../db/seed/heart-runs/hearts-promise-2026-09-26.json',import.meta.url),'utf8'));
 function fixture():PublishedHeartDataset {
   return {run:{id:'published-one',as_of:artifact.as_of,methodology:artifact.methodology,review_status:'published'},projects:artifact.projects.map((p:any)=>({...structuredClone(p),run_id:'published-one',methodology:artifact.methodology,name:p.slug,symbol:p.slug.toUpperCase()}))};
@@ -93,4 +94,17 @@ test('market cap joins by known provider ID; missing observations never become z
   assert.equal(marketCapFor('bat',[]),null);
   for(const value of [null,NaN,Infinity,-1]) assert.equal(marketCapFor('btc',[{id:'bitcoin',market_cap:value}]),null);
   assert.equal(marketCapFor('btc',[{id:'bitcoin',market_cap:0}]),0);
+});
+test('Bitcoin is Genesis: retained as receipts but excluded from delivery and warning rankings',()=>{
+  const data=rows().slice(0,3);
+  data[1].slug='btc';data[1].name='Bitcoin';data[1].marketCap=100;
+  const before=JSON.stringify(data);
+  assert.equal(projectFlags('btc').genesis,true);
+  for(const slug of ['eth','bat','xrp','new-coin']) assert.equal(projectFlags(slug).genesis,false);
+  assert.equal(categoryRanks(data,'payments').has('btc'),false);
+  assert.equal(categoryRanks(data,'payments').get('a'),1);
+  for(const sort of ['hearts','verdict'] as const) assert.equal(sortScoreboard(data,sort,'').at(-1)?.slug,'btc');
+  assert.equal(sortScoreboard(data,'rank','payments').at(-1)?.slug,'btc');
+  assert.equal(sortScoreboard(data,'market-cap','')[0].slug,'btc');
+  assert.equal(JSON.stringify(data),before);
 });

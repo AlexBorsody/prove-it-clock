@@ -14,6 +14,7 @@ import {
   latestHypeBySlug,
 } from "@/lib/heart-data";
 import { verdictFor } from "@/lib/verdict";
+import { projectFlags } from "@/lib/project-policy";
 import { fetchVitals } from "@/lib/vitals";
 
 /** Fixed dial positions per verdict category. Source of truth: shitcoin-meter.tsx GAUGE. */
@@ -29,8 +30,9 @@ export interface ScoreSummary {
   name: string;
   symbol: string;
   rank: number;
+  genesis: boolean;
   hearts: { earned: number; capacity: number };
-  shitcoin_warning: { level: number; scale: 10; label: "Shitcoin warning" };
+  shitcoin_warning: { level: number; scale: 10; label: "Shitcoin warning" } | null;
   code: { commits_90d: number | null };
   hype: { mentions_7d: number | null };
 }
@@ -57,6 +59,7 @@ type RawProject = {
 };
 
 function toSummary(p: RawProject, rank: number, ctx: { vitals: any; hype: any }): ScoreSummary {
+  const { genesis } = projectFlags(p.slug);
   const promises: any[] = p.assessment?.promises ?? [];
   const category = verdictFor(
     promises.map((pr: any) => ({ lineage: pr.lineage, state: pr.state, core: !!pr.core }))
@@ -66,8 +69,9 @@ function toSummary(p: RawProject, rank: number, ctx: { vitals: any; hype: any })
     name: p.name,
     symbol: p.symbol,
     rank,
+    genesis,
     hearts: { earned: p.earned, capacity: p.capacity },
-    shitcoin_warning: {
+    shitcoin_warning: genesis ? null : {
       level: WARNING_LEVEL[category] ?? 1,
       scale: 10,
       label: "Shitcoin warning",

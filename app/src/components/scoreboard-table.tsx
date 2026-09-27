@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES } from "../../data/atlas-taxonomy";
 import { deliveryReceipt, type DeliverySummary } from "@/lib/promise-verdict";
+import { projectFlags } from "@/lib/project-policy";
 import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardCategory, parseBoardSort, sortScoreboard, categoryRanks, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
@@ -105,7 +106,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
     if (!counts.total) return <span className="word dim">Unranked<span className="cell-sub">No promises in {categoryLabel}</span></span>;
     return <Link className={styles.receipt} href={deliveryReceipt(row.slug,category)}>
       <strong>{counts.kept}/{counts.total} kept in {categoryLabel} ↗</strong>
-      <span>{Math.round(counts.kept/counts.total*100)}% kept{counts.states.unknown ? ` · ${counts.states.unknown} unknown` : ''}</span>
+      <span>{projectFlags(row.slug).genesis ? 'Historical inventory · unranked' : `${Math.round(counts.kept/counts.total*100)}% kept`}{counts.states.unknown ? ` · ${counts.states.unknown} unknown` : ''}</span>
     </Link>;
   }
 
@@ -125,7 +126,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
           {BOARD_SORTS.filter(key => key !== 'use' && (category || key !== 'rank')).map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
         </select></label>
       </div>
-      {category && <p className={styles.note} role="status">Ranked by recorded promises kept in {categoryLabel}. Equal shares tie; projects without promises here are unranked. This measures delivery share, not overall value.</p>}
+      {category && <p className={styles.note} role="status">Ranked by recorded promises kept in {categoryLabel}. Equal shares tie; Genesis assets and projects without promises here are unranked. This measures delivery share, not overall value.</p>}
       <details className={styles.coverage}><summary>Published ledger{asOf ? ` · ${asOf.slice(0,10)}` : ''}</summary>
         <p>{unclassified} unclassified promises. {unknown} unknown states. Missing context metrics are shown as unavailable and sort last.</p>
         <p>Data revision: {dataRevision ?? 'unavailable'}. Categories describe subject matter; kept share does not measure the scale or difficulty of a promise.</p>
@@ -186,7 +187,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                     </button>}
                   </td>
                   <td>
-                    {r.delivery ? <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
+                    {projectFlags(r.slug).genesis ? <Link href={`/projects/${r.slug}`} className="word dim">Genesis asset</Link> : r.delivery ? <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
                       <ShitcoinMeter category={r.verdict} compact />
                     </Link> : <span className="word dim">Unavailable</span>}
                   </td>
@@ -264,7 +265,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                 </button>}
               </div>
               <div className="mcard-warning">
-                {r.delivery ? <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
+                {projectFlags(r.slug).genesis ? <Link href={`/projects/${r.slug}`} className="word dim">Genesis asset</Link> : r.delivery ? <Link className="mcard-gauge gauge-btn" href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`}>
                   <ShitcoinMeter category={r.verdict} compact size={32} />
                 </Link> : <span className="word dim">Warning unavailable</span>}
               </div>

@@ -7,6 +7,7 @@ import HeartMeter from "@/components/heart-meter";
 import type { VerdictCategory } from "@/lib/verdict";
 import type { CodeWord } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
+import { projectFlags } from "@/lib/project-policy";
 
 export interface CompareProject {
   slug: string;
@@ -63,6 +64,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
         </div>
       );
     case "verdict":
+      if (projectFlags(p.slug).genesis) return <Link href={`/projects/${p.slug}`} className="word dim">Genesis asset<span className="cell-sub">Historical promise inventory</span></Link>;
       return (
         <div>
           <Link href={`/projects/${p.slug}#verdict`} aria-label={`${p.name} Shitcoin warning breakdown`} className="gauge-btn">

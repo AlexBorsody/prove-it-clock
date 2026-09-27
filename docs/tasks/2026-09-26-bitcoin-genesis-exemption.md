@@ -45,3 +45,26 @@ the altcoin verdict pipeline.
 - Whether any future asset could ever qualify as genesis-like. Default: no.
 
 Nothing here invents evidence or changes any existing published hearts.
+
+## 2026-09-27 implementation: ship Genesis independently
+
+Alex reported BTC still showing warning 7. Main still rendered v3 warnings;
+the Genesis implementation was inside unmerged draft PR #8. This focused
+branch, `codex/bitcoin-genesis-display`, extracts the approved policy without
+waiting for weighted methodology publication.
+
+- Project, scoreboard (desktop/mobile), Compare and shared HYPE cards show
+  **Genesis asset** instead of Bitcoin's warning. Category delivery, hearts
+  and warning sorts leave Bitcoin unranked; context sorts still include it.
+- The v1 API returns `genesis: true` and `shitcoin_warning: null` for BTC.
+  OpenAPI documents the nullable warning. Clients must not render null as 0.
+- The 16 published BTC promises and 9 earned hearts remain unchanged. This
+  is the approved comparison policy, not a new valuation or regrading.
+- Verified: seven focused delivery/ranking checks and TypeScript pass;
+  local captured-ledger browser checks at 390px and 1280px show Genesis on
+  Bitcoin's page/list and no Bitcoin dial. Payments filtering keeps BTC
+  unranked; Compare keeps the designation. Local API checks retain all 16
+  BTC promises and leave ETH's existing warning unchanged.
+- No hosted database writes, methodology activation or production deployment.
+  Muse / PR #8 owner: retain this policy when reconciling the larger branch.
+  Weight, usage and impact activation remain separate unfinished work.
