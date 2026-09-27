@@ -44,3 +44,18 @@ test('provider failure preserves previous data and tampered cached candidates ar
     await assert.rejects(collectPromiseIntake({ directory, fetchMarkets: async () => assert.fail('must not refetch corrupt cache'), now: new Date('2026-09-26T01:00:00Z') }));
   } finally { await rm(directory, { recursive: true, force: true }); }
 });
+
+test('onboarding a mapping keeps old captures valid and appears in the next daily capture', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'promise-intake-'));
+  const fetchMarkets = async () => [row('new-coin', 1)];
+  try {
+    const first = await collectPromiseIntake({ directory, fetchMarkets, projectMappings: {}, now: new Date('2026-09-26T00:00:00Z') });
+    const projectMappings = { newcoin: 'new-coin' };
+    const cached = await collectPromiseIntake({ directory, fetchMarkets: async () => assert.fail('reuse the original capture'), projectMappings, now: new Date('2026-09-26T12:00:00Z') });
+    assert.equal(cached.snapshot.candidates[0].existingProjectSlug, null);
+    assert.equal(cached.path, first.path);
+    const next = await collectPromiseIntake({ directory, fetchMarkets, projectMappings, now: new Date('2026-09-27T00:00:00Z') });
+    assert.equal(next.snapshot.candidates[0].existingProjectSlug, 'newcoin');
+    assert.equal(JSON.parse(await readFile(first.path, 'utf8')).candidates[0].existingProjectSlug, null);
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});

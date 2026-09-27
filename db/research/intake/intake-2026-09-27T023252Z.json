@@ -3945,5 +3945,15 @@
       "price_change_percentage_24h_in_currency": 0.78922,
       "price_change_percentage_30d_in_currency": 10.1302
     }
-  ]
+  ],
+  "projectMappings": {
+    "btc": "bitcoin",
+    "eth": "ethereum",
+    "xrp": "ripple",
+    "bat": "basic-attention-token",
+    "link": "chainlink",
+    "sol": "solana",
+    "dash": "dash",
+    "avax": "avalanche-2"
+  }
 }

@@ -17,11 +17,16 @@ export interface IntakeCandidate {
   stage: 'existing_mapping' | 'needs_identity_review';
 }
 
-export function intakeCandidates(payload: unknown): IntakeCandidate[] {
+export function intakeCandidates(payload: unknown, projectMappings: Record<string, string> = MARKET_IDS): IntakeCandidate[] {
   if (!Array.isArray(payload) || !payload.length || payload.length > INTAKE_SIZE) {
     throw new Error('Expected 1 to 100 market rows; an empty/error response is not an empty research queue.');
   }
-  const known = new Map(Object.entries(MARKET_IDS).map(([slug, id]) => [id, slug]));
+  if (!projectMappings || typeof projectMappings !== 'object' || Array.isArray(projectMappings)
+    || Object.entries(projectMappings).some(([slug, id]) => !/^[a-z0-9-]+$/.test(slug) || typeof id !== 'string' || !/^[a-z0-9][a-z0-9_-]*$/.test(id))) {
+    throw new Error('Invalid captured project mappings.');
+  }
+  const known = new Map(Object.entries(projectMappings).map(([slug, id]) => [id, slug]));
+  if (known.size !== Object.keys(projectMappings).length) throw new Error('Duplicate provider ID in project mappings.');
   const seen = new Set<string>();
   return payload.map((row): IntakeCandidate => {
     if (!row || typeof row !== 'object'
@@ -51,6 +56,7 @@ export interface IntakeSnapshot {
   payloadSha256: string;
   requestedCount: 100;
   coverage: 'complete' | 'partial';
+  projectMappings: Record<string, string>;
   candidates: IntakeCandidate[];
   raw: unknown;
 }
@@ -64,6 +70,7 @@ export async function collectPromiseIntake(options: {
   directory: string;
   fetchMarkets: () => Promise<unknown>;
   now?: Date;
+  projectMappings?: Record<string, string>;
 }): Promise<{ path: string; reused: boolean; snapshot: IntakeSnapshot }> {
   const now = options.now ?? new Date();
   await mkdir(options.directory, { recursive: true });
@@ -75,9 +82,10 @@ export async function collectPromiseIntake(options: {
     const age = now.getTime() - Date.parse(saved.capturedAt);
     const valid = saved.schemaVersion === 1 && saved.kind === 'research-intake'
       && saved.source === INTAKE_SOURCE && saved.requestedCount === INTAKE_SIZE
+      && saved.projectMappings != null
       && Number.isFinite(age) && age >= 0 && saved.payloadSha256 === digest(saved.raw);
     if (!valid) throw new Error('Invalid intake cache; inspect it before collecting again.');
-    const candidates = intakeCandidates(saved.raw);
+    const candidates = intakeCandidates(saved.raw, saved.projectMappings);
     if (JSON.stringify(candidates) !== JSON.stringify(saved.candidates)
       || saved.coverage !== (candidates.length === INTAKE_SIZE ? 'complete' : 'partial')) {
       throw new Error('Intake cache does not match its source rows.');
@@ -86,12 +94,13 @@ export async function collectPromiseIntake(options: {
   }
 
   const raw = await options.fetchMarkets();
-  const candidates = intakeCandidates(raw);
+  const projectMappings = { ...(options.projectMappings ?? MARKET_IDS) };
+  const candidates = intakeCandidates(raw, projectMappings);
   const capturedAt = now.toISOString();
   const snapshot: IntakeSnapshot = {
     schemaVersion: 1, kind: 'research-intake', capturedAt, source: INTAKE_SOURCE,
     payloadSha256: digest(raw), requestedCount: INTAKE_SIZE,
-    coverage: candidates.length === INTAKE_SIZE ? 'complete' : 'partial', candidates, raw,
+    coverage: candidates.length === INTAKE_SIZE ? 'complete' : 'partial', projectMappings, candidates, raw,
   };
   const filename = `intake-${capturedAt.slice(0, 19).replaceAll(':', '')}Z.json`;
   const path = join(options.directory, filename);
