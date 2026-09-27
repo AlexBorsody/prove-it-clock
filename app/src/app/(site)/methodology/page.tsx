@@ -124,8 +124,8 @@ export default function MethodologyPage() {
       <Section icon="book" title="What if a project finds a different use?" id="evolution">
         <p>
           A project can miss an original promise and still find useful
-          applications. Those are separate questions. Bitcoin&apos;s approved
-          <strong> Genesis asset</strong> treatment will keep its promise
+          applications. Those are separate questions. Bitcoin&apos;s
+          <strong> Genesis asset</strong> treatment keeps its promise
           inventory visible while excluding it from altcoin verdicts and
           rankings. Its founding role and later uses need their own evidence;
           they do not settle every original promise&apos;s outcome.

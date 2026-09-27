@@ -107,6 +107,7 @@ export const openApiSpec = {
           name: { type: "string", example: "Bitcoin" },
           symbol: { type: "string", example: "BTC" },
           rank: { type: "integer", description: "Market-cap rank. Rank only, never a scoring input.", example: 1 },
+          genesis: { type: "boolean", description: "Bitcoin-only Genesis designation. Its promise inventory is retained, but it has no altcoin warning or comparative delivery rank.", example: true },
           hearts: {
             type: "object",
             description: "Hearts are earned only. No allowances, no time decay.",
@@ -117,8 +118,9 @@ export const openApiSpec = {
           },
           shitcoin_warning: {
             type: "object",
+            nullable: true,
             description:
-              "The public Shitcoin warning dial. Fixed positions, not a computed score: 1 = clean delivery record, 4 = watch, 7 = supporting failure, 10 = core failure.",
+              "Null for Genesis assets. Otherwise the public Shitcoin warning dial. Fixed positions, not a computed score: 1 = clean delivery record, 4 = watch, 7 = supporting failure, 10 = core failure.",
             properties: {
               level: { type: "integer", minimum: 1, maximum: 10, example: 1 },
               scale: { type: "integer", example: 10 },

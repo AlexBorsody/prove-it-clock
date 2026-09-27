@@ -32,6 +32,7 @@ import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";
 import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
+import { projectFlags } from "@/lib/project-policy";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,7 @@ export default async function ProjectPage({ params, searchParams }: {
   searchParams: Promise<{ promises?: string; evidence?: string }>;
 }) {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
+  const { genesis } = projectFlags(slug);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
   const [historyData, rankings, vitals, team, hypeSnaps, allHypeSnaps] = await Promise.all([
@@ -186,6 +188,7 @@ export default async function ProjectPage({ params, searchParams }: {
           {latest.name}
           <span className="coin-symbol">{latest.symbol}</span>
         </h1>
+        {genesis && <p id="verdict" className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s promise history is recorded separately from altcoin verdicts and delivery rankings.</p>}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
         </div>
@@ -243,10 +246,10 @@ export default async function ProjectPage({ params, searchParams }: {
           </p>
         )}
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
-        <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
+        {!genesis && <div className="search-section" {...searchMeta({ id: `project-${slug}-verdict`, title: `${latest.name} Shitcoin warning`, kind: "Verdict", project: slug, keywords: `${latest.symbol} failed promises warning` })} data-tour="shitcoin">
           <span id="verdict" aria-hidden="true" />
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
-        </div>
+        </div>}
         <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
 

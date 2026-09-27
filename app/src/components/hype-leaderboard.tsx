@@ -6,6 +6,7 @@ import ShitcoinMeter from "@/components/shitcoin-meter";
 import { RedditIcon, TelegramIcon, NewsIcon } from "@/components/icons";
 import type { VerdictCategory } from "@/lib/verdict";
 import { searchMeta } from "@/lib/search-sections";
+import { projectFlags } from "@/lib/project-policy";
 
 export interface HypeRow {
   slug: string;
@@ -81,9 +82,9 @@ export function HypeRowCard({ row: r }: { row: HypeRow }) {
         )}
       </div>
       <div className="hype-verdict">
-        <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
+        {projectFlags(r.slug).genesis ? <Link href={`/projects/${r.slug}`} className="word dim">Genesis asset</Link> : <Link href={`/projects/${r.slug}#verdict`} aria-label={`${r.name} Shitcoin warning breakdown`} className="gauge-btn">
           <ShitcoinMeter category={r.verdict} compact size={38} />
-        </Link>
+        </Link>}
         <SourceIcons sources={r.sources} />
       </div>
     </article>
@@ -98,7 +99,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
     if (sortKey === "mentions") {
       copy.sort((a, b) => (b.mentions ?? -1) - (a.mentions ?? -1));
     } else {
-      copy.sort((a, b) => b.filledPct - a.filledPct);
+      copy.sort((a, b) => Number(projectFlags(a.slug).genesis) - Number(projectFlags(b.slug).genesis) || b.filledPct - a.filledPct);
     }
     return copy;
   }, [rows, sortKey]);
