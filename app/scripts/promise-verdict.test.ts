@@ -57,13 +57,25 @@ function rows() {
 }
 test('context sorts are numeric descending, zero precedes null, ties are deterministic',()=>{
   const data=rows(),before=JSON.stringify(data);
-  for(const [sort,order] of [['stars','bacd'],['commits','abcd'],['hype','bacd'],['market-cap','abcd'],['hearts','bacd'],['rank','abcd']] as const) {
+  for(const [sort,order] of [['stars','bacd'],['commits','abcd'],['hype','bacd'],['market-cap','abcd'],['hearts','bacd'],['rank','abdc']] as const) {
     assert.equal(sortScoreboard(data,sort,'').map(r=>r.slug).join(''),order);
   }
   assert.equal(JSON.stringify(data),before);
   data[0].codeStars=50;assert.equal(sortScoreboard([...data].reverse(),'stars','')[0].name,'Alpha');
   data[0].marketCap=NaN;assert.equal(sortScoreboard(data,'market-cap','').at(-1)?.slug,'d');
-  assert.equal(parseBoardSort('bogus'),'rank');assert.equal(parseBoardCategory('bogus'),'');
+  assert.equal(parseBoardSort('bogus'),'coin');assert.equal(parseBoardCategory('bogus'),'');
+});
+test('default browsing and legacy overall-rank links are unranked; category links retain delivery order',()=>{
+  const data=rows();
+  data.forEach((row,index)=>{row.rank=4-index;});
+  for(const query of [null,'rank','bogus']) {
+    assert.equal(parseBoardSort(query),'coin');
+    assert.equal(sortScoreboard(data,parseBoardSort(query),'').map(row=>row.slug).join(''),'abdc');
+    assert.equal(parseBoardSort(query,'payments'),'rank');
+  }
+  assert.equal(categoryRanks(data,'').size,0);
+  assert.equal(parseBoardSort('stars'),'stars');
+  assert.equal(parseBoardSort('coin','payments'),'coin');
 });
 test('category ranks tie equal shares, keep denominators, and do not rank nonmembers as zero',()=>{
   const data=rows();

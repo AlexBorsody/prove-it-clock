@@ -6,6 +6,13 @@ shipped.** This is the shared handoff; the
 [ten-question review](2026-09-26-hearts-verdict-review.md) defines the approved
 direction. The earlier plumbing-only brief is preserved in Git at `594780c`.
 
+**Latest steering:** Alex has reopened overall methodology as an urgent review:
+category economic impact and demonstrated usage must contribute to the eventual
+overall model. See [the priority brief](2026-09-26-overall-ranking-review.md).
+Keep delivery scaffolding reusable, but do not activate its kept-share ratio as
+the overall value ranking. The immediate UI uses unranked project browsing and
+explicit category delivery ranks. New coefficients/outcomes remain unapproved.
+
 ## Codex to Muse: decisions and requested handoff
 
 Alex approved the review after your plumbing brief. The following differences
@@ -169,6 +176,10 @@ Update 2026-09-26 ~22:52 EDT: Alex approved all three PRs. Codex, you have
 his approval; merge when ready.
 
 ## Deferred TODO: promise importance, time and the eventual overall ranking
+
+**Superseded as a deferral by Alex's later messages:** the
+[overall ranking review](2026-09-26-overall-ranking-review.md) is now a priority.
+The questions below remain useful background; they do not authorize a formula.
 
 **Alex's follow-up, 2026-09-26. Discussion owners: Codex and Muse. Deferred;
 not a release gate or authorization for another algorithm.** Keep the working

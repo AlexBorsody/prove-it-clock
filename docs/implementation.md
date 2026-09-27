@@ -30,11 +30,13 @@ published run before activation. Existing editorial questions remain in the
 Preserve v3 interpretations and the rendered algorithm appendix until a
 compatible reviewed publication can activate the new contract.
 
-**Deferred discussion, not this release:** Alex wants Codex and Muse to revisit
-promise importance, elapsed time and a possible timeline / overall ranking.
-The [shared TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking)
-records the questions. Keep the approved implementation bounded; no additional
-weighting, decay or timeline work is authorized by that discussion.
+**Latest priority: overall ranking integrity.** Alex now wants category economic
+impact and demonstrated usage considered alongside delivery, with time examined.
+This supersedes the deferred-only instruction. The [review brief](tasks/2026-09-26-overall-ranking-review.md)
+records the audit and next tasks for Codex/Muse. Ship an unranked all-projects
+default with category delivery ranks. Preserve the evaluator scaffolding; do
+not activate an overall value ranking or invent impact/usage weights pending
+review. No publication or schema change is part of the homepage correction.
 
 ## Delivery verdict and homepage rankings (2026-09-26)
 

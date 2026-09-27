@@ -6,7 +6,14 @@ remains unchanged. Product direction lives here; build details and the ordered
 queue live in [implementation.md](implementation.md) and
 [tasks/2026-09-26-promise-atlas.md](tasks/2026-09-26-promise-atlas.md).
 
-**Methodology direction approved for implementation by Alex:** the
+**Latest direction (2026-09-26):** overall ranking needs category economic impact
+and demonstrated usage as well as delivery. Alex says the current overall
+default is misleading. Use an unranked project browser with category delivery
+rankings while Codex and Muse review the [new priority brief](tasks/2026-09-26-overall-ranking-review.md).
+Numerical impact/usage weights are not approved. This supersedes treating the
+importance/use/time discussion as deferred-only.
+
+**Delivery scaffolding previously approved for implementation by Alex:** the
 [hearts and verdict proposal](tasks/2026-09-26-hearts-verdict-review.md)
 answers the ten scoring questions and defines delivery weighting, coverage,
 core findings and lifecycle rules. Codex and Muse coordinate implementation in
@@ -296,15 +303,14 @@ be shipped through direct Markdown coordination with Muse. This authorizes
 implementation; record-specific judgments still need evidence. The existing
 v3 appendix stays unchanged until a compatible version is published.
 
-### Longer-term question: importance and time
+### Overall ranking: priority review
 
-Alex's goal remains an understandable overall ranking, but equal heart counts
-alone cannot distinguish a technical detail from a project's central ambition,
-or explain years of unresolved delivery. The approved weighted verdict is one
-step; how to represent time remains open. Keep delivery and category views
-usable now. Codex and Muse will discuss importance, delay and a possible
-timeline in the [deferred TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking).
-This does not add scope to the current release or approve automatic decay.
+Alex's latest direction is **category economic impact + delivery + demonstrated
+usage**, with time and progress made visible. This is the priority methodology
+discussion in the [review brief](tasks/2026-09-26-overall-ranking-review.md).
+The working product remains available; the homepage browses projects without
+an overall rank, and categories retain explicit delivery-share comparisons.
+No numerical impact weights, usage bonus or automatic decay are approved yet.
 
 ## Prove Value Index: separate future work
 
