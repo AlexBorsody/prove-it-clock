@@ -147,15 +147,20 @@ export async function readHypeSnapshotsFor(slug: string): Promise<HypeSnapshot[]
 }
 
 /** Atlas needs one entire published snapshot, without market/social enrichment. */
-export async function readPublishedPromiseLedger() {
+export async function readPublishedPromiseLedger(selection: {runId?: string; methodology?: string} = {}) {
   const { readAtlasLedger } = await import('./atlas/reader');
   const db = heartReadClient();
   return readAtlasLedger({
     async latest() {
-      const {data,error}=await db.from('heart_runs')
-        .select('id,as_of,methodology,review_status').eq('review_status','published').eq('methodology',HEARTS_METHODOLOGY)
-        .order('as_of',{ascending:false}).order('recorded_at',{ascending:false}).order('id',{ascending:false}).limit(1).maybeSingle();
+      let query = db.from('heart_runs')
+        .select('id,as_of,methodology,review_status').eq('review_status','published')
+        .eq('methodology', selection.methodology ?? HEARTS_METHODOLOGY);
+      if (selection.runId) query = query.eq('id', selection.runId);
+      const {data,error} = await query.order('as_of',{ascending:false})
+        .order('recorded_at',{ascending:false}).order('id',{ascending:false}).limit(1).maybeSingle();
       if(error) throw error;
+      if (data && (data.methodology !== (selection.methodology ?? HEARTS_METHODOLOGY) ||
+        (selection.runId && data.id !== selection.runId))) throw new Error('Published run selection mismatch');
       return data;
     },
     async page(runId,from,to) {

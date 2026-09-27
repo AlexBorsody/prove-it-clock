@@ -1,0 +1,16 @@
+.composition { min-width:0; margin-block:20px; }
+.subject { display:grid; gap:8px; color:var(--text-dim); font-size:14px; }
+.subject select { min-width:0; width:100%; min-height:44px; padding:10px; color:var(--text); background:var(--bg-raised); border:1px solid var(--border); border-radius:10px; font:inherit; }
+.composition p { font-size:14px; }
+.band { display:flex; min-height:44px; gap:3px; border-radius:8px; overflow:hidden; }
+.band a { display:grid; place-items:center; min-width:2px; color:#fff; font-size:14px; font-weight:700; }
+.band [data-group=kept],.legend [data-group=kept] { background:#247b40; }
+.band [data-group=unkept],.legend [data-group=unkept] { background:repeating-linear-gradient(135deg,#9e3037 0 6px,#b44149 6px 9px); }
+.band [data-group=open],.legend [data-group=open] { background:#535e73; }
+.band [data-group=unknown],.legend [data-group=unknown] { background:repeating-linear-gradient(45deg,#303746 0 3px,#6d7480 3px 5px); }
+.legend { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px 12px; margin-top:8px; font-size:14px; }
+.legend a,.legend>span { display:flex; align-items:center; gap:8px; min-height:44px; overflow-wrap:anywhere; }
+.legend>span { color:var(--text-dim); }
+.legend i { display:inline-block; width:12px; height:12px; border-radius:3px; flex-shrink:0; }
+.band a:focus-visible { outline:3px solid var(--yellow); outline-offset:-3px; }
+.note { color:var(--text-dim); line-height:1.5; }
