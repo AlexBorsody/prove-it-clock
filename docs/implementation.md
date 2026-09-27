@@ -42,6 +42,12 @@ Questions to resolve first:
 
 Versioned judgments about significance, reading the ledger.
 
+**2026-09-27 calibration work:** Alex requested immediate weight/algorithm
+investigation. The [calibration task](tasks/2026-09-27-ranking-calibration.md)
+and its generated report compare candidate ratios against the captured ledger
+without publishing scores. This analysis can proceed now; missing usage,
+independent-obligation decisions and weight approval still gate activation.
+
 Light spec: a versioned model with published dimensions, normalization,
 and weights. Inputs: ledger outcomes plus usage observations. Outputs:
 potential significance and realized impact per promise/project, with
