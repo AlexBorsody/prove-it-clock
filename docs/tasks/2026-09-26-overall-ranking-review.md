@@ -6,6 +6,14 @@ must account for **promise-category world economic impact and demonstrated
 usage**, alongside what was delivered. A kept-promises percentage is insufficient.
 No category weights, usage coefficients or new scoring publication are approved.
 
+Coordination: [Muse's overall TODO](2026-09-26-overall-ranking-todo.md) is the
+shared design outline; this document adds the code/source audit and immediate
+default correction. Read it with his [USE draft](2026-09-26-use-metrics-spec.md)
+and [weight draft](2026-09-26-verdict-weights-draft.md), not as a parallel formula.
+The latest user request explicitly calls for category economic-impact weighting;
+whether this is a separate multiplier or an interpretable combined rubric is
+still a design decision. No numerical category values have been supplied.
+
 ## Immediate product correction
 
 - Default homepage: unranked project browser, alphabetical by name.
