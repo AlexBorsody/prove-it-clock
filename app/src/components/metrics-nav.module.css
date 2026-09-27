@@ -1,5 +1,6 @@
 .shell { margin: 12px 0 24px; min-width: 0; }
 .title { margin: 0 0 12px; color: var(--text-dim); font-size: 14px; font-weight: 600; }
+.description { margin: 0 0 12px; color: var(--text-dim); font-size: 14px; line-height: 1.5; }
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); }
 .tabs a { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; color: var(--text-dim); border-bottom: 3px solid transparent; text-decoration: none; font-size: 14px; font-weight: 600; }
 .tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }

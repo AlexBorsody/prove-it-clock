@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import Link from "next/link";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import HeartMeter from "@/components/heart-meter";
@@ -195,7 +195,9 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
           </thead>
           <tbody>
             {ROWS.map((r) => (
-              <tr key={r.key} className="search-section" {...searchMeta({ id: `compare-${r.key}`, title: `Compare ${r.label}`, kind: "Compare", keywords: r.key })}>
+              <Fragment key={r.key}>
+              {(r.key === 'hearts' || r.key === 'code') && <tr className="compare-group"><th colSpan={cols.length + 1} scope="rowgroup">{r.key === 'hearts' ? 'Promise delivery' : 'Supporting context'}</th></tr>}
+              <tr className="search-section" {...searchMeta({ id: `compare-${r.key}`, title: `Compare ${r.label}`, kind: "Compare", keywords: r.key })}>
                 <th className="rowhead">
                   <Link href={`/methodology#${r.anchor}`}>{r.label}</Link>
                 </th>
@@ -205,6 +207,7 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
                   </td>
                 ))}
               </tr>
+              </Fragment>
             ))}
           </tbody>
         </table>

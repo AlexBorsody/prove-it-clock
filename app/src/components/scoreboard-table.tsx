@@ -130,6 +130,11 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>
+            <tr className={styles.columnGroups}>
+              <th colSpan={4} scope="colgroup">Promise delivery</th>
+              <th colSpan={4} scope="colgroup">Supporting context</th>
+              <th aria-label="Promise details" />
+            </tr>
             <tr>
               {HEADERS.map((h, i) => (
                 <th
@@ -260,6 +265,8 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                   <ShitcoinMeter category={r.verdict} compact size={32} />
                 </Link> : <span className="word dim">Warning unavailable</span>}
               </div>
+              <section className={styles.context} aria-label={`${r.name} supporting context`}>
+              <h3>Supporting context</h3>
               <div className="mcard-stats">
                 <Link href="/code" className="mcard-stat metric-btn">
                   <GithubMark />
@@ -272,6 +279,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                 </Link>
                 <span className="mcard-stat num">Market cap · {r.marketCap == null ? "Unavailable" : `$${compactNum.format(r.marketCap)}`}</span>
               </div>
+              </section>
               <button
                 className={`mcard-promises-toggle${open ? " open" : ""}`}
                 onClick={() => toggleExpand(r.slug)}
