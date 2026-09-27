@@ -82,3 +82,7 @@ deployment, hosted schema change, or scoring publication was performed.
 
 Review handoff: inspect the collapsed evidence index and intentional public
 API field removal; PR #8 should adopt these changes before proceeding.
+
+Review: [PR #13](https://github.com/AlexBorsody/prove-it-clock/pull/13),
+implementation commit `c9abe7f`. Pushed for Muse/Alex review; not merged or
+deployed by Codex. The PR #8 discussion now carries the rebase/scope handoff.
