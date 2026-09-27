@@ -9,9 +9,11 @@ import { promiseId, type PublishedHeartDataset, type AtlasNode } from '../src/li
 import { layoutFor } from '../data/atlas-layout';
 import { ASSIGNMENTS } from '../data/atlas-assignments';
 import { projectAtlas } from '../src/lib/atlas/project';
+import { parseReceiptQuery, receiptNodes } from '../src/lib/promise-receipts';
 const artifact=JSON.parse(readFileSync(new URL('../../db/seed/heart-runs/hearts-promise-2026-09-26.json',import.meta.url),'utf8'));
+const runId='11111111-1111-4111-8111-111111111111';
 function fixture(): PublishedHeartDataset {
-  return {run:{id:'test-published',as_of:artifact.as_of,methodology:artifact.methodology,review_status:'published'},projects:artifact.projects.map((p:any)=>({...structuredClone(p),run_id:'test-published',methodology:artifact.methodology,name:p.slug,symbol:p.slug.toUpperCase()}))};
+  return {run:{id:runId,as_of:artifact.as_of,methodology:artifact.methodology,review_status:'published'},projects:artifact.projects.map((p:any)=>({...structuredClone(p),run_id:runId,methodology:artifact.methodology,name:p.slug,symbol:p.slug.toUpperCase()}))};
 }
 test('all current scored promises appear once; ledger and hearts remain unchanged',()=>{
   const input=fixture(),before=JSON.stringify(input), data=adaptAtlas(input)!;
@@ -20,7 +22,16 @@ test('all current scored promises appear once; ledger and hearts remain unchange
   assert.equal(data.nodes.filter(n=>n.primaryCategory===null).length,7);
   assert.equal(data.nodes.filter(n=>n.fulfillmentTest).length,115);
   assert.equal(data.coverage.layoutPending.length,0);assert.equal(JSON.stringify(input),before);
-  assert.ok(data.nodes.every(n=>n.sourceRunId==='test-published' && n.promiseHref.includes('?evidence=')));
+  for(const node of data.nodes) {
+    const url=new URL(node.promiseHref,'https://example.org');
+    assert.equal(url.pathname,`/projects/${node.projectSlug}/evidence`);
+    const selection=parseReceiptQuery(url.searchParams);
+    assert.equal(selection.runId,runId);assert.equal(node.sourceRunId,runId);
+    assert.equal(selection.methodology,data.methodologyVersion);
+    assert.equal(selection.assignmentVersion,data.assignmentVersion);
+    assert.equal(selection.promise,node.id);
+    assert.deepEqual(receiptNodes(data,node.projectSlug,selection),[node]);
+  }
 });
 test('drafts, mixed runs and duplicate or missing identifiers fail visibly',()=>{
   const input=fixture();input.run!.review_status='draft';assert.throws(()=>adaptAtlas(input),/published/);

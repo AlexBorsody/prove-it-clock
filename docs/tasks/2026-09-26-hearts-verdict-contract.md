@@ -447,3 +447,11 @@ Earlier implementation-start notes:
 - Checked current app: one pinned v3 ledger already feeds the delivery card and
   Atlas; the old warning remains separate. No v4 records or reviewed weights
   exist in the inspected publication artifact. Implementation work is starting.
+
+## PR #8 review follow-up — 2026-09-27
+
+After #8 merged as `f841837`, the automated review identified an obsolete Atlas
+assertion for `?evidence=`. On `codex/atlas-receipt-contract`, the fixture now uses
+a UUID and checks every generated receipt's route, run, methodology, assignment
+revision and exact promise selection. All 11 existing Atlas/cache checks pass.
+This changes tests only; no application behavior, scoring or hosted data changes.
