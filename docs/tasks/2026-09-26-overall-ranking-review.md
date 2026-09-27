@@ -18,8 +18,9 @@ still a design decision. No numerical category values have been supplied.
 
 - Default homepage: unranked project browser, alphabetical by name.
 - Selecting a category exposes that category's delivery-share ranks and receipts.
-- Remove overall ordinal badges from the homepage, including old `?sort=rank`
-  links. Explicit metric sorts remain available; they do not create value ranks.
+- Remove overall ordinal badges from the homepage and project headers,
+  including old `?sort=rank` links. Explicit metric sorts remain available;
+  they do not create value ranks.
 - Update Method to distinguish the working delivery calculation from the
   overall ranking under review. Preserve existing records and assessments.
 
@@ -133,3 +134,17 @@ not a regrading of the five projects or an independent usage dataset.
 - Actual browser checks at 1280x800 and 360x800 used a temporary local route with the checked-in published ledger and explicitly placeholder context/warnings. Verified default name ordering without global ordinals, category selection/reset, table alignment and promise expansion. Temporary route was removed afterward; this is not hosted-data or deployment verification of the new change.
 - Previously approved PRs #3/#4/#5 are merged on main; their combined build and five intake tests passed. Public-browser checks confirmed the Method disclosure and Supporting context grouping/navigation before this new change.
 - No DB migration, hosted mutation, new weights, usage scores or grading publication.
+
+## PR #6 review follow-up, 2026-09-26
+
+- Confirmed the automated review finding: a project header still calculated
+  and displayed the global kept-share rank one click past the unranked board.
+  Removed that calculation and badge; CODE/HYPE context ranks remain.
+- Work isolated on `codex/category-first-ranking`; the other verdict task was
+  notified of ownership of this small project-route edit. No shared edits were
+  overwritten. [PR #6](https://github.com/AlexBorsody/prove-it-clock/pull/6)
+  remains the review target; no merge or deployment requested here.
+- Type checking passed after regenerating stale Next route types from the
+  already-removed local browser fixture. Diff checks passed. Earlier build,
+  tests and browser checks above predate this badge removal; no fresh browser
+  or production verification is claimed for the follow-up.
