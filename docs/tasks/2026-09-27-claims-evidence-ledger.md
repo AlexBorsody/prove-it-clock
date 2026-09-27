@@ -119,3 +119,18 @@ pages, and copy.
   warning formula, XRP/SWIFT research, Habib's 4-event handoff.
 - Glossary v2 remains the most question-free build if you want to
   start tonight.
+
+## Codex response, 2026-09-27
+
+Read `429d703` and folded this into the existing
+[Layer 1 technical proposal](../implementation.md#promise-history-and-timeline).
+The existing `claim_type` means milestone/ongoing, so the broader claim kind
+must remain distinct. Preserve crypto project/lineage IDs and publication
+history while introducing the domain/subject boundary; do not maintain a second
+inventory or generalize crypto scoring to other claim kinds. Empty inventories
+are not applicable with coverage disclosed, not perfect scores.
+
+The [repository review and handoff](2026-09-27-codex-layer-sequence.md#codex-reply-repository-review-and-scope)
+contains findings, checks and owners. Four-event examples and current gates
+still apply; no collectible ingestion or new warning UI is included. Add
+provenance and speculative demand to the shared glossary data you send over.

@@ -6,12 +6,12 @@ remains unchanged. Product direction lives here; build details and the ordered
 queue live in [implementation.md](implementation.md) and
 [tasks/2026-09-26-promise-atlas.md](tasks/2026-09-26-promise-atlas.md).
 
-**Latest direction (2026-09-26):** overall ranking needs category economic impact
-and demonstrated usage as well as delivery. Alex says the current overall
-default is misleading. Use an unranked project browser with category delivery
-rankings while Codex and Muse review the [new priority brief](tasks/2026-09-26-overall-ranking-review.md).
-Numerical impact/usage weights are not approved. This supersedes treating the
-importance/use/time discussion as deferred-only.
+**Latest direction (2026-09-26):** [category indices, no universal overall
+score](tasks/2026-09-26-codex-no-universal-score.md). Each category exposes
+delivery, potential significance and realized impact, including demonstrated
+usage. Valuation is a separate model. Current unranked browsing and category
+delivery ranks remain until reviewed inputs/models can support richer indices.
+Numerical impact/usage weights and valuation assumptions remain unapproved.
 
 **Delivery scaffolding previously approved for implementation by Alex:** the
 [hearts and verdict proposal](tasks/2026-09-26-hearts-verdict-review.md)
@@ -22,22 +22,19 @@ ratings remain in force until a compatible reviewed publication is activated.
 
 ## The product in one line
 
-Did crypto projects actually deliver what they promised? The product is the
-living verdict per project: a grade that moves as promises are kept or
-broken, split by promise category, every number clickable to its receipt.
-The core is a sourced promise ledger: claim, attribution, fulfillment test,
-evidence and outcome. Hearts record delivery, not token prices or economic
-value. The Atlas is the evidence view, not the product.
+What economic substance supports this token's valuation? Start with a sourced
+promise ledger: claim, attribution, fulfillment test, evidence and outcome.
+Then distinguish what works, who uses it, what benefit it creates and whether
+that benefit reaches the token. Working software alone does not explain a
+multibillion-dollar valuation. Hearts record delivery; category profiles,
+Atlas and the timeline expose the evidence behind the value thesis.
 
 **Slogan: Truth, not hype.** We cut through the hype.
-**The hook (Alex, 2026-09-26):** in a perfect world, proven value and
-market cap would be 1:1. They aren't, and the gap is the product. We
-measure what projects proved; the market measures what people believe.
-The distance between the two is where the money is. This is a
-presentation of two independent numbers side by side, never a blend:
-price and market data must not enter the verdict itself, or the score
-becomes circular. The verdict stays pure (promises only); the gap is
-what the user reads.
+**The hook (Alex, 2026-09-26):** in a perfect world, proven value and market
+cap would be 1:1. Today we can show market cap beside a delivery/impact
+profile. A numerical valuation gap requires a separate token-value model,
+with assumptions and uncertainty. Market cap never determines delivery or
+impact scores. A mismatch is a question to investigate, not proof of profit.
 
 **On the moat (Alex, 2026-09-26):** honestly, the moat is thin today. A
 dashboard is not a moat, and selling access is revenue, not
@@ -46,6 +43,21 @@ history is a month a competitor cannot buy back, and being the neutral
 arbiter people believe is a brand moat. The 1:1 hook is what gets people
 in the door; the door is what builds the moat.
 
+
+### The long-term target: value and market cap align
+
+Alex's clarification: "in a perfect world our ranking and marketcap should be
+1:1." The [later decision](tasks/2026-09-26-codex-no-universal-score.md)
+places that ambition in a separate valuation model, not a universal coin rank.
+Category indices compare delivery and impact within a defined function;
+equal scores in Payments and Privacy do not imply equal economic value.
+
+A future token-value range must explain how useful activity benefits the
+token and prevent overlapping categories from counting the same activity
+twice. Publish its model version, assumptions, coverage and uncertainty.
+Never average category scores into dollars or fit them to today's market cap
+or a preferred coin order. Current hearts and delivery ranks are not dollar
+valuations, and disagreement with the market can reveal errors in our model.
 
 ### The durable asset: sourced history
 
@@ -511,13 +523,11 @@ The distilled thesis. Everything built must serve it.
 - **The spine question:** is this project creating additional economic
   substance, or mainly participating in the market for tradeable digital
   assets?
-- **The market's foundation:** Bitcoin demonstrated two monetary
-  properties: transferability (send value without moving a physical
-  object) and durable savings demand. That is the only fully
-  demonstrated monetary foundation in crypto, roughly 57% of total
-  crypto market cap (CoinGecko snapshot, 2026-09-27). The rest of the
-  market's valuation rests predominantly on expectation. The product
-  emphasizes this; it does not soften it.
+- **The market's foundation:** emphasize Bitcoin's foundational monetary
+  role and the demand for scarce, portable digital wealth. Investigate
+  whether other projects benefit from broad monetary/speculative demand
+  before their additional promises create comparable economic substance.
+  That is a research question, not a predetermined result for every token.
 - **The burden of proof** sits on every additional value claim. Shipped
   software does not explain a multibillion-dollar token price. For a
   monetary asset, examine the monetary proposition. For a project
@@ -528,15 +538,27 @@ The distilled thesis. Everything built must serve it.
   market price can contain speculation too. One standard for all:
   neither price proves fair value by itself. That is what separates an
   accountability instrument from another crypto faction.
-- **Store of value means durable savings demand** over a stated period,
-  which is observable. It never means guaranteed purchasing-power
-  preservation, which volatility disproves. The exact test is written
-  before grading, like every other promise.
+- **Monetary tests stay distinct:** transferability, sustained savings
+  demand and purchasing-power performance are separate questions. Specify
+  the period, evidence and test before grading; a working wallet settles
+  none of the demand or future-value questions by itself.
 - **Public language:** "explain the basis of value," never "determine
   value."
 
-This is an editorial stance plus model judgments. The ledger records
-what happened; these beliefs shape what the models ask of it.
+Apply the same sequence to every value thesis:
+
+| Layer | What needs evidence |
+|---|---|
+| Functionality | The promised capability works. |
+| Demand | People use it; trading and incentive-driven activity are identified. |
+| Realized impact | That use produces the claimed benefit at a measured scale. |
+| Token connection | Those benefits create a reason to hold or acquire this token. |
+| Valuation assumptions | The growth or continued demand a valuation model requires. |
+
+These are separate questions, not automatic credits for passing the previous
+step. The ledger records what happened; models explain its significance.
+Neither Bitcoin's price nor another token's price independently proves fair
+value. Missing evidence stays visible, and findings can overturn our thesis.
 
 
 ## Data rules

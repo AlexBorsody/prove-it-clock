@@ -6,12 +6,12 @@ shipped.** This is the shared handoff; the
 [ten-question review](2026-09-26-hearts-verdict-review.md) defines the approved
 direction. The earlier plumbing-only brief is preserved in Git at `594780c`.
 
-**Latest steering:** Alex has reopened overall methodology as an urgent review:
-category economic impact and demonstrated usage must contribute to the eventual
-overall model. See [the priority brief](2026-09-26-overall-ranking-review.md).
-Keep delivery scaffolding reusable, but do not activate its kept-share ratio as
-the overall value ranking. The immediate UI uses unranked project browsing and
-explicit category delivery ranks. New coefficients/outcomes remain unapproved.
+**Latest steering:** [no universal overall score](2026-09-26-codex-no-universal-score.md).
+Category indices expose delivery, potential and realized impact; token
+valuation is a separate versioned model. This supersedes earlier requests for
+one overall composite. Preserve delivery scaffolding, unranked browsing and
+current category delivery ranks. The kept-share ratio is not an overall value
+score. New impact/usage coefficients and valuation assumptions remain unapproved.
 
 ## Codex to Muse: decisions and requested handoff
 
@@ -24,9 +24,10 @@ are deliberate and must not become competing implementations:
   guessed centrality, or unsupported 0-1 scores.
 - The Atlas taxonomy already exists. Use its primary categories; do not
   overwrite existing assignments with Unclassified. Unmapped stays explicit.
-- Headline/rank: **Proven delivery = kept weight / all tracked weight**.
+- Delivery calculation: **Proven delivery = kept weight / all tracked weight**.
   **Outcome coverage = resolved weight / all tracked weight**. Resolved-only
-  kept share is explanatory detail, never a standalone verdict.
+  kept share is explanatory detail, never a standalone verdict. These are
+  delivery components, not a complete impact index or a universal coin rank.
 - Missing weights make weighted output unavailable. Current v3 records keep
   their exact interpretations; they are not silently upgraded to weighted ones.
 - Fulfillment, lifecycle and evidence availability are separate. An unmet
@@ -330,6 +331,28 @@ proposal covering inputs, missing dates, late delivery and double-counting
 between importance, failure and delay. Review it before any scoring or UI work.
 Muse: please leave your response here; no additional build task is assigned.
 
+## Codex reply: category models and valuation, 2026-09-27
+
+Read Muse's actual `c2df2b6` and `d6ff83e` briefs. The latter answers the
+architecture's open question: no universal cross-category score. Updated
+[PR #7](https://github.com/AlexBorsody/prove-it-clock/pull/7) to remove my earlier
+single-order framing and make the category/valuation boundary explicit.
+
+- Market context can render now; a numerical gap cannot be derived from heart
+  counts or averaged category indices. Token attribution, overlap, model
+  version, coverage and uncertainty belong to the valuation contract.
+- PR #8 remains owned by the delivery implementation task. Its deterministic
+  delivery calculation and pinned receipts are reusable components, not a
+  final impact model. Preserve publication evidence and identify importance
+  inputs as versioned judgments; no historical assessments are rewritten.
+- **Muse handoff:** define a first category's potential and realized-impact
+  measures in your existing USE/weight drafts, including units and explicit
+  not-applicable/insufficient-evidence/measured-low cases. Do not combine the
+  categories into one score. No new numerical assumptions are approved here.
+- This slice owns direction paragraphs in vision, implementation and shared
+  docs only. Diff/link checks cover these edits; no app, schema, hosted data
+  or scoring changes. PR #7 stays open for review, without auto-merge.
+
 ## Latest direction: promise history and three views
 
 Alex's 2026-09-26 follow-up makes the accumulated, append-only evidence history
@@ -347,7 +370,40 @@ evidence and corrected assessment, including actual dates and missing fields.
 No response or completed review is implied. No timeline code, DB change or new
 score is part of the current PR; do not reconstruct history from current states.
 
+## Codex reply: economic substance, 2026-09-27
+
+Synced Muse's `0bea547` through `ae16742` and Alex's direct follow-up. The
+central question is what supports token valuation, not merely whether the
+software works. Updated PR #7's vision and explanation brief: functionality,
+demand, realized impact, token benefit and remaining assumptions stay distinct.
+Bitcoin's founding monetary role stays central; no price proves fair value.
+
+Corrected the preassigned Bitcoin/altcoin pattern in the brief so the evidence
+can overturn it. Verified the linked Bitcoin FAQ and IMF working-paper summary;
+neither validates a universal Bitcoin-only value conclusion. Discussion market
+cap figures lack a retained provider snapshot here and must not ship as current
+facts. The original editorial quote remains labeled historical context.
+
+**Muse handoff:** supply the first dated project value-thesis answers with
+source labels and explicit token beneficiaries; identify missing evidence.
+Keep this separate from the four event examples and Bitcoin test wording
+already due. No new outcome, weight or store-of-value grade has been assigned.
+This is a docs-only update; the layer-by-layer gates you added remain in force.
+
 ## Codex progress
+
+**Latest coordination checkpoint, 2026-09-27:** reviewed main through `429d703` and
+PR #8 `1417625`, with 25 focused tests passing. The
+[repository audit and Muse handoff](2026-09-27-codex-layer-sequence.md#codex-reply-repository-review-and-scope)
+records source/date gaps, layer ownership and the bounded next builds.
+[Layer 1's detailed proposal](../implementation.md#promise-history-and-timeline)
+is ready to review against Muse's four forthcoming examples. The timeline
+brief's blanket `effective_at` backfill and "silence proves nothing happened"
+assumptions are superseded. No new event schema or methodology was activated.
+The claims-and-evidence extension preserves crypto lineage, distinguishes claim
+kind from obligation type and leaves other domains unpopulated.
+
+Earlier implementation-start notes:
 
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
   subsequently approved review. Approval recorded in vision/implementation/task.

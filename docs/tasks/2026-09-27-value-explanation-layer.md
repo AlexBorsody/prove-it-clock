@@ -157,8 +157,9 @@ proven? Who benefits? What am I still being asked to believe?
 
 ## Editorial stance: the market's foundation (Alex, 2026-09-27)
 
-Alex's position, recorded as a labeled editorial/model judgment, not a
-ledger fact:
+Earlier editorial framing, preserved here as context. Alex's later direct
+brief requires testing this thesis, not assuming its conclusion; the build
+rules below implement that clarification.
 
 > Bitcoin has demonstrated two monetary properties: transferability
 > (send value without moving a physical object) and durable savings
@@ -170,36 +171,28 @@ ledger fact:
 Implementation consequences:
 
 - **The "store of value" test must meet Alex's own precision
-  standard.** Define it as *durable demand as a savings vehicle over a
-  stated period* (observable), never as *guaranteed purchasing-power
-  preservation* (not true; volatility is documented). Write the exact
-  test before grading.
+  standard.** Distinguish transferability, sustained savings demand and
+  purchasing-power performance. Specify observation periods and separate
+  tests before grading. No permanent store-of-value checkmark from a
+  functioning wallet or a high current price.
 - **Do not publish "everything else is speculation" as a global
-  fact.** Stablecoin settlement and general-purpose computation are
-  demonstrated services; the honest claim is narrower: most
-  *valuations* exceed demonstrated substance. Per the layered
-  architecture, that is a model judgment. Let the per-project "What
-  gives this asset value?" sections *show* the pattern (Bitcoin's
-  "demonstrated" column full, others' "still a bet" column dominant)
-  rather than pre-judging it in prose. The pattern emerging from the
-  instrument is more credible than the instrument asserting it.
+  fact.** Nor assume that most valuations exceed substance without a
+  defined model. Populate each project's demonstrated/assumed/missing
+  statements from its evidence, including Bitcoin's. Do not prefill a
+  favorable Bitcoin column or unfavorable altcoin columns to manufacture
+  the expected pattern. A delivered application does not settle valuation.
 - **A versioned aggregate is allowed:** e.g. "share of total crypto
   market cap whose value thesis rests primarily on future
   expectations," with published assumptions and model version. Until
   that model exists, show the raw components (total mcap, BTC mcap,
   BTC dominance) as market context.
-- **`/learn/value` gets a sixth beat:** "One demonstrated monetary
-  asset, a trillion dollars of expectation." Walk the user from
-  Bitcoin's two demonstrated properties to the composition of total
-  crypto market cap, and ask what the non-Bitcoin portion is resting
-  on. Link each claim to its record. Supporting evidence for the
-  investigation (labeled, not hardcoded conclusions): BTC ≈ $1.7T of
-  ≈ $2.99T total crypto cap, roughly 57% (CoinGecko snapshot,
-  2026-09-27); a 2023 IMF working paper found a common "crypto
-  factor" explaining about 80% of price variation in its sample —
-  grounds for asking whether investors buy the broad cycle rather
-  than pricing each project's delivery (it does not establish
-  Bitcoin alone causes the co-movement).
+- **`/learn/value` gets a sixth beat:** "What supports the rest of the
+  market?" Start with Bitcoin's monetary proposition, then examine
+  additional value claims and the composition of market capitalization.
+  The $1.7T/$2.99T/57% figures supplied in discussion have no retained
+  timestamped provider response in this brief; do not ship them as current
+  facts. Use a captured, dated market observation or an unavailable state.
+  Market share does not establish the share of value that is speculative.
 - **Unequal-standards guardrail.** Bitcoin's market price cannot prove
   its value while another token's market price proves only
   speculation. Neither price proves fair value by itself. Bitcoin can
@@ -209,3 +202,15 @@ Implementation consequences:
   evidence can confirm or overturn per project, never the answer
   hardcoded into the product. That is what separates an
   accountability instrument from another crypto faction.
+
+### Source check and limits (Codex, 2026-09-27)
+
+- [Bitcoin's FAQ](https://bitcoin.org/en/faq#why-do-bitcoins-have-value)
+  describes monetary properties, trust and adoption; its adjacent price and
+  risk sections describe supply/demand and possible loss of value. This is
+  project documentation of the proposition, not an independent fair-value test.
+- [The Crypto Cycle and US Monetary Policy, IMF working paper 2023/163](https://www.imf.org/en/publications/wp/issues/2023/08/04/the-crypto-cycle-and-us-monetary-policy-534834)
+  reports a common factor explaining about 80% of price variation in its
+  sample and discusses monetary policy and risk appetite. It supports
+  investigating shared market demand; it does not attribute causation solely
+  to Bitcoin or measure an asset's speculative share or fair value.
