@@ -150,7 +150,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
           <tbody>
             {sorted.map((r) => (
               <Fragment key={r.slug}>
-                <tr className="search-section" {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
+                <tr className={`search-section${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
                   {category && <td className="num" style={{ color: "var(--text-faint)" }}>{r.delivery ? (ranks.get(r.slug) ?? "Unranked") : "Unavailable"}</td>}
                   <td>
                     <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
@@ -165,7 +165,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                         <span className="proj-name" style={{ color: "var(--text)" }}>{r.name}</span>
                         <br />
                         <span className="proj-cat num">{r.symbol}</span>
-                        {projectFlags(r.slug).genesis && <span className="cell-sub">Genesis asset</span>}
+                        {projectFlags(r.slug).genesis && <span className={styles.genesisBadge}>Genesis asset</span>}
                       </span>
                     </Link>
                   </td>
@@ -230,7 +230,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
         {sorted.map((r) => {
           const open = expanded === r.slug;
           return (
-            <div key={r.slug} className="mcard project-card" id={`scoreboard-mobile-project-${r.slug}`}>
+            <div key={r.slug} className={`mcard project-card${projectFlags(r.slug).genesis ? ` ${styles.genesisCard}` : ''}`} id={`scoreboard-mobile-project-${r.slug}`}>
               <Link href={`/projects/${r.slug}`} className="mcard-head project-card-link">
                 <img
                   src={`/icons/${r.symbol.toLowerCase()}.svg`}
@@ -256,18 +256,18 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                   <span className="num mcard-count">{r.earned}/{r.capacity}</span>
                 </button>}
               </div>
-              {projectFlags(r.slug).genesis && <p className="word dim">Genesis asset</p>}
+              {projectFlags(r.slug).genesis && <p className={styles.genesisBadge}>Genesis asset</p>}
               <section className={styles.context} aria-label={`${r.name} supporting context`}>
               <h3>Supporting context</h3>
               <div className="mcard-stats">
                 <Link href="/code" className="mcard-stat metric-btn">
                   <GithubMark />
-                  {r.codeNote ? r.codeNote : `CODE ${r.code}`}
+                  {r.codeNote ? r.codeNote : `Code ${r.code}`}
                   {!r.codeNote && codeSub(r) ? ` · ${codeSub(r)}` : null}
                 </Link>
                 <Link href="/hype" className="mcard-stat metric-btn num">
                   <Icon name="megaphone" size={14} />
-                  HYPE · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions / 7d`}
+                  Hype · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions / 7d`}
                 </Link>
                 <span className="mcard-stat num">Market cap · {r.marketCap == null ? "Unavailable" : `$${compactNum.format(r.marketCap)}`}</span>
               </div>
