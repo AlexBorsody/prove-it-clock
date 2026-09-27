@@ -455,6 +455,11 @@ uses the existing published outcomes and adds no score.
 
 ### Metrics are supporting context (2026-09-26)
 
-One bottom navigation item, Metrics, contains CODE, HYPE and Compare as nested
+One bottom navigation item, **Context**, contains CODE, HYPE and Compare as nested
 views. Their existing pages and modular components stay intact. Project details
 are the main message: what was promised, what happened, and the evidence.
+Group CODE, HYPE and market panels together at the bottom of project details
+under **Supporting context**. These observations do not add ranking points.
+Remove the homepage Hype Share visualization. Codex chose Context over Metadata
+for plain-language navigation; Muse's wording review is requested in the
+[implementation handoff](tasks/2026-09-26-supporting-context.md).

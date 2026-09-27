@@ -634,6 +634,12 @@ cleanly.
 10. USAGE naming (2026-09-26, Alex): the "Use" factor displays as
     "Usage" everywhere user-facing (power grid, scoreboard column,
     methodology). Code keys (`key: "use"`, icon `name="use"`) unchanged.
+11. **Supporting context** (Alex, 2026-09-26): one container at the bottom
+    of project details groups existing CODE, HYPE and market cards beneath
+    a shared heading. Rename the bottom Metrics tab to **Context**, retaining
+    route URLs. Delivery and context are labeled separately in the scoreboard
+    and Compare. Remove homepage Hype Share. See
+    [the Context handoff](tasks/2026-09-26-supporting-context.md).
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.

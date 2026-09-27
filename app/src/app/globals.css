@@ -612,9 +612,10 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   letter-spacing: 0.03em;
 }
 
-/* HYPE share stacked area chart. */
-.hype-share { width: 100%; height: auto; display: block; }
-.hype-share .axis { fill: var(--text-faint); font-size: 12px; font-family: var(--mono); }
+/* Context is visually separate from promise delivery. */
+.supporting-context-heading { border-top: 1px solid var(--border-strong); margin-top: 28px; padding-top: 22px; }
+.supporting-context-heading h2 { margin: 0 0 8px; }
+.compare-group th { text-align: left; padding: 14px 12px; font-size: 14px; color: var(--text-dim); background: var(--bg-raised); border-block: 1px solid var(--border); }
 .chart-empty {
   color: var(--text-faint);
   font-size: 15px;

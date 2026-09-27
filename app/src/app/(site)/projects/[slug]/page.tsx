@@ -260,7 +260,11 @@ export default async function ProjectPage({ params, searchParams }: {
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
-      {/* Supporting metrics: CODE, HYPE, then Market. */}
+      <section aria-labelledby={`project-${slug}-context-heading`}>
+      <header className="supporting-context-heading">
+        <h2 id={`project-${slug}-context-heading`}>Supporting context</h2>
+        <p className="panel-sub">Development, attention and market data. These do not add ranking points.</p>
+      </header>
       <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE <InfoTip text={`Who is actually working on ${latest.name}.`} /></h2>
         <ContextRankBadge rank={codeRank} total={codeTotal} kind="CODE" href="/code" basis="stars" />
@@ -282,7 +286,7 @@ export default async function ProjectPage({ params, searchParams }: {
       <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
         <h2>HYPE</h2>
         <p className="panel-sub">
-          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
+          Observed attention for {latest.name}.
         </p>
         <ContextRankBadge rank={hypeRank} total={hypeTotal} kind="HYPE" href="/hype" basis="7d mentions" />
         <HypeSummaryCard row={hypeRow} />
@@ -292,6 +296,7 @@ export default async function ProjectPage({ params, searchParams }: {
       </section>
 
       <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
+      </section>
     </>
   );
 }

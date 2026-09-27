@@ -11,7 +11,6 @@ import {
 import { verdictFor } from "@/lib/verdict";
 import { fetchVitals } from "@/lib/vitals";
 import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
-import { LazyHypeShareChart as HypeShareChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -45,11 +44,9 @@ export default async function Home() {
 
   const hypeLatest = latestHypeBySlug(hypeSnaps);
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
-  const names: Record<string, string> = {};
 
   const rows: ScoreboardRow[] = await Promise.all(
     projects.map(async (p) => {
-      names[p.slug] = p.name;
       const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
       const latest = hypeLatest[p.slug];
@@ -109,16 +106,7 @@ export default async function Home() {
           </p>
         </div>
       ) : (
-        <>
-          <ScoreboardTable rows={rows} asOf={atlas?.asOf} dataRevision={atlas?.dataRevision} />
-          <div className="panel search-section" {...searchMeta({ id: "scoreboard-hype-share", title: "HYPE share", kind: "Scoreboard", keywords: "attention news mentions history" })} style={{ marginTop: 18 }}>
-            <h2>HYPE share</h2>
-            <p className="explain">
-              Each project's slice of observed attention over time. Attention, not endorsement.
-            </p>
-            <HypeShareChart snapshots={hypeSnaps} names={names} />
-          </div>
-        </>
+        <ScoreboardTable rows={rows} asOf={atlas?.asOf} dataRevision={atlas?.dataRevision} />
       )}
     </>
   );
