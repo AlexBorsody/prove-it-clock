@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import ShitcoinMeter from "@/components/shitcoin-meter";
 import HeartMeter from "@/components/heart-meter";
@@ -26,13 +26,17 @@ export interface CompareProject {
 const MIN_SEL = 2;
 const MAX_SEL = 4;
 
-const ROWS: Array<{ key: string; label: string; anchor: string }> = [
-  { key: "hearts", label: "Hearts", anchor: "hearts" },
-  { key: "verdict", label: "Verdict", anchor: "verdict" },
-  { key: "promises", label: "Promises", anchor: "pillars" },
-  { key: "code", label: "CODE", anchor: "pillars" },
-  { key: "use", label: "USAGE", anchor: "pillars" },
-  { key: "hype", label: "HYPE", anchor: "pillars" },
+const ROW_GROUPS: Array<{ label: string; rows: Array<{ key: string; label: string; anchor: string }> }> = [
+  { label: "Promise delivery", rows: [
+    { key: "hearts", label: "Hearts", anchor: "hearts" },
+    { key: "verdict", label: "Verdict", anchor: "verdict" },
+    { key: "promises", label: "Promises", anchor: "pillars" },
+  ] },
+  { label: "Supporting context", rows: [
+    { key: "code", label: "CODE", anchor: "pillars" },
+    { key: "use", label: "USAGE", anchor: "pillars" },
+    { key: "hype", label: "HYPE", anchor: "pillars" },
+  ] },
 ];
 
 function fmtDate(iso: string): string {
@@ -193,12 +197,11 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
               ))}
             </tr>
           </thead>
-          <tbody>
-            {ROWS.map((r) => (
-              <Fragment key={r.key}>
-              {(r.key === 'hearts' || r.key === 'code') && <tr className="compare-group"><th colSpan={cols.length + 1} scope="rowgroup">{r.key === 'hearts' ? 'Promise delivery' : 'Supporting context'}</th></tr>}
-              <tr className="search-section" {...searchMeta({ id: `compare-${r.key}`, title: `Compare ${r.label}`, kind: "Compare", keywords: r.key })}>
-                <th className="rowhead">
+          {ROW_GROUPS.map(group => <tbody key={group.label}>
+            <tr className="compare-group"><th colSpan={cols.length + 1} scope="rowgroup">{group.label}</th></tr>
+            {group.rows.map((r) => (
+              <tr key={r.key} className="search-section" {...searchMeta({ id: `compare-${r.key}`, title: `Compare ${r.label}`, kind: "Compare", keywords: r.key })}>
+                <th className="rowhead" scope="row">
                   <Link href={`/methodology#${r.anchor}`}>{r.label}</Link>
                 </th>
                 {cols.map((p) => (
@@ -207,9 +210,8 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
                   </td>
                 ))}
               </tr>
-              </Fragment>
             ))}
-          </tbody>
+          </tbody>)}
         </table>
       </div>
     </>

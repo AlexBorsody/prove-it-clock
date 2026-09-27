@@ -36,3 +36,5 @@ Do not overwrite the other task's staged changes in the shared checkout.
 - Local preview has no DB credentials. Full-data project/scoreboard/Compare layouts still need review in the Vercel PR preview; no such browser verification is claimed here.
 - Vercel reports the PR preview ready. Opening the actual BTC preview reached Vercel login protection, so full-data browser verification remains pending authenticated review. Public production was not changed.
 - Source search confirms no remaining Hype Share component references. No live-score or database changes are part of this slice.
+- PR review correction: Compare now uses separate `tbody` row groups so each
+  delivery/context group heading applies only to its own rows for assistive technology.
