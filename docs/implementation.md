@@ -30,6 +30,12 @@ published run before activation. Existing editorial questions remain in the
 Preserve v3 interpretations and the rendered algorithm appendix until a
 compatible reviewed publication can activate the new contract.
 
+**Deferred discussion, not this release:** Alex wants Codex and Muse to revisit
+promise importance, elapsed time and a possible timeline / overall ranking.
+The [shared TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking)
+records the questions. Keep the approved implementation bounded; no additional
+weighting, decay or timeline work is authorized by that discussion.
+
 ## Delivery verdict and homepage rankings (2026-09-26)
 
 The new delivery summary is a read-only view of the active published ledger.
@@ -634,6 +640,12 @@ cleanly.
 10. USAGE naming (2026-09-26, Alex): the "Use" factor displays as
     "Usage" everywhere user-facing (power grid, scoreboard column,
     methodology). Code keys (`key: "use"`, icon `name="use"`) unchanged.
+11. **Supporting context** (Alex, 2026-09-26): one container at the bottom
+    of project details groups existing CODE, HYPE and market cards beneath
+    a shared heading. Rename the bottom Metrics tab to **Context**, retaining
+    route URLs. Delivery and context are labeled separately in the scoreboard
+    and Compare. Remove homepage Hype Share. See
+    [the Context handoff](tasks/2026-09-26-supporting-context.md).
 
 Acceptance: all eight detail pages render with correct data, toggle
 works, empty states honest, `next build` clean.
@@ -816,6 +828,37 @@ unfulfilled. Teams routinely declare victory at the demo stage. We score
 the usage, not the press release.
 
 ## Promise research methodology
+
+### Expansion and evolving utility (Alex, 2026-09-26)
+
+The next intake target is approximately 100 coins/tokens, with automated
+discovery, source collection and draft extraction. Use the first cohort to
+calibrate the process, then automate subsequent cohorts further. Human effort
+goes to ambiguous attribution, duplicate obligations, evidence conflicts and
+verdict-changing judgments, plus sample review of apparently routine results.
+Source fetching or passing validation alone never publishes a verdict.
+The old fragments procedure below describes v3; new drafts must follow the
+active [reviewed verdict contract](tasks/2026-09-26-hearts-verdict-contract.md).
+
+For Bitcoin, implement the [Genesis asset decision](tasks/2026-09-26-bitcoin-genesis-exemption.md)
+through an explicit project attribute. The verdict workstream owns excluding
+it consistently from altcoin comparative rankings and verdict badges; keep
+its hearts inventory, underlying promise categories and evidence visible.
+Document original commitment outcomes, observed present use and historical
+contribution separately. Do not collapse them into an unsupported composite.
+
+Before quantifying store-of-value use, define the question, source, observation
+window and limitations: custody/holdings records can demonstrate documented
+holding; they do not prove inflation protection or a fair token price. On-chain
+address counts are not person counts, and dormant balances do not prove intent.
+Price performance alone is not a fulfillment test. Historical contribution
+starts as sourced explanation, not an invented numerical founding bonus.
+
+Documentation-only follow-up, after altcoin priorities: resolve BTC P11 against the exact claim in
+[whitepaper section 10](https://bitcoin.org/bitcoin.pdf#page=6), including its
+stated linking limitations. Attribute later community claims to their actual
+authors and dates. Correcting an overbroad test requires a reviewed new record;
+do not silently rewrite the old assessment or treat evolution as forgiveness.
 
 The repeatable recipe for onboarding a project. One checklist, one fragment
 format, one merge, one publish path. Works for crypto and for stocks

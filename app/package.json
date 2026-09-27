@@ -39,6 +39,8 @@
     "test:verdict": "node --import tsx --test scripts/verdict.test.ts",
     "hearts:publish": "node --import tsx scripts/publish-hearts.ts",
     "social:collect": "tsx scripts/collect-social.ts",
+    "research:intake": "node --import tsx scripts/collect-promise-intake.ts",
+    "test:intake": "node --import tsx --test scripts/promise-intake.test.ts",
     "test:social": "node --import tsx --test scripts/social.test.ts",
     "test:db": "node --import tsx --test scripts/heart-database.test.ts",
     "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs",

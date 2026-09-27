@@ -1,31 +1,34 @@
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import Link from "next/link";
 import {
+  HEARTS_METHODOLOGY,
+  readHeartHistory,
+  readHeartRankings,
+  readHypeSnapshots,
   readHypeSnapshotsFor,
   latestHypeBySlug,
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
-import { getPublishedLedger } from "@/lib/atlas/data";
 import { verdictFor, type VerdictCategory } from "@/lib/verdict";
 import { normalizePromiseState } from "@/lib/hearts";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
+import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
 import HeartMeter from "@/components/heart-meter";
 import ShitcoinMeter from "@/components/shitcoin-meter";
-import DeliveryVerdict from "@/components/delivery-verdict";
+import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
 import { promiseReferences, promiseFilterHref, promiseEvidenceHref, matchesPromiseFilter, promiseDisplay, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
 import HypeSummaryCard from "@/components/hype-summary-card";
+import ContextRankBadge from "@/components/context-rank-badge";
 import ButtonLink from "@/components/button-link";
 import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import PromiseList from "@/components/promise-list";
-import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
@@ -37,18 +40,19 @@ export default async function ProjectPage({ params, searchParams }: {
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const filter: PromiseFilter = PROMISE_FILTERS.includes(query.promises as PromiseFilter) ? query.promises as PromiseFilter : "all";
 
-  const [ledger, vitals, team, hypeSnaps] = await Promise.all([
-    getPublishedLedger().catch(() => null),
+  const [historyData, rankings, vitals, team, hypeSnaps, allHypeSnaps] = await Promise.all([
+    readHeartHistory(slug, HEARTS_METHODOLOGY, 1, 100).catch(() => ({ points: [] as any[] })),
+    readHeartRankings(HEARTS_METHODOLOGY, 1, 100).catch(() => ({ projects: [] as any[] })),
     fetchVitals(slug).catch(() => null),
     fetchTeam(slug).catch(() => null),
     readHypeSnapshotsFor(slug).catch(() => [] as any[]),
+    readHypeSnapshots().catch(() => [] as any[]),
   ]);
 
-  if (!ledger) return <section className="panel"><h1>Promise ledger unavailable</h1><p role="alert">The promise ledger could not be loaded.</p></section>;
-  const projects = ledger.projects as any[];
-  const latest = projects.find(project => project.slug === slug);
-  if (!latest) notFound();
-  if (latest.availability === 'unavailable') return <section className="panel"><h1>{latest.name}</h1><p>No current published assessment is available.</p></section>;
+  const points: any[] = historyData.points ?? [];
+  if (!points.length) notFound();
+
+  const latest = points[0];
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
   const promiseRefs = promiseReferences(slug, promises);
@@ -56,12 +60,40 @@ export default async function ProjectPage({ params, searchParams }: {
 
   // Rank across all published projects by hearts filled %, same tiebreak
   // as the scoreboard (earned desc, then name).
-  const ranked = projects.filter(project => project.availability === "available").sort((a, b) => {
+  const ranked = [...(rankings.projects ?? [])].sort((a, b) => {
     const pa = a.capacity > 0 ? a.earned / a.capacity : 0;
     const pb = b.capacity > 0 ? b.earned / b.capacity : 0;
     return pb - pa || b.earned - a.earned || a.name.localeCompare(b.name);
   });
   const rank = ranked.findIndex((p: any) => p.slug === slug) + 1;
+
+  // Supporting-context ranks: where this project stands among all tracked
+  // projects, using the exact default sort of the destination pages.
+  // Context only: these never feed the verdict.
+  const codeRankRows = await Promise.all(
+    (rankings.projects ?? []).map(async (p: any) => {
+      const v = p.slug === slug ? vitals : await fetchVitals(p.slug).catch(() => null);
+      return {
+        slug: p.slug,
+        name: p.name,
+        stars: v?.stars ?? null,
+        forks: v?.forks ?? null,
+        watchers: v?.watchers ?? null,
+        commits90d: v?.commits90d ?? null,
+        failed: v == null,
+      };
+    })
+  );
+  const codeOrder = sortCodeRows(codeRankRows, "stars");
+  const codeRank = codeOrder.findIndex((r) => r.slug === slug) + 1;
+  const codeTotal = codeOrder.length;
+
+  const hypeBySlug = latestHypeBySlug(allHypeSnaps);
+  const hypeOrder = Object.keys(hypeBySlug)
+    .map((s) => ({ slug: s, mentions: hypeBySlug[s]?.news_mentions_7d ?? null }))
+    .sort((a, b) => (b.mentions ?? -1) - (a.mentions ?? -1));
+  const hypeRank = hypeOrder.findIndex((r) => r.slug === slug) + 1;
+  const hypeTotal = hypeOrder.length;
 
   const verdictResult = verdictFor(
     promises.map((pr: any) => {
@@ -169,13 +201,9 @@ export default async function ProjectPage({ params, searchParams }: {
 
       <span id="hearts" aria-hidden="true" />
 
-      <Suspense fallback={<section className="panel"><h2>Delivery verdict</h2><p role="status">Loading published promises…</p></section>}>
-        <DeliveryVerdict slug={slug} name={latest.name}/>
-      </Suspense>
-
       {/* All promise content lives in one consolidated panel below:
           help expander, delivery health, the promise list, the delivery
-          verdict meter. */}
+          verdict meter, and the stats. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
         <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
@@ -227,19 +255,19 @@ export default async function ProjectPage({ params, searchParams }: {
           <span id="verdict" aria-hidden="true" />
           <ShitcoinMeter category={verdict} inputs={verdictInputs} emptyText={verdictEmptyText} />
         </div>
+        <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
-
-      <section className="panel atlas-section search-section" {...searchMeta({ id: `project-${slug}-atlas`, title: `${latest.name} Promise Atlas`, kind: "Atlas", project: slug, keywords: `${latest.symbol} promise map categories evidence` })}>
-        <Suspense fallback={<><h2>{latest.name} Promise Atlas</h2><p role="status">Loading the promise map…</p></>}>
-          <ProjectAtlas slug={slug} name={latest.name} />
-        </Suspense>
-      </section>
 
       <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
-      {/* Supporting metrics: CODE, HYPE, then Market. */}
+      <section aria-labelledby={`project-${slug}-context-heading`}>
+      <header className="supporting-context-heading">
+        <h2 id={`project-${slug}-context-heading`}>Supporting context</h2>
+        <p className="panel-sub">Development, attention and market data. These do not add ranking points.</p>
+      </header>
       <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>CODE <InfoTip text={`Who is actually working on ${latest.name}.`} /></h2>
+        <ContextRankBadge rank={codeRank} total={codeTotal} kind="CODE" href="/code" basis="stars" />
         <div className="code-rows">
           <CodeRow
             row={codeRowData}
@@ -258,8 +286,9 @@ export default async function ProjectPage({ params, searchParams }: {
       <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
         <h2>HYPE</h2>
         <p className="panel-sub">
-          How much attention {latest.name} is getting. Attention, not endorsement: HYPE never improves the score.
+          Observed attention for {latest.name}.
         </p>
+        <ContextRankBadge rank={hypeRank} total={hypeTotal} kind="HYPE" href="/hype" basis="7d mentions" />
         <HypeSummaryCard row={hypeRow} />
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
           <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
@@ -267,6 +296,7 @@ export default async function ProjectPage({ params, searchParams }: {
       </section>
 
       <MarketPanel slug={slug} name={latest.name} symbol={latest.symbol} />
+      </section>
     </>
   );
 }

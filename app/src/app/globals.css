@@ -590,8 +590,6 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 }
 
 .scoreboard-actions { margin: 0 0 14px; display: flex; justify-content: flex-end; }
-.code-row-placeholder { padding:24px 0;border-bottom:1px solid var(--border);min-height:170px; }
-.code-row-placeholder strong { display:block;margin-bottom:12px; }
 
 /* Mini hearts meter for table rows. */
 .mini-meter { display: flex; align-items: center; gap: 8px; }
@@ -614,9 +612,10 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   letter-spacing: 0.03em;
 }
 
-/* HYPE share stacked area chart. */
-.hype-share { width: 100%; height: auto; display: block; }
-.hype-share .axis { fill: var(--text-faint); font-size: 12px; font-family: var(--mono); }
+/* Context is visually separate from promise delivery. */
+.supporting-context-heading { border-top: 1px solid var(--border-strong); margin-top: 28px; padding-top: 22px; }
+.supporting-context-heading h2 { margin: 0 0 8px; }
+.compare-group th { text-align: left; padding: 14px 12px; font-size: 14px; color: var(--text-dim); background: var(--bg-raised); border-block: 1px solid var(--border); }
 .chart-empty {
   color: var(--text-faint);
   font-size: 15px;
@@ -1259,6 +1258,16 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   color: var(--text); font-weight: 700; font-size: 12.5px;
   text-decoration: none; white-space: nowrap;
 }
+/* Context rank badge: big blue rank label for the Supporting context
+   sections. Whole badge is one link to the full ranking. */
+.context-rank-badge {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  background: rgba(59, 130, 246, 0.13); border: 1px solid rgba(59, 130, 246, 0.5);
+  border-radius: 12px; padding: 6px 18px; margin: 2px 0 12px;
+  text-decoration: none; white-space: nowrap;
+}
+.context-rank-num { font-size: 30px; font-weight: 800; color: #60a5fa; line-height: 1; }
+.context-rank-sub { font-size: 13px; font-weight: 600; color: #93c5fd; }
 /* ---- Button element rule: horizontal padding always exceeds vertical.
    Low top/bottom on every button by default; specific classes refine it. */
 button { padding-block: 6px; padding-inline: 14px; }
@@ -1396,13 +1405,13 @@ button { padding-block: 6px; padding-inline: 14px; }
 @media (hover: hover) {
   .btn:hover, .metric-btn:hover, .code-team-action:hover, .tag:hover,
   .evidence-link:hover, .ph-btn:hover, .shitcoin-inputs-label:hover,
-  .vitals-retry:hover, .gauge-btn:hover {
+  .vitals-retry:hover, .gauge-btn:hover, .context-rank-badge:hover {
     filter: brightness(1.18);
   }
 }
 .btn:active, .metric-btn:active, .code-team-action:active, .tag:active,
 .evidence-link:active, .ph-btn:active, .shitcoin-inputs-label:active,
-.vitals-retry:active, .gauge-btn:active {
+.vitals-retry:active, .gauge-btn:active, .context-rank-badge:active {
   transform: scale(0.97);
   filter: brightness(0.9);
   transition-duration: 80ms;
@@ -1410,7 +1419,7 @@ button { padding-block: 6px; padding-inline: 14px; }
 @media (prefers-reduced-motion: reduce) {
   .btn:active, .metric-btn:active, .code-team-action:active, .tag:active,
   .evidence-link:active, .ph-btn:active, .shitcoin-inputs-label:active,
-  .vitals-retry:active, .gauge-btn:active {
+  .vitals-retry:active, .gauge-btn:active, .context-rank-badge:active {
     transform: none;
   }
 }

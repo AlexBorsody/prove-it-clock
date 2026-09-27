@@ -1,57 +1,32 @@
-export const dynamic = "force-dynamic";
-
-export const metadata = { title: "How the scoring works | Prove Value" };
-
+import Link from "next/link";
 import Icon from "@/components/chrome-icons";
 import { HEARTS_METHODOLOGY } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
+import styles from "./methodology.module.css";
 
-type IconName = Parameters<typeof Icon>[0]["name"];
+export const dynamic = "force-dynamic";
+export const metadata = {
+  title: "How Prove Value works",
+  description: "What was promised, what happened, and the evidence behind each verdict.",
+};
 
-function Section({
-  icon,
-  title,
-  tag,
-  open,
-  alt,
-  id,
-  searchTitle,
-  children,
-}: {
-  icon: IconName;
-  title: React.ReactNode;
-  tag?: string;
-  open?: boolean;
-  alt?: boolean;
+function Section({ icon, title, id, open, children }: {
+  icon: Parameters<typeof Icon>[0]["name"];
+  title: string;
   id: string;
-  searchTitle?: string;
+  open?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <details {...searchMeta({ id: `methodology-${id}`, title: searchTitle ?? (typeof title === "string" ? title : "Scoring methodology"), kind: "Methodology" })} className={"panel fold search-section" + (alt ? " section-alt" : "")} open={open}>
+    <details
+      {...searchMeta({ id: `methodology-${id}`, title, kind: "Methodology" })}
+      className="panel fold search-section"
+      open={open}
+    >
       <summary className="fold-head">
         <span id={id} aria-hidden="true" />
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-          <Icon name={icon} size={16} />
-          {title}
-          {tag ? (
-            <span
-              style={{
-                fontFamily: "var(--mono)",
-                fontSize: 12.5,
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                color: "var(--accent)",
-                border: "1px solid var(--border-strong)",
-                borderRadius: 999,
-                padding: "2px 10px",
-              }}
-            >
-              {tag}
-            </span>
-          ) : null}
-        </span>
+        <Icon name={icon} size={18} />
+        <span>{title}</span>
       </summary>
       <div className="fold-body">{children}</div>
     </details>
@@ -60,254 +35,148 @@ function Section({
 
 export default function MethodologyPage() {
   return (
-    <div className="methodology-page">
-      <div className="search-section" {...searchMeta({ id: "methodology-overview", title: "How the scoring works", kind: "Methodology", keywords: "scoring hearts evidence promises" })}>
-      <h1 className="page-title">How the scoring works</h1>
-      <p className="page-sub">
-        Crypto projects make promises. We check whether they kept them.
-        Explore delivery within promise categories. Hearts are the receipts.
-        The category-relative Index is a separate feature in development.
-      </p>
-      </div>
+    <div className={`methodology-page ${styles.page}`}>
+      <section {...searchMeta({ id: "methodology-overview", title: "How Prove Value works", kind: "Methodology", keywords: "scoring hearts evidence promises" })} className="search-section">
+        <h1 className="page-title">Did they deliver?</h1>
+        <p className="page-sub">
+          Prove Value checks what crypto projects promised against what they
+          delivered. Every assessment starts with a claim, a test and evidence.
+        </p>
+        <ol className={`panel ${styles.steps}`}>
+          <li><strong>Find the promise.</strong> A sourced claim from a whitepaper, roadmap or public statement.</li>
+          <li><strong>Define delivery.</strong> A checkable test. Adoption claims need evidence of use.</li>
+          <li><strong>Record the outcome.</strong> Compare evidence with the test and link the sources.</li>
+        </ol>
+      </section>
 
-      <Section icon="heart" title="Hearts are the receipts" id="hearts" open>
+      <Section icon="heart" title="What the hearts mean" id="hearts" open>
         <p>
-          One promise, one heart. A heart is a receipt that says a specific
-          promise was kept, with the evidence linked. Hearts are the
-          drill-down detail, not the headline: they tell you <i>what</i>
-          happened, promise by promise.
-        </p>
-        <p>
-          Every heart on the meter was <b style={{ color: "var(--green)" }}>earned</b> by
-          keeping a promise. There are no free hearts, no head start, no points
-          for existing. A project starts at zero and every heart has a named
-          promise and linked evidence behind it.
+          <strong>One kept promise earns one heart.</strong> The total is the
+          number of distinct scored promises. Repeated statements count once. Core
+          promises are marked, but currently earn the same one heart.
         </p>
         <p>
-          A heart stays earned only while its evidence condition holds.
-          One-time achievements ("shipped mainnet") keep their hearts
-          permanently. Ongoing claims ("advertisers are buying ads") count
-          only while they are currently true: when the evidence stops, the
-          heart lapses, and you see the fall on the graph. If evidence
-          resumes, the heart comes back. There is no time decay. Scores
-          change because evidence changes, not because time passes.
-        </p>
-        <p className="update-marker">
-          <b>Methodology update:</b> free hearts removed. Historical scores
-          recalculated. This is not a change in project performance.
-        </p>
-      </Section>
-
-      <Section icon="grid" title="Rankings live in categories" id="rankings" alt>
-        <p>
-          A payment coin and a smart contract platform made different promises.
-          Select a subject on the scoreboard to compare the share kept within
-          that category. Counts use primary assignments only. Equal shares tie;
-          projects with no promises in that category are unranked.
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          Kept and total counts stay visible beside the percentage. This does
-          not measure a promise's importance, scale or difficulty. Overall
-          remains the default view while category rankings are introduced.
-        </p>
-      </Section>
-
-      <Section icon="alert" title="The Shitcoin warning meter" id="verdict" alt>
-        <p>
-          The meter reads 1 to 10 and shows the number only, never a label.
-          It is a delivery-accountability rating, not a fraud or
-          investment-risk rating. Tapping it opens the project page at the
-          verdict section, which lists exactly what feeds the meter: each
-          failed promise, its state, and whether it was core. The software
-          picks the position from the promise states; humans resolve ambiguous
-          evidence.
+          For example, <strong>2 of 16 kept</strong> means 14 have not earned
+          credit. If those 14 are still open, they are pending, not 14 failures.
+          Counts cover the promises we track, not every claim ever made.
         </p>
         <ul>
-          <li>
-            <b>Not a shitcoin:</b> no retired or lapsed promise on record.
-          </li>
-          <li>
-            <b>Watch:</b> reserved for verified overdue promises once deadline
-            evidence is researched. Nothing triggers it yet.
-          </li>
-          <li>
-            <b>Shitcoin risk:</b> a supporting promise was retired or lapsed.
-          </li>
-          <li>
-            <b>Shitcoin:</b> the core promise was retired or lapsed.
-          </li>
+          <li><strong>Kept / fulfilled:</strong> assessed as meeting its test.</li>
+          <li><strong>Open:</strong> unresolved.</li>
+          <li><strong>Lapsed:</strong> an ongoing condition no longer met.</li>
+          <li><strong>Retired:</strong> recorded as withdrawn or discontinued.</li>
+          <li><strong>Unknown:</strong> unavailable or unsupported data.</li>
         </ul>
-        <p style={{ marginBottom: 0 }}>
-          CODE and HYPE never move the verdict directly. USAGE can support a
-          promise state only when it measures a predefined, promise-specific
-          condition.
+        <p>Open and unknown are not proof of failure. Select a count or promise to inspect its record.</p>
+      </Section>
+
+      <Section icon="grid" title="Comparing projects" id="rankings">
+        <p>
+          Choose a subject to compare projects making similar kinds of promises.
+          Category rankings currently use <strong>kept promises ÷ all tracked
+          promises</strong> in that primary category. Equal shares tie; projects
+          with no promises in the category are unranked.
+        </p>
+        <p>The share measures recorded delivery, not difficulty, impact or token value.</p>
+      </Section>
+
+      <Section icon="alert" title="What the warning means today" id="verdict">
+        <p>
+          The current warning dial uses fixed positions: <strong>1</strong> when
+          no lapsed or retired promise is recorded, <strong>7</strong> when a
+          supporting promise is lapsed or retired, and <strong>10</strong> when
+          a core promise is. It is not a percentage or a probability.
+        </p>
+        <p>
+          No recorded failure does not mean every promise was kept. Open
+          promises still matter. The next verdict replaces this dial with
+          delivery and coverage, explained below.
         </p>
       </Section>
 
-      <Section icon="grid" title="PROMISES / CODE / USAGE / HYPE" id="pillars">
-        <p>PROMISES records delivery. CODE, USAGE and HYPE provide separate context. A future Index needs its own published methodology.</p>
+      <Section icon="book" title="When an assessment changes" id="rules">
+        <p>
+          A milestone records an achievement. An ongoing promise requires
+          evidence that its condition still holds. There is no automatic time
+          penalty: a change needs an assessment and supporting evidence.
+        </p>
+        <p>
+          Published assessments are dated and versioned. Corrections and rule
+          changes belong in new records; they are not new delivery events.
+          Older records remain available for comparison.
+        </p>
+      </Section>
+
+      <Section icon="chart" title="What the other metrics tell you" id="pillars">
         <ul>
-          <li>
-            <b>PROMISES</b> is the score. Hearts, earned only, one per kept
-            promise lineage while its evidence condition holds.
-          </li>
-          <li>
-            <b>CODE</b> asks: are they building? Observable GitHub activity on
-            curated repos. Activity is not proof of progress.
-          </li>
-          <li>
-            <b>USAGE</b> asks: is anyone using it for its stated purpose? It must
-            measure intended use, never generic chain activity.
-          </li>
-          <li>
-            <b>HYPE</b> asks: is anyone talking about it? Observed mention
-            counts. Attention is not support and never evidence of delivery.
-          </li>
+          <li><strong>CODE / TEAM:</strong> observed development activity and contributor participation.</li>
+          <li><strong>USAGE:</strong> use for the promised purpose, where measured.</li>
+          <li><strong>HYPE:</strong> observed attention.</li>
+          <li><strong>Market data:</strong> what people currently pay.</li>
         </ul>
-        <p style={{ marginBottom: 0 }}>
-          CODE and USAGE are evidence. HYPE is context.
+        <p>
+          These do not independently add delivery credit. Code or usage may
+          support a promise&apos;s test; popularity and price do not prove it was kept.
         </p>
       </Section>
 
-      <Section icon="chart" title="The Prove Value Index" id="index" tag="in development" alt>
+      <Section icon="book" title="What if a project finds a different use?" id="evolution">
         <p>
-          Hearts tell you what happened, promise by promise. The Prove Value
-          Index is the trend underneath: one category-relative number per
-          project, plotted through time. It combines two things: the
-          intrinsic value of what the project built (code, usage) and how
-          well it fulfilled its promises (evidence, weighted by how central
-          each promise is to what the project is for).
-        </p>
-        <p>
-          Every meaningful move gets a clickable event marker explaining
-          exactly why the score moved: promise fulfilled, lapsed, or retired,
-          deadline missed, major release, usage milestone, development resumed
-          or stalled.
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          The Index is in development. The formula, weights, and category
-          definitions are being finalized now, and every parameter will be
-          published and versioned before the first score goes live. Nothing
-          about the Index is estimated or provisional when it ships.
+          A project can miss an original promise and still find useful
+          applications. Those are separate questions. Bitcoin&apos;s approved
+          <strong> Genesis asset</strong> treatment will keep its promise
+          inventory visible while excluding it from altcoin verdicts and
+          rankings. Its founding role and later uses need their own evidence;
+          they do not settle every original promise&apos;s outcome.
         </p>
       </Section>
 
-      <Section icon="flask" title="The promise atlas" id="atlas">
+      <Section icon="grid" title="Reading the Atlas" id="atlas">
         <p>
-          Every scored promise, mapped by subject using curated categories
-          and stable positions. Nodes have equal size. Green means kept;
-          red means lapsed or retired; grey means open, in progress or unknown.
-          Select a promise to see its exact status, fulfillment test and evidence.
+          Each point is one scored promise, grouped by subject. Green means
+          kept; red means lapsed or retired; grey means unresolved or unknown.
+          Select it for the exact status and evidence.
         </p>
-        <p style={{ marginBottom: 0 }}>
-          Distance does not measure similarity, value or importance. The
-          current Atlas uses no AI clustering. Semantic positioning is future
-          work and would not establish fulfillment or economic value.
+        <p>
+          Categories are curated. Distance and point size do not measure
+          importance, similarity or value. <Link href="/atlas">Explore the Atlas ↗</Link>
         </p>
       </Section>
 
-      <Section icon="flask" title="Prove Value Data" id="data">
+      <Section icon="book" title="Sources and limits" id="data">
         <p>
-          Prove Value runs its own independently operated data collection. We do
-          not rent our inputs from aggregators and relabel them. For each
-          metric family we publish:
+          Collection and drafting can be automated. An announcement establishes
+          a claim, not its fulfillment. Missing source details and ambiguous
+          evidence need review; a working link alone does not validate a verdict.
+        </p>
+        <p>
+          Some current records lack a clearly identified original claim source
+          or evidence date. These gaps are flagged in the Atlas. Published does
+          not mean independently verified, and counts do not prove research is exhaustive.
+        </p>
+        <p>Missing data stays unavailable. A failed data request is not a zero score.</p>
+        <p className={styles.version}><strong>Current rules:</strong> {HEARTS_METHODOLOGY}</p>
+      </Section>
+
+      <Section icon="wrench" title="Next verdict: approved, not yet published" id="publication">
+        <p>
+          The approved revision gives promises documented importance weights:
+          supporting <strong>1</strong>, material <strong>2</strong>, core <strong>4</strong>.
+          Each assignment needs an author and a reason.
         </p>
         <ul>
-          <li>source, definition, and coverage,</li>
-          <li>how it is calculated, and</li>
-          <li>a timestamp and methodology version.</li>
+          <li><strong>Proven delivery:</strong> kept weight ÷ all tracked weight.</li>
+          <li><strong>Outcome coverage:</strong> resolved weight ÷ all tracked weight. Resolved means assessed as kept or unkept.</li>
         </ul>
-        <p style={{ marginBottom: 0 }}>
-          Raw data may stay private, but anything that moves a heart or a
-          verdict ships with enough evidence, aggregates, and source scope
-          for you to challenge it.
-        </p>
-      </Section>
-
-      <Section icon="shield-check" title="Nothing unfinished ships" id="publication" alt>
         <p>
-          A section, metric, or verdict that lacks real data or a reviewed
-          definition never renders publicly. No "coming soon" panels, no
-          provisional scores.
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          Missing data means unknown, never zero. A failed collection never
-          renders as zero.
-        </p>
-      </Section>
-
-      <Section icon="person" title="Who scored it" id="analysts">
-        <p>
-          Every score names the analyst who did the research, with evidence
-          linked. If a second researcher independently reproduces the work,
-          the score is marked verified.
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          We do no valuations. The meter sits next to the market cap, and the
-          market decides what it is worth.
-        </p>
-      </Section>
-
-      <Section icon="book" id="xrp-example" searchTitle="Worked example: XRP at 2 of 4 promises kept" title={<>Worked example: <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP at 2 of 4 promises kept</>} alt>
-        <p>
-          <img className="coin-icon" src="/icons/xrp.svg" alt="" aria-hidden="true" style={{ verticalAlign: "-3px" }} /> XRP is <b>2 of 4</b>, earned only. One heart for the ledger
-          milestone (permanent), one for XRP payments as an ongoing claim
-          (currently kept). The MoneyGram corridor earned a heart in 2019
-          and retired it in 2021 when the partnership ended: the rise and the
-          fall, visible on the graph. Bank settlement never delivered, so the
-          core promise stays open. Verdict:
-          Shitcoin risk.
-        </p>
-      </Section>
-
-      <Section icon="wrench" title="Under the hood: the precise rules" id="rules">
-        <p>
-          <b>Capacity.</b> The promise count. Every project gets one meter
-          slot per promise it made: 16 promises means 16 hearts to earn.
-          Capacity is headroom, never a target.
+          Open and unknown promises stay in the total without being called
+          failures. Core problems remain visible. Archiving a delivered milestone
+          does not undo its achievement; withdrawing an unmet obligation earns no credit.
         </p>
         <p>
-          <b>One promise, one heart.</b> Each fulfilled promise earns exactly
-          one heart. No weighting, no tiers, no free hearts. Every promise
-          counts the same.
-        </p>
-        <p>
-          <b>Milestone vs ongoing.</b> Milestones ("shipped X") keep their
-          hearts permanently unless the achievement is explicitly retired.
-          Ongoing claims ("X is true") count only while currently true. They
-          lapse when the evidence stops and come back if it resumes.
-        </p>
-        <p>
-          <b>The core promise.</b> One promise per project is flagged as the
-          main one. It is a label, not a gate: it earns its heart like every
-          other promise.
-        </p>
-        <p>
-          <b>What counts as proof.</b> The promise's own success criterion,
-          checkable by someone other than the project: a working public
-          product, a verifiable payout, a named customer on the record. The
-          project's own announcement alone never counts. Borderline cases stay
-          open.
-        </p>
-        <p>
-          <b>The adoption test.</b> Shipping the tech is not enough. A promise
-          counts as fulfilled only if the thing was delivered <i>and</i> real
-          people actually use it. A proof of concept nobody touches, a
-          mainnet nobody transacts on, a feature with no users: unfulfilled.
-          Teams routinely declare victory at the demo stage. We score the
-          usage, not the press release.
-        </p>
-        <p>
-          <b>History.</b> Scores are published as dated snapshots. Old
-          snapshots are never edited or deleted. When the methodology itself
-          changes, history is restated openly and the originals stay as an
-          immutable audit archive.
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          <b>Methodology string.</b>{" "}
-          <span style={{ fontFamily: "var(--mono)", fontSize: "0.85em" }}>
-            {HEARTS_METHODOLOGY}
-          </span>
+          These are product rules, not a scientifically established measure of
+          value. Weighted results require a compatible reviewed publication.
+          Missing weights are not guessed. Current scores remain under the rules above.
         </p>
       </Section>
     </div>

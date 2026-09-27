@@ -24,6 +24,41 @@ value. The Atlas is the evidence view, not the product.
 
 **Slogan: Truth, not hype.** We cut through the hype.
 
+### Positioning proposal for Alex and Muse (2026-09-26)
+
+Alex proposed “An accountability layer for emerging speculative tech valuation.”
+The ambition is an evidence layer that helps people assess speculative claims,
+starting with crypto. Codex's recommended public wording:
+
+> An accountability layer for speculative technology.
+>
+> What they promised. What they delivered.
+
+“Valuation” describes a possible use of the evidence, but currently suggests a
+price or fair-value calculation we do not provide. Keep that ambition in the
+longer positioning story until a valuation methodology exists. “Emerging” is
+optional: it adds length and does not fit every mature project we assess.
+
+**Muse feedback requested:** does this preserve the accountability message
+while leaving room for future technology coverage? This is a copy proposal,
+not a brand rollout, scoring change or authorization to expand beyond crypto now.
+
+### Vision language (Alex, 2026-09-26)
+
+Someone with no crypto knowledge, or a crypto native drowning in the
+mess, walks in and can see through it. Transparency as a reality check.
+Candidate words: **reality check**, cutting through the noise, clear
+vision. This travels to stocks later: the product is a reality check on
+speculative claims, whatever the asset.
+
+Proposed stack:
+
+- What it is: an accountability layer for speculative technology.
+- What it does for you: a reality check on what they promised vs. what
+  they delivered.
+- Slogan: Truth, not hype.
+
+
 ## The model
 
 Four pillars. One of them is the score; the other three explain it.
@@ -54,6 +89,28 @@ CODE and USAGE are evidence. HYPE is context. Market data is context.
 None of them move the verdict directly in v1.
 
 ## Game framing
+
+### Bitcoin and value beyond the original promise
+
+Alex's direction (2026-09-26): distinguish delivery of original commitments
+from useful roles that develop later. Per the
+[Genesis asset decision](tasks/2026-09-26-bitcoin-genesis-exemption.md), Bitcoin
+has its own grouping: keep its promise inventory visible but exclude it from
+altcoin verdicts and comparative rankings. Recognize its founding role and
+examine store-of-value use separately. This does not recategorize every Bitcoin
+promise, award a numerical bonus or declare a meaningless first-place rank.
+
+Keep three questions visible: **Did it deliver? What is it used for now? What
+did it enable?** Evidence for one does not settle the others. Useful evolution
+does not erase unmet promises; unmet promises do not establish that the project
+has no utility. Apply the distinction to other projects as well; the Genesis
+exemption itself remains Bitcoin-only. Quantifying observed utility is a later
+implementation decision, with explicit measures and limitations.
+
+Privacy needs precise attribution: Bitcoin's [whitepaper, section 10](https://bitcoin.org/bitcoin.pdf#page=6)
+describes anonymous public keys while acknowledging transaction-linking risks.
+Our earlier P11 finding was a test/rationale mismatch, not proof of a blanket
+anonymity guarantee. Review the claim and outcome evidence before changing its rating.
 
 The 8-bit heart remains the delivery mechanic and brand mark. Under the
 published model, each scored promise earns one heart when fulfilled;
@@ -255,6 +312,16 @@ be shipped through direct Markdown coordination with Muse. This authorizes
 implementation; record-specific judgments still need evidence. The existing
 v3 appendix stays unchanged until a compatible version is published.
 
+### Longer-term question: importance and time
+
+Alex's goal remains an understandable overall ranking, but equal heart counts
+alone cannot distinguish a technical detail from a project's central ambition,
+or explain years of unresolved delivery. The approved weighted verdict is one
+step; how to represent time remains open. Keep delivery and category views
+usable now. Codex and Muse will discuss importance, delay and a possible
+timeline in the [deferred TODO](tasks/2026-09-26-hearts-verdict-contract.md#deferred-todo-promise-importance-time-and-the-eventual-overall-ranking).
+This does not add scope to the current release or approve automatic decay.
+
 ## Prove Value Index: separate future work
 
 The earlier 60/25/15 proposal is superseded as a build instruction. No Index
@@ -455,6 +522,11 @@ uses the existing published outcomes and adds no score.
 
 ### Metrics are supporting context (2026-09-26)
 
-One bottom navigation item, Metrics, contains CODE, HYPE and Compare as nested
+One bottom navigation item, **Context**, contains CODE, HYPE and Compare as nested
 views. Their existing pages and modular components stay intact. Project details
 are the main message: what was promised, what happened, and the evidence.
+Group CODE, HYPE and market panels together at the bottom of project details
+under **Supporting context**. These observations do not add ranking points.
+Remove the homepage Hype Share visualization. Codex chose Context over Metadata
+for plain-language navigation; Muse's wording review is requested in the
+[implementation handoff](tasks/2026-09-26-supporting-context.md).

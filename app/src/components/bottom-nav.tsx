@@ -6,12 +6,12 @@ import { isMetricsPath } from "@/lib/metric-navigation";
 import Icon, { type ChromeIconName } from "@/components/chrome-icons";
 
 /**
- * Bottom tab bar, app-style: Scoreboard / Metrics / Methodology / API.
+ * Bottom tab bar, app-style: Scoreboard / Context / Methodology / API.
  * Tour is a button, not a route, so it stays out of the TABS list.
  */
 const TABS: Array<{ href: string; label: string; shortLabel?: string; icon: ChromeIconName }> = [
   { href: "/", label: "Scoreboard", shortLabel: "Scores", icon: "grid" },
-  { href: "/metrics", label: "Metrics", icon: "chart" },
+  { href: "/metrics", label: "Context", icon: "chart" },
   { href: "/methodology", label: "Methodology", shortLabel: "Method", icon: "book" },
   { href: "/developers", label: "API", icon: "code" },
 ];
