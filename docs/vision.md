@@ -579,7 +579,7 @@ The product kills meme-coin hype by replacing it with worthy projects, not by at
 | Coin | Market cap | Rank | Substance case |
 |---|---|---|---|
 | TRAC (OriginTrail) | ~$165-187M | ~146 | Decentralized Knowledge Graph; supply-chain and AI data provenance; token demand tied to network use |
-| BAT | ~$133-141M | ~169 | Brave browser ad economy; millions of users; working rewards product |
+| BAT | ~$133-141M | ~169 | Brave browser ad economy; millions of users; working rewards product (disclosure: Alex holds BAT, filed UNCONFIRMED) |
 | NEO | ~$143-189M | ~148-214 | Legacy L1, N3 shipped; ecosystem faded; better than a meme coin, weakest of the three |
 | FARTCOIN | ~$140-195M | ~141-197 | The foil. No promises to score; verdict not applicable; warning only |
 

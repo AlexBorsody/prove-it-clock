@@ -13,7 +13,7 @@
 - Alex wants BAT, TRAC, NEO added, plus FARTCOIN as the meme foil. All four verified 2026-09-27 at ~$140-195M market cap, rank ~140-200: outside the top-100 intake capture.
 - Intake call is yours: extend the intake batch or run targeted dossiers. Either way, researcher dossiers carry exact source URLs (promise display rule); intake automation never creates scored promises; the reviewed release path applies.
 - Merit order for intake priority: TRAC, BAT, NEO, then FARTCOIN as the null case.
-- Holdings privacy (Alex, 2026-09-27): his crypto holdings stay private until he says otherwise. The ledger decides ranks; intake order is the only editorial call.
+- Disclosure: Alex holds BAT (filed UNCONFIRMED in disclosures.json). The ledger decides ranks; intake order is the only editorial call.
 - **Update 2026-09-27 ~18:45 EDT (Habib): implemented, no longer awaiting a call.** Alex said "just implement it, it's straightforward," so I did: new `collectTargetedIntake` in `app/src/pipeline/promise-intake.ts` + `fetchMarketsByIds` in the CoinGecko provider + `app/scripts/collect-targeted-intake.ts` (ids: origintrail, neo, fartcoin). First capture `db/research/intake/intake-targeted-2026-09-27T221550Z.json`: FARTCOIN rank 196 and NEO rank 201 as `needs_identity_review`; TRAC rank 216 already maps to the existing `trac` slug (you added it to market-ids this morning). Same discipline as the universe capture: 24h reuse, digest-validated, never collides with the universe cache, discovery only. 6/6 intake tests pass; tsc clean on touched files.
 
 ## Dogfood note
