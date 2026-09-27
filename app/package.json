@@ -46,7 +46,9 @@
     "test:search": "node --import tsx --test scripts/site-search.test.ts scripts/search-cache.test.cjs",
     "prebuild": "node scripts/generate-sw.js",
     "test:atlas": "node --import tsx --test scripts/atlas.test.ts scripts/atlas-sw.test.cjs",
-    "atlas:audit": "node --import tsx scripts/atlas-audit.ts"
+    "atlas:audit": "node --import tsx scripts/atlas-audit.ts",
+    "ranking:calibrate": "node --import tsx scripts/calibrate-ranking.ts",
+    "test:calibration": "node --import tsx --test scripts/ranking-calibration.test.ts"
   },
   "version": "0.1.0"
 }
