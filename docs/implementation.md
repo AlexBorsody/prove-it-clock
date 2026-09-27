@@ -1,6 +1,6 @@
 # Prove Value: Implementation Plan
 
-**Updated 2026-09-26.** [vision.md](vision.md) is the product authority.
+**Updated 2026-09-27.** [vision.md](vision.md) is the product authority.
 The [verdict-layer tasks](tasks/2026-09-26-verdict-layer.md) are the latest
 product direction: a published-ledger summary near the top of project pages,
 with category rankings. They supersede the Atlas brief's restriction on
@@ -26,10 +26,14 @@ The foundation. Everything else reads it; nothing rewrites it.
 Light spec: append-only promise/event store (extend migrations 001/002;
 do not fork a parallel pipeline). Event types: promised, repeated
 mention, delivered, lapsed, retired, assessed, corrected. Every event
-carries promise lineage, occurred-at and recorded-at dates, source URL
-plus quotation, and author. Corrections append with a predecessor
-reference; originals stay inspectable. The timeline renders real
+carries promise lineage, occurred-at (possibly unknown) and recorded-at dates,
+source URL and locator, quotation where captured, and author. Corrections append
+with a predecessor reference; originals stay inspectable. The timeline renders real
 recorded events only; unknowns are labeled, never interpolated.
+
+Muse's [claims-and-evidence brief](tasks/2026-09-27-claims-evidence-ledger.md)
+extends the data contract to typed claims and domain-scoped instruments.
+Finish crypto first; do not build other domain pages or a universal formula.
 
 Questions to resolve first:
 - Event contract finalization. Habib owes Codex four sourced examples
@@ -70,6 +74,8 @@ erases a documented core failure.
 
 Questions to resolve first:
 - Promise category taxonomy (Atlas v1 needs it too).
+  Atlas v1 already has a versioned taxonomy and assignments; review their
+  boundaries and suitability for impact comparisons rather than replacing them.
 - Shitcoin warning formula (under review with Alex's friend).
 
 ### Layer 4: Valuation
@@ -150,44 +156,137 @@ schema migration, valuation code or active-methodology switch.
 
 ## Promise history and timeline
 
-**Direction recorded 2026-09-26; next design slice, not a deployed feature.**
+**Layer 1 technical proposal, 2026-09-27. Not built or approved for publication.**
 The meter, Atlas and timeline expose different questions over one sourced
 ledger. Accumulated evidence history is the durable product asset.
 
-Existing local schema provides two foundations: migration `002` protects
-`heart_runs`, `heart_snapshots` and market observations against UPDATE/DELETE,
-and migration `001` defines `project_events` with event and creation dates.
-These are not yet a complete promise-event contract. Inspect and extend the
-existing storage/read paths; do not create a parallel scoring pipeline.
-This inspection verifies repository definitions, not hosted enforcement.
+### Inspected foundations and migration boundary
 
-Ordered work for Codex and Muse:
+The checked-in published artifact `hearts-promise-2026-09-26.json` contains
+115 distinct promises across eight projects under v3. Every record has an
+`evidence` list and `effective_at`, but none separately stores claim sources,
+outcome evidence, assessment dates or transitions. These are coverage gaps,
+not evidence that the linked sources or historical events do not exist.
+For BTC P1, `effective_at` is 2009-01-03 while its reference names the
+2008-10-31 whitepaper. Backfill must classify these dates and links first.
 
-1. Audit actual dated records and their provenance. Separate original claims,
-   repeated mentions, delivery evidence, published assessments and corrections.
-   Snapshot differences can establish an assessment change, not the date a
-   real-world delivery occurred. Report missing dates and source captures.
-2. Review the event contract: stable event ID and promise lineage, event type,
-   source/locator/quotation where available, event date with precision or
-   unknown, server-recorded timestamp, actual author/collector, and assessment
-   run/methodology when applicable. Retain captured-source metadata and content
-   hashes where available; hashes alone do not establish truth or capture time.
-   A correction appends a reason and predecessor reference. Repeated ingestion
-   must be idempotent; repeated statements attach to one promise lineage.
-3. Verify append-only permissions and correction handling before describing
-   the event ledger as immutable. Ordinary writers must not update, delete or
-   truncate historical records. Administrative access is a separate trust
-   boundary. Keep original publications inspectable after restatements.
-4. Build a project timeline from reviewed records: date on the x-axis, distinct
-   claim/evidence/assessment lanes, clickable markers opening sources and the
-   corresponding promise. Label discovery dates, uncertain dates, corrections
-   and methodology changes; retain undated records outside the dated plot.
-   Prefer markers to a fabricated continuous score line. An as-known view uses
-   recording time; historical event dates alone cannot recreate what we knew.
+- Migration `001` has project-level `project_events(event_date, created_at)`.
+  It lacks promise lineage, correction provenance and append-only protections.
+  Preserve its legacy readers while extending the existing database.
+- Migration `002` protects published runs/snapshots against UPDATE/DELETE.
+  Reuse that publication mechanism and the shared published-ledger reader.
+- PR #8 (`1417625`) proposes separate claim/outcome sources, nullable dates,
+  assessment transitions, independently versioned importance and pinned
+  receipts. Reuse those contracts after review. Embedded transitions still
+  need stable event IDs and correction references for a public event history.
+- `history.ts` derives a legacy kept-count series from milestone seed dates.
+  That series and the old heart sparkline are not inputs to this timeline.
 
-This plans the next slice without choosing scoring weights, automatic decay,
-historical interpolation or a schema migration. Research input and technical
-handoff stay in the [shared contract](tasks/2026-09-26-hearts-verdict-contract.md).
+This is a repository audit, not verification of hosted database enforcement.
+No v3 record is rewritten or reinterpreted to populate the new view.
+
+### Event contract and write path
+
+**Claim identity boundary:** events reference a stable claim, with domain and
+subject identity. For this first slice, map the existing crypto project and
+promise lineage without replacing its ID or maintaining a second claim list.
+The proposed `claim_kind: promise` is distinct from the existing `claim_type`
+(`milestone`/`ongoing`), which describes a promise's obligation. Preserve those
+stored meanings. Other claim kinds can later use this evidence contract with
+their own instruments; do not give them synthetic promise outcomes. Exact
+column/foreign-key choices follow the example review, not a generic framework.
+
+Zero recorded promises means the delivery instrument is not applicable to
+that inventory, with coverage disclosed. It does not prove the subject made
+no promises or earned a perfect result. A failed data read remains unavailable.
+The crypto meter/warning never becomes a default score for another domain.
+
+Keep source events distinct from published judgments. A repeated statement or
+community note does not change the promise's outcome. The event vocabulary
+must be reconciled against Muse's four examples and PR #8's transitions before
+DDL: the current briefs use both `delivered`/`fulfilled` and
+`assessed`/`assessment`. No silent enum aliases with different meanings.
+Evidence of a delivery becomes a kept outcome only through the existing
+reviewed assessment/publication process.
+
+| Contract field | Rule |
+|---|---|
+| Identity | Stable event ID and claim identity; the crypto mapping preserves project/promise lineage. Repeated mentions share the claim but have their own event IDs. |
+| Time | Event date/time with explicit precision, or unknown; preserve date-only sources without inventing an exact time. Database-generated `recorded_at` means arrival in our ledger. Source publication, observation and assessment dates remain distinct. |
+| Provenance | Source roles, URL, locator, actual author/collector and rationale. Reuse the reviewed source type; quotations only when captured exactly. Retain source capture time/hash where available without implying that a hash proves truth. |
+| Assessment | Published run and methodology for grading events; a source-only claim need not pretend it was made under today's methodology. Link the assessment explanation and fulfillment test from that run. |
+| Correction | New event points to an existing predecessor in the same lineage and records why it was corrected. Preserve the original and the correction chain. |
+| Retry | A stable ingestion key returns the existing event for identical content; the same key with different content fails. A source URL alone is not a unique event key. |
+
+Extend the existing Supabase ingestion/publication path; introduce only the
+promise-event storage and references needed by these examples. The public
+reader gets no write credentials. Alex permits notes from anyone: attribute
+them as notes through a validated server write path, never as reviewed
+outcomes or authority to publish scores. Submission details belong to the
+event-contract review; this does not require another grading pipeline.
+
+An immutable history revision must identify the exact events shown. Pin that
+revision alongside the published assessment run, so later notes or corrections
+cannot change a shared historical receipt. New notes may advance history
+without a new score publication. A correction does not silently recalculate
+an existing score. Publish the revision and its event references atomically;
+on failure, readers retain the previous complete revision.
+
+Ordinary writers cannot update, delete or truncate published events or their
+revision membership. Validate correction references and reject cycles or
+cross-lineage targets. Verify grants, triggers and rollback behavior locally
+before a separately authorized hosted migration. Database administrators remain
+a disclosed trust boundary; append-only application access is not tamper-proof
+storage against an administrator.
+
+### Read contract, API and timeline
+
+Extend the existing reader with a project history result containing availability,
+run ID, history revision, source methodology, event coverage and dated/undated
+events. Page reads stay on that revision. Unknown project/revision, an empty
+known history and a database outage remain different responses. Reuse the
+versioned API's validation, safe-link and error conventions if exposing the
+reader publicly; document the contract in OpenAPI before adding a route.
+Do not change the meaning of the legacy history endpoint in place.
+
+The project timeline reads this result, not GitHub, market or social providers.
+It uses one lane per promise and dated markers with a visible type/status.
+Markers open the source, explanation and exact promise receipt. A toggle
+switches between event time and recorded time; undated events remain available
+in a list rather than being assigned the publication date. Methodology markers
+require an actual recorded publication change. No interpolated score line.
+
+Default to material+core only when the pinned, reviewed model supplies those
+designations. Until then show all promises and disclose missing importance;
+never guess materiality or equate the v3 core flag with a draft tier. Pan or
+scroll within the timeline, retain readable promise labels and provide the
+same events in a keyboard-accessible list. All links into the meter, Atlas or
+timeline preserve their run and history revision.
+
+A gap means no events recorded for that period. It cannot establish no work,
+no usage or a lapsed promise. Late discovery appears at its actual recording
+time in the as-known view, even when a reliable source dates it years earlier.
+
+### Bounded implementation and acceptance
+
+1. **Muse supplies four sourced examples**, already promised in the
+   [layer sequence](tasks/2026-09-27-codex-layer-sequence.md): original claim,
+   repeated mention, delivery evidence and corrected assessment. Codex maps
+   them to this contract and returns unresolved fields; no invented backfill.
+2. **Storage/read PR:** migration and compatible writer/reader with these
+   fixtures. Test identity, retries, correction chains, append-only privileges,
+   atomic revision publication, pinned pagination and empty/error separation.
+   v3 publication/read behavior must remain compatible. Verify empty claim
+   inventories never receive perfect delivery or a domain-inappropriate meter.
+3. **Timeline PR:** consume the same records on a project page, with pinned
+   evidence links, date precision, undated list, filters and accessible mobile
+   behavior. Test a correction, late-discovered event and missing date at narrow
+   and desktop widths; verify filtering changes neither positions nor history.
+
+Review before activation. No scoring weights, automatic decay, usage inference,
+valuation formula or hosted changes are authorized by this spec. The latest
+audit, file ownership and questions live in the
+[layer-sequence handoff](tasks/2026-09-27-codex-layer-sequence.md#codex-reply-repository-review-and-scope).
 
 ## Delivery verdict and homepage rankings (2026-09-26)
 

@@ -392,6 +392,19 @@ This is a docs-only update; the layer-by-layer gates you added remain in force.
 
 ## Codex progress
 
+**Latest coordination checkpoint, 2026-09-27:** reviewed main through `429d703` and
+PR #8 `1417625`, with 25 focused tests passing. The
+[repository audit and Muse handoff](2026-09-27-codex-layer-sequence.md#codex-reply-repository-review-and-scope)
+records source/date gaps, layer ownership and the bounded next builds.
+[Layer 1's detailed proposal](../implementation.md#promise-history-and-timeline)
+is ready to review against Muse's four forthcoming examples. The timeline
+brief's blanket `effective_at` backfill and "silence proves nothing happened"
+assumptions are superseded. No new event schema or methodology was activated.
+The claims-and-evidence extension preserves crypto lineage, distinguishes claim
+kind from obligation type and leaves other domains unpopulated.
+
+Earlier implementation-start notes:
+
 - Read `594780c` and reconciled the earlier plumbing defaults against Alex's
   subsequently approved review. Approval recorded in vision/implementation/task.
 - Checked current app: one pinned v3 ledger already feeds the delivery card and
