@@ -20,6 +20,13 @@ export default function AtlasExplorer({ data, project }: { data:AtlasDataset; pr
   const selected=data.nodes.find(n=>n.id===filters.promise);
   const [notice,setNotice]=useState('');
   const panel=useRef<HTMLElement>(null), lastFocus=useRef<HTMLElement|null>(null);
+  const projectsMenu=useRef<HTMLDetailsElement|null>(null);
+  // Close the Projects dropdown when tapping/clicking anywhere outside it.
+  useEffect(()=>{
+    const close=e=>{const d=projectsMenu.current; if(d&&d.open&&e.target instanceof Node&&!d.contains(e.target)) d.open=false;};
+    document.addEventListener('click',close);
+    return ()=>document.removeEventListener('click',close);
+  },[]);
   const focusNext=useRef(false);
   const update=(next:AtlasFilters,replace=false)=>{
     if(project) {setLocalFilters(next);return;}
@@ -47,7 +54,7 @@ export default function AtlasExplorer({ data, project }: { data:AtlasDataset; pr
       <h1>Promise Atlas</h1><p>Explore what projects promised and what happened. Each point is a sourced promise, grouped by subject.</p></>}
     </header>
     <div className={styles.filters} aria-label="Filter promises">
-      {!project&&<details className={styles.projects}><summary>Projects <span>{filters.projects.length?filters.projects.length:'All'}</span></summary><div className={styles.projectOptions}>{projectOptions.map(p=><label key={p.slug}><input type="checkbox" checked={filters.projects.includes(p.slug)} onChange={()=>filter({projects:filters.projects.includes(p.slug)?filters.projects.filter(s=>s!==p.slug):[...filters.projects,p.slug]})}/>{p.name} <small>{p.symbol}</small></label>)}</div></details>}
+      {!project&&<details ref={projectsMenu} className={styles.projects}><summary>Projects <span>{filters.projects.length?filters.projects.length:'All'}</span></summary><div className={styles.projectOptions}>{projectOptions.map(p=><label key={p.slug}><input type="checkbox" checked={filters.projects.includes(p.slug)} onChange={()=>filter({projects:filters.projects.includes(p.slug)?filters.projects.filter(s=>s!==p.slug):[...filters.projects,p.slug]})}/>{p.name} <small>{p.symbol}</small></label>)}</div></details>}
       <label>Category<select value={filters.category} onChange={e=>filter({category:e.target.value as AtlasFilters['category']})}><option value="">All subjects</option>{categories.map(c=><option key={c.id} value={c.id}>{c.label}</option>)}</select></label>
       <label>Status<select value={filters.states.length===1?filters.states[0]:''} onChange={e=>filter({states:e.target.value?[e.target.value as AtlasFilters['states'][number]]:[]})}><option value="">{filters.states.length>1?'Multiple statuses':'All outcomes'}</option>{ATLAS_STATES.map(state=><option key={state} value={state}>{STATE_LABELS[state]}</option>)}</select></label>
       <label className={styles.search}>Search promises<input type="search" value={filters.q} maxLength={160} placeholder="Claim, project or ticker" onChange={e=>filter({q:e.target.value},true)}/></label>

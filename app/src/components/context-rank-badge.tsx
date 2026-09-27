@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function ContextRankBadge({ rank, total, kind, href, basis }: {
   rank: number;
   total: number;
-  kind: "CODE" | "HYPE";
+  kind: "Code" | "Hype";
   href: string;
   basis: string;
 }) {

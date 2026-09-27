@@ -1,5 +1,5 @@
 /**
- * HypeSummaryCard: the compact HYPE summary for project detail pages.
+ * HypeSummaryCard: the compact Hype summary for project detail pages.
  * Not the full list row (that's HypeRowCard): just the important stuff
  * that fits on a card. Modular: any surface can render it from a HypeRow.
  */
@@ -12,8 +12,8 @@ export default function HypeSummaryCard({ row: r }: { row: HypeRow }) {
       className="hype-summary search-section"
       {...searchMeta({
         id: `project-${r.slug}-hype-summary`,
-        title: `${r.name} HYPE summary`,
-        kind: "HYPE",
+        title: `${r.name} Hype summary`,
+        kind: "Hype",
         project: r.slug,
         keywords: `${r.symbol} mentions attention`,
       })}

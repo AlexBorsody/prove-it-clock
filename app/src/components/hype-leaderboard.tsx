@@ -43,7 +43,7 @@ type SortKey = "mentions" | "hearts";
 
 export function HypeRowCard({ row: r }: { row: HypeRow }) {
   return (
-    <article className="hype-row project-card search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} HYPE ranking`, kind: "HYPE", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
+    <article className="hype-row project-card search-section" {...searchMeta({ id: `hype-project-${r.slug}`, title: `${r.name} Hype ranking`, kind: "Hype", project: r.slug, keywords: `${r.symbol} mentions attention news Reddit Telegram` })}>
       <Link href={`/projects/${r.slug}`} className="hype-coin project-card-link">
         <img
           src={`/icons/${r.symbol.toLowerCase()}.svg`}
@@ -99,8 +99,8 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
   }, [rows, sortKey]);
 
   return (
-    <div className="panel search-section" {...searchMeta({ id: "hype-leaderboard", title: "HYPE leaderboard", kind: "HYPE", keywords: "attention mentions hearts" })}>
-      <div className="sort-toggle" role="group" aria-label="Sort HYPE leaderboard">
+    <div className="panel search-section" {...searchMeta({ id: "hype-leaderboard", title: "Hype leaderboard", kind: "Hype", keywords: "attention mentions hearts" })}>
+      <div className="sort-toggle" role="group" aria-label="Sort Hype leaderboard">
         <span>Sort</span>
         <button
           className={sortKey === "mentions" ? "active" : undefined}

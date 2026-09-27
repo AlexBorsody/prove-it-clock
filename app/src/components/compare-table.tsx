@@ -30,9 +30,9 @@ const ROW_GROUPS: Array<{ label: string; rows: Array<{ key: string; label: strin
     { key: "promises", label: "Promises", anchor: "pillars" },
   ] },
   { label: "Supporting context", rows: [
-    { key: "code", label: "CODE", anchor: "pillars" },
+    { key: "code", label: "Code", anchor: "pillars" },
     { key: "use", label: "USAGE", anchor: "pillars" },
-    { key: "hype", label: "HYPE", anchor: "pillars" },
+    { key: "hype", label: "Hype", anchor: "pillars" },
   ] },
 ];
 

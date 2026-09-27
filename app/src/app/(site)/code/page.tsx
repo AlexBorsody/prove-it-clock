@@ -31,8 +31,8 @@ async function ProjectCodeResult({project}:{project:{slug:string;name:string;sym
 async function CodeRows() {
   let projects: any[];
   try { projects = (await readHeartRankings(HEARTS_METHODOLOGY,1,100)).projects; }
-  catch { return <div className="panel" role="alert"><h2>CODE data unavailable</h2><p>The rankings database is not reachable.</p></div>; }
-  if (!projects.length) return <div className="panel"><h2><Icon name="inbox" size={18}/> No CODE data yet</h2><p>No projects are published yet.</p></div>;
+  catch { return <div className="panel" role="alert"><h2>Code data unavailable</h2><p>The rankings database is not reachable.</p></div>; }
+  if (!projects.length) return <div className="panel"><h2><Icon name="inbox" size={18}/> No Code data yet</h2><p>No projects are published yet.</p></div>;
   const rows: CodeRowData[] = projects.map(p => ({slug:p.slug,name:p.name,symbol:p.symbol,commits90d:null,stars:null,forks:null,watchers:null,repoUrl:'',teamLine:'',failed:false}));
   return <CodeRanking rows={rows}>
     {projects.map(p => <Suspense key={p.slug} fallback={<CodeRowSkeleton name={p.name}/>}><ProjectCodeResult project={p}/></Suspense>)}
@@ -41,8 +41,8 @@ async function CodeRows() {
 /** Render navigation and controls before any database or GitHub wait. */
 export default function CodePage() {
   return <>
-    <div className="search-section" {...searchMeta({id:'code-overview',title:'CODE activity',kind:'CODE',keywords:'development GitHub commits watchers'})}>
-      <h1 className="page-title">CODE</h1>
+    <div className="search-section" {...searchMeta({id:'code-overview',title:'Code activity',kind:'Code',keywords:'development GitHub commits watchers'})}>
+      <h1 className="page-title">Code</h1>
       <p className="page-sub">Who is actually building. Stars, forks, and watchers are current totals; commits cover the last 90 days. TEAM reads contributor spread: Broad, Concentrated, Thin, or Unknown.</p>
     </div>
     <CodeSortControl/>

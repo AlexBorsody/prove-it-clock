@@ -29,6 +29,7 @@ export const SOCIAL_SOURCES: Record<string, SocialSource> = {
   avax: { subreddit: "Avax", telegram: "avalanche", newsQuery: "Avalanche AVAX" },
   dash: { subreddit: "dashpay", telegram: "dashpay", newsQuery: "Dash cryptocurrency" },
   bat: { subreddit: "BATProject", telegram: "batproject", newsQuery: "Basic Attention Token" },
+  trac: { subreddit: "OriginTrail", telegram: "origintrail", newsQuery: "OriginTrail TRAC" },
 };
 
 export function isSocialSlug(slug: string): boolean {

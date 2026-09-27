@@ -1,6 +1,6 @@
 /**
- * CodeRow: one project's CODE row. Shared between the /code ranking list
- * and the project detail page's CODE section. One component, two surfaces:
+ * CodeRow: one project's Code row. Shared between the /code ranking list
+ * and the project detail page's Code section. One component, two surfaces:
  * never duplicate this markup.
  */
 import Link from "next/link";
@@ -55,7 +55,7 @@ export default function CodeRow({
       {...searchMeta({
         id: search.id,
         title: search.title,
-        kind: "CODE",
+        kind: "Code",
         project: r.slug,
         keywords: `${r.symbol} GitHub commits stars forks follows`,
       })}
@@ -83,19 +83,19 @@ export default function CodeRow({
         </a>
       ) : null}
       <div className={`code-metrics${showWatchers ? " code-metrics-four" : ""}`}>
-        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "stars"}>
+        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} Code details`} active={activeSort === "stars"}>
           <span className="code-metric-label"><StarIcon /> Stars</span>
           <span className="code-metric-value num">{compact(r.stars)}</span>
         </MetricLink>
-        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "forks"}>
+        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} Code details`} active={activeSort === "forks"}>
           <span className="code-metric-label"><ForkIcon /> Forks</span>
           <span className="code-metric-value num">{compact(r.forks)}</span>
         </MetricLink>
-        {showWatchers && <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "watchers"}>
+        {showWatchers && <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} Code details`} active={activeSort === "watchers"}>
           <span className="code-metric-label">Watchers</span>
           <span className="code-metric-value num">{compact(r.watchers)}</span>
         </MetricLink>}
-        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} CODE details`} active={activeSort === "commits"}>
+        <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} Code details`} active={activeSort === "commits"}>
           <span className="code-metric-label"><CommitIcon /> Commits</span>
           <span className="code-metric-value num">
             {r.failed || r.commits90d == null ? "—" : r.commits90d.toLocaleString()}

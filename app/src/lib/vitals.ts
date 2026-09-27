@@ -36,6 +36,7 @@ export const VITALS_REPOS: Record<string, VitalsRepo> = {
   avax: { github: "ava-labs/avalanchego", label: "AvalancheGo" },
   dash: { github: "dashpay/dash", label: "Dash Core" },
   bat: { github: "brave/brave-browser", label: "Brave browser" },
+  trac: { github: "OriginTrail/dkg", label: "OriginTrail DKG" },
 };
 
 export function isVitalsSlug(slug: string): boolean {

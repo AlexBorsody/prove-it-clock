@@ -127,7 +127,7 @@ export default async function ProjectPage({ params, searchParams }: {
     sources: hypeLatest?.sources_ok ?? [],
   };
 
-  // Power-grid denominators: CODE and HYPE bars scale to the current
+  // Power-grid denominators: Code and Hype bars scale to the current
   // leader across tracked projects. Vitals are cached upstream (6h), the
   return (
     <>
@@ -193,33 +193,33 @@ export default async function ProjectPage({ params, searchParams }: {
         <h2 id={`project-${slug}-context-heading`}>Supporting context</h2>
         <p className="panel-sub">Development, attention and market data. These do not add ranking points.</p>
       </header>
-      <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} CODE`, kind: "CODE", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
-        <h2>CODE <InfoTip text={`Who is actually working on ${latest.name}.`} /></h2>
-        <ContextRankBadge rank={codeRank} total={codeTotal} kind="CODE" href="/code" basis="stars" />
+      <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} Code`, kind: "Code", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
+        <h2>Code <InfoTip text={`Who is actually working on ${latest.name}.`} /></h2>
+        <ContextRankBadge rank={codeRank} total={codeTotal} kind="Code" href="/code" basis="stars" />
         <div className="code-rows">
           <CodeRow
             row={codeRowData}
-            search={{ id: `project-${slug}-code-row`, title: `${latest.name} CODE activity` }}
+            search={{ id: `project-${slug}-code-row`, title: `${latest.name} Code activity` }}
           />
         </div>
         <div style={{ marginTop: 12 }}>
           <CodeActivityChart codeWeeks={codeWeeks} />
         </div>
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <ButtonLink href="/code">See the CODE ranking</ButtonLink>
+          <ButtonLink href="/code">See the Code ranking</ButtonLink>
         </p>
       </section>
 
-      {/* HYPE: shared summary, directly after CODE. */}
-      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} HYPE`, kind: "HYPE", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
-        <h2>HYPE</h2>
+      {/* Hype: shared summary, directly after Code. */}
+      <section className="panel section-alt hype-section search-section" {...searchMeta({ id: `project-${slug}-hype`, title: `${latest.name} Hype`, kind: "Hype", project: slug, keywords: `${latest.symbol} attention mentions baseline` })}>
+        <h2>Hype</h2>
         <p className="panel-sub">
           Observed attention for {latest.name}.
         </p>
-        <ContextRankBadge rank={hypeRank} total={hypeTotal} kind="HYPE" href="/hype" basis="7d mentions" />
+        <ContextRankBadge rank={hypeRank} total={hypeTotal} kind="Hype" href="/hype" basis="7d mentions" />
         <HypeSummaryCard row={hypeRow} />
         <p className="panel-sub" style={{ marginBottom: 0, marginTop: 12 }}>
-          <ButtonLink href="/hype">See the HYPE leaderboard</ButtonLink>
+          <ButtonLink href="/hype">See the Hype leaderboard</ButtonLink>
         </p>
       </section>
 

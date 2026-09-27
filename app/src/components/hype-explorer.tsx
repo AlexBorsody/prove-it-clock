@@ -32,7 +32,7 @@ export default function HypeExplorer() {
   const filtered = (feed?.articles ?? []).filter(a => (!publisher || a.publisher === publisher) && (!day || a.published_at.startsWith(day)));
   const reset = () => { setPublisher(""); setDay(""); setLimit(12); };
 
-  return <section className={`panel search-section ${styles.explorer}`} {...searchMeta({ id: "hype-news-sources", title: "Explore news sources", kind: "HYPE", keywords: "publishers headlines daily coverage news sources Google News" })}>
+  return <section className={`panel search-section ${styles.explorer}`} {...searchMeta({ id: "hype-news-sources", title: "Explore news sources", kind: "Hype", keywords: "publishers headlines daily coverage news sources Google News" })}>
     <div className={styles.heading}><div><span className={styles.eyebrow}>Behind the attention</span><h2>Who’s talking?</h2><p className="panel-sub">Explore the headlines, publishers and days behind the news.</p></div><span className={styles.badge}>Rolling 7 days</span></div>
     <div className={styles.coins} role="group" aria-label="Choose news project">{Object.keys(SOCIAL_SOURCES).map(key => <button key={key} aria-pressed={slug === key} onClick={() => { setSlug(key); reset(); }}><img src={`/icons/${key}.svg`} width={20} height={20} alt="" />{key.toUpperCase()}</button>)}</div>
     <div aria-live="polite" aria-busy={!feed && !error}>

@@ -1,8 +1,8 @@
 /** Keep existing page URLs, query parameters and search anchors valid. */
 export const METRIC_VIEWS = [
   { href: "/compare", label: "Compare" },
-  { href: "/code", label: "CODE" },
-  { href: "/hype", label: "HYPE" },
+  { href: "/code", label: "Code" },
+  { href: "/hype", label: "Hype" },
 ] as const;
 
 export function isMetricsPath(pathname: string): boolean {
