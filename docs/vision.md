@@ -43,6 +43,22 @@ optional: it adds length and does not fit every mature project we assess.
 while leaving room for future technology coverage? This is a copy proposal,
 not a brand rollout, scoring change or authorization to expand beyond crypto now.
 
+### Vision language (Alex, 2026-09-26)
+
+Someone with no crypto knowledge, or a crypto native drowning in the
+mess, walks in and can see through it. Transparency as a reality check.
+Candidate words: **reality check**, cutting through the noise, clear
+vision. This travels to stocks later: the product is a reality check on
+speculative claims, whatever the asset.
+
+Proposed stack:
+
+- What it is: an accountability layer for speculative technology.
+- What it does for you: a reality check on what they promised vs. what
+  they delivered.
+- Slogan: Truth, not hype.
+
+
 ## The model
 
 Four pillars. One of them is the score; the other three explain it.
