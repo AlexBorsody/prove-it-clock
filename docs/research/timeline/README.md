@@ -65,3 +65,25 @@ XRP assessment, then parsed by the timeline reader: three events accepted.
 No hosted schema, research or scoring publication occurred.
 The live XRP page still displayed “The promise history could not be loaded” on
 September 27. Code merged into main is not proof of a populated database.
+
+## Live failure confirmed — September 28, 2026
+
+Alex reported the project timeline broken. Read-only browser inspection reproduced
+the unavailable-history message on `/projects/xrp` against current main `1422879`.
+The Supabase dashboard project `prove-it-clock` (`tbigzpztybuvogpeflao`) contains
+the exact published run shown by that page, `4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85`.
+The same SELECT returned NULL for both
+`to_regclass('public.promise_history_revisions')` and
+`to_regprocedure('public.publish_promise_history(jsonb)')`.
+
+The missing 007 rollout is confirmed, not a chart-rendering regression. Applying
+007 will restore reads; it will not create event history. The first XRP batch
+still needs acceptance and publication, and other projects need their own sourced
+batches. Merge this PR's assessment-caveat renderer before publishing that batch
+so the caveat is visible on the live page. Do not substitute reconstructed heart
+history or silently turn this outage into empty coverage.
+
+No hosted changes were made. The earlier automatic approval rejection of relayed
+authorization still stands; direct Alex authorization is required for the hosted
+migration/publication. The database target is now verified. This inspection used
+only a SELECT, not the migration or publication function.
