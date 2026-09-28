@@ -36,8 +36,10 @@ npm run timeline:publish -- ../docs/research/timeline/xrp-first-batch.draft.json
 
 The default is **offline validation only**, with no credentials or network writes.
 For an existing history, `--check` reads its parent; this prevents validating
-references without seeing the preceding events. It also verifies the selected
-run is published. The database remains authoritative for lineage, exact states,
+references without seeing the preceding events. It verifies history-table read
+access even for the first batch and checks that the selected run is published.
+Read-only checks can use a publishable/anon key; only publication requires the
+service key. The database remains authoritative for lineage, exact states,
 timestamps, idempotency and concurrent writers.
 
 After editorial approval and authorized migration 007 deployment, configure the

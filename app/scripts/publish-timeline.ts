@@ -36,12 +36,17 @@ async function main() {
   if (check || publish) {
     if (existsSync('.env.local')) process.loadEnvFile('.env.local');
     const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    if (!url || !key) throw new Error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY locally; never put credentials in the batch');
+    const key = publish ? process.env.SUPABASE_SERVICE_ROLE_KEY :
+      process.env.SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !key) throw new Error(publish
+      ? 'Publication requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY locally'
+      : 'Read-only check requires SUPABASE_URL and a publishable, anon or service key locally');
     if (publish && (!targetArg || targetArg.slice('--target='.length).replace(/\/$/, '') !== url.replace(/\/$/, ''))) {
       throw new Error('--publish requires --target matching SUPABASE_URL');
     }
     db = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+    const {error: historyError} = await db.from('promise_history_revisions').select('id').eq('project_slug', document.project_slug).limit(1);
+    if (historyError) throw new Error(`History table is unavailable (${historyError.code}); check migration 007 and read access`);
     if (document.previous_revision_id) {
       const {data, error} = await db.from('promise_history_revisions').select('*').eq('id', document.previous_revision_id).single();
       if (error) throw new Error(`Cannot read parent revision (${error.code})`);
@@ -59,7 +64,7 @@ async function main() {
   parseTimelineRow({id: 'validation', project_slug: document.project_slug, ledger_run_id: document.ledger_run_id,
     recorded_at: now, events: [...parentEvents, ...document.events.map((event: object) => ({...event, recordedAt: now}))]});
   if (!publish) {
-    console.log(`Validated ${document.events.length} events for ${document.project_slug}. No database write. ${check ? 'Published run and parent checked; RPC will enforce lineage, state and concurrency on publication.' : 'Offline only; published run, lineage and state still require database validation.'}`);
+    console.log(`Validated ${document.events.length} events for ${document.project_slug}. No database write. ${check ? 'History table, published run and any parent checked; RPC will enforce lineage, state and concurrency on publication.' : 'Offline only; published run, lineage and state still require database validation.'}`);
     return;
   }
   const {data, error} = await db!.rpc('publish_promise_history', {document});
