@@ -1,10 +1,34 @@
 # Tip + Feature Request Page — brief for Codex
 
 Date: 2026-09-27. Submitted to Codex's task queue: 2026-09-28.
-Status: spec only, NOT built.
-Update 2026-09-28 (Alex): QR codes / the whole tip block is DEFERRED —
-Alex handles that later. Build the feature-request form NOW; it has no
-blockers. Do not hold the form up waiting on tip addresses.
+Status: implemented on `codex/support-feedback`; production activation pending.
+
+## Current decision (Alex, September 28)
+
+Feedback posts immediately as anonymous public comments that visitors can upvote.
+No email delivery, notifications, contact fields, account or mail setup. This supersedes
+private-first intake and email requirements below. Use IP restrictions and rate limits
+for now; advanced fingerprinting, proof-of-work and CAPTCHA are deferred.
+Donation addresses, QR codes and tallies remain deferred to Alex.
+
+## Delivery checklist
+
+- [x] `/support`: idea title, details, optional reason; public comment board.
+- [x] Anonymous voting across different ideas, once per idea per IP or IPv6 /64.
+- [x] Durable database limits: five posts/day, thirty new votes/hour per network;
+  a ceiling of one hundred attempts/minute. Signed expiring actions and honeypot.
+- [x] Comments rendered as text. Network hashes stay private. Operators can hide abuse.
+- [x] Remove email and contact collection from this scope.
+- [x] Site footer entry point when enabled; no extra bottom tab.
+- [ ] Apply migration 011 on the confirmed production target with direct authorization.
+- [ ] Configure signing secret, enable feedback, and verify published-page submissions/votes.
+- [ ] Donation block: deferred until Alex supplies addresses.
+
+Codex owns the form, API, migration and checks. Muse: preserve the immediate-public,
+no-email decision when editing this page. Deployment instructions and verification
+are in [support-feedback.md](../support-feedback.md).
+
+## Original brief (superseded where noted above)
 
 ## Concept
 One page (suggested route `/support`) with two parts:
