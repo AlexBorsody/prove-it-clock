@@ -2,19 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { isMetricsPath } from "@/lib/metric-navigation";
 import Icon, { type ChromeIconName } from "@/components/chrome-icons";
 
 /**
- * Bottom tab bar, app-style: Scoreboard / Context / Methodology / API / Stocks.
+ * Bottom tab bar, app-style: Scoreboard / Methodology / API / Search.
  * Tour is a button, not a route, so it stays out of the TABS list.
  */
 const TABS: Array<{ href: string; label: string; shortLabel?: string; icon: ChromeIconName }> = [
   { href: "/", label: "Scoreboard", shortLabel: "Scores", icon: "grid" },
-  { href: "/metrics", label: "Context", icon: "chart" },
   { href: "/methodology", label: "Methodology", shortLabel: "Method", icon: "book" },
   { href: "/developers", label: "API", icon: "code" },
-  { href: "/stocks", label: "Stocks", icon: "doc" },
 ];
 
 export default function BottomNav() {
@@ -22,11 +19,11 @@ export default function BottomNav() {
   return (
     <nav className="bottomnav" aria-label="Primary">
       {TABS.map((t) => {
-        const active = t.href === "/metrics" ? isMetricsPath(pathname) : t.href === "/" ? (pathname === "/" || pathname === "/atlas") : pathname.startsWith(t.href);
+        const active = t.href === "/" ? (pathname === "/" || pathname === "/atlas" || pathname.startsWith("/stocks")) : pathname.startsWith(t.href);
         return (
           <Link
             key={t.href}
-            href={t.href}
+            href={t.href === "/" && pathname.startsWith("/stocks") ? "/stocks" : t.href}
             className={active ? "active" : undefined}
             aria-current={active ? "page" : undefined}
             aria-label={t.label}
@@ -41,6 +38,9 @@ export default function BottomNav() {
           </Link>
         );
       })}
+      <button type="button" className="tabbtn" onClick={() => window.dispatchEvent(new CustomEvent("proveit:search"))} aria-label="Search site content">
+        <Icon name="search" size={22} /><span>Search</span>
+      </button>
       <button
         type="button"
         className="tabbtn"

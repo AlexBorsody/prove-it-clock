@@ -1,5 +1,6 @@
-import { listStockCompanies } from "@/lib/stock-data";
+import { listStockCompanies, getStockLedger } from "@/lib/stock-data";
 import { searchMeta } from "@/lib/search-sections";
+import StockOverviewContext from "@/components/stock-overview-context";
 import StockBoard from "@/components/stock-board";
 
 export const dynamic = "force-dynamic";
@@ -8,8 +9,10 @@ export const dynamic = "force-dynamic";
  *  and the expectations embedded in valuation. */
 export default function StocksPage() {
   const companies = listStockCompanies();
+  const records = companies.map(company => ({ company, fundamentals: getStockLedger(company.slug)?.fundamentals ?? [] }));
   return (
     <>
+      <StockOverviewContext records={records} />
       <div className="search-section" {...searchMeta({ id: "stocks-overview", title: "Speculative Tech", kind: "Stocks", keywords: "stocks management promises fundamentals valuation expectation gap" })}>
         <h1 className="page-title">High Expectations</h1>
         <p className="page-sub">
@@ -21,7 +24,7 @@ export default function StocksPage() {
           that have not happened yet.
         </p>
       </div>
-      <StockBoard companies={companies} />
+      <StockBoard companies={companies} records={records} />
       <div className="panel">
         <h2>How the stock ledger works</h2>
         <p className="panel-sub">
