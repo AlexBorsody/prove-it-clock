@@ -247,6 +247,13 @@ table.board tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
 .comp-sources li { margin: 4px 0; }
 .comp-sources a { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
 
+/* ---- promise challenges (FastComments) ---- */
+.promise-challenges { margin-top: 10px; }
+.challenge-toggle { display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 4px 0; cursor: pointer; color: var(--text-faint); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.challenge-toggle:hover { color: var(--text-dim); }
+.challenge-chev { font-size: 10px; }
+.challenge-thread { margin-top: 8px; }
+
 /* ---- timeline ---- */
 .timeline { position: relative; margin: 8px 0 0 6px; padding-left: 22px; border-left: 2px solid var(--border-strong); }
 .tl-event { position: relative; padding: 0 0 18px; }

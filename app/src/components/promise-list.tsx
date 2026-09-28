@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/chrome-icons";
+import PromiseChallenges from "@/components/promise-challenges";
 import PushSubscribeToggle from "@/components/push-subscribe-toggle";
 import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import { searchMeta } from "@/lib/search-sections";
@@ -67,6 +68,8 @@ function PromiseRow({
   categoryLabel,
   filter,
   evidence,
+  challengeOpen,
+  onToggleChallenge,
 }: {
   slug: string;
   name: string;
@@ -76,6 +79,8 @@ function PromiseRow({
   categoryLabel: string;
   filter: PromiseFilter;
   evidence?: string;
+  challengeOpen: boolean;
+  onToggleChallenge: () => void;
 }) {
   const d = promiseDisplay(pr);
   const h = promiseHeart(pr);
@@ -122,6 +127,13 @@ function PromiseRow({
             <summary>Evidence ({pr.evidence?.length ?? 0})</summary>
             {evidenceList(pr)}
           </details>
+          <PromiseChallenges
+            threadId={`promise-${slug}-${String(pr.lineage ?? i)}`}
+            pageTitle={`${name}: ${pr.criteria ?? "Promise"}`}
+            pageUrl={`${typeof window === "undefined" ? "" : window.location.origin}/projects/${slug}#${anchor}`}
+            open={challengeOpen}
+            onToggle={onToggleChallenge}
+          />
         </div>
       )}
     </div>
@@ -138,6 +150,8 @@ function PromiseCard({
   categoryLabel,
   filter,
   evidence,
+  challengeOpen,
+  onToggleChallenge,
 }: {
   slug: string;
   name: string;
@@ -147,6 +161,8 @@ function PromiseCard({
   categoryLabel: string;
   filter: PromiseFilter;
   evidence?: string;
+  challengeOpen: boolean;
+  onToggleChallenge: () => void;
 }) {
   const d = promiseDisplay(pr);
   const h = promiseHeart(pr);
@@ -173,6 +189,13 @@ function PromiseCard({
         <summary>Evidence ({pr.evidence?.length ?? 0})</summary>
         {evidenceList(pr)}
       </details>
+      <PromiseChallenges
+        threadId={`promise-${slug}-${String(pr.lineage ?? i)}`}
+        pageTitle={`${name}: ${pr.criteria ?? "Promise"}`}
+        pageUrl={`${typeof window === "undefined" ? "" : window.location.origin}/projects/${slug}#${anchor}`}
+        open={challengeOpen}
+        onToggle={onToggleChallenge}
+      />
     </div>
   );
 }
@@ -200,6 +223,8 @@ export default function PromiseList({
   useEffect(() => { if (evidence) setExpanded(true); }, [evidence]);
   const [view, setView] = useState<BoardView>("list");
   useEffect(() => { setView(defaultPromiseView()); }, []);
+  // Only one promise challenge is open at a time, keeping the page light.
+  const [challengeOpen, setChallengeOpen] = useState<string | null>(null);
   function changeView(v: BoardView) {
     setView(v);
     try { window.localStorage.setItem(PROMISE_VIEW_KEY, v); } catch {}
@@ -209,10 +234,16 @@ export default function PromiseList({
     .map((pr, i) => ({ pr, i }))
     .filter(({ pr }) => matchesPromiseFilter(pr.state, filter))
     .filter(({ pr }) => !category || (categoryOf?.(pr) ?? "unclassified") === category);
-  const renderPromise = ({ pr, i }: { pr: any; i: number }) =>
-    view === "list"
-      ? <PromiseRow key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} />
-      : <PromiseCard key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} />;
+  const renderPromise = ({ pr, i }: { pr: any; i: number }) => {
+    const anchor = promiseAnchor(slug, String(pr.lineage ?? i));
+    const challengeProps = {
+      challengeOpen: challengeOpen === anchor,
+      onToggleChallenge: () => setChallengeOpen(cur => (cur === anchor ? null : anchor)),
+    };
+    return view === "list"
+      ? <PromiseRow key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} {...challengeProps} />
+      : <PromiseCard key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} {...challengeProps} />;
+  };
   return <>
     <div className="promise-view-toggle"><ViewToggle value={view} onChange={changeView} label="Promise layout" /></div>
     {visible.slice(0, PAGE_SIZE).map(renderPromise)}
