@@ -1,25 +1,39 @@
-.controls { display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px; }
-.controls label { flex:1;min-width:0;display:grid;gap:8px;font-size:14px;color:var(--text-dim); }
-.controls select { width:100%;min-width:0;min-height:48px;padding:10px 12px;font:inherit;font-size:16px;color:var(--text);background:var(--bg-panel);border:1px solid var(--border);border-radius:10px; }
-.viewToggle { align-self:end;padding-bottom:6px; }
-.forceList :global(.board-desktop) { display:block; }
-.forceList :global(.board-cards) { display:none; }
-.forceCards :global(.board-desktop) { display:none; }
-.forceCards :global(.board-cards) { display:flex;flex-direction:column;gap:12px; }
+.controls { display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;margin:16px 0; }
+.controls label { min-width:0;display:grid;gap:8px;font-size:14px;color:var(--text-dim); }
+.controls select { width:100%;min-width:0;height:52px;padding:10px 12px;font:inherit;font-size:16px;color:var(--text);background:var(--bg-panel);border:1px solid var(--border-strong);border-radius:4px; }
+.viewToggle { min-width:0; }
+.cards { display:flex;flex-direction:column;gap:12px; }
+.controls select:focus-visible,.tableWrap:focus-visible,.rowActions button:focus-visible,.heartButton:focus-visible { outline:2px solid var(--accent);outline-offset:3px; }
+.tableWrap { max-width:100%; }
+table.table { min-width:880px;table-layout:fixed; }
+.coinColumn { width:180px; }
+.heartsColumn { width:164px; }
+.codeColumn { width:210px; }
+.usageColumn { width:86px; }
+.hypeColumn { width:120px; }
+.marketColumn { width:120px; }
+.table :global(.proj-cell) { align-items:flex-start; }
+.table :global(.proj-cell) > span { min-width:0;overflow-wrap:anywhere; }
+.table :global(.metric-btn) { max-width:100%;white-space:normal;overflow-wrap:anywhere; }
+.table :global(.metric-btn) svg { flex-shrink:0; }
+.table :global(.metric-btn) > span { min-width:0; }
+.rowActions { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px; }
+.rowActions button { min-width:44px;min-height:44px;padding:6px; }
+.heartButton { flex-direction:column;align-items:flex-start;min-height:44px;max-width:100%;padding:6px 0;margin:0; }
+.heartButton :global(.hearts) { width:100%;flex:none;flex-direction:row; }
+.cards :global(.mcard-hearts-toggle) { max-width:100%;flex-wrap:wrap; }
+.cards :global(.hearts) { min-width:0;max-width:100%; }
 .note,.coverage { color:var(--text-dim);font-size:13px;line-height:1.6; }
 .coverage { margin:8px 0 16px;overflow-wrap:anywhere; }
 .coverage summary { cursor:pointer;min-height:36px;align-content:center; }
-.heading { min-height:44px;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer; }
 .receipt { display:grid;gap:6px;min-height:44px;align-content:center; }
 .receipt strong { color:var(--green); }
 .receipt span { color:var(--text-dim);font-size:13px; }
 .rank { font-size:13px;color:var(--text-dim);margin:0 0 8px; }
-@media(max-width:540px) { .controls { flex-direction:column; } }
 .cards :global(.mcard-stat) { max-width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.5; }
 .cards :global(.mcard-stat svg) { flex-shrink:0; }
 .context { border-top:1px solid var(--border);margin-top:12px;padding-top:12px; }
 .context h3 { margin:0 0 8px;font-size:13px;color:var(--text-dim);font-weight:600; }
-:global(table.board) .columnGroups th { text-transform:none;letter-spacing:normal;font-size:14px; }
 /* Genesis asset: Bitcoin gets its own green treatment, never ranked. */
 .genesisRow { background: rgba(34, 197, 94, 0.09); }
 .genesisRow:hover { background: rgba(34, 197, 94, 0.16); }
@@ -29,5 +43,26 @@
 .categories { display:flex; flex-wrap:wrap; gap:4px 12px; margin-top:8px; font-size:12px; }
 .categories a { color:var(--text-dim); }
 
-:global(.board-desktop) .categories { display:block; max-width:260px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-:global(.board-desktop) .categories a + a::before { content:" · "; }
+.table .categories { display:block;max-width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis; }
+.table .categories a + a::before { content:" · "; }
+@media(max-width:540px) { .controls { gap:8px; } .controls select { padding-inline:8px; } }
+
+/* List stays a list on phones: keep every metric visible within the viewport. */
+@media(max-width:640px) {
+  .heartCount { display:none; }
+  .heartButton { width:100%; }
+  table.table,.table tbody { display:block;min-width:0;width:100%; }
+  .table colgroup { display:none; }
+  .table thead { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap; }
+  .table .listRow { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--border-strong); }
+  .table .listRow:last-child { border-bottom:0; }
+  .table .listRow > td { display:block;min-width:0;border-bottom:0;padding:12px;overflow-wrap:anywhere; }
+  .table .listRow > td:nth-child(n+3) { border-top:1px solid var(--border); }
+  .labeledCell::before { content:attr(data-label);display:block;margin-bottom:6px;font:600 12px var(--sans);color:var(--text-dim); }
+  .table :global(.proj-cell) { flex-wrap:wrap;gap:6px; }
+  .table :global(.proj-cell) > span { flex:1 1 84px; }
+  .table .genesisBadge { max-width:100%;white-space:normal;padding-inline:6px; }
+  .rowActions { flex-wrap:wrap;gap:4px; }
+  .table .expandedRow,.table .expandedRow > td { display:block;width:100%;min-width:0; }
+  .table .expandedRow :global(.expand-promises) { max-width:100%;overflow-wrap:anywhere; }
+}

@@ -83,7 +83,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
     case "hearts":
       return (
         <div>
-          <HeartMeter filled={p.earned} capacity={p.capacity} size={15} />
+          <HeartMeter filled={p.earned} capacity={p.capacity} size={15} genesis={projectFlags(p.slug).genesis} />
           <div className="mini-meter" style={{ marginBottom: 6, marginTop: 8 }}>
             <div className="mini-meter-track">
               <div className="mini-meter-fill" style={{ width: `${Math.round(p.filledPct * 100)}%` }} />
@@ -113,7 +113,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
       if (p.code.unreachable) {
         return <span className="word dim">Couldn&apos;t reach GitHub</span>;
       }
-      const word = p.code.word === "Active" ? <span className="word good">Active</span>
+      const word = p.code.word === "Active" ? null
         : p.code.word === "Quiet" ? <span className="word dim">Quiet</span>
         : <span className="word dim">-</span>;
       return (

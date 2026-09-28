@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 /** Heart meter: 8-bit pixel hearts, filled over capacity.
  *  Earned hearts render green; the rest render empty. Every heart was
  *  earned by keeping a promise: no allowance, no free hearts. */
@@ -10,15 +12,28 @@ const ROWS = [
   "...X...",
 ];
 
-function PixelHeart() {
+function PixelHeart({ genesis = false }: { genesis?: boolean }) {
+  const patternId = useId();
   const rects: Array<React.ReactNode> = [];
   ROWS.forEach((row, y) => {
     for (let x = 0; x < row.length; x++) {
-      if (row[x] === "X") rects.push(<rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} />);
+      if (row[x] === "X") rects.push(<rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} style={genesis ? { fill: `url(#${patternId})` } : undefined} />);
     }
   });
   return (
     <svg viewBox="0 0 7 6" className="px-heart" aria-hidden="true">
+      {genesis && <defs>
+        <radialGradient id={patternId} gradientUnits="userSpaceOnUse" cx="2" cy="2" r="6" gradientTransform="rotate(25 2 2) scale(1 .8)">
+          <stop offset="0" stopColor="#fef08a" />
+          <stop offset=".18" stopColor="#fb923c" />
+          <stop offset=".32" stopColor="#f472b6" />
+          <stop offset=".46" stopColor="#c084fc" />
+          <stop offset=".6" stopColor="#38bdf8" />
+          <stop offset=".74" stopColor="#4ade80" />
+          <stop offset=".87" stopColor="#fde047" />
+          <stop offset="1" stopColor="#f472b6" />
+        </radialGradient>
+      </defs>}
       {rects}
     </svg>
   );
@@ -28,10 +43,12 @@ export default function HeartMeter({
   filled,
   capacity,
   size = 22,
+  genesis = false,
 }: {
   filled: number;
   capacity: number;
   size?: number;
+  genesis?: boolean;
 }) {
   const earned = Math.max(0, Math.min(filled, capacity));
   return (
@@ -44,7 +61,7 @@ export default function HeartMeter({
       {Array.from({ length: capacity }, (_, i) => {
         return (
           <span key={i} className={i < earned ? "heart on" : "heart"}>
-            <PixelHeart />
+            <PixelHeart genesis={genesis && i < earned} />
           </span>
         );
       })}
