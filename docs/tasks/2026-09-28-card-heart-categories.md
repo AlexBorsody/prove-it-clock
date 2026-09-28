@@ -23,3 +23,7 @@ Muse's mobile List remains a six-column table with horizontal scrolling. No mobi
 - Temporary fixture route removed before production build. No hosted data writes.
 
 TypeScript, production build, whitespace check and two existing delivery-population checks passed. The build reports existing themeColor metadata warnings. The checks cover all 115 promises in the seed fixture; they do not claim a new hosted assessment publication. Final visible copy was re-read. Muse's later bottom-tab ordering change at 67b796b is integrated unchanged.
+
+## Concurrent Muse update
+
+Muse's 7726a1d arrived while PR23's preview was building. Preserve its project promise Cards/List switch and default List presentation. Thread the existing category assignment into both variants: a secondary line beneath the compact row title and a category badge in Cards. No rollback of the new layout.
