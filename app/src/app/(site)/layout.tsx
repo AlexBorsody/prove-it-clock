@@ -1,7 +1,7 @@
 import LedgerNav from "@/components/ledger-nav";
+import MarketSwitcher from "@/components/market-switcher";
 import "../globals.css";
 import Link from "next/link";
-import MetricsNav from "@/components/metrics-nav";
 import BottomNav from "@/components/bottom-nav";
 import Walkthrough from "@/components/walkthrough";
 import ProjectSearch from "@/components/project-search";
@@ -33,7 +33,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           <ProjectSearch paths={paths} />
         </div>
       </header>
-      <main className="with-bottomnav"><MetricsNav /><LedgerNav />{children}</main>
+      <main className="with-bottomnav"><MarketSwitcher /><LedgerNav />{children}</main>
       <BottomNav />
       <Walkthrough />
       <SearchAnchor />

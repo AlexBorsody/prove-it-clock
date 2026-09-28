@@ -6,10 +6,12 @@ import { useSearchParams } from "next/navigation";
 import { CATEGORIES } from "../../data/atlas-taxonomy";
 import { deliveryReceipt, type DeliverySummary } from "@/lib/promise-verdict";
 import { projectFlags } from "@/lib/project-policy";
-import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardCategory, parseBoardSort, sortScoreboard, categoryRanks, type BoardSort } from "@/lib/scoreboard-ranking";
+import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardSort, sortScoreboard, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
 import ViewToggle, { type BoardView } from "@/components/view-toggle";
+import CompareTable, { type CompareProject } from "@/components/compare-table";
+import CompareMode, { CompareCheckbox, useCompareSelection } from "@/components/compare-mode";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
@@ -87,12 +89,10 @@ function defaultBoardView(): BoardView {
   return window.matchMedia("(max-width: 640px)").matches ? "cards" : "list";
 }
 
-export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[]; asOf?: string }) {
+export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: ScoreboardRow[]; asOf?: string; compareProjects?: CompareProject[] }) {
   const params = useSearchParams();
-  const category = parseBoardCategory(params.get("category"));
-  const sortKey = parseBoardSort(params.get("sort"), category);
-  const categoryLabel = CATEGORIES.find(c => c.id === category)?.short ?? "All projects";
-  const headers = HEADERS.filter(header => category || header.key !== 'rank');
+  const sortKey = parseBoardSort(params.get("sort"));
+  const headers = HEADERS.filter(header => header.key !== 'rank');
   const [expanded, setExpanded] = useState<string | null>(null);
   const [view, setView] = useState<BoardView>("list");
   useEffect(() => { setView(defaultBoardView()); }, []);
@@ -100,8 +100,9 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
     setView(v);
     try { window.localStorage.setItem(BOARD_VIEW_KEY, v); } catch {}
   }
-  const sorted = sortScoreboard(rows, sortKey, category);
-  const ranks = categoryRanks(rows, category);
+  const sorted = sortScoreboard(rows, sortKey, "");
+  const { selected, toggle: toggleCompare, clear, canSelect } = useCompareSelection(compareProjects.map(project => project.slug));
+  const selectedProjects = selected.flatMap(slug => compareProjects.filter(project => project.slug === slug));
 
   function navigate(changes: Record<string,string>) {
     const url = new URL(window.location.href);
@@ -111,15 +112,11 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
     window.history.pushState(null, "", `${url.pathname}${url.search}${url.hash}`);
   }
   function toggle(key: BoardSort) { navigate({sort:key === 'rank' ? '' : key}); }
-  function categoryCell(row: ScoreboardRow) {
-    if (!row.delivery) return <span className="word dim">Assessment unavailable</span>;
-    if (!category) return null;
-    const counts = row.delivery.categories[category];
-    if (!counts.total) return <span className="word dim">Unranked<span className="cell-sub">No promises in {categoryLabel}</span></span>;
-    return <Link className={styles.receipt} href={deliveryReceipt(row.slug,category)}>
-      <strong>{counts.kept}/{counts.total} kept in {categoryLabel} ↗</strong>
-      <span>{projectFlags(row.slug).genesis ? 'Historical inventory · unranked' : `${Math.round(counts.kept/counts.total*100)}% kept`}{counts.states.unknown ? ` · ${counts.states.unknown} unknown` : ''}</span>
-    </Link>;
+  function categorySummary(row: ScoreboardRow) {
+    if (!row.delivery) return null;
+    return <div className={styles.categories} aria-label="Promise category">
+      {CATEGORIES.filter(c => row.delivery!.categories[c.id]?.total).map(c => <Link key={c.id} href={deliveryReceipt(row.slug,c.id)}>{c.label}</Link>)}
+    </div>;
   }
 
   function toggleExpand(slug: string) {
@@ -128,24 +125,20 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
 
   return (
     <div className={`search-section${view === "list" ? ` ${styles.forceList}` : ` ${styles.forceCards}`}`} {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
-      <h2>{category ? `${categoryLabel} delivery` : 'Browse projects'}</h2>
-      {!category && <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes.</p>}
+      <h2>Browse projects</h2>
+      <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes.</p>
       <div className={styles.controls}>
-        <label>Promise category<select value={category} onChange={e => navigate({category:e.target.value,sort:''})}>
-          <option value="">All projects · unranked</option>{CATEGORIES.map(c => <option key={c.id} value={c.id}>{c.label}</option>)}
-        </select></label>
-        <label>Sort by<select value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value, category))}>
-          {BOARD_SORTS.filter(key => key !== 'use' && (category || key !== 'rank')).map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
+        <label>Sort by<select value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value))}>
+          {BOARD_SORTS.filter(key => key !== 'use' && key !== 'rank').map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
         </select></label>
         <div className={styles.viewToggle}><ViewToggle value={view} onChange={changeView} label="Scoreboard layout" /></div>
       </div>
-      {category && <p className={styles.note} role="status">Ranked by recorded promises kept in {categoryLabel}. Equal shares tie; Genesis assets and projects without promises here are unranked. This measures delivery share, not overall value.</p>}
-      {asOf && <p className={styles.note}>Published ledger · {asOf.slice(0,10)}</p>}
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>
             <tr className={styles.columnGroups}>
-              <th colSpan={category ? 3 : 2} scope="colgroup">Promise delivery</th>
+              <th rowSpan={2} scope="col"><span className="sr-only">Compare</span></th>
+              <th colSpan={2} scope="colgroup">Promise delivery</th>
               <th colSpan={4} scope="colgroup">Supporting context</th>
               <th aria-label="Promise details" />
             </tr>
@@ -156,7 +149,7 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
                   className={h.key ? "sortable" : undefined}
                   aria-sort={h.key === sortKey ? (["rank","coin"].includes(sortKey) ? "ascending" : "descending") : undefined}
                 >
-                  {h.key ? <button className={styles.heading} onClick={() => toggle(h.key!)}>{h.key === 'hearts' && category ? 'Category delivery' : h.label}{h.key === sortKey ? (['rank','coin'].includes(sortKey) ? ' ↑' : ' ↓') : ''}</button> : h.label}
+                  {h.key ? <button className={styles.heading} onClick={() => toggle(h.key!)}>{h.label}{h.key === sortKey ? (['rank','coin'].includes(sortKey) ? ' ↑' : ' ↓') : ''}</button> : h.label}
                 </th>
               ))}
             </tr>
@@ -165,7 +158,7 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
             {sorted.map((r) => (
               <Fragment key={r.slug}>
                 <tr className={`search-section${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
-                  {category && <td className="num" style={{ color: "var(--text-faint)" }}>{r.delivery ? (ranks.get(r.slug) ?? "Unranked") : "Unavailable"}</td>}
+                  <td><CompareCheckbox name={r.name} checked={selected.includes(r.slug)} disabled={!canSelect(r.slug)} onChange={() => toggleCompare(r.slug)} /></td>
                   <td>
                     <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
                       <img
@@ -182,9 +175,10 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
                         {projectFlags(r.slug).genesis && <span className={styles.genesisBadge}>Genesis asset</span>}
                       </span>
                     </Link>
+                    {categorySummary(r)}
                   </td>
                   <td>
-                    {category || !r.delivery ? categoryCell(r) : <button
+                    {!r.delivery ? <span className="word dim">Assessment unavailable</span> : <button
                       type="button"
                       className="hearts-cell-toggle"
                       onClick={() => toggleExpand(r.slug)}
@@ -225,7 +219,7 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
                 </tr>
                 {expanded === r.slug ? (
                   <tr key={`${r.slug}-promises`} className="expand-row">
-                    <td colSpan={headers.length}>
+                    <td colSpan={headers.length + 1}>
                       <div className="expand-promises">
                         <div className="expand-promises-head">
                           All {r.name} promises ({r.promises.length})
@@ -256,9 +250,9 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
                 <span className="mcard-name">{r.name}</span>
                 <span className="mcard-ticker num">{r.symbol}</span>
               </Link>
-              {category && <p className={styles.rank}>{r.delivery ? (ranks.has(r.slug) ? `${categoryLabel} delivery rank ${ranks.get(r.slug)}` : "Unranked") : "Assessment unavailable"}</p>}
+              <CompareCheckbox name={r.name} checked={selected.includes(r.slug)} disabled={!canSelect(r.slug)} onChange={() => toggleCompare(r.slug)} />
               <div className="mcard-hearts">
-                {category || !r.delivery ? categoryCell(r) : <button
+                {!r.delivery ? <span className="word dim">Assessment unavailable</span> : <button
                   type="button"
                   className="mcard-hearts-toggle"
                   onClick={() => toggleExpand(r.slug)}
@@ -295,6 +289,7 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
               </button>
               {open ? (
                 <div className="mcard-promises">
+                  {categorySummary(r)}
                   <PromiseRows slug={r.slug} promises={r.promises} />
                 </div>
               ) : null}
@@ -302,6 +297,9 @@ export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[];
           );
         })}
       </div>
+      <CompareMode selectedLabels={selectedProjects.map(project => project.name)} onClear={clear}>
+        <CompareTable projects={selectedProjects} showPicker={false} />
+      </CompareMode>
     </div>
   );
 }
