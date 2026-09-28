@@ -82,5 +82,7 @@ Checks: seven focused runner/auth tests, TypeScript, production build and
 `git diff --check` passed. A mocked database CLI read returned its fixture;
 `--database approve` was rejected before database access. The build retains the
 existing `themeColor` metadata warnings. No UI changed; no browser check was run.
-PR reference follows after branch publication. No hosted database mutation,
-live subscription, scheduler activation, or deployment is claimed.
+Draft [PR #19](https://github.com/AlexBorsody/prove-it-clock/pull/19), implementation
+commit `70d744b`. Muse: confirm the Vercel plan and ownership of database-queue
+review/activation before marking ready. No hosted database mutation, live
+subscription, scheduler activation, or deployment is claimed.
