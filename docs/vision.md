@@ -37,6 +37,12 @@ multibillion-dollar valuation. Hearts record delivery; category profiles,
 Atlas and the timeline expose the evidence behind the value thesis.
 
 **Slogan: Truth, not hype.** We cut through the hype.
+**The stance (Alex, 2026-09-28):** this has to be more than cool or
+impressive tech. Hype lifts shitcoins and drowns the good projects; the
+noise brings everything down together. The product is the separator: a
+good project with a real delivery record stands apart from the noise on
+the instrument, without us writing a takedown. The tech is impressive in
+service of that, never the point.
 **The hook (Alex, 2026-09-26):** in a perfect world, proven value and market
 cap would be 1:1. Today we can show market cap beside a delivery/impact
 profile. A numerical valuation gap requires a separate token-value model,
