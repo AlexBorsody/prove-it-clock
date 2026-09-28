@@ -107,7 +107,7 @@ function PromiseRow({
         </span>
         <span className="tag na promise-row-ref">{label}</span>
         <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={evHref} onClick={stop} aria-label={`${label}: ${d.label}. View evidence`}>{d.label}</Link>
-        <span className="promise-row-chev"><Icon name="chevron-down" size={18} /></span>
+        <span className="promise-row-chev"><Icon name="chevron-right" size={18} /></span>
       </div>
       {open && (
         <div className="promise-row-body">

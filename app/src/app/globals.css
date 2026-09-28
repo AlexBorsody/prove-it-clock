@@ -1307,7 +1307,7 @@ button { padding-block: 6px; padding-inline: 14px; }
 .promise-row-ref { flex-shrink: 0; }
 .promise-row-head .evidence-link { flex-shrink: 0; padding: 5px 10px; font-size: 12px; }
 .promise-row-chev { flex-shrink: 0; color: var(--text-faint); transition: transform 0.15s ease; }
-.promise-row-head[aria-expanded="true"] .promise-row-chev { transform: rotate(180deg); }
+.promise-row-head[aria-expanded="true"] .promise-row-chev { transform: rotate(90deg); }
 .promise-row-body { border-top: 1px solid var(--border); padding: 10px 12px 12px; }
 .promise-row-body .comp-desc { margin: 0 0 8px; }
 .promise-row-body .comp-tags { margin: 0 0 8px; }

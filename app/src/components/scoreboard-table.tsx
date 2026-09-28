@@ -184,7 +184,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                         onClick={() => toggleExpand(r.slug)} aria-expanded={expanded === r.slug}
                         aria-controls={`scoreboard-promises-${r.slug}`}
                         aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}>
-                        {expanded === r.slug ? "▲" : "▼"}
+                        {expanded === r.slug ? "▼" : "▶"}
                       </button>
                     </div>
                   </td>
@@ -274,7 +274,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                 aria-expanded={open}
                 aria-controls={`scoreboard-promises-${r.slug}`}
               >
-                All promises · {r.promises.length} {open ? "▲" : "▼"}
+                All promises · {r.promises.length} {open ? "▼" : "▶"}
               </button>
               {open ? (
                 <div className={`mcard-promises ${styles.cardPromises}`} id={`scoreboard-promises-${r.slug}`}>
