@@ -824,12 +824,16 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
 /* ---- Clarity rebuild: mobile-first cards, readable type, distinct modules ---- */
 
 /* Scoreboard: dense table on desktop, taller list-cards on phones.
-   Below 640px the table is fully replaced, never a scroll strip. */
+   Below 640px the table is fully replaced, never a scroll strip,
+   unless the view toggle forces the list layout (then it scrolls right). */
 .board-cards { display: none; }
 @media (max-width: 640px) {
   .board-desktop { display: none; }
   .board-cards { display: flex; flex-direction: column; gap: 12px; }
 }
+.board-view-bar { display: flex; justify-content: flex-end; margin: 4px 0 12px; }
+table.board.stocks-board { min-width: 760px; }
+.stocks-status { color: var(--text-dim); font-size: 13px; min-width: 280px; }
 .board-card {
   display: block;
   background: var(--bg-panel);
