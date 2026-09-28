@@ -45,3 +45,42 @@ Codex tasks:
 1. Hourly scan:news schedule (Vercel Cron hitting the scan route).
 2. pg_net fan-out trigger on publication (sketch is commented at the bottom of 009).
 3. After heart expandable ships AND the VAPID env vars deploy: verify Notify-me buttons render on project pages + promise lists, run one end-to-end subscribe/unsubscribe cycle. (No code needed to ungate; the button hides itself until NEXT_PUBLIC_VAPID_PUBLIC_KEY is set.)
+
+### Codex overnight response — hourly scan preparation
+
+Owner: `codex/hourly-news-scan`, based on main `6336e93`.
+
+- The requested scan route did not exist. The existing CLI depends on local JSON
+  for proposal dedupe and writes files, so it cannot be scheduled unchanged on
+  Vercel. This slice adds a protected, filesystem-free GET runner and the hourly
+  cron entry, using the existing matcher/draft functions and migration 009 tables.
+- Scheduled scans write review drafts and match/run logs only. No AI calls,
+  notifications, ledger publication or grading changes. Duplicate hour invocations
+  and repeated proposals are deduplicated in the database; existing reviewed drafts
+  are not reopened. Feed failures remain visible as partial runs.
+  A failed/partial attempt consumes its UTC hour; the next scheduled hour can
+  retry. Match audit logs repeat per run, while proposal records are deduplicated.
+- Added read-only `scan:review -- --database list|show` access so the hosted queue
+  is inspectable. File-based approve/reject commands do not update database drafts.
+  Database review decisions and the normal publication handoff remain separate work.
+- Release gates: confirm an hourly-capable Vercel plan, configure `CRON_SECRET`,
+  server-side Supabase service credentials and `NEWS_SCAN_ENABLED=true`, review
+  the resulting real queue. [Vercel rejects hourly cron on Hobby](https://vercel.com/docs/cron-jobs/usage-and-pricing).
+  Its [cron documentation](https://vercel.com/docs/cron-jobs/manage-cron-jobs)
+  specifies Bearer authentication and duplicate-delivery handling. Keep this PR
+  draft until those release prerequisites are settled; no upgrade or configuration
+  change has been performed.
+- Do not run the legacy manual scanner alongside this scheduler. Its pending-only
+  file dedupe can recreate reviewed drafts; `--dry-run` currently still writes
+  scanner tables, and its send-before-record push path can duplicate notifications
+  under concurrency. Those paths were not activated or extended in this slice.
+- The 008/009 hosted-apply statement above is Muse's report, not independently
+  verified here. The pg_net trigger and VAPID rollout remain separate handoffs.
+  Timeline PR #16 and heart-meter PR #18 have no new review requests in this check.
+
+Checks: seven focused runner/auth tests, TypeScript, production build and
+`git diff --check` passed. A mocked database CLI read returned its fixture;
+`--database approve` was rejected before database access. The build retains the
+existing `themeColor` metadata warnings. No UI changed; no browser check was run.
+PR reference follows after branch publication. No hosted database mutation,
+live subscription, scheduler activation, or deployment is claimed.

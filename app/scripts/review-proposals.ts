@@ -6,6 +6,11 @@
  *   npm run scan:review -- show <proposal-id>
  *   npm run scan:review -- approve <proposal-id>
  *   npm run scan:review -- reject <proposal-id> --reason "why"
+ *   npm run scan:review -- --database list
+ *   npm run scan:review -- --database show <proposal-id>
+ *
+ * --database is read-only inspection of the scheduled scan queue. File-based
+ * approve/reject commands do not review or publish database proposals.
  *
  * Approve does NOT write the published ledger. It marks the proposal approved
  * and prints the event JSON to feed into the normal publication flow
@@ -14,6 +19,7 @@
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { createClient } from '@supabase/supabase-js';
 
 const PROPOSAL_DIR = join(__dirname, '..', '..', 'db', 'research', 'scan-proposals');
 
@@ -58,8 +64,44 @@ function save(run: { file: string; proposals: StoredProposal[] }) {
   writeFileSync(join(PROPOSAL_DIR, run.file), JSON.stringify(raw, null, 2));
 }
 
-function main() {
-  const [command, id, ...rest] = process.argv.slice(2);
+async function inspectDatabase(command: string | undefined, id: string | undefined) {
+  if (command !== 'list' && command !== 'show') {
+    throw new Error('--database supports read-only list or show; publication requires reviewed events');
+  }
+  if (command === 'show' && !id) throw new Error('show requires a proposal ID');
+  if (existsSync('.env.local')) process.loadEnvFile('.env.local');
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for the private review queue');
+  const db = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+  if (command === 'show') {
+    const { data, error } = await db.from('scan_proposals').select('*').eq('id', id!)
+      .abortSignal(AbortSignal.timeout(20_000)).maybeSingle();
+    if (error) throw new Error(`Could not read proposal: ${error.message}`);
+    if (!data) throw new Error(`Proposal not found: ${id}`);
+    console.log(JSON.stringify(data, null, 2));
+    return;
+  }
+  let count = 0;
+  for (let offset = 0; ; offset += 200) {
+    const { data, error } = await db.from('scan_proposals')
+      .select('id,kind,project_slug,lineage,article_title,reasoning')
+      .eq('status', 'pending').order('created_at').order('id').range(offset, offset + 199)
+      .abortSignal(AbortSignal.timeout(20_000));
+    if (error) throw new Error(`Could not read pending proposals: ${error.message}`);
+    if (!data) throw new Error('Could not read pending proposals: missing response');
+    for (const proposal of data) console.log(JSON.stringify(proposal));
+    count += data.length;
+    if (data.length < 200) break;
+  }
+  if (!count) console.log('No pending database proposals.');
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const database = args.includes('--database');
+  const [command, id, ...rest] = args.filter(arg => arg !== '--database');
+  if (database) return inspectDatabase(command, id);
   if (command === 'list') {
     const pending = loadRuns().flatMap((r) => r.proposals.filter((p) => p.status === 'pending'));
     if (pending.length === 0) {
@@ -100,9 +142,7 @@ function main() {
   throw new Error('Usage: npm run scan:review -- <list|show|approve|reject> [proposal-id] [--reason "..."]');
 }
 
-try {
-  main();
-} catch (error) {
+main().catch(error => {
   console.error(error instanceof Error ? error.message : 'Review failed');
   process.exitCode = 1;
-}
+});

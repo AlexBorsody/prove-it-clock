@@ -10,6 +10,23 @@ older weighted-verdict and warning instructions below are superseded.
 The [timeline handoff](tasks/2026-09-27-timeline-foundation.md) now supplies the
 event taxonomy and examples; gaps and implementation notes belong in that brief.
 
+## Scheduled promise-news review queue
+
+The hourly Vercel entry invokes `GET /api/cron/scan-news`. The endpoint requires
+`Authorization: Bearer <CRON_SECRET>`, `NEWS_SCAN_ENABLED=true`, and server-side
+Supabase service credentials. Missing configuration fails closed. The scheduled
+runner uses the existing keyword matcher and drafts into `scan_proposals`; it
+never publishes an assessment, calls the AI judge, or sends notifications.
+Database run/proposal IDs make duplicate scheduled invocations safe; prior
+approved/rejected proposals are retained. `scan_runs` records partial feed
+failures and failed writes rather than reporting missing coverage as success.
+
+Review scheduled drafts with `npm run scan:review -- --database list` or
+`--database show <id>`. These commands only read. The original file-based review
+commands do not review this database queue; reviewed event publication remains a
+separate step. No scheduler activation or hosted write is implied by this code.
+See the [current handoff](tasks/2026-09-27-codex-checkin.md) for release gates.
+
 ## Published evidence receipts (2026-09-27)
 
 The delivery composition partitions the published inventory into kept,
