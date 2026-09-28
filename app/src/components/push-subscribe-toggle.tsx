@@ -29,9 +29,11 @@ interface Props {
   /** Omit for coin-level subscription. */
   lineage?: string;
   label: string;
+  /** Big blue primary treatment for the hero placement. */
+  big?: boolean;
 }
 
-export default function PushSubscribeToggle({ projectSlug, lineage, label }: Props) {
+export default function PushSubscribeToggle({ projectSlug, lineage, label, big = false }: Props) {
   const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
   const [supported] = useState(
     () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && vapidKey.length > 0,
@@ -126,7 +128,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, label }: Pro
   return (
     <button
       type="button"
-      className="btn push-toggle"
+      className={`btn push-toggle${big ? " push-toggle-big" : ""}`}
       data-subscribed={subscribed ? "true" : "false"}
       aria-pressed={subscribed}
       disabled={busy}

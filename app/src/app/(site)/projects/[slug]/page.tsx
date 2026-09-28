@@ -16,7 +16,6 @@ import { summarizeDelivery } from '@/lib/promise-verdict';
 import { receiptRevision } from '@/lib/promise-receipts';
 import DeliveryComposition from '@/components/delivery-composition';
 import DocumentedProblems from "@/components/documented-problems";
-import PromiseStats from "@/components/promise-stats";
 import PromiseNews from "@/components/promise-news";
 import { promiseReferences, promiseFilterHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import MarketPanel from "@/components/market-panel";
@@ -148,8 +147,13 @@ export default async function ProjectPage({ params, searchParams }: {
         {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
-          <PushSubscribeToggle projectSlug={slug} label="Notify me" />
+          <PushSubscribeToggle projectSlug={slug} label="Notify me" big />
         </div>
+        {Number.isFinite(Date.parse(latest.as_of)) && (
+          <p className="panel-sub" style={{ marginTop: 10 }}>
+            Assessment as of {new Date(latest.as_of).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })}
+          </p>
+        )}
       </div>
 
       <span id="hearts" aria-hidden="true" />
@@ -175,7 +179,6 @@ export default async function ProjectPage({ params, searchParams }: {
         )}
         <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
         <DocumentedProblems slug={slug} name={latest.name} promises={promises} asOf={latest.as_of} available={latest.availability === "available"} />
-        <PromiseStats slug={slug} name={latest.name} promises={promises} earned={latest.earned} methodology={latest.methodology} asOf={latest.as_of} available={latest.availability === "available"} bare />
       </div>
 
       <Suspense fallback={<section className="panel"><h2>Promise timeline</h2><p role="status">Loading promise history…</p></section>}>
