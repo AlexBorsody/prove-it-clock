@@ -1532,3 +1532,17 @@ form, public view, server-only write RPC and IP-based limits share one migration
 (011). Hosted activation is still pending; the feature is disabled by default.
 See [the current task checklist](tasks/2026-09-27-tip-feature-request-page.md) and
 [release/verification notes](support-feedback.md). Donation work remains deferred.
+
+
+### September 28: stocks discovery and company timeline
+
+`/stocks` now has P/E discovery and separate private-company research. Company
+pages combine sourced business context with the interactive commitment timeline,
+revision history and existing pilot assessments. Market observations are cached
+read-only inputs; they never alter delivery states. The unsupported expectation-gap
+presentation was removed while retaining its original artifact.
+
+See [the implementation and research audit](tasks/2026-09-28-stocks-completion.md)
+for exact coverage, provider configuration, desktop checks and editorial gaps.
+The stock promise reader still uses the repository pilot; no hosted publication,
+new scoring or stock database write was performed.

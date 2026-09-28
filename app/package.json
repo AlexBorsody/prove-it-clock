@@ -42,7 +42,7 @@
     "social:collect": "tsx scripts/collect-social.ts",
     "research:intake": "node --import tsx scripts/collect-promise-intake.ts",
     "test:intake": "node --import tsx --test scripts/promise-intake.test.ts",
-    "test:stocks": "node --import tsx --test scripts/stock-intake.test.ts scripts/stock-data.test.ts",
+    "test:stocks": "node --import tsx --test scripts/stock-intake.test.ts scripts/stock-data.test.ts scripts/stock-context.test.ts",
     "intake:stocks": "node --import tsx scripts/collect-stock-intake.ts",
     "test:social": "node --import tsx --test scripts/social.test.ts",
     "test:db": "node --import tsx --test scripts/heart-database.test.ts",
