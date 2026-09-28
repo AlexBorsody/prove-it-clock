@@ -52,3 +52,17 @@ fanout. TypeScript, whitespace checks and the production build passed (existing
 `themeColor` metadata warnings remain). No real push delivery or device opt-in
 was exercised. The final CLI-only dry-run guard and summary wording were
 reviewed after that build; neither is bundled into the application routes.
+
+## Hosted migration preflight — 2026-09-28 03:47 UTC
+
+Alex asked to do the migrations. Refetched main `34cfb48`; 010 is the only
+remaining migration in this feature. Read-only SQL on the confirmed production
+project verified 007 exists, 010 is absent, and there are zero push receipt and
+subscription rows. Reviewed 010's backward-compatible defaults and brief
+ALTER TABLE lock; prior local upgrade checks already passed.
+
+Automatic approval review rejected the attempted 010 execution, stating that
+“do the migrations” did not explicitly identify this production notification
+change. The browser action did not execute. Asked Alex to confirm migration010
+and the verified target by name. **010 remains unapplied**; do not retry through
+another tool or treat this preflight as rollout. No schema or data changed here.
