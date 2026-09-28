@@ -45,3 +45,61 @@ Codex tasks:
 1. Hourly scan:news schedule (Vercel Cron hitting the scan route).
 2. pg_net fan-out trigger on publication (sketch is commented at the bottom of 009).
 3. After heart expandable ships AND the VAPID env vars deploy: verify Notify-me buttons render on project pages + promise lists, run one end-to-end subscribe/unsubscribe cycle. (No code needed to ungate; the button hides itself until NEXT_PUBLIC_VAPID_PUBLIC_KEY is set.)
+
+### Codex handoff — protected scan preparation (revised 2026-09-28)
+
+Owner: `codex/hourly-news-scan`. Current main `00377ef` has been merged into
+this branch. PR #19 prepares the intake code; scheduling and activation remain
+a separate handoff.
+
+- The requested scan route did not exist. The existing CLI depends on local JSON
+  for proposal dedupe and writes files, so it cannot be scheduled unchanged on
+  Vercel. This slice adds a protected, filesystem-free GET runner using the
+  existing matcher/draft functions and migration 009 tables. The automatic hourly
+  cron registration has been removed from `app/vercel.json`, so deployment does
+  not depend on an unconfirmed hourly-capable plan or start scheduled intake.
+- The route stays disabled unless `NEWS_SCAN_ENABLED=true`, the bearer secret
+  matches, and server-side Supabase write credentials are configured. None of
+  those environment settings is activated by this change.
+- Invoked scans write review drafts and match/run logs only. No AI calls,
+  notifications, ledger publication or grading changes. Duplicate hour invocations
+  and repeated proposals are deduplicated in the database; existing reviewed drafts
+  are not reopened. Feed failures remain visible as partial runs.
+  A failed/partial attempt consumes its UTC hour; an invocation in a later hour can
+  retry. Match audit logs repeat per run, while proposal records are deduplicated.
+- Added read-only `scan:review -- --database list|show` access so the hosted queue
+  is inspectable. File-based approve/reject commands do not update database drafts.
+  Database review decisions and the normal publication handoff remain separate work.
+- Future activation handoff: confirm the scheduler and compatible Vercel plan,
+  assign an owner for database-queue review, configure `CRON_SECRET`, server-side
+  Supabase service credentials and `NEWS_SCAN_ENABLED=true`, then inspect an
+  authorized run and its real draft queue. Add any cron registration in that
+  separate change after confirming the plan and cadence. These are activation
+  prerequisites, not a blocker to merging the disabled intake code. No upgrade,
+  environment change or scheduler activation has been performed.
+- This runner does not service the "Any news mention" or "Decisive news only"
+  subscriptions. Notification delivery and its migration/receipt requirements
+  remain a separate integration; the PR #19 discussion records that boundary.
+- Do not run the legacy manual scanner concurrently with an enabled intake run.
+  Its pending-only
+  file dedupe can recreate reviewed drafts; `--dry-run` currently still writes
+  scanner tables, and its send-before-record push path can duplicate notifications
+  under concurrency. Those paths were not activated or extended in this slice.
+- The 008/009 hosted-apply statement above is Muse's report, not independently
+  verified here. The pg_net trigger and VAPID rollout remain separate handoffs.
+
+Initial preparation checks: seven focused runner/auth tests, TypeScript, production build and
+`git diff --check` passed. A mocked database CLI read returned its fixture;
+`--database approve` was rejected before database access. The build retains the
+existing `themeColor` metadata warnings. No UI changed; no browser check was run.
+
+Rewrite verification (2026-09-28): all seven existing runner/auth tests and
+TypeScript passed after integrating main. `git diff --check` passed; the Vercel
+config contains no cron registration. No scanner, AI, notification or environment
+code changed in the rewrite, and no live route was invoked.
+
+[PR #19](https://github.com/AlexBorsody/prove-it-clock/pull/19), original
+implementation commit `70d744b`, now separates code release from activation.
+The next handoff owns the Vercel plan, scheduling and database-queue review.
+No hosted database mutation, live subscription, scheduler activation, or
+deployment is claimed by the rewrite.
