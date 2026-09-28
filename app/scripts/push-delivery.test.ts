@@ -15,7 +15,7 @@ const payload = { title: 'Fixture', body: 'Local test', url: '/projects/xrp', ta
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 
 // Real Supabase query builders, with all HTTP intercepted in memory.
-function deliveryFixture(failure?: 'claim' | 'receipt' | 'delete') {
+function deliveryFixture(failure?: 'claim' | 'receipt' | 'delete' | 'release') {
   const receipts = new Map<string, Record<string, unknown>>();
   let deleted = false;
   const db = createClient('https://db.example.test', 'fixture-key', {
@@ -46,6 +46,15 @@ function deliveryFixture(failure?: 'claim' | 'receipt' | 'delete') {
         deleted = true;
         receipts.clear(); // FK ON DELETE CASCADE.
         return new Response(null, { status: 204 });
+      }
+      if (method === 'DELETE' && url.pathname.endsWith('/push_deliveries')) {
+        if (failure === 'release') return json({ code: 'XX000', message: 'release failed' }, 400);
+        assert.equal(url.searchParams.get('delivery_status'), 'eq.pending');
+        const entry = [...receipts.entries()].find(([, receipt]) => `eq.${receipt.id}` === url.searchParams.get('id'));
+        assert.ok(entry);
+        assert.equal(entry[1].delivery_status, 'pending');
+        receipts.delete(entry[0]);
+        return json({ id: entry[1].id });
       }
       throw new Error(`Unexpected fixture request: ${method} ${url.pathname}`);
     } },
@@ -98,15 +107,60 @@ test('missing migration fails before send; uncertain sends and receipts remain p
   const sender = async () => { sends++; return { ok: true, gone: false }; };
   await assert.rejects(deliverPushOnce(missing.db, subscription, 'news:one', 'resolution_likely', payload, sender), /migration missing/);
   assert.equal(sends, 0);
-  for (const failure of ['transport', 'receipt'] as const) {
+  for (const failure of ['transport', 'request-timeout', 'server-error', 'receipt'] as const) {
     const fixture = deliveryFixture(failure === 'receipt' ? 'receipt' : undefined);
-    const send = async () => { sends++; if (failure === 'transport') throw new Error('timeout'); return { ok: true, gone: false }; };
+    const send = async () => {
+      sends++;
+      if (failure === 'transport') throw new Error('timeout');
+      if (failure === 'request-timeout' || failure === 'server-error') {
+        throw Object.assign(new Error('provider failure'), { statusCode: failure === 'request-timeout' ? 408 : 503 });
+      }
+      return { ok: true, gone: false };
+    };
     await assert.rejects(deliverPushOnce(fixture.db, subscription, failure, 'resolution_likely', payload, send), /uncertain|receipt could not be confirmed/);
     assert.equal([...fixture.receipts.values()][0].delivery_status, 'pending');
     const beforeRetry: number = sends;
     assert.equal(await deliverPushOnce(fixture.db, subscription, failure, 'resolution_likely', payload, send), 'skipped');
     assert.equal(sends, beforeRetry);
   }
+});
+
+test('definitive provider rejections release only their claim and permit one later concurrent retry', async () => {
+  for (const statusCode of [400, 401, 403, 413, 429]) {
+    const { db, receipts } = deliveryFixture();
+    let sends = 0;
+    const rejection = Object.assign(new Error('provider rejected request'), { statusCode, headers: { 'retry-after': '60' } });
+    // A separate successful delivery must never be removed by a rejected send.
+    await deliverPushOnce(db, subscription, 'already-sent', 'news_mention', payload, async () => ({ ok: true, gone: false }));
+    const sender = async () => {
+      sends++;
+      if (sends === 1) throw rejection;
+      return { ok: true, gone: false };
+    };
+    await assert.rejects(deliverPushOnce(db, subscription, 'retryable', 'news_mention', payload, sender), (error: unknown) => {
+      assert.ok(error instanceof Error);
+      assert.match(error.message, /reservation released for a later retry/);
+      assert.equal(error.cause, rejection);
+      return true;
+    });
+    assert.equal(receipts.size, 1);
+    assert.equal([...receipts.values()][0].revision_key, 'already-sent');
+    assert.equal([...receipts.values()][0].delivery_status, 'sent');
+    assert.equal(sends, 1); // The helper does not immediately retry a rejected request.
+    const retried = await Promise.all([1, 2].map(() => deliverPushOnce(db, subscription, 'retryable', 'news_mention', payload, sender)));
+    assert.deepEqual(retried.sort(), ['sent', 'skipped']);
+    assert.equal(sends, 2);
+  }
+});
+
+test('a failed rejection release is reported and does not allow another send', async () => {
+  const { db, receipts } = deliveryFixture('release');
+  let sends = 0;
+  const sender = async () => { sends++; throw Object.assign(new Error('rate limited'), { statusCode: 429 }); };
+  await assert.rejects(deliverPushOnce(db, subscription, 'limited', 'news_mention', payload, sender), /reservation release could not be confirmed: release failed/);
+  assert.equal([...receipts.values()][0].delivery_status, 'pending');
+  assert.equal(await deliverPushOnce(db, subscription, 'limited', 'news_mention', payload, sender), 'skipped');
+  assert.equal(sends, 1);
 });
 
 test('expired subscriptions are removed and a failed delete is reported', async () => {

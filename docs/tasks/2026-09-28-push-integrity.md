@@ -66,3 +66,29 @@ Automatic approval review rejected the attempted 010 execution, stating that
 change. The browser action did not execute. Asked Alex to confirm migration010
 and the verified target by name. **010 remains unapplied**; do not retry through
 another tool or treat this preflight as rollout. No schema or data changed here.
+
+## PR review follow-up — September 28
+
+Integrated main `00377ef` in `8c46886`. Muse's Promises-panel heart placement,
+overview comparison controls and unified notification styling remain intact.
+
+Addressed the P2 provider-rejection review: completed HTTP 4xx rejections,
+including 429, release only the caller's pending receipt so a later attempt can
+claim it again. There is no immediate retry; the original provider error and
+backoff headers remain available as the error cause. HTTP 408, 5xx, transport
+failures and unconfirmed success receipts stay pending for operator review.
+Failure to confirm a claim release is reported; it is never treated as a send.
+The distinction uses the documented `statusCode` on a completed
+[web-push response](https://github.com/web-push-libs/web-push#returns).
+
+The 22 focused notification checks passed, including 429 followed by competing
+retry attempts, unrelated sent-receipt preservation, failed release, ambiguous
+HTTP/transport failures and the local 009-to-010 migration. TypeScript and
+`git diff --check` passed. No new UI/browser or device-delivery checks were run
+for this sender change.
+
+**Release remains gated by migration 010.** Without it, the new sender fails
+before contacting a provider. Since merging main deploys the app, hold this PR's
+merge until the exact production notification migration is directly authorized
+and applied. This update did not retry the rejected hosted action, change hosted
+data, or activate notifications. The migration SQL is unchanged.

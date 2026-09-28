@@ -9,6 +9,7 @@ export type DeliveryResult = 'sent' | 'skipped' | 'removed';
  * A concurrent/repeated caller skips both pending and sent receipts. An uncertain
  * provider response or receipt update stays pending: automatic retries could
  * duplicate a push that already reached the provider. Operators must inspect it.
+ * A confirmed client rejection releases only this claim for a later attempt.
  */
 export async function deliverPushOnce(
   db: SupabaseClient,
@@ -34,6 +35,20 @@ export async function deliverPushOnce(
   try {
     result = await sender(subscription, payload);
   } catch (cause) {
+    // web-push exposes statusCode after a complete provider response. A 4xx
+    // rejection was not accepted. Request timeouts and server/gateway failures
+    // remain uncertain, even if an HTTP status is present.
+    const statusCode = cause && typeof cause === 'object'
+      ? (cause as { statusCode?: unknown }).statusCode : undefined;
+    if (typeof statusCode === 'number' && Number.isInteger(statusCode)
+      && statusCode >= 400 && statusCode < 500 && statusCode !== 408) {
+      const { data: released, error: releaseError } = await db.from('push_deliveries')
+        .delete().eq('id', claim.id).eq('delivery_status', 'pending').select('id').single();
+      if (releaseError || !released) {
+        throw new Error(`Push provider rejected delivery ${claim.id} (HTTP ${statusCode}); reservation release could not be confirmed: ${releaseError?.message ?? 'receipt missing'}`, { cause });
+      }
+      throw new Error(`Push provider rejected delivery ${claim.id} (HTTP ${statusCode}); reservation released for a later retry`, { cause });
+    }
     throw new Error(`Push delivery ${claim.id} is pending; provider acceptance is uncertain`, { cause });
   }
   if (result.gone) {
