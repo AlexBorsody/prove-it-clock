@@ -6,6 +6,7 @@ import "../globals.css";
 import Link from "next/link";
 import BottomNav from "@/components/bottom-nav";
 import Walkthrough from "@/components/walkthrough";
+import WelcomeModal from "@/components/welcome-modal";
 import ProjectSearch from "@/components/project-search";
 import { BrandMark } from "@/components/heart-meter";
 import SearchAnchor from "@/components/search-anchor";
@@ -40,6 +41,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       </main>
       <BottomNav />
       <Walkthrough />
+      <WelcomeModal />
       <SearchAnchor />
     </div>
   );

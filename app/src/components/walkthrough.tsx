@@ -53,6 +53,15 @@ function wasSeen(): boolean {
   }
 }
 
+/** The welcome pop-up goes first for brand-new visitors; the tour waits for it. */
+function welcomeSeen(): boolean {
+  try {
+    return localStorage.getItem("proveit-welcome-seen") === "1";
+  } catch {
+    return true;
+  }
+}
+
 /** Poll for an element rendered after a route change. */
 function waitForElement(
   selector: string,
@@ -175,7 +184,8 @@ export default function Walkthrough() {
     window.addEventListener(REPLAY_EVENT, onReplay);
     let t: number | undefined;
     // Preserve shared evidence links; the Tour button remains available explicitly.
-    if (!wasSeen()) t = window.setTimeout(() => {
+    // Brand-new visitors get the welcome pop-up first; the tour autostarts only after it.
+    if (!wasSeen() && welcomeSeen()) t = window.setTimeout(() => {
       if (window.location.pathname !== "/atlas") showStep(0);
     }, 700);
     return () => {
