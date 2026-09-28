@@ -32,3 +32,16 @@
 ## Dogfood note
 
 - Alex is using the app himself now. What helps him: verdict, promise detail, timeline. The ranking algorithms were not the useful part. Build priority follows that.
+
+## Overnight handoff — 2026-09-27 (Alex asleep, do not ping him)
+
+Go-live status for the push/scanner pipeline:
+- DB: migrations 008 (stock ledger) + 009 (push/scanner) applied to production Supabase; all 9 tables verified. Done.
+- Vercel env vars STILL NEEDED (values are in Alex's chat history; he may not have entered them before sleep): VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY, VAPID_SUBJECT, NEXT_PUBLIC_VAPID_PUBLIC_KEY, PUSH_FANOUT_SECRET. Until these deploy, the Notify-me buttons stay hidden and no push can send.
+- SCANNER_AI_URL + SCANNER_AI_API_KEY: still need Alex's OpenAI-compatible key. Until then the AI judge stays off and the scanner runs keyword matching only.
+- Market-data keys (Google Doc "K"): Alpha Vantage present; FMP section is blank; Finnhub missing. Alex to fill on his own device. Wire env vars per your integration design once he confirms.
+
+Codex tasks:
+1. Hourly scan:news schedule (Vercel Cron hitting the scan route).
+2. pg_net fan-out trigger on publication (sketch is commented at the bottom of 009).
+3. After heart expandable ships AND the VAPID env vars deploy: verify Notify-me buttons render on project pages + promise lists, run one end-to-end subscribe/unsubscribe cycle. (No code needed to ungate; the button hides itself until NEXT_PUBLIC_VAPID_PUBLIC_KEY is set.)

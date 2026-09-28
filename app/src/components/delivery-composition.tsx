@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { CATEGORIES, type CategoryId } from '../../data/atlas-taxonomy';
 import { COMPOSITION_GROUPS, GROUP_LABELS, compositionCounts, evidenceReceipt, type ReceiptRevision } from '@/lib/promise-receipts';
 import type { DeliverySummary } from '@/lib/promise-verdict';
+import InfoTip from "@/components/info-tip";
 import styles from './delivery-composition.module.css';
 
 export default function DeliveryComposition({slug,summary,revision,initialCategory=''}:{
@@ -19,14 +20,13 @@ export default function DeliveryComposition({slug,summary,revision,initialCatego
         {CATEGORIES.filter(c=>summary.categories[c.id].total>0).map(c=><option key={c.id} value={c.id}>{c.label}</option>)}
       </select>
     </label>
-    <p aria-live="polite">{scope.total} promises in this published record</p>
     {/* Composition band meter removed 2026-09-27 per Alex: it was added without approval. Do not re-add a meter here. */}
     <div className={styles.legend} aria-label="Promise counts and evidence">
       {COMPOSITION_GROUPS.map(group=>{
         const label=<><i data-group={group}/>{counts[group]} {GROUP_LABELS[group]}</>;
         return counts[group]>0 ? <Link key={group} href={evidenceReceipt(slug,revision,{category:category||undefined,group})}>{label} ↗</Link> : <span key={group}>{label}</span>;
       })}
+      <InfoTip text="Each promise counts once. Select a count to inspect its published evidence." />
     </div>
-    <p className={styles.note}>Each promise counts once. Select a count to inspect its published evidence.</p>
   </div>;
 }

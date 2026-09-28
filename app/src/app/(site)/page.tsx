@@ -102,7 +102,7 @@ export default async function Home() {
           </p>
         </div>
       ) : (
-        <ScoreboardTable rows={rows} asOf={atlas?.asOf} dataRevision={atlas?.dataRevision} />
+        <ScoreboardTable rows={rows} asOf={atlas?.asOf} />
       )}
     </>
   );
