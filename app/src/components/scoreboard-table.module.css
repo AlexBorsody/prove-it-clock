@@ -47,22 +47,7 @@ table.table { min-width:880px;table-layout:fixed; }
 .table .categories a + a::before { content:" · "; }
 @media(max-width:540px) { .controls { gap:8px; } .controls select { padding-inline:8px; } }
 
-/* List stays a list on phones: keep every metric visible within the viewport. */
+/* List stays a table on phones: it keeps its columns and scrolls horizontally. */
 @media(max-width:640px) {
-  .heartCount { display:none; }
-  .heartButton { width:100%; }
-  table.table,.table tbody { display:block;min-width:0;width:100%; }
-  .table colgroup { display:none; }
-  .table thead { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap; }
-  .table .listRow { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--border-strong); }
-  .table .listRow:last-child { border-bottom:0; }
-  .table .listRow > td { display:block;min-width:0;border-bottom:0;padding:12px;overflow-wrap:anywhere; }
-  .table .listRow > td:nth-child(n+3) { border-top:1px solid var(--border); }
-  .labeledCell::before { content:attr(data-label);display:block;margin-bottom:6px;font:600 12px var(--sans);color:var(--text-dim); }
-  .table :global(.proj-cell) { flex-wrap:wrap;gap:6px; }
-  .table :global(.proj-cell) > span { flex:1 1 84px; }
-  .table .genesisBadge { max-width:100%;white-space:normal;padding-inline:6px; }
-  .rowActions { flex-wrap:wrap;gap:4px; }
-  .table .expandedRow,.table .expandedRow > td { display:block;width:100%;min-width:0; }
-  .table .expandedRow :global(.expand-promises) { max-width:100%;overflow-wrap:anywhere; }
+  .tableWrap { overflow-x:auto; }
 }
