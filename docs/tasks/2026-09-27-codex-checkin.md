@@ -1,5 +1,10 @@
 # Codex check-in: timeline + small-cap intake — 2026-09-27
 
+## Codex next task (after heart expandable): verify Notify-me buttons
+
+- The push subscribe buttons ("Notify me" on project pages + per-promise in the promise list) are already built and wired: `PushSubscribeToggle`, service worker registered in the root layout, `/api/push/*` routes live. They render nothing until `NEXT_PUBLIC_VAPID_PUBLIC_KEY` is set, so there is no code task to ungate them.
+- After the heart expandable ships and the VAPID env vars are deployed to Vercel: confirm the buttons appear on `/projects/[slug]` and in promise lists, and run one end-to-end subscribe/unsubscribe cycle against production. Report any breakage; do not change the quiet styling.
+
 ## Stock market data integration (Habib, via GitHub)
 
 - **The market-data brief is delivered: `docs/tasks/2026-09-27-stock-market-data-integration.md`.** Read it before writing any data code. It has the full free-API comparison, the recommended architecture, the field mapping, and the keys to request.
