@@ -1522,3 +1522,13 @@ Bottom Search triggers `ProjectSearch`; there is no second search implementation
 Legacy metric URLs still resolve. No score, research record, database schema,
 publication policy or production configuration changes in this slice. The task
 file records the new wrappers, local desktop checks and mobile CSS review.
+
+
+### September 28: anonymous feedback assignment
+
+`/support` implements Alex's public comment and upvote decision. Email, contact
+fields and prepublication approval were removed from the original brief. The
+form, public view, server-only write RPC and IP-based limits share one migration
+(011). Hosted activation is still pending; the feature is disabled by default.
+See [the current task checklist](tasks/2026-09-27-tip-feature-request-page.md) and
+[release/verification notes](support-feedback.md). Donation work remains deferred.
