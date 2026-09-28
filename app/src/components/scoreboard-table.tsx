@@ -180,15 +180,10 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                     {categorySummary(r)}
                     <div className={styles.rowActions}>
                       <CompareCheckbox name={r.name} checked={selected.includes(r.slug)} disabled={!canSelect(r.slug)} onChange={() => toggleCompare(r.slug)} />
-                      <button type="button" className={`expand-btn${expanded === r.slug ? " open" : ""}`}
-                        onClick={() => toggleExpand(r.slug)} aria-expanded={expanded === r.slug}
-                        aria-controls={`scoreboard-promises-${r.slug}`}
-                        aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}>
-                        {expanded === r.slug ? "▼" : "▶"}
-                      </button>
                     </div>
                   </td>
                   <td role="cell" data-label="Promises" className={styles.labeledCell}>
+                    <div className={styles.heartsWrap}>
                     {!r.delivery ? <span className="word dim">Assessment unavailable</span> : <button
                       type="button"
                       className={`hearts-cell-toggle ${styles.heartButton}`}
@@ -200,6 +195,13 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                     >
                       <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                     </button>}
+                    <button type="button" className={`expand-btn${expanded === r.slug ? " open" : ""} ${styles.heartsChev}`}
+                      onClick={() => toggleExpand(r.slug)} aria-expanded={expanded === r.slug}
+                      aria-controls={`scoreboard-promises-${r.slug}`}
+                      aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}>
+                      {expanded === r.slug ? "▼" : "▶"}
+                    </button>
+                    </div>
                   </td>
                   <td role="cell" data-label="Code" className={styles.labeledCell}>
                     <Link href="/code" className="cell-link metric-btn" aria-label={`Code activity for ${r.name}`} title="See CODE activity ranking">

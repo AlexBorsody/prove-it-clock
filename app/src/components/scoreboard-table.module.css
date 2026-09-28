@@ -58,3 +58,5 @@ table.table { min-width:880px;table-layout:fixed; }
 @media(max-width:640px) {
   .tableWrap { overflow-x:auto; }
 }
+.heartsWrap { position: relative; display: inline-block; }
+.heartsChev { position: absolute; right: 0; bottom: 0; min-width: 44px; min-height: 44px; }
