@@ -42,8 +42,8 @@ ChatGPT review; it carries the open visual-treatment questions.
 
 Owner: `codex/expandable-heart-meter`, implementation commit `d960886`.
 Review: [PR #18](https://github.com/AlexBorsody/prove-it-clock/pull/18).
-Synced through main `3ea96a6`; Muse's Cards/List toggle, larger Notify-me
-button, assessment date and removal of the PromiseStats panel are preserved.
+Synced through main `34cfb48`; Muse's Cards/List toggle, separate notification
+card, assessment date and removal of the PromiseStats panel are preserved.
 
 - Added one native disclosure wrapper used on project headers, homepage desktop
   rows/mobile cards and Compare. It renders the existing pixel-heart component
@@ -90,3 +90,11 @@ interaction checks, not hosted data or notification subscription verification.
 The merged production build, including TypeScript, and whitespace checks passed.
 Existing `themeColor` metadata warnings remain. No new unit tests or hosted
 changes were needed for this merge resolution.
+
+### Notification-card integration — September 28
+
+Merged main `34cfb48` in `912d736`. The project hero keeps the expandable
+heart inventory; Muse's two-tier NotifyCard remains below it. The old hero
+Notify-me button was removed, and the Cards/List controls are unchanged.
+TypeScript and whitespace checks passed. No new browser, subscription or hosted
+verification was performed for this markup integration.
