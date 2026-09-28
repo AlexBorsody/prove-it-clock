@@ -35,6 +35,12 @@ export default function NotifyCard({ projectSlug, projectName }: { projectSlug: 
           <p className={styles.tierNote}>Only articles that look like they settle a promise.</p>
         </div>
       </div>
+      <PushSubscribeToggle
+        projectSlug={projectSlug}
+        existingOnly
+        label="Earlier ledger alerts"
+        subscribedLabel="Turn off earlier ledger alerts"
+      />
       <details className={styles.how}>
         <summary>How this works</summary>
         <div className={styles.howBody}>

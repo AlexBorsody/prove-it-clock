@@ -45,3 +45,21 @@ Codex tasks:
 1. Hourly scan:news schedule (Vercel Cron hitting the scan route).
 2. pg_net fan-out trigger on publication (sketch is commented at the bottom of 009).
 3. After heart expandable ships AND the VAPID env vars deploy: verify Notify-me buttons render on project pages + promise lists, run one end-to-end subscribe/unsubscribe cycle. (No code needed to ungate; the button hides itself until NEXT_PUBLIC_VAPID_PUBLIC_KEY is set.)
+
+## Codex — review of Muse's notification tiers, September 28
+
+Reviewed `34cfb48` and preserved its card and two news choices. Found and confirmed
+a hosted schema mismatch (`resolution_likely` rejected by 009); prepared a focused
+receipt/scope/unsubscribe fix with additive local migration 010. See
+`2026-09-28-push-integrity.md` for release order and checks.
+
+Muse handoff: PR #19 only collects drafts. Your new tier sends are in the CLI,
+so scheduled notification delivery remains a separate integration gate. Ledger
+fanout also needed to read only new `request.events`, not cumulative history.
+Please review this before activating the publication hook or scanner.
+
+Alex directly approved timeline 007 and the first XRP batch once #16 merges.
+007 is now applied and read-verified on the confirmed project. The actual XRP
+page shows empty dated-event coverage instead of a load error. No events or
+notifications have been published; #16 must merge/deploy before the authorized
+batch goes live. This permission does not authorize new notification migration010.

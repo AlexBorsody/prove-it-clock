@@ -22,8 +22,9 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { fetchNewsMentions } from '../src/lib/news-mentions';
 import { isSocialSlug } from '../src/lib/social';
 import { HEARTS_METHODOLOGY } from '../src/lib/heart-data';
-import { sendPush, webPushConfigured } from '../src/lib/web-push';
-import { copyForNewsMention, copyForResolutionLikely, type PushSubscriptionRecord } from '../src/lib/push';
+import { webPushConfigured } from '../src/lib/web-push';
+import { deliverPushOnce } from '../src/lib/push-delivery';
+import { copyForNewsMention, copyForResolutionLikely, validateScope, type PushScope, type PushSubscriptionRecord } from '../src/lib/push';
 import {
   aiJudge,
   draftProposals,
@@ -35,6 +36,16 @@ import {
 } from '../src/lib/scan';
 
 const PROPOSAL_DIR = join(__dirname, '..', '..', 'db', 'research', 'scan-proposals');
+
+function matchesScope(subscription: PushSubscriptionRecord, expected: PushScope): boolean {
+  try {
+    const scope = validateScope(subscription.scope);
+    return scope.project_slug === expected.project_slug
+      && scope.lineage === expected.lineage && scope.kind === expected.kind;
+  } catch {
+    return false;
+  }
+}
 
 function env(): { url: string; key: string } | null {
   if (existsSync('.env.local')) process.loadEnvFile('.env.local');
@@ -55,7 +66,7 @@ interface StoredProposal extends DraftProposal {
 }
 
 async function openPromisesByProject(db: SupabaseClient): Promise<Record<string, { name: string; promises: OpenPromise[] }>> {
-  const { data: run } = await db
+  const { data: run, error: runError } = await db
     .from('heart_runs')
     .select('id')
     .eq('review_status', 'published')
@@ -64,6 +75,7 @@ async function openPromisesByProject(db: SupabaseClient): Promise<Record<string,
     .order('recorded_at', { ascending: false })
     .limit(1)
     .maybeSingle();
+  if (runError) throw new Error(`Could not read published ledger: ${runError.message}`);
   if (!run) throw new Error('No published ledger run found');
   const { data: rows, error } = await db
     .from('heart_rankings')
@@ -102,11 +114,12 @@ async function main() {
 
   const creds = env();
   const db = creds ? createClient(creds.url, creds.key, { auth: { persistSession: false, autoRefreshToken: false } }) : null;
-  const canWriteDb = Boolean(creds && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  const canWriteDb = !dryRun && Boolean(creds && process.env.SUPABASE_SERVICE_ROLE_KEY);
 
   let runId: string | null = null;
   if (canWriteDb && db) {
-    const { data } = await db.from('scan_runs').insert({}).select('id').maybeSingle();
+    const { data, error } = await db.from('scan_runs').insert({}).select('id').single();
+    if (error || !data) throw new Error(`Could not start scan run: ${error?.message ?? 'run missing'}`);
     runId = data?.id ?? null;
   }
 
@@ -243,73 +256,56 @@ async function main() {
           }
 
           // News mention push: an observed fact for promise-level followers.
-          if (!dryRun && webPushConfigured() && db) {
+          if (!dryRun && webPushConfigured() && canWriteDb && db) {
             const newsKey = 'news:' + createHash('sha256').update(article.url).digest('hex').slice(0, 32);
-            const { data: subs } = await db
+            const { data: subs, error: subsError } = await db
               .from('push_subscriptions')
               .select('id, endpoint, p256dh, auth, scope')
               .eq('scope->>project_slug', slug)
-              .eq('scope->>lineage', promise.lineage);
-            const { data: done } = await db
-              .from('push_deliveries')
-              .select('subscription_id')
-              .eq('revision_key', newsKey)
-              .eq('kind', 'news_mention');
-            const doneSet = new Set((done ?? []).map((d) => d.subscription_id as string));
+              .eq('scope->>lineage', promise.lineage)
+              .is('scope->>kind', null);
+            if (subsError) throw new Error(`Could not read promise subscriptions: ${subsError.message}`);
             for (const sub of (subs ?? []) as PushSubscriptionRecord[]) {
-              if (doneSet.has(sub.id)) continue;
+              if (!matchesScope(sub, { project_slug: slug, lineage: promise.lineage })) continue;
               const payload = copyForNewsMention(slug, name, promise.lineage, criteriaByProject[slug], article);
-              const result = await sendPush(sub, payload);
-              if (result.gone) {
-                await db.from('push_subscriptions').delete().eq('id', sub.id);
-                continue;
-              }
-              await db.from('push_deliveries').insert({ subscription_id: sub.id, revision_key: newsKey, kind: 'news_mention' });
-              pushesSent++;
+              const result = await deliverPushOnce(db, sub, newsKey, 'news_mention', payload);
+              if (result === 'sent') pushesSent++;
             }
 
             // Coin-level news tiers: "any mention" and "likely decisive".
-            const coinTiers: Array<{ kind: 'news' | 'resolution'; deliveryKind: string }> = [{ kind: 'news', deliveryKind: 'news_mention' }];
+            const coinTiers: Array<{ kind: 'news' | 'resolution'; deliveryKind: 'news_mention' | 'resolution_likely' }> = [{ kind: 'news', deliveryKind: 'news_mention' }];
             if (likelyDecisive) coinTiers.push({ kind: 'resolution', deliveryKind: 'resolution_likely' });
             for (const tier of coinTiers) {
-              const { data: coinSubs } = await db
+              const { data: coinSubs, error: coinSubsError } = await db
                 .from('push_subscriptions')
                 .select('id, endpoint, p256dh, auth, scope')
                 .eq('scope->>project_slug', slug)
-                .eq('scope->>kind', tier.kind);
-              const { data: coinDone } = await db
-                .from('push_deliveries')
-                .select('subscription_id')
-                .eq('revision_key', newsKey)
-                .eq('kind', tier.deliveryKind);
-              const coinDoneSet = new Set((coinDone ?? []).map((d) => d.subscription_id as string));
+                .eq('scope->>kind', tier.kind)
+                .is('scope->>lineage', null);
+              if (coinSubsError) throw new Error(`Could not read news subscriptions: ${coinSubsError.message}`);
               for (const sub of (coinSubs ?? []) as PushSubscriptionRecord[]) {
-                if (coinDoneSet.has(sub.id)) continue;
+                if (!matchesScope(sub, { project_slug: slug, kind: tier.kind })) continue;
                 const payload =
                   tier.kind === 'resolution'
                     ? copyForResolutionLikely(slug, name, promise.lineage, criteriaByProject[slug], article, proposedState || 'decisive')
                     : copyForNewsMention(slug, name, promise.lineage, criteriaByProject[slug], article);
-                const result = await sendPush(sub, payload);
-                if (result.gone) {
-                  await db.from('push_subscriptions').delete().eq('id', sub.id);
-                  continue;
-                }
-                await db.from('push_deliveries').insert({ subscription_id: sub.id, revision_key: newsKey, kind: tier.deliveryKind });
-                pushesSent++;
+                const result = await deliverPushOnce(db, sub, newsKey, tier.deliveryKind, payload);
+                if (result === 'sent') pushesSent++;
               }
             }
           }
         }
       }
     }
+    await flushDbWrites();
   } catch (err) {
     if (canWriteDb && db && runId) {
-      await db.from('scan_runs').update({ finished_at: new Date().toISOString(), error: err instanceof Error ? err.message : String(err) }).eq('id', runId);
+      const { error } = await db.from('scan_runs').update({ finished_at: new Date().toISOString(), error: err instanceof Error ? err.message : String(err) }).eq('id', runId);
+      if (error) throw new Error(`Scan failed and its failure could not be recorded: ${error.message}`, { cause: err });
     }
     throw err;
   }
 
-  await flushDbWrites();
   mkdirSync(PROPOSAL_DIR, { recursive: true });
   const runFile = join(PROPOSAL_DIR, `${stamp}.json`);
   writeFileSync(runFile, JSON.stringify({
@@ -324,13 +320,14 @@ async function main() {
     match_log: matchLog,
   }, null, 2));
   if (canWriteDb && db && runId) {
-    await db.from('scan_runs').update({
+    const { error } = await db.from('scan_runs').update({
       finished_at: new Date().toISOString(),
       projects_checked: projectsChecked,
       articles_seen: articlesSeen,
       proposals_created: proposals.length,
       pushes_sent: pushesSent,
     }).eq('id', runId);
+    if (error) throw new Error(`Could not finish scan run: ${error.message}`);
   }
   console.log(`Scan complete: ${projectsChecked} projects, ${articlesSeen} articles, ${proposals.length} proposals, ${pushesSent} news pushes. Queue: ${runFile}`);
   console.log('Review with: npm run scan:review -- list');
