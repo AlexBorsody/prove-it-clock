@@ -37,6 +37,7 @@ export default async function EvidenceReceiptPage({params,searchParams}:{
   catch { return <section className="panel"><h1>Category revision unavailable</h1><p>This deployment cannot reproduce the category membership in this link.</p></section>; }
   const revision=receiptRevision(data);
   const name=data.nodes.find(node=>node.projectSlug===slug)!.projectName;
+  const filtered=Boolean(selection.group || selection.category || selection.promise);
   return <>
     <section className="panel" style={{overflowWrap:'anywhere'}}>
       <Link href={`/projects/${slug}`}>← {name}</Link>
@@ -50,7 +51,7 @@ export default async function EvidenceReceiptPage({params,searchParams}:{
     </section>
     <section className="panel" aria-labelledby="receipt-records" style={{overflowWrap:'anywhere'}}>
       <h2 id="receipt-records">{selection.group ? GROUP_LABELS[selection.group] : 'Published'} promises{selection.category ? `: ${categoryLabel(selection.category)}` : ''}</h2>
-      <p>{nodes.length} {nodes.length===1 ? 'record' : 'records'}. <Link href={evidenceReceipt(slug,revision)}>View all promises in this run</Link></p>
+      <p>{nodes.length} {nodes.length===1 ? 'record' : 'records'}.{filtered && <> <Link href={evidenceReceipt(slug,revision)}>View all promises in this run</Link></>}</p>
       {!nodes.length && <p>No promises match this receipt.</p>}
       {nodes.map(node=><article key={node.id} id={`receipt-${encodeURIComponent(node.lineageId)}`} style={{borderTop:'1px solid var(--border)',paddingBlock:20}}>
         <h3>{node.claimText}</h3>
