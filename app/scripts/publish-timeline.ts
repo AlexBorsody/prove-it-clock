@@ -27,6 +27,8 @@ async function main() {
   const now = new Date().toISOString();
   for (const event of document.events) {
     if (!event || Object.hasOwn(event, 'recordedAt')) throw new Error('Recording timestamps belong to the database');
+    if (event.kind === 'assessment' && event.note !== undefined &&
+      (typeof event.note !== 'string' || !event.note.trim())) throw new Error('Invalid assessment note');
     for (const date of [event.occurredOn, event.source?.publishedOn]) {
       if (typeof date !== 'string' || date > now.slice(0, date.length)) throw new Error('Missing or future event/source date');
     }

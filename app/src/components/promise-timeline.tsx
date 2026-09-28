@@ -49,6 +49,7 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
                 <p>Recorded state: {prior?.kind==='assessment'&&<><del>{prior.state}</del> → </>}<b>{event.state}</b></p>
                 {event.supersedes&&<p>Correction: {event.correctionReason}. <a href={`#timeline-${event.supersedes}`} onClick={e=>{e.preventDefault();reveal(event.supersedes!);}}>Previous assessment</a></p>}
                 {event.note&&<p><strong>Evidence caveat:</strong> {event.note}</p>}
+                {event.noteUnavailable&&<p role="status">Evidence caveat unavailable: this record contains an unreadable annotation.</p>}
                 <p>Methodology: {event.methodology}</p><p>Published run: {event.runId}</p>
                 <p><Link href={`${evidenceReceipt(data.projectSlug,{runId:event.runId,methodology:event.methodology,assignmentVersion:ASSIGNMENT_VERSION})}#receipt-${encodeURIComponent(event.lineage)}`}>Open the published promise record →</Link></p>
               </>}

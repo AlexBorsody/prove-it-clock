@@ -228,3 +228,16 @@ Notification review found a live schema mismatch for Muse's decisive-news tier
 (`resolution_likely` absent from 009's CHECK). Fixing through a separate focused
 PR; do not conflate news signals with published assessments or assume the
 proposal-only hourly scanner sends the new alerts.
+
+### PR #16 review follow-up — September 28
+
+Integrated main `00377ef`, preserving Muse's current page layout and notification
+card. Addressed the actual optional-note review: unreadable assessment caveats
+now receive a visible data-quality notice instead of hiding all project history;
+the publication CLI rejects malformed new notes. Required event validation and
+the approved three-event XRP batch are unchanged. Deployed 007 needs no rewrite.
+
+Four focused timeline tests, offline batch validation, production build (including
+TypeScript), and diff checks pass. Existing themeColor warnings remain. Release still
+requires this renderer to be merged/deployed before publishing the authorized
+batch and opening its exact revision link. No hosted writes in this review pass.

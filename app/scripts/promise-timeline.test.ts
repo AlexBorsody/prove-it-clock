@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { PGlite } from '@electric-sql/pglite';
 import { eventDateLabel, parseTimelineRow, validEventDate } from '../src/lib/promise-timeline';
 import { readPromiseTimeline } from '../src/lib/promise-timeline-data';
@@ -21,6 +24,27 @@ test('date precision and source safety are preserved by the timeline reader',()=
   assert.equal(parseTimelineRow(row).events[0].occurredOn,'2017-05-16');
   assert.throws(()=>parseTimelineRow({...row,events:[{...row.events[0],source:{...source,url:'javascript:alert(1)'}}]}));
   assert.throws(()=>parseTimelineRow({...row,events:[row.events[0],row.events[0]]}));
+});
+test('malformed optional caveats stay visible without hiding history; publication rejects them',()=>{
+  const directory=mkdtempSync(join(tmpdir(),'timeline-notes-'));
+  try {
+    for(const note of [null,{},'', ' \n\t']) {
+      const event={...assessment,note,recordedAt:revision.recorded_at};
+      const parsed=parseTimelineRow({...revision,events:[event]}).events[0];
+      assert.equal(parsed.kind,'assessment');
+      if(parsed.kind!=='assessment')throw new Error('Assessment lost');
+      assert.equal(parsed.state,assessment.state);
+      assert.equal(parsed.note,undefined);
+      assert.equal(parsed.noteUnavailable,true);
+      assert.deepEqual(event.note,note); // The stored record is not rewritten.
+      const file=join(directory,'invalid.json');
+      writeFileSync(file,JSON.stringify({schema_version:1,revision_key:'bad-note',project_slug:'xrp',
+        ledger_run_id:runA,previous_revision_id:null,author:'Test fixture',events:[{...assessment,note}]}));
+      const result=spawnSync(process.execPath,['--import','tsx','scripts/publish-timeline.ts',file],{encoding:'utf8'});
+      assert.equal(result.status,1,result.stderr);
+      assert.match(result.stderr,/Invalid assessment note/);
+    }
+  } finally {rmSync(directory,{recursive:true,force:true});}
 });
 test('history publication is atomic, append-only, replayable, and bound to real published assessments',async()=>{
   const db=new PGlite();

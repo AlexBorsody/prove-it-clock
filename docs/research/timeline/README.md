@@ -110,3 +110,17 @@ PR #16 was merged locally with current main and retains Muse's notification card
 The PR itself remains unmerged. Publish only after its assessment-caveat renderer
 is deployed, then verify the actual revision link. No history, score, or notification
 was published by this rollout. No notification migration was applied.
+
+## Optional caveat review — September 28, 2026
+
+PR #16's review found that deployed 007 accepts extra event metadata, while the
+new reader initially rejected a malformed optional assessment `note`. A direct
+RPC caller could therefore make otherwise valid history unreadable.
+
+The reader now retains the assessment and flags an unreadable note explicitly in
+the event details. It does not rewrite stored events or silently omit the caveat.
+The publication CLI still rejects non-string or blank notes. Required claims,
+sources, dates, states and correction chains retain their existing validation.
+This resolves the display failure without changing deployed 007 or introducing
+another migration prerequisite for this renderer. The approved XRP batch has a
+valid caveat and is unchanged.
