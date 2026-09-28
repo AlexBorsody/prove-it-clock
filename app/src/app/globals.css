@@ -1287,7 +1287,7 @@ button { padding-block: 6px; padding-inline: 14px; }
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px 6px 2px;
+  padding: 6px 0;
   cursor: pointer;
 }
 .promise-row-head .promise-heart-evidence { min-width: 40px; min-height: 40px; }
