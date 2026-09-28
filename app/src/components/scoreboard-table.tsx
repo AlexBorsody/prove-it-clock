@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES } from "../../data/atlas-taxonomy";
@@ -9,6 +9,7 @@ import { projectFlags } from "@/lib/project-policy";
 import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardCategory, parseBoardSort, sortScoreboard, categoryRanks, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
 import HeartMeter, { CompactHearts } from "@/components/heart-meter";
+import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
@@ -75,17 +76,32 @@ function HypeCell({ mentions, collecting }: { mentions: number | null; collectin
   );
 }
 
-export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: ScoreboardRow[]; asOf?: string; dataRevision?: string }) {
+const BOARD_VIEW_KEY = "pv-board-view";
+
+function defaultBoardView(): BoardView {
+  if (typeof window === "undefined") return "list";
+  try {
+    const saved = window.localStorage.getItem(BOARD_VIEW_KEY);
+    if (saved === "cards" || saved === "list") return saved;
+  } catch {}
+  return window.matchMedia("(max-width: 640px)").matches ? "cards" : "list";
+}
+
+export default function ScoreboardTable({ rows, asOf }: { rows: ScoreboardRow[]; asOf?: string }) {
   const params = useSearchParams();
   const category = parseBoardCategory(params.get("category"));
   const sortKey = parseBoardSort(params.get("sort"), category);
   const categoryLabel = CATEGORIES.find(c => c.id === category)?.short ?? "All projects";
   const headers = HEADERS.filter(header => category || header.key !== 'rank');
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [view, setView] = useState<BoardView>("list");
+  useEffect(() => { setView(defaultBoardView()); }, []);
+  function changeView(v: BoardView) {
+    setView(v);
+    try { window.localStorage.setItem(BOARD_VIEW_KEY, v); } catch {}
+  }
   const sorted = sortScoreboard(rows, sortKey, category);
   const ranks = categoryRanks(rows, category);
-  const unclassified = rows.reduce((sum,r) => sum + (r.delivery?.categories.unclassified.total ?? 0), 0);
-  const unknown = rows.reduce((sum,r) => sum + (r.delivery?.states.unknown ?? 0), 0);
 
   function navigate(changes: Record<string,string>) {
     const url = new URL(window.location.href);
@@ -111,7 +127,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
   }
 
   return (
-    <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
+    <div className={`search-section${view === "list" ? ` ${styles.forceList}` : ` ${styles.forceCards}`}`} {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
       <h2>{category ? `${categoryLabel} delivery` : 'Browse projects'}</h2>
       {!category && <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes.</p>}
       <div className={styles.controls}>
@@ -121,12 +137,10 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
         <label>Sort by<select value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value, category))}>
           {BOARD_SORTS.filter(key => key !== 'use' && (category || key !== 'rank')).map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
         </select></label>
+        <div className={styles.viewToggle}><ViewToggle value={view} onChange={changeView} label="Scoreboard layout" /></div>
       </div>
       {category && <p className={styles.note} role="status">Ranked by recorded promises kept in {categoryLabel}. Equal shares tie; Genesis assets and projects without promises here are unranked. This measures delivery share, not overall value.</p>}
-      <details className={styles.coverage}><summary>Published ledger{asOf ? ` · ${asOf.slice(0,10)}` : ''}</summary>
-        <p>{unclassified} unclassified promises. {unknown} unknown states. Missing context metrics are shown as unavailable and sort last.</p>
-        <p>Data revision: {dataRevision ?? 'unavailable'}. Categories describe subject matter; kept share does not measure the scale or difficulty of a promise.</p>
-      </details>
+      {asOf && <p className={styles.note}>Published ledger · {asOf.slice(0,10)}</p>}
       <div className="table-wrap board-desktop">
         <table className="board">
           <thead>

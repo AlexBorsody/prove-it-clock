@@ -23,7 +23,7 @@ import { fetchNewsMentions } from '../src/lib/news-mentions';
 import { isSocialSlug } from '../src/lib/social';
 import { HEARTS_METHODOLOGY } from '../src/lib/heart-data';
 import { sendPush, webPushConfigured } from '../src/lib/web-push';
-import { copyForNewsMention, type PushSubscriptionRecord } from '../src/lib/push';
+import { copyForNewsMention, copyForResolutionLikely, type PushSubscriptionRecord } from '../src/lib/push';
 import {
   aiJudge,
   draftProposals,
@@ -203,10 +203,23 @@ async function main() {
           if (dbMatchLog.length >= 200) await flushDbWrites();
           if (!matched) continue;
 
+          let likelyDecisive = false;
+          let proposedState = "";
           for (const draft of draftProposals(article, promise, { lineage: promise.lineage, matched: true, reasoning: rule.reasoning })) {
             const key = `${draft.kind}:${slug}:${promise.lineage}:${article.url}`;
-            if (seenProposals.has(key)) continue;
+            if (seenProposals.has(key)) {
+              // Already stored this run: still counts as a decisive signal.
+              if (draft.kind === "assessment") {
+                likelyDecisive = true;
+                proposedState = (draft.payload as { state?: string }).state ?? "";
+              }
+              continue;
+            }
             seenProposals.add(key);
+            if (draft.kind === "assessment") {
+              likelyDecisive = true;
+              proposedState = (draft.payload as { state?: string }).state ?? "";
+            }
             const stored: StoredProposal = {
               ...draft,
               id: `prop-${stamp}-${++propCounter}`,
@@ -253,6 +266,37 @@ async function main() {
               }
               await db.from('push_deliveries').insert({ subscription_id: sub.id, revision_key: newsKey, kind: 'news_mention' });
               pushesSent++;
+            }
+
+            // Coin-level news tiers: "any mention" and "likely decisive".
+            const coinTiers: Array<{ kind: 'news' | 'resolution'; deliveryKind: string }> = [{ kind: 'news', deliveryKind: 'news_mention' }];
+            if (likelyDecisive) coinTiers.push({ kind: 'resolution', deliveryKind: 'resolution_likely' });
+            for (const tier of coinTiers) {
+              const { data: coinSubs } = await db
+                .from('push_subscriptions')
+                .select('id, endpoint, p256dh, auth, scope')
+                .eq('scope->>project_slug', slug)
+                .eq('scope->>kind', tier.kind);
+              const { data: coinDone } = await db
+                .from('push_deliveries')
+                .select('subscription_id')
+                .eq('revision_key', newsKey)
+                .eq('kind', tier.deliveryKind);
+              const coinDoneSet = new Set((coinDone ?? []).map((d) => d.subscription_id as string));
+              for (const sub of (coinSubs ?? []) as PushSubscriptionRecord[]) {
+                if (coinDoneSet.has(sub.id)) continue;
+                const payload =
+                  tier.kind === 'resolution'
+                    ? copyForResolutionLikely(slug, name, promise.lineage, criteriaByProject[slug], article, proposedState || 'decisive')
+                    : copyForNewsMention(slug, name, promise.lineage, criteriaByProject[slug], article);
+                const result = await sendPush(sub, payload);
+                if (result.gone) {
+                  await db.from('push_subscriptions').delete().eq('id', sub.id);
+                  continue;
+                }
+                await db.from('push_deliveries').insert({ subscription_id: sub.id, revision_key: newsKey, kind: tier.deliveryKind });
+                pushesSent++;
+              }
             }
           }
         }

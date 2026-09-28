@@ -128,7 +128,7 @@ a[href^="http"]::after {
 }
 .nav { display: flex; gap: 4px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px; padding: 4px; }
 .nav a {
-  color: var(--text-dim); padding: 8px 16px; border-radius: 10px;
+  color: var(--text-dim); padding: 8px 16px; border-radius: 4px;
   font-size: 14px; font-weight: 700; letter-spacing: 0.03em;
 }
 .nav a:hover { color: var(--text); background: var(--bg-raised); text-decoration: none; }
@@ -427,7 +427,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 }
 .wt-driver-pop .driver-popover-footer { margin-top: 12px; }
 .wt-driver-pop .driver-popover-footer button {
-  font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 10px;
+  font-size: 14px; font-weight: 700; padding: 8px 16px; border-radius: 4px;
   border: 1px solid var(--border-strong); background: transparent;
   color: var(--text); text-shadow: none;
 }
@@ -527,7 +527,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
 .vitals-down p { color: var(--text-dim); font-size: 15px; margin: 0 0 12px; }
 .vitals-retry {
   background: var(--bg-raised); color: var(--text); border: none;
-  border-radius: 10px; padding: 7px 18px; font-weight: 700; font-size: 15px;
+  border-radius: 4px; padding: 7px 18px; font-weight: 700; font-size: 15px;
   cursor: pointer;
 }
 .vitals-retry:hover { background: #1e1e22; }
@@ -638,7 +638,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   border: none;
   color: var(--text-dim);
   font-size: 14px; font-weight: 700;
-  padding: 7px 16px; border-radius: 18px;
+  padding: 7px 16px; border-radius: 4px;
   cursor: pointer;
 }
 .sort-toggle button.active { background: var(--accent); color: #14100a; }
@@ -711,7 +711,7 @@ details.panel.fold > summary.fold-head:hover { color: var(--accent); }
   border: none;
   color: var(--text-dim);
   font-size: 14px; font-weight: 700;
-  padding: 15px 16px; border-radius: 20px;
+  padding: 15px 16px; border-radius: 4px;
   cursor: pointer;
 }
 .compare-picker button:hover:not(:disabled) { background: #263049; color: var(--text); }
@@ -803,7 +803,7 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
   border: none;
   color: var(--text-dim);
   font-size: 14px; font-weight: 700;
-  padding: 7px 16px; border-radius: 18px;
+  padding: 7px 16px; border-radius: 4px;
   cursor: pointer;
 }
 .tl-toggles button.active { background: var(--accent); color: #14100a; }
@@ -824,12 +824,16 @@ table.board.compare td { vertical-align: top; min-width: 170px; }
 /* ---- Clarity rebuild: mobile-first cards, readable type, distinct modules ---- */
 
 /* Scoreboard: dense table on desktop, taller list-cards on phones.
-   Below 640px the table is fully replaced, never a scroll strip. */
+   Below 640px the table is fully replaced, never a scroll strip,
+   unless the view toggle forces the list layout (then it scrolls right). */
 .board-cards { display: none; }
 @media (max-width: 640px) {
   .board-desktop { display: none; }
   .board-cards { display: flex; flex-direction: column; gap: 12px; }
 }
+.board-view-bar { display: flex; justify-content: flex-end; margin: 4px 0 12px; }
+table.board.stocks-board { min-width: 760px; }
+.stocks-status { color: var(--text-dim); font-size: 13px; min-width: 280px; }
 .board-card {
   display: block;
   background: var(--bg-panel);
@@ -1183,10 +1187,21 @@ button { padding-block: 6px; padding-inline: 14px; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: var(--bg-elev); border: 1px solid var(--border-strong);
-  border-radius: 12px; padding: 7px 18px;
+  border-radius: 4px; padding: 7px 18px;
   color: var(--text); font-weight: 800; font-size: 14px;
   text-decoration: none; cursor: pointer; white-space: nowrap;
 }
+/* Big blue primary treatment for the hero Notify-me button. */
+.push-toggle-big {
+  background: var(--blue); border: none; color: #0a0e14;
+  border-radius: 4px; padding: 14px 28px;
+  font-size: 16px; font-weight: 800; min-height: 52px;
+}
+.push-toggle-big[data-subscribed="true"] {
+  background: var(--bg-raised); color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+.push-toggle-big:disabled { opacity: 0.6; cursor: wait; }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: #14100a; }
 /* Mobile: type reads bigger, nothing tiny. */
 @media (max-width: 640px) {

@@ -6,9 +6,10 @@
  * (server only); subscription storage lives in Supabase.
  *
  * Trust rules (from the spec):
- * - Notification triggers are ledger publications only: new promise, new
- *   evidence, published assessment (state change), claim revision. Never
- *   market data, CODE/HYPE metrics, or price moves.
+ * - Notification triggers are ledger publications (new promise, new evidence,
+ *   published assessment, claim revision) and news-scanner matches (any
+ *   mention, or likely-decisive articles). Never market data, CODE/HYPE
+ *   metrics, or price moves.
  * - Push copy is factual: what changed, the evidence link. No price, no
  *   trading advice, no hype language, no em dashes.
  */
@@ -17,6 +18,13 @@ export interface PushScope {
   project_slug: string;
   /** Present for promise-level subscriptions; absent for coin-level. */
   lineage?: string;
+  /**
+   * News tier for coin-level subscriptions; absent for ledger status alerts.
+   * - "news": any news article the scanner matches to a project promise.
+   * - "resolution": only articles the scanner flags as likely decisive
+   *   (proposed fulfilled/lapsed assessment).
+   */
+  kind?: "news" | "resolution";
 }
 
 export interface PushSubscriptionRecord {
@@ -54,7 +62,7 @@ export interface PushPayload {
   tag: string;
 }
 
-export type FanoutKind = "status_change" | "news_mention";
+export type FanoutKind = "status_change" | "news_mention" | "resolution_likely";
 
 export interface PlannedPush {
   subscription: PushSubscriptionRecord;
@@ -82,6 +90,12 @@ export function validateScope(scope: unknown): PushScope {
       throw new Error("scope.lineage must be a valid promise lineage");
     }
     out.lineage = s.lineage;
+  }
+  if (s.kind !== undefined) {
+    if (s.kind !== "news" && s.kind !== "resolution") {
+      throw new Error('scope.kind must be "news" or "resolution"');
+    }
+    out.kind = s.kind;
   }
   return out;
 }
@@ -201,6 +215,9 @@ export function planFanout(
   for (const sub of subscriptions) {
     if (sub.scope.project_slug !== revision.project_slug) continue;
     if (alreadyDelivered.has(sub.id)) continue;
+    // News-tier subscriptions (kind "news" | "resolution") are served by the
+    // news scanner, not by ledger publications.
+    if (sub.scope.kind) continue;
     const relevant = revision.events.filter((e) =>
       sub.scope.lineage ? e.lineage === sub.scope.lineage : true,
     );
@@ -250,5 +267,27 @@ export function copyForNewsMention(
     body: `${article.title} (${article.publisher}) relates to ${label}.`,
     url: promiseDeepLink(projectSlug, lineage),
     tag: `prove-value:news:${projectSlug}:${lineage}:${article.url}`,
+  };
+}
+
+/**
+ * Copy for a news article the scanner flags as likely decisive: the headline
+ * carries explicit delivery/failure language and a fulfilled/lapsed assessment
+ * was drafted (still pending human verification).
+ */
+export function copyForResolutionLikely(
+  projectSlug: string,
+  projectName: string,
+  lineage: string,
+  criteriaByLineage: Record<string, string>,
+  article: { title: string; publisher: string; url: string },
+  proposedState: string,
+): PushPayload {
+  const label = promiseLabel(lineage, criteriaByLineage);
+  return {
+    title: `${projectName}: news may decide a promise`,
+    body: `${article.title} (${article.publisher}) looks like ${proposedState} for ${label}. Human verification pending.`,
+    url: promiseDeepLink(projectSlug, lineage),
+    tag: `prove-value:resolution:${projectSlug}:${lineage}:${article.url}`,
   };
 }

@@ -5,6 +5,7 @@ import {
   validateSubscriptionInput,
   copyForEvent,
   copyForNewsMention,
+  copyForResolutionLikely,
   planFanout,
   promiseDeepLink,
   type LedgerRevision,
@@ -23,8 +24,11 @@ function noEmDash(s: string) {
 test('validateScope accepts coin and promise scopes, rejects junk', () => {
   assert.deepEqual(validateScope({ project_slug: 'link' }), { project_slug: 'link' });
   assert.deepEqual(validateScope({ project_slug: 'link', lineage: 'ship-mainnet' }), { project_slug: 'link', lineage: 'ship-mainnet' });
+  assert.deepEqual(validateScope({ project_slug: 'link', kind: 'news' }), { project_slug: 'link', kind: 'news' });
+  assert.deepEqual(validateScope({ project_slug: 'link', kind: 'resolution' }), { project_slug: 'link', kind: 'resolution' });
   assert.throws(() => validateScope({ project_slug: 'LINK!' }), /project_slug/);
   assert.throws(() => validateScope({ project_slug: 'link', lineage: 'bad lineage!' }), /lineage/);
+  assert.throws(() => validateScope({ project_slug: 'link', kind: 'everything' }), /kind/);
   assert.throws(() => validateScope(null), /object/);
 });
 
@@ -87,6 +91,33 @@ test('planFanout: coin subscriber gets most significant event, promise subscribe
   assert.match(byId['s-a'].payload.title, /new evidence/);
   assert.ok(byId['s-a'].payload.body.includes('Promise A'));
   assert.equal(byId['s-a'].kind, 'status_change');
+});
+
+test('planFanout skips news-tier subscriptions for status changes', () => {
+  const revision: LedgerRevision = {
+    revision_key: 'rev-1',
+    project_slug: 'link',
+    events: [{ id: 'e1', kind: 'assessment', lineage: 'a', state: 'fulfilled' }],
+  };
+  const newsTier = SUB('s-news', { project_slug: 'link', kind: 'news' });
+  const resolutionTier = SUB('s-res', { project_slug: 'link', kind: 'resolution' });
+  const statusTier = SUB('s-coin', { project_slug: 'link' });
+  const planned = planFanout(revision, 'Chainlink', [newsTier, resolutionTier, statusTier], { a: 'Promise A' });
+  assert.equal(planned.length, 1);
+  assert.equal(planned[0].subscription.id, 's-coin');
+});
+
+test('copyForResolutionLikely is factual, no em dash, no trading language', () => {
+  const payload = copyForResolutionLikely(
+    'link', 'Chainlink', 'ship-x', { 'ship-x': 'Ship X' },
+    { title: 'Chainlink ships X mainnet', publisher: 'CoinDesk', url: 'https://example.com/x' },
+    'fulfilled',
+  );
+  noEmDash(payload.title + payload.body);
+  assert.match(payload.title, /may decide a promise/);
+  assert.ok(payload.body.includes('fulfilled'));
+  assert.ok(payload.body.includes('Human verification pending'));
+  assert.ok(!/price|buy|sell|trade|moon|\$/.test(payload.title + payload.body), 'trading language in copy');
 });
 
 test('planFanout respects alreadyDelivered (dedupe)', () => {
