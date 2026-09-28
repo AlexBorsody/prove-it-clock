@@ -44,11 +44,14 @@ export default function HeartMeter({
   capacity,
   size = 22,
   genesis = false,
+  color,
 }: {
   filled: number;
   capacity: number;
   size?: number;
   genesis?: boolean;
+  /** Optional categorical hue; empty hearts keep their neutral treatment. */
+  color?: string;
 }) {
   const earned = Math.max(0, Math.min(filled, capacity));
   return (
@@ -60,7 +63,7 @@ export default function HeartMeter({
     >
       {Array.from({ length: capacity }, (_, i) => {
         return (
-          <span key={i} className={i < earned ? "heart on" : "heart"}>
+          <span key={i} className={i < earned ? "heart on" : "heart"} style={i < earned && color ? { color } : undefined}>
             <PixelHeart genesis={genesis && i < earned} />
           </span>
         );

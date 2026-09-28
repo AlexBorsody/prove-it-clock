@@ -7,6 +7,7 @@ import PushSubscribeToggle from "@/components/push-subscribe-toggle";
 import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import { searchMeta } from "@/lib/search-sections";
 import { normalizePromiseState } from "@/lib/hearts";
+import { CATEGORIES } from "../../data/atlas-taxonomy";
 import {
   promiseAnchor,
   promiseReferences,
@@ -63,6 +64,7 @@ function PromiseRow({
   pr,
   i,
   label,
+  categoryLabel,
   filter,
   evidence,
 }: {
@@ -71,6 +73,7 @@ function PromiseRow({
   pr: any;
   i: number;
   label: string;
+  categoryLabel: string;
   filter: PromiseFilter;
   evidence?: string;
 }) {
@@ -98,7 +101,10 @@ function PromiseRow({
         <Link className="promise-heart-evidence" href={evHref} onClick={stop} aria-label={`${label}: ${h.label}. View evidence`}>
           <Icon name="heart" size={20} filled={h.filled} title={h.label} style={{ color: h.color }} />
         </Link>
-        <span className="promise-row-title">{pr.criteria}</span>
+        <span className="promise-row-copy">
+          <span className="promise-row-title">{pr.criteria}</span>
+          <span className="promise-row-category">{categoryLabel}</span>
+        </span>
         <span className="tag na promise-row-ref">{label}</span>
         <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={evHref} onClick={stop} aria-label={`${label}: ${d.label}. View evidence`}>{d.label}</Link>
         <span className="promise-row-chev"><Icon name="chevron-down" size={18} /></span>
@@ -129,6 +135,7 @@ function PromiseCard({
   pr,
   i,
   label,
+  categoryLabel,
   filter,
   evidence,
 }: {
@@ -137,6 +144,7 @@ function PromiseCard({
   pr: any;
   i: number;
   label: string;
+  categoryLabel: string;
   filter: PromiseFilter;
   evidence?: string;
 }) {
@@ -155,6 +163,7 @@ function PromiseCard({
         <span className="tag na">{label}</span>
         <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${d.label}. View evidence`}>{d.label} ↗</Link>
         {pr.core ? <span className="tag na">Main promise</span> : null}
+        <span className="tag na">{categoryLabel}</span>
         {pr.lineage ? (
           <PushSubscribeToggle projectSlug={slug} lineage={String(pr.lineage)} label="Notify me about this promise" />
         ) : null}
@@ -202,8 +211,8 @@ export default function PromiseList({
     .filter(({ pr }) => !category || (categoryOf?.(pr) ?? "unclassified") === category);
   const renderPromise = ({ pr, i }: { pr: any; i: number }) =>
     view === "list"
-      ? <PromiseRow key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} filter={filter} evidence={evidence} />
-      : <PromiseCard key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} filter={filter} evidence={evidence} />;
+      ? <PromiseRow key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} />
+      : <PromiseCard key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} />;
   return <>
     <div className="promise-view-toggle"><ViewToggle value={view} onChange={changeView} label="Promise layout" /></div>
     {visible.slice(0, PAGE_SIZE).map(renderPromise)}

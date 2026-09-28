@@ -21,7 +21,13 @@ table.table { min-width:880px;table-layout:fixed; }
 .rowActions button { min-width:44px;min-height:44px;padding:6px; }
 .heartButton { flex-direction:column;align-items:flex-start;min-height:44px;max-width:100%;padding:6px 0;margin:0; }
 .heartButton :global(.hearts) { width:100%;flex:none;flex-direction:row; }
-.cards :global(.mcard-hearts-toggle) { max-width:100%;flex-wrap:wrap; }
+.cards :global(.mcard-hearts-toggle) { width:100%;min-height:44px;max-width:100%;margin:0;padding:6px 0;justify-content:space-between; }
+.cards :global(.mcard-hearts-toggle) > :global(.hearts) { flex:1; }
+.cards :global(.mcard-hearts-toggle):focus-visible,.cards :global(.mcard-promises-toggle):focus-visible { outline:2px solid var(--accent);outline-offset:3px; }
+.heartChevron { flex:none;font-size:12px;color:var(--text-dim);padding:8px; }
+.cardPromises { position:relative;z-index:2; }
+.cards :global(.promise-row) { min-width:0;overflow-wrap:anywhere; }
+.cards :global(.promise-row-tags .tag) { max-width:100%;white-space:normal; }
 .cards :global(.hearts) { min-width:0;max-width:100%; }
 .note,.coverage { color:var(--text-dim);font-size:13px;line-height:1.6; }
 .coverage { margin:8px 0 16px;overflow-wrap:anywhere; }
