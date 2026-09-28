@@ -9,8 +9,9 @@ import styles from "./hype-explorer.module.css";
 const names: Record<string, string> = { btc: "Bitcoin", eth: "Ethereum", xrp: "XRP", sol: "Solana", link: "Chainlink", avax: "Avalanche", dash: "Dash", bat: "Basic Attention Token" };
 const date = (value: string) => new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 
-export default function HypeExplorer() {
-  const [slug, setSlug] = useState("btc");
+export default function HypeExplorer({ projectSlug, projectName }: { projectSlug?: string; projectName?: string } = {}) {
+  const [selectedSlug, setSlug] = useState("btc");
+  const slug = projectSlug ?? selectedSlug;
   const [feed, setFeed] = useState<MentionFeed | null>(null);
   const [error, setError] = useState("");
   const [retry, setRetry] = useState(0);
@@ -34,13 +35,13 @@ export default function HypeExplorer() {
 
   return <section className={`panel search-section ${styles.explorer}`} {...searchMeta({ id: "hype-news-sources", title: "Explore news sources", kind: "Hype", keywords: "publishers headlines daily coverage news sources Google News" })}>
     <div className={styles.heading}><div><span className={styles.eyebrow}>Behind the attention</span><h2>Who’s talking?</h2><p className="panel-sub">Explore the headlines, publishers and days behind the news.</p></div><span className={styles.badge}>Rolling 7 days</span></div>
-    <div className={styles.coins} role="group" aria-label="Choose news project">{Object.keys(SOCIAL_SOURCES).map(key => <button key={key} aria-pressed={slug === key} onClick={() => { setSlug(key); reset(); }}><img src={`/icons/${key}.svg`} width={20} height={20} alt="" />{key.toUpperCase()}</button>)}</div>
+    {!projectSlug && <div className={styles.coins} role="group" aria-label="Choose news project">{Object.keys(SOCIAL_SOURCES).map(key => <button key={key} aria-pressed={slug === key} onClick={() => { setSlug(key); reset(); }}><img src={`/icons/${key}.svg`} width={20} height={20} alt="" />{key.toUpperCase()}</button>)}</div>}
     <div aria-live="polite" aria-busy={!feed && !error}>
-      {!feed && !error && <p className={styles.loading}>Loading {names[slug]} news sources…</p>}
+      {!feed && !error && <p className={styles.loading}>Loading {(projectName ?? names[slug] ?? slug.toUpperCase())} news sources…</p>}
       {error && <p role="alert">{error} <button className={styles.reset} onClick={() => setRetry(v => v + 1)}>Try again</button></p>}
     </div>
     {feed && <>
-      <div className={styles.stats}><div><strong>{feed.articles.length}</strong><span>matching headlines</span></div><div><strong>{publishers.length}</strong><span>publishers</span></div><div><strong>{names[slug]}</strong><span>{date(feed.window_start)} – {date(feed.window_end)}</span></div></div>
+      <div className={styles.stats}><div><strong>{feed.articles.length}</strong><span>matching headlines</span></div><div><strong>{publishers.length}</strong><span>publishers</span></div><div><strong>{(projectName ?? names[slug] ?? slug.toUpperCase())}</strong><span>{date(feed.window_start)} – {date(feed.window_end)}</span></div></div>
       <div className={styles.grid}>
         <div><h3>When the coverage happened</h3><p className={styles.hint}>Select a day to read its headlines{publisher ? ` from ${publisher}` : ""}.</p>
           <div className={styles.chart} role="group" aria-label="Articles by publication day in UTC">{days.map(d => <button key={d.day} className={styles.day} aria-pressed={day === d.day} aria-label={`${date(d.day)}: ${d.count} articles`} onClick={() => { setDay(day === d.day ? "" : d.day); setLimit(12); }}><span className={styles.barSpace}><span className={styles.bar} style={{ height: `${Math.max(2, d.count / maxDay * 100)}%` }} /><span className={styles.count}>{d.count}</span></span><span className={styles.date}>{date(d.day)}</span></button>)}</div>

@@ -25,10 +25,20 @@
   flex-wrap: wrap;
 }
 
-.tierNote {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.75;
+/* Both tier buttons: the decisive button's size, the any-news button's blue. */
+.tier :global(.push-toggle) {
+  background: var(--blue);
+  border: none;
+  color: #0a0e14;
+}
+.tier :global(.push-toggle[data-subscribed="true"]) {
+  background: var(--bg-raised);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+.tier :global(.push-toggle:disabled) {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 .how {

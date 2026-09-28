@@ -39,6 +39,15 @@ export default function ProjectSearch({ paths }: { paths: string[] }) {
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    function openFromNavigation() {
+      setExpanded(true); setOpen(true); setActive(0);
+      requestAnimationFrame(() => inputRef.current?.focus());
+    }
+    window.addEventListener("proveit:search", openFromNavigation);
+    return () => window.removeEventListener("proveit:search", openFromNavigation);
+  }, []);
+
+  useEffect(() => {
     if (!expanded) return;
     inputRef.current?.focus();
     return subscribeSearch(paths, setProgress);

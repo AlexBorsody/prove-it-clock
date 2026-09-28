@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import type { StockCompany } from "@/lib/stock-companies";
+import CompareMode, { CompareCheckbox, useCompareSelection } from "@/components/compare-mode";
+import StockCompareTable from "@/components/stock-compare-table";
+import type { StockOverviewRecord } from "@/components/stock-overview-context";
+import styles from "./compare-mode.module.css";
 
 const STOCKS_VIEW_KEY = "pv-stocks-view";
 
@@ -13,8 +17,14 @@ function statusFor(slug: string): string {
     : "Company registered. Claim research for this company has not started yet.";
 }
 
-export default function StockBoard({ companies }: { companies: StockCompany[] }) {
+export default function StockBoard({ companies, records = [] }: { companies: StockCompany[]; records?: StockOverviewRecord[] }) {
   const [view, setView] = useState<BoardView>("cards");
+  const selection = useCompareSelection(companies.map(company => company.slug));
+  const selectedCompanies = selection.selected.map(slug => companies.find(company => company.slug === slug)!);
+  const selectedRecords = selectedCompanies.map(company => ({
+    company,
+    fundamentals: records.find(record => record.company.slug === company.slug)?.fundamentals ?? [],
+  }));
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem(STOCKS_VIEW_KEY);
@@ -34,10 +44,13 @@ export default function StockBoard({ companies }: { companies: StockCompany[] })
       {view === "cards" ? (
         <div>
           {companies.map((company) => (
+            <div key={company.slug} className="comp-row project-card">
+              <div className={styles.stockSelection}>
+                <CompareCheckbox name={company.name} checked={selection.selected.includes(company.slug)} disabled={!selection.canSelect(company.slug)} onChange={() => selection.toggle(company.slug)} />
+              </div>
             <Link
-              key={company.slug}
               href={`/stocks/${company.slug}`}
-              className="comp-row"
+              className="project-card-link"
               style={{ display: "block", textDecoration: "none", color: "inherit" }}
             >
               <div className="comp-name">
@@ -50,6 +63,7 @@ export default function StockBoard({ companies }: { companies: StockCompany[] })
               </div>
               <p className="comp-desc">{statusFor(company.slug)}</p>
             </Link>
+            </div>
           ))}
         </div>
       ) : (
@@ -57,6 +71,7 @@ export default function StockBoard({ companies }: { companies: StockCompany[] })
           <table className="board stocks-board">
             <thead>
               <tr>
+                <th scope="col"><span className="sr-only">Compare</span></th>
                 <th>#</th>
                 <th>Company</th>
                 <th>Sector</th>
@@ -67,6 +82,7 @@ export default function StockBoard({ companies }: { companies: StockCompany[] })
             <tbody>
               {companies.map((company, i) => (
                 <tr key={company.slug}>
+                  <td><CompareCheckbox name={company.name} checked={selection.selected.includes(company.slug)} disabled={!selection.canSelect(company.slug)} onChange={() => selection.toggle(company.slug)} /></td>
                   <td className="num" style={{ color: "var(--text-faint)" }}>{i + 1}</td>
                   <td>
                     <Link href={`/stocks/${company.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
@@ -87,6 +103,9 @@ export default function StockBoard({ companies }: { companies: StockCompany[] })
           </table>
         </div>
       )}
+      <CompareMode selectedLabels={selectedCompanies.map(company => company.name)} onClear={selection.clear}>
+        <StockCompareTable records={selectedRecords} />
+      </CompareMode>
     </>
   );
 }

@@ -5,6 +5,7 @@
  * alert tiers and a collapsible methodology explainer.
  */
 import PushSubscribeToggle from "./push-subscribe-toggle";
+import InfoTip from "./info-tip";
 import styles from "./notify-card.module.css";
 
 export default function NotifyCard({ projectSlug, projectName }: { projectSlug: string; projectName: string }) {
@@ -19,11 +20,10 @@ export default function NotifyCard({ projectSlug, projectName }: { projectSlug: 
           <PushSubscribeToggle
             projectSlug={projectSlug}
             kind="news"
-            big
             label="Any news mention"
             subscribedLabel="News alerts on"
           />
-          <p className={styles.tierNote}>Every article our scanner links to a {projectName} promise.</p>
+          <InfoTip text={`Every article our scanner links to a ${projectName} promise.`} />
         </div>
         <div className={styles.tier}>
           <PushSubscribeToggle
@@ -32,7 +32,7 @@ export default function NotifyCard({ projectSlug, projectName }: { projectSlug: 
             label="Decisive news only"
             subscribedLabel="Decisive alerts on"
           />
-          <p className={styles.tierNote}>Only articles that look like they settle a promise.</p>
+          <InfoTip text="Only articles that look like they settle a promise." />
         </div>
       </div>
       <details className={styles.how}>
