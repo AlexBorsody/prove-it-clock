@@ -1272,6 +1272,45 @@ button { padding-block: 6px; padding-inline: 14px; }
 }
 .promise-show-more:hover { border-color: var(--text-dim); color: var(--text); }
 
+/* Cards/List toggle above the promise list. */
+.promise-view-toggle { display: flex; justify-content: flex-end; margin: 0 0 10px; }
+
+/* Compact promise rows: heart | title | P# | state | chevron. */
+.promise-row {
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--bg-elev);
+  margin: 0 0 8px;
+  overflow: hidden;
+}
+.promise-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 2px;
+  cursor: pointer;
+}
+.promise-row-head .promise-heart-evidence { min-width: 40px; min-height: 40px; }
+.promise-row-title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.promise-row-ref { flex-shrink: 0; }
+.promise-row-head .evidence-link { flex-shrink: 0; padding: 5px 10px; font-size: 12px; }
+.promise-row-chev { flex-shrink: 0; color: var(--text-faint); transition: transform 0.15s ease; }
+.promise-row-head[aria-expanded="true"] .promise-row-chev { transform: rotate(180deg); }
+.promise-row-body { border-top: 1px solid var(--border); padding: 10px 12px 12px; }
+.promise-row-body .comp-desc { margin: 0 0 8px; }
+.promise-row-body .comp-tags { margin: 0 0 8px; }
+.promise-row-body .comp-sources { margin: 0; }
+
 /* The CODE ranking exposes every sort value; project cards remain compact. */
 .code-metrics-four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 640px) {
