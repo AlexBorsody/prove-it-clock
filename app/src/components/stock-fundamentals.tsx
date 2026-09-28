@@ -1,7 +1,9 @@
 import { formatMoneyUsdM, type StockFundamentals } from "@/lib/stock-data";
 import { searchMeta } from "@/lib/search-sections";
+import type { ReactNode } from "react";
+import styles from "./stock-overview-context.module.css";
 
-const METRIC_LABELS: Array<[string, string]> = [
+export const STOCK_METRIC_LABELS: Array<[string, string]> = [
   ["revenueUsdM", "Revenue"],
   ["grossProfitUsdM", "Gross profit"],
   ["grossMarginPct", "Gross margin"],
@@ -13,7 +15,7 @@ const METRIC_LABELS: Array<[string, string]> = [
   ["energyStorageGwh", "Energy storage (GWh)"],
 ];
 
-function formatMetric(key: string, value: number): string {
+export function formatStockMetric(key: string, value: number): string {
   if (key === "grossMarginPct") return `${value}%`;
   if (key === "energyStorageGwh") return `${value} GWh`;
   if (key === "vehicleDeliveries") return value.toLocaleString("en-US");
@@ -22,10 +24,16 @@ function formatMetric(key: string, value: number): string {
 
 /** Reported fundamentals: append-only snapshots from filings, not a
  *  mutable "current" row. Each period cites its source. */
-export default function StockFundamentals({ fundamentals }: { fundamentals: StockFundamentals[] }) {
+export default function StockFundamentals({ fundamentals, compact = false, id = "stock-fundamentals", headerAction }: {
+  fundamentals: StockFundamentals[];
+  compact?: boolean;
+  id?: string;
+  headerAction?: ReactNode;
+}) {
   if (fundamentals.length === 0) {
     return (
-      <div className="panel">
+      <div className="panel" id={id}>
+        {compact && <div className={styles.heading}><h2>Reported fundamentals</h2>{headerAction}</div>}
         <p className="panel-sub" style={{ marginBottom: 0 }}>
           No reported fundamentals captured yet.
         </p>
@@ -33,9 +41,8 @@ export default function StockFundamentals({ fundamentals }: { fundamentals: Stoc
     );
   }
   const ordered = [...fundamentals].sort((a, b) => b.periodEnd.localeCompare(a.periodEnd));
-  return (
-    <div className="panel search-section" {...searchMeta({ id: "stock-fundamentals", title: "Reported fundamentals", kind: "Fundamentals", keywords: "revenue profit cash flow margins" })}>
-      <h2>Reported fundamentals</h2>
+  const table = (
+    <>
       <p className="panel-sub">
         Snapshots from company filings and earnings releases. New periods are added as new snapshots; old ones are never edited.
       </p>
@@ -50,14 +57,14 @@ export default function StockFundamentals({ fundamentals }: { fundamentals: Stoc
             </tr>
           </thead>
           <tbody>
-            {METRIC_LABELS.map(([key, label]) => {
+            {STOCK_METRIC_LABELS.map(([key, label]) => {
               if (!ordered.some((f) => typeof f.metrics[key] === "number")) return null;
               return (
                 <tr key={key}>
                   <th scope="row">{label}</th>
                   {ordered.map((f) => (
                     <td key={f.period}>
-                      {typeof f.metrics[key] === "number" ? formatMetric(key, f.metrics[key]) : "n/a"}
+                      {typeof f.metrics[key] === "number" ? formatStockMetric(key, f.metrics[key]) : "n/a"}
                     </td>
                   ))}
                 </tr>
@@ -73,6 +80,32 @@ export default function StockFundamentals({ fundamentals }: { fundamentals: Stoc
           </li>
         ))}
       </ul>
+    </>
+  );
+  const latest = ordered[0];
+  return (
+    <div className="panel search-section" {...searchMeta({ id, title: "Reported fundamentals", kind: "Fundamentals", keywords: "revenue profit cash flow margins" })}>
+      {compact ? <>
+        <div className={styles.heading}>
+          <div><h2>Reported fundamentals</h2><p className={styles.period}>{latest.period}</p></div>
+          {headerAction}
+        </div>
+        <dl className={styles.stats}>
+          {STOCK_METRIC_LABELS.filter(([key]) => ["revenueUsdM", "netIncomeUsdM", "freeCashFlowUsdM"].includes(key)).map(([key, label]) => (
+            <div key={key}>
+              <dt>{label}</dt>
+              <dd>{typeof latest.metrics[key] === "number" ? formatStockMetric(key, latest.metrics[key]) : "n/a"}</dd>
+            </div>
+          ))}
+        </dl>
+        <details className={styles.details}>
+          <summary>Reported fundamentals</summary>
+          {table}
+        </details>
+      </> : <>
+        <h2>Reported fundamentals</h2>
+        {table}
+      </>}
     </div>
   );
 }

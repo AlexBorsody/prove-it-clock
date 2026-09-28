@@ -1,6 +1,6 @@
 # Home overview restructure — brief for Codex
 
-Date: 2026-09-27. Status: spec only, NOT built. No commit/push without Alex's word.
+Date: 2026-09-27. Status: implementation authorized by Alex on September 28 ("No it's tasks for you"). Built on `codex/home-overview-restructure`; review checkpoint below.
 
 ## Goal
 Subtract tabs, not add them. One home overview page per market. Compare and Metrics stop being tabs.
@@ -38,3 +38,63 @@ Subtract tabs, not add them. One home overview page per market. Compare and Metr
 - Tip + feature-request page (separate brief: docs/tasks/2026-09-27-tip-feature-request-page.md).
 - Auth / user management (deferred; nullable user_id columns already reserved).
 - Any new metrics, any new copy, any new tabs.
+
+
+## Codex implementation checkpoint, September 28
+
+Baseline: `origin/main` `aad5c60`. Work is isolated in
+`/private/tmp/prove-value-home-overview`; Muse's shared checkout is untouched.
+
+- Crypto and Stocks use separate routes and readers under a shared market
+  switcher. Existing Cards/List defaults and saved preferences remain.
+- `/metrics` had no headline dataset; it redirected to `/compare`. The strip
+  therefore reuses existing **selected-asset** context, never sums projects:
+  Crypto shows stars, 90-day commits, saved Hype mentions and market cap;
+  Stocks shows the selected company's latest reported revenue, net income and
+  free cash flow. Missing data stays unavailable. Stock reporting periods and
+  source links remain attached to the figures.
+- Expanded context reuses `CodeRow`, `HypeExplorer` and `StockFundamentals`.
+  News loads only when expanded; its project follows the strip selection.
+- Compare checkboxes share selection across Cards/List, start empty and retain
+  the existing four-asset limit. Two selections reveal the bottom bar; the
+  modal reuses the comparison table. Stock columns use a separate fundamentals
+  contract, including private-company empty states. No crypto fields are
+  synthesized for companies.
+- Context and Compare navigation tabs are removed. Bottom Search opens the
+  existing header search. Legacy `/code`, `/hype` and `/compare` URLs remain;
+  `/metrics` goes to the overview context. Atlas entry and brand icon remain.
+- Categories appear inside expanded cards and as one line in List. The old
+  category selector is removed; category receipt links still open Atlas.
+  Existing sort controls remain, with no new ordering or scoring feature.
+- Copy pass preserves existing cards and comparison text. No new explanatory
+  paragraphs, updated-at stamps or selection-count labels. The old published
+  ledger date above the list is removed. Necessary labels reuse existing words.
+
+Necessary new components: `MarketSwitcher` (route selector), `OverviewContext`
+and `StockOverviewContext` (compact selected-asset context), `CompareMode`
+(shared selection/bar/dialog), and `StockCompareTable` (company-specific cells
+in the existing table's extracted `ComparisonGrid`). Existing renderers and
+formatters are reused. No new dependencies, API endpoints or database changes.
+
+Desktop interaction checks at the browser's 1280px viewport covered both market
+routes, context expansion, a missing private-company record, Cards/List
+selection persistence, the four-selection limit, checkbox selection without
+navigation, comparison contents, Escape/focus return, expanded-card
+categories, and bottom Search focus. Crypto interaction checks used a temporary
+route populated from the checked-in September 26 seed; it was removed before
+building. The unconfigured real local home correctly showed ledger unavailable.
+These are local UI checks, not verification of current hosted data.
+
+Mobile CSS was inspected for wrapping, 44px targets, table scrolling, safe-area
+padding, and bottom-navigation clearance. No mobile viewport emulation was used;
+Alex's phone check remains. Pending heart PR #18 is not merged or replaced by
+this branch; reconcile its wrapper when either PR merges. No production release
+or hosted publication is claimed.
+
+Checks: `npm run build` passed, including TypeScript validation and route
+generation; `git diff --check` passed. The build reports existing themeColor
+metadata warnings. No new test suite or repeated full regression run was added.
+
+Review: [PR #21](https://github.com/AlexBorsody/prove-it-clock/pull/21),
+implementation commit `08db796`. Handoff on PR #18 identifies the overlapping
+heart wrapper work; neither PR was auto-merged.

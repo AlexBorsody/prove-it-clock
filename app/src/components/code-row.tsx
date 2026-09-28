@@ -98,7 +98,7 @@ export default function CodeRow({
         <MetricLink href={`/projects/${r.slug}#project-${r.slug}-code`} label={`${r.name} Code details`} active={activeSort === "commits"}>
           <span className="code-metric-label"><CommitIcon /> Commits</span>
           <span className="code-metric-value num">
-            {r.failed || r.commits90d == null ? "—" : r.commits90d.toLocaleString()}
+            {r.failed || r.commits90d == null ? "-" : r.commits90d.toLocaleString()}
           </span>
           <span className="code-metric-period">{r.failed ? "Unavailable" : "90 days"}</span>
         </MetricLink>
