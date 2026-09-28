@@ -6,6 +6,7 @@ import Icon from "@/components/chrome-icons";
 import PushSubscribeToggle from "@/components/push-subscribe-toggle";
 import { searchMeta } from "@/lib/search-sections";
 import { normalizePromiseState } from "@/lib/hearts";
+import { CATEGORIES } from "../../data/atlas-taxonomy";
 import {
   promiseAnchor,
   promiseReferences,
@@ -76,6 +77,7 @@ export default function PromiseList({
             <span className="tag na">{label}</span>
             <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${d.label}. View evidence`}>{d.label} ↗</Link>
             {pr.core ? <span className="tag na">Main promise</span> : null}
+            <span className="tag na">{CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"}</span>
             {pr.lineage ? (
               <PushSubscribeToggle projectSlug={slug} lineage={String(pr.lineage)} label="Notify me about this promise" />
             ) : null}

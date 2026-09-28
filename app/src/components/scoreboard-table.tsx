@@ -9,6 +9,7 @@ import { projectFlags } from "@/lib/project-policy";
 import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardSort, sortScoreboard, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
 import HeartMeter from "@/components/heart-meter";
+import PromiseCategoryMeters from "@/components/promise-category-meters";
 import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
 import CompareMode, { CompareCheckbox, useCompareSelection } from "@/components/compare-mode";
@@ -178,6 +179,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       <CompareCheckbox name={r.name} checked={selected.includes(r.slug)} disabled={!canSelect(r.slug)} onChange={() => toggleCompare(r.slug)} />
                       <button type="button" className={`expand-btn${expanded === r.slug ? " open" : ""}`}
                         onClick={() => toggleExpand(r.slug)} aria-expanded={expanded === r.slug}
+                        aria-controls={`scoreboard-promises-${r.slug}`}
                         aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}>
                         {expanded === r.slug ? "▲" : "▼"}
                       </button>
@@ -189,11 +191,11 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       className={`hearts-cell-toggle ${styles.heartButton}`}
                       onClick={() => toggleExpand(r.slug)}
                       aria-expanded={expanded === r.slug}
+                      aria-controls={`scoreboard-promises-${r.slug}`}
                       aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
                       title="Show what earned these hearts"
                     >
                       <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
-                      <span className={`num ${styles.heartCount}`}>{r.earned} of {r.capacity} potential</span>
                     </button>}
                   </td>
                   <td role="cell" data-label="Code" className={styles.labeledCell}>
@@ -215,7 +217,8 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                 {expanded === r.slug ? (
                   <tr role="row" key={`${r.slug}-promises`} className={`expand-row ${styles.expandedRow}`}>
                     <td role="cell" colSpan={headers.length}>
-                      <div className="expand-promises">
+                      <div className="expand-promises" id={`scoreboard-promises-${r.slug}`}>
+                        {r.delivery && <PromiseCategoryMeters slug={r.slug} summary={r.delivery} />}
                         <div className="expand-promises-head">
                           All {r.name} promises ({r.promises.length})
                         </div>
@@ -251,13 +254,28 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   className="mcard-hearts-toggle"
                   onClick={() => toggleExpand(r.slug)}
                   aria-expanded={open}
+                  aria-controls={`scoreboard-promises-${r.slug}`}
                   aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
                   title="Show what earned these hearts"
                 >
                   <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
-                  <span className={`num mcard-count ${styles.heartCount}`}>{r.earned}/{r.capacity}</span>
+                  <span className={styles.heartChevron} aria-hidden="true">{open ? "▲" : "▼"}</span>
                 </button>}
               </div>
+              <button
+                className={`mcard-promises-toggle${open ? " open" : ""}`}
+                onClick={() => toggleExpand(r.slug)}
+                aria-expanded={open}
+                aria-controls={`scoreboard-promises-${r.slug}`}
+              >
+                All promises · {r.promises.length} {open ? "▲" : "▼"}
+              </button>
+              {open ? (
+                <div className={`mcard-promises ${styles.cardPromises}`} id={`scoreboard-promises-${r.slug}`}>
+                  {r.delivery && <PromiseCategoryMeters slug={r.slug} summary={r.delivery} />}
+                  <PromiseRows slug={r.slug} promises={r.promises} />
+                </div>
+              ) : null}
               {projectFlags(r.slug).genesis && <p className={styles.genesisBadge}>Genesis asset</p>}
               <section className={styles.context} aria-label={`${r.name} supporting context`}>
               <h3>Supporting context</h3>
@@ -274,19 +292,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                 <span className="mcard-stat num">Market cap · {r.marketCap == null ? "Unavailable" : `$${compactNum.format(r.marketCap)}`}</span>
               </div>
               </section>
-              <button
-                className={`mcard-promises-toggle${open ? " open" : ""}`}
-                onClick={() => toggleExpand(r.slug)}
-                aria-expanded={open}
-              >
-                All promises · {r.promises.length} {open ? "▲" : "▼"}
-              </button>
-              {open ? (
-                <div className="mcard-promises">
-                  {categorySummary(r)}
-                  <PromiseRows slug={r.slug} promises={r.promises} />
-                </div>
-              ) : null}
+
             </div>
           );
         })}

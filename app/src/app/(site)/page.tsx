@@ -49,6 +49,8 @@ export default async function Home() {
     projects.map(async (p) => {
       const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
+      const nodes = atlas?.nodes.filter(node => node.projectSlug === p.slug) ?? [];
+      const categoryByLineage = new Map(nodes.map(node => [node.lineageId, node.primaryCategory]));
       const latest = hypeLatest[p.slug];
       const filledPct = p.capacity > 0 ? p.earned / p.capacity : 0;
       const row: ScoreboardRow = {
@@ -75,13 +77,14 @@ export default async function Home() {
         hypeCollecting: baselineWeeks < 8,
         baselineWeeks,
         promises: promises.map((pr: any) => ({
+          lineage: String(pr.lineage),
+          category: categoryByLineage.get(String(pr.lineage)) ?? null,
           criteria: pr.criteria ?? pr.lineage ?? "Promise",
           state: pr.state ?? "open",
           core: !!pr.core,
           sourceUrl: pr.evidence?.[0]?.url ?? null,
         })),
       };
-      const nodes = atlas?.nodes.filter(node => node.projectSlug === p.slug) ?? [];
       const count = (state: string) => nodes.filter(node => node.state === state).length;
       const comparison: CompareProject = {
         slug: row.slug, name: row.name, symbol: row.symbol,

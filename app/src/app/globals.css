@@ -1126,7 +1126,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   cursor: pointer; color: inherit; font: inherit;
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
 }
-.mcard-hearts-toggle:active { transform: scale(0.97); }
+.mcard-hearts-toggle:active { opacity: 0.8; }
 .api-docs {
   background: #fff; border-radius: 14px; padding: 8px;
   border: 1px solid var(--border-strong); overflow: hidden;
@@ -1137,7 +1137,7 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
   background: none; border: none; padding: 4px 6px; margin: -4px -6px;
   cursor: pointer; color: inherit; font: inherit; text-align: left;
 }
-.hearts-cell-toggle:active { transform: scale(0.97); }
+.hearts-cell-toggle:active { opacity: 0.8; }
 .mcard-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; }
 .mcard-dot { color: var(--text-faint); }
 .mcard-stat { color: var(--text-dim); text-decoration: none; font-weight: 700; }

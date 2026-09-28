@@ -1,7 +1,10 @@
 import ButtonLink from "@/components/button-link";
 import { normalizePromiseState } from "@/lib/hearts";
+import { categoryLabel, type CategoryId } from "../../data/atlas-taxonomy";
 
 export interface PromiseBrief {
+  lineage: string;
+  category: CategoryId | null;
   criteria: string;
   state: string;
   core: boolean;
@@ -34,7 +37,7 @@ export default function PromiseRows({ slug, promises }: { slug: string; promises
   }
   return (
     <div className="promise-rows">
-      {promises.map((pr, i) => {
+      {promises.map((pr) => {
         const d = stateLabel(pr);
         const criteria = pr.sourceUrl ? (
           <a href={pr.sourceUrl} target="_blank" rel="noreferrer" className="promise-row-source">
@@ -44,13 +47,14 @@ export default function PromiseRows({ slug, promises }: { slug: string; promises
           <span className="promise-row-criteria">{pr.criteria}</span>
         );
         return (
-          <div className="promise-row" key={i}>
+          <div className="promise-row" key={pr.lineage}>
             {criteria}
             <span className="promise-row-tags">
               <span className={`tag ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`}>
                 {d.label}
               </span>
               {pr.core ? <span className="tag na">Main promise</span> : null}
+              <span className="tag na">{categoryLabel(pr.category)}</span>
             </span>
           </div>
         );
