@@ -186,13 +186,13 @@ test('matchLineage excludes project-name tokens and price spam', () => {
 test('draftProposals always drafts context evidence; assessment only on explicit signals', () => {
   const promise = { lineage: 'x', criteria: 'Ship the mainnet upgrade' };
   const mk = (title: string) => ({ url: 'u', title, publisher: 'P', published_at: '2026-03-01T00:00:00Z' });
-  const plain = draftProposals(mk('Analysts discuss the mainnet upgrade timeline'), promise, { lineage: 'x', matched: true, reasoning: 'r' });
+  const plain = draftProposals(mk('Analysts discuss the mainnet upgrade timeline'), promise, { lineage: 'x', matched: true, reasoning: 'r', hits: 3 });
   assert.deepEqual(plain.map((p) => p.kind), ['evidence']);
   assert.equal(plain[0].payload.stance, 'context');
-  const launched = draftProposals(mk('Team ships the mainnet upgrade'), promise, { lineage: 'x', matched: true, reasoning: 'r' });
+  const launched = draftProposals(mk('Team ships the mainnet upgrade'), promise, { lineage: 'x', matched: true, reasoning: 'r', hits: 3 });
   assert.ok(launched.some((p) => p.kind === 'assessment' && (p.payload as { state: string }).state === 'fulfilled'));
-  const delayed = draftProposals(mk('Mainnet upgrade delayed to next year'), promise, { lineage: 'x', matched: true, reasoning: 'r' });
+  const delayed = draftProposals(mk('Mainnet upgrade delayed to next year'), promise, { lineage: 'x', matched: true, reasoning: 'r', hits: 3 });
   assert.ok(delayed.some((p) => p.kind === 'assessment' && (p.payload as { state: string }).state === 'lapsed'));
-  const restated = draftProposals(mk('CEO reiterates the mainnet upgrade plan'), promise, { lineage: 'x', matched: true, reasoning: 'r' });
+  const restated = draftProposals(mk('CEO reiterates the mainnet upgrade plan'), promise, { lineage: 'x', matched: true, reasoning: 'r', hits: 3 });
   assert.ok(restated.some((p) => p.kind === 'claim_repeated'));
 });

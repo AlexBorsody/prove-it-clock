@@ -27,6 +27,8 @@ export interface MatchDecision {
   lineage: string | null;
   matched: boolean;
   reasoning: string;
+  /** Promise-specific keyword hits in the headline (before the 2-hit threshold). */
+  hits: number;
 }
 
 export interface DraftProposal {
@@ -65,13 +67,13 @@ export function matchLineage(
   projectTokens: string[] = [],
 ): MatchDecision {
   if (SPAM_TITLE_RE.test(article.title)) {
-    return { lineage: promise.lineage, matched: false, reasoning: "Excluded as price/converter spam; never promise evidence." };
+    return { lineage: promise.lineage, matched: false, hits: 0, reasoning: "Excluded as price/converter spam; never promise evidence." };
   }
   const excluded = new Set(projectTokens.map((t) => t.toLowerCase()));
   const keywords = extractKeywords(promise.criteria + " " + (promise.claimType ?? ""))
     .filter((k) => !excluded.has(k));
   if (keywords.length === 0) {
-    return { lineage: promise.lineage, matched: false, reasoning: "No promise-specific keywords after excluding project-name tokens; skipped." };
+    return { lineage: promise.lineage, matched: false, hits: 0, reasoning: "No promise-specific keywords after excluding project-name tokens; skipped." };
   }
   const haystack = `${article.title} ${article.publisher}`.toLowerCase();
   const hits = keywords.filter((k) => new RegExp(`\\b${k}\\b`).test(haystack));
@@ -79,6 +81,7 @@ export function matchLineage(
   return {
     lineage: promise.lineage,
     matched,
+    hits: hits.length,
     reasoning: matched
       ? `Headline shares ${hits.length} promise-specific keyword(s): ${hits.slice(0, 5).join(", ")}.`
       : `Headline shares ${hits.length} promise-specific keyword(s); below the 2-keyword threshold.`,
@@ -178,6 +181,23 @@ export interface AiJudgment {
   assessment: "fulfilled" | "lapsed" | null;
 }
 
+/** True when the AI judging endpoint is configured. Live scans require it. */
+export function aiConfigured(): boolean {
+  return Boolean(process.env.SCANNER_AI_URL && process.env.SCANNER_AI_API_KEY);
+}
+
+function aiModel(): string {
+  return process.env.SCANNER_AI_MODEL ?? "gpt-4o-mini";
+}
+
+const AI_SYSTEM_PROMPT =
+  "You judge whether a news headline is relevant to tracked promises. " +
+  "Reply with JSON: {\"judgments\": [{\"lineage\": string, \"relevant\": boolean, " +
+  "\"stance\": \"supports\"|\"refutes\"|\"context\", \"reasoning\": string, " +
+  "\"assessment\": \"fulfilled\"|\"lapsed\"|null}]}. One entry per promise, in the same order. " +
+  "Be conservative: relevant only if the headline clearly concerns the promise's subject. " +
+  "Set assessment only on explicit delivery or failure language.";
+
 /**
  * Optional AI relevance judgment. When SCANNER_AI_URL and SCANNER_AI_API_KEY
  * are set, an OpenAI-compatible chat-completions endpoint judges relevance
@@ -189,51 +209,69 @@ export async function aiJudge(
   promise: OpenPromise,
   fetcher: typeof fetch = fetch,
 ): Promise<AiJudgment | null> {
+  const batch = await aiJudgeBatch(article, [promise], fetcher);
+  return batch.get(promise.lineage) ?? null;
+}
+
+/**
+ * Batched AI relevance judgment: ONE model call judges a single article
+ * against every open promise of a project. A scheduled scan cannot afford one
+ * call per (article, promise) pair; batching keeps it to one call per article
+ * that shows any rule-based signal at all.
+ *
+ * Returns a map of lineage -> judgment. Missing entries (parse failures,
+ * unconfigured AI) mean "no AI signal": the caller keeps the rule decision.
+ */
+export async function aiJudgeBatch(
+  article: NewsArticle,
+  promises: OpenPromise[],
+  fetcher: typeof fetch = fetch,
+): Promise<Map<string, AiJudgment>> {
+  const out = new Map<string, AiJudgment>();
   const url = process.env.SCANNER_AI_URL;
   const key = process.env.SCANNER_AI_API_KEY;
-  if (!url || !key) return null;
-  const model = process.env.SCANNER_AI_MODEL ?? "gpt-4o-mini";
+  if (!url || !key || promises.length === 0) return out;
+  const promptPromises = promises
+    .map((p, i) => `${i + 1}. [${p.lineage}] ${p.criteria}`)
+    .join("\n");
   try {
     const res = await fetcher(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
       body: JSON.stringify({
-        model,
+        model: aiModel(),
         temperature: 0,
         response_format: { type: "json_object" },
         messages: [
-          {
-            role: "system",
-            content:
-              "You judge whether a news headline is relevant to a tracked promise. " +
-              "Reply with JSON: {\"relevant\": boolean, \"stance\": \"supports\"|\"refutes\"|\"context\", " +
-              "\"reasoning\": string, \"assessment\": \"fulfilled\"|\"lapsed\"|null}. " +
-              "Be conservative: relevant only if the headline clearly concerns the promise's subject. " +
-              "Set assessment only on explicit delivery or failure language.",
-          },
+          { role: "system", content: AI_SYSTEM_PROMPT },
           {
             role: "user",
-            content: `Promise: ${promise.criteria}\nHeadline: ${article.title}\nPublisher: ${article.publisher}`,
+            content:
+              `Headline: ${article.title}\nPublisher: ${article.publisher}\n\nPromises:\n${promptPromises}`,
           },
         ],
       }),
       signal: AbortSignal.timeout(30_000),
     });
-    if (!res.ok) return null;
+    if (!res.ok) return out;
     const data = (await res.json()) as { choices?: Array<{ message?: { content?: string } }> };
     const content = data.choices?.[0]?.message?.content;
-    if (!content) return null;
-    const parsed = JSON.parse(content) as Partial<AiJudgment>;
-    if (typeof parsed.relevant !== "boolean") return null;
-    const stance = parsed.stance === "supports" || parsed.stance === "refutes" ? parsed.stance : "context";
-    const assessment = parsed.assessment === "fulfilled" || parsed.assessment === "lapsed" ? parsed.assessment : null;
-    return {
-      relevant: parsed.relevant,
-      stance,
-      reasoning: typeof parsed.reasoning === "string" ? parsed.reasoning.slice(0, 500) : "",
-      assessment,
-    };
+    if (!content) return out;
+    const parsed = JSON.parse(content) as { judgments?: Array<Partial<AiJudgment> & { lineage?: string }> };
+    if (!Array.isArray(parsed.judgments)) return out;
+    for (const j of parsed.judgments) {
+      if (typeof j.lineage !== "string" || typeof j.relevant !== "boolean") continue;
+      const stance = j.stance === "supports" || j.stance === "refutes" ? j.stance : "context";
+      const assessment = j.assessment === "fulfilled" || j.assessment === "lapsed" ? j.assessment : null;
+      out.set(j.lineage, {
+        relevant: j.relevant,
+        stance,
+        reasoning: typeof j.reasoning === "string" ? j.reasoning.slice(0, 500) : "",
+        assessment,
+      });
+    }
   } catch {
-    return null;
+    /* no AI signal; caller keeps the rule decision */
   }
+  return out;
 }

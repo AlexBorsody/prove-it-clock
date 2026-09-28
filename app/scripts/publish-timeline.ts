@@ -3,6 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { parseTimelineRow } from '../src/lib/promise-timeline';
+import { fanoutForRevision } from '../src/lib/push-fanout';
+import { webPushConfigured } from '../src/lib/web-push';
 
 async function main() {
   const args = process.argv.slice(2);
@@ -73,5 +75,18 @@ async function main() {
   if (error) throw new Error(`Publication rejected (${error.code}): ${error.message}`);
   if (typeof data !== 'string' || !uuid.test(data)) throw new Error('Publication returned no revision ID');
   console.log(`Published history revision ${data}. Verify /projects/${document.project_slug}?history=${data}#project-${document.project_slug}-timeline`);
+  // Automatic, idempotent notification fan-out. push_deliveries dedupes so a
+  // revision is never notified twice; skipped when Web Push is not configured.
+  if (webPushConfigured()) {
+    try {
+      const summary = await fanoutForRevision(db!, document.revision_key);
+      console.log(`Fan-out: ${summary.sent} pushes sent to ${summary.subscriptions} subscriptions (${summary.removed} stale removed).`);
+    } catch (fanoutError) {
+      console.error(`Fan-out failed (publication is unaffected): ${fanoutError instanceof Error ? fanoutError.message : fanoutError}`);
+      process.exitCode = 1;
+    }
+  } else {
+    console.log('Web Push not configured (VAPID_*); fan-out skipped. Set the VAPID env vars to notify subscribers.');
+  }
 }
 main().catch(error => {console.error(error instanceof Error ? error.message : 'Timeline publication failed'); process.exitCode = 1;});

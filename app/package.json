@@ -58,7 +58,8 @@
     "scan:review": "node --import tsx scripts/review-proposals.ts",
     "vapid:generate": "node --import tsx scripts/generate-vapid.ts",
     "test:push": "node --import tsx --test scripts/push-notifications.test.ts scripts/push-smoke.test.ts",
-    "timeline:publish": "node --import tsx scripts/publish-timeline.ts"
+    "timeline:publish": "node --import tsx scripts/publish-timeline.ts",
+    "test:scan": "node --import tsx --test scripts/scan-runner.test.ts"
   },
   "version": "0.1.0"
 }

@@ -111,3 +111,68 @@ export function parsePagination(url: URL): { page: number; perPage: number } {
   const perPage = Math.min(100, Math.max(1, parseInt(url.searchParams.get("per_page") ?? "20", 10) || 20));
   return { page, perPage };
 }
+
+/**
+ * Status-change feed: recent published ledger events that count as promise
+ * news (new promise, new evidence, published assessment, claim revision).
+ * This is the machine-readable form of the notification feed; consumers poll
+ * it. External webhook registration is undecided and NOT built here.
+ */
+
+export interface StatusChange {
+  project_slug: string;
+  revision_key: string;
+  recorded_at: string;
+  kind: "assessment" | "promise_stated" | "evidence" | "claim_repeated" | "claim_revised";
+  lineage: string | null;
+  state: string | null;
+  summary: string | null;
+  url: string;
+}
+
+const NOTIFIABLE_KINDS = new Set([
+  "assessment",
+  "promise_stated",
+  "evidence",
+  "claim_repeated",
+  "claim_revised",
+]);
+
+export async function getStatusChanges(
+  page: number,
+  perPage: number,
+  projectSlug?: string,
+): Promise<{ items: StatusChange[]; page: number; per_page: number }> {
+  const { getSupabase } = await import("@/lib/supabase");
+  const { promiseDeepLink } = await import("@/lib/push");
+  const db = getSupabase();
+  // Revisions are few; flatten notifiable events in code and slice the page.
+  let query = db
+    .from("promise_history_revisions")
+    .select("revision_key, project_slug, recorded_at, events")
+    .order("recorded_at", { ascending: false })
+    .limit(200);
+  if (projectSlug) query = query.eq("project_slug", projectSlug);
+  const { data, error } = await query;
+  if (error) throw new Error(`Status-change feed unavailable: ${error.message}`);
+  const items: StatusChange[] = [];
+  for (const rev of data ?? []) {
+    for (const e of (rev.events ?? []) as Array<Record<string, unknown>>) {
+      const kind = String(e.kind ?? "");
+      if (!NOTIFIABLE_KINDS.has(kind)) continue;
+      const lineage = typeof e.lineage === "string" ? e.lineage : null;
+      items.push({
+        project_slug: rev.project_slug as string,
+        revision_key: rev.revision_key as string,
+        recorded_at: rev.recorded_at as string,
+        kind: kind as StatusChange["kind"],
+        lineage,
+        state: typeof e.state === "string" ? e.state : null,
+        summary: typeof e.summary === "string" ? e.summary : null,
+        url: promiseDeepLink(rev.project_slug as string, lineage ?? undefined),
+      });
+    }
+  }
+  const start = (page - 1) * perPage;
+  return { items: items.slice(start, start + perPage), page, per_page: perPage };
+}
