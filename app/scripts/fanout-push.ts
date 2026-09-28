@@ -29,12 +29,12 @@ async function main() {
   const result = await fanoutRevisionByKey(revisionKey, { dryRun });
   if (dryRun) {
     console.log(
-      `Dry run: ${result.planned} push(es) planned for revision ${revisionKey} (${result.subscriptions} subscriptions, ${result.alreadyNotified} already notified).`,
+      `Dry run: ${result.planned} push(es) planned for revision ${revisionKey} (${result.subscriptions} subscriptions, ${result.alreadyNotified} accepted by provider, ${result.pending} pending review).`,
     );
     for (const p of result.previews ?? []) console.log(`- [${p.kind}] ${p.payload.title} :: ${p.payload.body}`);
     return;
   }
-  console.log(`Sent ${result.sent} push(es) for revision ${revisionKey} (${result.removed} gone subscriptions removed).`);
+  console.log(`Sent ${result.sent} push(es) for revision ${revisionKey} (${result.removed} gone subscriptions removed, ${result.pending} pending review, ${result.skipped} concurrently reserved).`);
 }
 
 main().catch((error) => {

@@ -95,6 +95,9 @@ export function validateScope(scope: unknown): PushScope {
     if (s.kind !== "news" && s.kind !== "resolution") {
       throw new Error('scope.kind must be "news" or "resolution"');
     }
+    if (s.lineage !== undefined) {
+      throw new Error("scope.kind cannot be combined with scope.lineage");
+    }
     out.kind = s.kind;
   }
   return out;
@@ -178,6 +181,7 @@ export function copyForEvent(
         url,
         tag,
       };
+    case "promise_repeated":
     case "claim_repeated":
       return {
         title: `${projectName}: promise restated`,
@@ -238,6 +242,7 @@ function pickEvent(events: LedgerEvent[]): LedgerEvent | null {
     promise_stated: 1,
     claim_revised: 2,
     evidence: 3,
+    promise_repeated: 4,
     claim_repeated: 4,
   };
   let best: LedgerEvent | null = null;

@@ -37,12 +37,14 @@ interface Props {
   subscribedLabel?: string;
   /** Big blue primary treatment for the hero placement. */
   big?: boolean;
+  /** Allow earlier subscriptions to be turned off without offering new ones. */
+  existingOnly?: boolean;
 }
 
-export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", big = false }: Props) {
+export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", big = false, existingOnly = false }: Props) {
   const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
   const [supported] = useState(
-    () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && vapidKey.length > 0,
+    () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && (existingOnly || vapidKey.length > 0),
   );
   const [subscribed, setSubscribed] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -83,7 +85,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
     void refresh();
   }, [supported, refresh]);
 
-  if (!supported || denied) return null;
+  if (!supported || denied || (existingOnly && !subscribed)) return null;
 
   const toggle = async () => {
     if (busy) return;
@@ -94,15 +96,16 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
       if (kind) scope.kind = kind;
       if (subscribed) {
         const endpoint = endpointRef.current ?? (await browserSubscription().catch(() => null))?.endpoint;
-        if (endpoint) {
-          await fetch("/api/push/unsubscribe", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ endpoint, scope }),
-          });
-        }
+        if (!endpoint) throw new Error("Subscription endpoint is unavailable");
+        const res = await fetch("/api/push/unsubscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ endpoint, scope }),
+        });
+        if (!res.ok) throw new Error("unsubscribe failed");
         setSubscribed(false);
       } else {
+        if (existingOnly) return;
         const permission = await Notification.requestPermission();
         if (permission !== "granted") {
           if (permission === "denied") setDenied(true);

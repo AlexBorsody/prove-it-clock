@@ -10,7 +10,8 @@
  * (app/api/push/fanout/route.ts) that a publication trigger can call.
  */
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { sendPush, webPushConfigured } from './web-push';
+import { webPushConfigured } from './web-push';
+import { deliverPushOnce } from './push-delivery';
 import {
   planFanout,
   type LedgerEvent,
@@ -26,6 +27,8 @@ export interface FanoutSummary {
   sent: number;
   removed: number;
   alreadyNotified: number;
+  pending: number;
+  skipped: number;
 }
 
 async function getSupabase(): Promise<SupabaseClient> {
@@ -43,6 +46,7 @@ async function missingTablesMessage(db: SupabaseClient): Promise<string | null> 
   if (error && error.message.includes('Could not find the table')) {
     return 'Push tables not in the database yet; apply db/migrations/009_push_notifications.sql first.';
   }
+  if (error) throw new Error(`Could not read push subscriptions: ${error.message}`);
   return null;
 }
 
@@ -58,21 +62,28 @@ export async function previewFanout(
 
   const { data: revision, error: revError } = await db
     .from('promise_history_revisions')
-    .select('revision_key, project_slug, ledger_run_id, events')
+    .select('revision_key, project_slug, ledger_run_id, request')
     .eq('revision_key', revisionKey)
     .maybeSingle();
-  if (revError || !revision) throw new Error(`Revision not found: ${revisionKey}`);
+  if (revError) throw new Error(`Could not read history revision: ${revError.message}`);
+  if (!revision) throw new Error(`Revision not found: ${revisionKey}`);
+  const request = revision.request as { events?: LedgerEvent[] } | null;
+  if (!request || !Array.isArray(request.events)) {
+    throw new Error(`History revision ${revisionKey} is missing its published event batch`);
+  }
 
-  const { data: project } = await db.from('projects').select('slug,name').eq('slug', revision.project_slug).maybeSingle();
+  const { data: project, error: projectError } = await db.from('projects').select('slug,name').eq('slug', revision.project_slug).maybeSingle();
+  if (projectError) throw new Error(`Could not read project: ${projectError.message}`);
   const projectName = project?.name ?? revision.project_slug;
 
   const criteriaByLineage: Record<string, string> = {};
-  const { data: snapshot } = await db
+  const { data: snapshot, error: snapshotError } = await db
     .from('heart_snapshots')
     .select('assessment, project_id, projects!inner(slug)')
     .eq('run_id', revision.ledger_run_id)
     .eq('projects.slug', revision.project_slug)
     .maybeSingle();
+  if (snapshotError) throw new Error(`Could not read promise snapshot: ${snapshotError.message}`);
   const promises =
     (snapshot?.assessment as { promises?: Array<{ lineage?: string; criteria?: string }> } | null)?.promises ?? [];
   for (const p of promises) {
@@ -86,17 +97,20 @@ export async function previewFanout(
   if (subError) throw new Error(`Could not read subscriptions: ${subError.message}`);
   const subscriptions = (subs ?? []) as PushSubscriptionRecord[];
 
-  const { data: delivered } = await db
+  const { data: delivered, error: deliveredError } = await db
     .from('push_deliveries')
-    .select('subscription_id')
+    .select('subscription_id, delivery_status')
     .eq('revision_key', revisionKey)
     .eq('kind', 'status_change');
+  if (deliveredError) throw new Error(`Could not read push delivery receipts: ${deliveredError.message}`);
   const alreadyDelivered = new Set((delivered ?? []).map((d) => d.subscription_id as string));
 
   const ledgerRevision: LedgerRevision = {
     revision_key: revision.revision_key,
     project_slug: revision.project_slug,
-    events: (revision.events ?? []) as LedgerEvent[],
+    // The events column is cumulative. Only request.events belongs to this
+    // publication; replaying accumulated assessments would send stale verdicts.
+    events: request.events,
   };
   const planned = planFanout(ledgerRevision, projectName, subscriptions, criteriaByLineage, alreadyDelivered);
   return {
@@ -107,14 +121,16 @@ export async function previewFanout(
       planned: planned.length,
       sent: 0,
       removed: 0,
-      alreadyNotified: alreadyDelivered.size,
+      alreadyNotified: (delivered ?? []).filter((d) => d.delivery_status === 'sent').length,
+      pending: (delivered ?? []).filter((d) => d.delivery_status === 'pending').length,
+      skipped: 0,
     },
   };
 }
 
 /**
- * Send the fan-out for one revision. Idempotent: push_deliveries dedupes so a
- * revision is never notified twice to the same subscription.
+ * Reserve each delivery before sending. Pending attempts need operator review,
+ * rather than automatically retrying an uncertain provider response.
  */
 export async function fanoutForRevision(
   db: SupabaseClient,
@@ -126,21 +142,14 @@ export async function fanoutForRevision(
   }
   let sent = 0;
   let removed = 0;
+  let skipped = 0;
   for (const p of planned) {
-    const result = await sendPush(p.subscription, p.payload);
-    if (result.gone) {
-      await db.from('push_subscriptions').delete().eq('id', p.subscription.id);
-      removed++;
-      continue;
-    }
-    await db.from('push_deliveries').insert({
-      subscription_id: p.subscription.id,
-      revision_key: revisionKey,
-      kind: 'status_change',
-    });
-    sent++;
+    const result = await deliverPushOnce(db, p.subscription, revisionKey, p.kind, p.payload);
+    if (result === 'sent') sent++;
+    else if (result === 'removed') removed++;
+    else skipped++;
   }
-  return { ...summary, sent, removed };
+  return { ...summary, sent, removed, skipped };
 }
 
 /** Convenience entry for callers that want the service-role client built for them. */

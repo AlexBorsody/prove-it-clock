@@ -40,6 +40,16 @@ test('validateSubscriptionInput requires https endpoint and keys', () => {
   assert.throws(() => validateSubscriptionInput({ ...good, p256dh: '' }), /keys/);
 });
 
+test('news tiers cannot be combined with a promise lineage', () => {
+  for (const kind of ['news', 'resolution']) {
+    const scope = { project_slug: 'link', lineage: 'ship-mainnet', kind };
+    assert.throws(() => validateScope(scope), /cannot be combined/);
+    assert.throws(() => validateSubscriptionInput({
+      endpoint: 'https://push.example.com/a', p256dh: 'k1', auth: 'k2', scope,
+    }), /cannot be combined/);
+  }
+});
+
 test('copyForEvent builds factual copy per kind, null for non-notifiable kinds', () => {
   const criteria = { 'ship-x': 'Ship product X' };
   const kinds: Array<[string, RegExp, RegExp]> = [
@@ -47,6 +57,7 @@ test('copyForEvent builds factual copy per kind, null for non-notifiable kinds',
     ['promise_stated', /new promise tracked/, /Ship product X/],
     ['evidence', /new evidence/, /New evidence on/],
     ['claim_repeated', /promise restated/, /was restated/],
+    ['promise_repeated', /promise restated/, /was restated/],
     ['claim_revised', /guidance revised/, /was revised/],
   ];
   for (const [kind, titleRe, bodyRe] of kinds) {
