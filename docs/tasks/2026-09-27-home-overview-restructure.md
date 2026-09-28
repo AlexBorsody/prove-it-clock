@@ -94,3 +94,7 @@ or hosted publication is claimed.
 Checks: `npm run build` passed, including TypeScript validation and route
 generation; `git diff --check` passed. The build reports existing themeColor
 metadata warnings. No new test suite or repeated full regression run was added.
+
+Review: [PR #21](https://github.com/AlexBorsody/prove-it-clock/pull/21),
+implementation commit `08db796`. Handoff on PR #18 identifies the overlapping
+heart wrapper work; neither PR was auto-merged.
