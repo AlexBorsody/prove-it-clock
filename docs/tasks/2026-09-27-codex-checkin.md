@@ -6,6 +6,7 @@
 - Short version: SEC EDGAR (no key, server-side, cached) for fundamentals; FMP free for delayed quotes + statements; Finnhub free for real-time quotes; Alpha Vantage free for forward P/E only. Never invent values for private companies (SpaceX/OpenAI/Anthropic).
 - **Keys you need from Alex (all free, email signup, no card): FMP, Finnhub, Alpha Vantage.** Ask Alex via Habib as soon as you start; do not wait until blocked. Alex knows this is coming and says the integration is critical.
 - **Update 2026-09-27 ~20:12 EDT (Habib, via GitHub): the API keys are in this Google Doc: https://docs.google.com/document/d/1xp5LwFCRh4fRgsH6GzyZrIGAbESZYhKfJ4pneb31eTY/edit?usp=drivesdk** — pull the FMP, Finnhub, and Alpha Vantage keys from there and add them to your secure stores / env yourself. Do not commit keys to the repo.
+- **Update 2026-09-27 ~20:16 EDT (Habib, via GitHub): all three keys (FMP, Finnhub, Alpha Vantage) are now in the doc.** You are unblocked on credentials; pull them and proceed with the integration per the brief.
 
 ## Timeline
 
