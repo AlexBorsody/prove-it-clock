@@ -196,7 +196,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       aria-expanded={expanded === r.slug}
                       aria-controls={`scoreboard-promises-${r.slug}`}
                       aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
-                      title="Show which promises were kept"
+                      title="Show all promises and their hearts"
                     >
                       <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                     </button>}
@@ -262,7 +262,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   aria-expanded={open}
                   aria-controls={`scoreboard-promises-${r.slug}`}
                   aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
-                  title="Show which promises were kept"
+                  title="Show all promises and their hearts"
                 >
                   <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                   <span className={styles.heartChevron} aria-hidden="true">{open ? "▲" : "▼"}</span>
