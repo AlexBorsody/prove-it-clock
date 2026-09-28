@@ -37,19 +37,26 @@ export default function PromiseList({
   promises,
   filter,
   evidence,
+  category = "",
+  categoryOf,
 }: {
   slug: string;
   name: string;
   promises: any[];
   filter: PromiseFilter;
   evidence?: string;
+  /** When set, only promises in this category show. Refs and labels are
+      built from the full list so P-numbers never renumber. */
+  category?: string;
+  categoryOf?: (pr: any) => string | null;
 }) {
   const [expanded, setExpanded] = useState(() => !!evidence);
   useEffect(() => { if (evidence) setExpanded(true); }, [evidence]);
   const refs = promiseReferences(slug, promises);
   const visible = promises
     .map((pr, i) => ({ pr, i }))
-    .filter(({ pr }) => matchesPromiseFilter(pr.state, filter));
+    .filter(({ pr }) => matchesPromiseFilter(pr.state, filter))
+    .filter(({ pr }) => !category || (categoryOf?.(pr) ?? "unclassified") === category);
   const renderPromise = ({ pr, i }: { pr: any; i: number }) => {
       const d = promiseDisplay(pr);
       const h = promiseHeart(pr);

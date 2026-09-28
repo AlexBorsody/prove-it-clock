@@ -10,14 +10,14 @@ import {
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
-import HeartMeter from "@/components/heart-meter";
 import { getPublishedLedger, getPublishedAtlas } from '@/lib/atlas/data';
 import { summarizeDelivery } from '@/lib/promise-verdict';
 import { receiptRevision } from '@/lib/promise-receipts';
-import DeliveryComposition from '@/components/delivery-composition';
 import DocumentedProblems from "@/components/documented-problems";
 import PromiseNews from "@/components/promise-news";
-import { promiseReferences, promiseFilterHref, matchesPromiseFilter, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
+import { promiseReferences, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
+import type { CategoryId } from "../../../../../data/atlas-taxonomy";
+import PromisesPanel from "@/components/promises-panel";
 import MarketPanel from "@/components/market-panel";
 import CodeRow, { type CodeRowData } from "@/components/code-row";
 import { type HypeRow } from "@/components/hype-leaderboard";
@@ -28,7 +28,6 @@ import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-ch
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import NotifyCard from "@/components/notify-card";
-import PromiseList from "@/components/promise-list";
 import ProjectTimeline from '@/components/project-timeline';
 import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
@@ -60,6 +59,14 @@ export default async function ProjectPage({ params, searchParams }: {
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
   const promiseRefs = promiseReferences(slug, promises);
+  // Atlas category per promise lineage, so the category dropdown can
+  // filter the hearts and the promise list to the same population.
+  const categoryByLineage: Record<string, CategoryId | null> = {};
+  if (atlas) {
+    for (const node of atlas.nodes) {
+      if (node.projectSlug === slug) categoryByLineage[String(node.lineageId)] = node.primaryCategory;
+    }
+  }
   const filledPct = latest.capacity > 0 ? latest.earned / latest.capacity : 0;
 
   // Supporting-context ranks: where this project stands among all tracked
@@ -145,9 +152,6 @@ export default async function ProjectPage({ params, searchParams }: {
           <span className="coin-symbol">{latest.symbol}</span>
         </h1>
         {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
-        <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-          <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
-        </div>
         {Number.isFinite(Date.parse(latest.as_of)) && (
           <p className="panel-sub" style={{ marginTop: 10 }}>
             Assessment as of {new Date(latest.as_of).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })}
@@ -165,21 +169,16 @@ export default async function ProjectPage({ params, searchParams }: {
           problems, and the stats. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
-        <h2><span>Promises</span> <InfoTip text={`What ${latest.name} promised, and what actually happened. One promise, one heart: earned by delivery. Open hearts are still unearned.`} /></h2>
-        {atlas && composition && <DeliveryComposition slug={slug} summary={composition} revision={receiptRevision(atlas)}/>}
-        {filter !== "all" && (
-          <p className="promise-filter-status" role="status">
-            {(() => {
-              const n = promises.filter((pr) => matchesPromiseFilter(pr.state, filter)).length;
-              const label = filter === "in-play" ? "active" : filter.replace("-", " ");
-              const showAll = <Link href={promiseFilterHref(slug, "all")}>Show all promises</Link>;
-              return n === 0
-                ? <>No {label} promises yet. {showAll}</>
-                : showAll;
-            })()}
-          </p>
-        )}
-        <PromiseList key={filter} slug={slug} name={latest.name} promises={promises} filter={filter} evidence={query.evidence} />
+        <PromisesPanel
+          slug={slug}
+          name={latest.name}
+          promises={promises}
+          filter={filter}
+          evidence={query.evidence}
+          summary={composition}
+          revision={atlas ? receiptRevision(atlas) : null}
+          categoryByLineage={categoryByLineage}
+        />
         <DocumentedProblems slug={slug} name={latest.name} promises={promises} asOf={latest.as_of} available={latest.availability === "available"} />
       </div>
 
