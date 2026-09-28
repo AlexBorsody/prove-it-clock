@@ -40,7 +40,10 @@ ChatGPT review; it carries the open visual-treatment questions.
 
 ## Codex implementation — September 27
 
-Owner: `codex/expandable-heart-meter`, based on main `a14272a`.
+Owner: `codex/expandable-heart-meter`, implementation commit `d960886`.
+Review: [PR #18](https://github.com/AlexBorsody/prove-it-clock/pull/18).
+Synced through main `f3192d4`; its only addition since validation is Muse's
+Notify-me follow-up task note.
 
 - Added one native disclosure wrapper used on project headers, homepage desktop
   rows/mobile cards and Compare. It renders the existing pixel-heart component
