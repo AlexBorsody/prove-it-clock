@@ -16,6 +16,7 @@ import CompareMode, { CompareCheckbox, useCompareSelection } from "@/components/
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
+import PushSubscribeToggle from "@/components/push-subscribe-toggle";
 import type { CodeWord } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
 
@@ -49,6 +50,7 @@ const HEADERS: Array<{ key: BoardSort | null; label: string }> = [
   { key: null, label: "Usage" },
   { key: "hype", label: "Hype" },
   { key: "market-cap", label: "Market cap" },
+  { key: null, label: "Notify" },
 ];
 
 function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) {
@@ -139,6 +141,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
             <col className={styles.coinColumn} /><col className={styles.heartsColumn} />
             <col className={styles.codeColumn} /><col className={styles.usageColumn} />
             <col className={styles.hypeColumn} /><col className={styles.marketColumn} />
+            <col className={styles.notifyColumn} />
           </colgroup>
           <thead role="rowgroup">
             <tr role="row">
@@ -213,6 +216,9 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                     </Link>
                   </td>
                   <td role="cell" data-label="Market cap" className={`num ${styles.labeledCell}`}>{r.marketCap == null ? "Unavailable" : `$${compactNum.format(r.marketCap)}`}</td>
+                  <td role="cell" data-label="Notify" className={styles.labeledCell}>
+                    <PushSubscribeToggle projectSlug={r.slug} label="Notify me" />
+                  </td>
                 </tr>
                 {expanded === r.slug ? (
                   <tr role="row" key={`${r.slug}-promises`} className={`expand-row ${styles.expandedRow}`}>

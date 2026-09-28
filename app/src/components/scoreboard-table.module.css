@@ -12,6 +12,7 @@ table.table { min-width:880px;table-layout:fixed; }
 .usageColumn { width:86px; }
 .hypeColumn { width:120px; }
 .marketColumn { width:120px; }
+.notifyColumn { width:130px; }
 .table :global(.proj-cell) { align-items:flex-start; }
 .table :global(.proj-cell) > span { min-width:0;overflow-wrap:anywhere; }
 .table :global(.metric-btn) { max-width:100%;white-space:normal;overflow-wrap:anywhere; }
