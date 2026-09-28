@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "revision_key": "xrp-p01-history-2026-09-27-v1",
+  "project_slug": "xrp",
+  "ledger_run_id": "4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85",
+  "previous_revision_id": null,
+  "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
+  "events": [
+    {
+      "lineage": "xrp-p01-bridge-liquidity",
+      "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
+      "id": "xrp-p01-stated-2017-05-16",
+      "kind": "promise_stated",
+      "occurredOn": "2017-05-16",
+      "summary": "Ripple describes XRP as enterprise liquidity for cross-border payments.",
+      "speaker": "Brad Garlinghouse, Ripple",
+      "claimType": "ongoing",
+      "source": {
+        "url": "https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/",
+        "title": "Ripple to Place 55 Billion XRP in Escrow to Ensure Certainty of Total XRP Supply",
+        "publishedOn": "2017-05-16",
+        "locator": "Concluding enterprise-use paragraph"
+      }
+    },
+    {
+      "lineage": "xrp-p01-bridge-liquidity",
+      "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
+      "id": "xrp-p01-evidence-xrapid-2018-10",
+      "kind": "evidence",
+      "occurredOn": "2018-10",
+      "summary": "Ripple reports that xRapid became commercially available, with three named institutions signing on.",
+      "stance": "supports",
+      "provenance": [
+        "Issuer-reported",
+        "The report was published January 25, 2019; it dates the launch to early October 2018.",
+        "Customer sign-ups do not independently establish sustained usage or transaction volume."
+      ],
+      "source": {
+        "url": "https://ripple.com/insights/q4-2018-xrp-markets-report/",
+        "title": "Q4 2018 XRP Markets Report",
+        "publishedOn": "2019-01-25",
+        "locator": "xRapid section"
+      }
+    },
+    {
+      "lineage": "xrp-p01-bridge-liquidity",
+      "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
+      "id": "xrp-p01-assessment-4a84b4a4",
+      "kind": "assessment",
+      "occurredOn": "2026-09-26",
+      "summary": "Ripple's own reports show commercial xRapid customers (2018), two dozen ODL customers with MoneyGram settling in seconds (2019), and $70B+ processed through Ripple Payments across 90+ payout markets (2024).",
+      "runId": "4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85",
+      "methodology": "hearts promise-heart rule v3 (adopted 2026-09-25; one promise = one heart; capacity = promise count)",
+      "state": "fulfilled",
+      "supersedes": null,
+      "source": {
+        "url": "https://prove-it-clock.vercel.app/projects/xrp/evidence?run=4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85&assignments=atlas-assignments-v1#receipt-xrp-p01-bridge-liquidity",
+        "title": "Prove Value published XRP promise record",
+        "publishedOn": "2026-09-26",
+        "locator": "xrp-p01-bridge-liquidity"
+      },
+      "note": "Ripple Payments volume is issuer-reported and must not be read as verified XRP-routed volume."
+    }
+  ]
+}

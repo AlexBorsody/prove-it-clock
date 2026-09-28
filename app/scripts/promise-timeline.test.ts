@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { PGlite } from '@electric-sql/pglite';
 import { eventDateLabel, parseTimelineRow, validEventDate } from '../src/lib/promise-timeline';
 import { readPromiseTimeline } from '../src/lib/promise-timeline-data';
@@ -11,7 +14,7 @@ const source={url:'https://example.org/fictional',title:'Fictional test source',
 const base={lineage:'fixture-promise',summary:'Fictional promise timeline fixture',author:'Test fixture',source};
 const statement={...base,id:'stated',kind:'promise_stated',occurredOn:'2017-05-16',speaker:'Fictional issuer',claimType:'milestone'};
 const evidence={...base,id:'observed',kind:'evidence',occurredOn:'2018-10',stance:'supports',provenance:['Fictional issuer-reported observation; not research']};
-const assessment={...base,id:'assessed',kind:'assessment',occurredOn:'2026-09-26',runId:runA,methodology,state:'open',supersedes:null};
+const assessment={...base,id:'assessed',kind:'assessment',occurredOn:'2026-09-26',runId:runA,methodology,state:'open',supersedes:null,note:'Issuer-reported volume is not independently verified.'};
 const revision={id:'test-revision',project_slug:'xrp',ledger_run_id:runA,recorded_at:'2026-09-27T00:00:00Z'};
 test('date precision and source safety are preserved by the timeline reader',()=>{
   for(const date of ['2015','2018-10','2024-02-29'])assert.equal(validEventDate(date),true);
@@ -21,6 +24,27 @@ test('date precision and source safety are preserved by the timeline reader',()=
   assert.equal(parseTimelineRow(row).events[0].occurredOn,'2017-05-16');
   assert.throws(()=>parseTimelineRow({...row,events:[{...row.events[0],source:{...source,url:'javascript:alert(1)'}}]}));
   assert.throws(()=>parseTimelineRow({...row,events:[row.events[0],row.events[0]]}));
+});
+test('malformed optional caveats stay visible without hiding history; publication rejects them',()=>{
+  const directory=mkdtempSync(join(tmpdir(),'timeline-notes-'));
+  try {
+    for(const note of [null,{},'', ' \n\t']) {
+      const event={...assessment,note,recordedAt:revision.recorded_at};
+      const parsed=parseTimelineRow({...revision,events:[event]}).events[0];
+      assert.equal(parsed.kind,'assessment');
+      if(parsed.kind!=='assessment')throw new Error('Assessment lost');
+      assert.equal(parsed.state,assessment.state);
+      assert.equal(parsed.note,undefined);
+      assert.equal(parsed.noteUnavailable,true);
+      assert.deepEqual(event.note,note); // The stored record is not rewritten.
+      const file=join(directory,'invalid.json');
+      writeFileSync(file,JSON.stringify({schema_version:1,revision_key:'bad-note',project_slug:'xrp',
+        ledger_run_id:runA,previous_revision_id:null,author:'Test fixture',events:[{...assessment,note}]}));
+      const result=spawnSync(process.execPath,['--import','tsx','scripts/publish-timeline.ts',file],{encoding:'utf8'});
+      assert.equal(result.status,1,result.stderr);
+      assert.match(result.stderr,/Invalid assessment note/);
+    }
+  } finally {rmSync(directory,{recursive:true,force:true});}
 });
 test('history publication is atomic, append-only, replayable, and bound to real published assessments',async()=>{
   const db=new PGlite();
@@ -46,6 +70,7 @@ test('history publication is atomic, append-only, replayable, and bound to real 
     ]};
     const nextId=await publish(second);
     const latest=(await db.query<any>('SELECT * FROM promise_history_revisions WHERE id=$1',[nextId])).rows[0];
+    assert.equal(parseTimelineRow(JSON.parse(JSON.stringify(latest))).events.find(e=>e.kind==='assessment')?.note,assessment.note);
     assert.deepEqual(latest.events.slice(0,3),old.events);assert.equal(latest.events.length,5);
     // PostgREST serializes PostgreSQL timestamps as JSON strings.
     assert.equal(parseTimelineRow(JSON.parse(JSON.stringify(latest))).events.length,5);

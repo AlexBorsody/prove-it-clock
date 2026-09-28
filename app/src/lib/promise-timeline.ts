@@ -12,7 +12,7 @@ export type PromiseEvent = EventBase & (
   | {kind:'promise_stated';speaker:string;claimType:'milestone'|'ongoing'}
   | {kind:'promise_repeated';originalId:string;wordingChange:'same'|'narrowed'|'expanded'}
   | {kind:'evidence';stance:'supports'|'refutes'|'context';provenance:string[]}
-  | {kind:'assessment';runId:string;methodology:string;state:string;supersedes:string|null;correctionReason?:string}
+  | {kind:'assessment';runId:string;methodology:string;state:string;supersedes:string|null;correctionReason?:string;note?:string;noteUnavailable?:boolean}
 );
 export interface PromiseTimelineData {
   revisionId:string;projectSlug:string;ledgerRunId:string;recordedAt:string;events:PromiseEvent[];
@@ -35,7 +35,7 @@ function safeUrl(value:unknown):boolean {
   if(typeof value!=='string')return false;
   try {const url=new URL(value);return ['http:','https:'].includes(url.protocol)&&!url.username&&!url.password;}catch{return false;}
 }
-/** Fail visibly on malformed history; never turn missing records into a zero-failure result. */
+/** Required history fields fail closed; an unreadable optional caveat stays visibly flagged. */
 export function parseTimelineRow(row:unknown):PromiseTimelineData {
   if(!row || typeof row!=='object')throw new Error('Invalid timeline revision');
   const r=row as Record<string,unknown>;
@@ -53,7 +53,13 @@ export function parseTimelineRow(row:unknown):PromiseTimelineData {
       if(!nonempty(e.runId)||!nonempty(e.methodology)||!['open','fulfilled','lapsed','retired'].includes(e.state)||!(e.supersedes===null||nonempty(e.supersedes)))throw new Error('Invalid assessment');
       if(e.supersedes&&(!nonempty(e.correctionReason)||!events.some(p=>p.id===e.supersedes&&p.lineage===e.lineage&&p.kind==='assessment')||events.some(p=>p.kind==='assessment'&&p.supersedes===e.supersedes)))throw new Error('Invalid correction chain');
     }
-    ids.add(e.id);events.push(e);
+    ids.add(e.id);
+    // 007 permits extra event metadata. A malformed optional annotation must not
+    // hide its otherwise valid history, or be passed to React as an object.
+    events.push(e.kind==='assessment'?{...e,
+      note:nonempty(e.note)?e.note:undefined,
+      noteUnavailable:e.note!==undefined&&!nonempty(e.note),
+    }:e);
   }
   return {revisionId:r.id,projectSlug:r.project_slug,ledgerRunId:r.ledger_run_id,recordedAt:r.recorded_at,events};
 }

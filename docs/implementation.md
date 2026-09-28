@@ -88,8 +88,13 @@ A missing revision or database failure never becomes an empty history.
    PostgreSQL fixtures are not research acceptance or hosted schema verification.
 2. Apply 007 to the explicitly confirmed Supabase target through the established
    migration process. No target is guessed or changed by this task.
-3. Review and publish the first real event batch through the RPC. Original
-   Codius sourcing and a real correction pair remain editorial handoffs.
+3. Review and publish the first real event batch through the RPC. The
+   [XRP draft and release commands](research/timeline/README.md) provide three
+   sourced events. `npm run timeline:publish -- batch.json` validates offline;
+   `--check` reads the published run/parent, while `--publish --target=URL`
+   explicitly writes to the matching configured target. RPC checks remain
+   authoritative. Missing Codius sourcing and a real correction pair remain
+   separate editorial handoffs, not blockers for independently sourced events.
 4. Check the public project timeline against that revision. Before migration it
    reports unavailable; after migration and before publication it reports empty
    coverage. Neither condition claims a project failed or did nothing.

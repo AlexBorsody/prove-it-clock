@@ -1,5 +1,37 @@
 # Timeline foundation: event taxonomy and worked examples — 2026-09-27
 
+## Current handoff — refined September 27
+
+Owner: Codex, [PR #16](https://github.com/AlexBorsody/prove-it-clock/pull/16),
+`codex/timeline-completion`, integrated with main `e55334a`.
+
+- Built: immutable history schema/read path (merged #15), publication CLI,
+  three-event XRP draft and an assessment caveat visible in event details (#16).
+- Verified locally: real XRP draft accepted by SQL publisher/reader; existing
+  three timeline checks passed. Initial live inspection showed unavailable
+  history, not a populated timeline. No hosted apply/publication is claimed.
+- Remaining: editorial acceptance of the amended batch, confirmed database
+  access and authorized hosted rollout, then inspect the actual pinned revision.
+  Commands and source review live in `docs/research/timeline/README.md`.
+- PR comment 5860919886 relays hosted authorization. Automatic approval review
+  rejected using that comment to authorize recurring hosted writes. Direct
+  confirmation was requested in the task; do not describe this as already applied
+  or work around the rejection. Code review can continue independently.
+- After timeline: adapt Muse's existing stocks implementation on main. PR #17
+  discussion assigns company work to Codex and requests company categories;
+  preserve the full authoritative stocks brief rather than the older duplicate
+  scope proposal. Do not infer a crypto ranking change from company discussions.
+
+Refinement: preflight now checks history-table availability even for a first
+batch and supports read-only credentials. A localhost smoke check confirmed
+missing-table rejection and GET-only behavior. The three existing timeline
+tests and TypeScript pass with the current lockfile installed in the isolated
+worktree; shared dependencies were not changed. Duplicate stocks draft PR #17
+is closed; its review remains preserved, and main owns the company brief.
+
+The original brief and historical checkpoints follow. This section is the
+current status; older pending/merged wording below is historical.
+
 The timeline visualization is now the headline build. This brief defines the
 event model it renders, with worked examples from real ledger data. The legacy
 v0.2.0 timeline is not the base; the event model below is.
@@ -179,3 +211,33 @@ repeated. The prior preview reports Ready in Vercel's PR status; this is not
 hosted database or event-data verification. No new review comments or research
 handoff arrived. Codex retains #15; Muse's source/schema handoff above is pending.
 The shared checkout and its untracked `.vscode/` remain untouched.
+
+### Hosted storage restored — 2026-09-28 03:28 UTC
+
+Alex directly authorized migration 007 and the first three-event XRP batch once
+PR #16 merges, with Muse's notification commit checked first. Integrated main
+`34cfb48` into the timeline branch without changing the notification card.
+Applied unchanged 007 to verified Supabase project `tbigzpztybuvogpeflao`. SQL
+confirmed table/function, public read and service-only publication, and zero
+revisions. Live `/projects/xrp` now shows honest empty coverage instead of a
+load failure. The batch remains unpublished until #16's caveat renderer merges
+and is deployed. No scoring changes or push trigger activation. Details and
+checks are in `docs/research/timeline/README.md`.
+
+Notification review found a live schema mismatch for Muse's decisive-news tier
+(`resolution_likely` absent from 009's CHECK). Fixing through a separate focused
+PR; do not conflate news signals with published assessments or assume the
+proposal-only hourly scanner sends the new alerts.
+
+### PR #16 review follow-up — September 28
+
+Integrated main `00377ef`, preserving Muse's current page layout and notification
+card. Addressed the actual optional-note review: unreadable assessment caveats
+now receive a visible data-quality notice instead of hiding all project history;
+the publication CLI rejects malformed new notes. Required event validation and
+the approved three-event XRP batch are unchanged. Deployed 007 needs no rewrite.
+
+Four focused timeline tests, offline batch validation, production build (including
+TypeScript), and diff checks pass. Existing themeColor warnings remain. Release still
+requires this renderer to be merged/deployed before publishing the authorized
+batch and opening its exact revision link. No hosted writes in this review pass.
