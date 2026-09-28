@@ -1,8 +1,10 @@
 # Tip + Feature Request Page — brief for Codex
 
 Date: 2026-09-27. Submitted to Codex's task queue: 2026-09-28.
-Status: spec only, NOT built. Blocker unchanged: fresh receive addresses
-per currency still needed from Alex (see below).
+Status: spec only, NOT built.
+Update 2026-09-28 (Alex): QR codes / the whole tip block is DEFERRED —
+Alex handles that later. Build the feature-request form NOW; it has no
+blockers. Do not hold the form up waiting on tip addresses.
 
 ## Concept
 One page (suggested route `/support`) with two parts:
@@ -11,7 +13,10 @@ One page (suggested route `/support`) with two parts:
 
 Positioning: tips are a *signal*, never a purchase. Alex builds whatever he wants. No paywall framing anywhere.
 
-## Tip block
+## Tip block — DEFERRED (Alex, 2026-09-28)
+Do not build this yet. Alex is handling QR codes / addresses himself and
+will bring them later. The feature-request form ships without it. The spec
+below is kept for when he returns with the addresses.
 - Launch currency set: BTC, ETH, LTC, XMR, SOL, USDC (Ethereum), DASH, BAT, AVAX, LINK. Alex trims/extends.
 - Each currency card: QR code (generated from address, never fetched "from Bitcoin" anywhere), address with copy button, live tally "N tips · X received".
 - Tallies are automatic via block explorer APIs (Blockchair for BTC/LTC/DASH, Etherscan-family for ETH + ERC-20s, etc.), cached server-side. No manual counting. The proof is the chain.
