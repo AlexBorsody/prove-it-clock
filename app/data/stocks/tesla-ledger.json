@@ -112,9 +112,10 @@
           "occurredOn": "2024-10-23",
           "source": {
             "publishedOn": "2025-05",
-            "quote": "last year Musk Tesla's CEO Elon Musk said that the company's 2025 deliveries might rise by as mush as 30% as it prepares to launch new vehicles.",
+            "quote": "Musk's 20-30% 2025 delivery growth figure (Q3 2024 earnings call, Oct 23, 2024).",
             "title": "Economy Watch: Tesla Q4 2024 deck coverage (quotes the earlier Musk forecast)",
-            "url": "https://www.economywatch.com/news/pennsylvania-pension-fund-blocks-new-investments-in-tesla-stock"
+            "url": "https://www.economywatch.com/news/pennsylvania-pension-fund-blocks-new-investments-in-tesla-stock",
+            "locator": "Primary: Q3 2024 earnings call transcript (Oct 23, 2024), ir.tesla.com webcast archive"
           },
           "speaker": "Elon Musk",
           "speakerCapacity": "CEO on Q3 2024 earnings call",
@@ -122,7 +123,8 @@
           "summary": "Musk said 2025 vehicle deliveries could rise by as much as 30% year over year.",
           "targetValue": "up to 30% growth (about 2.33 million)",
           "recordedAt": "2026-09-27",
-          "sourceType": "earnings-call"
+          "sourceType": "earnings-call",
+          "revisionReason": "Claim verified against the primary Q3 2024 earnings call transcript; garbled secondary quote replaced Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -132,12 +134,12 @@
           "lineage": "2025-delivery-guidance",
           "metric": "annual vehicle deliveries",
           "occurredOn": "2025-01-29",
-          "revisionReason": "Company replaced the up-to-30% figure with directional guidance in the Q4 2024 shareholder deck.",
+          "revisionReason": "Source upgraded from secondary coverage to the primary Tesla shareholder deck PDF (verified live) Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md).",
           "source": {
-            "publishedOn": "2025-01",
+            "publishedOn": "2025-01-29",
             "quote": "With the advancements in vehicle autonomy and the introduction of new products, we expect the vehicle business to return to growth in 2025.",
-            "title": "Tesla Q4 2024 shareholder deck coverage (quotes the outlook)",
-            "url": "https://poland.co.pl/tesla-spikes-despite-soft-q4-results-on-pledge-to-return-to-growth-in-2025-27033129.html"
+            "title": "Tesla Q4 and FY 2024 Update — shareholder deck (Jan 29, 2025)",
+            "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA-Q4-2024-Update.pdf"
           },
           "summary": "Tesla toned the forecast down in its Q4 2024 shareholder deck: the vehicle business would return to growth in 2025, without a number.",
           "supersedes": "tsla-2025-delivery-guidance-stated",
@@ -151,12 +153,13 @@
           "kind": "claim_revised",
           "lineage": "2025-delivery-guidance",
           "occurredOn": "2025-04-22",
-          "revisionReason": "Guidance withdrawn amid uncertainty over shifting global trade policy and its impact on supply chains, cost structure, and demand.",
+          "revisionReason": "Claim verified against the primary Q1 2025 earnings release Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md).",
           "source": {
             "publishedOn": "2025-05",
             "quote": "It is difficult to measure the impacts of shifting global trade policy on the automotive and energy supply chains, our cost structure and demand for durable goods and related services. We will revisit our 2025 guidance in our Q2 update.",
             "title": "Economy Watch: Tesla Q1 2025 earnings release coverage",
-            "url": "https://www.economywatch.com/news/pennsylvania-pension-fund-blocks-new-investments-in-tesla-stock"
+            "url": "https://www.economywatch.com/news/pennsylvania-pension-fund-blocks-new-investments-in-tesla-stock",
+            "locator": "Primary: Tesla Q1 2025 earnings release (Apr 22, 2025), Tesla IR press release — 'We will revisit our 2025 guidance in our Q2 update'"
           },
           "summary": "Tesla effectively withdrew the 2025 delivery guidance in its Q1 2025 earnings release, saying it would revisit guidance in the Q2 update.",
           "supersedes": "tsla-2025-delivery-guidance-revised-1",
@@ -175,11 +178,13 @@
             "publishedOn": "2026-01-02",
             "quote": "Tesla delivered 1,636,129 vehicles in 2025, down 8.6% from 1,789,226 deliveries in 2024. This marks the second consecutive year of declining deliveries.",
             "title": "StockTitan: Tesla Q4 2025 deliveries and quarterly history",
-            "url": "https://www.stocktitan.net/articles/tesla-q4-2025-deliveries-quarterly-history-analysis"
+            "url": "https://www.stocktitan.net/articles/tesla-q4-2025-deliveries-quarterly-history-analysis",
+            "locator": "Primary: Tesla Q4 2025 production & delivery report (Jan 2, 2026), ir.tesla.com press release — 1,636,129 delivered in 2025 vs 1,789,226 in 2024, down 8.6%"
           },
           "stance": "refutes",
           "summary": "Tesla delivered 1,636,129 vehicles in 2025, down 8.6% from 1,789,226 in 2024. A second straight annual decline.",
-          "recordedAt": "2026-09-27"
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Outcome verified against the primary Tesla Q4 2025 production & delivery report Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -202,7 +207,8 @@
       "id": "2025-delivery-guidance",
       "tags": [],
       "title": "2025 vehicle delivery guidance and revisions",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "Under the final operative claim (return to growth in 2025), Tesla delivers more vehicles in 2025 than the 1,789,226 delivered in 2024. Result: 1,636,129 delivered (down 8.6%) — missed on the numbers. Grading note: the claim was withdrawn mid-year; whether to grade this lineage as withdrawn rather than missed is an editorial decision pending."
     },
     {
       "claimCategory": "Financial Guidance",
@@ -217,17 +223,19 @@
           "occurredOn": "2023-01-25",
           "source": {
             "publishedOn": "2023-01-26",
-            "quote": "The company's annual guidance is for 1.8 million cars produced in 2023, but 2 million might be possible, depending on external factors.",
+            "quote": "For 2023, we expect to remain ahead of the long-term 50% CAGR with around 1.8 million vehicles for the year.",
             "title": "TeslaNorth: Tesla Q4 2022 earnings call transcript",
-            "url": "https://teslanorth.com/2023/01/26/tesla-q4-2022-earnings-call-transcript-demand-at-all-time-high-says-musk/"
+            "url": "https://teslanorth.com/2023/01/26/tesla-q4-2022-earnings-call-transcript-demand-at-all-time-high-says-musk/",
+            "locator": "Primary: Tesla Q4 2022 shareholder deck (Jan 25, 2023), Outlook/Volume section — sentence sits in a production paragraph; production framing confirmed by Musk's on-call words ('our internal production potential is actually closer to 2 million vehicles, but we were saying 1.8 million')"
           },
           "speaker": "Elon Musk",
           "speakerCapacity": "CEO on Q4 2022 earnings call",
           "speakerRole": "CEO",
-          "summary": "Tesla guided to about 1.8 million vehicles produced in 2023 on its Q4 2022 earnings call.",
+          "summary": "Tesla guided to around 1.8 million vehicles for 2023 on its Q4 2022 earnings call — framed around production ('we were saying 1.8 million' against ~2M internal production potential), not deliveries.",
           "targetValue": "1.8 million (2 million possible on external factors)",
           "recordedAt": "2026-09-27",
-          "sourceType": "earnings-call"
+          "sourceType": "earnings-call",
+          "revisionReason": "Framing corrected: the original 1.8M target was production-anchored (deck Outlook/Volume section; Musk: 'we were saying 1.8 million' against ~2M internal production potential) Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -238,13 +246,15 @@
           "originalId": "tsla-2023-delivery-guidance-stated",
           "source": {
             "publishedOn": "2023-10-22",
-            "quote": "During the Q3 2023 Earnings Call, Tesla CEO Elon Musk said that the automaker is still seeking to achieve its original vehicle delivery target of 1.8 million vehicles this year.",
+            "quote": "we continue to target expect to have around 1.8 million vehicle deliveries as stated earlier this year",
             "title": "Tesla Oracle: Q3 2023 earnings call coverage",
-            "url": "https://www.teslaoracle.com/2023/10/22/tsla-quarter-q4-2023-to-deliver-1-8m-vehicles-in-2023-q3-earnings-call-more/"
+            "url": "https://www.teslaoracle.com/2023/10/22/tsla-quarter-q4-2023-to-deliver-1-8m-vehicles-in-2023-q3-earnings-call-more/",
+            "locator": "Primary: Q3 2023 earnings call transcript (Oct 18, 2023), Musk opening remarks"
           },
-          "summary": "Musk reiterated the original 1.8 million delivery target on the Q3 2023 earnings call.",
+          "summary": "On the Q3 2023 earnings call (Oct 18, 2023), Musk restated the 1.8M target as deliveries — shifting it from the original production framing to a deliveries target.",
           "wordingChange": "same",
-          "recordedAt": "2026-09-27"
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Lineage evolution recorded explicitly: production target (Jan 2023) restated as a deliveries target (Oct 2023) Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -256,14 +266,15 @@
             "Tesla Q4 2023 production and delivery report"
           ],
           "source": {
-            "publishedOn": "2024-01-23",
-            "quote": "Tesla had been aiming for 1.8 million deliveries for the whole year.",
-            "title": "Electrek: Tesla Q4 2023 earnings preview (delivery figures)",
-            "url": "https://www.electrek.co/2024/01/23/tesla-tsla-earnings-preview-q4-2023/?extended-comments=1"
+            "publishedOn": "2024-01-24",
+            "quote": "2023 production 1,845,985; deliveries 1,808,581.",
+            "title": "Tesla Q4 and FY 2023 Update — shareholder deck, operational summary (Jan 24, 2024)",
+            "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA-Q4-2023-Update.pdf"
           },
           "stance": "supports",
-          "summary": "Tesla delivered 1,808,581 vehicles in 2023, in line with the 1.8 million guidance.",
-          "recordedAt": "2026-09-27"
+          "summary": "Tesla produced 1,845,985 and delivered 1,808,581 vehicles in 2023 — both metrics cleared 1.8M, so the target was met under either the original production framing or the restated deliveries framing.",
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Source upgraded from secondary (Electrek) to the primary Tesla deck with verified actuals Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -286,7 +297,8 @@
       "id": "2023-delivery-guidance",
       "tags": [],
       "title": "2023 vehicle delivery guidance",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "Tesla produces at least 1.8 million vehicles in 2023 (original framing), or delivers at least 1.8 million vehicles in 2023 (restated Oct 2023 framing). Result: 1,845,985 produced / 1,808,581 delivered — fulfilled under both."
     },
     {
       "claimCategory": "Financial Guidance",
@@ -301,17 +313,18 @@
           "occurredOn": "2024-01-24",
           "source": {
             "publishedOn": "2024-01-24",
-            "quote": "In 2024, our vehicle volume growth rate may be notably lower than the growth rate achieved in 2023, as our teams work on the launch of the next-generation vehicle at Gigafactory Texas.",
-            "title": "Shacknews: Tesla Q4 2023 earnings results and conference call transcript",
-            "url": "https://www.shacknews.com/article/138433/tesla-tsla-q4-2023-earnings-call-transcript"
+            "quote": "Our company is currently between two major growth waves: the first one began with the global expansion of the Model 3/Y platform and the next one we believe will be initiated by the global expansion of the next-generation vehicle platform. In 2024, our vehicle volume growth rate may be notably lower than the growth rate achieved in 2023, as our teams work on the launch of the next-generation vehicle at Gigafactory Texas.",
+            "title": "Tesla Q4 and FY 2023 Update — shareholder deck, Outlook p.12 (Jan 24, 2024)",
+            "url": "https://digitalassets.tesla.com/tesla-contents/image/upload/IR/TSLA-Q4-2023-Update.pdf"
           },
           "speaker": "Tesla, Inc.",
           "speakerCapacity": "Q4 2023 shareholder deck and earnings call",
           "speakerRole": "Company",
-          "summary": "Tesla warned 2024 vehicle volume growth would be notably lower than the 38% achieved in 2023, as teams worked on the next-generation vehicle at Gigafactory Texas.",
+          "summary": "Tesla warned 2024 vehicle volume growth 'may be notably lower' than 2023's 37.7% delivery growth — a hedged ('may'), deliberately generic 'vehicle volume' framing covering production and deliveries.",
           "targetValue": "notably lower than 2023 (+38%)",
           "recordedAt": "2026-09-27",
-          "sourceType": "earnings-call"
+          "sourceType": "earnings-call",
+          "revisionReason": "Source upgraded to the primary Tesla deck (verified directly in the PDF); hedging ('may') and metric ambiguity ('vehicle volume') recorded Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -323,14 +336,15 @@
             "Tesla Q4 2024 production and delivery report"
           ],
           "source": {
-            "publishedOn": "2025-01-03",
-            "quote": "delivering 1,789,226 vehicles in 2024, 1.1% less than the 1,808,581 deliveries reported for 2023.",
-            "title": "ESS News: Tesla 2024 energy storage deployments",
-            "url": "https://www.ess-news.com/2025/01/03/tesla-smashes-its-own-records-with-big-increase-in-energy-storage-deployments-in-2024/"
+            "publishedOn": "2025-01-02",
+            "quote": "2024: production 1,773,443; deliveries 1,789,226.",
+            "title": "Tesla Q4 2024 production, deliveries & deployments (Jan 2, 2025) — Tesla IR",
+            "url": "http://ir.tesla.com/press-release/tesla-fourth-quarter-2024-production-deliveries-and-deployments"
           },
           "stance": "supports",
-          "summary": "Tesla delivered 1,789,226 vehicles in 2024, down 1.1% from 2023. The first annual decline in its history.",
-          "recordedAt": "2026-09-27"
+          "summary": "Tesla delivered 1,789,226 vehicles in 2024 (down 1.1% from 1,808,581 in 2023) and produced 1,773,443 (down 3.9%) — volume didn't just grow slowly, it shrank.",
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Source upgraded from a mismatched secondary (an ESS News energy-storage article) to the primary Tesla production & deliveries release Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -340,20 +354,22 @@
           "methodology": "stock ledger v1",
           "occurredOn": "2026-09-27",
           "source": {
-            "publishedOn": "2025-01-03",
-            "title": "ESS News: Tesla 2024 energy storage deployments",
-            "url": "https://www.ess-news.com/2025/01/03/tesla-smashes-its-own-records-with-big-increase-in-energy-storage-deployments-in-2024/"
+            "publishedOn": "2025-01-02",
+            "title": "Tesla Q4 2024 production, deliveries & deployments (Jan 2, 2025) — Tesla IR",
+            "url": "http://ir.tesla.com/press-release/tesla-fourth-quarter-2024-production-deliveries-and-deployments"
           },
           "state": "fulfilled",
           "summary": "Fulfilled as stated. Growth was not just notably lower than 2023, it turned negative.",
           "supersedes": null,
-          "recordedAt": "2026-09-27"
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Assessment citation upgraded to the primary Tesla production & deliveries release; the fulfilled state is unchanged Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         }
       ],
       "id": "2024-delivery-guidance",
       "tags": [],
       "title": "2024 vehicle volume growth guidance",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "Tesla's 2024 full-year vehicle delivery growth rate is below 2023's 37.7% delivery growth rate by a notable margin — PROPOSED definition (pending editor approval): 2024 growth of less than half the 2023 rate (at most 18.9%). 'Notably' was never defined by Tesla; this definition is the ledger's retrospective instrument choice, not a Tesla-stated target. Result under proposed test: -1.1% — fulfilled by a wide margin."
     },
     {
       "claimCategory": "Moonshots",
@@ -367,18 +383,20 @@
           "metric": "robotaxis operating on the road",
           "occurredOn": "2019-04-22",
           "source": {
-            "publishedOn": "2019-04-23",
-            "quote": "If you fast forward a year, maybe a year and three months, but next year for sure, we'll have over a million robotaxis on the road.",
-            "title": "The Drive: Tesla Network Promises One Million Robotaxis on the Road by 2020",
-            "url": "https://www.thedrive.com/tech/27605/tesla-network-promises-one-million-robotaxis-on-the-road-by-2020"
+            "publishedOn": "2019-04-22",
+            "quote": "From our standpoint, if you fast forward a year, maybe a year and three months, but next year for sure, we'll have over a million robotaxis on the road. The fleet wakes up with an over the air update; that's all it takes.",
+            "title": "Tesla Autonomy Day official recording (Apr 22, 2019) — Tesla YouTube channel",
+            "url": "https://www.youtube.com/watch?v=Ucp0TTmvqOE",
+            "locator": "Robotaxi prediction at ~3:14:03; stated with regulatory caveats (not all jurisdictions would have approval)"
           },
           "speaker": "Elon Musk",
           "speakerCapacity": "CEO at Tesla Autonomy Day (investor day)",
           "speakerRole": "CEO",
-          "summary": "At Tesla's Autonomy Day, Musk said the company would have over a million robotaxis on the road by the end of 2020.",
+          "summary": "At Tesla's Autonomy Day, Musk said the company would have over a million robotaxis on the road by the end of 2020 — via over-the-air update to customer cars plus a Tesla-owned fleet, subject to regulatory approval.",
           "targetValue": "over 1,000,000",
           "recordedAt": "2026-09-27",
-          "sourceType": "investor-day"
+          "sourceType": "investor-day",
+          "revisionReason": "Source upgraded from secondary (The Drive) to primary (Tesla's official Autonomy Day recording); exact quote and regulatory caveat recorded Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -405,14 +423,15 @@
           "kind": "claim_revised",
           "lineage": "robotaxi-one-million-2020",
           "occurredOn": "2025-06",
-          "revisionReason": "Original deadline missed entirely; the company began a limited, safety-monitored robotaxi pilot in Austin in June 2025.",
+          "revisionReason": "Source upgraded from secondary (Motley Fool) to Reuters contemporaneous report Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md).",
           "source": {
-            "publishedOn": "2026-09-16",
-            "quote": "Tesla started testing robotaxis in Austin last summer, and expansion has gone slowly.",
-            "title": "Motley Fool: Elon Musk promised over a million robotaxis by 2020",
-            "url": "https://www.fool.com/investing/2026/09/16/elon-musk-promised-over-a-million-robotaxis-by-202/"
+            "publishedOn": "2025-06-22",
+            "quote": "About 10-20 Model Ys, invite-only, geofenced South Austin, $4.20 flat fee, Tesla safety monitor in the front passenger seat, 6am-midnight.",
+            "title": "Reuters: Tesla robotaxi launch, Austin (Jun 22, 2025)",
+            "url": "https://www.reuters.com/business/autos-transportation/tesla-tiptoes-into-long-promised-robotaxi-service-2025-06-22/",
+            "locator": "Strongest dated contemporaneous record; announced via Musk's X post, not a Tesla IR press release"
           },
-          "summary": "Tesla launched a limited Robotaxi service in Austin with safety monitors aboard, restarting the robotaxi lineage five years late.",
+          "summary": "Tesla launched a limited robotaxi pilot in Austin on June 22, 2025: roughly 10-20 Model Ys, invite-only, geofenced to South Austin, $4.20 flat fee, with a Tesla safety monitor aboard — restarting the robotaxi lineage five years after the missed 2020 target.",
           "supersedes": "tsla-robotaxi-stated",
           "recordedAt": "2026-09-27"
         },
@@ -452,6 +471,28 @@
           "summary": "Lapsed. The 2020 deadline passed with zero robotaxis. A limited 2025 Austin pilot keeps the lineage open but at sub-500 vehicles.",
           "supersedes": null,
           "recordedAt": "2026-09-27"
+        },
+        {
+          "id": "tsla-robotaxi-2020-miss-corrected",
+          "kind": "evidence",
+          "occurredOn": "2021-01-27",
+          "summary": "Tesla's own first post-deadline disclosure: on the Q4/FY2020 earnings call (Jan 27, 2021), Musk described FSD as a supervised beta with 'almost 1,000 people in the beta,' while investors asked for milestones to reach a commercial Level 4/5 ridesharing solution — a commercial robotaxi network plainly did not exist at end of 2020.",
+          "stance": "refutes",
+          "supersedes": "tsla-robotaxi-2020-miss",
+          "revisionReason": "Corrects tsla-robotaxi-2020-miss, which was dated 2020-10-01 (before the deadline passed) and sourced to a GitHub blog. Post-deadline primary-adjacent evidence substituted; the original event is retained. Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md).",
+          "source": {
+            "url": "https://www.nasdaq.com/articles/tesla-tsla-q4-2020-earnings-call-transcript-2021-01-28",
+            "title": "Tesla Q4/FY2020 earnings call transcript (Jan 27, 2021) — Nasdaq mirror of Tesla webcast",
+            "publishedOn": "2021-01-28",
+            "quote": "almost 1,000 people in the beta",
+            "locator": "Transcript mirrors (Nasdaq/Barchart/MarketBeat) transcribe Tesla's own ir.tesla.com webcast — primary-adjacent"
+          },
+          "lineage": "robotaxi-one-million-2020",
+          "author": "habib",
+          "recordedAt": "2026-09-28",
+          "provenance": [
+            "Tesla Q4/FY2020 earnings call (Jan 27, 2021)"
+          ]
         }
       ],
       "id": "robotaxi-one-million-2020",
@@ -460,7 +501,8 @@
         "AI"
       ],
       "title": "One million robotaxis by end of 2020",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "At least 1,000,000 Tesla robotaxis operating on public roads without a safety driver by 2020-12-31. Result: missed (effectively zero; a limited supervised pilot launched in Austin in June 2025)."
     },
     {
       "claimCategory": "Operations/Capacity",
@@ -474,18 +516,19 @@
           "metric": "Model 3 weekly production rate",
           "occurredOn": "2017-08-02",
           "source": {
-            "publishedOn": "2018-07-03",
-            "quote": "In early 2017, management projected that Tesla would be building 5,000 Model 3s per week by the fourth quarter of that year and 10,000 per week at some point in 2018.",
-            "title": "Motley Fool: Is Tesla, Inc. in the Clear?",
-            "url": "https://www.fool.com/investing/2018/07/03/is-tesla-inc-in-the-clear.aspx?source=iedfolrf0000001"
+            "publishedOn": "2017-08-02",
+            "quote": "Based on our preparedness at this time, we are confident we can produce just over 1,500 vehicles in Q3, and achieve a run rate of 5,000 vehicles per week by the end of 2017.",
+            "title": "Tesla Q2 2017 Update letter (Exhibit 99.1 to 8-K, Aug 2, 2017) — SEC EDGAR",
+            "url": "https://www.sec.gov/Archives/edgar/data/1318605/000156459017014920/tsla-ex991_90.htm"
           },
-          "speaker": "Tesla management",
-          "speakerCapacity": "Management guidance (Q2 2017 earnings call period)",
+          "speaker": "Tesla",
+          "speakerCapacity": "Q2 2017 shareholder update letter",
           "speakerRole": "Management",
           "summary": "Tesla targeted building 5,000 Model 3 vehicles per week by the fourth quarter of 2017.",
           "targetValue": "5,000 per week",
           "recordedAt": "2026-09-27",
-          "sourceType": "earnings-call"
+          "sourceType": "8-k",
+          "revisionReason": "Source upgraded from secondary (Motley Fool) to primary (SEC EDGAR 8-K Exhibit 99.1); claim fact and date unchanged Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -522,12 +565,53 @@
           "summary": "Fulfilled, late. The original Q4 2017 deadline was missed; the reset end-of-Q2 2018 target was met at 5,031 vehicles in the final week.",
           "supersedes": null,
           "recordedAt": "2026-09-27"
+        },
+        {
+          "id": "tsla-model3-5k-revised-2018-01-03",
+          "kind": "claim_revised",
+          "occurredOn": "2018-01-03",
+          "summary": "In its Q4 2017 vehicle production and deliveries release, Tesla reset the Model 3 ramp: a weekly rate of about 2,500 Model 3 vehicles by end of Q1 2018, and the 5,000-per-week milestone by end of Q2 2018.",
+          "metric": "Model 3 weekly production rate",
+          "targetValue": "5,000 per week by end of Q2 2018",
+          "source": {
+            "url": "https://electriccarsreport.com/2018/01/tesla-delivers-101000-model-s-x-2017-1550-model-3s-q4/",
+            "title": "Tesla Q4 2017 production & deliveries release (Jan 3, 2018) — quoted verbatim in contemporaneous coverage",
+            "publishedOn": "2018-01-03",
+            "quote": "As we continue to focus on quality and efficiency rather than simply pushing for the highest possible volume in the shortest period of time, we expect to have a slightly more gradual ramp through Q1, likely ending the quarter at a weekly rate of about 2,500 Model 3 vehicles. We intend to achieve the 5,000 per week milestone by the end of Q2.",
+            "locator": "Primary: Tesla Q4 2017 vehicle production and deliveries press release, Jan 3, 2018 (ir.tesla.com); quote corroborated by two independent contemporaneous reports"
+          },
+          "lineage": "model3-5000-per-week",
+          "author": "habib",
+          "recordedAt": "2026-09-28",
+          "supersedes": "tsla-model3-5k-stated",
+          "revisionReason": "Tesla reset the Model 3 ramp in its Q4 2017 production & deliveries release (Jan 3, 2018): about 2,500/week by end of Q1 2018 and 5,000/week by end of Q2 2018, superseding the Aug 2017 end-of-2017 target."
+        },
+        {
+          "id": "tsla-model3-5k-revised-2018-02-07",
+          "kind": "claim_revised",
+          "occurredOn": "2018-02-07",
+          "summary": "Tesla's Q4 and Full Year 2017 update letter restated the revised ramp — 2,500 Model 3s per week by end of Q1 2018 and 5,000 per week by end of Q2 2018 — with an explicit warning about forecasting difficulty.",
+          "metric": "Model 3 weekly production rate",
+          "targetValue": "5,000 per week by end of Q2 2018",
+          "source": {
+            "url": "https://www.sec.gov/Archives/edgar/data/1318605/000156459018001786/tsla-8k_20180209.htm",
+            "title": "Tesla Q4 & Full Year 2017 update letter (published Feb 7, 2018; text in Feb 9, 2018 8-K) — SEC EDGAR",
+            "publishedOn": "2018-02-07",
+            "quote": "We continue to target weekly Model 3 production rates of 2,500 by the end of Q1 and 5,000 by the end of Q2. It is important to note that while these are the levels we are focused on hitting and we have plans in place to achieve them, our prior experience on the Model 3 ramp has demonstrated the difficulty of accurately forecasting specific production rates at specific points in time."
+          },
+          "sourceType": "8-k",
+          "lineage": "model3-5000-per-week",
+          "author": "habib",
+          "recordedAt": "2026-09-28",
+          "supersedes": "tsla-model3-5k-revised-2018-01-03",
+          "revisionReason": "Tesla Q4 & Full Year 2017 update letter (Feb 7, 2018) restated the revised ramp — 2,500/week by end of Q1 and 5,000/week by end of Q2 — adding explicit warnings about forecasting difficulty."
         }
       ],
       "id": "model3-5000-per-week",
       "tags": [],
       "title": "Model 3 at 5,000 vehicles per week",
-      "horizon": "quarter"
+      "horizon": "quarter",
+      "fulfillmentTest": "Original (Aug 2, 2017): Tesla produces at least 5,000 Model 3s in a rolling 7-day period by 2017-12-31 — missed. Revised (Jan 3 / Feb 7, 2018): Tesla produces at least 5,000 Model 3s in a rolling 7-day period by 2018-06-30 — fulfilled (5,031 in the final 7 days of Q2 2018)."
     },
     {
       "claimCategory": "Financial Guidance",
@@ -544,7 +628,8 @@
             "publishedOn": "2025-01-30",
             "quote": "The company expects storage deployments will grow at least 50% this year.",
             "title": "Utility Dive: Tesla storage deployments more than double to 31.4 GWh in 2024",
-            "url": "https://www.UtilityDive.com/news/tesla-battery-storage-powerwall-megapack-earnings/738751/"
+            "url": "https://www.UtilityDive.com/news/tesla-battery-storage-powerwall-megapack-earnings/738751/",
+            "locator": "Primary: Q4 2024 earnings call transcript (Jan 29, 2025) — Musk: 'The company expects storage deployments will grow at least 50% this year'; ir.tesla.com webcast archive"
           },
           "speaker": "Elon Musk",
           "speakerCapacity": "CEO on Q4 2024 earnings call",
@@ -552,7 +637,8 @@
           "summary": "Tesla expected energy storage deployments to grow at least 50% year over year in 2025, from 31.4 GWh to at least 47.1 GWh.",
           "targetValue": "at least 50% YoY (47.1 GWh or more)",
           "recordedAt": "2026-09-27",
-          "sourceType": "earnings-call"
+          "sourceType": "earnings-call",
+          "revisionReason": "Claim verified against the primary Q4 2024 earnings call transcript Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -567,11 +653,13 @@
             "publishedOn": "2026-01-02",
             "quote": "total energy storage deployments reached 46.7 GWh.",
             "title": "StockTitan: Tesla Q4 2025 deliveries and quarterly history",
-            "url": "https://www.stocktitan.net/articles/tesla-q4-2025-deliveries-quarterly-history-analysis"
+            "url": "https://www.stocktitan.net/articles/tesla-q4-2025-deliveries-quarterly-history-analysis",
+            "locator": "Primary: Tesla Q4 2025 production & delivery report (Jan 2, 2026) — 46.7 GWh deployed in 2025; ir.tesla.com press release"
           },
           "stance": "refutes",
           "summary": "Tesla deployed 46.7 GWh of energy storage in 2025, up 48.7% from 31.4 GWh in 2024, just short of the 50% target.",
-          "recordedAt": "2026-09-27"
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Outcome verified against the primary Tesla Q4 2025 production & delivery report Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -596,7 +684,8 @@
         "energy"
       ],
       "title": "Energy storage deployments to grow at least 50% in 2025",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "Tesla deploys at least 47.1 GWh of energy storage in calendar 2025 (at least 50% growth over 31.4 GWh in 2024). Result: 46.7 GWh (48.7% growth) — missed, narrowly."
     },
     {
       "claimCategory": "Product/Technology",
@@ -608,20 +697,22 @@
           "kind": "claim_stated",
           "lineage": "optimus-production-2023",
           "metric": "Optimus production start",
-          "occurredOn": "2022-09-30",
+          "occurredOn": "2022-04-07",
           "source": {
-            "publishedOn": "2022-09-30",
-            "quote": "At its 'AI Day' on September 30, Musk said Tesla will unveil a prototype from its project Optimus... Production could start next year, he said.",
-            "title": "Gadgets360: Tesla AI Day Optimus coverage",
-            "url": "https://www.gadgets360.com/transportation/news/elon-musk-tesla-bot-optimus-humanoid-robot-ai-day-september-30-3361533/amp"
+            "publishedOn": "2022-04-07",
+            "quote": "I think we have a shot at being in production for version 1 of Optimus hopefully next year.",
+            "title": "Electrek transcript: Musk at Cyber Rodeo, Giga Texas opening (Apr 7, 2022)",
+            "url": "https://electrek.co/2022/04/07/tesla-production-optimus-humanoid-robot-2023/",
+            "locator": "No AI Day 2022 transcript containing a 2023-production commitment could be located; the clean quotable statement predates AI Day by nearly six months"
           },
           "speaker": "Elon Musk",
           "speakerCapacity": "CEO at Tesla AI Day",
           "speakerRole": "CEO",
-          "summary": "At Tesla AI Day, Musk said Optimus production could start in 2023.",
+          "summary": "At the Cyber Rodeo (Giga Texas opening, Apr 7, 2022), Musk said: 'I think we have a shot at being in production for version 1 of Optimus hopefully next year.'",
           "targetValue": "production in 2023",
           "recordedAt": "2026-09-27",
-          "sourceType": "investor-day"
+          "sourceType": "investor-day",
+          "revisionReason": "Corrects venue/date/wording: the quotable statement was at Cyber Rodeo (Apr 7, 2022), not AI Day (Sep 30, 2022), and was doubly hedged ('a shot at' + 'hopefully'). Qualification as a promise is disputed — downgrade decision pending Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -633,14 +724,15 @@
             "Tesla Q4 2025 earnings call"
           ],
           "source": {
-            "publishedOn": "2026-05",
-            "quote": "no Optimus robots are doing 'useful work' in factories. They are primarily for learning and iteration. Musk called it 'still very much at the early stages' and 'still in the R&D phase.'",
-            "title": "BotInfo: Tesla Optimus complete analysis (2026)",
-            "url": "https://botinfo.ai/articles/tesla-optimus"
+            "publishedOn": "2026-01-28",
+            "quote": "Well, we are still very much at the early stages of Optimus. It's still in the R&D phase... We wouldn't expect to have any kind of significant Optimus production volume until probably the end of this year.",
+            "title": "Tesla Q4 2025 earnings call transcript (Jan 28, 2026) — Shacknews mirror of Tesla webcast",
+            "url": "https://www.shacknews.com/article/147609/tesla-tsla-q4-2025-earnings-call-transcript"
           },
           "stance": "refutes",
-          "summary": "On the Q4 2025 earnings call, Musk admitted no Optimus robots were doing useful work in factories and called the program still in the R&D phase.",
-          "recordedAt": "2026-09-27"
+          "summary": "On the Q4 2025 earnings call (Jan 28, 2026), Musk said Optimus was 'still very much at the early stages... still in the R&D phase,' with no material factory use — confirming no production began in 2023.",
+          "recordedAt": "2026-09-27",
+          "revisionReason": "Source upgraded from secondary (BotInfo) to the Q4 2025 earnings call transcript Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -666,7 +758,8 @@
         "AI"
       ],
       "title": "Optimus robot production starting in 2023",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "QUALIFICATION PENDING — if retained as a promise: Tesla begins Optimus production (at least one unit produced outside prototype/R&D use) in calendar 2023. Result if applied: none — missed. Auditor's primary recommendation: downgrade to non-promise (aspirational statement; the verbatim wording is doubly hedged and never met the documentable-commitment bar)."
     },
     {
       "claimCategory": "Operations/Capacity",
@@ -681,17 +774,19 @@
           "occurredOn": "2023-01-25",
           "source": {
             "publishedOn": "2023-01-25",
-            "quote": "Summer 2023 is the target, but it would be slow at first. Volume production is important and it will start in 2024.",
+            "quote": "We do expect production to start, I don't know, maybe sometime this summer... I wouldn't put too much stock in start of production... when does volume production actually happen, and that's next year.",
             "title": "Teslarati: Tesla Q4 and full year 2022 earnings call live blog",
-            "url": "https://www.teslarati.com/tesla-q4-and-full-year-2022-earnings-call-live-blog/"
+            "url": "https://www.teslarati.com/tesla-q4-and-full-year-2022-earnings-call-live-blog/",
+            "locator": "Primary: Q4 2022 earnings call transcript (Jan 25, 2023) — Musk, with VP Vehicle Engineering Lars Moravy adding equipment installation was underway and 'the ramp will really come 2024'; shareholder deck: 'Cybertruck remains on track to begin production later this year'"
           },
           "speaker": "Elon Musk",
           "speakerCapacity": "CEO on Q4 2022 earnings call",
           "speakerRole": "CEO",
-          "summary": "Musk said Cybertruck production would start in summer 2023, with volume production in 2024.",
+          "summary": "Musk said Cybertruck production would start in summer 2023 ('We do expect production to start... maybe sometime this summer'), explicitly downplaying start-of-production while pointing to volume production in 2024 — two distinct sub-claims.",
           "targetValue": "summer 2023 (volume production 2024)",
           "recordedAt": "2026-09-27",
-          "sourceType": "earnings-call"
+          "sourceType": "earnings-call",
+          "revisionReason": "Records the verified verbatim quote and the two distinct sub-claims (summer-2023 production start; 2024 volume production). Re-grading decision pending Per 2026-09-28 editorial audit (docs/tasks/2026-09-28-tesla-ledger-audit.md)."
         },
         {
           "author": "codex-pilot",
@@ -728,12 +823,34 @@
           "summary": "Lapsed on timing. The summer 2023 production start slipped; first customer deliveries happened November 30, 2023.",
           "supersedes": null,
           "recordedAt": "2026-09-27"
+        },
+        {
+          "id": "tsla-cybertruck-first-build-2023-07-15",
+          "kind": "evidence",
+          "occurredOn": "2023-07-15",
+          "summary": "Tesla's official X account announced 'First Cybertruck built at Giga Texas!' — the first production unit off the line, squarely inside summer 2023 (Jun 21 – Sep 22). Tesla's Q3 2023 deck later described this phase as 'pilot production' on track for initial deliveries.",
+          "stance": "supports",
+          "source": {
+            "url": "https://techxplore.com/news/2023-07-tesla-1st-electric-pickup-line.html",
+            "title": "AP (via TechXplore): first Cybertruck built at Giga Texas (Jul 15, 2023)",
+            "publishedOn": "2023-07-15",
+            "quote": "First Cybertruck built at Giga Texas!",
+            "locator": "Primary: Tesla official X post, Jul 15, 2023; corroborated contemporaneously by AP"
+          },
+          "lineage": "cybertruck-production-2023",
+          "author": "habib",
+          "recordedAt": "2026-09-28",
+          "provenance": [
+            "Tesla official X post, Jul 15, 2023",
+            "AP contemporaneous report"
+          ]
         }
       ],
       "id": "cybertruck-production-2023",
       "tags": [],
       "title": "Cybertruck production starting summer 2023",
-      "horizon": "annual"
+      "horizon": "annual",
+      "fulfillmentTest": "Sub-claim 1 (production start): Tesla builds its first production Cybertruck at Giga Texas during summer 2023 (Jun 21 – Sep 22, 2023). Result: met Jul 15, 2023 — this CONFLICTS with the current 'missed' assessment; re-grade to split the sub-claims is an editorial decision pending. Sub-claim 2 (volume production in 2024): proposed test pending approval — Tesla declares volume production, OR at least 100,000 units produced in 2024, OR an exit quarterly run-rate of at least 100,000/year. Evidence (~39k delivered in 2024, no declaration) points to missed; the threshold is the ledger's retrospective instrument choice, not a Tesla-stated target."
     }
   ],
   "schemaVersion": 1
