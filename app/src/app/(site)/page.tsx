@@ -8,9 +8,7 @@ import {
   useWord,
   type HypeSnapshot,
 } from "@/lib/heart-data";
-import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
-import { fetchTeam, teamLine } from "@/lib/team";
-import OverviewContext, { type OverviewContextRecord } from "@/components/overview-context";
+import { fetchVitals } from "@/lib/vitals";
 import type { CompareProject } from "@/components/compare-table";
 import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
 import Icon from "@/components/chrome-icons";
@@ -49,7 +47,7 @@ export default async function Home() {
 
   const items = await Promise.all(
     projects.map(async (p) => {
-      const [vitals, team] = await Promise.all([fetchVitals(p.slug).catch(() => null), fetchTeam(p.slug).catch(() => null)]);
+      const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
       const latest = hypeLatest[p.slug];
       const filledPct = p.capacity > 0 ? p.earned / p.capacity : 0;
@@ -92,11 +90,7 @@ export default async function Home() {
         code: { word: row.code, stars: row.codeStars, commits90d: row.codeCommits, lastCommitAt: vitals?.lastCommitAt ?? null, openPRs: vitals?.openPRs ?? null, unreachable: vitals != null && vitals.commits90d == null && vitals.partial },
         use: row.use, hype: { mentions: row.hypeMentions, collecting: row.hypeCollecting, baselineWeeks },
       };
-      const context: OverviewContextRecord = {
-        code: { slug: row.slug, name: row.name, symbol: row.symbol, stars: row.codeStars, commits90d: row.codeCommits, forks: vitals?.forks ?? null, watchers: vitals?.watchers ?? null, repoUrl: VITALS_REPOS[p.slug] ? `https://github.com/${VITALS_REPOS[p.slug].github}` : "", teamLine: team ? teamLine(team) : "TEAM: Unknown · couldn't reach GitHub", failed: vitals == null || comparison.code.unreachable },
-        hypeMentions: row.hypeMentions, hypeCollecting: row.hypeCollecting, marketCap: row.marketCap,
-      };
-      return { row, comparison, context };
+      return { row, comparison };
     })
   );
   const rows = items.map(item => item.row);
@@ -106,7 +100,6 @@ export default async function Home() {
 
   return (
     <>
-      <OverviewContext records={items.map(item => item.context).sort((a,b) => a.code.name.localeCompare(b.code.name))} />
       <p><Link href="/atlas" className="btn">Explore the Promise Atlas ↗</Link></p>
       <h1 className="sr-only">Prove Value: did crypto projects actually deliver what they promised?</h1>
 
