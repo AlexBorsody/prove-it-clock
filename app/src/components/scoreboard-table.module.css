@@ -1,6 +1,11 @@
 .controls { display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px; }
 .controls label { flex:1;min-width:0;display:grid;gap:8px;font-size:14px;color:var(--text-dim); }
 .controls select { width:100%;min-width:0;min-height:48px;padding:10px 12px;font:inherit;font-size:16px;color:var(--text);background:var(--bg-panel);border:1px solid var(--border);border-radius:10px; }
+.viewToggle { align-self:end;padding-bottom:6px; }
+.forceList :global(.board-desktop) { display:block; }
+.forceList :global(.board-cards) { display:none; }
+.forceCards :global(.board-desktop) { display:none; }
+.forceCards :global(.board-cards) { display:flex;flex-direction:column;gap:12px; }
 .note,.coverage { color:var(--text-dim);font-size:13px;line-height:1.6; }
 .coverage { margin:8px 0 16px;overflow-wrap:anywhere; }
 .coverage summary { cursor:pointer;min-height:36px;align-content:center; }
@@ -20,3 +25,9 @@
 .genesisRow:hover { background: rgba(34, 197, 94, 0.16); }
 .genesisCard { background: rgba(34, 197, 94, 0.09); border-color: rgba(34, 197, 94, 0.45); }
 .genesisBadge { display: inline-block; margin: 4px 0 0; padding: 3px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.03em; color: #052e16; background: linear-gradient(135deg, #4ade80, #16a34a); white-space: nowrap; }
+
+.categories { display:flex; flex-wrap:wrap; gap:4px 12px; margin-top:8px; font-size:12px; }
+.categories a { color:var(--text-dim); }
+
+:global(.board-desktop) .categories { display:block; max-width:260px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+:global(.board-desktop) .categories a + a::before { content:" · "; }

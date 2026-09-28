@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { listStockCompanies } from "@/lib/stock-data";
+import { listStockCompanies, getStockLedger } from "@/lib/stock-data";
 import { searchMeta } from "@/lib/search-sections";
+import StockOverviewContext from "@/components/stock-overview-context";
+import StockBoard from "@/components/stock-board";
 
 export const dynamic = "force-dynamic";
 
@@ -8,8 +9,10 @@ export const dynamic = "force-dynamic";
  *  and the expectations embedded in valuation. */
 export default function StocksPage() {
   const companies = listStockCompanies();
+  const records = companies.map(company => ({ company, fundamentals: getStockLedger(company.slug)?.fundamentals ?? [] }));
   return (
     <>
+      <StockOverviewContext records={records} />
       <div className="search-section" {...searchMeta({ id: "stocks-overview", title: "Speculative Tech", kind: "Stocks", keywords: "stocks management promises fundamentals valuation expectation gap" })}>
         <h1 className="page-title">High Expectations</h1>
         <p className="page-sub">
@@ -21,30 +24,7 @@ export default function StocksPage() {
           that have not happened yet.
         </p>
       </div>
-      <div>
-        {companies.map((company) => (
-          <Link
-            key={company.slug}
-            href={`/stocks/${company.slug}`}
-            className="comp-row"
-            style={{ display: "block", textDecoration: "none", color: "inherit" }}
-          >
-            <div className="comp-name">
-              {company.name}
-              {company.slug === "tesla" ? <span className="tag" style={{ marginLeft: 8 }}>Reference case</span> : null}
-            </div>
-            <div className="comp-tags">
-              <span className="tag na">{company.sector}</span>
-              <span className="tag na">{company.listing === "public" ? `Public${company.ticker ? `, ${company.ticker}` : ""}` : "Private"}</span>
-            </div>
-            <p className="comp-desc">
-              {company.slug === "tesla"
-                ? "Claim ledger, reported fundamentals, and the expectation gap, from researched management statements with exact sources."
-                : "Company registered. Claim research for this company has not started yet."}
-            </p>
-          </Link>
-        ))}
-      </div>
+      <StockBoard companies={companies} records={records} />
       <div className="panel">
         <h2>How the stock ledger works</h2>
         <p className="panel-sub">

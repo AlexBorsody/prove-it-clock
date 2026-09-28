@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import HeartMeter from "@/components/heart-meter";
 import type { CodeWord } from "@/lib/heart-data";
@@ -15,7 +15,8 @@ export interface CompareProject {
   earned: number;
   capacity: number;
   filledPct: number;
-  promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number };
+  assessmentAvailable?: boolean;
+  promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number; unknown?: number };
   code: { word: CodeWord; stars: number | null; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null; unreachable: boolean };
   use: "coming";
   hype: { mentions: number | null; collecting: boolean; baselineWeeks: number };
@@ -23,6 +24,38 @@ export interface CompareProject {
 
 const MIN_SEL = 2;
 const MAX_SEL = 4;
+
+export interface ComparisonColumn { key: string; header: ReactNode }
+export interface ComparisonGroup {
+  label: string;
+  rows: Array<{ key: string; label: ReactNode; title: string; cells: ReactNode[] }>;
+}
+
+/** Shared table presentation; each market supplies its own rows and values. */
+export function ComparisonGrid({ columns, groups, id = "compare-metrics", rowIdPrefix = "compare", title = "Project comparison", keywords = "hearts promises code use hype" }: {
+  columns: ComparisonColumn[];
+  groups: ComparisonGroup[];
+  id?: string;
+  rowIdPrefix?: string;
+  title?: string;
+  keywords?: string;
+}) {
+  return <div className="table-wrap search-section" {...searchMeta({ id, title, kind: "Compare", keywords })}>
+    <table className="board compare">
+      <thead><tr>
+        <th className="rowhead" />
+        {columns.map(column => <th key={column.key} scope="col">{column.header}</th>)}
+      </tr></thead>
+      {groups.map(group => <tbody key={group.label}>
+        <tr className="compare-group"><th colSpan={columns.length + 1} scope="rowgroup">{group.label}</th></tr>
+        {group.rows.map(row => <tr key={row.key} className="search-section" {...searchMeta({ id: `${rowIdPrefix}-${row.key}`, title: row.title, kind: "Compare", keywords: row.key })}>
+          <th className="rowhead" scope="row">{row.label}</th>
+          {columns.map((column, index) => <td key={column.key}>{row.cells[index]}</td>)}
+        </tr>)}
+      </tbody>)}
+    </table>
+  </div>;
+}
 
 const ROW_GROUPS: Array<{ label: string; rows: Array<{ key: string; label: string; anchor: string }> }> = [
   { label: "Promise delivery", rows: [
@@ -45,6 +78,7 @@ const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
 const compact = (n: number | null) => (n == null ? "-" : compactNum.format(n));
 
 function Cell({ row, p }: { row: string; p: CompareProject }) {
+  if ((row === "hearts" || row === "promises") && p.assessmentAvailable === false) return <span className="word dim">Assessment unavailable</span>;
   switch (row) {
     case "hearts":
       return (
@@ -68,6 +102,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
             {c.fulfilled > 0 ? <span className="tag measured">{c.fulfilled} fulfilled</span> : null}
             {c.active > 0 ? <span className="tag na">{c.active} active</span> : null}
             {c.open > 0 ? <span className="tag na">{c.open} open</span> : null}
+            {(c.unknown ?? 0) > 0 ? <span className="tag na">{c.unknown} unknown</span> : null}
             {c.lapsed > 0 ? <Link className="tag bad" href={promiseFilterHref(p.slug,'lapsed')}>{c.lapsed} lapsed ↗</Link> : null}
             {c.retired > 0 ? <Link className="tag bad" href={promiseFilterHref(p.slug,'retired')}>{c.retired} retired ↗</Link> : null}
           </div>
@@ -116,7 +151,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
   }
 }
 
-export default function CompareTable({ projects }: { projects: CompareProject[] }) {
+export default function CompareTable({ projects, showPicker = true }: { projects: CompareProject[]; showPicker?: boolean }) {
   const [selected, setSelected] = useState<string[]>(
     projects.slice(0, MAX_SEL).map((p) => p.slug)
   );
@@ -136,13 +171,13 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
     });
   }
 
-  const cols = selected
+  const cols = showPicker ? selected
     .map((s) => bySlug.get(s))
-    .filter((p): p is CompareProject => !!p);
+    .filter((p): p is CompareProject => !!p) : projects;
 
   return (
     <>
-      <div className="panel search-section" {...searchMeta({ id: "compare-project-picker", title: "Choose projects to compare", kind: "Compare", keywords: "projects side by side" })}>
+      {showPicker && <div className="panel search-section" {...searchMeta({ id: "compare-project-picker", title: "Choose projects to compare", kind: "Compare", keywords: "projects side by side" })}>
         <div className="compare-picker" role="group" aria-label="Choose projects to compare">
         {projects.map((p) => {
           const on = selected.includes(p.slug);
@@ -162,47 +197,16 @@ export default function CompareTable({ projects }: { projects: CompareProject[] 
           );
         })}
         </div>
-      </div>
-      <div className="table-wrap search-section" {...searchMeta({ id: "compare-metrics", title: "Project comparison", kind: "Compare", keywords: "hearts promises code use hype" })}>
-        <table className="board compare">
-          <thead>
-            <tr>
-              <th className="rowhead" />
-              {cols.map((p) => (
-                <th key={p.slug}>
-                  <Link href={`/projects/${p.slug}`}>
-                    <img
-                      src={`/icons/${p.symbol.toLowerCase()}.svg`}
-                      alt=""
-                      width={30}
-                      height={30}
-                      className="coin-icon"
-                    />
-                    <br />
-                    {p.name}
-                    {projectFlags(p.slug).genesis && <span className="cell-sub">Genesis asset</span>}
-                  </Link>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          {ROW_GROUPS.map(group => <tbody key={group.label}>
-            <tr className="compare-group"><th colSpan={cols.length + 1} scope="rowgroup">{group.label}</th></tr>
-            {group.rows.map((r) => (
-              <tr key={r.key} className="search-section" {...searchMeta({ id: `compare-${r.key}`, title: `Compare ${r.label}`, kind: "Compare", keywords: r.key })}>
-                <th className="rowhead" scope="row">
-                  <Link href={`/methodology#${r.anchor}`}>{r.label}</Link>
-                </th>
-                {cols.map((p) => (
-                  <td key={p.slug}>
-                    <Cell row={r.key} p={p} />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>)}
-        </table>
-      </div>
+      </div>}
+      <ComparisonGrid columns={cols.map(p => ({ key: p.slug, header: <Link href={`/projects/${p.slug}`}>
+        <img src={`/icons/${p.symbol.toLowerCase()}.svg`} alt="" width={30} height={30} className="coin-icon" />
+        <br />{p.name}{projectFlags(p.slug).genesis && <span className="cell-sub">Genesis asset</span>}
+      </Link> }))} groups={ROW_GROUPS.map(group => ({ label: group.label, rows: group.rows.map(row => ({
+        key: row.key,
+        label: <Link href={`/methodology#${row.anchor}`}>{row.label}</Link>,
+        title: `Compare ${row.label}`,
+        cells: cols.map(p => <Cell key={p.slug} row={row.key} p={p} />),
+      })) }))} />
     </>
   );
 }

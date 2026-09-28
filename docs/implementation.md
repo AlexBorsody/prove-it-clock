@@ -1513,3 +1513,24 @@ The live/public audit found missing explicit original-claim provenance in all
 115 current records and seven unresolved category assignments. See the task
 queue for exact IDs and limitations. The grading workstream supplies any missing
 claim text/roles/locators; Atlas does not infer them from an evidence array.
+
+
+## Home overview restructure (September 28, 2026)
+
+The [approved overview task](tasks/2026-09-27-home-overview-restructure.md)
+supersedes the older Metrics/Context navigation description. `/` and `/stocks`
+remain separate data paths, selected by Crypto | Stocks. Existing context is
+shown per selected asset in a compact strip, with the existing Code/Hype or
+fundamentals components behind expansion. No market-wide aggregate was invented.
+
+Compare is selected from the existing Cards/List views and opens a modal.
+`CompareTable` accepts externally selected crypto projects; `ComparisonGrid`
+shares only table presentation with company fundamentals. The home comparison
+uses the same published run and Atlas status normalization as its promise view.
+Unavailable assessments do not become zero delivery. Existing stock periods,
+sources and missing fields are preserved.
+
+Bottom Search triggers `ProjectSearch`; there is no second search implementation.
+Legacy metric URLs still resolve. No score, research record, database schema,
+publication policy or production configuration changes in this slice. The task
+file records the new wrappers, local desktop checks and mobile CSS review.

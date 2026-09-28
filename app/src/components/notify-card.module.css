@@ -1,0 +1,63 @@
+.card {
+  margin-top: 16px;
+}
+
+.title {
+  margin: 0 0 8px;
+}
+
+.lede {
+  margin: 0 0 16px;
+  opacity: 0.85;
+}
+
+.tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.tier {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Both tier buttons: the decisive button's size, the any-news button's blue. */
+.tier :global(.push-toggle) {
+  background: var(--blue);
+  border: none;
+  color: #0a0e14;
+}
+.tier :global(.push-toggle[data-subscribed="true"]) {
+  background: var(--bg-raised);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+.tier :global(.push-toggle:disabled) {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.how {
+  border-top: 1px solid rgba(128, 128, 128, 0.25);
+  padding-top: 12px;
+}
+
+.how summary {
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.howBody p {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.howBody p:last-child {
+  margin-bottom: 0;
+}
