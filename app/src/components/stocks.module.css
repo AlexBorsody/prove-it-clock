@@ -1,0 +1,330 @@
+.heading,
+.toolbar,
+.identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.heading h2 {
+  margin: 0;
+}
+.muted {
+  color: var(--text-dim);
+}
+.market {
+  margin: 20px 0;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 16px;
+  margin: 22px 0 8px;
+}
+.metrics div {
+  min-width: 0;
+}
+.metrics dt {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.metrics dd {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.metrics small {
+  color: var(--text-dim);
+}
+.sources {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-dim);
+  overflow-wrap: anywhere;
+}
+.sources summary {
+  min-height: 44px;
+  align-content: center;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 600;
+}
+.sources li {
+  margin: 8px 0;
+}
+.toolbar {
+  align-items: flex-end;
+  margin: 24px 0;
+}
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  flex: 1;
+}
+.filters label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-dim);
+  min-width: 145px;
+}
+.filters input,
+.filters select,
+.filters button {
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-height: 44px;
+  max-width: 100%;
+}
+.filters button {
+  cursor: pointer;
+}
+.filters input:focus-visible,
+.filters select:focus-visible,
+.filters button:focus-visible,
+.card a:focus-visible,
+.plot [role='button']:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-panel);
+  min-width: 0;
+}
+.cardLink {
+  display: block;
+  color: var(--text);
+  padding: 22px;
+  font-weight: 400;
+}
+.cardLink:hover {
+  color: var(--text);
+  background: var(--bg-raised);
+  border-radius: 14px 14px 0 0;
+}
+.card h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.card .metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.card .metrics dd {
+  font-size: 20px;
+}
+.cardActions {
+  padding: 0 22px 18px;
+}
+.tableScroll {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+.table th {
+  color: var(--text-dim);
+  font-size: 13px;
+  background: var(--bg-raised);
+}
+.table td:first-child {
+  min-width: 200px;
+}
+.table td a {
+  display: block;
+}
+.table small {
+  display: block;
+  color: var(--text-dim);
+}
+.sectionNav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.sectionNav a {
+  min-height: 44px;
+  align-content: center;
+}
+.section {
+  scroll-margin-top: 100px;
+  margin: 32px 0;
+}
+.plotScroll {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-panel);
+}
+.plot {
+  display: block;
+  min-width: 960px;
+  width: 100%;
+}
+.plot text {
+  font-family: var(--sans);
+}
+.legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 12px 0;
+}
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  display: inline-block;
+}
+.legend [data-kind='claim_stated'] {
+  background: var(--blue);
+}
+.legend [data-kind='claim_revised'] {
+  background: var(--purple);
+}
+.legend [data-kind='evidence'] {
+  background: var(--accent);
+}
+.eventDetail {
+  margin: 16px 0;
+  padding: 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-panel);
+  overflow-wrap: anywhere;
+}
+.eventDetail h3 {
+  margin: 0 0 12px;
+}
+.eventDetail dl {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 8px 14px;
+  font-size: 14px;
+}
+.eventDetail dt {
+  color: var(--text-dim);
+}
+.eventDetail dd {
+  margin: 0;
+}
+.eventDetail blockquote {
+  margin: 16px 0;
+  padding: 0 16px;
+  border-left: 3px solid var(--border-strong);
+}
+.eventList {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.eventList button {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  min-height: 44px;
+  background: var(--bg-panel);
+  color: var(--text);
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.eventList button[aria-pressed='true'] {
+  border-color: var(--accent);
+}
+.eventList time {
+  display: block;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.pilot {
+  padding: 14px 18px;
+  background: var(--bg-panel);
+  border-left: 3px solid var(--accent);
+  color: var(--text-dim);
+  margin: 20px 0;
+}
+@media (max-width: 720px) {
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+  .filters label {
+    min-width: 0;
+  }
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+  .eventDetail dl {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .eventDetail dd {
+    margin-bottom: 10px;
+  }
+  .cardLink {
+    padding: 18px;
+  }
+}
+
+.eventDetail button {
+  min-height: 44px;
+}
+.eventDetail {
+  scroll-margin: 100px 0 110px;
+}
+.eventDetail:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.tableScroll:focus-visible,
+.plotScroll:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

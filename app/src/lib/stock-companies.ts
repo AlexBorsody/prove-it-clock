@@ -10,43 +10,61 @@ export interface StockCompany {
   listing: 'public' | 'private';
   ticker: string | null;
   dataSources: string[];
+  sourceDomains: string[];
 }
 
 export const STOCK_COMPANIES: StockCompany[] = [
   {
     slug: 'tesla',
+    sourceDomains: ['tesla.com'],
     name: 'Tesla',
     sector: 'Automotive / Energy',
     listing: 'public',
     ticker: 'TSLA',
-    dataSources: ['SEC EDGAR 10-K', 'Tesla IR quarterly updates and earnings calls'],
+    dataSources: [
+      'SEC EDGAR 10-K',
+      'Tesla IR quarterly updates and earnings calls',
+    ],
   },
   {
     slug: 'nvidia',
+    sourceDomains: ['nvidia.com'],
     name: 'Nvidia',
     sector: 'Semiconductors',
     listing: 'public',
     ticker: 'NVDA',
-    dataSources: ['SEC EDGAR 10-K', 'Nvidia IR quarterly updates and earnings calls'],
+    dataSources: [
+      'SEC EDGAR 10-K',
+      'Nvidia IR quarterly updates and earnings calls',
+    ],
   },
   {
     slug: 'broadcom',
+    sourceDomains: ['broadcom.com'],
     name: 'Broadcom',
     sector: 'Semiconductors',
     listing: 'public',
     ticker: 'AVGO',
-    dataSources: ['SEC EDGAR 10-K', 'Broadcom IR quarterly updates and earnings calls'],
+    dataSources: [
+      'SEC EDGAR 10-K',
+      'Broadcom IR quarterly updates and earnings calls',
+    ],
   },
   {
     slug: 'oracle',
+    sourceDomains: ['oracle.com'],
     name: 'Oracle',
     sector: 'Enterprise software / Cloud',
     listing: 'public',
     ticker: 'ORCL',
-    dataSources: ['SEC EDGAR 10-K', 'Oracle IR quarterly updates and earnings calls'],
+    dataSources: [
+      'SEC EDGAR 10-K',
+      'Oracle IR quarterly updates and earnings calls',
+    ],
   },
   {
     slug: 'spacex',
+    sourceDomains: ['spacex.com'],
     name: 'SpaceX',
     sector: 'Aerospace',
     listing: 'private',
@@ -55,6 +73,7 @@ export const STOCK_COMPANIES: StockCompany[] = [
   },
   {
     slug: 'openai',
+    sourceDomains: ['openai.com'],
     name: 'OpenAI',
     sector: 'AI',
     listing: 'private',
@@ -63,6 +82,7 @@ export const STOCK_COMPANIES: StockCompany[] = [
   },
   {
     slug: 'anthropic',
+    sourceDomains: ['anthropic.com'],
     name: 'Anthropic',
     sector: 'AI',
     listing: 'private',

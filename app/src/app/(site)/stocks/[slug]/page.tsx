@@ -1,47 +1,93 @@
-import { notFound } from "next/navigation";
-import { getStockCompany } from "@/lib/stock-companies";
-import { getStockLedger } from "@/lib/stock-data";
-import StockClaimList from "@/components/stock-claim-list";
-import StockFundamentals from "@/components/stock-fundamentals";
-import StockExpectationGap from "@/components/stock-expectation-gap";
-import { searchMeta } from "@/lib/search-sections";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { getStockCompany } from '@/lib/stock-companies';
+import { getStockLedger } from '@/lib/stock-data';
+import { readStockContext } from '@/lib/stocks/market-data';
+import StockEvidenceExplorer from '@/components/stock-evidence-explorer';
+import StockFundamentals from '@/components/stock-fundamentals';
+import StockMarketContext from '@/components/stock-market-context';
+import { searchMeta } from '@/lib/search-sections';
+import styles from '@/components/stocks.module.css';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
-export default async function StockCompanyPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const company = getStockCompany((await params).slug);
+  return {
+    title: company
+      ? `${company.name} promise record | Prove Value`
+      : 'Company | Prove Value',
+  };
+}
+
+export default async function StockCompanyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const company = getStockCompany(slug);
-  if (!company) notFound();
   const ledger = getStockLedger(slug);
-  if (!ledger) notFound();
-
+  if (!company || !ledger) notFound();
+  const context = await readStockContext(company);
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: `stock-${slug}`, title: `${company.name}: stock ledger`, kind: "Stock company", keywords: `${company.name} ${company.ticker ?? ""} management promises fundamentals expectation gap` })}>
+      <Link href="/stocks">← Companies</Link>
+      <header
+        {...searchMeta({
+          id: `stock-${slug}`,
+          title: `${company.name}: promise record`,
+          kind: 'Stock company',
+          keywords: `${company.name} ${company.ticker ?? ''} management promises fundamentals timeline`,
+        })}
+      >
         <h1 className="page-title">{company.name}</h1>
         <p className="page-sub">
-          {company.sector} · {company.listing === "public" ? `Public${company.ticker ? ` (${company.ticker})` : ""}` : "Private"}
+          {company.ticker ?? 'Private company'} · {company.sector}
         </p>
-        <p className="panel-sub">Sources: {company.dataSources.join(", ")}</p>
-      </div>
-
-      <h2 className="page-title" style={{ fontSize: 22, marginTop: 24 }}>Claim ledger</h2>
-      <p className="panel-sub">
-        Management claims scoped to {company.name} only: a statement counts when made as a
-        commitment or forecast for this company in an official capacity. Green is delivered,
-        red is missed, grey is still open.
-      </p>
-      <StockClaimList slug={slug} name={company.name} lineages={ledger.lineages} />
-
-      <h2 className="page-title" style={{ fontSize: 22, marginTop: 24 }}>Fundamentals</h2>
-      <StockFundamentals fundamentals={ledger.fundamentals} />
-
-      {ledger.expectationGap ? (
+      </header>
+      <nav className={styles.sectionNav} aria-label="Company sections">
+        <a href="#current-business">Current business</a>
+        {ledger.lineages.length > 0 && (
+          <>
+            <a href="#accountability-timeline">Timeline</a>
+            <a href="#company-commitments">Promise record</a>
+          </>
+        )}
+      </nav>
+      <section id="current-business" className={styles.section}>
+        <StockMarketContext context={context} company={company.name} />
+        {ledger.fundamentals.length > 0 && (
+          <details className={styles.sources}>
+            <summary>Historical reported results</summary>
+            <StockFundamentals fundamentals={ledger.fundamentals} />
+          </details>
+        )}
+      </section>
+      {ledger.lineages.length > 0 ? (
         <>
-          <h2 className="page-title" style={{ fontSize: 22, marginTop: 24 }}>Valuation</h2>
-          <StockExpectationGap gap={ledger.expectationGap} companyName={company.name} />
+          <aside className={styles.pilot}>
+            <strong>Pilot research.</strong> This record includes secondary
+            sources and assessments that still need editorial review. Explicit
+            fulfillment tests are not yet stored. Dates and outcomes below
+            reproduce the research record.
+          </aside>
+          <StockEvidenceExplorer
+            lineages={ledger.lineages}
+            slug={slug}
+            name={company.name}
+          />
         </>
-      ) : null}
+      ) : (
+        <section className="panel" id="company-commitments">
+          <h2>Promise research pending</h2>
+          <p>No researched commitments are published for {company.name} yet.</p>
+        </section>
+      )}
     </>
   );
 }
