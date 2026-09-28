@@ -1,9 +1,11 @@
 "use client";
 
 /**
- * "Notify me" toggle for push subscriptions. Two scopes:
+ * "Notify me" toggle for push subscriptions. Three scopes:
  * - coin-level:  { project_slug }               (all promise status changes)
  * - promise-level:{ project_slug, lineage }      (news mentions + evidence)
+ * - news tier:   { project_slug, kind }          ("news": any mention,
+ *                                                "resolution": likely decisive)
  *
  * Renders nothing when push is unsupported or the VAPID public key is not
  * configured. Quiet styling: a small text button, no urgency treatment.
@@ -28,12 +30,16 @@ interface Props {
   projectSlug: string;
   /** Omit for coin-level subscription. */
   lineage?: string;
+  /** News tier for coin-level subscriptions; omit for ledger status alerts. */
+  kind?: "news" | "resolution";
   label: string;
+  /** Shown when subscribed; defaults to "Notifications on". */
+  subscribedLabel?: string;
   /** Big blue primary treatment for the hero placement. */
   big?: boolean;
 }
 
-export default function PushSubscribeToggle({ projectSlug, lineage, label, big = false }: Props) {
+export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", big = false }: Props) {
   const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
   const [supported] = useState(
     () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && vapidKey.length > 0,
@@ -56,16 +62,20 @@ export default function PushSubscribeToggle({ projectSlug, lineage, label, big =
         { cache: "no-store" },
       );
       if (!res.ok) return;
-      const data = (await res.json()) as { scopes: Array<{ lineage?: string }> };
+      const data = (await res.json()) as { scopes: Array<{ lineage?: string; kind?: string }> };
       setSubscribed(
         data.scopes.some((s) =>
-          lineage ? s.lineage === lineage : !s.lineage,
+          lineage
+            ? s.lineage === lineage && !s.kind
+            : kind
+              ? s.kind === kind && !s.lineage
+              : !s.lineage && !s.kind,
         ),
       );
     } catch {
       /* status check failed; leave toggle off rather than lie */
     }
-  }, [projectSlug, lineage]);
+  }, [projectSlug, lineage, kind]);
 
   useEffect(() => {
     if (!supported) return;
@@ -79,7 +89,9 @@ export default function PushSubscribeToggle({ projectSlug, lineage, label, big =
     if (busy) return;
     setBusy(true);
     try {
-      const scope = lineage ? { project_slug: projectSlug, lineage } : { project_slug: projectSlug };
+      const scope: { project_slug: string; lineage?: string; kind?: "news" | "resolution" } = { project_slug: projectSlug };
+      if (lineage) scope.lineage = lineage;
+      if (kind) scope.kind = kind;
       if (subscribed) {
         const endpoint = endpointRef.current ?? (await browserSubscription().catch(() => null))?.endpoint;
         if (endpoint) {
@@ -134,7 +146,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, label, big =
       disabled={busy}
       onClick={toggle}
     >
-      {busy ? "Working" : subscribed ? "Notifications on" : label}
+      {busy ? "Working" : subscribed ? subscribedLabel : label}
     </button>
   );
 }

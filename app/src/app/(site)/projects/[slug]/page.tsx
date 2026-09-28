@@ -27,7 +27,7 @@ import ButtonLink from "@/components/button-link";
 import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-charts";
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
-import PushSubscribeToggle from "@/components/push-subscribe-toggle";
+import NotifyCard from "@/components/notify-card";
 import PromiseList from "@/components/promise-list";
 import ProjectTimeline from '@/components/project-timeline';
 import ProjectAtlas from "@/components/atlas/project-atlas";
@@ -147,7 +147,6 @@ export default async function ProjectPage({ params, searchParams }: {
         {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
           <ExpandableHeartMeter slug={slug} name={latest.name} filled={latest.earned} capacity={latest.capacity} summary={composition} size={34} />
-          <PushSubscribeToggle projectSlug={slug} label="Notify me" big />
         </div>
         {Number.isFinite(Date.parse(latest.as_of)) && (
           <p className="panel-sub" style={{ marginTop: 10 }}>
@@ -155,6 +154,9 @@ export default async function ProjectPage({ params, searchParams }: {
           </p>
         )}
       </div>
+
+      {/* 1b. Promise notifications: its own card with two alert tiers. */}
+      <NotifyCard projectSlug={slug} projectName={latest.name} />
 
       <span id="hearts" aria-hidden="true" />
 
