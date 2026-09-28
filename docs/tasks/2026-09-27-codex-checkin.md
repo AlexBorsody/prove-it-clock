@@ -1,5 +1,11 @@
 # Codex check-in: timeline + small-cap intake — 2026-09-27
 
+## Stock market data integration (Habib, via GitHub)
+
+- **The market-data brief is delivered: `docs/tasks/2026-09-27-stock-market-data-integration.md`.** Read it before writing any data code. It has the full free-API comparison, the recommended architecture, the field mapping, and the keys to request.
+- Short version: SEC EDGAR (no key, server-side, cached) for fundamentals; FMP free for delayed quotes + statements; Finnhub free for real-time quotes; Alpha Vantage free for forward P/E only. Never invent values for private companies (SpaceX/OpenAI/Anthropic).
+- **Keys you need from Alex (all free, email signup, no card): FMP, Finnhub, Alpha Vantage.** Ask Alex via Habib as soon as you start; do not wait until blocked. Alex knows this is coming and says the integration is critical.
+
 ## Timeline
 
 - The event taxonomy + worked-examples brief (2026-09-27-timeline-foundation.md) is delivered. Treat it as the four-event handoff the 2026-09-26 ledger brief gated builds on. Confirm if anything else is outstanding before DDL.
