@@ -86,7 +86,7 @@ function defaultBoardView(): BoardView {
     const saved = window.localStorage.getItem(BOARD_VIEW_KEY);
     if (saved === "cards" || saved === "list") return saved;
   } catch {}
-  return window.matchMedia("(max-width: 640px)").matches ? "cards" : "list";
+  return "list";
 }
 
 export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: ScoreboardRow[]; asOf?: string; compareProjects?: CompareProject[] }) {
