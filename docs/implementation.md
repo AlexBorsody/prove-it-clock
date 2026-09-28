@@ -255,6 +255,20 @@ or gap. Do not average category indices into a universal score or dollars.
 Market cap stays outside delivery/impact inputs. This clarification adds no
 schema migration, valuation code or active-methodology switch.
 
+**Heart meter display: one aggregated meter, expands to per-category meters (2026-09-27).**
+Keep ONE aggregated heart meter everywhere it displays; it shows the unweighted
+inventory fill (earned hearts vs capacity) and reads as inventory, never as a
+score. Clicking/tapping expands an inline drill-down with one meter per category,
+each its own color, mirroring the atlas category split; category indices are the
+headline in the expanded view. One meter component, one data source, no second
+pipeline. The [display review brief](tasks/2026-09-27-heart-meter-display-review.md)
+is out for ChatGPT review; the expandable mechanic can ship while visual-treatment
+questions (inventory vs index fill on expanded meters, empty-category display, color
+semantics) await review. Tasks: [expandable meter](tasks/2026-09-27-heart-meter-expandable.md).
+Out of scope: fractional/partial hearts (explicitly deferred), any cross-category
+aggregation that would rebuild a universal score, changes to promise states or the
+fulfillment test rule.
+
 ## Promise history and timeline
 
 **Layer 1 technical proposal, 2026-09-27. Not built or approved for publication.**
