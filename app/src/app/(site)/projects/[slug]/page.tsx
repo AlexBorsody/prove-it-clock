@@ -10,7 +10,7 @@ import {
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
 import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
-import HeartMeter from "@/components/heart-meter";
+import ExpandableHeartMeter from "@/components/expandable-heart-meter";
 import { getPublishedLedger, getPublishedAtlas } from '@/lib/atlas/data';
 import { summarizeDelivery } from '@/lib/promise-verdict';
 import { receiptRevision } from '@/lib/promise-receipts';
@@ -147,7 +147,7 @@ export default async function ProjectPage({ params, searchParams }: {
         </h1>
         {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
         <div style={{ display: "flex", alignItems: "center", gap: 18, flexWrap: "wrap" }}>
-          <HeartMeter filled={latest.earned} capacity={latest.capacity} size={34} />
+          <ExpandableHeartMeter slug={slug} name={latest.name} filled={latest.earned} capacity={latest.capacity} summary={composition} size={34} />
           <PushSubscribeToggle projectSlug={slug} label="Notify me" />
         </div>
       </div>

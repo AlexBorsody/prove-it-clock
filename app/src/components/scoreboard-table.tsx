@@ -8,7 +8,7 @@ import { deliveryReceipt, type DeliverySummary } from "@/lib/promise-verdict";
 import { projectFlags } from "@/lib/project-policy";
 import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardCategory, parseBoardSort, sortScoreboard, categoryRanks, type BoardSort } from "@/lib/scoreboard-ranking";
 import styles from "./scoreboard-table.module.css";
-import HeartMeter, { CompactHearts } from "@/components/heart-meter";
+import ExpandableHeartMeter from "@/components/expandable-heart-meter";
 import Icon from "@/components/chrome-icons";
 import { GithubMark } from "@/components/icons";
 import PromiseRows, { type PromiseBrief } from "@/components/promise-rows";
@@ -150,7 +150,7 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
           <tbody>
             {sorted.map((r) => (
               <Fragment key={r.slug}>
-                <tr className={`search-section${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
+                <tr className={`search-section ${styles.projectRow}${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
                   {category && <td className="num" style={{ color: "var(--text-faint)" }}>{r.delivery ? (ranks.get(r.slug) ?? "Unranked") : "Unavailable"}</td>}
                   <td>
                     <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
@@ -170,18 +170,8 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
                     </Link>
                   </td>
                   <td>
-                    {category || !r.delivery ? categoryCell(r) : <button
-                      type="button"
-                      className="hearts-cell-toggle"
-                      onClick={() => toggleExpand(r.slug)}
-                      aria-expanded={expanded === r.slug}
-                      aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
-                      title="Show what earned these hearts"
-                    >
-                      <HeartMeter filled={r.earned} capacity={r.capacity} size={16} />
-                      {" "}
-                      <span className="num">{r.earned} of {r.capacity} potential</span>
-                    </button>}
+                    {category || !r.delivery ? categoryCell(r) : <ExpandableHeartMeter
+                      slug={r.slug} name={r.name} filled={r.earned} capacity={r.capacity} summary={r.delivery} size={16}/>}
                   </td>
                   <td>
                     <Link href="/code" className="cell-link metric-btn" title="See CODE activity ranking">
@@ -244,17 +234,8 @@ export default function ScoreboardTable({ rows, asOf, dataRevision }: { rows: Sc
               </Link>
               {category && <p className={styles.rank}>{r.delivery ? (ranks.has(r.slug) ? `${categoryLabel} delivery rank ${ranks.get(r.slug)}` : "Unranked") : "Assessment unavailable"}</p>}
               <div className="mcard-hearts">
-                {category || !r.delivery ? categoryCell(r) : <button
-                  type="button"
-                  className="mcard-hearts-toggle"
-                  onClick={() => toggleExpand(r.slug)}
-                  aria-expanded={open}
-                  aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
-                  title="Show what earned these hearts"
-                >
-                  <CompactHearts earned={r.earned} capacity={r.capacity} />
-                  <span className="num mcard-count">{r.earned}/{r.capacity}</span>
-                </button>}
+                {category || !r.delivery ? categoryCell(r) : <ExpandableHeartMeter
+                  slug={r.slug} name={r.name} filled={r.earned} capacity={r.capacity} summary={r.delivery} size={20}/>}
               </div>
               {projectFlags(r.slug).genesis && <p className={styles.genesisBadge}>Genesis asset</p>}
               <section className={styles.context} aria-label={`${r.name} supporting context`}>

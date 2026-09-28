@@ -28,10 +28,12 @@ export default function HeartMeter({
   filled,
   capacity,
   size = 22,
+  color,
 }: {
   filled: number;
   capacity: number;
   size?: number;
+  color?: string;
 }) {
   const earned = Math.max(0, Math.min(filled, capacity));
   return (
@@ -43,7 +45,7 @@ export default function HeartMeter({
     >
       {Array.from({ length: capacity }, (_, i) => {
         return (
-          <span key={i} className={i < earned ? "heart on" : "heart"}>
+          <span key={i} className={i < earned ? "heart on" : "heart"} style={i < earned && color ? {color} : undefined}>
             <PixelHeart />
           </span>
         );

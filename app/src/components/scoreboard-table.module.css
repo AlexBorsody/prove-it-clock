@@ -6,6 +6,7 @@
 .coverage summary { cursor:pointer;min-height:36px;align-content:center; }
 .heading { min-height:44px;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer; }
 .receipt { display:grid;gap:6px;min-height:44px;align-content:center; }
+.projectRow:has(details[open]) > td { vertical-align:top; }
 .receipt strong { color:var(--green); }
 .receipt span { color:var(--text-dim);font-size:13px; }
 .rank { font-size:13px;color:var(--text-dim);margin:0 0 8px; }

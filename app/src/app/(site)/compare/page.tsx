@@ -1,6 +1,4 @@
 import {
-  HEARTS_METHODOLOGY,
-  readHeartRankings,
   readHypeSnapshots,
   latestHypeBySlug,
   hypeBaselineWeeks,
@@ -8,6 +6,9 @@ import {
   useWord,
   type HypeSnapshot,
 } from "@/lib/heart-data";
+import { getPublishedLedger, getPublishedAtlas } from '@/lib/atlas/data';
+import { summarizeDelivery } from '@/lib/promise-verdict';
+import type { AtlasDataset } from '@/lib/atlas/types';
 import { normalizePromiseState } from "@/lib/hearts";
 import { fetchVitals } from "@/lib/vitals";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
@@ -18,12 +19,15 @@ export const dynamic = "force-dynamic";
 
 export default async function ComparePage() {
   let projects: any[] = [];
+  let atlas: AtlasDataset | null = null;
   let hypeSnaps: HypeSnapshot[] = [];
   try {
-    const [rankings, hype] = await Promise.all([
-      readHeartRankings(HEARTS_METHODOLOGY, 1, 100),
+    const [rankings, hype, publishedAtlas] = await Promise.all([
+      getPublishedLedger(),
       readHypeSnapshots().catch(() => [] as HypeSnapshot[]),
+      getPublishedAtlas().catch(() => null),
     ]);
+    atlas = publishedAtlas;
     projects = rankings.projects;
     hypeSnaps = hype;
   } catch {
@@ -50,6 +54,7 @@ export default async function ComparePage() {
         slug: p.slug,
         name: p.name,
         symbol: p.symbol,
+        delivery: atlas ? summarizeDelivery(atlas, p.slug) : null,
         earned: p.earned,
         capacity: p.capacity,
         filledPct: p.capacity > 0 ? p.earned / p.capacity : 0,

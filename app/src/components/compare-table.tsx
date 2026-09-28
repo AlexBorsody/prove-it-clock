@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import HeartMeter from "@/components/heart-meter";
+import ExpandableHeartMeter from "@/components/expandable-heart-meter";
+import type { DeliverySummary } from "@/lib/promise-verdict";
 import type { CodeWord } from "@/lib/heart-data";
 import { searchMeta } from "@/lib/search-sections";
 import { projectFlags } from "@/lib/project-policy";
@@ -15,6 +16,7 @@ export interface CompareProject {
   earned: number;
   capacity: number;
   filledPct: number;
+  delivery: DeliverySummary | null;
   promiseCounts: { total: number; open: number; active: number; fulfilled: number; lapsed: number; retired: number };
   code: { word: CodeWord; stars: number | null; commits90d: number | null; lastCommitAt: string | null; openPRs: number | null; unreachable: boolean };
   use: "coming";
@@ -48,16 +50,7 @@ function Cell({ row, p }: { row: string; p: CompareProject }) {
   switch (row) {
     case "hearts":
       return (
-        <div>
-          <HeartMeter filled={p.earned} capacity={p.capacity} size={15} />
-          <div className="mini-meter" style={{ marginBottom: 6, marginTop: 8 }}>
-            <div className="mini-meter-track">
-              <div className="mini-meter-fill" style={{ width: `${Math.round(p.filledPct * 100)}%` }} />
-            </div>
-            <span className="num mini-meter-val">{p.earned} of {p.capacity} potential</span>
-          </div>
-          <span className="cell-sub">{Math.round(p.filledPct * 100)}% filled</span>
-        </div>
+        <ExpandableHeartMeter slug={p.slug} name={p.name} filled={p.earned} capacity={p.capacity} summary={p.delivery} size={15}/>
       );
     case "promises": {
       const c = p.promiseCounts;
