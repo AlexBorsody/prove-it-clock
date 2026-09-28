@@ -10,22 +10,28 @@ older weighted-verdict and warning instructions below are superseded.
 The [timeline handoff](tasks/2026-09-27-timeline-foundation.md) now supplies the
 event taxonomy and examples; gaps and implementation notes belong in that brief.
 
-## Scheduled promise-news review queue
+## Protected promise-news review intake
 
-The hourly Vercel entry invokes `GET /api/cron/scan-news`. The endpoint requires
+`GET /api/cron/scan-news` is prepared for a future scheduler. No automatic cron
+registration is included in `app/vercel.json`; merging or deploying this code
+does not schedule or enable scans. The endpoint requires
 `Authorization: Bearer <CRON_SECRET>`, `NEWS_SCAN_ENABLED=true`, and server-side
-Supabase service credentials. Missing configuration fails closed. The scheduled
-runner uses the existing keyword matcher and drafts into `scan_proposals`; it
+Supabase service credentials. It remains disabled by default and missing
+configuration fails closed. The runner uses the existing keyword matcher and
+drafts into `scan_proposals`; it
 never publishes an assessment, calls the AI judge, or sends notifications.
-Database run/proposal IDs make duplicate scheduled invocations safe; prior
+Database run/proposal IDs make duplicate invocations safe; prior
 approved/rejected proposals are retained. `scan_runs` records partial feed
 failures and failed writes rather than reporting missing coverage as success.
 
-Review scheduled drafts with `npm run scan:review -- --database list` or
+Inspect database drafts with `npm run scan:review -- --database list` or
 `--database show <id>`. These commands only read. The original file-based review
 commands do not review this database queue; reviewed event publication remains a
-separate step. No scheduler activation or hosted write is implied by this code.
-See the [current handoff](tasks/2026-09-27-codex-checkin.md) for release gates.
+separate step. Before future activation, confirm a scheduler and compatible
+Vercel plan, assign database-queue review ownership, configure the required
+environment, and inspect an authorized run. Notification delivery, including
+the two news subscription tiers, is a separate integration. See the
+[current handoff](tasks/2026-09-27-codex-checkin.md) for activation prerequisites.
 
 ## Published evidence receipts (2026-09-27)
 
