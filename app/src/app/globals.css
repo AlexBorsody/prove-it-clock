@@ -1429,3 +1429,10 @@ button { padding-block: 6px; padding-inline: 14px; }
     max-height: 88dvh; padding-bottom: calc(22px + env(safe-area-inset-bottom));
   }
 }
+
+.welcome-sub { margin: 0 0 14px; color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
+.welcome-legend { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.welcome-legend li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-dim); }
+.welcome-legend strong { color: var(--text); }
+.welcome-how { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; line-height: 1.55; }
+.welcome-prop { margin: 0 0 4px; color: var(--text); font-size: 14.5px; font-weight: 700; line-height: 1.5; }

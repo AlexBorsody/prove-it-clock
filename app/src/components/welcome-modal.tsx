@@ -1,12 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Icon from "@/components/chrome-icons";
 
 /**
  * First-arrival greeting: a pop-up with the methodology in it.
  * Shows once per browser. "Take the tour" hands off to the walkthrough;
  * "Explore on my own" dismisses without nagging the tour afterwards.
+ * ?welcome=1 forces it open for review without marking it seen.
  */
 const SEEN_KEY = "proveit-welcome-seen";
 const TOUR_SEEN_KEY = "proveit-walkthrough-seen";
@@ -38,20 +40,31 @@ function markTourSeen() {
 
 export default function WelcomeModal() {
   const [open, setOpen] = useState(false);
+  const previewRef = useRef(false);
 
   useEffect(() => {
+    try {
+      if (new URLSearchParams(window.location.search).get("welcome") === "1") {
+        previewRef.current = true;
+        const t = window.setTimeout(() => setOpen(true), 800);
+        return () => window.clearTimeout(t);
+      }
+    } catch {
+      /* ignore malformed query strings */
+    }
     if (wasSeen()) return;
     const t = window.setTimeout(() => setOpen(true), 800);
     return () => window.clearTimeout(t);
   }, []);
 
   const dismiss = useCallback((takeTour: boolean) => {
-    markSeen();
+    if (!previewRef.current) {
+      markSeen();
+      if (!takeTour) markTourSeen();
+    }
     setOpen(false);
     if (takeTour) {
       window.dispatchEvent(new CustomEvent(REPLAY_EVENT));
-    } else {
-      markTourSeen();
     }
   }, []);
 
@@ -90,17 +103,29 @@ export default function WelcomeModal() {
         </button>
         <div className="welcome-kicker">Prove Value</div>
         <h2 id="welcome-title" className="welcome-title">Did they deliver?</h2>
-        <div className="welcome-body">
-          <p>We check what crypto projects promised against what they actually did.</p>
-          <p>
-            Every promise is tracked with its source, a checkable test, and the
-            evidence. A kept promise earns a heart. An open one is still pending,
-            never a failure.
-          </p>
-          <p className="welcome-prop">
-            If a project proves its value, it should be worth money. This is the record.
-          </p>
-        </div>
+        <p className="welcome-sub">
+          Every crypto project makes promises. We check them against what actually happened.
+        </p>
+        <ul className="welcome-legend">
+          <li>
+            <Icon name="heart" size={18} filled title="Promise kept · heart earned" style={{ color: "var(--green)" }} />
+            <span><strong>Kept</strong> · earned its heart</span>
+          </li>
+          <li>
+            <Icon name="heart" size={18} title="Promise open · heart not yet earned" style={{ color: "var(--text-faint)" }} />
+            <span><strong>Open</strong> · still pending, never a failure</span>
+          </li>
+          <li>
+            <Icon name="heart" size={18} title="Promise lapsed · heart lost" style={{ color: "var(--red)" }} />
+            <span><strong>Lapsed</strong> · the heart is lost, evidence attached</span>
+          </li>
+        </ul>
+        <p className="welcome-how">
+          Tap any project to inspect its promises. Tap a heart to see the proof.
+        </p>
+        <p className="welcome-prop">
+          If a project proves its value, it should be worth money. This is the record.
+        </p>
         <div className="welcome-actions">
           <button type="button" className="welcome-primary" onClick={() => dismiss(true)}>
             Take the tour
