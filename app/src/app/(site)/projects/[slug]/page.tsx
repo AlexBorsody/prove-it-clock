@@ -32,6 +32,7 @@ import ProjectTimeline from '@/components/project-timeline';
 import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 import { projectFlags } from "@/lib/project-policy";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -159,9 +160,6 @@ export default async function ProjectPage({ params, searchParams }: {
         )}
       </div>
 
-      {/* 1b. Promise notifications: its own card with two alert tiers. */}
-      <NotifyCard projectSlug={slug} projectName={latest.name} />
-
       <span id="hearts" aria-hidden="true" />
 
       {/* All promise content lives in one consolidated panel below:
@@ -186,13 +184,16 @@ export default async function ProjectPage({ params, searchParams }: {
         <ProjectTimeline slug={slug} name={latest.name} revisionId={query.history}/>
       </Suspense>
 
+      <section className={`panel ${styles.promiseUpdates}`} aria-label={`${latest.name} promise news and notifications`}>
+        <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
+        <NotifyCard projectSlug={slug} projectName={latest.name} />
+      </section>
+
       <section className="panel atlas-section search-section" {...searchMeta({id:`project-${slug}-atlas`,title:`${latest.name} Promise Atlas`,kind:'Atlas',project:slug,keywords:'promise categories evidence'})}>
         <Suspense fallback={<><h2>{latest.name} Promise Atlas</h2><p role="status">Loading the promise map…</p></>}>
           <ProjectAtlas slug={slug} name={latest.name}/>
         </Suspense>
       </section>
-
-      <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
 
       <section aria-labelledby={`project-${slug}-context-heading`}>
       <header className="supporting-context-heading">

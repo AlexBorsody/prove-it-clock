@@ -11,7 +11,7 @@ export default function DeliveryComposition({slug,summary,revision,category,onCa
   const scope = category ? summary.categories[category] : summary;
   const counts = compositionCounts(scope);
   return <div className={styles.composition}>
-    <label className={styles.subject}>Promise category
+    <label className={styles.subject}><span className="sr-only">Promise category</span>
       <select value={category} onChange={event=>onCategory(event.target.value as CategoryId|'')}>
         <option value="">All subjects</option>
         {CATEGORIES.filter(c=>summary.categories[c.id].total>0).map(c=><option key={c.id} value={c.id}>{c.label}</option>)}

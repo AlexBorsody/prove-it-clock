@@ -12,6 +12,7 @@ import InfoTip from "@/components/info-tip";
 import DeliveryComposition from "@/components/delivery-composition";
 import PromiseList from "@/components/promise-list";
 import { normalizePromiseState } from "@/lib/hearts";
+import { projectFlags } from "@/lib/project-policy";
 import {
   promiseFilterHref,
   matchesPromiseFilter,
@@ -67,7 +68,7 @@ export default function PromisesPanel({
         />
       </h2>
       <div style={{ margin: "4px 0 14px" }}>
-        <HeartMeter filled={filled} capacity={visible.length} size={34} />
+        <HeartMeter filled={filled} capacity={visible.length} size={34} genesis={projectFlags(slug).genesis} />
       </div>
       {summary && revision && (
         <DeliveryComposition

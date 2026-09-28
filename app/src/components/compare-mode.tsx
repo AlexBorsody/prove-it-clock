@@ -64,7 +64,7 @@ export default function CompareMode({ selectedLabels, onClear, children }: {
   return <>
     <div className={styles.barSpace} aria-hidden="true" />
     <div className={styles.bar}>
-      <span className={styles.selection}>{selectedLabels.join(" · ")}</span>
+      <span className={styles.selection} title={selectedLabels.join(" · ")}>{selectedLabels.join(" · ")}</span>
       <button type="button" className="btn" onClick={onClear}>Clear</button>
       <button ref={trigger} type="button" className="btn btn-primary" onClick={() => setOpen(true)}>Compare</button>
     </div>
