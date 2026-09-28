@@ -211,3 +211,20 @@ repeated. The prior preview reports Ready in Vercel's PR status; this is not
 hosted database or event-data verification. No new review comments or research
 handoff arrived. Codex retains #15; Muse's source/schema handoff above is pending.
 The shared checkout and its untracked `.vscode/` remain untouched.
+
+### Hosted storage restored — 2026-09-28 03:28 UTC
+
+Alex directly authorized migration 007 and the first three-event XRP batch once
+PR #16 merges, with Muse's notification commit checked first. Integrated main
+`34cfb48` into the timeline branch without changing the notification card.
+Applied unchanged 007 to verified Supabase project `tbigzpztybuvogpeflao`. SQL
+confirmed table/function, public read and service-only publication, and zero
+revisions. Live `/projects/xrp` now shows honest empty coverage instead of a
+load failure. The batch remains unpublished until #16's caveat renderer merges
+and is deployed. No scoring changes or push trigger activation. Details and
+checks are in `docs/research/timeline/README.md`.
+
+Notification review found a live schema mismatch for Muse's decisive-news tier
+(`resolution_likely` absent from 009's CHECK). Fixing through a separate focused
+PR; do not conflate news signals with published assessments or assume the
+proposal-only hourly scanner sends the new alerts.

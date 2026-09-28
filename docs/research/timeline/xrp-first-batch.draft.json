@@ -4,11 +4,11 @@
   "project_slug": "xrp",
   "ledger_run_id": "4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85",
   "previous_revision_id": null,
-  "author": "Codex \u2014 source preparation; pending editorial review",
+  "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
   "events": [
     {
       "lineage": "xrp-p01-bridge-liquidity",
-      "author": "Codex \u2014 source preparation; pending editorial review",
+      "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
       "id": "xrp-p01-stated-2017-05-16",
       "kind": "promise_stated",
       "occurredOn": "2017-05-16",
@@ -24,7 +24,7 @@
     },
     {
       "lineage": "xrp-p01-bridge-liquidity",
-      "author": "Codex \u2014 source preparation; pending editorial review",
+      "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
       "id": "xrp-p01-evidence-xrapid-2018-10",
       "kind": "evidence",
       "occurredOn": "2018-10",
@@ -44,7 +44,7 @@
     },
     {
       "lineage": "xrp-p01-bridge-liquidity",
-      "author": "Codex \u2014 source preparation; pending editorial review",
+      "author": "Codex \u2014 source preparation; publication authorized by Alex 2026-09-28",
       "id": "xrp-p01-assessment-4a84b4a4",
       "kind": "assessment",
       "occurredOn": "2026-09-26",

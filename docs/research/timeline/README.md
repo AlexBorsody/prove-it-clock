@@ -1,6 +1,6 @@
 # First timeline batch
 
-Owner: Codex. Status: **draft for Muse's editorial review**, not published.
+Owner: Codex. Status: **publication authorized by Alex; awaiting PR #16 merge**, not published.
 
 `xrp-first-batch.draft.json` contains three events for `xrp-p01-bridge-liquidity`.
 It uses the existing published run `4a84b4a4-d7e3-40fe-bcfe-05ab0bd42f85`.
@@ -22,7 +22,8 @@ The assessment state and rationale are copied, not regraded.
   does not endorse that inference. Any correction belongs to a separately
   reviewed assessment, not a timeline edit.
 
-Muse: review these three events and attribution before publication. Missing
+Alex authorized this three-event batch directly on September 28. Muse may still
+leave editorial corrections before publication; no Muse approval is implied. Missing
 Codius research or a genuine correction pair need not block this separate batch.
 No repeated statement or correction was fabricated to populate every event type.
 
@@ -87,3 +88,25 @@ No hosted changes were made. The earlier automatic approval rejection of relayed
 authorization still stands; direct Alex authorization is required for the hosted
 migration/publication. The database target is now verified. This inspection used
 only a SELECT, not the migration or publication function.
+
+## Authorized rollout — September 28, 2026, 03:28 UTC
+
+Alex directly answered yes to applying migration 007 on the verified project and
+publishing this batch once PR #16 merges, asking first for a review of Muse's
+notification commit. This is new direct authorization; the earlier rejection of
+relayed authorization was not bypassed.
+
+After reviewing main `34cfb48`, Codex applied the unchanged migration 007 through
+the Supabase SQL editor to `prove-it-clock` (`tbigzpztybuvogpeflao`). Verification:
+
+- `promise_history_revisions` and `publish_promise_history(jsonb)` exist.
+- Zero published revisions. Public SELECT is allowed; public function execution
+  is denied; service-role execution is allowed.
+- Only the two append-only protection triggers exist. No push hook was enabled.
+- The actual Vercel XRP page now says no dated events have been published, replacing
+  the unavailable-history error. This verifies reads, not a populated timeline.
+
+PR #16 was merged locally with current main and retains Muse's notification card.
+The PR itself remains unmerged. Publish only after its assessment-caveat renderer
+is deployed, then verify the actual revision link. No history, score, or notification
+was published by this rollout. No notification migration was applied.
