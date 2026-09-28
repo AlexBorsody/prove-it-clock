@@ -27,3 +27,5 @@ TypeScript, production build, whitespace check and two existing delivery-populat
 ## Concurrent Muse update
 
 Muse's 7726a1d arrived while PR23's preview was building. Preserve its project promise Cards/List switch and default List presentation. Thread the existing category assignment into both variants: a secondary line beneath the compact row title and a category badge in Cards. No rollback of the new layout.
+
+After integrating 7726a1d, desktop fixture checks passed for project List row expansion, category text under compact titles, category badges in Cards, and homepage first-heart click (five meters, 17 labeled Avalanche promises). Removed the fixture again. PR: https://github.com/AlexBorsody/prove-it-clock/pull/23.
