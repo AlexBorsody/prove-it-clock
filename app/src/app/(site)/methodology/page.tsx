@@ -49,9 +49,9 @@ export default function MethodologyPage() {
         </ol>
       </section>
 
-      <Section icon="heart" title="What the hearts mean" id="hearts" open>
+      <Section icon="heart" title="How promises are counted" id="hearts" open>
         <p>
-          <strong>One kept promise earns one heart.</strong> The total is the
+          <strong>Each kept promise counts as one.</strong> The total is the
           number of distinct scored promises. Repeated statements count once. Core
           promises are marked, but currently earn the same one heart.
         </p>

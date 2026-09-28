@@ -60,7 +60,7 @@ export function HypeRowCard({ row: r }: { row: HypeRow }) {
       </Link>
       <div className="hype-hearts num">
         <span className="hype-val">{r.earned} of {r.capacity}</span>
-        <span className="cell-sub">potential hearts</span>
+        <span className="cell-sub">potential promises</span>
       </div>
       <div className="hype-mentions num">
         {r.mentions == null ? (
@@ -112,7 +112,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
           className={sortKey === "hearts" ? "active" : undefined}
           onClick={() => setSortKey("hearts")}
         >
-          Hearts
+          Promises
         </button>
       </div>
       <div className="hype-rows">

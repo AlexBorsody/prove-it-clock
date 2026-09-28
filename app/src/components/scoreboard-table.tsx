@@ -44,7 +44,7 @@ export interface ScoreboardRow {
 const HEADERS: Array<{ key: BoardSort | null; label: string }> = [
   { key: "rank", label: "#" },
   { key: "coin", label: "Coin" },
-  { key: "hearts", label: "Hearts" },
+  { key: "hearts", label: "Promises" },
   { key: "commits", label: "Code" },
   { key: null, label: "Usage" },
   { key: "hype", label: "Hype" },
@@ -185,7 +185,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       </button>
                     </div>
                   </td>
-                  <td role="cell" data-label="Hearts" className={styles.labeledCell}>
+                  <td role="cell" data-label="Promises" className={styles.labeledCell}>
                     {!r.delivery ? <span className="word dim">Assessment unavailable</span> : <button
                       type="button"
                       className={`hearts-cell-toggle ${styles.heartButton}`}
@@ -193,7 +193,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       aria-expanded={expanded === r.slug}
                       aria-controls={`scoreboard-promises-${r.slug}`}
                       aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
-                      title="Show what earned these hearts"
+                      title="Show which promises were kept"
                     >
                       <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                     </button>}
@@ -256,7 +256,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   aria-expanded={open}
                   aria-controls={`scoreboard-promises-${r.slug}`}
                   aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
-                  title="Show what earned these hearts"
+                  title="Show which promises were kept"
                 >
                   <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                   <span className={styles.heartChevron} aria-hidden="true">{open ? "▲" : "▼"}</span>

@@ -16,12 +16,12 @@ export default function PromiseCategoryMeters({ slug, summary }: {
   slug: string;
   summary: DeliverySummary;
 }) {
-  return <ul className={styles.categories} aria-label="Hearts by category">
+  return <ul className={styles.categories} aria-label="Promises by category">
     {CATEGORIES.filter(category => summary.categories[category.id].total > 0).map(category => {
       const counts = summary.categories[category.id];
       return <li key={category.id}>
         <Link href={deliveryReceipt(slug, category.id)} className={styles.category}
-          aria-label={`${category.label}: ${counts.kept} of ${counts.total} hearts earned. View promises on the Atlas`}>
+          aria-label={`${category.label}: ${counts.kept} of ${counts.total} promises kept. View promises on the Atlas`}>
           <span className={styles.label}>{category.label} <span aria-hidden="true">↗</span></span>
           <HeartMeter filled={counts.kept} capacity={counts.total} size={18} color={COLORS[category.id]} />
         </Link>

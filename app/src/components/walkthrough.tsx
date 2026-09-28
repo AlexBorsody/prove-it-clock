@@ -17,7 +17,7 @@ const STEPS: TourStep[] = [
   {
     selector: '[data-tour="promises"]',
     title: "Promises, kept or broken",
-    body: "This is the whole point. Everything this project promised, and what actually happened. A filled heart means the promise was kept. Tap any promise to see the proof.",
+    body: "This is the whole point. Everything this project promised, and what actually happened. Each promise gets a heart: a filled heart means it was kept. Tap any promise to see the proof.",
   },
   {
     selector: '[data-tour="problems"]',

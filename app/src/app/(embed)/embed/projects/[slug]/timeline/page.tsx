@@ -82,7 +82,7 @@ function credit(p: TimelinePalette, slug: string) {
       }}
     >
       <span>
-        Prove Value · hearts claim-type rule v2
+        Prove Value · promises claim-type rule v2
       </span>
       <a href={`/projects/${slug}`} style={{ color: p.accent, textDecoration: "none" }}>
         Full scorecard →

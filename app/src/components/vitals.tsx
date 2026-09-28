@@ -124,7 +124,7 @@ export default function Vitals({ slug, earned, capacity }: { slug: string; earne
       </h2>
       <p className="panel-sub">
         Developer activity, pulled live from GitHub. Display only: it does not
-        affect the hearts score.
+        affect the promise count.
       </p>
 
       {!data && !down && (

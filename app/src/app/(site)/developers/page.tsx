@@ -5,7 +5,7 @@ import { searchMeta } from "@/lib/search-sections";
 
 export const metadata: Metadata = {
   title: "API Docs",
-  description: "Prove Value API: read-only endpoints for promise records, hearts, CODE, and HYPE.",
+  description: "Prove Value API: read-only endpoints for promises, CODE, and HYPE.",
 };
 
 export default function DevelopersPage() {

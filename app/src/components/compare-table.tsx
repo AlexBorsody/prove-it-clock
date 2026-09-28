@@ -59,7 +59,7 @@ export function ComparisonGrid({ columns, groups, id = "compare-metrics", rowIdP
 
 const ROW_GROUPS: Array<{ label: string; rows: Array<{ key: string; label: string; anchor: string }> }> = [
   { label: "Promise delivery", rows: [
-    { key: "hearts", label: "Hearts", anchor: "hearts" },
+    { key: "hearts", label: "Promises", anchor: "hearts" },
     { key: "promises", label: "Promises", anchor: "pillars" },
   ] },
   { label: "Supporting context", rows: [

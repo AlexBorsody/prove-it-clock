@@ -59,7 +59,7 @@ export default function HeartMeter({
       className="hearts"
       style={{ fontSize: size }}
       role="img"
-      aria-label={`${earned} of ${capacity} hearts earned`}
+      aria-label={`${earned} of ${capacity} promises kept`}
     >
       {Array.from({ length: capacity }, (_, i) => {
         return (

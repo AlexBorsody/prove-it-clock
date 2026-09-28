@@ -129,7 +129,7 @@ export default function SocialVitals({
       </h3>
       <p className="panel-sub">
         Our own collector: Reddit, Telegram, and news feeds, snapshotted
-        daily. Display only: it does not affect the hearts score.
+        daily. Display only: it does not affect the promise count.
       </p>
 
       <div className="vitals-grid">
@@ -161,7 +161,7 @@ export default function SocialVitals({
         </p>
         <p className="hype-verdict-sub">
           {verdict.buzz ? `Hype running ${verdict.buzz} vs tracked projects. ` : ""}
-          {earned} of {capacity} hearts earned, on the record.
+          {earned} of {capacity} promises kept, on the record.
         </p>
       </div>
     </div>

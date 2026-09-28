@@ -4,7 +4,7 @@ import SwRegister from "@/components/sw-register";
 export const metadata: Metadata = {
   title: "Prove Value: Crypto Accountability, Evidence-Driven",
   description:
-    "Did the project do what it said it would? Hearts earned only while the evidence holds, with the full history on a graph.",
+    "Did the project do what it said it would? Promises count only while the evidence holds, with the full history on a graph.",
   manifest: "/manifest.webmanifest",
   themeColor: "#0a0e14",
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Prove Value" },
