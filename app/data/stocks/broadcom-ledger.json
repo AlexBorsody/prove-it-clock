@@ -1,0 +1,734 @@
+{
+  "capturedAt": "2026-09-29T12:00:00Z",
+  "companySlug": "broadcom",
+  "lineages": [
+    {
+      "claimCategory": "acquisition-synergy",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-22",
+          "id": "vmware-ebitda-8.5b-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "vmware-ebitda-8.5b",
+          "metric": "incremental adjusted EBITDA attributable to VMware",
+          "occurredOn": "2022-05-26",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2022-05-26",
+            "quote": "The transaction is expected to add approximately $8.5 billion of pro forma EBITDA from the acquisition within three years postclosing.",
+            "title": "Broadcom to Acquire VMware for Approximately $61 Billion in Cash and Stock",
+            "url": "https://investors.broadcom.com/node/60271/pdf"
+          },
+          "speaker": "Broadcom Inc.",
+          "speakerCapacity": "Official press release announcing the VMware acquisition",
+          "speakerRole": "Issuer",
+          "state": "active",
+          "summary": "At announcement, Broadcom set the synergy target: approximately $8.5 billion of pro forma EBITDA from the acquisition within three years of closing.",
+          "targetValue": "~$8.5B incremental pro forma EBITDA"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-22",
+          "id": "vmware-ebitda-8.5b-deal-closed",
+          "kind": "evidence",
+          "lineage": "vmware-ebitda-8.5b",
+          "metric": "acquisition close date",
+          "occurredOn": "2023-11-22",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2023-11-22",
+            "quote": "Broadcom Inc. (NASDAQ: AVGO) ... today announced that it has completed its acquisition of VMware, Inc.",
+            "title": "Broadcom Completes Acquisition of VMware",
+            "url": "https://www.nasdaq.com/press-release/broadcom-completes-acquisition-of-vmware-2023-11-22"
+          },
+          "speaker": "Broadcom Inc.",
+          "speakerCapacity": "Official press release",
+          "speakerRole": "Issuer",
+          "state": "active",
+          "summary": "Broadcom completed the VMware acquisition on November 22, 2023, starting the three-year clock on the $8.5B EBITDA target (deadline November 22, 2026).",
+          "targetValue": "deal closed"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-22",
+          "id": "vmware-ebitda-8.5b-q3fy24-update",
+          "kind": "claim_repeated",
+          "lineage": "vmware-ebitda-8.5b",
+          "metric": "incremental adjusted EBITDA attributable to VMware",
+          "occurredOn": "2024-09-05",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-09-05",
+            "quote": "And when we acquired VMware, our target was to deliver adjusted EBITDA of $8.5 billion, within three years of the acquisition. We are well on the path to achieving or even exceeding this EBITDA goal in the next fiscal '25.",
+            "title": "Broadcom (AVGO) Q3 2024 Earnings Call Transcript",
+            "url": "https://gsix.org/broadcom-avgo-q3-2024-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2024 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan reaffirmed the $8.5B target and said Broadcom was on track to achieve or exceed it in fiscal 2025, ahead of schedule.",
+          "targetValue": "~$8.5B incremental adjusted EBITDA"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-22",
+          "id": "vmware-ebitda-8.5b-q4fy24-update",
+          "kind": "claim_repeated",
+          "lineage": "vmware-ebitda-8.5b",
+          "metric": "incremental adjusted EBITDA attributable to VMware",
+          "occurredOn": "2024-12-12",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-12-12",
+            "quote": "We are well on the path to delivering incremental adjusted EBITDA at a level that significantly exceeds the $8.5 billion we communicated when we announced the deal. We are planning to achieve this much earlier than our initial target of three years.",
+            "title": "Broadcom (AVGO) Q4 2024 Earnings Call Transcript",
+            "url": "https://www.nasdaq.com/articles/broadcom-avgo-q4-2024-earnings-call-transcript"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q4 FY2024 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan said the company was on a path to deliver incremental adjusted EBITDA significantly above the $8.5B deal target, and earlier than the three-year plan.",
+          "targetValue": "significantly above $8.5B, earlier than three years"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-22",
+          "id": "vmware-ebitda-8.5b-assessment",
+          "kind": "assessment",
+          "lineage": "vmware-ebitda-8.5b",
+          "metric": "incremental adjusted EBITDA attributable to VMware",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-12-12",
+            "quote": "We are planning to achieve this much earlier than our initial target of three years.",
+            "title": "Broadcom (AVGO) Q4 2024 Earnings Call Transcript",
+            "url": "https://www.nasdaq.com/articles/broadcom-avgo-q4-2024-earnings-call-transcript"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "active",
+          "summary": "Management's latest on-record assessment (Dec 2024) says the $8.5B target will be met or exceeded ahead of the November 2026 deadline; no contrary disclosure since. Supporting scale: infrastructure software revenue reached $21.5B in FY2024 and $27.0B in FY2025, with total adjusted EBITDA rising to $43.0B in FY2025. Remains active pending the company's own three-year-post-close reporting.",
+          "targetValue": "~$8.5B incremental pro forma EBITDA"
+        }
+      ],
+      "fulfillmentTest": "By November 22, 2026, Broadcom's reported incremental run-rate adjusted EBITDA attributable to the VMware acquisition is at or above $8.5 billion. Graded on management's own reporting against the deal target; VMware-specific EBITDA is not separately disclosed in segment results, so the grade follows the company's stated assessment against this target.",
+      "horizon": "2022-05-26 to 2026-11-22 (three years post-close)",
+      "id": "vmware-ebitda-8.5b",
+      "tags": [
+        "vmware",
+        "ebitda",
+        "m&a",
+        "synergy"
+      ],
+      "title": "Add approximately $8.5 billion of pro forma EBITDA from the VMware acquisition within three years of closing"
+    },
+    {
+      "claimCategory": "capital-allocation",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": null,
+          "id": "dividend-fcf-policy-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "dividend-fcf-policy",
+          "metric": "aggregate common dividends vs prior-year free cash flow",
+          "occurredOn": "2022-05-26",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2022-05-26",
+            "quote": "Broadcom expects to maintain its current dividend policy of delivering 50% of its prior fiscal year free cash flow to shareholders.",
+            "title": "Broadcom to Acquire VMware for Approximately $61 Billion in Cash and Stock",
+            "url": "https://investors.broadcom.com/node/60271/pdf"
+          },
+          "speaker": "Broadcom Inc.",
+          "speakerCapacity": "Official press release announcing the VMware acquisition",
+          "speakerRole": "Issuer",
+          "state": "active",
+          "summary": "Broadcom stated its standing dividend policy: return 50% of the prior fiscal year's free cash flow to shareholders.",
+          "targetValue": "50% of prior fiscal year free cash flow"
+        },
+        {
+          "author": "research-agent",
+          "deadline": null,
+          "id": "dividend-fcf-policy-fy2025-outcome",
+          "kind": "evidence",
+          "lineage": "dividend-fcf-policy",
+          "metric": "FY2025 aggregate common dividends",
+          "occurredOn": "2025-12-11",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-12-11",
+            "quote": "The target fiscal year 2026 annual common stock dividend of $2.60 per share is a record, and the fifteenth consecutive increase in annual dividends since we initiated dividends in fiscal 2011.",
+            "title": "Broadcom Inc. Announces Fourth Quarter and Fiscal Year 2025 Financial Results and Quarterly Dividend",
+            "url": "https://investors.broadcom.com/node/63716/pdf"
+          },
+          "speaker": "Kirsten Spears",
+          "speakerCapacity": "FY2025 results press release",
+          "speakerRole": "CFO",
+          "state": "active",
+          "summary": "FY2025 test passed: the $2.36 annual dividend (paid $0.59/quarter) was confirmed by the fifteenth consecutive annual increase to a $2.60 target for FY2026. Computed from company figures: FY2025 dividends of ~$2.36 x ~4.9B shares (~$11.6B) exceeded 50% of FY2024 free cash flow ($19.4B x 50% = $9.7B).",
+          "targetValue": ">= 50% of FY2024 free cash flow ($9.7B)"
+        },
+        {
+          "author": "research-agent",
+          "deadline": null,
+          "id": "dividend-fcf-policy-fy2026-assessment",
+          "kind": "assessment",
+          "lineage": "dividend-fcf-policy",
+          "metric": "FY2026 aggregate common dividends (declared target)",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-12-11",
+            "quote": "In fiscal year 2025 adjusted EBITDA increased 35% yearoveryear to a record $43.0 billion, and free cash flow was strong at $26.9 billion.",
+            "title": "Broadcom Inc. Announces Fourth Quarter and Fiscal Year 2025 Financial Results and Quarterly Dividend",
+            "url": "https://investors.broadcom.com/node/63716/pdf"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "at-risk",
+          "summary": "FY2026 test is at risk: the declared $2.60 annual dividend target x ~4.9B diluted shares implies ~$12.7B of dividends against 50% of FY2025 free cash flow ($26.9B x 50% = $13.5B), i.e. roughly 47-48% -- marginally below the stated 50% policy because the 10% dividend raise lagged 39% free-cash-flow growth. Final grade when FY2026 dividends are fully paid.",
+          "targetValue": ">= 50% of FY2025 free cash flow ($13.5B)"
+        }
+      ],
+      "fulfillmentTest": "For each fiscal year, aggregate declared common dividends (annual dividend per share multiplied by the diluted share count) are at least 50% of the prior fiscal year's reported free cash flow.",
+      "horizon": "recurring annual policy",
+      "id": "dividend-fcf-policy",
+      "tags": [
+        "dividend",
+        "free-cash-flow",
+        "capital-return"
+      ],
+      "title": "Maintain dividend policy of delivering 50% of prior fiscal year free cash flow to shareholders"
+    },
+    {
+      "claimCategory": "revenue-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2024-11-03",
+          "id": "fy2024-ai-revenue-12b-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2024-ai-revenue-12b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2024-09-05",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-09-05",
+            "quote": "we expect, in Q4, AI revenue to grow sequentially 10% to over $3.5 billion. This will translate to AI revenue of $12 billion for fiscal '24, up from our prior guidance of over $11 billion.",
+            "title": "Broadcom (AVGO) Q3 2024 Earnings Call Transcript",
+            "url": "https://gsix.org/broadcom-avgo-q3-2024-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2024 earnings call",
+          "speakerRole": "CEO",
+          "state": "fulfilled",
+          "summary": "Hock Tan raised the full-year AI revenue guide to $12B, up from prior guidance of over $11B, on expected Q4 AI revenue of over $3.5B.",
+          "targetValue": "$12.0B AI revenue for FY2024"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2024-11-03",
+          "id": "fy2024-ai-revenue-12b-outcome",
+          "kind": "evidence",
+          "lineage": "fy2024-ai-revenue-12b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2024-12-12",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-12-12",
+            "quote": "Semiconductor revenue was a record $30.1 billion driven by AI revenue of $12.2 billion.",
+            "title": "Broadcom Inc. Announces Fourth Quarter and Fiscal Year 2024 Financial Results and Quarterly Dividend",
+            "url": "https://investors.broadcom.com/node/62701/pdf"
+          },
+          "speaker": "Broadcom Inc.",
+          "speakerCapacity": "FY2024 results press release",
+          "speakerRole": "Issuer",
+          "state": "fulfilled",
+          "summary": "FY2024 AI revenue came in at $12.2B, up 220% year over year, exceeding the $12B guidance.",
+          "targetValue": "$12.0B AI revenue for FY2024"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2024-11-03",
+          "id": "fy2024-ai-revenue-12b-assessment",
+          "kind": "assessment",
+          "lineage": "fy2024-ai-revenue-12b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-12-12",
+            "quote": "Semiconductor revenue was a record $30.1 billion driven by AI revenue of $12.2 billion.",
+            "title": "Broadcom Inc. Announces Fourth Quarter and Fiscal Year 2024 Financial Results and Quarterly Dividend",
+            "url": "https://investors.broadcom.com/node/62701/pdf"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "fulfilled",
+          "summary": "Fulfilled: $12.2B actual exceeded the $12B raised guidance (itself raised from over $11B).",
+          "targetValue": "$12.0B AI revenue for FY2024"
+        }
+      ],
+      "fulfillmentTest": "Reported FY2024 AI revenue is at or above $12.0 billion.",
+      "horizon": "2024-09-05 to 2024-11-03 (FY2024)",
+      "id": "fy2024-ai-revenue-12b",
+      "tags": [
+        "ai-revenue",
+        "guidance",
+        "xpu",
+        "networking"
+      ],
+      "title": "Deliver $12 billion of AI revenue in fiscal 2024 (raised from over $11 billion)"
+    },
+    {
+      "claimCategory": "revenue-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-02-01",
+          "id": "q1-fy2026-guidance-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "q1-fy2026-guidance",
+          "metric": "quarterly revenue, AI semiconductor revenue, adjusted EBITDA margin",
+          "occurredOn": "2025-12-11",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-12-11",
+            "quote": "We see the momentum continuing in Q1 and expect AI semiconductor revenue to double yearoveryear to $8.2 billion, driven by custom AI accelerators and Ethernet AI switches. We forecast Q1'26 total revenue of $19.1 billion and adjusted EBITDA of 67%.",
+            "title": "Broadcom Inc. Announces Fourth Quarter and Fiscal Year 2025 Financial Results and Quarterly Dividend",
+            "url": "https://investors.broadcom.com/node/63716/pdf"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "FY2025 results press release",
+          "speakerRole": "CEO",
+          "state": "fulfilled",
+          "summary": "Broadcom guided Q1 FY2026 revenue of ~$19.1B and adjusted EBITDA of 67% of revenue; Hock Tan said AI semiconductor revenue would double year over year to $8.2B.",
+          "targetValue": "~$19.1B revenue; $8.2B AI revenue; 67% EBITDA margin"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-02-01",
+          "id": "q1-fy2026-guidance-outcome",
+          "kind": "evidence",
+          "lineage": "q1-fy2026-guidance",
+          "metric": "quarterly revenue, AI semiconductor revenue, adjusted EBITDA margin",
+          "occurredOn": "2026-03-04",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-03-04",
+            "quote": "Q1 AI revenue of $8.4 billion grew 106% year-over-year, above our forecast, driven by robust demand for custom AI accelerators and AI networking",
+            "title": "Broadcom Q1 revenue hits $19.3B, adds $10B buyback | AVGO 8-K Filing",
+            "url": "https://www.stocktitan.net/sec-filings/AVGO/8-k-broadcom-inc-reports-material-event-06ae4b6efd2a.html"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q1 FY2026 results (8-K Exhibit 99.1)",
+          "speakerRole": "CEO",
+          "state": "fulfilled",
+          "summary": "All three targets met or beaten: revenue $19.311B vs ~$19.1B guide; AI revenue $8.4B vs $8.2B forecast ('above our forecast'); adjusted EBITDA $13.128B, 68% of revenue vs 67% guide.",
+          "targetValue": "~$19.1B revenue; $8.2B AI revenue; 67% EBITDA margin"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-02-01",
+          "id": "q1-fy2026-guidance-assessment",
+          "kind": "assessment",
+          "lineage": "q1-fy2026-guidance",
+          "metric": "quarterly revenue, AI semiconductor revenue, adjusted EBITDA margin",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-03-04",
+            "quote": "Adjusted EBITDA of $13,128 million for the first quarter, or 68 percent of revenue",
+            "title": "Broadcom Q1 revenue hits $19.3B, adds $10B buyback | AVGO 8-K Filing",
+            "url": "https://www.stocktitan.net/sec-filings/AVGO/8-k-broadcom-inc-reports-material-event-06ae4b6efd2a.html"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "fulfilled",
+          "summary": "Fulfilled: revenue $19.311B beat ~$19.1B; AI revenue $8.4B beat the $8.2B forecast; adjusted EBITDA margin 68% beat the 67% guide.",
+          "targetValue": "~$19.1B revenue; $8.2B AI revenue; 67% EBITDA margin"
+        }
+      ],
+      "fulfillmentTest": "Q1 FY2026 reported revenue is at or above ~$19.1B, AI semiconductor revenue is at or above $8.2B, and adjusted EBITDA is approximately 67% of revenue.",
+      "horizon": "2025-12-11 to 2026-02-01 (Q1 FY2026)",
+      "id": "q1-fy2026-guidance",
+      "tags": [
+        "ai-revenue",
+        "guidance",
+        "ebitda-margin"
+      ],
+      "title": "Q1 FY2026: approximately $19.1B revenue, $8.2B AI semiconductor revenue, 67% adjusted EBITDA margin"
+    },
+    {
+      "claimCategory": "revenue-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-01",
+          "id": "fy2026-ai-revenue-58b-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2026-ai-revenue-58b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "we expect our fiscal 2026 AI revenue to be $58 billion, for the year, up 186% year-upon-year and above our prior guidance of $56 billion.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan raised the FY2026 AI revenue outlook to $58B, up 186% year over year, above the prior $56B guidance. (The transcript notes the speaker said 'million' and corrects it to billion.)",
+          "targetValue": "$58B AI revenue for FY2026"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-01",
+          "id": "fy2026-ai-revenue-58b-progress",
+          "kind": "evidence",
+          "lineage": "fy2026-ai-revenue-58b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "our AI semiconductor revenue more than tripled year-over-year to $16.7 billion.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Trajectory supports the $58B guide: Q3 AI revenue was $16.7B (up 221% YoY) and Q4 AI revenue was guided to $21.7B (up 236% YoY).",
+          "targetValue": "$58B AI revenue for FY2026"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-01",
+          "id": "fy2026-ai-revenue-58b-assessment",
+          "kind": "assessment",
+          "lineage": "fy2026-ai-revenue-58b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "we expect these deployments to drive our Q4 AI revenue to $21.7 billion, which is up 236% year-on-year.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "active",
+          "summary": "Active: roughly one month of the fiscal year remains; the Q4 guide of $21.7B AI revenue keeps the $58B full-year target on track.",
+          "targetValue": "$58B AI revenue for FY2026"
+        }
+      ],
+      "fulfillmentTest": "Reported FY2026 AI semiconductor revenue is at or above $58 billion.",
+      "horizon": "2026-09-02 to 2026-11-01 (FY2026)",
+      "id": "fy2026-ai-revenue-58b",
+      "tags": [
+        "ai-revenue",
+        "guidance",
+        "xpu"
+      ],
+      "title": "Deliver $58 billion of AI semiconductor revenue in fiscal 2026 (raised from $56 billion)"
+    },
+    {
+      "claimCategory": "revenue-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2027-10-31",
+          "id": "fy2027-ai-revenue-115b-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2027-ai-revenue-115b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "In 2027, we have secured the supply to again double AI revenue to approximately $115 billion. Our demand actually exceeds this outlook, and we will work to improve supply.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan guided FY2027 AI revenue to ~$115B, a doubling of the $58B FY2026 outlook, saying supply is secured and demand exceeds the outlook.",
+          "targetValue": "~$115B AI revenue for FY2027"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2027-10-31",
+          "id": "fy2027-ai-revenue-115b-reaffirmed",
+          "kind": "claim_repeated",
+          "lineage": "fy2027-ai-revenue-115b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "But we are -- we have secured supply, and we think it's the right number to put it to $115 billion. And if times -- if circumstances change and our ability to secure more supply change, of course, we will uplift. But at this point, that's our best outlook.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call Q&A",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Pressed on supply bottlenecks, Hock Tan stood by the $115B figure as the company's best outlook, secured on supply, and said it would be raised if more supply could be secured.",
+          "targetValue": "~$115B AI revenue for FY2027"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2027-10-31",
+          "id": "fy2027-ai-revenue-115b-assessment",
+          "kind": "assessment",
+          "lineage": "fy2027-ai-revenue-115b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "In 2027, we have secured the supply to again double AI revenue to approximately $115 billion.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "active",
+          "summary": "Active: multi-year forward outlook anchored to named XPU customer deployments (Google TPU v8i, Anthropic Ironwood, OpenAI Jalapeno, Meta MTIA) and stated secured supply. Resolves with FY2027 results.",
+          "targetValue": "~$115B AI revenue for FY2027"
+        }
+      ],
+      "fulfillmentTest": "Reported FY2027 AI semiconductor revenue is at or above approximately $115 billion.",
+      "horizon": "2026-09-02 to 2027-10-31 (FY2027)",
+      "id": "fy2027-ai-revenue-115b",
+      "tags": [
+        "ai-revenue",
+        "guidance",
+        "xpu",
+        "supply"
+      ],
+      "title": "Double AI semiconductor revenue to approximately $115 billion in fiscal 2027 on secured supply"
+    },
+    {
+      "claimCategory": "revenue-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2028-10-29",
+          "id": "fy2028-ai-revenue-230b-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2028-ai-revenue-230b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "We have line of sight for fiscal 2028 AI semiconductor revenue growth to again double to $230 billion. Here again, we have secured the supply to meet this outlook.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan gave line of sight to $230B of AI semiconductor revenue in FY2028 -- another doubling -- with supply secured, provided as a growth-trajectory outlook.",
+          "targetValue": "$230B AI revenue for FY2028"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2028-10-29",
+          "id": "fy2028-ai-revenue-230b-reaffirmed",
+          "kind": "claim_repeated",
+          "lineage": "fy2028-ai-revenue-230b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "the same thinking applies to 2028 when we give you that outlook of $230 billion. This is real demand, we believe, based on what data center sites, locations are ready, 2028 with respect to our customers, the size of what we have and against the supply chain we have in leading-edge wafers, substrates, and HBM memory. And so this is, again, a carefully structured outlook that we believe we can achieve.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call Q&A",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan called the $230B outlook a carefully structured, achievable figure grounded in customer data-center readiness and the leading-edge wafer, substrate, and HBM supply chain.",
+          "targetValue": "$230B AI revenue for FY2028"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2028-10-29",
+          "id": "fy2028-ai-revenue-230b-assessment",
+          "kind": "assessment",
+          "lineage": "fy2028-ai-revenue-230b",
+          "metric": "fiscal-year AI semiconductor revenue",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "This AI revenue guidance is being provided to you to give you the trajectory of our growth, and we do not intend to update it on a quarterly basis.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "active",
+          "summary": "Active: the longest-dated revenue outlook in the ledger, explicitly framed as trajectory guidance the company does not intend to update quarterly. Resolves with FY2028 results.",
+          "targetValue": "$230B AI revenue for FY2028"
+        }
+      ],
+      "fulfillmentTest": "Reported FY2028 AI semiconductor revenue is at or above $230 billion.",
+      "horizon": "2026-09-02 to 2028-10-29 (FY2028)",
+      "id": "fy2028-ai-revenue-230b",
+      "tags": [
+        "ai-revenue",
+        "guidance",
+        "xpu",
+        "supply"
+      ],
+      "title": "Double AI semiconductor revenue again to $230 billion in fiscal 2028 on secured supply"
+    },
+    {
+      "claimCategory": "earnings-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2028-10-29",
+          "id": "fy2028-eps-above-30-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2028-eps-above-30",
+          "metric": "fiscal-year diluted earnings per share",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "As a result, I got to say we are very much on target to exceed $30 in earnings per share in fiscal 2028.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Hock Tan said Broadcom is on target to exceed $30 in EPS in fiscal 2028, flowing from the AI revenue trajectory.",
+          "targetValue": "> $30 EPS for FY2028"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2028-10-29",
+          "id": "fy2028-eps-above-30-assessment",
+          "kind": "assessment",
+          "lineage": "fy2028-eps-above-30",
+          "metric": "fiscal-year diluted earnings per share",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "Comments made during today's call will primarily refer to our non-GAAP financial results.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "active",
+          "summary": "Active: anchored to the $230B FY2028 AI revenue outlook. The call's framing is primarily non-GAAP, so the fulfillment test uses reported non-GAAP diluted EPS. Resolves with FY2028 results.",
+          "targetValue": "> $30 EPS for FY2028"
+        }
+      ],
+      "fulfillmentTest": "Reported FY2028 diluted earnings per share exceeds $30, measured on the same non-GAAP basis the call's comments primarily refer to.",
+      "horizon": "2026-09-02 to 2028-10-29 (FY2028)",
+      "id": "fy2028-eps-above-30",
+      "tags": [
+        "eps",
+        "guidance",
+        "earnings"
+      ],
+      "title": "Exceed $30 in earnings per share in fiscal 2028"
+    },
+    {
+      "claimCategory": "revenue-guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-01",
+          "id": "q4-fy2026-guidance-claim-stated",
+          "kind": "claim_stated",
+          "lineage": "q4-fy2026-guidance",
+          "metric": "quarterly consolidated revenue and AI semiconductor revenue",
+          "occurredOn": "2026-09-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "In Q4, we expect both XPUs and AI networking revenue to triple year-on-year. And together, we expect these deployments to drive our Q4 AI revenue to $21.7 billion, which is up 236% year-on-year.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "Hock Tan",
+          "speakerCapacity": "Q3 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "active",
+          "summary": "Broadcom guided Q4 FY2026 consolidated revenue to $34.8B (+93% YoY) and AI revenue to $21.7B (+236% YoY), with both XPUs and AI networking expected to triple year over year.",
+          "targetValue": "~$34.8B revenue; ~$21.7B AI revenue"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-01",
+          "id": "q4-fy2026-guidance-assessment",
+          "kind": "assessment",
+          "lineage": "q4-fy2026-guidance",
+          "metric": "quarterly consolidated revenue and AI semiconductor revenue",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-09",
+            "quote": "for Q4 '26, we expect consolidated revenue to grow to $34.8 billion, up 93% year-on-year.",
+            "title": "Broadcom (AVGO) Q3 2026 Earnings Call Transcript",
+            "url": "https://www.fool.com/earnings/call-transcripts/2026/09/09/broadcom-avgo-q3-2026-earnings-call-transcript/"
+          },
+          "speaker": "research-agent",
+          "speakerCapacity": "Ledger assessment from verified sources",
+          "speakerRole": "ledger",
+          "state": "active",
+          "summary": "Active: the quarter is in flight; resolves with Q4 FY2026 results (expected early December 2026). CFO Amie Thuener separately guided Q4 operating margin of ~66% and non-GAAP tax rate of ~16%.",
+          "targetValue": "~$34.8B revenue; ~$21.7B AI revenue"
+        }
+      ],
+      "fulfillmentTest": "Q4 FY2026 reported consolidated revenue is at or above ~$34.8B and AI semiconductor revenue is at or above ~$21.7B.",
+      "horizon": "2026-09-02 to 2026-11-01 (Q4 FY2026)",
+      "id": "q4-fy2026-guidance",
+      "tags": [
+        "ai-revenue",
+        "guidance",
+        "xpu",
+        "networking"
+      ],
+      "title": "Q4 FY2026: $34.8B consolidated revenue and $21.7B AI semiconductor revenue"
+    }
+  ],
+  "fundamentals": [],
+  "expectationGap": null,
+  "schemaVersion": 1
+}

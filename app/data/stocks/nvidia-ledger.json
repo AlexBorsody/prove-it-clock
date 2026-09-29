@@ -1,0 +1,448 @@
+{
+  "capturedAt": "2026-09-29T00:00:00Z",
+  "companySlug": "nvidia",
+  "lineages": [
+    {
+      "claimCategory": "Product/Technology",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2025-01-26",
+          "id": "nvda-blackwell-ramp-stated",
+          "kind": "claim_stated",
+          "lineage": "blackwell-fastest-ramp",
+          "metric": "Blackwell architecture revenue, Q4 FY2025",
+          "occurredOn": "2025-02-26",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Official NVIDIA Q4 FY2025 CFO commentary (Colette Kress), hosted on investor.nvidia.com",
+            "publishedOn": "2025-02-26",
+            "quote": "We delivered $11.0 billion of Blackwell architecture revenue in the fourth quarter of fiscal 2025, the fastest product ramp in our company's history. Blackwell sales were led by large cloud service providers which represented approximately 50% of our Data Center revenue.",
+            "sourceType": "earnings-call",
+            "title": "CFO Commentary on Fourth Quarter and Fiscal 2025 Results \u2014 NVIDIA investor relations",
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/Q425/Q4FY25-CFO-Commentary.pdf"
+          },
+          "speaker": "Colette Kress",
+          "speakerCapacity": "Executive Vice President and CFO, Q4 FY2025 CFO commentary",
+          "speakerRole": "CFO",
+          "state": "open",
+          "summary": "In her Q4 FY2025 CFO commentary, Colette Kress said NVIDIA delivered $11.0 billion of Blackwell architecture revenue in Q4 FY2025 \u2014 the fastest product ramp in the company's history, led by large cloud service providers at roughly 50% of Data Center revenue.",
+          "targetValue": "$11.0 billion"
+        },
+        {
+          "author": "research-agent",
+          "id": "nvda-blackwell-ramp-corroborated",
+          "kind": "evidence",
+          "lineage": "blackwell-fastest-ramp",
+          "occurredOn": "2025-02-26",
+          "provenance": [
+            "NVIDIA Q4 FY2025 press release"
+          ],
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-02-26",
+            "quote": "We've successfully ramped up the massive-scale production of Blackwell AI supercomputers, achieving billions of dollars in sales in its first quarter. AI is advancing at light speed as agentic AI and physical AI set the stage for the next wave of AI to revolutionize the largest industries.",
+            "sourceType": "press-release",
+            "title": "NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2025 | NVIDIA Newsroom",
+            "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2025"
+          },
+          "stance": "supports",
+          "state": "active",
+          "summary": "In NVIDIA's official Q4 FY2025 press release the same day, CEO Jensen Huang said the company had successfully ramped up massive-scale production of Blackwell AI supercomputers, achieving billions of dollars in sales in its first quarter."
+        },
+        {
+          "author": "research-agent",
+          "id": "nvda-blackwell-ramp-assessment",
+          "kind": "assessment",
+          "lineage": "blackwell-fastest-ramp",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-02-26",
+            "title": "CFO Commentary on Fourth Quarter and Fiscal 2025 Results \u2014 NVIDIA investor relations",
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/Q425/Q4FY25-CFO-Commentary.pdf"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. NVIDIA reported exactly the claimed figure \u2014 $11.0 billion of Blackwell architecture revenue in Q4 FY2025 \u2014 and described it as the fastest product ramp in the company's history.",
+          "supersedes": null
+        }
+      ],
+      "fulfillmentTest": "NVIDIA reports at least $11.0 billion of Blackwell architecture revenue for Q4 FY2025 (its first full shipping quarter), described by CFO Colette Kress as the fastest product ramp in company history. Result: $11.0 billion reported \u2014 fulfilled.",
+      "horizon": "quarter",
+      "id": "blackwell-fastest-ramp",
+      "tags": [
+        "blackwell",
+        "data-center"
+      ],
+      "title": "Blackwell $11B first-quarter revenue \u2014 fastest product ramp"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2025-08-27",
+          "id": "nvda-q2fy26-revenue-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "q2-fy2026-revenue-guidance",
+          "metric": "quarterly revenue",
+          "occurredOn": "2025-05-28",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Verbatim NVIDIA Q1 FY2026 press release text, Outlook section",
+            "publishedOn": "2025-05-28",
+            "quote": "Revenue is expected to be $45.0 billion, plus or minus 2%. This outlook reflects a loss in H20 revenue of approximately $8.0 billion due to the recent export control limitations.",
+            "sourceType": "press-release",
+            "title": "Nvidia announces financial results for first quarter fiscal 2026 \u2014 TelecomTV (NVIDIA release text)",
+            "url": "https://www.telecomtv.com/content/digital-platforms-services/nvidia-announces-financial-results-for-first-quarter-fiscal-2026-53100/"
+          },
+          "speaker": "NVIDIA",
+          "speakerCapacity": "Q1 FY2026 earnings outlook",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "NVIDIA guided Q2 FY2026 revenue to $45.0 billion, plus or minus 2%, reflecting an approximately $8.0 billion loss in H20 revenue from new U.S. export control limitations.",
+          "targetValue": "$45.0 billion, plus or minus 2%"
+        },
+        {
+          "author": "research-agent",
+          "id": "nvda-q2fy26-revenue-actual",
+          "kind": "evidence",
+          "lineage": "q2-fy2026-revenue-guidance",
+          "occurredOn": "2025-08-27",
+          "provenance": [
+            "NVIDIA Q2 FY2026 press release"
+          ],
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Official NVIDIA Q2 FY2026 press release (GlobeNewswire)",
+            "publishedOn": "2025-08-27",
+            "quote": "SANTA CLARA, Calif., Aug. 27, 2025 (GLOBE NEWSWIRE) -- NVIDIA (NASDAQ: NVDA) today reported revenue for the second quarter ended July 27, 2025, of $46.7 billion, up 6% from the previous quarter and up 56% from a year ago.",
+            "sourceType": "press-release",
+            "title": "NVIDIA Announces Financial Results for Second Quarter Fiscal 2026",
+            "url": "https://www.globenewswire.com/news-release/2025/08/27/3140390/0/en/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2026.html"
+          },
+          "stance": "supports",
+          "state": "active",
+          "summary": "NVIDIA reported Q2 FY2026 revenue of $46.743 billion, up 6% sequentially and 56% year over year \u2014 above the top of the guided $44.1B\u2013$45.9B band."
+        },
+        {
+          "author": "research-agent",
+          "id": "nvda-q2fy26-revenue-assessment",
+          "kind": "assessment",
+          "lineage": "q2-fy2026-revenue-guidance",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-08-27",
+            "title": "NVIDIA Announces Financial Results for Second Quarter Fiscal 2026",
+            "url": "https://www.globenewswire.com/news-release/2025/08/27/3140390/0/en/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2026.html"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled (beat). Actual revenue of $46.743 billion exceeded the top of the guided band ($45.9 billion), despite the roughly $8 billion H20 export-control headwind embedded in the outlook.",
+          "supersedes": null
+        }
+      ],
+      "fulfillmentTest": "Q2 FY2026 (quarter ended July 27, 2025) revenue lands within $44.1B\u2013$45.9B ($45.0B, plus or minus 2%). Result: $46.743 billion reported \u2014 above the band, fulfilled (beat).",
+      "horizon": "quarter",
+      "id": "q2-fy2026-revenue-guidance",
+      "tags": [],
+      "title": "Q2 FY2026 revenue guidance: $45.0B, plus or minus 2%"
+    },
+    {
+      "claimCategory": "Operations/Capacity",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2029-04-14",
+          "id": "nvda-us-manufacturing-stated",
+          "kind": "claim_stated",
+          "lineage": "us-manufacturing-500b",
+          "metric": "U.S.-produced AI infrastructure investment",
+          "occurredOn": "2025-04-14",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Coverage of NVIDIA's April 14, 2025 blog post; corroborated in the Q1 FY2026 release: 'Announced that NVIDIA is building factories in the U.S. and working with its partners to produce NVIDIA AI supercomputers in the U.S.'",
+            "publishedOn": "2025-04-14",
+            "quote": "Now, in an April 14 blog post shared on its website, Nvidia announced that it will be greatly expanding its U.S.-based manufacturing capabilities, pouring $500 billion in investment into production facilities in Arizona and Texas.",
+            "sourceType": "press",
+            "title": "Nvidia To Build $500 Billion in AI Manufacturing Infrastructure in US, Supercomputers in America for the First Time | RetailWire",
+            "url": "https://retailwire.com/nvidia-ai-manufacturing-infrastructure-america/"
+          },
+          "speaker": "Jensen Huang",
+          "speakerCapacity": "Founder and CEO, quoted on NVIDIA's April 14, 2025 U.S. manufacturing announcement",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "NVIDIA announced it would expand U.S. manufacturing with $500 billion of AI infrastructure investment in production facilities in Arizona and Texas over four years. Blackwell chips were already in production at TSMC's Phoenix plants; supercomputer plants were under construction in Houston (with Foxconn) and Dallas (with Wistron), with mass production expected to increase in scope over the next 12 to 15 months. Huang: 'The engines of the world's AI infrastructure are being built in the United States for the first time.'",
+          "targetValue": "$500 billion over four years"
+        }
+      ],
+      "fulfillmentTest": "By April 14, 2029 (four years from the April 14, 2025 announcement), NVIDIA has produced AI infrastructure in the United States cumulatively valued at up to $500 billion. Interim milestone: mass production increasing in scope at the Texas supercomputer plants (Houston/Foxconn, Dallas/Wistron) within 12\u201315 months of the announcement (by ~July 2026).",
+      "horizon": "multi-year",
+      "id": "us-manufacturing-500b",
+      "tags": [
+        "manufacturing",
+        "united-states"
+      ],
+      "title": "Up to $500B of U.S.-produced AI infrastructure over four years"
+    },
+    {
+      "claimCategory": "Partnership/Commercial",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2030-05-13",
+          "id": "nvda-humain-stated",
+          "kind": "claim_stated",
+          "lineage": "humain-saudi-ai-factories",
+          "metric": "AI factory capacity in Saudi Arabia",
+          "occurredOn": "2025-05-13",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Source: NVIDIA (GlobeNewswire release hosted on Nasdaq)",
+            "publishedOn": "2025-05-13",
+            "quote": "HUMAIN, a subsidiary of Saudi Arabia's Public Investment Fund focused on AI, is making a major investment to build AI factories in KSA with a projected capacity of up to 500 megawatts powered by several hundred thousand of NVIDIA's most advanced GPUs over the next five years. The first phase of deployment will be an 18,000 NVIDIA GB300 Grace Blackwell AI supercomputer with NVIDIA InfiniBand networking.",
+            "sourceType": "press-release",
+            "title": "Saudi Arabia and NVIDIA to Build AI Factories to Power Next Wave of Intelligence for the Age of Reasoning | Nasdaq",
+            "url": "https://www.nasdaq.com/press-release/saudi-arabia-and-nvidia-build-ai-factories-power-next-wave-intelligence-age-reasoning"
+          },
+          "speaker": "Jensen Huang",
+          "speakerCapacity": "Founder and CEO, NVIDIA\u2013Saudi Arabia AI partnership announcement (state visit with the U.S. President and the Saudi Crown Prince)",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "NVIDIA and the Kingdom of Saudi Arabia announced partnerships to build AI factories: HUMAIN to invest in up to 500MW of AI factory capacity powered by several hundred thousand NVIDIA GPUs over five years, with a first phase of 18,000 NVIDIA GB300 Grace Blackwell supercomputers; separately, the Saudi Data & AI Authority (SDAIA) to deploy up to 5,000 Blackwell GPUs for a sovereign AI factory. Huang: 'Together with HUMAIN, we are building AI infrastructure for the people and companies of Saudi Arabia to realize the bold vision of the Kingdom.'",
+          "targetValue": "up to 500 megawatts over five years"
+        }
+      ],
+      "fulfillmentTest": "By May 13, 2030 (five years from the announcement), the HUMAIN partnership delivers AI factory capacity in Saudi Arabia of up to 500MW powered by several hundred thousand NVIDIA GPUs; first phase includes an 18,000-GPU NVIDIA GB300 Grace Blackwell AI supercomputer with InfiniBand networking deployed.",
+      "horizon": "multi-year",
+      "id": "humain-saudi-ai-factories",
+      "tags": [
+        "sovereign-ai",
+        "saudi-arabia",
+        "humain"
+      ],
+      "title": "HUMAIN partnership: up to 500MW of AI factories in Saudi Arabia over five years"
+    },
+    {
+      "claimCategory": "Product/Technology",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "nvda-cadence-stated",
+          "kind": "claim_stated",
+          "lineage": "annual-platform-cadence",
+          "metric": "data-center platform release cadence",
+          "occurredOn": "2024-06-03",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-06-03",
+            "quote": "Our company has a one-year rhythm. Our basic philosophy is very simple: build the entire data center scale, disaggregate and sell to you parts on a one-year rhythm, and push everything to technology limits",
+            "sourceType": "press",
+            "title": "Accelerate everything, NVIDIA CEO says ahead of COMPUTEX | Intelligent CIO",
+            "url": "https://www.intelligentcio.com/north-america/2024/06/03/accelerate-everything-nvidia-ceo-says-ahead-of-computex/"
+          },
+          "speaker": "Jensen Huang",
+          "speakerCapacity": "CEO remarks ahead of COMPUTEX 2024",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "Ahead of COMPUTEX 2024, Huang said NVIDIA operates on a one-year rhythm: building the entire data-center scale, disaggregating and selling parts on a one-year cadence, and pushing everything to technology limits \u2014 with Rubin named as Blackwell's successor.",
+          "targetValue": "one new data-center platform generation per year"
+        },
+        {
+          "author": "research-agent",
+          "id": "nvda-cadence-blackwell-evidence",
+          "kind": "evidence",
+          "lineage": "annual-platform-cadence",
+          "occurredOn": "2025-02-26",
+          "provenance": [
+            "NVIDIA Q4 FY2025 CFO commentary"
+          ],
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-02-26",
+            "quote": "We delivered $11.0 billion of Blackwell architecture revenue in the fourth quarter of fiscal 2025, the fastest product ramp in our company's history.",
+            "sourceType": "earnings-call",
+            "title": "CFO Commentary on Fourth Quarter and Fiscal 2025 Results \u2014 NVIDIA investor relations",
+            "url": "https://s201.q4cdn.com/141608511/files/doc_financials/2025/Q425/Q4FY25-CFO-Commentary.pdf"
+          },
+          "stance": "supports",
+          "state": "active",
+          "summary": "The 2025 leg of the annual cadence: Blackwell shipped in volume, with NVIDIA reporting $11.0 billion of Blackwell architecture revenue in Q4 FY2025 \u2014 the fastest product ramp in company history."
+        },
+        {
+          "author": "research-agent",
+          "id": "nvda-cadence-rubin-evidence",
+          "kind": "evidence",
+          "lineage": "annual-platform-cadence",
+          "occurredOn": "2025-08-27",
+          "provenance": [
+            "NVIDIA Q2 FY2026 earnings call"
+          ],
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-08",
+            "quote": "The chips of the Rubin platform are in fab, the Vera CPU, Rubin GPU, CX9 SuperNIC, NVLink 144 scale up switch, Spectrum-X scale out and scale across switch, and the silicon photonics processor. Rubin remains on schedule for volume production next year.",
+            "sourceType": "press",
+            "title": "NVIDIA confirms next-gen Rubin AI GPUs with HBM4 are in the fab, volume production in 2H 2026 | TweakTown",
+            "url": "https://www.tweaktown.com/news/107404/nvidia-confirms-next-gen-rubin-ai-gpus-with-hbm4-are-in-the-fab-volume-production-in-2h-2026/index.html"
+          },
+          "stance": "supports",
+          "state": "active",
+          "summary": "The 2026 leg on track: on the Q2 FY2026 earnings call, Huang confirmed the full Rubin platform chip stack (Vera CPU, Rubin GPU, CX9 SuperNIC, NVLink 144, Spectrum-X, silicon photonics) is in fab and remains on schedule for volume production in 2026."
+        }
+      ],
+      "fulfillmentTest": "NVIDIA ships each data-center platform generation on a one-year rhythm: Blackwell in volume in calendar 2025 (test: $11.0B of Blackwell architecture revenue reported for Q4 FY2025) and Rubin in volume production in calendar 2026 (test: Rubin volume production begun by 2026-12-31). 2025 leg fulfilled; 2026 leg pending.",
+      "horizon": "multi-year",
+      "id": "annual-platform-cadence",
+      "tags": [
+        "cadence",
+        "data-center"
+      ],
+      "title": "One-year data-center platform cadence"
+    },
+    {
+      "claimCategory": "Product/Technology",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "nvda-rubin-stated",
+          "kind": "claim_stated",
+          "lineage": "rubin-volume-production-2h2026",
+          "metric": "Rubin platform volume production start",
+          "occurredOn": "2025-08-27",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-08",
+            "quote": "The chips of the Rubin platform are in fab, the Vera CPU, Rubin GPU, CX9 SuperNIC, NVLink 144 scale up switch, Spectrum-X scale out and scale across switch, and the silicon photonics processor. Rubin remains on schedule for volume production next year.",
+            "sourceType": "press",
+            "title": "NVIDIA confirms next-gen Rubin AI GPUs with HBM4 are in the fab, volume production in 2H 2026 | TweakTown",
+            "url": "https://www.tweaktown.com/news/107404/nvidia-confirms-next-gen-rubin-ai-gpus-with-hbm4-are-in-the-fab-volume-production-in-2h-2026/index.html"
+          },
+          "speaker": "Jensen Huang",
+          "speakerCapacity": "Founder and CEO, Q2 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "On the Q2 FY2026 earnings call, Huang confirmed the full Rubin platform chip stack is in fab and that Rubin remains on schedule for volume production in 2026 (reported as targeting the second half of 2026).",
+          "targetValue": "volume production in 2026"
+        }
+      ],
+      "fulfillmentTest": "Volume production of the Rubin platform (Rubin GPU, Vera CPU, CX9 SuperNIC, NVLink 144 scale-up switch, Spectrum-X scale-out switch, silicon photonics processor) begins by 2026-12-31, per Huang's statement that Rubin 'remains on schedule for volume production next year' (Aug 27, 2025).",
+      "horizon": "annual",
+      "id": "rubin-volume-production-2h2026",
+      "tags": [
+        "rubin",
+        "data-center"
+      ],
+      "title": "Rubin platform volume production in 2026"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-17",
+          "id": "nvda-q3fy27-revenue-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "q3-fy2027-revenue-guidance",
+          "metric": "quarterly revenue",
+          "occurredOn": "2026-08-26",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Webull earnings synthesis citing NVIDIA's Q3 FY2027 outlook as disclosed in CFO commentary (SEC filing, Aug 26, 2026) and the earnings call; guidance table: Revenue $108.0B \u00b12%. NVIDIA's Q3 guidance assumes no data center compute revenue from China.",
+            "publishedOn": "2026-08-26",
+            "quote": "Nvidia reported Q2 FY2027 revenue of $96.22 billion (+106% YoY) and non-GAAP EPS of $2.22, beating LSEG consensus estimates, and guided Q3 revenue to $108 billion \u00b12%",
+            "sourceType": "press",
+            "title": "NVDA Q2 FY2027 Earnings: Nvidia Beats Estimates, Guides Q3 to $108B | Webull",
+            "url": "https://www.webull.com/blog/304-Nvidia-Q2-FY2027-Earnings-Beats-Revenue-EPS-Estimates-Guides-Q3-to-108B"
+          },
+          "speaker": "NVIDIA",
+          "speakerCapacity": "Q2 FY2027 earnings outlook (CFO commentary, SEC filing)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "NVIDIA guided Q3 FY2027 revenue to $108.0 billion, plus or minus 2%, assuming no Data Center compute revenue from China.",
+          "targetValue": "$108.0 billion, plus or minus 2%"
+        }
+      ],
+      "fulfillmentTest": "Q3 FY2027 (quarter ending October 2026) revenue lands within $105.84B\u2013$110.16B ($108.0B, plus or minus 2%), with no Data Center compute revenue from China included in the outlook. Grading date: Q3 FY2027 earnings call, November 17, 2026.",
+      "horizon": "quarter",
+      "id": "q3-fy2027-revenue-guidance",
+      "tags": [],
+      "title": "Q3 FY2027 revenue guidance: $108.0B, plus or minus 2%"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-17",
+          "id": "nvda-q3fy27-gross-margin-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "q3-fy2027-gross-margin-guidance",
+          "metric": "quarterly gross margin (GAAP and non-GAAP)",
+          "occurredOn": "2026-08-26",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Webull earnings synthesis citing NVIDIA's Q3 FY2027 outlook as disclosed in CFO commentary (SEC filing, Aug 26, 2026) and the earnings call; guidance table: GAAP Gross Margin 74.0% \u00b150 bps; Non-GAAP Gross Margin 74.0% \u00b150 bps.",
+            "publishedOn": "2026-08-26",
+            "quote": "Nvidia guided Q3 FY2027 revenue to $108.0 billion \u00b12%, and guided non-GAAP gross margin to 74.0% \u00b150 basis points",
+            "sourceType": "press",
+            "title": "NVDA Q2 FY2027 Earnings: Nvidia Beats Estimates, Guides Q3 to $108B | Webull",
+            "url": "https://www.webull.com/blog/304-Nvidia-Q2-FY2027-Earnings-Beats-Revenue-EPS-Estimates-Guides-Q3-to-108B"
+          },
+          "speaker": "NVIDIA",
+          "speakerCapacity": "Q2 FY2027 earnings outlook (CFO commentary, SEC filing)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "NVIDIA guided Q3 FY2027 GAAP and non-GAAP gross margin to 74.0%, plus or minus 50 basis points.",
+          "targetValue": "74.0%, plus or minus 50 basis points"
+        }
+      ],
+      "fulfillmentTest": "Q3 FY2027 GAAP and non-GAAP gross margin each land within 73.5%\u201374.5% (74.0%, plus or minus 50 basis points). Grading date: Q3 FY2027 earnings call, November 17, 2026.",
+      "horizon": "quarter",
+      "id": "q3-fy2027-gross-margin-guidance",
+      "tags": [],
+      "title": "Q3 FY2027 gross margin guidance: 74.0%, plus or minus 50 bps"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2028-01-31",
+          "id": "nvda-fy2028-growth-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2028-revenue-growth-70pct",
+          "metric": "annual revenue growth rate",
+          "occurredOn": "2026-08-26",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "locator": "Webull earnings synthesis citing the NVIDIA Q2 FY2027 earnings call transcript (Aug 26, 2026). The company did not provide a specific FY2028 revenue dollar figure.",
+            "publishedOn": "2026-08-26",
+            "quote": "CFO Colette Kress said on the August 26, 2026 earnings call that Nvidia's 'preliminary expectation is for fiscal year 2028 revenue to grow approximately 70% year-over-year,' and that this is 'a supply-constrained outlook.'",
+            "sourceType": "press",
+            "title": "NVDA Q2 FY2027 Earnings: Nvidia Beats Estimates, Guides Q3 to $108B | Webull",
+            "url": "https://www.webull.com/blog/304-Nvidia-Q2-FY2027-Earnings-Beats-Revenue-EPS-Estimates-Guides-Q3-to-108B"
+          },
+          "speaker": "Colette Kress",
+          "speakerCapacity": "Executive Vice President and CFO, Q2 FY2027 earnings call",
+          "speakerRole": "CFO",
+          "state": "open",
+          "summary": "CFO Colette Kress said NVIDIA's preliminary expectation is for fiscal 2028 revenue to grow approximately 70% year over year \u2014 a supply-constrained outlook; no specific FY2028 dollar figure was provided.",
+          "targetValue": "approximately 70% year-over-year revenue growth"
+        }
+      ],
+      "fulfillmentTest": "Full fiscal 2028 revenue grows approximately 70% year over year versus fiscal 2027 (preliminary expectation; supply-constrained). Grading window: fiscal year ending January 2028.",
+      "horizon": "multi-year",
+      "id": "fy2028-revenue-growth-70pct",
+      "tags": [],
+      "title": "FY2028 revenue growth approximately 70% YoY (preliminary)"
+    }
+  ],
+  "schemaVersion": 1,
+  "fundamentals": [],
+  "expectationGap": null
+}

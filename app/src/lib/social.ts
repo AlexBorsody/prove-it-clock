@@ -36,6 +36,30 @@ export function isSocialSlug(slug: string): boolean {
   return Object.prototype.hasOwnProperty.call(SOCIAL_SOURCES, slug);
 }
 
+/**
+ * Stock (Speculative Tech) companies covered by the news scanner.
+ * newsQuery is the Google News RSS search, scoped to the company.
+ * Ledgers live in app/data/stocks/<slug>-ledger.json.
+ */
+export interface StockSource {
+  name: string;
+  newsQuery: string; // Google News RSS search
+}
+
+export const STOCK_SOURCES: Record<string, StockSource> = {
+  tesla: { name: "Tesla", newsQuery: "Tesla" },
+  nvidia: { name: "Nvidia", newsQuery: "Nvidia" },
+  broadcom: { name: "Broadcom", newsQuery: "Broadcom" },
+  oracle: { name: "Oracle", newsQuery: "Oracle Corporation" },
+  spacex: { name: "SpaceX", newsQuery: "SpaceX" },
+  openai: { name: "OpenAI", newsQuery: "OpenAI" },
+  anthropic: { name: "Anthropic", newsQuery: "Anthropic" },
+};
+
+export function isStockSlug(slug: string): boolean {
+  return Object.prototype.hasOwnProperty.call(STOCK_SOURCES, slug);
+}
+
 export interface SocialSnapshot {
   project_slug: string;
   as_of: string;

@@ -17,7 +17,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join } from "node:path";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { fetchNewsMentions } from "./news-mentions";
-import { isSocialSlug } from "./social";
+import { isSocialSlug, isStockSlug, STOCK_SOURCES } from "./social";
 import { HEARTS_METHODOLOGY } from "./heart-data";
 import { sendPush, webPushConfigured } from "./web-push";
 import { copyForNewsMention, copyForResolutionLikely, type PushSubscriptionRecord } from "./push";
@@ -94,6 +94,54 @@ export async function openPromisesByProject(
       .filter((p) => p.lineage && ["open", "active"].includes(String(p.state ?? "").toLowerCase()))
       .map((p) => ({ lineage: p.lineage as string, criteria: p.criteria ?? (p.lineage as string), claimType: p.claim_type }));
     if (promises.length > 0) out[row.slug as string] = { name: (row.name as string) ?? row.slug, promises };
+  }
+  return out;
+}
+
+const STOCK_LEDGER_DIR = join(process.cwd(), "data", "stocks");
+
+/** Latest event state for a stock lineage (events ordered by occurredOn). */
+function stockLineageState(events: Array<{ occurredOn?: string; recordedAt?: string; state?: string }>): string {
+  const sorted = [...(events ?? [])].sort((a, b) =>
+    String(a.occurredOn ?? a.recordedAt ?? "").localeCompare(String(b.occurredOn ?? b.recordedAt ?? "")),
+  );
+  return String(sorted[sorted.length - 1]?.state ?? "").toLowerCase();
+}
+
+/**
+ * Open stock promises from app/data/stocks/<slug>-ledger.json.
+ * Same shape as openPromisesByProject so the scan loop treats stocks
+ * and crypto identically (keyword first pass, AI judge, proposals, pushes).
+ */
+export function openStockPromises(): Record<string, { name: string; promises: OpenPromise[] }> {
+  const out: Record<string, { name: string; promises: OpenPromise[] }> = {};
+  if (!existsSync(STOCK_LEDGER_DIR)) return out;
+  for (const file of readdirSync(STOCK_LEDGER_DIR)) {
+    if (!file.endsWith("-ledger.json")) continue;
+    try {
+      const ledger = JSON.parse(readFileSync(join(STOCK_LEDGER_DIR, file), "utf8")) as {
+        companySlug?: string;
+        lineages?: Array<{
+          id?: string; title?: string; claimCategory?: string;
+          fulfillmentTest?: string; events?: Array<{ occurredOn?: string; recordedAt?: string; state?: string }>;
+        }>;
+      };
+      const slug = ledger.companySlug ?? file.replace(/-ledger\.json$/, "");
+      const name = STOCK_SOURCES[slug]?.name ?? slug;
+      const promises: OpenPromise[] = [];
+      for (const lineage of ledger.lineages ?? []) {
+        if (!lineage.id) continue;
+        if (!["open", "active", "at-risk"].includes(stockLineageState(lineage.events ?? []))) continue;
+        promises.push({
+          lineage: lineage.id,
+          criteria: lineage.fulfillmentTest ?? lineage.title ?? lineage.id,
+          claimType: lineage.claimCategory,
+        });
+      }
+      if (promises.length > 0) out[slug] = { name, promises };
+    } catch {
+      /* skip unreadable ledgers */
+    }
   }
   return out;
 }
@@ -193,14 +241,14 @@ export async function runPromiseNewsScan(
   }
 
   try {
-    const projects = await openPromisesByProject(db);
+    const projects = { ...(await openPromisesByProject(db)), ...openStockPromises() };
     const criteriaByProject: Record<string, Record<string, string>> = {};
 
     // Fetch all project feeds in parallel; sequential RSS fetches (12s timeout
     // each) would blow a serverless time budget.
     const feeds = await Promise.all(
       Object.entries(projects).map(async ([slug, { name, promises }]) => {
-        if (!isSocialSlug(slug)) return null;
+        if (!isSocialSlug(slug) && !isStockSlug(slug)) return null;
         criteriaByProject[slug] = Object.fromEntries(promises.map((p) => [p.lineage, p.criteria]));
         const projectTokens = extractKeywords(`${name} ${slug}`);
         try {

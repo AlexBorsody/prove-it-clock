@@ -14,6 +14,8 @@
  *   trading advice, no hype language, no em dashes.
  */
 
+import { isStockSlug } from "./social";
+
 export interface PushScope {
   project_slug: string;
   /** Present for promise-level subscriptions; absent for coin-level. */
@@ -127,7 +129,7 @@ function promiseLabel(lineage: string | undefined, criteriaByLineage: Record<str
 
 /** Deep link to the promise evidence section of the project page. */
 export function promiseDeepLink(projectSlug: string, lineage?: string): string {
-  const base = `/projects/${projectSlug}`;
+  const base = isStockSlug(projectSlug) ? `/stocks/${projectSlug}` : `/projects/${projectSlug}`;
   if (!lineage) return base;
   return `${base}?evidence=${encodeURIComponent(lineage)}#promise-${encodeURIComponent(lineage)}`;
 }

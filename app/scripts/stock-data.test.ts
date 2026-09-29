@@ -44,9 +44,9 @@ test('fundamentals snapshots are append-only and expectation gap is versioned', 
   assert.ok(ledger.expectationGap.embeddedExpectations.length > 0);
 });
 
-test('unknown slugs and unresearched companies return null or an empty ledger', () => {
+test('unknown slugs return null; researched companies return their ledger', () => {
   assert.equal(getStockLedger('acme'), null);
   const nvda = getStockLedger('nvidia');
   assert.ok(nvda);
-  assert.equal(nvda.lineages.length, 0);
+  assert.equal(nvda.lineages.length, 9);
 });

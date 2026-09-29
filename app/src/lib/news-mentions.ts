@@ -1,5 +1,5 @@
 import { DOMParser } from "linkedom";
-import { isSocialSlug, SOCIAL_SOURCES } from "./social";
+import { isSocialSlug, isStockSlug, SOCIAL_SOURCES, STOCK_SOURCES } from "./social";
 import type { MentionFeed, NewsMention } from "./hype-mentions";
 
 // Feed search can match site navigation rather than the story itself.
@@ -20,9 +20,14 @@ function safeUrl(value: string | null | undefined): string | null {
 }
 
 export function newsFeedUrl(slug: string): string {
-  if (!isSocialSlug(slug)) throw new Error("Unknown project");
+  const query = isSocialSlug(slug)
+    ? SOCIAL_SOURCES[slug].newsQuery
+    : isStockSlug(slug)
+      ? STOCK_SOURCES[slug].newsQuery
+      : null;
+  if (!query) throw new Error("Unknown project");
   const url = new URL("https://news.google.com/rss/search");
-  url.search = new URLSearchParams({ q: SOCIAL_SOURCES[slug].newsQuery + " when:7d", hl: "en-US", gl: "US", ceid: "US:en" }).toString();
+  url.search = new URLSearchParams({ q: query + " when:7d", hl: "en-US", gl: "US", ceid: "US:en" }).toString();
   return url.href;
 }
 

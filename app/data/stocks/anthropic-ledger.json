@@ -1,0 +1,492 @@
+{
+  "capturedAt": "2026-09-29T01:35:00Z",
+  "companySlug": "anthropic",
+  "lineages": [
+    {
+      "claimCategory": "Corporate",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-30",
+          "id": "anth-ipo-execution-stated",
+          "kind": "claim_stated",
+          "lineage": "ipo-execution",
+          "metric": "IPO completion",
+          "occurredOn": "2026-09-26",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-26",
+            "quote": "AI start-up Anthropic recently pushed back its planned IPO date from October to November. The maker of the Claude AI chatbot is still reportedly seeking to raise $100 billion at a $2 trillion valuation.",
+            "sourceType": "secondary-coverage",
+            "title": "The Motley Fool: Anthropic's IPO Was Just Delayed to November (Sep 26, 2026)",
+            "url": "https://www.fool.com/investing/2026/09/26/anthropic-s-ipo-was-just-delayed-to-november-here-s-the-one-number-that-has-me-even-more-excited/"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "reported IPO plans (September 2026)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "Anthropic pushed its planned IPO date from October to November 2026 and is reportedly seeking to raise about $100 billion at a valuation near $2 trillion.",
+          "targetValue": "public listing by 2026-11-30; about $100B raised at about $2T valuation"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-ipo-execution-assessment",
+          "kind": "assessment",
+          "lineage": "ipo-execution",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-26",
+            "title": "The Motley Fool: Anthropic's IPO Was Just Delayed to November (Sep 26, 2026)",
+            "url": "https://www.fool.com/investing/2026/09/26/anthropic-s-ipo-was-just-delayed-to-november-here-s-the-one-number-that-has-me-even-more-excited/"
+          },
+          "state": "open",
+          "summary": "Open. The November listing window is a reported plan, not yet an executed event; the scanner should watch for the S-1 going public on EDGAR and pricing."
+        }
+      ],
+      "fulfillmentTest": "Anthropic completes its public listing on or before 2026-11-30.",
+      "horizon": "event",
+      "id": "ipo-execution",
+      "tags": [],
+      "title": "November 2026 IPO execution"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "anth-2026-run-rate-stated",
+          "kind": "claim_stated",
+          "lineage": "2026-revenue-run-rate",
+          "metric": "annualized revenue run rate",
+          "occurredOn": "2026-09-26",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Attribution: investors cited by The Wall Street Journal, per secondary coverage",
+            "publishedOn": "2026-09-26",
+            "quote": "Anthropic's updated annualized revenue expectation, which the company expects will top $110 billion by year-end.",
+            "sourceType": "secondary-coverage",
+            "title": "The Motley Fool: Anthropic's IPO Was Just Delayed to November (Sep 26, 2026)",
+            "url": "https://www.fool.com/investing/2026/09/26/anthropic-s-ipo-was-just-delayed-to-november-here-s-the-one-number-that-has-me-even-more-excited/"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "revenue expectation communicated to investors (reported September 2026)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "Anthropic expects its annualized revenue run rate to top $110 billion by the end of 2026.",
+          "targetValue": "annualized revenue run rate above $110B by 2026-12-31"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-2026-run-rate-evidence-q2",
+          "kind": "evidence",
+          "lineage": "2026-revenue-run-rate",
+          "occurredOn": "2026-09-13",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-13",
+            "quote": "The company behind the Claude family of models posted preliminary Q2 2026 revenue exceeding $11.5B, blowing past its own internal projection of $10.9B.",
+            "sourceType": "secondary-coverage",
+            "title": "Crypto Briefing: Anthropic reports first profitable quarter as revenue tops $11.5B",
+            "url": "https://cryptobriefing.com/anthropic-profitable-second-quarter-revenue-11-billion/"
+          },
+          "stance": "supports",
+          "summary": "Q2 2026 revenue exceeded $11.5B (a roughly 14-fold jump year over year); the annualized run rate hit $47B in May and was on track to more than double by year-end."
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-2026-run-rate-evidence-enterprise",
+          "kind": "evidence",
+          "lineage": "2026-revenue-run-rate",
+          "occurredOn": "2026-06-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-09",
+            "quote": "Claude Code - Anthropic's developer-focused product - surpassed $1 billion in annualized revenue within six months of launch. Over 1,000 customers now spend more than $1 million annually on Claude, a number that doubled from 500 in under two months as of April 2026.",
+            "sourceType": "secondary-coverage",
+            "title": "Stock Moguls: Anthropic Just Filed for an IPO at $965 Billion (Jun 9, 2026)",
+            "url": "https://www.stockmoguls.com/2026/06/09/anthropic-just-filed-for-an-ipo-at-965-billion-heres-how-to-play-it-without-paying-the-hype-tax/"
+          },
+          "stance": "supports",
+          "summary": "Claude Code surpassed $1B in annualized revenue within six months of launch; over 1,000 customers spend more than $1M annually on Claude, doubling from 500 in under two months as of April 2026."
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-2026-run-rate-evidence-prospectus",
+          "kind": "evidence",
+          "lineage": "2026-revenue-run-rate",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Prospectus reviewed by Reuters; not yet public on SEC EDGAR as of Sep 28, 2026",
+            "publishedOn": "2026-09-28",
+            "quote": "Anthropic said nearly a quarter of its revenue came from two customers last year, and as part of its risk factors, warned that many of its largest clients were not locked into long-term contracts and could cut or stop spending.",
+            "sourceType": "wire-service",
+            "title": "Reuters: Anthropic's IPO prospectus shows sweeping AI vision, surging costs (Sep 28, 2026)",
+            "url": "https://www.reuters.com/business/finance/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs-2026-09-28/"
+          },
+          "stance": "supports",
+          "summary": "The IPO prospectus shows FY2025 revenue grew 12-fold to nearly $4.6B, but also discloses that nearly a quarter of revenue came from two customers and many of the largest clients are not locked into long-term contracts and could cut or stop spending."
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-2026-run-rate-assessment",
+          "kind": "assessment",
+          "lineage": "2026-revenue-run-rate",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-28",
+            "title": "Reuters: Anthropic's IPO prospectus shows sweeping AI vision, surging costs (Sep 28, 2026)",
+            "url": "https://www.reuters.com/business/finance/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs-2026-09-28/"
+          },
+          "state": "open",
+          "summary": "Open. The trajectory (Q2 $11.5B, May $47B run rate) points toward the target, but the $110B year-end figure is unverified until Anthropic reports it; customer concentration is a disclosed risk to durability."
+        }
+      ],
+      "fulfillmentTest": "Anthropic's annualized revenue run rate exceeds $110 billion at year-end 2026.",
+      "horizon": "annual",
+      "id": "2026-revenue-run-rate",
+      "tags": [],
+      "title": "2026 year-end annualized revenue run rate above $110B"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2028-12-31",
+          "id": "anth-2028-revenue-stated",
+          "kind": "claim_stated",
+          "lineage": "2028-revenue-projection",
+          "metric": "annual revenue",
+          "occurredOn": "2026-09-26",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-26",
+            "quote": "By 2028, the company projects it will generate between $190 billion and $200 billion in revenue, implying that its price-to-sales multiple will contract to around 10x over the next two years.",
+            "sourceType": "secondary-coverage",
+            "title": "The Motley Fool: Anthropic's IPO Was Just Delayed to November (Sep 26, 2026)",
+            "url": "https://www.fool.com/investing/2026/09/26/anthropic-s-ipo-was-just-delayed-to-november-here-s-the-one-number-that-has-me-even-more-excited/"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "long-range projection communicated to investors (reported September 2026)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "Anthropic projects it will generate between $190 billion and $200 billion in revenue in 2028.",
+          "targetValue": "$190B-$200B full-year revenue in 2028"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-2028-revenue-assessment",
+          "kind": "assessment",
+          "lineage": "2028-revenue-projection",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-26",
+            "title": "The Motley Fool: Anthropic's IPO Was Just Delayed to November (Sep 26, 2026)",
+            "url": "https://www.fool.com/investing/2026/09/26/anthropic-s-ipo-was-just-delayed-to-november-here-s-the-one-number-that-has-me-even-more-excited/"
+          },
+          "state": "open",
+          "summary": "Open. A long-range internal forecast; the ledger will track interim run-rate disclosures against the implied ramp (roughly doubling each year from the 2026 year-end target)."
+        }
+      ],
+      "fulfillmentTest": "Anthropic reports full-year 2028 revenue between $190 billion and $200 billion.",
+      "horizon": "multi-year",
+      "id": "2028-revenue-projection",
+      "tags": [],
+      "title": "2028 revenue projection of $190-200B"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-06-30",
+          "id": "anth-first-profit-stated",
+          "kind": "claim_stated",
+          "lineage": "first-profitable-quarter",
+          "metric": "quarterly profitability",
+          "occurredOn": "2026-06-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-09",
+            "quote": "Anthropic has told investors it expects its first profitable quarter in June 2026, with Q2 revenue guided at $10.9 billion.",
+            "sourceType": "secondary-coverage",
+            "title": "Stock Moguls: Anthropic Just Filed for an IPO at $965 Billion (Jun 9, 2026)",
+            "url": "https://www.stockmoguls.com/2026/06/09/anthropic-just-filed-for-an-ipo-at-965-billion-heres-how-to-play-it-without-paying-the-hype-tax/"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "guidance communicated to investors (reported June 2026)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "Anthropic told investors it expects its first profitable quarter in June 2026, with Q2 revenue guided at $10.9 billion.",
+          "targetValue": "first profitable quarter in Q2 2026; Q2 revenue $10.9B guided"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-first-profit-evidence-q2",
+          "kind": "evidence",
+          "lineage": "first-profitable-quarter",
+          "occurredOn": "2026-09-13",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-13",
+            "quote": "posted preliminary Q2 2026 revenue exceeding $11.5B, blowing past its own internal projection of $10.9B. That result also marks its first quarter of positive adjusted operating income, with operating profit coming in at $559M.",
+            "sourceType": "secondary-coverage",
+            "title": "Crypto Briefing: Anthropic reports first profitable quarter as revenue tops $11.5B",
+            "url": "https://cryptobriefing.com/anthropic-profitable-second-quarter-revenue-11-billion/"
+          },
+          "stance": "supports",
+          "summary": "Anthropic posted preliminary Q2 2026 revenue exceeding $11.5B (past the $10.9B internal projection) and its first quarter of positive adjusted operating income, with operating profit of $559M. The figure is adjusted operating income, not GAAP net income."
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-first-profit-assessment",
+          "kind": "assessment",
+          "lineage": "first-profitable-quarter",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-13",
+            "title": "Crypto Briefing: Anthropic reports first profitable quarter as revenue tops $11.5B",
+            "url": "https://cryptobriefing.com/anthropic-profitable-second-quarter-revenue-11-billion/"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled on the stated basis. Q2 2026 delivered positive adjusted operating income ($559M) on revenue above guidance (>$11.5B vs $10.9B guided). Grading note: the claim was framed on an adjusted operating basis; GAAP net income was not disclosed, and sustained quarterly profitability is not guaranteed per the company's own investor communications."
+        }
+      ],
+      "fulfillmentTest": "Anthropic posts positive adjusted operating income for Q2 2026. Result: about $559M in adjusted operating profit on revenue exceeding $11.5B, versus $10.9B guided - fulfilled on the stated (adjusted) basis.",
+      "horizon": "quarterly",
+      "id": "first-profitable-quarter",
+      "tags": [],
+      "title": "First profitable quarter (Q2 2026)"
+    },
+    {
+      "claimCategory": "Safety Governance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "anth-rsp-pause-stated",
+          "kind": "claim_stated",
+          "lineage": "rsp-pause-commitment",
+          "metric": "policy compliance",
+          "occurredOn": "2023-09-19",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Third-party hosted copy of Anthropic's official RSP v1.0 PDF; companion commitment in the evaluation protocol section: 'We commit to pause training before a model's capability level outstrips the Containment Measures we have implemented.'",
+            "publishedOn": "2023-09-19",
+            "quote": "Anthropic's commitment to follow the ASL scheme thus implies that we commit to pause the scaling and/or delay the deployment of new models whenever our scaling ability outstrips our ability to comply with the safety procedures for the corresponding ASL.",
+            "sourceType": "company-document",
+            "title": "Anthropic's Responsible Scaling Policy, Version 1.0 (Effective September 19, 2023)",
+            "url": "https://rshkkqeijamsjymqkxhx.supabase.co/storage/v1/object/public/library-pdfs/Anthropic.pdf"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "Responsible Scaling Policy v1.0 (effective September 19, 2023)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "Anthropic committed to pause scaling and/or delay deployment of new models whenever its scaling ability outstripped its ability to comply with the safety procedures for the corresponding AI Safety Level.",
+          "targetValue": "pause scaling / delay deployment whenever safety compliance cannot keep pace"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-rsp-pause-revised",
+          "kind": "claim_revised",
+          "lineage": "rsp-pause-commitment",
+          "occurredOn": "2026-02-24",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Removal of the pause clause confirmed by secondary coverage: vocal.media/Futurism, 'Anthropic has updated its Responsible Scaling Policy (RSP) to Version 3.0 (dated February 24, 2026) and, in doing so, removed a core element that helped define its safety-first identity: the idea that the company should pause training more powerful models if their capabilities outstrip Anthropic's ability to control them safely.'",
+            "publishedOn": "2026-02-24",
+            "quote": "Rather than being hard commitments, these are public goals that we will openly grade our progress towards.",
+            "sourceType": "company-announcement",
+            "title": "Anthropic: Responsible Scaling Policy Version 3.0 (official announcement)",
+            "url": "https://anthropic.com/news/responsible-scaling-policy-v3"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "Responsible Scaling Policy v3.0 announcement",
+          "speakerRole": "Company",
+          "summary": "RSP v3.0 (dated February 24, 2026) removed the binding pause element and replaced hard commitments with Frontier Safety Roadmaps: public goals Anthropic will openly grade its progress toward, plus quantified Risk Reports.",
+          "supersedes": "anth-rsp-pause-stated"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-rsp-pause-assessment",
+          "kind": "assessment",
+          "lineage": "rsp-pause-commitment",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-02-24",
+            "title": "Anthropic: Responsible Scaling Policy Version 3.0 (official announcement)",
+            "url": "https://anthropic.com/news/responsible-scaling-policy-v3"
+          },
+          "state": "superseded",
+          "summary": "Superseded. The v1 pause commitment was never invoked and was replaced in v3.0 with a conditional formulation plus self-graded roadmaps. The company's stated rationale: unilateral pause commitments do not make sense if competitors keep advancing. Whether the replacement framework preserves the original promise's force is the open question the Frontier Safety Roadmap lineage now tracks."
+        }
+      ],
+      "fulfillmentTest": "Under RSP v1, Anthropic pauses scaling and/or delays deployment whenever its scaling ability outstrips its ability to comply with the ASL safety procedures. Result: the binding pause clause was removed in RSP v3.0 (Feb 24, 2026) before ever being invoked - the commitment was superseded, not fulfilled.",
+      "horizon": "ongoing",
+      "id": "rsp-pause-commitment",
+      "tags": [],
+      "title": "Responsible Scaling Policy pause commitment (v1 to v3.0)"
+    },
+    {
+      "claimCategory": "Safety Governance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "anth-roadmap-stated",
+          "kind": "claim_stated",
+          "lineage": "frontier-safety-roadmap",
+          "metric": "transparency deliverables",
+          "occurredOn": "2026-02-24",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Companion commitments in the same announcement: 'Risk Reports will be published online (with some redactions) every 3-6 months.'",
+            "publishedOn": "2026-02-24",
+            "quote": "Our new RSP introduces a requirement to develop and publish a Frontier Safety Roadmap, which will describe our concrete plans for risk mitigations across the areas of Security, Alignment, Safeguards, and Policy.",
+            "sourceType": "company-announcement",
+            "title": "Anthropic: Responsible Scaling Policy Version 3.0 (official announcement)",
+            "url": "https://anthropic.com/news/responsible-scaling-policy-v3"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "Responsible Scaling Policy v3.0 announcement",
+          "speakerRole": "Company",
+          "state": "active",
+          "summary": "RSP v3.0 introduces a requirement to develop and publish a Frontier Safety Roadmap describing concrete risk-mitigation plans across Security, Alignment, Safeguards, and Policy, with goals Anthropic will openly grade its progress toward, plus Risk Reports published online every 3-6 months.",
+          "targetValue": "published Frontier Safety Roadmap + public self-grading + Risk Reports every 3-6 months"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-roadmap-assessment",
+          "kind": "assessment",
+          "lineage": "frontier-safety-roadmap",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-02-24",
+            "title": "Anthropic: Responsible Scaling Policy Version 3.0 (official announcement)",
+            "url": "https://anthropic.com/news/responsible-scaling-policy-v3"
+          },
+          "state": "active",
+          "summary": "Active. The roadmap publication requirement is in place and a first Risk Report was referenced at launch; the self-grading against roadmap goals and the 3-6 month Risk Report cadence are the checkable items the scanner should watch."
+        }
+      ],
+      "fulfillmentTest": "Anthropic publishes Frontier Safety Roadmaps and completes a first public self-grading of progress against the roadmap goals, with Risk Reports appearing on the stated every-3-to-6-months cadence.",
+      "horizon": "ongoing",
+      "id": "frontier-safety-roadmap",
+      "tags": [],
+      "title": "Frontier Safety Roadmap publication and self-grading"
+    },
+    {
+      "claimCategory": "Corporate Governance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "anth-stewardship-stated",
+          "kind": "claim_stated",
+          "lineage": "pbc-founder-llc-stewardship",
+          "metric": "governance structure",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Prospectus reviewed by Reuters; companion statements in the same filing: continued operation as a Delaware Public Benefit Corporation 'formally allowing leaders to balance the interests of investors and the rest of humanity', and the co-founders' pledge 'to dedicate 80% of their personal Anthropic equity to charitable causes'.",
+            "publishedOn": "2026-09-28",
+            "quote": "Under this arrangement, a majority vote of the seven co-founders will direct a single share of Class F stock that amounts to 50.1% of the total voting power over key corporate matters, including the election of some board directors and other matters submitted to investors.",
+            "sourceType": "wire-service",
+            "title": "Reuters (via Northland News Radio): Exclusive - Anthropic leaders to control AI lab via Founder LLC (Sep 28, 2026)",
+            "url": "https://northlandnewsradio.com/2026/09/28/exclusive-anthropic-leaders-to-control-ai-lab-via-founder-llc-to-promote-public-good-over-market-forces/"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "IPO prospectus (as reviewed by Reuters, September 2026)",
+          "speakerRole": "Company",
+          "state": "active",
+          "summary": "The IPO filing creates a Founder LLC of the seven co-founders directing a single Class F share with 50.1% of voting power over key corporate matters; Anthropic continues as a Delaware Public Benefit Corporation; the co-founders pledged 80% of their personal Anthropic equity to charitable causes.",
+          "targetValue": "Class F share seated at 50.1% voting power; PBC status retained post-IPO"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-stewardship-assessment",
+          "kind": "assessment",
+          "lineage": "pbc-founder-llc-stewardship",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-28",
+            "title": "Reuters (via Northland News Radio): Exclusive - Anthropic leaders to control AI lab via Founder LLC (Sep 28, 2026)",
+            "url": "https://northlandnewsradio.com/2026/09/28/exclusive-anthropic-leaders-to-control-ai-lab-via-founder-llc-to-promote-public-good-over-market-forces/"
+          },
+          "state": "active",
+          "summary": "Active. The structure is described in the IPO filing and takes effect at listing; the checkable test is the seating of the Class F share and retention of PBC status post-IPO. The deeper promise - that the structure actually serves the public good over market forces - is insufficient-evidence by construction and can only be judged over time against concrete decisions."
+        }
+      ],
+      "fulfillmentTest": "At IPO completion, the Founder LLC directs the Class F share carrying 50.1% of voting power over board elections and key corporate matters as described, and Anthropic remains a Delaware Public Benefit Corporation balancing investor interests with its mission to benefit humanity through responsible AI.",
+      "horizon": "ongoing",
+      "id": "pbc-founder-llc-stewardship",
+      "tags": [],
+      "title": "Public Benefit Corporation status and Founder LLC stewardship"
+    },
+    {
+      "claimCategory": "Safety Transparency",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "anth-transparency-stated",
+          "kind": "claim_stated",
+          "lineage": "ai-training-transparency",
+          "metric": "transparency deliverable",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "locator": "Prospectus reviewed by Reuters; not yet public on SEC EDGAR as of Sep 28, 2026",
+            "publishedOn": "2026-09-28",
+            "quote": "Anthropic has pledged in recent weeks to disclose more data publicly about how it uses AI models to build future generations of the technology",
+            "sourceType": "wire-service",
+            "title": "Reuters: Anthropic warns AI may pose 'existential risks to humanity' in IPO filing (Sep 28, 2026)",
+            "url": "https://www.reuters.com/business/finance/anthropic-warns-ai-may-pose-existential-risks-humanity-ipo-filing-2026-09-29/"
+          },
+          "speaker": "Anthropic",
+          "speakerCapacity": "IPO prospectus (as reviewed by Reuters, September 2026)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "Anthropic pledged in recent weeks to disclose more data publicly about how it uses AI models to build future generations of the technology, amid expert warnings about recursive self-improvement.",
+          "targetValue": "published data on AI-assisted development of future models"
+        },
+        {
+          "author": "research-agent",
+          "id": "anth-transparency-assessment",
+          "kind": "assessment",
+          "lineage": "ai-training-transparency",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-28",
+            "title": "Reuters: Anthropic warns AI may pose 'existential risks to humanity' in IPO filing (Sep 28, 2026)",
+            "url": "https://www.reuters.com/business/finance/anthropic-warns-ai-may-pose-existential-risks-humanity-ipo-filing-2026-09-29/"
+          },
+          "state": "open",
+          "summary": "Open. No such disclosure has been verified as of capture; the scanner should watch for the publication."
+        }
+      ],
+      "fulfillmentTest": "Anthropic publishes data on how it uses AI models to build future generations of its technology.",
+      "horizon": "ongoing",
+      "id": "ai-training-transparency",
+      "tags": [],
+      "title": "Public disclosure of AI-assisted model development"
+    }
+  ],
+  "fundamentals": [],
+  "expectationGap": null,
+  "schemaVersion": 1
+}

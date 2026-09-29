@@ -1,0 +1,708 @@
+{
+  "capturedAt": "2026-09-28T16:00:00Z",
+  "companySlug": "openai",
+  "lineages": [
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "openai-2025-revenue-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "2025-revenue-guidance",
+          "metric": "2025 full-year revenue",
+          "occurredOn": "2024-09-27",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2024-09-27",
+            "quote": "OpenAI is predicting its revenue will skyrocket to $11.6 billion next year from an estimated $3.7 billion in 2024",
+            "title": "Reuters: OpenAI sees $11.6 billion revenue next year",
+            "url": "https://www.reuters.com/technology/artificial-intelligence/openai-sees-116-billion-revenue-next-year-offers-thrive-chance-invest-again-2025-2024-09-28/"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Company projections shared with investors",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI projected 2025 revenue of $11.6 billion, up from an estimated $3.7 billion in 2024, per investor materials reported by Reuters.",
+          "targetValue": "$11.6 billion (2025 revenue)"
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-2025-revenue-guidance-revised",
+          "kind": "claim_revised",
+          "lineage": "2025-revenue-guidance",
+          "metric": "2025 full-year revenue",
+          "occurredOn": "2025",
+          "recordedAt": "2026-09-28",
+          "revisionReason": "OpenAI raised its 2025 revenue target after closing its $40 billion funding round; Bloomberg Law reported the revised figures.",
+          "source": {
+            "publishedOn": "2025",
+            "quote": "OpenAI expects to more than triple its revenue this year to $12.7 billion",
+            "title": "Bloomberg Law: OpenAI Expects Revenue Will Triple to $12.7 Billion This Year",
+            "url": "https://news.bloomberglaw.com/private-equity/openai-expects-revenue-will-triple-to-12-7-billion-this-year"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Company projections shared with investors",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI revised 2025 revenue guidance upward to $12.7 billion, more than triple its estimated 2024 revenue.",
+          "supersedes": "openai-2025-revenue-guidance-stated",
+          "targetValue": "$12.7 billion (2025 revenue)"
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-2025-revenue-reported-estimates",
+          "kind": "evidence",
+          "lineage": "2025-revenue-guidance",
+          "occurredOn": "2026-06",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06",
+            "quote": "OpenAI's own financials, per public estimates, show an operating loss of roughly $21 billion on about $34 billion in spending in 2025, against roughly $13 billion in revenue (a reported $20 billion annualized run rate)",
+            "title": "Let's Data Science: OpenAI Weighs Delaying IPO to 2027",
+            "url": "https://letsdatascience.com/news/openai-weighs-delaying-ipo-to-2027-3febe186"
+          },
+          "stance": "context",
+          "state": "open",
+          "summary": "Public estimates put 2025 revenue at roughly $13 billion with about $34 billion in spending \u2014 close to the revised $12.7 billion target, but these are third-party estimates, not an official company disclosure."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-2025-revenue-guidance-assessment",
+          "kind": "assessment",
+          "lineage": "2025-revenue-guidance",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06",
+            "title": "Let's Data Science: OpenAI Weighs Delaying IPO to 2027",
+            "url": "https://letsdatascience.com/news/openai-weighs-delaying-ipo-to-2027-3febe186"
+          },
+          "state": "open",
+          "summary": "Open. Reported estimates suggest 2025 revenue landed near the revised $12.7 billion target, but OpenAI has not made an official full-year 2025 revenue disclosure as of 2026-09-28, so the guidance cannot be graded yet."
+        }
+      ],
+      "fulfillmentTest": "OpenAI officially discloses 2025 full-year revenue of at least $12.7 billion (revised target; initial target $11.6 billion).",
+      "horizon": "annual",
+      "id": "2025-revenue-guidance",
+      "tags": [
+        "revenue",
+        "guidance"
+      ],
+      "title": "2025 revenue guidance ($11.6B, revised to $12.7B)"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "openai-2026-revenue-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "2026-revenue-guidance",
+          "metric": "2026 full-year revenue",
+          "occurredOn": "2025",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025",
+            "quote": "OpenAI expects revenue will continue growing at a fast clip, more than doubling next year to $29.4 billion",
+            "title": "Bloomberg Law: OpenAI Expects Revenue Will Triple to $12.7 Billion This Year",
+            "url": "https://news.bloomberglaw.com/private-equity/openai-expects-revenue-will-triple-to-12-7-billion-this-year"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Company projections shared with investors",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI projected 2026 revenue of $29.4 billion \u2014 more than double the revised 2025 target of $12.7 billion.",
+          "targetValue": "$29.4 billion (2026 revenue)"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "openai-2026-revenue-guidance-assessment",
+          "kind": "assessment",
+          "lineage": "2026-revenue-guidance",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025",
+            "title": "Bloomberg Law: OpenAI Expects Revenue Will Triple to $12.7 Billion This Year",
+            "url": "https://news.bloomberglaw.com/private-equity/openai-expects-revenue-will-triple-to-12-7-billion-this-year"
+          },
+          "state": "open",
+          "summary": "Open. The $29.4 billion 2026 target runs through December 2026; no official full-year disclosure exists yet. Reported annualized run rates in 2026 ($20B+ reported) are directionally below the pace needed, but run-rate snapshots are not full-year results."
+        }
+      ],
+      "fulfillmentTest": "OpenAI officially discloses 2026 full-year revenue of at least $29.4 billion by early 2027.",
+      "horizon": "annual",
+      "id": "2026-revenue-guidance",
+      "tags": [
+        "revenue",
+        "guidance"
+      ],
+      "title": "2026 revenue guidance ($29.4B)"
+    },
+    {
+      "claimCategory": "Operations/Capacity",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2029-01-21",
+          "id": "openai-stargate-500b-stated",
+          "kind": "claim_stated",
+          "lineage": "stargate-500b",
+          "metric": "AI infrastructure investment",
+          "occurredOn": "2025-01-21",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-01-21",
+            "quote": "The Stargate Project is a new company which intends to invest $500 billion over the next four years building new AI infrastructure for OpenAI in the United States. We will begin deploying $100 billion immediately.",
+            "title": "OpenAI: Announcing the Stargate Project",
+            "url": "https://openai.com/index/announcing-the-stargate-project/"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Official company announcement (with SoftBank and Oracle)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI announced Stargate would invest $500 billion over four years in U.S. AI infrastructure, with $100 billion deployed immediately. Note the stated verb is 'intends to invest' \u2014 an intent, not a binding spend contract.",
+          "targetValue": "$500 billion over four years; 10 gigawatts"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2029-01-21",
+          "id": "openai-stargate-progress-five-sites",
+          "kind": "evidence",
+          "lineage": "stargate-500b",
+          "occurredOn": "2025-10",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025",
+            "quote": "The combined capacity from these five new sites\u2014along with our flagship site in Abilene, Texas, and ongoing projects with CoreWeave\u2014brings Stargate to nearly 7 gigawatts of planned capacity and over $400 billion in investment over the next three years. This puts us on a clear path to securing the full $500 billion, 10-gigawatt commitment we announced in January by the end of 2025, ahead of schedule.",
+            "title": "OpenAI: OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "stance": "supports",
+          "state": "open",
+          "summary": "OpenAI reported Stargate at nearly 7 GW of planned capacity and over $400 billion in planned investment, and said it was on a clear path to securing the full $500B/10GW commitment by end of 2025, ahead of schedule. The Abilene flagship site is already up and running."
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2029-01-21",
+          "id": "openai-stargate-500b-assessment",
+          "kind": "assessment",
+          "lineage": "stargate-500b",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025",
+            "title": "OpenAI: OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "state": "open",
+          "summary": "Open and on track. Stargate reports ~$400B+ in planned investment and ~7 GW of planned capacity against the $500B/10GW four-year commitment (deadline January 21, 2029). Planned capacity is not deployed capacity; grading waits on the 2029 deadline."
+        }
+      ],
+      "fulfillmentTest": "By 2029-01-21, Stargate has committed/deployed at least $500 billion toward U.S. AI infrastructure for OpenAI at 10 gigawatts of capacity.",
+      "horizon": "multi-year",
+      "id": "stargate-500b",
+      "tags": [
+        "infrastructure",
+        "capex",
+        "stargate"
+      ],
+      "title": "Stargate: $500B / 10 GW over four years"
+    },
+    {
+      "claimCategory": "Corporate Governance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "openai-pbc-restructure-stated",
+          "kind": "claim_stated",
+          "lineage": "pbc-restructure",
+          "metric": "corporate structure conversion",
+          "occurredOn": "2024-12-27",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2024-12-27",
+            "quote": "Our plan is to transform our existing for-profit into a Delaware Public Benefit Corporation (PBC) with ordinary shares of stock and the OpenAI mission as its public benefit interest.",
+            "title": "OpenAI: Why our structure must evolve to advance our mission",
+            "url": "https://openai.com/index/why-our-structure-must-evolve-to-advance-our-mission/"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Official company blog",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI announced a plan to convert its for-profit arm into a Delaware public benefit corporation with ordinary shares, while the PBC would run operations under the nonprofit."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-pbc-restructure-revised",
+          "kind": "claim_revised",
+          "lineage": "pbc-restructure",
+          "metric": "corporate structure conversion",
+          "occurredOn": "2025-05-05",
+          "recordedAt": "2026-09-28",
+          "revisionReason": "After engagement with the Delaware and California attorneys general, OpenAI revised the plan so the nonprofit retains control and becomes a major shareholder of the PBC.",
+          "source": {
+            "publishedOn": "2025-05-05",
+            "quote": "OpenAI was founded as a nonprofit, and is today overseen and controlled by that nonprofit. Going forward, it will continue to be overseen and controlled by that nonprofit.",
+            "title": "OpenAI: Evolving OpenAI's structure (May 5, 2025) \u2014 court-filed copy via Internet Archive (Case 4:24-cv-04722-YGR, Exhibit A)",
+            "url": "https://archive.org/download/gov.uscourts.cand.433688/gov.uscourts.cand.433688.396.2.pdf"
+          },
+          "speaker": "Sam Altman and Bret Taylor",
+          "speakerCapacity": "CEO and board chair, official company blog",
+          "speakerRole": "CEO / Board Chair",
+          "state": "open",
+          "summary": "OpenAI revised the restructuring: the nonprofit would retain control of OpenAI and become a major shareholder in the PBC, following dialogue with the Delaware and California attorneys general.",
+          "supersedes": "openai-pbc-restructure-stated"
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-pbc-restructure-assessment",
+          "kind": "assessment",
+          "lineage": "pbc-restructure",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2025-10-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-10-28",
+            "quote": "OpenAI has completed its recapitalization, simplifying its corporate structure. The nonprofit remains in control of the for-profit, and now has a direct path to major resources before AGI arrives.",
+            "title": "AP (via TechXplore): OpenAI may move forward with new business structure, partnership with Microsoft, regulators say",
+            "url": "https://techxplore.com/news/2025-10-openai-business-partnership-microsoft.html"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. OpenAI completed its recapitalization on October 28, 2025: the business converted to a public benefit corporation under nonprofit control, with the Delaware and California attorneys general declining to object."
+        }
+      ],
+      "fulfillmentTest": "OpenAI's for-profit arm converts to a Delaware public benefit corporation while the nonprofit retains control. Result: completed October 28, 2025 \u2014 fulfilled.",
+      "horizon": "one-time",
+      "id": "pbc-restructure",
+      "tags": [
+        "governance",
+        "restructuring",
+        "nonprofit"
+      ],
+      "title": "Convert for-profit to PBC under nonprofit control"
+    },
+    {
+      "claimCategory": "Capital Markets",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "openai-ipo-path-stated",
+          "kind": "claim_stated",
+          "lineage": "ipo-path",
+          "metric": "public listing",
+          "occurredOn": "2025-10-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-10-28",
+            "quote": "\"the most likely path\" for the newly formed business is that it becomes publicly traded on the stock market, \"given the capital needs that we'll have and sort of the size of the company\"",
+            "title": "AP (via TechXplore): OpenAI may move forward with new business structure, partnership with Microsoft, regulators say",
+            "url": "https://techxplore.com/news/2025-10-openai-business-partnership-microsoft.html"
+          },
+          "speaker": "Sam Altman",
+          "speakerCapacity": "CEO, on call following the October 28, 2025 recapitalization announcement",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "Altman said the most likely path for the newly formed PBC business is becoming publicly traded, given its capital needs and size \u2014 though no Wall Street debut was part of that day's announcements."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-ipo-confidential-s1",
+          "kind": "evidence",
+          "lineage": "ipo-path",
+          "occurredOn": "2026-06-08",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06",
+            "quote": "We recently submitted a confidential S-1. We expect it to leak so we're just announcing it. We have not decided on timing yet.",
+            "title": "Let's Data Science: OpenAI Weighs Delaying IPO to 2027",
+            "url": "https://letsdatascience.com/news/openai-weighs-delaying-ipo-to-2027-3febe186"
+          },
+          "stance": "supports",
+          "state": "open",
+          "summary": "OpenAI announced it had confidentially submitted an S-1 to the SEC, while stressing it had not decided on timing. Reuters reported the company was targeting a valuation of up to $1 trillion with a possible listing as early as September 2026."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-ipo-2026-ruled-out",
+          "kind": "claim_revised",
+          "lineage": "ipo-path",
+          "metric": "public listing",
+          "occurredOn": "2026-09-12",
+          "recordedAt": "2026-09-28",
+          "revisionReason": "Altman ruled out a 2026 listing in a Fortune interview, citing AI safety concerns.",
+          "source": {
+            "publishedOn": "2026-09-12",
+            "quote": "I would say not 2026, yeah. We've got a lot of stuff to do.",
+            "title": "TechCrunch: OpenAI's Sam Altman says it would be 'ill-advised' to go public in 2026",
+            "url": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/"
+          },
+          "speaker": "Sam Altman",
+          "speakerCapacity": "CEO, interview with Fortune editor-in-chief Alyson Shontell",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "Altman ruled out an IPO in 2026, saying 'right now would be an ill-advised moment to go public' given AI safety work, and that OpenAI is 'not rushing into an IPO.' The New York Times reported the company is leaning toward 2027.",
+          "supersedes": "openai-ipo-path-stated"
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-ipo-path-assessment",
+          "kind": "assessment",
+          "lineage": "ipo-path",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-12",
+            "title": "TechCrunch: OpenAI's Sam Altman says it would be 'ill-advised' to go public in 2026",
+            "url": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/"
+          },
+          "state": "open",
+          "summary": "Open. The confidential S-1 filing is in place but Altman has ruled out a 2026 listing; timing is undecided with 2027 as the reported lean. A filing is an option, not a listing."
+        }
+      ],
+      "fulfillmentTest": "OpenAI completes a public listing of its shares on a stock exchange. (No company-committed date; 2026 has been explicitly ruled out, 2027 is the reported lean.)",
+      "horizon": "multi-year",
+      "id": "ipo-path",
+      "tags": [
+        "ipo",
+        "capital-markets",
+        "listing"
+      ],
+      "title": "Go public (confidential S-1 filed; 2026 listing ruled out)"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2030-12-31",
+          "id": "openai-ads-revenue-2030-stated",
+          "kind": "claim_stated",
+          "lineage": "ads-revenue-2030",
+          "metric": "annual advertising revenue",
+          "occurredOn": "2026-04-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-04-09",
+            "quote": "ChatGPT maker OpenAI expects to generate $2.5 billion in advertising revenue this year, with projections to reach $100 billion by 2030, Axios reported on Thursday, citing a source familiar with recent presentations to investors.",
+            "title": "Reuters: OpenAI projects $2.5 billion in ad revenue this year, $100 billion by 2030, Axios reports",
+            "url": "https://www.reuters.com/business/media-telecom/openai-projects-25-billion-ad-revenue-this-year-100-billion-by-2030-axios-2026-04-09/"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Company projections presented to investors (reported by Axios via Reuters)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI told investors to expect $2.5B in ad revenue in 2026, scaling to $11B (2027), $25B (2028), $53B (2029) and $100B (2030), based on an assumption of 2.75 billion weekly users by 2030. OpenAI did not respond to Reuters' request for comment.",
+          "targetValue": "$100 billion (2030 ad revenue)"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2030-12-31",
+          "id": "openai-ads-revenue-pilot-evidence",
+          "kind": "evidence",
+          "lineage": "ads-revenue-2030",
+          "occurredOn": "2026-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-04-09",
+            "quote": "an OpenAI spokesperson said ChatGPT's ads pilot in the U.S. crossed $100 million in annualized revenue within six weeks of its launch.",
+            "title": "Reuters: OpenAI projects $2.5 billion in ad revenue this year, $100 billion by 2030, Axios reports",
+            "url": "https://www.reuters.com/business/media-telecom/openai-projects-25-billion-ad-revenue-this-year-100-billion-by-2030-axios-2026-04-09/"
+          },
+          "stance": "supports",
+          "state": "open",
+          "summary": "The U.S. ads pilot crossed $100 million in annualized revenue within six weeks of launch, with over 600 advertisers \u2014 early traction, but a long way from the $2.5B 2026 target."
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2030-12-31",
+          "id": "openai-ads-revenue-2030-assessment",
+          "kind": "assessment",
+          "lineage": "ads-revenue-2030",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-04-09",
+            "title": "Reuters: OpenAI projects $2.5 billion in ad revenue this year, $100 billion by 2030, Axios reports",
+            "url": "https://www.reuters.com/business/media-telecom/openai-projects-25-billion-ad-revenue-this-year-100-billion-by-2030-axios-2026-04-09/"
+          },
+          "state": "open",
+          "summary": "Open. The 2026 $2.5B target is the first checkpoint; the pilot's $100M annualized run rate is early evidence but leaves a large gap. The $100B-by-2030 claim rests on the 2.75B weekly users assumption, itself unproven."
+        }
+      ],
+      "fulfillmentTest": "OpenAI reports 2030 advertising revenue of at least $100 billion, with intermediate checkpoints of $2.5B (2026), $11B (2027), $25B (2028) and $53B (2029). Underlying assumption to track separately: ~2.75 billion weekly users by 2030.",
+      "horizon": "multi-year",
+      "id": "ads-revenue-2030",
+      "tags": [
+        "revenue",
+        "advertising",
+        "guidance"
+      ],
+      "title": "Ad revenue: $2.5B (2026) to $100B (2030)"
+    },
+    {
+      "claimCategory": "Product/Technology",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "openai-ads-pilot-stated",
+          "kind": "claim_stated",
+          "lineage": "ads-pilot-launch",
+          "metric": "ads pilot launch",
+          "occurredOn": "2026-01",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-04-09",
+            "quote": "OpenAI said in January it would start showing ads in ChatGPT to some U.S. users, looking to boost overall revenue growth to help fund soaring costs of developing its AI technology.",
+            "title": "Reuters: OpenAI projects $2.5 billion in ad revenue this year, $100 billion by 2030, Axios reports",
+            "url": "https://www.reuters.com/business/media-telecom/openai-projects-25-billion-ad-revenue-this-year-100-billion-by-2030-axios-2026-04-09/"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Company announcement",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI said in January 2026 it would begin showing ads in ChatGPT to some U.S. users, starting with the free tier and the lower-priced Go plan."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-ads-pilot-launched",
+          "kind": "evidence",
+          "lineage": "ads-pilot-launch",
+          "occurredOn": "2026-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-04-09",
+            "quote": "an OpenAI spokesperson said ChatGPT's ads pilot in the U.S. crossed $100 million in annualized revenue within six weeks of its launch.",
+            "title": "Reuters: OpenAI projects $2.5 billion in ad revenue this year, $100 billion by 2030, Axios reports",
+            "url": "https://www.reuters.com/business/media-telecom/openai-projects-25-billion-ad-revenue-this-year-100-billion-by-2030-axios-2026-04-09/"
+          },
+          "stance": "supports",
+          "state": "open",
+          "summary": "The U.S. ads pilot launched and, per an OpenAI spokesperson, crossed $100 million in annualized revenue within six weeks, with over 600 advertisers."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-ads-pilot-assessment",
+          "kind": "assessment",
+          "lineage": "ads-pilot-launch",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-04-09",
+            "title": "Reuters: OpenAI projects $2.5 billion in ad revenue this year, $100 billion by 2030, Axios reports",
+            "url": "https://www.reuters.com/business/media-telecom/openai-projects-25-billion-ad-revenue-this-year-100-billion-by-2030-axios-2026-04-09/"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. The ChatGPT ads pilot for U.S. users launched in 2026 and is generating reported revenue."
+        }
+      ],
+      "fulfillmentTest": "OpenAI launches an ads pilot in ChatGPT for U.S. users in 2026. Result: launched, $100M+ annualized revenue within six weeks \u2014 fulfilled.",
+      "horizon": "one-time",
+      "id": "ads-pilot-launch",
+      "tags": [
+        "advertising",
+        "product"
+      ],
+      "title": "Launch ChatGPT ads pilot for U.S. users"
+    },
+    {
+      "claimCategory": "Safety/Governance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "openai-preparedness-v2-stated",
+          "kind": "claim_stated",
+          "lineage": "preparedness-framework",
+          "metric": "deployment safeguards",
+          "occurredOn": "2025-04-15",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-04-15",
+            "quote": "Covered systems that reach high capability must have safeguards that sufficiently minimize the associated risk of severe harm before they are deployed. Systems that reach critical capability also require safeguards that sufficiently minimize associated risks during development.",
+            "title": "TechCrunch: OpenAI may 'adjust' its safeguards if rivals release 'high-risk' AI",
+            "url": "https://techcrunch.com/2025/04/15/openai-says-it-may-adjust-its-safety-requirements-if-a-rival-lab-releases-high-risk-ai/"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Official Preparedness Framework v2 blog post (quoted by TechCrunch)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "In the updated Preparedness Framework (v2), OpenAI committed that systems assessed at High capability must have risk-minimizing safeguards before deployment, and Critical-capability systems during development. The framework also reserves the right to adjust requirements if a rival releases a high-risk system without comparable safeguards \u2014 only after rigorous confirmation, public acknowledgment, and keeping safeguards 'at a level more protective.'"
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-preparedness-gpt5-high-bio",
+          "kind": "evidence",
+          "lineage": "preparedness-framework",
+          "occurredOn": "2025-08",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-08",
+            "quote": "We decided to treat the \"GPT\u20115 thinking\" model as High capability in the Biological and Chemical domain, and have implemented strong safeguards to sufficiently minimize the associated risks.",
+            "title": "OpenAI: Introducing GPT-5",
+            "url": "https://openai.com/index/introducing-gpt-5/"
+          },
+          "stance": "supports",
+          "state": "open",
+          "summary": "OpenAI applied the framework in practice: GPT-5 thinking was assessed at High capability in the Biological and Chemical domain and shipped with the required safeguards (multilayered biology safety stack, 5,000 hours of red-teaming with CAISI/UK AISI partners)."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-preparedness-framework-assessment",
+          "kind": "assessment",
+          "lineage": "preparedness-framework",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-04-15",
+            "title": "TechCrunch: OpenAI may 'adjust' its safeguards if rivals release 'high-risk' AI",
+            "url": "https://techcrunch.com/2025/04/15/openai-says-it-may-adjust-its-safety-requirements-if-a-rival-lab-releases-high-risk-ai/"
+          },
+          "state": "open",
+          "summary": "Open and holding so far. The framework remains in force and was applied to GPT-5 (High bio/chem, safeguards activated). A breach would be any covered system assessed at High/Critical shipping without the required safeguards, or a competitive-standards adjustment made without the promised public acknowledgment."
+        }
+      ],
+      "fulfillmentTest": "No covered system assessed at High or Critical capability is deployed without the safeguards the Preparedness Framework v2 requires, and the framework remains in force. A deployment of a High/Critical system without published safeguards \u2014 or a quiet standards-lowering under the competitive-adjustment clause \u2014 fails the test.",
+      "horizon": "ongoing",
+      "id": "preparedness-framework",
+      "tags": [
+        "safety",
+        "governance",
+        "deployment"
+      ],
+      "title": "Preparedness Framework v2: safeguards before deployment at High/Critical capability"
+    },
+    {
+      "claimCategory": "Corporate Governance",
+      "events": [
+        {
+          "author": "research-agent",
+          "id": "openai-agi-panel-stated",
+          "kind": "claim_stated",
+          "lineage": "agi-panel-verification",
+          "metric": "AGI declaration verification",
+          "occurredOn": "2025-10-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-10-28",
+            "quote": "\"once AGI is declared by OpenAI, that declaration will now be verified by an independent expert panel,\" and that Microsoft's rights to OpenAI's confidential research methods \"will remain until either the expert panel verifies AGI or through 2030, whichever is first.\"",
+            "title": "AP (via TechXplore): OpenAI may move forward with new business structure, partnership with Microsoft, regulators say",
+            "url": "https://techxplore.com/news/2025-10-openai-business-partnership-microsoft.html"
+          },
+          "speaker": "OpenAI",
+          "speakerCapacity": "Company announcement under the revised Microsoft partnership (October 28, 2025)",
+          "speakerRole": "Company",
+          "state": "open",
+          "summary": "OpenAI changed its AGI-governance rule: where the nonprofit board previously alone decided when AGI was reached, an AGI declaration must now be verified by an independent expert panel. Microsoft's rights to OpenAI's confidential research methods persist until the panel verifies AGI or through 2030, whichever comes first."
+        },
+        {
+          "author": "research-agent",
+          "id": "openai-agi-panel-assessment",
+          "kind": "assessment",
+          "lineage": "agi-panel-verification",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-10-28",
+            "title": "AP (via TechXplore): OpenAI may move forward with new business structure, partnership with Microsoft, regulators say",
+            "url": "https://techxplore.com/news/2025-10-openai-business-partnership-microsoft.html"
+          },
+          "state": "open",
+          "summary": "Open and untriggered. OpenAI has not declared AGI as of 2026-09-28, so the panel mechanism has not been exercised. The promise is conditional: it activates only if and when OpenAI declares AGI."
+        }
+      ],
+      "fulfillmentTest": "If OpenAI declares AGI, an independent expert panel verifies the declaration before it takes contractual effect (ending Microsoft's research-method rights). The panel's membership and verification outcome must be publicly documented; an unverified or self-certified AGI declaration fails the test.",
+      "horizon": "conditional",
+      "id": "agi-panel-verification",
+      "tags": [
+        "governance",
+        "agi",
+        "microsoft"
+      ],
+      "title": "AGI declaration verified by independent expert panel"
+    },
+    {
+      "claimCategory": "Product/Technology",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2025-08-31",
+          "id": "openai-gpt5-summer-stated",
+          "kind": "claim_stated",
+          "lineage": "gpt5-summer-release",
+          "metric": "GPT-5 public release",
+          "occurredOn": "2025-06",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-06",
+            "quote": "OpenAI CEO Sam Altman announced on a new company podcast today that GPT-5 is expected to launch this summer, marking the next major leap in the company's generative AI capabilities. However, he did not disclose a specific date.",
+            "title": "Adweek: Sam Altman Says GPT-5 Coming This Summer, Open to Ads on ChatGPT\u2014With a Catch",
+            "url": "https://www.adweek.com/media/sam-altman-gpt-5-coming-this-summer-ads-on-chatgpt/?ref=morningtech.it"
+          },
+          "speaker": "Sam Altman",
+          "speakerCapacity": "CEO, on OpenAI's official podcast (June 2025)",
+          "speakerRole": "CEO",
+          "state": "open",
+          "summary": "Altman said GPT-5 was expected to launch in summer 2025, as a unified system replacing the fragmented GPT-4/o/o3 model lineup."
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2025-08-31",
+          "id": "openai-gpt5-launched",
+          "kind": "evidence",
+          "lineage": "gpt5-summer-release",
+          "occurredOn": "2025-08",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-08",
+            "quote": "We are introducing GPT\u20115, our best AI system yet.",
+            "title": "OpenAI: Introducing GPT-5",
+            "url": "https://openai.com/index/introducing-gpt-5/"
+          },
+          "stance": "supports",
+          "state": "open",
+          "summary": "OpenAI launched GPT-5 in August 2025 as a unified system (smart model + deeper reasoning + real-time router), available to all ChatGPT users \u2014 within the promised summer window."
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2025-08-31",
+          "id": "openai-gpt5-summer-assessment",
+          "kind": "assessment",
+          "lineage": "gpt5-summer-release",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-08",
+            "title": "OpenAI: Introducing GPT-5",
+            "url": "https://openai.com/index/introducing-gpt-5/"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. GPT-5 launched in August 2025, inside the summer window Altman promised."
+        }
+      ],
+      "fulfillmentTest": "GPT-5 publicly released in summer 2025 (June\u2013August 2025). Result: launched August 2025 \u2014 fulfilled.",
+      "horizon": "quarter",
+      "id": "gpt5-summer-release",
+      "tags": [
+        "product",
+        "models",
+        "gpt-5"
+      ],
+      "title": "Launch GPT-5 in summer 2025"
+    }
+  ],
+  "schemaVersion": 1,
+  "fundamentals": [],
+  "expectationGap": null
+}

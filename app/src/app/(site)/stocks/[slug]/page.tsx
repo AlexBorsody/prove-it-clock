@@ -52,7 +52,7 @@ export default async function StockCompanyPage({
       </header>
       <nav className={styles.sectionNav} aria-label="Company sections">
         <a href="#current-business">Current business</a>
-        {ledger.lineages.length > 0 && (
+        {(ledger.lineages?.length ?? 0) > 0 && (
           <>
             <a href="#accountability-timeline">Timeline</a>
             <a href="#company-commitments">Promise record</a>
@@ -61,14 +61,14 @@ export default async function StockCompanyPage({
       </nav>
       <section id="current-business" className={styles.section}>
         <StockMarketContext context={context} company={company.name} />
-        {ledger.fundamentals.length > 0 && (
+        {(ledger.fundamentals?.length ?? 0) > 0 && (
           <details className={styles.sources}>
             <summary>Historical reported results</summary>
             <StockFundamentals fundamentals={ledger.fundamentals} />
           </details>
         )}
       </section>
-      {ledger.lineages.length > 0 ? (
+      {(ledger.lineages?.length ?? 0) > 0 ? (
         <>
           <aside className={styles.pilot}>
             <strong>Pilot research.</strong> This record includes secondary

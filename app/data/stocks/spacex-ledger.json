@@ -1,0 +1,686 @@
+{
+  "capturedAt": "2026-09-29T04:00:00Z",
+  "companySlug": "spacex",
+  "lineages": [
+    {
+      "claimCategory": "Technology Milestone",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "spcx-mars-2026-uncrewed-stated",
+          "kind": "claim_stated",
+          "lineage": "mars-2026-uncrewed",
+          "metric": "uncrewed Starship launches to Mars",
+          "occurredOn": "2024-09-07",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-09-08",
+            "quote": "\"SpaceX plans to launch about five uncrewed Starships to Mars in two years. If those all land safely, then crewed missions are possible in four years. If we encounter challenges, then the crewed missions will be postponed another two years,\" said Elon Musk on X.",
+            "title": "Live Mint: SpaceX to send five uncrewed Starship to Mars by 2026 (Sep 8, 2024)",
+            "url": "https://www.livemint.com/news/us-news/spacex-to-send-five-uncrewed-starship-to-mars-by-2026-elon-musk-kamala-harris-regimes-threat-to-choke-america-to-11727058044185.html"
+          },
+          "sourceType": "executive-social",
+          "speaker": "Elon Musk",
+          "speakerCapacity": "post on X (reported Sep 8, 2024)",
+          "speakerRole": "CEO",
+          "summary": "Musk said on X that SpaceX plans to launch about five uncrewed Starships to Mars in two years, with crewed missions possible in four years if the uncrewed landings succeed.",
+          "targetValue": "about 5, by 2026"
+        },
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "spcx-mars-2026-uncrewed-revised",
+          "kind": "claim_revised",
+          "lineage": "mars-2026-uncrewed",
+          "metric": "uncrewed Starship launches to Mars",
+          "occurredOn": "2025-05-29",
+          "recordedAt": "2026-09-29",
+          "revisionReason": "Musk reiterated the late-2026 target but assigned it a 50/50 probability after three consecutive Starship test setbacks.",
+          "source": {
+            "publishedOn": "2025-06-02",
+            "quote": "\"We'll try to make that opportunity, if we get lucky,\" Musk said during his talk. \"I think we probably have a 50/50 chance right now.\"",
+            "title": "Beacon Journal (USA Today Network): Elon Musk still thinks Starship can reach Mars by 2026 (Jun 2, 2025)",
+            "url": "https://www.beaconjournal.com/story/news/nation/2025/06/02/elon-musk-mars-exploration-spacex/83991835007/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "Elon Musk",
+          "speakerCapacity": "talk to SpaceX employees at Starbase, video shared May 29, 2025",
+          "speakerRole": "CEO",
+          "summary": "Speaking to SpaceX employees, Musk put the odds of hitting the late-2026 Mars window at 50/50, keeping the target but lowering confidence.",
+          "supersedes": "spcx-mars-2026-uncrewed-stated",
+          "targetValue": "first uncrewed flight by end of 2026, ~50/50 odds"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-mars-2026-uncrewed-assessment",
+          "kind": "assessment",
+          "lineage": "mars-2026-uncrewed",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-06-02",
+            "title": "Beacon Journal (USA Today Network): Elon Musk still thinks Starship can reach Mars by 2026 (Jun 2, 2025)",
+            "url": "https://www.beaconjournal.com/story/news/nation/2025/06/02/elon-musk-mars-exploration-spacex/83991835007/"
+          },
+          "state": "open",
+          "summary": "Open. The 2026 Mars transfer window opens in roughly November-December 2026; no uncrewed Mars departure has been confirmed as of September 29, 2026. The scanner should watch for a Mars-window launch announcement."
+        }
+      ],
+      "fulfillmentTest": "SpaceX launches about five uncrewed Starships toward Mars during the late-2026 transfer window, on or before 2026-12-31.",
+      "horizon": "multi_year",
+      "id": "mars-2026-uncrewed",
+      "tags": [
+        "starship",
+        "mars"
+      ],
+      "title": "About five uncrewed Starships to Mars in the 2026 transfer window"
+    },
+    {
+      "claimCategory": "Technology Milestone",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "spcx-starship-operational-2026-stated",
+          "kind": "claim_stated",
+          "lineage": "starship-operational-2026",
+          "metric": "Starship operational orbital status",
+          "occurredOn": "2026-06-16",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-06-16",
+            "quote": "Shotwell confirmed SpaceX expected Starship to be fully operational in orbit by the end of this year.",
+            "title": "Advanced Television: Shotwell: \"One Starship launch per month\" (Jun 16, 2026)",
+            "url": "https://www.advanced-television.com/2026/06/16/shotwell-one-starship-launch-per-month/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "Gwynne Shotwell",
+          "speakerCapacity": "interview reported June 16, 2026",
+          "speakerRole": "President and COO",
+          "summary": "Shotwell confirmed SpaceX expects Starship to be fully operational in orbit by the end of 2026, while flagging FAA regulatory approval as a significant bottleneck.",
+          "targetValue": "fully operational in orbit by end of 2026"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-starship-operational-2026-assessment",
+          "kind": "assessment",
+          "lineage": "starship-operational-2026",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-06-16",
+            "title": "Advanced Television: Shotwell: \"One Starship launch per month\" (Jun 16, 2026)",
+            "url": "https://www.advanced-television.com/2026/06/16/shotwell-one-starship-launch-per-month/"
+          },
+          "state": "open",
+          "summary": "Open. Flight 14, targeted for September 28, 2026 pending regulatory approval, is positioned as the first revenue-generating orbital mission; full operational status has not yet been demonstrated. The scanner should watch for Flight 14's outcome and any FAA approval news."
+        }
+      ],
+      "fulfillmentTest": "Starship achieves fully operational orbital status (routine orbital flights carrying payloads) on or before 2026-12-31.",
+      "horizon": "annual",
+      "id": "starship-operational-2026",
+      "tags": [
+        "starship"
+      ],
+      "title": "Starship fully operational in orbit by the end of 2026"
+    },
+    {
+      "claimCategory": "Launch Operations",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2027-06-30",
+          "id": "spcx-starship-monthly-cadence-stated",
+          "kind": "claim_stated",
+          "lineage": "starship-monthly-cadence",
+          "metric": "Starship launch cadence",
+          "occurredOn": "2026-06-16",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-06-16",
+            "quote": "During an interview Shotwell said that Test flight #13 should take place during July, and then be followed by #14, already being described as the 'big one' in that SpaceX will attempt a full orbital injection and journey from its Texas base. Thereafter, SpaceX - subject to these successful test flight - will ramp up to a monthly launch rate.",
+            "title": "Advanced Television: Shotwell: \"One Starship launch per month\" (Jun 16, 2026)",
+            "url": "https://www.advanced-television.com/2026/06/16/shotwell-one-starship-launch-per-month/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "Gwynne Shotwell",
+          "speakerCapacity": "interview reported June 16, 2026",
+          "speakerRole": "President and COO",
+          "summary": "Shotwell said Test Flight 13 should fly in July, followed by Flight 14 attempting full orbital injection, and that SpaceX would then ramp up to a monthly Starship launch rate, contingent on those tests succeeding.",
+          "targetValue": "one launch per month after Flights 13 and 14"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-starship-monthly-cadence-progress",
+          "kind": "evidence",
+          "lineage": "starship-monthly-cadence",
+          "occurredOn": "2026-09-10",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-10",
+            "quote": "Flight 14 follows a summer of Starship progress that included Flight 13 milestones and a full-duration six-Raptor static fire on the ship assigned to the attempt.",
+            "title": "TeslaNorth: SpaceX Says Starship Flight 14 Will Generate Revenue With Starlink V3 (Sep 10, 2026)",
+            "url": "https://teslanorth.com/2026/09/10/spacex-flight-14-starlink-v3-revenue/"
+          },
+          "stance": "supports-progress",
+          "summary": "Flight 14 followed a summer of Starship progress including Flight 13 milestones and a full-duration six-Raptor static fire on the ship assigned to the Flight 14 attempt, keeping the ramp plan on track."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-starship-monthly-cadence-assessment",
+          "kind": "assessment",
+          "lineage": "starship-monthly-cadence",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-06-16",
+            "title": "Advanced Television: Shotwell: \"One Starship launch per month\" (Jun 16, 2026)",
+            "url": "https://www.advanced-television.com/2026/06/16/shotwell-one-starship-launch-per-month/"
+          },
+          "state": "open",
+          "summary": "Open. The monthly cadence is conditional on Flights 13 and 14 succeeding; Flight 14 is targeted for September 28, 2026 pending regulatory approval. The scanner should watch for the Flight 14 outcome and the spacing of subsequent flights."
+        }
+      ],
+      "fulfillmentTest": "After Flights 13 and 14 succeed, SpaceX sustains roughly one Starship launch per month (at least 6 launches in any rolling 6-month window of 2026-2027).",
+      "horizon": "annual",
+      "id": "starship-monthly-cadence",
+      "tags": [
+        "starship",
+        "cadence"
+      ],
+      "title": "Starship ramps to a monthly launch rate after successful Flights 13 and 14"
+    },
+    {
+      "claimCategory": "Launch Operations",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-09-30",
+          "id": "spcx-flight14-revenue-stated",
+          "kind": "claim_stated",
+          "lineage": "starship-flight14-revenue",
+          "metric": "first revenue-generating Starship mission",
+          "occurredOn": "2026-09-10",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-10",
+            "quote": "SpaceX CFO Bret Johnsen told investors at the Goldman Sachs Communacopia and Technology Conference on September 10, 2026, that the company's upcoming Starship Flight 14 later this month is set to generate revenue by flying production Version 3 Starlink satellites into operational orbit.",
+            "title": "TeslaNorth: SpaceX Says Starship Flight 14 Will Generate Revenue With Starlink V3 (Sep 10, 2026)",
+            "url": "https://teslanorth.com/2026/09/10/spacex-flight-14-starlink-v3-revenue/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "Bret Johnsen",
+          "speakerCapacity": "Goldman Sachs Communacopia and Technology Conference, Sep 10, 2026",
+          "speakerRole": "CFO",
+          "summary": "CFO Bret Johnsen told investors at the Goldman Sachs Communacopia and Technology Conference that the upcoming Starship Flight 14, later in September 2026, would generate revenue by flying production Version 3 Starlink satellites into operational orbit.",
+          "targetValue": "Flight 14 with production Starlink V3 satellites, September 2026"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-flight14-revenue-target-date",
+          "kind": "evidence",
+          "lineage": "starship-flight14-revenue",
+          "occurredOn": "2026-09-17",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-17",
+            "quote": "SpaceX said on Thursday that Starship's Flight 14 is now targeted for Monday, September 28, pending regulatory approval.",
+            "title": "Stocktwits: SPCX Stock In Focus \u2014 SpaceX Pushes Starship Launch To September 28 (Sep 17, 2026)",
+            "url": "https://stocktwits.com/news-articles/markets/equity/spcx-stock-in-focus-space-x-pushes-starship-launch-to-september-28-reportedly-weighs-startup-data-buys-for-ai/cZtrCyLRBdV"
+          },
+          "stance": "supports",
+          "summary": "SpaceX said Flight 14 is targeted for Monday, September 28, pending regulatory approval, after previously being slated for September 22."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-flight14-revenue-qualifier",
+          "kind": "evidence",
+          "lineage": "starship-flight14-revenue",
+          "occurredOn": "2026-09-27",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-27",
+            "quote": "SpaceX aims to send its Starship on its first orbital flight around Earth, a journey of ten hours. The company's CFO, Bret Johnsen, calls Flight 14 Starship's first \"revenue-generating flight,\" placing 26 Starlink V3 satellites into orbit. However, SpaceX's own IPO Prospectus states the Space segment does not recognise revenue for Starlink launches.",
+            "title": "BriefTea (reporting The Motley Fool): SpaceX's Starship launch on Monday could bring its first revenue (Sep 27, 2026)",
+            "url": "https://brieftea.com/a/spacexs-starship-launch-on-monday-could-bring-its-first-revenue-dGOrcsobo792URc0k0gJ"
+          },
+          "stance": "qualifies",
+          "summary": "A Motley Fool brief notes the flight would place 26 Starlink V3 satellites into orbit, but cautions that SpaceX's own IPO Prospectus states the Space segment does not recognise revenue for Starlink launches \u2014 a material qualifier on the 'revenue-generating' label."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-flight14-revenue-assessment",
+          "kind": "assessment",
+          "lineage": "starship-flight14-revenue",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-17",
+            "title": "Stocktwits: SPCX Stock In Focus \u2014 SpaceX Pushes Starship Launch To September 28 (Sep 17, 2026)",
+            "url": "https://stocktwits.com/news-articles/markets/equity/spcx-stock-in-focus-space-x-pushes-starship-launch-to-september-28-reportedly-weighs-startup-data-buys-for-ai/cZtrCyLRBdV"
+          },
+          "state": "open",
+          "summary": "Open. Flight 14 was targeted for today, September 28, 2026, pending regulatory approval; no outcome is confirmed yet. The scanner should watch for the launch result and whether the 26 Starlink V3 satellites reach operational orbit."
+        }
+      ],
+      "fulfillmentTest": "Starship Flight 14 flies production Version 3 Starlink satellites into operational orbit and is SpaceX's first revenue-generating Starship mission.",
+      "horizon": "event",
+      "id": "starship-flight14-revenue",
+      "tags": [
+        "starship",
+        "starlink"
+      ],
+      "title": "Starship Flight 14 as the first revenue-generating Starship mission"
+    },
+    {
+      "claimCategory": "Launch Operations",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "spcx-falcon-2026-cadence-stated",
+          "kind": "claim_stated",
+          "lineage": "falcon-2026-cadence",
+          "metric": "Falcon 9 launches in 2026",
+          "occurredOn": "2026-05-06",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-05-06",
+            "quote": "\"This year we'll still launch a lot [of Falcon 9s], but not as much. And then we'll tail off our launches as Starship is coming online.\" Shotwell's projection of \"maybe 140, 145-ish\" Falcon 9 launches in 2026 reflects a ~15% reduction from last year's pace.",
+            "title": "Archynewsy: SpaceX Moves Beyond the Falcon 9 Rocket (May 6, 2026)",
+            "url": "https://www.archynewsy.com/spacex-moves-beyond-the-falcon-9-rocket/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "Gwynne Shotwell",
+          "speakerCapacity": "Time magazine interview, reported May 6, 2026",
+          "speakerRole": "President and COO",
+          "summary": "Shotwell told Time that SpaceX would still fly many Falcon 9s in 2026 but fewer than the 165 of 2025, projecting 'maybe 140, 145-ish' launches as Falcon cadence tails off while Starship comes online.",
+          "targetValue": "about 140-145"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-falcon-2026-cadence-progress",
+          "kind": "evidence",
+          "lineage": "falcon-2026-cadence",
+          "occurredOn": "2026-08-22",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-08-27",
+            "quote": "On August 22, 2026, SpaceX (SPCX) posted on X: \"Falcon 9 lifts off from California and delivers 27 Starlink satellites to orbit, completing our 100th Falcon launch of the year.\"",
+            "title": "Seeking Alpha: Launch As Infrastructure: What SpaceX's 100th Mission Of 2026 Tells Investors (Aug 2026)",
+            "url": "https://seekingalpha.com/article/4947875-launch-infrastructure-what-spacex-100th-mission-2026-tells-investors"
+          },
+          "stance": "supports-progress",
+          "summary": "SpaceX announced its 100th Falcon launch of 2026 on August 22, putting the year's pace roughly on track for the 140-145 target."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-falcon-2026-cadence-assessment",
+          "kind": "assessment",
+          "lineage": "falcon-2026-cadence",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-08-27",
+            "title": "Seeking Alpha: Launch As Infrastructure: What SpaceX's 100th Mission Of 2026 Tells Investors (Aug 2026)",
+            "url": "https://seekingalpha.com/article/4947875-launch-infrastructure-what-spacex-100th-mission-2026-tells-investors"
+          },
+          "state": "open",
+          "summary": "Open. The 100-launch mark on August 22 suggests the pace is broadly consistent with the 140-145 target, but the year-end total is not yet known. The scanner should watch the final 2026 Falcon count."
+        }
+      ],
+      "fulfillmentTest": "SpaceX completes 140-145 Falcon-family launches in calendar 2026 (130-155 counts as near the target; below 130 is a miss).",
+      "horizon": "annual",
+      "id": "falcon-2026-cadence",
+      "tags": [
+        "falcon",
+        "cadence"
+      ],
+      "title": "About 140-145 Falcon launches in 2026"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-12-31",
+          "id": "spcx-ai-compute-run-rate-stated",
+          "kind": "claim_stated",
+          "lineage": "ai-compute-run-rate",
+          "metric": "terrestrial AI compute annualized revenue run rate",
+          "occurredOn": "2026-09-10",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-10",
+            "quote": "The CFO also reiterated the company's AI infrastructure push, describing orbital compute satellites as targeted for first launches next year with scale into 2028, while terrestrial AI compute remains on a path toward a $100 billion annualized revenue run rate by year-end.",
+            "title": "TeslaNorth: SpaceX Says Starship Flight 14 Will Generate Revenue With Starlink V3 (Sep 10, 2026)",
+            "url": "https://teslanorth.com/2026/09/10/spacex-flight-14-starlink-v3-revenue/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "Bret Johnsen",
+          "speakerCapacity": "Goldman Sachs Communacopia and Technology Conference, Sep 10, 2026",
+          "speakerRole": "CFO",
+          "summary": "CFO Bret Johnsen told investors that SpaceX's terrestrial AI compute remains on a path toward a $100 billion annualized revenue run rate by year-end 2026.",
+          "targetValue": "$100 billion by year-end 2026"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-ai-compute-run-rate-assessment",
+          "kind": "assessment",
+          "lineage": "ai-compute-run-rate",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-09-10",
+            "title": "TeslaNorth: SpaceX Says Starship Flight 14 Will Generate Revenue With Starlink V3 (Sep 10, 2026)",
+            "url": "https://teslanorth.com/2026/09/10/spacex-flight-14-starlink-v3-revenue/"
+          },
+          "state": "open",
+          "summary": "Open. The $100B run-rate target runs to year-end 2026; no confirming figure has been published as of September 29, 2026. The scanner should watch for Q4 2026 results or company disclosures on AI compute revenue."
+        }
+      ],
+      "fulfillmentTest": "SpaceX's terrestrial AI compute business reaches an annualized revenue run rate of about $100 billion by 2026-12-31.",
+      "horizon": "annual",
+      "id": "ai-compute-run-rate",
+      "tags": [
+        "ai",
+        "guidance"
+      ],
+      "title": "Terrestrial AI compute at a $100B annualized revenue run rate by year-end 2026"
+    },
+    {
+      "claimCategory": "Launch Operations",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2025-12-31",
+          "id": "spcx-falcon-2025-cadence-stated",
+          "kind": "claim_stated",
+          "lineage": "falcon-2025-cadence",
+          "metric": "Falcon 9 launches in 2025",
+          "occurredOn": "2025-12-10",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-12-10",
+            "quote": "SpaceX executives have repeatedly mentioned a target of around 170 Falcon 9 launches in 2025, up from a record 134 orbital missions in 2024.",
+            "title": "TS2 Space: SpaceX Starlink Today: 2026 IPO Plans, India Launch Pricing and Record Rocket Cadence (Dec 10, 2025)",
+            "url": "https://ts2.tech/en/spacex-starlink-today-2026-ipo-plans-india-launch-pricing-and-record-rocket-cadence-december-10-2025/"
+          },
+          "sourceType": "executive-interview",
+          "speaker": "SpaceX executives",
+          "speakerCapacity": "repeated public mentions, reported Dec 10, 2025",
+          "speakerRole": "Company leadership",
+          "summary": "SpaceX executives had repeatedly mentioned a target of around 170 Falcon 9 launches in 2025, up from the record 134 orbital missions in 2024.",
+          "targetValue": "about 170"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-falcon-2025-cadence-actual",
+          "kind": "evidence",
+          "lineage": "falcon-2025-cadence",
+          "occurredOn": "2026-01-15",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-01-15",
+            "quote": "In 2025, SpaceX launched 170 rockets: 165 Falcon 9s, 0 Falcon Heavy, and 5 suborbital Starship tests.",
+            "title": "SciTech Today: SpaceX Statistics By Revenue, Funding and Launches (2026)",
+            "url": "https://www.sci-tech-today.com/stats/spacex-statistics-updated/"
+          },
+          "stance": "refutes",
+          "summary": "SpaceX closed 2025 with 165 Falcon 9 launches (plus 5 suborbital Starship tests), five short of the ~170 target."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-falcon-2025-cadence-assessment",
+          "kind": "assessment",
+          "lineage": "falcon-2025-cadence",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-01-15",
+            "title": "SciTech Today: SpaceX Statistics By Revenue, Funding and Launches (2026)",
+            "url": "https://www.sci-tech-today.com/stats/spacex-statistics-updated/"
+          },
+          "state": "missed",
+          "summary": "Missed. SpaceX flew 165 Falcon 9s in 2025 against a target of about 170 \u2014 close, but short by five launches."
+        }
+      ],
+      "fulfillmentTest": "SpaceX completes about 170 Falcon 9 launches in calendar 2025 (165+ counts as near; below 165 is a miss).",
+      "horizon": "annual",
+      "id": "falcon-2025-cadence",
+      "tags": [
+        "falcon",
+        "cadence"
+      ],
+      "title": "About 170 Falcon 9 launches in 2025"
+    },
+    {
+      "claimCategory": "Technology Milestone",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2024-10-31",
+          "id": "spcx-flight5-catch-stated",
+          "kind": "claim_stated",
+          "lineage": "starship-flight5-catch",
+          "metric": "booster tower catch on Flight 5",
+          "occurredOn": "2024-10-12",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-10-12",
+            "quote": "This flight featured the first planned capture and recovery of the Super Heavy Booster 12 by the chopsticks on the launch tower.",
+            "title": "Spaceflight Now: Starship Flight 5 (Oct 12, 2024)",
+            "url": "https://spaceflightnow.com/launch/starship-flight-5/"
+          },
+          "sourceType": "press-release",
+          "speaker": "SpaceX",
+          "speakerCapacity": "Flight 5 mission plan (reported Oct 12, 2024)",
+          "speakerRole": "Company",
+          "summary": "Ahead of the flight, SpaceX planned the first capture and recovery of the Super Heavy Booster 12 by the chopstick arms on the launch tower.",
+          "targetValue": "successful catch of Booster 12"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-flight5-catch-success",
+          "kind": "evidence",
+          "lineage": "starship-flight5-catch",
+          "occurredOn": "2024-10-13",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-10-13",
+            "quote": "SpaceX launched its fifth Starship vehicle Oct. 13, successfully making an unprecedented \u201ccatch\u201d of its Super Heavy booster back at the launch site.",
+            "title": "SpaceNews: SpaceX launches fifth Starship, catches Super Heavy booster (Oct 13, 2024)",
+            "url": "http://spacenews.com/spacex-launches-fifth-starship-catches-super-heavy-booster/"
+          },
+          "stance": "supports",
+          "summary": "SpaceX launched Starship Flight 5 on October 13, 2024 and successfully caught the Super Heavy booster back at the launch site \u2014 an unprecedented recovery."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-flight5-catch-assessment",
+          "kind": "assessment",
+          "lineage": "starship-flight5-catch",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2024-10-13",
+            "title": "SpaceNews: SpaceX launches fifth Starship, catches Super Heavy booster (Oct 13, 2024)",
+            "url": "http://spacenews.com/spacex-launches-fifth-starship-catches-super-heavy-booster/"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. Booster 12 was caught by the tower's chopstick arms on the first attempt, about seven minutes after liftoff on October 13, 2024."
+        }
+      ],
+      "fulfillmentTest": "The Super Heavy booster is caught and recovered by the launch tower's chopstick arms on Starship Flight 5.",
+      "horizon": "event",
+      "id": "starship-flight5-catch",
+      "tags": [
+        "starship",
+        "reusability"
+      ],
+      "title": "Super Heavy booster caught by the launch tower on Starship Flight 5"
+    },
+    {
+      "claimCategory": "Product Launch",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2025-07-31",
+          "id": "spcx-direct-to-cell-texting-stated",
+          "kind": "claim_stated",
+          "lineage": "direct-to-cell-texting",
+          "metric": "commercial satellite texting service launch",
+          "occurredOn": "2025-02-10",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-02-10",
+            "quote": "T-Mobile announced with a Super Bowl commercial that its satellite texting service with SpaceX will launch in July.",
+            "title": "Broadband Breakfast: T-Mobile, SpaceX to Launch Direct-to-Device Service in July (Feb 10, 2025)",
+            "url": "https://broadbandbreakfast.com/t-mobile-spacex-to-launch-direct-to-device-service-in-july/"
+          },
+          "sourceType": "press-release",
+          "speaker": "T-Mobile",
+          "speakerCapacity": "Super Bowl announcement, reported Feb 10, 2025",
+          "speakerRole": "Carrier partner",
+          "summary": "T-Mobile announced via a Super Bowl commercial that its satellite texting service with SpaceX would launch in July 2025, letting customers send and receive texts outside terrestrial network coverage.",
+          "targetValue": "commercial launch in July 2025"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-direct-to-cell-texting-launched",
+          "kind": "evidence",
+          "lineage": "direct-to-cell-texting",
+          "occurredOn": "2025-07-23",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-06-26",
+            "quote": "T-Mobile said T-Satellite became available on July 23, 2025, turning its Starlink direct-to-cell beta into a commercial service for T-Mobile customers and, at a separate price point, users on other carriers.",
+            "title": "BTW Media: T-Mobile T-Satellite launch with Starlink direct-to-cell (published Jun 26, 2025; updated Aug 17, 2026)",
+            "url": "https://btw.media/en/t-mobile-t-satellite-commercial-launch-starlink-direct-to-cell"
+          },
+          "stance": "supports",
+          "summary": "T-Satellite became commercially available on July 23, 2025, turning the Starlink direct-to-cell beta into a standing commercial service for T-Mobile customers and, at a separate price, other carriers."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-direct-to-cell-texting-assessment",
+          "kind": "assessment",
+          "lineage": "direct-to-cell-texting",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2025-06-26",
+            "title": "BTW Media: T-Mobile T-Satellite launch with Starlink direct-to-cell (published Jun 26, 2025; updated Aug 17, 2026)",
+            "url": "https://btw.media/en/t-mobile-t-satellite-commercial-launch-starlink-direct-to-cell"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. T-Satellite went commercial on July 23, 2025, inside the promised July window."
+        }
+      ],
+      "fulfillmentTest": "The SpaceX-powered T-Mobile satellite texting service launches commercially by the end of July 2025.",
+      "horizon": "event",
+      "id": "direct-to-cell-texting",
+      "tags": [
+        "starlink",
+        "direct-to-cell"
+      ],
+      "title": "Commercial satellite-to-mobile texting service with T-Mobile in July 2025"
+    },
+    {
+      "claimCategory": "Corporate",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": null,
+          "id": "spcx-starlink-ipo-stated",
+          "kind": "claim_stated",
+          "lineage": "starlink-ipo-path",
+          "metric": "Starlink public listing",
+          "occurredOn": "2021-06-23",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2021-06-23",
+            "quote": "(Reuters) - Tesla Inc Chief Executive Officer Elon Musk will list SpaceX's space internet venture, Starlink, when its cash flow is reasonably predictable, the billionaire entrepreneur said late on Wednesday.",
+            "title": "KELO-FM (Reuters): Musk says Starlink to go public once cash flow is more predictable (Jun 23, 2021)",
+            "url": "https://kelofm.com/2021/06/23/musk-says-starlink-to-go-public-once-cash-flow-is-more-predictable/"
+          },
+          "sourceType": "executive-social",
+          "speaker": "Elon Musk",
+          "speakerCapacity": "tweet reply (reported Jun 23, 2021)",
+          "speakerRole": "CEO",
+          "summary": "Musk said he would list Starlink once its cash flow was reasonably predictable, adding that going public sooner would be very painful.",
+          "targetValue": "IPO once cash flow reasonably predictable"
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-starlink-ipo-breakeven",
+          "kind": "evidence",
+          "lineage": "starlink-ipo-path",
+          "occurredOn": "2023-11-02",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2023-11-02",
+            "quote": "Excited to announce that @SpaceX @Starlink has achieved breakeven cash flow! Excellent work by a great team.",
+            "title": "TechCrunch: Musk: SpaceX's Starlink 'has achieved breakeven cash flow' (Nov 2, 2023)",
+            "url": "https://techcrunch.com/2023/11/02/musk-spacexs-starlink-has-achieved-breakeven-cash-flow/"
+          },
+          "stance": "supports-progress",
+          "summary": "Musk announced on X that Starlink had achieved breakeven cash flow \u2014 the precondition he had set for a public listing."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-starlink-ipo-full-company",
+          "kind": "evidence",
+          "lineage": "starlink-ipo-path",
+          "occurredOn": "2026-06-12",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-06-13",
+            "quote": "SpaceX priced 555,555,555 Class A shares at $135 apiece and started trading on Nasdaq Friday with the symbol SPCX.",
+            "title": "TS2 Space: SpaceX CFO Bret Johnsen Hits Billionaire Status After $75B IPO (Jun 13, 2026)",
+            "url": "http://ts2.tech/en/spacex-cfo-bret-johnsen-hits-billionaire-status-after-75b-ipo/"
+          },
+          "stance": "qualifies",
+          "summary": "SpaceX priced 555,555,555 Class A shares at $135 apiece, raising about $75 billion, and began trading on Nasdaq under the symbol SPCX \u2014 a full-company IPO rather than a Starlink spinoff."
+        },
+        {
+          "author": "research-agent",
+          "id": "spcx-starlink-ipo-assessment",
+          "kind": "assessment",
+          "lineage": "starlink-ipo-path",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-29",
+          "recordedAt": "2026-09-29",
+          "source": {
+            "publishedOn": "2026-06-13",
+            "title": "TS2 Space: SpaceX CFO Bret Johnsen Hits Billionaire Status After $75B IPO (Jun 13, 2026)",
+            "url": "http://ts2.tech/en/spacex-cfo-bret-johnsen-hits-billionaire-status-after-75b-ipo/"
+          },
+          "state": "superseded",
+          "summary": "Superseded. The cash-flow precondition was met in November 2023, but SpaceX never spun off Starlink for its own IPO; instead it listed the entire company on Nasdaq as SPCX on June 12, 2026, in a ~$75 billion offering. The standalone-Starlink-IPO path was replaced by the full-company listing."
+        }
+      ],
+      "fulfillmentTest": "Starlink is spun off and listed publicly after its cash flow becomes reasonably predictable.",
+      "horizon": "multi_year",
+      "id": "starlink-ipo-path",
+      "tags": [
+        "starlink",
+        "ipo"
+      ],
+      "title": "Starlink IPO once cash flow became reasonably predictable"
+    }
+  ],
+  "fundamentals": [],
+  "expectationGap": null,
+  "schemaVersion": 1
+}

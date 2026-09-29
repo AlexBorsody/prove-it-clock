@@ -1,0 +1,695 @@
+{
+  "capturedAt": "2026-09-29T01:35:33Z",
+  "companySlug": "oracle",
+  "lineages": [
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-05-31",
+          "id": "orcl-fy2026-revenue-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2026-revenue-guidance",
+          "metric": "fiscal year total revenue",
+          "occurredOn": "2025-06-11",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-06-11",
+            "quote": "As a result of the strength in our cloud applications and infrastructure, including database services, we are raising our revenue guidance for fiscal year 2026 to over $67 billion, up 16% for the year.",
+            "title": "ORCL Q4 2025 Earnings Report on 6/11/2025",
+            "url": "https://www.MarketBeat.com/earnings/reports/2025-6-11-oracle-co-stock/"
+          },
+          "sourceType": "earnings-call",
+          "speaker": "Safra Catz",
+          "speakerCapacity": "CEO on Q4 FY2025 earnings call",
+          "speakerRole": "CEO",
+          "summary": "Catz raised Oracle's FY2026 total revenue guidance to over $67 billion, up 16% for the year.",
+          "targetValue": "over $67 billion (up 16%)"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-fy2026-revenue-guidance-repeated",
+          "kind": "claim_repeated",
+          "lineage": "fy2026-revenue-guidance",
+          "occurredOn": "2025-09-09",
+          "originalId": "orcl-fy2026-revenue-guidance-stated",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09-09",
+            "quote": "For fiscal year 2026, we remain confident and committed to full-year total revenue growth of 16% in constant currency.",
+            "title": "ORCL Q1 2026 Earnings Report on 9/9/2025",
+            "url": "https://www.MarketBeat.com/earnings/reports/2025-9-9-oracle-co-stock/"
+          },
+          "sourceType": "earnings-call",
+          "summary": "Catz recommitted to the FY2026 guidance on the Q1 FY2026 call: full-year total revenue growth of 16% in constant currency.",
+          "wordingChange": "same"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-fy2026-revenue-guidance-actual",
+          "kind": "evidence",
+          "lineage": "fy2026-revenue-guidance",
+          "occurredOn": "2026-06-10",
+          "provenance": [
+            "Oracle Q4 FY2026 earnings release (Exhibit 99.1 to Form 8-K)"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "quote": "Fiscal year 2026 total revenues were up 17% to a record $67.4 billion.",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "stance": "supports",
+          "summary": "Oracle reported FY2026 total revenue of $67.4 billion, up 17% \u2014 above both the $67 billion bar and the 16% growth target."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-fy2026-revenue-guidance-assessment",
+          "kind": "assessment",
+          "lineage": "fy2026-revenue-guidance",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. FY2026 total revenue of $67.4B exceeded the 'over $67B' guidance, and 17% growth topped the 16% target."
+        }
+      ],
+      "fulfillmentTest": "FY2026 total revenue is at least $67 billion with full-year growth of at least 16% by May 31, 2026. Result: $67.4B, up 17% \u2014 fulfilled.",
+      "horizon": "annual",
+      "id": "fy2026-revenue-guidance",
+      "tags": [],
+      "title": "FY2026 total revenue guidance (over $67B)"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-05-31",
+          "id": "orcl-oci-fy2026-growth-stated",
+          "kind": "claim_stated",
+          "lineage": "oci-fy2026-growth",
+          "metric": "OCI (cloud infrastructure) revenue growth",
+          "occurredOn": "2025-06-11",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-06-11",
+            "quote": "Those contracted, non-cancelable bookings in RPO give us confidence that OCI revenue will grow over 70% this current year.",
+            "title": "ORCL Q4 2025 Earnings Report on 6/11/2025",
+            "url": "https://www.MarketBeat.com/earnings/reports/2025-6-11-oracle-co-stock/"
+          },
+          "sourceType": "earnings-call",
+          "speaker": "Safra Catz",
+          "speakerCapacity": "CEO on Q4 FY2025 earnings call",
+          "speakerRole": "CEO",
+          "summary": "Catz guided FY2026 OCI revenue growth of over 70%, citing contracted non-cancelable RPO bookings.",
+          "targetValue": "over 70% in FY2026"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-oci-fy2026-growth-revised",
+          "kind": "claim_revised",
+          "lineage": "oci-fy2026-growth",
+          "occurredOn": "2025-09-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09-09",
+            "quote": "We now expect Oracle Cloud Infrastructure will grow 77% to $18 billion this fiscal year.",
+            "title": "ORCL Q1 2026 Earnings Report on 9/9/2025",
+            "url": "https://www.MarketBeat.com/earnings/reports/2025-9-9-oracle-co-stock/"
+          },
+          "sourceType": "earnings-call",
+          "summary": "Catz sharpened the FY2026 OCI target to 77% growth, or $18 billion for the year.",
+          "supersedes": "orcl-oci-fy2026-growth-stated",
+          "targetValue": "77% growth to $18 billion"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-oci-fy2026-growth-actual",
+          "kind": "evidence",
+          "lineage": "oci-fy2026-growth",
+          "occurredOn": "2026-06-10",
+          "provenance": [
+            "Oracle Q4 FY2026 earnings release (Exhibit 99.1 to Form 8-K)"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "quote": "FY 2026 Cloud Infra (IaaS) Revenue $18.1 billion, up 77% USD.",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "stance": "supports",
+          "summary": "FY2026 cloud infrastructure revenue came in at $18.1 billion, up 77% in USD \u2014 matching the revised target exactly."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-oci-fy2026-growth-assessment",
+          "kind": "assessment",
+          "lineage": "oci-fy2026-growth",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. $18.1B at 77% growth cleared both the original 'over 70%' guide and the revised '77% to $18B'."
+        }
+      ],
+      "fulfillmentTest": "FY2026 OCI revenue reaches at least $18 billion with growth of at least 70% by May 31, 2026. Result: $18.1B, up 77% \u2014 fulfilled.",
+      "horizon": "annual",
+      "id": "oci-fy2026-growth",
+      "tags": [],
+      "title": "FY2026 OCI revenue growth (over 70%)"
+    },
+    {
+      "claimCategory": "Bookings",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-05-31",
+          "id": "orcl-rpo-fy2026-500b-stated",
+          "kind": "claim_stated",
+          "lineage": "rpo-fy2026-exceed-500b",
+          "metric": "remaining performance obligations",
+          "occurredOn": "2025-09-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09-09",
+            "quote": "I expect we will sign additional multi-billion dollar customers and that RPO will likely grow to exceed $500 billion.",
+            "title": "ORCL Q1 2026 Earnings Report on 9/9/2025",
+            "url": "https://www.MarketBeat.com/earnings/reports/2025-9-9-oracle-co-stock/"
+          },
+          "sourceType": "earnings-call",
+          "speaker": "Safra Catz",
+          "speakerCapacity": "CEO on Q1 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "summary": "Catz said FY2026 RPO would likely grow to exceed $500 billion on additional multi-billion-dollar signings.",
+          "targetValue": "exceed $500 billion in FY2026"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-rpo-fy2026-500b-actual",
+          "kind": "evidence",
+          "lineage": "rpo-fy2026-exceed-500b",
+          "occurredOn": "2026-06-10",
+          "provenance": [
+            "Oracle Q4 FY2026 earnings release (Exhibit 99.1 to Form 8-K)"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "quote": "Remaining Performance Obligations, or RPO, is now $638 billion, up 363% year over year.",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "stance": "supports",
+          "summary": "FY2026 RPO ended at $638 billion, up 363% year over year \u2014 well above the $500 billion bar."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-rpo-fy2026-500b-assessment",
+          "kind": "assessment",
+          "lineage": "rpo-fy2026-exceed-500b",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "state": "fulfilled",
+          "summary": "Fulfilled. $638B of RPO at FY2026 year-end exceeded the $500B target by a wide margin."
+        }
+      ],
+      "fulfillmentTest": "RPO exceeds $500 billion during FY2026 (by May 31, 2026). Result: $638B \u2014 fulfilled.",
+      "horizon": "annual",
+      "id": "rpo-fy2026-exceed-500b",
+      "tags": [],
+      "title": "FY2026 RPO to exceed $500B"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2027-05-31",
+          "id": "orcl-fy2027-revenue-90b-stated",
+          "kind": "claim_stated",
+          "lineage": "fy2027-revenue-90b",
+          "metric": "fiscal year total revenue",
+          "occurredOn": "2026-06-10",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "quote": "we confirm our prior revenue guidance of $90 billion total revenue.",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "sourceType": "sec-filing",
+          "speaker": "Safra Catz",
+          "speakerCapacity": "CEO quoted in Q4 FY2026 earnings release",
+          "speakerRole": "CEO",
+          "summary": "Oracle confirmed prior guidance of $90 billion total revenue for FY2027.",
+          "targetValue": "$90 billion in FY2027"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-fy2027-revenue-90b-repeated",
+          "kind": "claim_repeated",
+          "lineage": "fy2027-revenue-90b",
+          "occurredOn": "2026-09-10",
+          "originalId": "orcl-fy2027-revenue-90b-stated",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "quote": "For the full year, Oracle now expects total revenue of at least $90 billion and non-GAAP earnings of $8.10 a share.",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "sourceType": "earnings-coverage",
+          "summary": "With Q1 FY2027 results, Oracle restated the FY2027 target as 'at least $90 billion' of total revenue.",
+          "wordingChange": "tightened"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-fy2027-revenue-90b-assessment",
+          "kind": "assessment",
+          "lineage": "fy2027-revenue-90b",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "state": "open",
+          "summary": "Open. The $90B target has been confirmed twice (June and September 2026); FY2027 runs through May 31, 2027."
+        }
+      ],
+      "fulfillmentTest": "FY2027 total revenue is at least $90 billion by May 31, 2027.",
+      "horizon": "annual",
+      "id": "fy2027-revenue-90b",
+      "tags": [],
+      "title": "FY2027 total revenue of $90B"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2030-05-31",
+          "id": "orcl-oci-trajectory-stated",
+          "kind": "claim_stated",
+          "lineage": "oci-multi-year-trajectory",
+          "metric": "OCI annual revenue",
+          "occurredOn": "2025-09-09",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09-09",
+            "quote": "We now expect Oracle Cloud Infrastructure will grow 77% to $18 billion this fiscal year and then increase to $32 billion, $73 billion, $114 billion, and $144 billion over the following four years.",
+            "title": "ORCL Q1 2026 Earnings Report on 9/9/2025",
+            "url": "https://www.MarketBeat.com/earnings/reports/2025-9-9-oracle-co-stock/"
+          },
+          "sourceType": "earnings-call",
+          "speaker": "Safra Catz",
+          "speakerCapacity": "CEO on Q1 FY2026 earnings call",
+          "speakerRole": "CEO",
+          "summary": "Catz laid out a five-year OCI revenue trajectory: $18B in FY2026, then $32B, $73B, $114B, and $144B.",
+          "targetValue": "$18B FY2026; $32B FY2027; $73B FY2028; $114B FY2029; $144B FY2030"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-oci-trajectory-fy2026-leg",
+          "kind": "evidence",
+          "lineage": "oci-multi-year-trajectory",
+          "occurredOn": "2026-06-10",
+          "provenance": [
+            "Oracle Q4 FY2026 earnings release (Exhibit 99.1 to Form 8-K)"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-06-10",
+            "quote": "FY 2026 Cloud Infra (IaaS) Revenue $18.1 billion, up 77% USD.",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-808097bbcd84.html"
+          },
+          "stance": "supports",
+          "summary": "The first leg of the trajectory was met: FY2026 OCI revenue of $18.1B against the $18B target."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-oci-trajectory-q1-fy2027",
+          "kind": "evidence",
+          "lineage": "oci-multi-year-trajectory",
+          "occurredOn": "2026-09-10",
+          "provenance": [
+            "Oracle Q1 FY2027 earnings release"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "quote": "Cloud infrastructure revenue up 121% to $7.4 billion.",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "stance": "supports",
+          "summary": "Q1 FY2027 OCI revenue of $7.39B, up 121%, shows the acceleration underpinning the $32B FY2027 leg."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-oci-trajectory-assessment",
+          "kind": "assessment",
+          "lineage": "oci-multi-year-trajectory",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "state": "active",
+          "summary": "Active. First leg ($18B FY2026) met at $18.1B; the $32B FY2027 leg is the live test, with Q1 running at 121% growth."
+        }
+      ],
+      "fulfillmentTest": "OCI revenue reaches $32B in FY2027, $73B in FY2028, $114B in FY2029, and $144B in FY2030, each measured at the May 31 fiscal year end. First milestone (FY2026 $18B) met at $18.1B.",
+      "horizon": "multi-year",
+      "id": "oci-multi-year-trajectory",
+      "tags": [],
+      "title": "OCI five-year revenue trajectory ($18B to $144B)"
+    },
+    {
+      "claimCategory": "Financial Guidance",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2026-11-30",
+          "id": "orcl-q2-fy2027-guidance-stated",
+          "kind": "claim_stated",
+          "lineage": "q2-fy2027-guidance",
+          "metric": "quarterly revenue, cloud revenue, and EPS",
+          "occurredOn": "2026-09-10",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "quote": "Guidance for the current quarter sits right on top of what analysts already had: adjusted earnings of $1.85 to $1.93 a share against an LSEG estimate of $1.89, with cloud revenue growing 65% to 71%.",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "sourceType": "earnings-coverage",
+          "speaker": "Oracle",
+          "speakerCapacity": "Q1 FY2027 earnings release guidance",
+          "speakerRole": "company",
+          "summary": "Oracle guided Q2 FY2027 total revenue growth of 30-34%, cloud revenue growth of 65-71%, and non-GAAP EPS of $1.85-1.93.",
+          "targetValue": "total revenue +30-34%; cloud revenue +65-71% USD; non-GAAP EPS $1.85-$1.93"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-q2-fy2027-guidance-assessment",
+          "kind": "assessment",
+          "lineage": "q2-fy2027-guidance",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "state": "open",
+          "summary": "Open. Guidance was issued September 10, 2026; Q2 FY2027 ends November 30, 2026."
+        }
+      ],
+      "fulfillmentTest": "Q2 FY2027 (quarter ending November 30, 2026) delivers total revenue growth of 30-34%, cloud revenue growth of 65-71% in USD, and non-GAAP EPS of $1.85-$1.93.",
+      "horizon": "quarterly",
+      "id": "q2-fy2027-guidance",
+      "tags": [],
+      "title": "Q2 FY2027 guidance (revenue +30-34%, cloud +65-71%)"
+    },
+    {
+      "claimCategory": "Capital Allocation",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2027-05-31",
+          "id": "orcl-capex-fy2027-stated",
+          "kind": "claim_stated",
+          "lineage": "capex-fy2027-90-95b",
+          "metric": "fiscal year capital expenditures",
+          "occurredOn": "2026-09-10",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "quote": "Full-year capex guidance is unchanged at $90 billion to $95 billion.",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "sourceType": "earnings-coverage",
+          "speaker": "Hilary Maxson",
+          "speakerCapacity": "CFO on Q1 FY2027 earnings call",
+          "speakerRole": "CFO",
+          "summary": "CFO Hilary Maxson held FY2027 capex guidance at $90-95 billion, with net cash outlay of about $70 billion after customer prepayments.",
+          "targetValue": "$90-95B gross capex; about $70B net cash outlay after prepayments"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-capex-fy2027-q1-pace",
+          "kind": "evidence",
+          "lineage": "capex-fy2027-90-95b",
+          "occurredOn": "2026-09-10",
+          "provenance": [
+            "Oracle Q1 FY2027 earnings release (Exhibit 99.1 to Form 8-K)"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "quote": "Customer prepayments of $11.36 billion brought Oracle's net cash outlay for capital expenditures down to $17.97 billion.",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "stance": "supports",
+          "summary": "Q1 capex was $28.5B with $11.36B of customer prepayments, leaving net cash outlay of $17.97B \u2014 spending is front-loaded against the $90-95B plan."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-capex-fy2027-assessment",
+          "kind": "assessment",
+          "lineage": "capex-fy2027-90-95b",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2026-09-11",
+            "title": "Oracle (ORCL) Q1: RPO $664B, free cash flow -$5.4B",
+            "url": "https://aistockwire.com/blog/oracle-orcl-q1-fy2027-664-billion-rpo-negative-free-cash-flow-september-2026"
+          },
+          "state": "open",
+          "summary": "Open. The $90-95B gross / ~$70B net plan is in force; Q1 spent $28.5B gross ($17.97B net)."
+        }
+      ],
+      "fulfillmentTest": "FY2027 gross capex lands between $90B and $95B with net cash outlay of about $70B or less by May 31, 2027.",
+      "horizon": "annual",
+      "id": "capex-fy2027-90-95b",
+      "tags": [],
+      "title": "FY2027 capex of $90-95B (net ~$70B)"
+    },
+    {
+      "claimCategory": "Bookings",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2028-05-31",
+          "id": "orcl-cloud-contract-30b-stated",
+          "kind": "claim_stated",
+          "lineage": "cloud-contract-30b-fy28",
+          "metric": "annual revenue from a single cloud services agreement",
+          "occurredOn": "2025-06-30",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-06-30",
+            "quote": "we signed multiple large cloud services agreements including one that is expected to contribute more than $30 billion in annual revenue starting in FY28.",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net:443/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-1615e1a2bac4.html"
+          },
+          "sourceType": "sec-filing",
+          "speaker": "Safra Catz",
+          "speakerCapacity": "CEO, disclosed in Form 8-K Regulation FD statement",
+          "speakerRole": "CEO",
+          "summary": "Oracle disclosed in an 8-K that it signed a cloud services agreement expected to contribute more than $30B in annual revenue starting in FY2028. The customer was not named; the filing's safe harbor notes recognized amounts may vary.",
+          "targetValue": "more than $30B annual revenue starting FY2028"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-cloud-contract-30b-assessment",
+          "kind": "assessment",
+          "lineage": "cloud-contract-30b-fy28",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-06-30",
+            "title": "Oracle Corp Reports Material Event | ORCL Form 8-K",
+            "url": "https://www.stocktitan.net:443/sec-filings/ORCL/8-k-oracle-corp-reports-material-event-1615e1a2bac4.html"
+          },
+          "state": "open",
+          "summary": "Open. The contract was disclosed June 30, 2025; its revenue contribution begins in FY2028 (June 2027-May 2028)."
+        }
+      ],
+      "fulfillmentTest": "The disclosed cloud services agreement contributes more than $30 billion in annual revenue during FY2028 (year ending May 31, 2028).",
+      "horizon": "multi-year",
+      "id": "cloud-contract-30b-fy28",
+      "tags": [],
+      "title": "$30B+/year cloud contract starting FY2028"
+    },
+    {
+      "claimCategory": "Strategic Partnership",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2030-07-31",
+          "id": "orcl-openai-300b-stated",
+          "kind": "claim_stated",
+          "lineage": "openai-oracle-300b-partnership",
+          "metric": "partnership value and Stargate capacity",
+          "occurredOn": "2025-09-23",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09",
+            "quote": "In July, OpenAI and Oracle entered an agreement to develop up to 4.5 gigawatts of additional Stargate capacity. This represents a partnership that exceeds $300 billion between the two companies over the next five years.",
+            "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites | OpenAI",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "sourceType": "company-blog",
+          "speaker": "OpenAI",
+          "speakerCapacity": "company announcement",
+          "speakerRole": "company",
+          "summary": "OpenAI disclosed its July 2025 agreement with Oracle: up to 4.5 GW of additional Stargate capacity, a partnership exceeding $300B over five years.",
+          "targetValue": "up to 4.5 GW additional capacity; partnership exceeding $300B over five years"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-openai-300b-evidence",
+          "kind": "evidence",
+          "lineage": "openai-oracle-300b-partnership",
+          "occurredOn": "2025-09-23",
+          "provenance": [
+            "OpenAI Stargate expansion announcement"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09",
+            "quote": "The new Stargate sites being developed by Oracle will join the flagship Stargate campus in Abilene, Texas, which is already up and running on Oracle Cloud Infrastructure (OCI) and continues to progress rapidly. Oracle began delivering the first NVIDIA GB200 racks in June. We have already started early training and inference workloads, using this new capacity to advance OpenAI's next-generation research.",
+            "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites | OpenAI",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "stance": "supports",
+          "summary": "The flagship Abilene campus is already running on OCI with GB200 racks delivered from June and early training/inference workloads underway."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-openai-300b-assessment",
+          "kind": "assessment",
+          "lineage": "openai-oracle-300b-partnership",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09",
+            "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites | OpenAI",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "state": "active",
+          "summary": "Active. The 4.5 GW / $300B+ five-year agreement is signed; buildout is underway with the Abilene flagship already operational."
+        }
+      ],
+      "fulfillmentTest": "Oracle and OpenAI deploy up to 4.5 GW of additional Stargate capacity with cumulative partnership value exceeding $300B within five years of July 2025 (by July 2030).",
+      "horizon": "multi-year",
+      "id": "openai-oracle-300b-partnership",
+      "tags": [],
+      "title": "OpenAI-Oracle 4.5 GW / $300B+ partnership"
+    },
+    {
+      "claimCategory": "Strategic Partnership",
+      "events": [
+        {
+          "author": "research-agent",
+          "deadline": "2029-01-21",
+          "id": "orcl-stargate-500b-stated",
+          "kind": "claim_stated",
+          "lineage": "stargate-500b",
+          "metric": "Stargate infrastructure investment",
+          "occurredOn": "2025-01-21",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-01-21",
+            "quote": "The Stargate Project is a new company which intends to invest $500 billion over the next four years building new AI infrastructure for OpenAI in the United States. We will begin deploying $100 billion immediately.",
+            "title": "Announcing The Stargate Project | OpenAI",
+            "url": "https://openai.com/index/announcing-the-stargate-project/"
+          },
+          "sourceType": "company-blog",
+          "speaker": "OpenAI",
+          "speakerCapacity": "company announcement (Oracle an initial equity funder)",
+          "speakerRole": "company",
+          "summary": "OpenAI announced Stargate with Oracle as an initial equity funder: $500B over four years for U.S. AI infrastructure, with $100B deployed immediately.",
+          "targetValue": "$500B over four years; $100B deployed immediately"
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-stargate-500b-evidence",
+          "kind": "evidence",
+          "lineage": "stargate-500b",
+          "occurredOn": "2025-09-23",
+          "provenance": [
+            "OpenAI Stargate expansion announcement"
+          ],
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09",
+            "quote": "brings Stargate to nearly 7 gigawatts of planned capacity and over $400 billion in investment over the next three years. This puts us on a clear path to securing the full $500 billion, 10-gigawatt commitment we announced in January by the end of 2025, ahead of schedule.",
+            "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites | OpenAI",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "stance": "supports",
+          "summary": "By September 2025, Stargate had reached nearly 7 GW of planned capacity and over $400B in planned investment \u2014 on a stated path to the full $500B/10 GW commitment ahead of schedule."
+        },
+        {
+          "author": "research-agent",
+          "id": "orcl-stargate-500b-assessment",
+          "kind": "assessment",
+          "lineage": "stargate-500b",
+          "methodology": "stock ledger v1",
+          "occurredOn": "2026-09-28",
+          "recordedAt": "2026-09-28",
+          "source": {
+            "publishedOn": "2025-09",
+            "title": "OpenAI, Oracle, and SoftBank expand Stargate with five new AI data center sites | OpenAI",
+            "url": "https://openai.com/index/five-new-stargate-sites/"
+          },
+          "state": "active",
+          "summary": "Active. Over $400B in planned investment committed toward the $500B target; Oracle is an initial equity funder and buildout partner."
+        }
+      ],
+      "fulfillmentTest": "Stargate invests $500 billion in U.S. AI infrastructure by January 2029, with $100 billion deployed in the initial phase.",
+      "horizon": "multi-year",
+      "id": "stargate-500b",
+      "tags": [],
+      "title": "Stargate $500B AI infrastructure commitment"
+    }
+  ],
+  "fundamentals": [],
+  "expectationGap": null,
+  "schemaVersion": 1
+}
