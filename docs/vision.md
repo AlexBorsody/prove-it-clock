@@ -96,14 +96,14 @@ attached to a system capturing nothing.
 ### Forgiving in narrative, not lenient in classification
 
 A failed promise stays Failed. The forgiveness is the lineage link: failed
-here, learned this, delivered that. Bitcoin's peer-to-peer cash promise
-failed; the store-of-value thesis that explicitly replaced it succeeded; the
-ledger shows the arc instead of forcing one verdict. A pivot only
-reclassifies the old promise under a mechanical gate: the replacement is
-attributable, explicitly replaces the old obligation, preserves or
-strengthens the essential outcome, and carries the documented lineage link.
-Otherwise the failure stands honestly. (Bitcoin's Genesis exemption stays in
-force until the pivot-narrative transition is explicitly approved.)
+here, learned this, delivered that. The ledger shows the arc instead of
+forcing one verdict. A pivot only reclassifies the old promise under a
+mechanical gate: the replacement is attributable, explicitly replaces the
+old obligation, preserves or strengthens the essential outcome, and carries
+the documented lineage link. Otherwise the failure stands honestly.
+(Bitcoin's Genesis exemption stays in force: Bitcoin sits outside the
+verdict pipeline and is not classified here. Replacing the bespoke exemption
+with a generic eligibility/scope rule is the open constitutional question.)
 
 ### Crowd mechanics (for the Engine; the Score needs none)
 
@@ -616,12 +616,43 @@ proof history, hype next to an empty meter. The burned skeptics, the
 journalists, the diligence analysts. Different job, different user, and
 CMC cannot follow without attacking its own customers.
 
-### The moat (Alex, 2026-09-26)
+### The moat (Alex, 2026-09-29)
 
-CoinGecko or Coinbase could copy a scoreboard tomorrow. They cannot copy
-a multi-year, append-only, source-linked record of what every project
-promised and when it delivered, lapsed, or went silent. The immutable
-ledger of promise events is the special sauce; the timeline is its face.
+> The moat is the cited record: a contemporaneous, source-preserved history
+> of promises, evidence, assessments, disputes and corrections, organized
+> into stable canonical objects that other systems can depend on.
+
+Not the dashboard (clonable in an afternoon) and not the ranking algo (the
+methodology has to be public for anyone to trust a verdict, and anything
+public gets cloned). Raw history can be backfilled; what cannot be recreated
+is the evidence available to Prove Value at the time, the assessment it
+published from that evidence, the challenges raised before the outcome, and
+the correction chain that followed. Every month of contemporaneous history
+is a month a competitor cannot recreate.
+
+Second moat: the canonical promise graph. Project to promise identity to
+lineage to source to fulfillment test to impact to evidence to state to
+challenge to resolution to supersession to history. Claim normalization and
+obligation-lineage resolution become increasingly expensive at scale; the
+accumulated resolved graph is difficult to reconstruct.
+
+Third: downstream dependency and citation distribution. The moat is not the
+API itself; it arises when external records, reports, agents, and workflows
+contain references to stable PV objects and depend on PV's revision history.
+
+Fourth and fifth, in that order: the challenge contributor network
+(resolved challenges becoming permanent data) and the forecaster network
+(an option, not the foundation).
+
+How it makes money: the adjudicated record stays publicly inspectable;
+paywalling truth would damage the trust thesis. What customers pay for is
+industrial access to the record: bulk API, high rate limits, historical
+snapshots, alerts, change feeds, exports, SLA and support, watchlists,
+workflow tooling. The public record earns trust. Professional access,
+monitoring and infrastructure around that record generate revenue.
+
+The goal is researchers citing individual promise records, not "according
+to the Prove Value website." Cite, not visit.
 
 ### Landscape: what is novel, what we borrow (Alex, 2026-09-29)
 

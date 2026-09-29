@@ -25,6 +25,10 @@ Promise record (extends existing): `potential_impact` (0-100, nullable until
 assessed), `impact_rationale` (required when set), `impact_assessed_by`,
 `impact_assessed_at`, `impact_version`, `lineage_links` (supersedes /
 contradicts / refines, with note + evidence URL), `coverage_status`.
+Lineage models obligations, not text similarity: a restated claim links to
+the original obligation with changed quantity, deadline, scope, or modality
+("will" vs "may") noted; a weaker replacement never merges into the older
+stronger promise.
 
 State-to-bucket mapping is mechanical, no judgment at compute time:
 fulfilled -> Kept; lapsed / abandoned-retired -> Failed; open / active ->
@@ -42,10 +46,12 @@ delivery, failure, unresolved, shitcoin_score, coverage. History queryable
 per revision.
 
 Coverage: candidate formula is assessed impact over total known-promise
-impact, with unassessed known promises carrying a marked provisional
-estimate. Below a published threshold (candidate 70%), meters display as
-provisional. Display: "Based on 14 assessed promises · 87% impact coverage."
-Formula to be finalized in Phase 0 and ChatGPT-reviewed.
+impact. Whether unassessed known promises carry a marked provisional
+estimate or are excluded from the denominator is an open Phase 0
+methodology decision; the blueprint invents no provisional weights. Below a
+published threshold (candidate 70%), meters display as provisional.
+Display: "Based on 14 assessed promises · 87% impact coverage." Formula to
+be finalized in Phase 0 and ChatGPT-reviewed.
 
 ### Computation library
 
@@ -71,6 +77,17 @@ priced"), `<MeterWithCoverage />`, `<ImpactRationale />`,
 `POST /api/engine/challenge`. Existing `/api/hearts` and heart identifiers
 are untouched.
 
+The API contract outranks the UI. Invariants: promise IDs are never reused
+or silently repointed; published revisions never mutate; interpretation
+changes create new revisions, never overwrites; breaking schema changes
+create a new API version. No promise ID may depend on list order; no
+changing state semantics without a methodology version bump. Incorrect or
+superseded objects are tombstoned/aliased with explicit lineage to their
+replacements; immutability must never force a known modeling error to stand
+as canonical truth. Downstream dependency (agents, diligence desks,
+workflows referencing stable PV objects) is the distribution moat; the
+contract is what makes it dependable.
+
 ### UI surfaces
 
 Project page: engine meters block above the promise list; promise rows keep
@@ -95,7 +112,8 @@ probability," never "crowd-priced."
 ### Reuse map (do not rebuild)
 
 Hearts system (per-promise inventory glyphs), Promise Atlas (evidence view),
-claims-evidence ledger / migrations 008-009 (ledger substrate — extend, don't
+claims-evidence ledger / migrations 005-007 (canonical promise states,
+promise-heart rule, promise event history; ledger substrate — extend, don't
 replace), notify-me and scanner schedules (untouched).
 
 ### Codex blueprint constraints (standing)
@@ -156,6 +174,20 @@ normalization/pagination; this first release is for the current curated cohort.
   `supersedes` (null or a prior same-lineage assessment ID). A correction needs
   `correctionReason`. Its date must match the run's actual server-recorded
   publication date, never a historical delivery date inferred from its state.
+- Four timestamps are never collapsed: `effective_date` (when reality
+  happened), source `publishedOn` (when the source said it), `occurredOn`
+  (when the event happened), `recordedAt` (when the ledger observed it),
+  plus `first_assessed_at` (when PV judged it). `occurredOn` carries
+  precision metadata (day, month, year, interval, unknown); the system
+  distinguishes "unknown" from "missing because we didn't bother," and never
+  forces false precision. Assessments also carry `assessor`, `reviewer`,
+  `methodology_version`, and source preservation as content, not just a
+  hash: `snapshot_uri`/`blob` + `content_hash` + `captured_at`, retaining
+  the actual source artifact or an immutable archived representation subject
+  to copyright and storage constraints. A hash alone proves captured content
+  hasn't changed; it cannot reconstruct a disappeared original. The
+  contemporaneous, source-preserved assessment is the moat; these fields are
+  what make it un-backfillable.
 
 The RPC validates lineage against a real published project assessment. It
 serializes per-project updates, rejects conflicting retries and stale parents,
