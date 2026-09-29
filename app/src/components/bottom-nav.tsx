@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Icon, { type ChromeIconName } from "@/components/chrome-icons";
 
 /**
- * Bottom tab bar, app-style: Scoreboard / Methodology / API / Search.
+ * Bottom tab bar, app-style: Scoreboard / Search / Methodology / API.
  * Tour is a button, not a route, so it stays out of the TABS list.
  */
 const TABS: Array<{ href: string; label: string; shortLabel?: string; icon: ChromeIconName }> = [
@@ -27,7 +27,7 @@ function TabLink({ tab, pathname }: { tab: (typeof TABS)[number]; pathname: stri
       {tab.shortLabel ? (
         <>
           <span className="bottomnav-label-full" aria-hidden="true">{tab.label}</span>
-          <span className="bottomnav-label-short" aria-hidden="true">{tab.label}</span>
+          <span className="bottomnav-label-short" aria-hidden="true">{tab.shortLabel}</span>
         </>
       ) : <span aria-hidden="true">{tab.label}</span>}
     </Link>
@@ -39,10 +39,10 @@ export default function BottomNav() {
   return (
     <nav className="bottomnav" aria-label="Primary">
       <TabLink tab={TABS[0]} pathname={pathname} />
-      <TabLink tab={TABS[1]} pathname={pathname} />
       <button type="button" className="tabbtn" onClick={() => window.dispatchEvent(new CustomEvent("proveit:search"))} aria-label="Search site content">
         <Icon name="search" size={22} /><span>Search</span>
       </button>
+      <TabLink tab={TABS[1]} pathname={pathname} />
       <TabLink tab={TABS[2]} pathname={pathname} />
       <button
         type="button"
