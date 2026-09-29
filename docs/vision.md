@@ -1,5 +1,17 @@
 # Prove Value: Product Vision
 
+**Latest decision, 2026-09-29:** the Elegant Engine
+([vision](#the-elegant-engine-2026-09-29),
+[implementation](implementation.md#the-elegant-engine--build-plan-2026-09-29),
+[tasks](tasks/2026-09-29-elegant-engine-tasks.md)).
+Impact weighting and the warning meter are un-parked and rebuilt from scratch
+as challengeable instruments: one PotentialImpact score per promise
+(AIMM-adapted, rationale + evidence, challengeable), fulfillment partitioned
+into Kept / Failed / Unresolved, three meters computed from the ledger, and a
+separate forward-looking crowd engine. This supersedes the 2026-09-27 parking
+of importance weights and the warning formula. The archived core=true formula
+stays archived.
+
 **Latest decision, 2026-09-27:** [present evidence, let people decide](tasks/2026-09-27-codex-tonight-decisions.md).
 Hearts remain one promise, one heart. Remove the project warning score and
 badges; documented problems link to their assessments and sources. The Atlas,
@@ -26,6 +38,96 @@ answers the ten scoring questions and defines delivery weighting, coverage,
 core findings and lifecycle rules. Codex and Muse coordinate implementation in
 [the shared contract](tasks/2026-09-26-hearts-verdict-contract.md). Published v3
 ratings remain in force until a compatible reviewed publication is activated.
+
+## The Elegant Engine (2026-09-29)
+
+A crowd-shaped, append-only ledger of promises. Every promise gets one
+PotentialImpact score (0-100, adapted from the IFC's AIMM framework, with a
+written rationale and evidence — lineage borrowed, affiliation never
+implied). Fulfillment is a clean trichotomy: Kept, Failed, Unresolved.
+Unresolved is never failure. From that ledger, three meters answer three
+different questions. Every layer is challengeable with evidence; accepted
+challenges become ledger events and everything downstream recomputes.
+
+### The three meters
+
+1. **Delivery.** What they did.
+   Delivery = sum(w_i * Kept_i), where w_i = PotentialImpact_i / sum(PotentialImpact).
+2. **Shitcoin Score.** What they failed. 1.0-10.0.
+   ShitcoinScore = 1 + 9 * Failure, where Failure = sum(w_i * Failed_i).
+   No separate judgment layer; severity emerges from the importance of what
+   failed.
+3. **Expected Value.** What the unresolved could become. Separate meter,
+   separate surface, never feeds back into meters 1-2. Per unresolved
+   promise: expected world impact and expected token value, computed
+   separately via the capture chain, summed to a project range and displayed
+   against market cap.
+
+### The invariant
+
+Delivery + Failure + Unresolved = 100%. Every unit of promised ambition is
+either delivered, dead, or outstanding. Nothing hides. The invariant holds per
+ledger revision: adding promises re-weights the meters, and meter history is
+stamped per revision.
+
+### Two products, not one
+
+**The Score** (meters 1-2) is authoritative and methodology-driven: ledger
+plus impact plus fulfillment, computed the same way every time, no crowd
+required. It works on day one. Its authority comes from being public,
+versioned, and challengeable — anybody can argue with it, and the argument is
+on the record. That is the edge over IFC's AIMM: theirs is authoritative
+because they are the World Bank; ours is authoritative because it can be
+attacked.
+
+**The Crowd Engine** (meter 3) is the forward layer: forecaster track
+records, driver distributions, expected value. It needs a crowd to exist, so
+it ships when the crowd exists.
+
+### The capture chain
+
+For every promise with economic content, the model carries an explicit chain:
+money enters here, flows through these hands, and here is the exact step
+where the token touches it — or doesn't. Value created versus value captured,
+shown as two bars per promise. The ratio is the story, and it cuts both ways:
+the profitable system with a worthless token, and the expensive token
+attached to a system capturing nothing.
+
+### Forgiving in narrative, not lenient in classification
+
+A failed promise stays Failed. The forgiveness is the lineage link: failed
+here, learned this, delivered that. Bitcoin's peer-to-peer cash promise
+failed; the store-of-value thesis that explicitly replaced it succeeded; the
+ledger shows the arc instead of forcing one verdict. A pivot only
+reclassifies the old promise under a mechanical gate: the replacement is
+attributable, explicitly replaces the old obligation, preserves or
+strengthens the essential outcome, and carries the documented lineage link.
+Otherwise the failure stands honestly. (Bitcoin's Genesis exemption stays in
+force until the pivot-narrative transition is explicitly approved.)
+
+### Crowd mechanics (for the Engine; the Score needs none)
+
+- Accounts required (GitHub/X OAuth). New or uncited inputs carry ~zero
+  weight; new cited evidence appears immediately as provisional.
+- Forecaster votes are distributions over primitive drivers, never bare
+  probabilities. Blind tallies until the window closes; one vote per
+  predictor per window; reputation staked per vote; weight follows track
+  record and Brier calibration; holdings disclosed. Trimmed aggregation.
+- The AI decomposes promises into drivers (structure only, every driver
+  cited to the ledger or tagged as model assumption, pipeline versioned).
+  Monte Carlo derives fulfillment probabilities from the driver
+  distributions.
+- Spam is economically pointless before any moderator acts: zero-weight
+  inputs move no numbers, and the challenge rail pays reputation to
+  spam-hunters.
+
+### Lexicon ambition
+
+AIMM is lexicon because an institution published it, applied it consistently,
+and got cited for a decade. The path here is the same through different
+means: the methodology page, embeddable verdict cards, and numbers that get
+linked every time the capture argument happens. Lexicon is earned by being
+cited and being right, in that order.
 
 ## The product in one line
 

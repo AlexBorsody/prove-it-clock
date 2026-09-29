@@ -1,5 +1,12 @@
 # Prove Value: Implementation Plan
 
+**Updated 2026-09-29.** [vision.md](vision.md) is the product authority; the
+[Elegant Engine](#the-elegant-engine--build-plan-2026-09-29) below is the
+current build target. It supersedes the 2026-09-27 parking of qualitative
+weights and the warning formula for the specific instruments defined here
+(PotentialImpact, shitcoin v2). Timeline, evidence receipts, and Atlas work
+below remain in force.
+
 **Updated 2026-09-27.** [vision.md](vision.md) is the product authority.
 
 **Current priority:** [evidence over ranking](tasks/2026-09-27-codex-tonight-decisions.md).
@@ -9,6 +16,99 @@ parked. PR #8 retains only unweighted composition and pinned evidence receipts;
 older weighted-verdict and warning instructions below are superseded.
 The [timeline handoff](tasks/2026-09-27-timeline-foundation.md) now supplies the
 event taxonomy and examples; gaps and implementation notes belong in that brief.
+
+## The Elegant Engine — build plan (2026-09-29)
+
+### Data model
+
+Promise record (extends existing): `potential_impact` (0-100, nullable until
+assessed), `impact_rationale` (required when set), `impact_assessed_by`,
+`impact_assessed_at`, `impact_version`, `lineage_links` (supersedes /
+contradicts / refines, with note + evidence URL), `coverage_status`.
+
+State-to-bucket mapping is mechanical, no judgment at compute time:
+fulfilled -> Kept; lapsed / abandoned-retired -> Failed; open / active ->
+Unresolved; superseded -> excluded from Failure only if the pivot gate holds
+(replacement attributable, explicitly replaces the old obligation, preserves
+or strengthens the essential outcome, documented lineage link).
+
+Ledger events are append-only: promise submitted, evidence attached, impact
+assessed / challenged, state transitioned, challenge filed / adjudicated,
+promise superseded. Corrections append; nothing is updated or deleted.
+
+Meter revisions: a revision is stamped whenever the assessed promise set
+changes. Store revision id, project, computed_at, promise_set_hash,
+delivery, failure, unresolved, shitcoin_score, coverage. History queryable
+per revision.
+
+Coverage: candidate formula is assessed impact over total known-promise
+impact, with unassessed known promises carrying a marked provisional
+estimate. Below a published threshold (candidate 70%), meters display as
+provisional. Display: "Based on 14 assessed promises · 87% impact coverage."
+Formula to be finalized in Phase 0 and ChatGPT-reviewed.
+
+### Computation library
+
+Pure functions, no I/O, unit-tested against seed data: `weights`,
+`partition` (asserts delivery + failure + unresolved = 1.0 within epsilon),
+`shitcoinScore` (1 + 9 * failure, one decimal), `coverage`, `revisionHash`.
+Plain lib module (no "use client"), importable from server components, API
+routes, and scripts.
+
+### Components (reusable)
+
+`<EngineMeters />` (meters 1-2 always; meter 3 renders only when forecaster
+data exists, otherwise the slot shows the unresolved share as "not yet
+priced"), `<MeterWithCoverage />`, `<ImpactRationale />`,
+`<LineageChain />`, `<ChallengeRail />`, `<SubmissionForm />`.
+
+### API sketch
+
+`GET /api/engine/meters?project=` (current revision + coverage),
+`GET /api/engine/meters?project=&history=1`,
+`GET /api/engine/promise/:id` (promise + impact + lineage + challenges),
+`POST /api/engine/submit`, `POST /api/engine/evidence`,
+`POST /api/engine/challenge`. Existing `/api/hearts` and heart identifiers
+are untouched.
+
+### UI surfaces
+
+Project page: engine meters block above the promise list; promise rows keep
+heart glyphs, gain impact score + state chip on expand. Promise detail:
+ledger timeline, lineage chain, impact version history, open challenges.
+Methodology page: invariant, meters, AIMM-adapted statement, pivot gate,
+coverage semantics. Verdict cards (embeddable): meters + coverage, link back.
+
+### Forecaster rail (designed now, built Phase 3)
+
+Forecaster accounts (GitHub/X OAuth), blind voting windows, one vote per
+predictor per window, reputation staked per vote, trimmed aggregation,
+holdings disclosed, Brier calibration against resolved promises. Votes are
+distributions over primitive drivers; the versioned AI decomposition
+pipeline (promise -> drivers -> sourced facts + explicit assumptions) feeds
+the ballot; Monte Carlo derives q and the value distributions. Meter 3:
+ExpectedWorldImpact_i(t) and ExpectedTokenValue_i(t) = sum_s P(s) *
+EconomicValue_i(s) * TokenCapture_i(s) * Discount(t_s), summed to
+ProjectTokenEV as a range against market cap. Terminology: "crowd-estimated
+probability," never "crowd-priced."
+
+### Reuse map (do not rebuild)
+
+Hearts system (per-promise inventory glyphs), Promise Atlas (evidence view),
+claims-evidence ledger / migrations 008-009 (ledger substrate — extend, don't
+replace), notify-me and scanner schedules (untouched).
+
+### Codex blueprint constraints (standing)
+
+Codex returns in ~a week; the blueprint must be executable without
+clarifying questions. Rules for the build: methodology questions go through
+ChatGPT review before implementation; reusable components, never monolithic
+page code; ship exactly what is asked, no unilateral extras; test locally,
+render visible UI, re-read copy, then push live; verify from seed data, never
+from memory; the ledger is append-only; the 100% invariant is asserted in
+tests, not just documented; public copy says "promises" not "hearts"; no em
+dashes anywhere; never touch `/api/hearts` or heart identifiers; never
+re-score Bitcoin without explicit approval (Genesis exemption in force).
 
 ## Published evidence receipts (2026-09-27)
 
