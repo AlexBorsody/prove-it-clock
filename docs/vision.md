@@ -623,6 +623,57 @@ a multi-year, append-only, source-linked record of what every project
 promised and when it delivered, lapsed, or went silent. The immutable
 ledger of promise events is the special sauce; the timeline is its face.
 
+### Landscape: what is novel, what we borrow (Alex, 2026-09-29)
+
+A sweep of adjacent systems (political promise trackers, crypto scorers,
+prediction markets, dispute rails, impact frameworks) found the pieces
+scattered across five worlds and the combination nowhere. No system
+maintains a per-promise ledger with source URLs, weights fulfillment by a
+challengeable single impact score, computes a mechanical
+Kept/Failed/Unresolved partition, and lets anyone challenge any layer with
+the challenge itself becoming a ledger event. PolitiFact has the ledger but
+it is editorial, unweighted, and has no challenge rail. L2Beat has
+methodology-driven authority but scores risk posture, never promise
+fulfillment. CryptoMiso counts commits. RetroPGF tried judging impact by
+vote, and its own retrospective says it became a popularity contest.
+
+The zeitgeist is converging independently, which is the point. OriginTrail
+is running a 2026 "Trust is Capital" campaign on verifiable trust for AI
+ROI. Prediction markets did $44B notional in 2025 and the trade press now
+calls truth-deciding machinery "a product category of its own." AI
+forecasters are matching superforecasters on public benchmarks. Post-crash
+analyses routinely score "fundamentals vs narrative" by hand, after the
+money is gone. The market is already doing promise accounting badly; we do
+it as an instrument.
+
+What we borrow, in order:
+
+- **ClaimReview-shaped verdict data.** The schema.org pattern for
+  machine-readable verdicts (claim reviewed, reviewer, rating) powered a
+  decade of fact-check surfacing. Google retired the search snippets in
+  2025, which is the lesson: use the pattern, never depend on the platform.
+  Verdict cards should emit ClaimReview-shaped structured data so the
+  ledger is crawlable as verdicts, not just pages.
+- **Metaculus norms.** Public per-forecaster calibration, resolution
+  criteria fixed at question creation, bot code-sharing. All three go into
+  the Crowd Engine's forecaster rail.
+- **AIMM rationale discipline.** The IFC framework forces an
+  evidence-based justification against benchmarks for every impact score.
+  Already in the blueprint; the lineage stays explicit.
+- **Kleros/UMA dispute shape, minus the capture vectors.** Propose,
+  challenge, adjudicate with bonded honesty. But a 2026 investigation found
+  ~20% of disputed Polymarket outcomes had judges with money on the markets
+  they were judging. Holdings disclosure and recusal are load-bearing, not
+  decorative.
+- **RetroPGF's retroactive framing for positioning.** "Easier to agree on
+  which projects have made an impact than to predict which ones will." The
+  Score (backward) and the Crowd Engine (forward) split the same insight.
+- **RetroPGF's failure numbers as validation.** Top 20% of projects by
+  sequencer revenue received 5% of rewards; median badgeholder spent 16
+  hours triaging 643 projects. Voting on vibes fails at scale. This is why
+  the mechanical Score comes before any crowd judgment.
+
+
 ### Three visualizations, no canonical one (Alex, 2026-09-26)
 
 - **Meter:** the verdict now. "Is this team full of shit?"
@@ -791,3 +842,5 @@ under **Supporting context**. These observations do not add ranking points.
 Remove the homepage Hype Share visualization. Codex chose Context over Metadata
 for plain-language navigation; Muse's wording review is requested in the
 [implementation handoff](tasks/2026-09-26-supporting-context.md).
+
+- 2026-09-29: landscape section added (novelty + borrow list) after adjacent-systems sweep.
