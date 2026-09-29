@@ -99,7 +99,7 @@ export default function HypeLeaderboard({ rows }: { rows: HypeRow[] }) {
   }, [rows, sortKey]);
 
   return (
-    <div className="panel search-section" {...searchMeta({ id: "hype-leaderboard", title: "Hype leaderboard", kind: "Hype", keywords: "attention mentions hearts" })}>
+    <div className="panel search-section" {...searchMeta({ id: "hype-leaderboard", title: "Hype leaderboard", kind: "Hype", keywords: "attention mentions promises" })}>
       <div className="sort-toggle" role="group" aria-label="Sort Hype leaderboard">
         <span>Sort</span>
         <button

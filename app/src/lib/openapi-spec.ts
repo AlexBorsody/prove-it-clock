@@ -8,7 +8,7 @@ export const openApiSpec = {
     title: "Prove Value Promise API",
     version: "1.1.0",
     description:
-      "Did crypto projects actually deliver what they promised? Read-only access to published promise records, hearts, CODE activity and HYPE attention. No project-level warning score. No authentication. Fair use: keep request volume reasonable.",
+      "Did crypto projects actually deliver what they promised? Read-only access to published promise records, CODE activity and HYPE attention. No project-level warning score. No authentication. Fair use: keep request volume reasonable.",
   },
   servers: [{ url: "https://prove-it-clock.vercel.app/api/v1" }],
   paths: {
@@ -37,7 +37,7 @@ export const openApiSpec = {
       get: {
         summary: "List scored projects",
         description:
-          "Every project in the scored universe, ranked by market cap. Hearts are earned only: each heart maps to a promise and evidence.",
+          "Every project in the scored universe, ranked by market cap. Only kept promises count: each maps to a promise and its evidence.",
         parameters: [
           {
             name: "page",
@@ -75,7 +75,7 @@ export const openApiSpec = {
       get: {
         summary: "Get one project's scores",
         description:
-          "Full detail for a project: hearts, CODE, HYPE, tracked promises with their recorded states, and published heart history.",
+          "Full detail for a project: promise counts, CODE, HYPE, tracked promises with their recorded states, and published promise history.",
         parameters: [
           {
             name: "slug",
@@ -110,7 +110,7 @@ export const openApiSpec = {
           genesis: { type: "boolean", description: "Bitcoin-only Genesis designation. Its historical promise inventory remains available.", example: true },
           hearts: {
             type: "object",
-            description: "Hearts are earned only. No allowances, no time decay.",
+            description: "Only kept promises count. No allowances, no time decay.",
             properties: {
               earned: { type: "integer", example: 5 },
               capacity: { type: "integer", example: 20 },
@@ -145,7 +145,7 @@ export const openApiSpec = {
                     state: {
                       type: "string",
                       enum: ["open", "fulfilled", "lapsed", "retired"],
-                      description: "Only fulfilled promises earn hearts. Lapsed or retired promises visibly fall.",
+                      description: "Only fulfilled promises count. Lapsed or retired promises visibly fall.",
                     },
                     core: { type: "boolean", description: "Whether this is a main promise of the project." },
                     source_url: {
@@ -157,7 +157,7 @@ export const openApiSpec = {
               },
               history: {
                 type: "array",
-                description: "Proof history: hearts earned over time. Rises and falls are the story.",
+                description: "Proof history: promises kept over time. Rises and falls are the story.",
                 items: {
                   type: "object",
                   properties: {

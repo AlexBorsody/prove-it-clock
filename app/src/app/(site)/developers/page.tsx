@@ -14,7 +14,7 @@ export default function DevelopersPage() {
       <div className="search-section" {...searchMeta({ id: "developers-overview", title: "Prove Value API", kind: "API", keywords: "OpenAPI developer scores endpoints" })}>
       <h1 className="page-title">API</h1>
       <p className="page-sub">
-        Read-only promise records, hearts and supporting context, free to use.
+        Read-only promise records and supporting context, free to use.
         Try every endpoint live below.
       </p>
       </div>

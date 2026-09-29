@@ -83,7 +83,7 @@ export default async function ComparePage() {
 
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "compare-overview", title: "Compare projects", kind: "Compare", keywords: "hearts promises code hype side by side" })}>
+      <div className="search-section" {...searchMeta({ id: "compare-overview", title: "Compare projects", kind: "Compare", keywords: "promises code hype side by side" })}>
       <h1 className="page-title">Compare</h1>
       <p className="page-sub">
         Pick two to four projects. Same metrics, side by side.

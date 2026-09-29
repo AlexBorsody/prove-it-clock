@@ -126,7 +126,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
   }
 
   return (
-    <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "hearts promises rankings" })}>
+    <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "promises rankings" })}>
       <h2>Browse projects</h2>
       <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes.</p>
       <div className={styles.controls}>
@@ -160,7 +160,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
           <tbody role="rowgroup">
             {sorted.map((r) => (
               <Fragment key={r.slug}>
-                <tr role="row" className={`search-section ${styles.listRow}${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} hearts code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
+                <tr role="row" className={`search-section ${styles.listRow}${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} promises code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
                   <td role="cell">
                     <Link href={`/projects/${r.slug}`} className="proj-cell" style={{ fontWeight: 400 }}>
                       <img
@@ -191,7 +191,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       aria-expanded={expanded === r.slug}
                       aria-controls={`scoreboard-promises-${r.slug}`}
                       aria-label={`${expanded === r.slug ? "Hide" : "Show"} promises for ${r.name}`}
-                      title="Show all promises and their hearts"
+                      title="Show all promises"
                     >
                       <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                     </button>}
@@ -264,7 +264,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   aria-expanded={open}
                   aria-controls={`scoreboard-promises-${r.slug}`}
                   aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
-                  title="Show all promises and their hearts"
+                  title="Show all promises"
                 >
                   <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
                   <span className={styles.heartChevron} aria-hidden="true">{open ? "▲" : "▼"}</span>

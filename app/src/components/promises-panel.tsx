@@ -64,7 +64,7 @@ export default function PromisesPanel({
       <h2>
         <span>Promises</span>{" "}
         <InfoTip
-          text={`What ${name} promised, and what actually happened. Each promise earns one heart by delivery. Open promises are still unearned. Select a count to inspect its published evidence.`}
+          text={`What ${name} promised, and what actually happened. Each promise counts as one when delivered. Open promises are still unearned. Select a count to inspect its published evidence.`}
         />
       </h2>
       <div style={{ margin: "4px 0 14px" }}>

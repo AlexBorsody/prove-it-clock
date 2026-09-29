@@ -108,20 +108,20 @@ export default function WelcomeModal() {
         </p>
         <ul className="welcome-legend">
           <li>
-            <Icon name="heart" size={18} filled title="Promise kept · heart earned" style={{ color: "var(--green)" }} />
-            <span><strong>Kept</strong> · earned its heart</span>
+            <Icon name="heart" size={18} filled title="Promise kept" style={{ color: "var(--green)" }} />
+            <span><strong>Kept</strong> · promise delivered</span>
           </li>
           <li>
-            <Icon name="heart" size={18} title="Promise open · heart not yet earned" style={{ color: "var(--text-faint)" }} />
+            <Icon name="heart" size={18} title="Promise open" style={{ color: "var(--text-faint)" }} />
             <span><strong>Open</strong> · still pending, never a failure</span>
           </li>
           <li>
-            <Icon name="heart" size={18} title="Promise lapsed · heart lost" style={{ color: "var(--red)" }} />
-            <span><strong>Lapsed</strong> · the heart is lost, evidence attached</span>
+            <Icon name="heart" size={18} title="Promise lapsed" style={{ color: "var(--red)" }} />
+            <span><strong>Lapsed</strong> · promise broken, evidence attached</span>
           </li>
         </ul>
         <p className="welcome-how">
-          Tap any project to inspect its promises. Tap a heart to see the proof.
+          Tap any project to inspect its promises. Tap a promise icon to see the proof.
         </p>
         <p className="welcome-prop">
           If a project proves its value, it should be worth money. This is the record.

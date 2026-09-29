@@ -140,7 +140,7 @@ export default async function ProjectPage({ params, searchParams }: {
   return (
     <>
       {/* 1. Header: project identity and published hearts. */}
-      <div className="panel card section-hero search-section" {...searchMeta({ id: `project-${slug}-overview`, title: `${latest.name} overview`, kind: "Project", project: slug, keywords: `${latest.symbol} hearts potential ranking` })}>
+      <div className="panel card section-hero search-section" {...searchMeta({ id: `project-${slug}-overview`, title: `${latest.name} overview`, kind: "Project", project: slug, keywords: `${latest.symbol} promises potential ranking` })}>
         <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
           <img
             src={`/icons/${latest.symbol.toLowerCase()}.svg`}

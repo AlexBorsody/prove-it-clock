@@ -5,7 +5,7 @@ import { projectFlags } from './project-policy';
 export const BOARD_SORTS = ['rank','hearts','stars','commits','hype','market-cap','coin','code','use'] as const;
 export type BoardSort=typeof BOARD_SORTS[number];
 export type BoardCategory=CategoryId|'';
-export const BOARD_SORT_LABELS:Record<BoardSort,string>={rank:'Category delivery rank',hearts:'Hearts kept share',stars:'GitHub stars',commits:'Commits (90d)',hype:'Hype mentions', 'market-cap':'Market cap',coin:'Name',code:'CODE activity',use:'Usage'};
+export const BOARD_SORT_LABELS:Record<BoardSort,string>={rank:'Category delivery rank',hearts:'Promises kept share',stars:'GitHub stars',commits:'Commits (90d)',hype:'Hype mentions', 'market-cap':'Market cap',coin:'Name',code:'CODE activity',use:'Usage'};
 export function parseBoardSort(value:string|null,category:BoardCategory=''):BoardSort {
   if(value==='verdict') return 'coin'; // Retired score URLs open the project browser.
   // Old overall-rank URLs now open the unranked project browser.

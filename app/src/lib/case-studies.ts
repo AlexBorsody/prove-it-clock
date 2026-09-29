@@ -15,7 +15,7 @@ export const CASE_STUDY_DOCUMENTS = {
   review: { title: "Review questions & checks", file: "archive/case-studies-2026-09-25/review.md" },
   // The algorithm lives as an appendix section inside implementation.md
   // (docs reorganization 2026-09-25); the route extracts just that section.
-  algorithm: { title: "Adopted heart rules", file: "implementation.md" },
+  algorithm: { title: "Adopted promise rules", file: "implementation.md" },
 } as const;
 
 /** Documents served as an extracted section of a larger file. */

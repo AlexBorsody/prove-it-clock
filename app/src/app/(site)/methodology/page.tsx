@@ -36,7 +36,7 @@ function Section({ icon, title, id, open, children }: {
 export default function MethodologyPage() {
   return (
     <div className={`methodology-page ${styles.page}`}>
-      <section {...searchMeta({ id: "methodology-overview", title: "How Prove Value works", kind: "Methodology", keywords: "scoring hearts evidence promises" })} className="search-section">
+      <section {...searchMeta({ id: "methodology-overview", title: "How Prove Value works", kind: "Methodology", keywords: "scoring evidence promises" })} className="search-section">
         <h1 className="page-title">Did they deliver?</h1>
         <p className="page-sub">
           Prove Value checks what crypto projects promised against what they
@@ -53,7 +53,7 @@ export default function MethodologyPage() {
         <p>
           <strong>Each kept promise counts as one.</strong> The total is the
           number of distinct scored promises. Repeated statements count once. Core
-          promises are marked, but currently earn the same one heart.
+          promises are marked, but each still counts as one promise.
         </p>
         <p>
           For example, <strong>2 of 16 kept</strong> means 14 have not earned
@@ -159,7 +159,7 @@ export default function MethodologyPage() {
       <Section icon="book" title="Evidence, not a project score" id="publication">
         <p>
           Prove Value presents claims, recorded outcomes and supporting context.
-          Hearts count promises kept; they do not measure economic value.
+          The count tracks promises kept; it does not measure economic value.
           We do not combine importance weights, popularity or price into a
           project warning score.
         </p>

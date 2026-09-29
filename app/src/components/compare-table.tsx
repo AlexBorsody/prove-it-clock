@@ -32,7 +32,7 @@ export interface ComparisonGroup {
 }
 
 /** Shared table presentation; each market supplies its own rows and values. */
-export function ComparisonGrid({ columns, groups, id = "compare-metrics", rowIdPrefix = "compare", title = "Project comparison", keywords = "hearts promises code use hype" }: {
+export function ComparisonGrid({ columns, groups, id = "compare-metrics", rowIdPrefix = "compare", title = "Project comparison", keywords = "promises code use hype" }: {
   columns: ComparisonColumn[];
   groups: ComparisonGroup[];
   id?: string;

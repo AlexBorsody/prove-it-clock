@@ -38,10 +38,10 @@ export function promiseHeart(pr: any): { filled: boolean; color: string; label: 
   } catch {
     return { filled: false, color: "var(--text-faint)", label: "Promise status unknown" };
   }
-  if (s === "fulfilled") return { filled: true, color: "var(--green)", label: "Promise kept · heart earned" };
+  if (s === "fulfilled") return { filled: true, color: "var(--green)", label: "Promise kept" };
   if (s === "lapsed" || s === "retired")
-    return { filled: false, color: "var(--red)", label: "Promise lapsed · heart lost" };
-  return { filled: false, color: "var(--text-faint)", label: "Promise open · heart not yet earned" };
+    return { filled: false, color: "var(--red)", label: "Promise lapsed" };
+  return { filled: false, color: "var(--text-faint)", label: "Promise open" };
 }
 
 function evidenceList(pr: any) {

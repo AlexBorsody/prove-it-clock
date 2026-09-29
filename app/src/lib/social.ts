@@ -108,7 +108,7 @@ export function hypeVerdict(
 ): HypeVerdict {
   const substance = capacity > 0 ? earned / capacity : 0;
   const m = mentions7d == null ? "n/a" : String(mentions7d);
-  const hearts = `${earned} of ${capacity} hearts`;
+  const promises = `${earned} of ${capacity} promises`;
 
   let buzz: HypeVerdict["buzz"] = null;
   if (medianMentions != null && medianMentions > 0 && batchSize >= 4 && mentions7d != null) {
@@ -121,23 +121,23 @@ export function hypeVerdict(
     return {
       buzz,
       tone: "sizzle",
-      read: `All sizzle, no steak: ${m} news mentions in 7 days against ${hearts}.`,
+      read: `All sizzle, no steak: ${m} news mentions in 7 days against ${promises}.`,
     };
   }
   if (buzz === "low" && substance >= 0.6) {
     return {
       buzz,
       tone: "proven",
-      read: `Quietly proven: ${hearts} on modest hype.`,
+      read: `Quietly proven: ${promises} on modest hype.`,
     };
   }
   if (mentions7d == null) {
-    return { buzz, tone: "neutral", read: `Social hype is not reporting yet; ${hearts} stand on their own.` };
+    return { buzz, tone: "neutral", read: `Social hype is not reporting yet; ${promises} stand on their own.` };
   }
   return {
     buzz,
     tone: "neutral",
-    read: `${m} news mentions in 7 days sit next to ${hearts}.`,
+    read: `${m} news mentions in 7 days sit next to ${promises}.`,
   };
 }
 
