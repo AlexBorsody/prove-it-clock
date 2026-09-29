@@ -1,6 +1,10 @@
 # Prove Value: profitability plan
 2026-09-29. Companion to the governing moat decision.
 
+> Prove Value turns scattered crypto promises into a cited, versioned,
+> machine-readable accountability record that funds, researchers, and AI
+> agents can use for faster, auditable diligence.
+
 > The public record earns trust. Professional access, monitoring and
 > infrastructure around that record generate revenue.
 
