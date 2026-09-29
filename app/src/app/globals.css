@@ -888,11 +888,10 @@ button.factor-cell.open { outline: 2px solid var(--border-strong); }
 .factor-val .cell-sub { display: block; font-weight: 400; }
 .board-card-promises { margin-top: 10px; }
 
-/* Expandable promises (scoreboard rows and cards). */
+/* Expandable promises (scoreboard rows and cards). Chevrons are indicators, not buttons: no chrome. */
 .expand-btn {
-  background: var(--bg-raised); border: none; color: var(--text-dim);
-  font-size: 13px; font-weight: 700; border-radius: 8px;
-  padding: 6px 10px; cursor: pointer;
+  background: none; border: none; color: var(--text-dim);
+  font-size: 13px; padding: 0; cursor: pointer;
 }
 .expand-btn.open { color: var(--text); }
 .expand-row td { background: var(--bg-panel); padding: 0 16px 16px; }
