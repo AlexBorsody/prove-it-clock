@@ -627,8 +627,10 @@ methodology has to be public for anyone to trust a verdict, and anything
 public gets cloned). Raw history can be backfilled; what cannot be recreated
 is the evidence available to Prove Value at the time, the assessment it
 published from that evidence, the challenges raised before the outcome, and
-the correction chain that followed. Every month of contemporaneous history
-is a month a competitor cannot recreate.
+the correction chain that followed. Every month of contemporaneous
+adjudication creates historical state a later competitor cannot authentically
+recreate: a competitor can approximate the history, but cannot have published
+that state before later outcomes became known.
 
 Second moat: the canonical promise graph. Project to promise identity to
 lineage to source to fulfillment test to impact to evidence to state to
