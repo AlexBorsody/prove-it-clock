@@ -1,3 +1,5 @@
+# This idea is deprecated, revert this code and store it on a separate archived/ideas-board branch 
+
 # Anonymous ideas board
 
 Alex's September 28 decision replaces private submissions and email with public,
