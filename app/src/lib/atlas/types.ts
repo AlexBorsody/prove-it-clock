@@ -12,6 +12,12 @@ export interface AtlasNode {
   projectSlug: string; projectName: string; symbol: string;
   claimText: string; claimTextKind: 'quote' | 'published-description' | 'published-criteria';
   state: AtlasState; originalState: string; core: boolean;
+  /** Reviewed importance: supporting (1), material (2), core (4). Null = unreviewed, weighted metrics unavailable. */
+  importance?: 'supporting' | 'material' | 'core' | null;
+  /** Named reviewer who assigned the importance, with rationale version. */
+  importanceAuthor?: string | null;
+  importanceRationale?: string | null;
+  importanceVersion?: string | null;
   assessmentExplanation: string | null; assessedAt: string | null; snapshotAsOf: string;
   claimSources: AtlasSource[]; outcomeEvidence: AtlasSource[]; evidenceRolesSeparated: boolean;
   fulfillmentTest: string | null;

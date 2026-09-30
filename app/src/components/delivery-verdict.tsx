@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getPublishedAtlas } from '@/lib/atlas/data';
 import { summarizeDelivery, deliveryReceipt } from '@/lib/promise-verdict';
+import { evaluateThreeMeter, formatMeter } from '@/lib/three-meter';
 import { CATEGORIES } from '../../data/atlas-taxonomy';
 import { STATE_LABELS } from '@/lib/atlas/types';
 import { searchMeta } from '@/lib/search-sections';
@@ -12,8 +13,57 @@ export default async function DeliveryVerdict({slug,name}:{slug:string;name:stri
   catch { return <section className="panel"><h2>Delivery record</h2><p role="alert">The promise ledger could not be loaded.</p></section>; }
   const summary=data?summarizeDelivery(data,slug):null;
   if(!data||!summary) return <section className="panel"><h2>Delivery record</h2><p>No current published assessment is available for {name}.</p></section>;
+
+  // Three-meter verdict from the same ledger
+  const nodes = data.nodes.filter(node => node.projectSlug === slug);
+  const verdict = evaluateThreeMeter(nodes);
+
+  const coreFindingText = {
+    kept: 'Core promise kept.',
+    lapsed: 'Core promise unkept.',
+    unresolved: 'Core promise unresolved.',
+    unavailable: 'Core assessment unavailable.',
+    none: '',
+  }[verdict.coreFinding];
+
   return <section className={`panel delivery-verdict-section ${styles.card}`} {...searchMeta({id:`project-${slug}-delivery`,title:`${name} delivery record`,kind:'Evidence',project:slug,keywords:'kept open lapsed retired categories evidence'})}>
     <h2>Delivery record</h2>
+
+    {/* Core finding: survives all averaging */}
+    {coreFindingText && (
+      <div className={`${styles.coreFinding} ${styles[verdict.coreFinding]}`} role="status">
+        {coreFindingText}
+      </div>
+    )}
+
+    {/* Three meters: proven delivery, outcome coverage, kept among resolved */}
+    <div className={styles.meters}>
+      <div className={`${styles.meter} ${styles.proven} ${verdict.provenDelivery === null ? styles.unavailable : ''}`}>
+        <span className={styles.label}>Proven delivery</span>
+        <span className={styles.value}>{formatMeter(verdict.provenDelivery)}</span>
+        <span className={styles.hint}>
+          {verdict.provenDelivery !== null
+            ? 'Weighted share of tracked commitments kept'
+            : verdict.unavailableReason || 'Weighted verdict unavailable'}
+        </span>
+      </div>
+      <div className={`${styles.meter} ${styles.coverage} ${verdict.outcomeCoverage === null ? styles.unavailable : ''}`}>
+        <span className={styles.label}>Outcome coverage</span>
+        <span className={styles.value}>{formatMeter(verdict.outcomeCoverage)}</span>
+        <span className={styles.hint}>
+          {verdict.outcomeCoverage !== null
+            ? 'Weighted share with resolved outcomes'
+            : 'Weighted verdict unavailable'}
+        </span>
+      </div>
+      <div className={`${styles.meter} ${styles.resolved} ${verdict.keptAmongResolved === null ? styles.unavailable : ''}`}>
+        <span className={styles.label}>Kept among resolved</span>
+        <span className={styles.value}>{formatMeter(verdict.keptAmongResolved)}</span>
+        <span className={styles.hint}>Breakdown only, never a standalone verdict</span>
+      </div>
+    </div>
+
+    {/* Unweighted inventory: Promises kept */}
     <div className={styles.total}><Link href={deliveryReceipt(slug,undefined,'kept')} aria-label={`${summary.kept} kept promises. View evidence`}>{summary.kept}</Link><span>of</span><Link href={deliveryReceipt(slug)} aria-label={`${summary.total} scored promises. View evidence`}>{summary.total}</Link><span>promises kept</span></div>
     <div className={styles.states}>{(['open','in_progress','lapsed','retired','unknown'] as const).filter(state=>summary.states[state]>0).map(state=><Link key={state} href={deliveryReceipt(slug,undefined,state)} data-state={state}>{summary.states[state]} {STATE_LABELS[state].toLowerCase()} ↗</Link>)}</div>
     <p className={styles.note}>Recent lapse timing unavailable.</p>

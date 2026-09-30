@@ -2,6 +2,21 @@
 .total { display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:18px; }
 .total a { font-size:clamp(30px,5vw,44px);font-weight:800;min-width:36px; }
 .total a:first-child { color:var(--green); }
+.meters { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0; }
+.meter { border:1px solid var(--border);border-radius:12px;padding:14px;display:grid;gap:6px; }
+.meter .label { font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim); }
+.meter .value { font-size:clamp(24px,4vw,32px);font-weight:800; }
+.meter.proven .value { color:var(--green); }
+.meter.coverage .value { color:var(--text); }
+.meter.resolved .value { color:var(--text-dim);font-size:clamp(18px,3vw,24px); }
+.meter .hint { font-size:12px;color:var(--text-dim);line-height:1.4; }
+.meter.unavailable { opacity:0.6; }
+.meter.unavailable .value { color:var(--text-dim); }
+.coreFinding { border-left:4px solid var(--border);padding:12px 16px;margin:16px 0;font-weight:600; }
+.coreFinding.kept { border-color:var(--green); }
+.coreFinding.lapsed { border-color:#fa787b;color:#fa787b; }
+.coreFinding.unresolved { border-color:#f0a020;color:#f0a020; }
+.coreFinding.unavailable { border-color:var(--text-dim);color:var(--text-dim); }
 .states { display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px; }
 .states a { display:inline-flex;align-items:center;min-height:44px;border:1px solid var(--border);border-radius:4px;padding:8px 12px;color:var(--text-dim);font-weight:600; }
 .states a[data-state=lapsed],.states a[data-state=retired] { color:#fa787b; }
