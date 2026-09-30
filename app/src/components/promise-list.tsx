@@ -17,6 +17,7 @@ import {
   promiseDisplay,
   type PromiseFilter,
 } from "@/lib/promise-context";
+import { detectNarrativeSignals, signalLabel, signalTooltip } from "@/lib/narrative-signals";
 
 const PAGE_SIZE = 3;
 const PROMISE_VIEW_KEY = "proveit:promise-view";
@@ -119,6 +120,9 @@ function PromiseRow({
           <p className="comp-desc">{pr.rationale}</p>
           <div className="comp-tags">
             {pr.core ? <span className="tag na">Main promise</span> : null}
+            {detectNarrativeSignals(pr).map((s) => (
+              <span key={s} className="tag warn" title={signalTooltip(s)}>Narrative: {signalLabel(s)}</span>
+            ))}
             {pr.lineage ? (
               <PushSubscribeToggle projectSlug={slug} lineage={String(pr.lineage)} label="Notify me about this promise" />
             ) : null}
@@ -179,6 +183,9 @@ function PromiseCard({
         <span className="tag na">{label}</span>
         <Link className={`tag evidence-link ${d.tone === "good" ? "measured" : d.tone === "bad" ? "bad" : "na"}`} href={promiseEvidenceHref(slug, String(pr.lineage ?? i))} aria-label={`${label}: ${d.label}. View evidence`}>{d.label} ↗</Link>
         {pr.core ? <span className="tag na">Main promise</span> : null}
+        {detectNarrativeSignals(pr).map((s) => (
+          <span key={s} className="tag warn" title={signalTooltip(s)}>Narrative: {signalLabel(s)}</span>
+        ))}
         <span className="tag na">{categoryLabel}</span>
         {pr.lineage ? (
           <PushSubscribeToggle projectSlug={slug} lineage={String(pr.lineage)} label="Notify me about this promise" />

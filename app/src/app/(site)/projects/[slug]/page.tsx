@@ -33,6 +33,7 @@ import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 import { projectFlags } from "@/lib/project-policy";
 import styles from "./page.module.css";
+import seedsDoc from "../../../../../data/projects.json";
 
 export const dynamic = "force-dynamic";
 
@@ -56,6 +57,11 @@ export default async function ProjectPage({ params, searchParams }: {
   if (!ledger) return <section className="panel"><h1>Project record unavailable</h1><p role="alert">The promise ledger could not be loaded.</p></section>;
   const latest = (ledger.projects as any[]).find(project=>project.slug===slug);
   if (!latest) notFound();
+  // Intake stubs: listed for coverage, not scored. Label them honestly.
+  const seed = (seedsDoc as any).projects?.find((p: any) => p.slug === slug);
+  const provisionalReason: string | null = seed?.provisional === true
+    ? (seed.provisional_reason ?? "Provisional intake stub: research dossier pending.")
+    : null;
   const composition = atlas ? summarizeDelivery(atlas,slug) : null;
   const assessment = latest.assessment ?? {};
   const promises: any[] = assessment.promises ?? [];
@@ -153,6 +159,7 @@ export default async function ProjectPage({ params, searchParams }: {
           <span className="coin-symbol">{latest.symbol}</span>
         </h1>
         {genesis && <p className="panel-sub"><Link href="/methodology#evolution" className="tag na">Genesis asset</Link> Bitcoin&apos;s historical promise inventory.</p>}
+        {provisionalReason && <p className="panel-sub"><span className="tag warn">Provisional</span> {provisionalReason}</p>}
         {Number.isFinite(Date.parse(latest.as_of)) && (
           <p className="panel-sub" style={{ marginTop: 10 }}>
             Assessment as of {new Date(latest.as_of).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })}
