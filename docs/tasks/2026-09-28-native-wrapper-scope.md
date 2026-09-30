@@ -1,3 +1,6 @@
+# This idea is dedicated we are launching as a website and web app only do people can link to our promises and focus on our API.
+
+
 # Native wrapper: iOS + Android shell, homescreen widget, native push
 
 **2026-09-28. Task: "Wrap in native wrapper both platforms with homescreen
