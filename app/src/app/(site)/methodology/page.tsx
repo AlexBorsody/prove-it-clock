@@ -49,9 +49,9 @@ export default function MethodologyPage() {
         </ol>
       </section>
 
-      <Section icon="heart" title="How promises are counted" id="hearts" open>
+      <Section icon="heart" title="What the hearts mean" id="hearts" open>
         <p>
-          <strong>Each kept promise counts as one.</strong> The total is the
+          <strong>One kept promise earns one heart.</strong> The total is the
           number of distinct scored promises. Repeated statements count once. Core
           promises are marked, but each still counts as one promise.
         </p>
@@ -64,19 +64,52 @@ export default function MethodologyPage() {
           <li><strong>Kept / fulfilled:</strong> assessed as meeting its test.</li>
           <li><strong>Open:</strong> unresolved.</li>
           <li><strong>Lapsed:</strong> an ongoing condition no longer met.</li>
-          <li><strong>Retired:</strong> recorded as withdrawn or discontinued.</li>
+          <li><strong>Retired:</strong> recorded as withdrawn or discontinued. Retirement ends the story; it does not rewrite the outcome. A retired promise with evidence of fulfillment counts as kept. A retired promise with no outcome evidence is shown as unavailable, not as a failure.</li>
           <li><strong>Unknown:</strong> unavailable or unsupported data.</li>
         </ul>
         <p>Open and unknown are not proof of failure. Select a count or promise to inspect its record.</p>
+      </Section>
+
+      <Section icon="chart" title="Reading the three meters" id="meters">
+        <p>
+          Every project gets three numbers, all drawn from the same promise
+          ledger. They answer different questions.
+        </p>
+        <ul>
+          <li>
+            <strong>Proven delivery.</strong> The weighted share of kept promises.
+            Not all promises carry the same weight: a core promise counts four
+            times a supporting one, and a material promise counts twice. Weights
+            are assigned by our editors during review. A promise with no reviewed
+            weight does not enter this number; until weights are assigned, the
+            weighted meters read as unavailable rather than showing a guess.
+          </li>
+          <li>
+            <strong>Outcome coverage.</strong> The weighted share of promises that
+            are resolved either way, kept or failed. A project can have low proven
+            delivery with high coverage (it tried and missed) or low proven
+            delivery with low coverage (it has not answered yet). Those are
+            different stories, and the two meters keep them separate.
+          </li>
+          <li>
+            <strong>Kept among resolved.</strong> A breakdown only: of the promises
+            that reached an outcome, how many were kept. It is never shown as a
+            standalone score, because it hides how much is still open.
+          </li>
+        </ul>
+        <p>
+          Core promises get their own finding too: kept, lapsed, unresolved or
+          unavailable, so the ones that matter most are never buried in an average.
+        </p>
       </Section>
 
       <Section icon="grid" title="Comparing projects" id="rankings">
         <p>All projects opens as an unranked browser. Choose a category to see delivery rankings.</p>
         <p>
           Choose a subject to compare projects making similar kinds of promises.
-          Category rankings currently use <strong>kept promises ÷ all tracked
-          promises</strong> in that primary category. Equal shares tie; projects
-          with no promises in the category are unranked.
+          Category rankings use <strong>Proven delivery</strong> (weighted kept
+          share) in that primary category. Equal shares tie; projects with no
+          weighted promises in the category are unranked.
         </p>
         <p>The share measures recorded delivery, not difficulty, impact or token value.</p>
       </Section>

@@ -11,7 +11,6 @@ import {
 import { normalizePromiseState } from "@/lib/hearts";
 import { fetchVitals } from "@/lib/vitals";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
-import ButtonLink from "@/components/button-link";
 import { searchMeta } from "@/lib/search-sections";
 
 export const dynamic = "force-dynamic";
@@ -88,17 +87,6 @@ export default async function ComparePage() {
       <p className="page-sub">
         Pick two to four projects. Same metrics, side by side.
       </p>
-      </div>
-      <div className="search-section" {...searchMeta({ id: "compare-stocks", title: "Speculative Tech", kind: "Stocks", keywords: "stocks management promises fundamentals expectation gap" })}>
-        <h2 className="page-title" style={{ fontSize: 22 }}>Speculative Tech</h2>
-        <p className="page-sub">
-          The same promise ledger, for high-expectation companies: what management told the world
-          would happen, every revision they made, what actually happened, and how much of the
-          valuation still depends on outcomes that have not happened yet. Tesla is the reference case.
-        </p>
-        <p>
-          <ButtonLink href="/stocks" variant="primary">Open the stock ledger</ButtonLink>
-        </p>
       </div>
       {items.length === 0 ? (
         <div className="panel">

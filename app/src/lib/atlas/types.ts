@@ -14,6 +14,12 @@ export interface AtlasNode {
   state: AtlasState; originalState: string; core: boolean;
   /** Reviewed importance: supporting (1), material (2), core (4). Null = unreviewed, weighted metrics unavailable. */
   importance?: 'supporting' | 'material' | 'core' | null;
+  /**
+   * Reviewed fulfillment for retired promises: separates lifecycle
+   * (retired) from outcome (kept/lapsed). Null = unreviewed; a retired
+   * promise without this stays unknown in weighted verdicts.
+   */
+  fulfillment?: 'kept' | 'lapsed' | null;
   /** Named reviewer who assigned the importance, with rationale version. */
   importanceAuthor?: string | null;
   importanceRationale?: string | null;

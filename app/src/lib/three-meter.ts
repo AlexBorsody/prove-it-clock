@@ -11,11 +11,18 @@
  *
  * Where:
  * - K = kept weight (state = kept, with sufficient evidence)
- * - F = failed weight (state = lapsed, retired unmet, confirmed missed)
+ * - F = failed weight (state = lapsed, or retired with a reviewed
+ *   fulfillment judgment of lapsed)
  * - O = open weight (state = open, in_progress, reviewed but unfulfilled)
- * - U = unknown weight (state = unknown, disputed, stale evidence)
+ * - U = unknown weight (state = unknown, disputed, stale evidence, or
+ *   retired without a reviewed fulfillment judgment)
  * - W = K + F + O + U (total tracked weight)
  * - R = K + F (resolved weight)
+ *
+ * Retirement is a lifecycle state, not an outcome. A retired promise with
+ * no reviewed fulfillment judgment is unknown: "Retired alone is
+ * insufficient to determine fulfillment." It joins K or F only through
+ * an explicit reviewed fulfillment field, never by default.
  *
  * Weights: supporting = 1, material = 2, core = 4.
  * Missing weights make weighted output unavailable. No invented defaults.
@@ -73,19 +80,22 @@ export interface ThreeMeterResult {
 }
 
 /**
- * Map an Atlas state to its K/F/O/U partition.
- * Retired is treated as failed (unmet) unless evidence shows it was kept.
- * This follows the review: "Retired alone is insufficient to determine fulfillment."
- * For now, retired without kept evidence goes to F. A future revision with
- * explicit fulfillment/lifecycle separation can refine this.
+ * Map a node to its K/F/O/U partition.
+ * Retirement is separated from fulfillment: a retired promise counts as
+ * kept or failed only when a reviewed fulfillment judgment exists.
+ * Without one, retired is unknown. This follows the review: "Retired
+ * alone is insufficient to determine fulfillment."
  */
-function partitionState(state: AtlasState): 'K' | 'F' | 'O' | 'U' {
-  switch (state) {
+function partitionNode(node: AtlasNode): 'K' | 'F' | 'O' | 'U' {
+  switch (node.state) {
     case 'kept':
       return 'K';
     case 'lapsed':
-    case 'retired':
       return 'F';
+    case 'retired':
+      if (node.fulfillment === 'kept') return 'K';
+      if (node.fulfillment === 'lapsed') return 'F';
+      return 'U';
     case 'open':
     case 'in_progress':
       return 'O';
@@ -127,7 +137,7 @@ export function evaluateThreeMeter(nodes: AtlasNode[]): ThreeMeterResult {
 
   for (const node of nodes) {
     const weight = getNodeWeight(node);
-    const partition = partitionState(node.state);
+    const partition = partitionNode(node);
     const id = node.id;
 
     if (weight === null) {

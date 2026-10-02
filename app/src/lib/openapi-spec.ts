@@ -174,3 +174,138 @@ export const openApiSpec = {
     },
   },
 };
+
+/**
+ * OpenAPI 3.0 spec for the public Prove-It v2 API.
+ * Served at /api/v2/openapi.json and rendered on /developers below the v1 docs.
+ *
+ * v2 is the three-meter contract: weighted verdicts (proven delivery,
+ * outcome coverage, kept among resolved) over reviewed 1/2/4 importance
+ * weights, per-category rankings behind the reviewed-weight availability
+ * gate, the promise ledger with evidence, and the methodology record.
+ * Unavailable metrics return null with a reason; nothing is invented.
+ */
+export const openApiSpecV2 = {
+  openapi: "3.0.3",
+  info: {
+    title: "Prove Value Promise API (v2)",
+    version: "2.0.0",
+    description:
+      "Did crypto projects actually deliver what they promised? Read-only three-meter verdicts, per-category rankings, the promise ledger with evidence, and the methodology record. Weights: supporting 1, material 2, core 4, reviewed only. Retirement is a lifecycle state, not an outcome: a retired promise without a reviewed fulfillment judgment is unknown, never a failure. No authentication. Fair use: keep request volume reasonable.",
+  },
+  servers: [{ url: "https://prove-it-clock.vercel.app/api/v2" }],
+  paths: {
+    "/verdicts": {
+      get: {
+        summary: "Three-meter verdicts for all projects",
+        description:
+          "Every tracked project with its three-meter verdict (proven delivery, outcome coverage, kept among resolved), core finding, and per-category breakdown. Weighted metrics are null with a reason until editorial weights are reviewed.",
+        parameters: [],
+        responses: {
+          "200": {
+            description: "Project verdicts",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  required: ["data", "meta"],
+                  properties: {
+                    data: {
+                      type: "object",
+                      properties: {
+                        projects: {
+                          type: "array",
+                          items: {
+                            type: "object",
+                            required: ["slug", "name", "verdict"],
+                            properties: {
+                              slug: { type: "string" },
+                              name: { type: "string" },
+                              genesis: { type: "boolean", description: "Genesis asset: outside the delivery pipeline, never ranked." },
+                              hearts: {
+                                type: "object",
+                                properties: {
+                                  kept: { type: "integer", description: "One kept promise earns one heart. Only earned hearts exist." },
+                                  total: { type: "integer" },
+                                },
+                              },
+                              verdict: {
+                                type: "object",
+                                properties: {
+                                  proven_delivery: { type: "number", nullable: true, description: "100 * K / W: weighted share of kept promises." },
+                                  outcome_coverage: { type: "number", nullable: true, description: "100 * R / W: weighted share with resolved outcomes." },
+                                  kept_among_resolved: { type: "number", nullable: true, description: "100 * K / R: breakdown only, never a standalone verdict." },
+                                  core_finding: { type: "string", enum: ["kept", "lapsed", "unresolved", "unavailable", "none"] },
+                                  unavailable_reason: { type: "string", nullable: true },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                    meta: { type: "object", description: "Pinned data, methodology, taxonomy, assignment, and rules versions." },
+                  },
+                },
+              },
+            },
+          },
+          "503": { description: "Promise ledger unavailable; retry later" },
+        },
+      },
+    },
+    "/verdicts/{slug}": {
+      get: {
+        summary: "Three-meter verdict for one project",
+        description: "Verdict detail with per-category three-meter breakdown for a single project slug.",
+        parameters: [{ name: "slug", in: "path", required: true, schema: { type: "string", example: "bat" } }],
+        responses: {
+          "200": { description: "Project verdict detail" },
+          "404": { description: "Unknown project slug" },
+          "503": { description: "Promise ledger unavailable; retry later" },
+        },
+      },
+    },
+    "/rankings/{category}": {
+      get: {
+        summary: "Per-category ranking by proven delivery",
+        description:
+          "Projects ranked by proven delivery (weighted kept share) within one promise category. Behind the reviewed-weight availability gate: weighted_available is false with an availability reason until editorial weights are reviewed. Rankable rows sort by full precision with ties; projects with no resolved outcomes or no weights are listed last with their unranked reason. Never ranks by resolved share alone.",
+        parameters: [{ name: "category", in: "path", required: true, schema: { type: "string", description: "Category id from /methodology" } }],
+        responses: {
+          "200": { description: "Category ranking" },
+          "404": { description: "Unknown category" },
+          "503": { description: "Promise ledger unavailable; retry later" },
+        },
+      },
+    },
+    "/promises": {
+      get: {
+        summary: "The promise ledger with evidence",
+        description: "Every tracked promise with its claim, state, reviewed importance, category, fulfillment test, and claim/outcome sources.",
+        parameters: [
+          { name: "project", in: "query", schema: { type: "string", description: "Project slug filter" } },
+          { name: "category", in: "query", schema: { type: "string", description: "Category id filter" } },
+          { name: "state", in: "query", schema: { type: "string", enum: ["kept", "open", "in_progress", "lapsed", "retired", "unknown"], description: "Promise state filter" } },
+          { name: "page", in: "query", schema: { type: "integer", default: 1, minimum: 1 } },
+          { name: "per_page", in: "query", schema: { type: "integer", default: 50, minimum: 1, maximum: 200 } },
+        ],
+        responses: {
+          "200": { description: "Paginated promise ledger" },
+          "503": { description: "Promise ledger unavailable; retry later" },
+        },
+      },
+    },
+    "/methodology": {
+      get: {
+        summary: "The methodology record",
+        description: "Methodology versions, meter formulas, weight tiers, and state partitions. The human-readable contract behind every number in the API.",
+        parameters: [],
+        responses: {
+          "200": { description: "Methodology record" },
+          "503": { description: "Promise ledger unavailable; retry later" },
+        },
+      },
+    },
+  },
+};

@@ -186,16 +186,25 @@ export async function getCategoryRanking(
 ): Promise<ApiEnvelope<{
   category: CategoryId;
   category_label: string;
+  /** True when at least one row can be ranked on reviewed weights */
+  weighted_available: boolean;
+  /** Why weighted ranking is unavailable, when it is not */
+  availability_reason: string | null;
   rows: RankingRowPayload[];
 }> | null> {
   const data = await getPublishedAtlas();
   if (!data) throw new Error("Promise ledger unavailable");
   if (!CATEGORIES.some((c) => c.id === category)) return null;
   const ranking = buildCategoryRanking(data, category);
+  const weightedAvailable = ranking.rows.some((r) => r.rank !== null);
   return {
     data: {
       category: ranking.category,
       category_label: ranking.categoryLabel,
+      weighted_available: weightedAvailable,
+      availability_reason: weightedAvailable
+        ? null
+        : "Weighted category ranking unavailable: no project in this category has reviewed importance weights yet. Ranked positions appear only after editorial weights are assigned.",
       rows: ranking.rows.map((r) => ({
         rank: r.rank,
         slug: r.slug,
@@ -315,7 +324,7 @@ export async function getMethodology(): Promise<ApiEnvelope<{
       states: [
         { state: "kept", partition: "K", description: "Kept under its original test, with sufficient evidence." },
         { state: "lapsed", partition: "F", description: "Confirmed unkept ongoing condition." },
-        { state: "retired", partition: "F", description: "Obligation withdrawn before its test was met." },
+        { state: "retired", partition: "U (F or K with reviewed fulfillment)", description: "Retired alone is insufficient to determine fulfillment. Lifecycle only; counts as kept or failed only through a reviewed fulfillment judgment, otherwise unknown." },
         { state: "open", partition: "O", description: "Pending, including reviewed progress without fulfillment." },
         { state: "in_progress", partition: "O", description: "Reviewed progress without fulfillment." },
         { state: "unknown", partition: "U", description: "Disputed assessment, or evidence too stale for a current judgment." },

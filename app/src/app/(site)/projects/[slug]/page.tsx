@@ -15,6 +15,7 @@ import { summarizeDelivery } from '@/lib/promise-verdict';
 import { receiptRevision } from '@/lib/promise-receipts';
 import DocumentedProblems from "@/components/documented-problems";
 import PromiseNews from "@/components/promise-news";
+import DeliveryVerdict from "@/components/delivery-verdict";
 import { promiseReferences, PROMISE_FILTERS, type PromiseFilter } from "@/lib/promise-context";
 import type { CategoryId } from "../../../../../data/atlas-taxonomy";
 import PromisesPanel from "@/components/promises-panel";
@@ -168,6 +169,9 @@ export default async function ProjectPage({ params, searchParams }: {
       </div>
 
       <span id="hearts" aria-hidden="true" />
+
+      {/* Delivery verdict: three-meter weighted verdict from the same ledger. */}
+      <DeliveryVerdict slug={slug} name={latest.name} />
 
       {/* All promise content lives in one consolidated panel below:
           help expander, delivery health, the promise list, documented
