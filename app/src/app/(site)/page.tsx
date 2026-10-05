@@ -16,8 +16,8 @@ import { searchMeta } from "@/lib/search-sections";
 
 import { adaptAtlas } from '@/lib/atlas/adapter';
 import { summarizeDelivery } from '@/lib/promise-verdict';
-import { fetchUniverseMarkets, fetchMarketsByIds, type UniverseRow } from '@/providers/coingecko';
-import { marketCapFor, MARKET_IDS } from '@/lib/market-ids';
+import { fetchUniverseMarkets, type UniverseRow } from '@/providers/coingecko';
+import { marketCapFor } from '@/lib/market-ids';
 import type { AtlasDataset } from '@/lib/atlas/types';
 
 export const dynamic = "force-dynamic";
@@ -37,22 +37,6 @@ export default async function Home() {
     projects = ledger.projects;
     atlas = adaptAtlas(ledger);
     markets = marketRows;
-    // Fetch market caps for all mapped CoinGecko IDs (beyond top 20), batched
-    try {
-      const allIds = [...new Set(Object.values(MARKET_IDS))];
-      const batchSize = 50;
-      for (let i = 0; i < allIds.length; i += batchSize) {
-        const batch = allIds.slice(i, i + batchSize);
-        const mappedRows = await fetchMarketsByIds(batch).catch(() => [] as UniverseRow[]);
-        const seenIds = new Set(markets.map(m => m.id));
-        for (const row of mappedRows) {
-          if (!seenIds.has(row.id)) {
-            markets.push(row);
-            seenIds.add(row.id);
-          }
-        }
-      }
-    } catch {}
     hypeSnaps = hype;
   } catch {
     loadFailed=true;
