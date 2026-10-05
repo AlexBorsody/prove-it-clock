@@ -52,10 +52,10 @@ export function adaptAtlas(input: PublishedHeartDataset, assignments = ASSIGNMEN
   const nodes: AtlasNode[] = []; const ids = new Set<string>(); const projects = new Set<string>(); const unavailableProjects: string[] = [];
   for (const value of input.projects) {
     const p = record(value); const slug = text(p.slug);
+    if (p.availability === 'unavailable') { if (slug) unavailableProjects.push(slug); continue; }
     if (!slug || !/^[a-z0-9-]+$/.test(slug) || projects.has(slug)) throw new Error('Missing or duplicate project identity');
     projects.add(slug);
     if (p.run_id !== run.id || p.methodology !== run.methodology) throw new Error('Mixed published runs');
-    if (p.availability === 'unavailable') { unavailableProjects.push(slug); continue; }
     if (p.availability !== 'available') throw new Error('Invalid assessment availability');
     const assessment = record(p.assessment);
     if (!Array.isArray(assessment.promises)) throw new Error('Missing scored promises');
