@@ -10,6 +10,7 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
   const [lineage,setLineage]=useState('');
   const [kind,setKind]=useState<EventKind|''>('');
   const [clock,setClock]=useState<'occurred'|'recorded'>('occurred');
+  const [showAll,setShowAll]=useState(false);
   const lineages=[...new Set(data.events.map(event=>event.lineage))];
   const date=(event:PromiseEvent)=>clock==='occurred'?event.occurredOn:event.recordedAt.slice(0,10);
   const events=data.events.filter(event=>(!lineage||event.lineage===lineage)&&(!kind||event.kind===kind))
@@ -24,14 +25,13 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
   const previous=(event:PromiseEvent)=>event.kind==='assessment'&&event.supersedes?data.events.find(p=>p.id===event.supersedes):undefined;
   return <>
     <div className={styles.controls}>
-      <label>Promise<select value={lineage} onChange={event=>setLineage(event.target.value)}><option value="">All promises</option>{lineages.map(id=><option key={id} value={id}>{id}</option>)}</select></label>
+      <label title="Gaps mean missing coverage, not proof that nothing happened.">Promise<select value={lineage} onChange={event=>setLineage(event.target.value)}><option value="">All promises</option>{lineages.map(id=><option key={id} value={id}>{id}</option>)}</select></label>
       <label>Event<select value={kind} onChange={event=>setKind(event.target.value as EventKind|'')}><option value="">All events</option>{EVENT_KINDS.map(id=><option key={id} value={id}>{EVENT_LABELS[id]}</option>)}</select></label>
       <label>Date<select value={clock} onChange={event=>setClock(event.target.value as 'occurred'|'recorded')}><option value="occurred">When it happened</option><option value="recorded">When we recorded it</option></select></label>
     </div>
-    <p className={styles.note} aria-live="polite">{events.length} recorded {events.length===1?'event':'events'}. Gaps mean missing coverage, not proof that nothing happened.</p>
     {events.length===0&&<p>No events match these filters.</p>}
     <ol className={styles.timeline}>
-      {events.map(event=>{
+      {events.slice(0, showAll ? events.length : 10).map(event=>{
         const prior=previous(event);
         return <li key={event.id} data-kind={event.kind} data-stance={event.kind==='evidence'?event.stance:undefined}>
           <span className={styles.marker} aria-hidden="true"/>
@@ -63,6 +63,11 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
         </li>;
       })}
     </ol>
+    {events.length > 10 && (
+      <button type="button" onClick={() => setShowAll(!showAll)} className={styles.showMore}>
+        {showAll ? "Show less" : `Show all ${events.length} events`}
+      </button>
+    )}
     <details className={styles.versions}><summary>History revision and coverage</summary>
       <p>{data.revisionId}</p><p>Ledger run: {data.ledgerRunId}</p>
       <p>Dates retain their recorded precision. Spacing is chronological, not a measure of elapsed time. Assessments appear on their actual publication date.</p>
