@@ -37,15 +37,19 @@ export default async function Home() {
     projects = ledger.projects;
     atlas = adaptAtlas(ledger);
     markets = marketRows;
-    // Fetch market caps for all mapped CoinGecko IDs (beyond top 20)
+    // Fetch market caps for all mapped CoinGecko IDs (beyond top 20), batched
     try {
       const allIds = [...new Set(Object.values(MARKET_IDS))];
-      const mappedRows = await fetchMarketsByIds(allIds).catch(() => [] as UniverseRow[]);
-      const seenIds = new Set(markets.map(m => m.id));
-      for (const row of mappedRows) {
-        if (!seenIds.has(row.id)) {
-          markets.push(row);
-          seenIds.add(row.id);
+      const batchSize = 50;
+      for (let i = 0; i < allIds.length; i += batchSize) {
+        const batch = allIds.slice(i, i + batchSize);
+        const mappedRows = await fetchMarketsByIds(batch).catch(() => [] as UniverseRow[]);
+        const seenIds = new Set(markets.map(m => m.id));
+        for (const row of mappedRows) {
+          if (!seenIds.has(row.id)) {
+            markets.push(row);
+            seenIds.add(row.id);
+          }
         }
       }
     } catch {}
