@@ -5,7 +5,6 @@ import Link from "next/link";
 import Icon from "@/components/chrome-icons";
 import PromiseChallenges from "@/components/promise-challenges";
 import PushSubscribeToggle from "@/components/push-subscribe-toggle";
-import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import { searchMeta } from "@/lib/search-sections";
 import { normalizePromiseState } from "@/lib/hearts";
 import { CATEGORIES } from "../../data/atlas-taxonomy";
@@ -20,17 +19,6 @@ import {
 import { detectNarrativeSignals, signalLabel, signalTooltip } from "@/lib/narrative-signals";
 
 const PAGE_SIZE = 3;
-const PROMISE_VIEW_KEY = "proveit:promise-view";
-
-function defaultPromiseView(): BoardView {
-  if (typeof window === "undefined") return "list";
-  try {
-    const saved = window.localStorage.getItem(PROMISE_VIEW_KEY);
-    if (saved === "cards" || saved === "list") return saved;
-  } catch {}
-  return "list";
-}
-
 /** One promise = one heart: the heart this promise earned, is chasing, or lost. */
 export function promiseHeart(pr: any): { filled: boolean; color: string; label: string } {
   let s: string;
@@ -231,14 +219,8 @@ export default function PromiseList({
 }) {
   const [expanded, setExpanded] = useState(() => !!evidence);
   useEffect(() => { if (evidence) setExpanded(true); }, [evidence]);
-  const [view, setView] = useState<BoardView>("list");
-  useEffect(() => { setView(defaultPromiseView()); }, []);
   // Only one promise challenge is open at a time, keeping the page light.
   const [challengeOpen, setChallengeOpen] = useState<string | null>(null);
-  function changeView(v: BoardView) {
-    setView(v);
-    try { window.localStorage.setItem(PROMISE_VIEW_KEY, v); } catch {}
-  }
   const refs = promiseReferences(slug, promises);
   const visible = promises
     .map((pr, i) => ({ pr, i }))
@@ -250,12 +232,9 @@ export default function PromiseList({
       challengeOpen: challengeOpen === anchor,
       onToggleChallenge: () => setChallengeOpen(cur => (cur === anchor ? null : anchor)),
     };
-    return view === "list"
-      ? <PromiseRow key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} {...challengeProps} />
-      : <PromiseCard key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} {...challengeProps} />;
+    return <PromiseRow key={pr.lineage ?? i} slug={slug} name={name} pr={pr} i={i} label={refs[i].label} categoryLabel={CATEGORIES.find(c => c.id === categoryOf?.(pr))?.label ?? "Unclassified"} filter={filter} evidence={evidence} {...challengeProps} />;
   };
   return <>
-    <div className="promise-view-toggle"><ViewToggle value={view} onChange={changeView} label="Promise layout" /></div>
     {visible.slice(0, PAGE_SIZE).map(renderPromise)}
     {visible.length > PAGE_SIZE && (
       <details className="promise-more" open={expanded} onToggle={event => setExpanded(event.currentTarget.open)}>
