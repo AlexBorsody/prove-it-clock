@@ -10,7 +10,6 @@ import { BOARD_SORTS, BOARD_SORT_LABELS, parseBoardSort, sortScoreboard, type Bo
 import styles from "./scoreboard-table.module.css";
 import HeartMeter from "@/components/heart-meter";
 import PromiseCategoryMeters from "@/components/promise-category-meters";
-import ViewToggle, { type BoardView } from "@/components/view-toggle";
 import CompareTable, { type CompareProject } from "@/components/compare-table";
 import CompareMode, { CompareCheckbox, useCompareSelection } from "@/components/compare-mode";
 import Icon from "@/components/chrome-icons";
@@ -80,28 +79,11 @@ function HypeCell({ mentions, collecting }: { mentions: number | null; collectin
   );
 }
 
-const BOARD_VIEW_KEY = "pv-board-view";
-
-function defaultBoardView(): BoardView {
-  if (typeof window === "undefined") return "list";
-  try {
-    const saved = window.localStorage.getItem(BOARD_VIEW_KEY);
-    if (saved === "cards" || saved === "list") return saved;
-  } catch {}
-  return "list";
-}
-
 export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: ScoreboardRow[]; asOf?: string; compareProjects?: CompareProject[] }) {
   const params = useSearchParams();
   const sortKey = parseBoardSort(params.get("sort"));
   const headers = HEADERS.filter(header => header.key !== 'rank');
   const [expanded, setExpanded] = useState<string | null>(null);
-  const [view, setView] = useState<BoardView>("list");
-  useEffect(() => { setView(defaultBoardView()); }, []);
-  function changeView(v: BoardView) {
-    setView(v);
-    try { window.localStorage.setItem(BOARD_VIEW_KEY, v); } catch {}
-  }
   const sorted = sortScoreboard(rows, sortKey, "");
   const { selected, toggle: toggleCompare, clear, canSelect } = useCompareSelection(compareProjects.map(project => project.slug));
   const selectedProjects = selected.flatMap(slug => compareProjects.filter(project => project.slug === slug));
@@ -133,9 +115,8 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
         <label htmlFor="scoreboard-sort">Sort by<select id="scoreboard-sort" value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value))}>
           {BOARD_SORTS.filter(key => key !== 'use' && key !== 'rank').map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
         </select></label>
-        <div className={styles.viewToggle}><ViewToggle value={view} onChange={changeView} label="Scoreboard layout" /></div>
       </div>
-      {view === "list" ? <div className={`table-wrap ${styles.tableWrap}`} tabIndex={0} aria-label="Project scoreboard">
+      <div className={`table-wrap ${styles.tableWrap}`} tabIndex={0} aria-label="Project scoreboard">
         <table className={`board ${styles.table}`} role="table">
           <colgroup>
             <col className={styles.coinColumn} /><col className={styles.heartsColumn} />
@@ -239,72 +220,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
             ))}
           </tbody>
         </table>
-      </div> : <div className={styles.cards} data-search-ignore="true">
-        {sorted.map((r) => {
-          const open = expanded === r.slug;
-          return (
-            <div key={r.slug} className={`mcard project-card${projectFlags(r.slug).genesis ? ` ${styles.genesisCard}` : ''}`} id={`scoreboard-mobile-project-${r.slug}`}>
-              <Link href={`/projects/${r.slug}`} className="mcard-head project-card-link">
-                <img
-                  src={`/icons/${r.symbol.toLowerCase()}.svg`}
-                  alt=""
-                  width={30}
-                  height={30}
-                  className="coin-icon"
-                />
-                <span className="mcard-name">{r.name}</span>
-                <span className="mcard-ticker num">{r.symbol}</span>
-              </Link>
-              <CompareCheckbox name={r.name} checked={selected.includes(r.slug)} disabled={!canSelect(r.slug)} onChange={() => toggleCompare(r.slug)} />
-              <div className="mcard-hearts">
-                {!r.delivery ? <span className="word dim">Assessment unavailable</span> : <button
-                  type="button"
-                  className="mcard-hearts-toggle"
-                  onClick={() => toggleExpand(r.slug)}
-                  aria-expanded={open}
-                  aria-controls={`scoreboard-promises-${r.slug}`}
-                  aria-label={`${open ? "Hide" : "Show"} promises for ${r.name}`}
-                  title="Show all promises"
-                >
-                  <HeartMeter filled={r.earned} capacity={r.capacity} size={18} genesis={projectFlags(r.slug).genesis} />
-                  <span className={styles.heartChevron} aria-hidden="true">{open ? "▲" : "▼"}</span>
-                </button>}
-              </div>
-              <button
-                className={`mcard-promises-toggle${open ? " open" : ""}`}
-                onClick={() => toggleExpand(r.slug)}
-                aria-expanded={open}
-                aria-controls={`scoreboard-promises-${r.slug}`}
-              >
-                All promises · {r.promises.length} {open ? "▼" : "▶"}
-              </button>
-              {open ? (
-                <div className={`mcard-promises ${styles.cardPromises}`} id={`scoreboard-promises-${r.slug}`}>
-                  {r.delivery && <PromiseCategoryMeters slug={r.slug} summary={r.delivery} />}
-                  <PromiseRows slug={r.slug} promises={r.promises} />
-                </div>
-              ) : null}
-              {projectFlags(r.slug).genesis && <p className={styles.genesisBadge}>Genesis asset</p>}
-              <section className={styles.context} aria-label={`${r.name} supporting context`}>
-              <h3>Supporting context</h3>
-              <div className="mcard-stats">
-                <Link href="/code" className="mcard-stat metric-btn">
-                  <GithubMark />
-                  {r.codeNote ? r.codeNote : r.code === "Active" ? "Code" : `Code ${r.code}`}
-                  {!r.codeNote && codeSub(r) ? ` · ${codeSub(r)}` : null}
-                </Link>
-                <Link href="/hype" className="mcard-stat metric-btn num">
-                  <Icon name="megaphone" size={14} />
-                  Hype · {r.hypeMentions == null ? "-" : `${r.hypeMentions.toLocaleString()} mentions / 7d`}
-                </Link>
-                <span className="mcard-stat num">Market cap · {r.marketCap == null ? "Unavailable" : `$${compactNum.format(r.marketCap)}`}</span>
-              </div>
-              </section>
-
-            </div>
-          );
-        })}
-      </div>}
+      </div>
       <CompareMode selectedLabels={selectedProjects.map(project => project.name)} onClear={clear}>
         <CompareTable projects={selectedProjects} showPicker={false} />
       </CompareMode>

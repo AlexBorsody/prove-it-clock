@@ -1,7 +1,6 @@
 import { feedbackEnabled } from '@/lib/feedback/data';
 import supportStyles from '@/components/support-feedback.module.css';
 import LedgerNav from "@/components/ledger-nav";
-import MarketSwitcher from "@/components/market-switcher";
 import "../globals.css";
 import Link from "next/link";
 import BottomNav from "@/components/bottom-nav";
@@ -36,7 +35,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           <ProjectSearch paths={paths} />
         </div>
       </header>
-      <main className="with-bottomnav"><MarketSwitcher /><LedgerNav />{children}
+      <main className="with-bottomnav"><LedgerNav />{children}
         {feedbackEnabled() && <footer className={supportStyles.footer}><Link href="/support">Share an idea</Link></footer>}
       </main>
       <BottomNav />
