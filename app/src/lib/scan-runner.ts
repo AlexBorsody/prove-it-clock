@@ -332,14 +332,22 @@ export async function runPromiseNewsScan(
               likelyDecisive = true;
               proposedState = (draft.payload as { state?: string }).state ?? "";
             }
+            // Auto-approve high-confidence AI assessments for set-and-forget operation.
+            // The AI judge must have marked this as relevant with high confidence
+            // and a clear fulfilled/lapsed assessment.
+            const aiJudgment = aiJudgments.get(promise.lineage);
+            const autoApprove = aiJudgment?.relevant === true &&
+              aiJudgment.confidence === "high" &&
+              (aiJudgment.assessment === "fulfilled" || aiJudgment.assessment === "lapsed") &&
+              draft.kind === "assessment";
             const stored: StoredProposal = {
               ...draft,
               id: `prop-${stamp}-${++propCounter}`,
               project_slug: slug,
               article_url: article.url,
               article_title: article.title,
-              status: "pending",
-              review_note: null,
+              status: autoApprove ? "approved" : "pending",
+              review_note: autoApprove ? `Auto-approved: AI high-confidence ${aiJudgment.assessment} (${aiJudgment.reasoning})` : null,
               created_at: new Date().toISOString(),
             };
             proposals.push(stored);
