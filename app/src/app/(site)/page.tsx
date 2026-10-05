@@ -19,6 +19,7 @@ import { summarizeDelivery } from '@/lib/promise-verdict';
 import { fetchUniverseMarkets, type UniverseRow } from '@/providers/coingecko';
 import { marketCapFor } from '@/lib/market-ids';
 import type { AtlasDataset } from '@/lib/atlas/types';
+import projectsDoc from '../../../data/projects.json';
 
 export const dynamic = "force-dynamic";
 
@@ -45,8 +46,24 @@ export default async function Home() {
   const hypeLatest = latestHypeBySlug(hypeSnaps);
   const baselineWeeks = hypeBaselineWeeks(hypeSnaps);
 
+  // Merge Supabase scored projects with projects.json intake (263 total)
+  const scoredBySlug = new Map(projects.map((p: any) => [p.slug, p]));
+  const allProjects = (projectsDoc.projects as any[]).map((jp: any) => {
+    const scored = scoredBySlug.get(jp.slug);
+    if (scored) return scored;
+    // Unscored intake project: basic row without hearts
+    return {
+      slug: jp.slug,
+      name: jp.name,
+      symbol: jp.symbol,
+      earned: 0,
+      capacity: 0,
+      assessment: { promises: [] },
+    };
+  });
+
   const items = await Promise.all(
-    projects.map(async (p) => {
+    allProjects.map(async (p) => {
       const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
       const nodes = atlas?.nodes.filter(node => node.projectSlug === p.slug) ?? [];
