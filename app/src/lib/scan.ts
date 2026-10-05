@@ -179,12 +179,11 @@ export interface AiJudgment {
   stance: "supports" | "refutes" | "context";
   reasoning: string;
   assessment: "fulfilled" | "lapsed" | null;
-  confidence: "high" | "medium" | "low";
 }
 
 /** True when the AI judging endpoint is configured. Live scans require it. */
 export function aiConfigured(): boolean {
-  return Boolean(process.env.SCANNER_AI_URL && process.env.SCANNER_AI_API_KEY);
+  return Boolean(process.env.SCANNER_AI_API_KEY);
 }
 
 function aiModel(): string {
@@ -197,8 +196,7 @@ const AI_SYSTEM_PROMPT =
   "\"stance\": \"supports\"|\"refutes\"|\"context\", \"reasoning\": string, " +
   "\"assessment\": \"fulfilled\"|\"lapsed\"|null}]}. One entry per promise, in the same order. " +
   "Be conservative: relevant only if the headline clearly concerns the promise's subject. " +
-  "Set assessment only on explicit delivery or failure language. " +
-              "Set confidence to high only when the headline unambiguously confirms delivery or failure.";
+  "Set assessment only on explicit delivery or failure language.";
 
 /**
  * Optional AI relevance judgment. When SCANNER_AI_URL and SCANNER_AI_API_KEY
@@ -230,9 +228,9 @@ export async function aiJudgeBatch(
   fetcher: typeof fetch = fetch,
 ): Promise<Map<string, AiJudgment>> {
   const out = new Map<string, AiJudgment>();
-  const url = process.env.SCANNER_AI_URL;
+  const url = process.env.SCANNER_AI_URL || "https://api.openai.com/v1/chat/completions";
   const key = process.env.SCANNER_AI_API_KEY;
-  if (!url || !key || promises.length === 0) return out;
+  if (!key || promises.length === 0) return out;
   const promptPromises = promises
     .map((p, i) => `${i + 1}. [${p.lineage}] ${p.criteria}`)
     .join("\n");
@@ -265,13 +263,11 @@ export async function aiJudgeBatch(
       if (typeof j.lineage !== "string" || typeof j.relevant !== "boolean") continue;
       const stance = j.stance === "supports" || j.stance === "refutes" ? j.stance : "context";
       const assessment = j.assessment === "fulfilled" || j.assessment === "lapsed" ? j.assessment : null;
-      const confidence = j.confidence === "high" ? "high" : j.confidence === "medium" ? "medium" : "low";
       out.set(j.lineage, {
         relevant: j.relevant,
         stance,
         reasoning: typeof j.reasoning === "string" ? j.reasoning.slice(0, 500) : "",
         assessment,
-        confidence,
       });
     }
   } catch {
