@@ -7,7 +7,10 @@ export const metadata = { title:'Promise Atlas | Prove Value', description:'Expl
 export default async function AtlasPage() {
   let data;
   try { data=adaptAtlas(await readPublishedPromiseLedger()); }
-  catch { return <section className="panel"><h1>Promise Atlas</h1><p role="alert">The promise ledger could not be loaded.</p><p><Link href="/atlas">Try again</Link></p></section>; }
+  catch (e) { 
+    const msg = e instanceof Error ? e.message : String(e);
+    return <section className="panel"><h1>Promise Atlas</h1><p role="alert">The promise ledger could not be loaded: {msg}</p><p><Link href="/atlas">Try again</Link></p></section>; 
+  }
   if(!data) return <section className="panel"><h1>Promise Atlas</h1><p>No promise ledger is published for the active methodology yet.</p></section>;
   return <AtlasExplorer data={data}/>;
 }
