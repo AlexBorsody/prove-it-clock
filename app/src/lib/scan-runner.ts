@@ -337,8 +337,8 @@ export async function runPromiseNewsScan(
             // and a clear fulfilled/lapsed assessment.
             const aiJudgment = aiJudgments.get(promise.lineage);
             const autoApprove = aiJudgment?.relevant === true &&
-              aiJudgment?.confidence === "high" &&
-              (aiJudgment?.assessment === "fulfilled" || aiJudgment?.assessment === "lapsed") &&
+              aiJudgment.confidence === "high" &&
+              (aiJudgment.assessment === "fulfilled" || aiJudgment.assessment === "lapsed") &&
               draft.kind === "assessment";
             const stored: StoredProposal = {
               ...draft,
@@ -347,7 +347,7 @@ export async function runPromiseNewsScan(
               article_url: article.url,
               article_title: article.title,
               status: autoApprove ? "approved" : "pending",
-              review_note: autoApprove && aiJudgment ? `Auto-approved: AI high-confidence ${aiJudgment.assessment} (${aiJudgment.reasoning})` : null,
+              review_note: autoApprove ? `Auto-approved: AI high-confidence ${aiJudgment.assessment} (${aiJudgment.reasoning})` : null,
               created_at: new Date().toISOString(),
             };
             proposals.push(stored);

@@ -184,7 +184,7 @@ export interface AiJudgment {
 
 /** True when the AI judging endpoint is configured. Live scans require it. */
 export function aiConfigured(): boolean {
-  return Boolean(process.env.SCANNER_AI_API_KEY);
+  return Boolean(process.env.SCANNER_AI_URL && process.env.SCANNER_AI_API_KEY);
 }
 
 function aiModel(): string {
@@ -201,9 +201,8 @@ const AI_SYSTEM_PROMPT =
               "Set confidence to high only when the headline unambiguously confirms delivery or failure.";
 
 /**
- * Optional AI relevance judgment. When SCANNER_AI_API_KEY is set, an
- * OpenAI-compatible chat-completions endpoint (SCANNER_AI_URL override,
- * default https://api.openai.com/v1/chat/completions) judges relevance
+ * Optional AI relevance judgment. When SCANNER_AI_URL and SCANNER_AI_API_KEY
+ * are set, an OpenAI-compatible chat-completions endpoint judges relevance
  * (paraphrase, implication) that keyword matching cannot. Any failure falls
  * back to null, and the caller keeps the rule-based decision.
  */
@@ -231,9 +230,9 @@ export async function aiJudgeBatch(
   fetcher: typeof fetch = fetch,
 ): Promise<Map<string, AiJudgment>> {
   const out = new Map<string, AiJudgment>();
-  const url = process.env.SCANNER_AI_URL || "https://api.openai.com/v1/chat/completions";
+  const url = process.env.SCANNER_AI_URL;
   const key = process.env.SCANNER_AI_API_KEY;
-  if (!key || promises.length === 0) return out;
+  if (!url || !key || promises.length === 0) return out;
   const promptPromises = promises
     .map((p, i) => `${i + 1}. [${p.lineage}] ${p.criteria}`)
     .join("\n");
