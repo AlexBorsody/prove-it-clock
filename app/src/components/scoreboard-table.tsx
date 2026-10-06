@@ -128,7 +128,9 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
   const sortKey = parseBoardSort(params.get("sort"));
   const headers = HEADERS.filter(header => header.key !== 'rank');
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(50);
   const sorted = sortScoreboard(rows, sortKey, "");
+  const visibleRows = sorted.slice(0, visibleCount);
   const { selected, toggle: toggleCompare, clear, canSelect } = useCompareSelection(compareProjects.map(project => project.slug));
   const selectedProjects = selected.flatMap(slug => compareProjects.filter(project => project.slug === slug));
 
@@ -183,7 +185,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
             </tr>
           </thead>
           <tbody role="rowgroup">
-            {sorted.map((r) => (
+            {visibleRows.map((r) => (
               <Fragment key={r.slug}>
                 <tr role="row" className={`search-section ${styles.listRow}${projectFlags(r.slug).genesis ? ` ${styles.genesisRow}` : ''}`} {...searchMeta({ id: `scoreboard-project-${r.slug}`, title: `${r.name} scoreboard`, kind: "Scoreboard", project: r.slug, keywords: `${r.symbol} promises code hype ranking` })} data-search-href={`/projects/${r.slug}#project-${r.slug}-overview`}>
                   <td role="cell">
@@ -264,6 +266,28 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
             ))}
           </tbody>
         </table>
+        {visibleCount < sorted.length && (
+          <div style={{ textAlign: "center", padding: "20px" }}>
+            <button
+              type="button"
+              onClick={() => setVisibleCount(c => Math.min(c + 50, sorted.length))}
+              style={{
+                padding: "12px 32px",
+                fontSize: "16px",
+                borderRadius: "8px",
+                border: "1px solid var(--border)",
+                background: "var(--bg-raised)",
+                color: "var(--text)",
+                cursor: "pointer",
+              }}
+            >
+              Show more ({sorted.length - visibleCount} remaining)
+            </button>
+            <p style={{ marginTop: "8px", fontSize: "14px", color: "var(--text-dim)" }}>
+              Showing {visibleCount} of {sorted.length} projects
+            </p>
+          </div>
+        )}
       </div>
       <CompareMode selectedLabels={selectedProjects.map(project => project.name)} onClear={clear}>
         <CompareTable projects={selectedProjects} showPicker={false} />
