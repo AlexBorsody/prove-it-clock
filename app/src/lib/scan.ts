@@ -179,6 +179,7 @@ export interface AiJudgment {
   stance: "supports" | "refutes" | "context";
   reasoning: string;
   assessment: "fulfilled" | "lapsed" | null;
+  confidence: "high" | "medium" | "low";
 }
 
 /** True when the AI judging endpoint is configured. Live scans require it. */
@@ -196,11 +197,13 @@ const AI_SYSTEM_PROMPT =
   "\"stance\": \"supports\"|\"refutes\"|\"context\", \"reasoning\": string, " +
   "\"assessment\": \"fulfilled\"|\"lapsed\"|null}]}. One entry per promise, in the same order. " +
   "Be conservative: relevant only if the headline clearly concerns the promise's subject. " +
-  "Set assessment only on explicit delivery or failure language.";
+  "Set assessment only on explicit delivery or failure language. " +
+              "Set confidence to high only when the headline unambiguously confirms delivery or failure.";
 
 /**
- * Optional AI relevance judgment. When SCANNER_AI_URL and SCANNER_AI_API_KEY
- * are set, an OpenAI-compatible chat-completions endpoint judges relevance
+ * Optional AI relevance judgment. When SCANNER_AI_API_KEY is set, an
+ * OpenAI-compatible chat-completions endpoint (SCANNER_AI_URL override,
+ * default https://api.openai.com/v1/chat/completions) judges relevance
  * (paraphrase, implication) that keyword matching cannot. Any failure falls
  * back to null, and the caller keeps the rule-based decision.
  */
@@ -263,11 +266,13 @@ export async function aiJudgeBatch(
       if (typeof j.lineage !== "string" || typeof j.relevant !== "boolean") continue;
       const stance = j.stance === "supports" || j.stance === "refutes" ? j.stance : "context";
       const assessment = j.assessment === "fulfilled" || j.assessment === "lapsed" ? j.assessment : null;
+      const confidence = j.confidence === "high" ? "high" : j.confidence === "medium" ? "medium" : "low";
       out.set(j.lineage, {
         relevant: j.relevant,
         stance,
         reasoning: typeof j.reasoning === "string" ? j.reasoning.slice(0, 500) : "",
         assessment,
+        confidence,
       });
     }
   } catch {
