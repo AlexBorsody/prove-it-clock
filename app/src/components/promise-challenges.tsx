@@ -1,6 +1,13 @@
 "use client";
 
-import { FastComments } from "fastcomments-nextjs";
+import dynamic from "next/dynamic";
+
+// Dynamically import FastComments to avoid build failures if the package
+// is unavailable. The widget only mounts when the challenge toggle is opened.
+const FastComments = dynamic(
+  () => import("fastcomments-nextjs").then((m) => m.FastComments as any),
+  { ssr: false, loading: () => <p>Loading comments…</p> }
+) as any;
 
 /**
  * Per-promise challenge threads, powered by FastComments.

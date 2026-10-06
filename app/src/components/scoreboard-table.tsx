@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES } from "../../data/atlas-taxonomy";
@@ -57,6 +57,50 @@ function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) 
   if (code === "Active") return null;
   if (code === "Quiet") return <span className="word dim">Quiet</span>;
   return <span className="word dim">-</span>;
+}
+
+function MarketCapCell({ slug, initialCap }: { slug: string; initialCap: number | null }) {
+  const [cap, setCap] = useState<number | null>(initialCap);
+  const [loading, setLoading] = useState(false);
+  const spanRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    if (cap != null || loading) return;
+    const el = spanRef.current;
+    if (!el) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          setLoading(true);
+          fetch(`/api/market-caps?slugs=${encodeURIComponent(slug)}`)
+            .then(r => r.json())
+            .then(data => {
+              if (data.caps && data.caps[slug] != null) {
+                setCap(data.caps[slug]);
+              }
+            })
+            .catch(() => {})
+            .finally(() => setLoading(false));
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [slug, cap, loading]);
+
+  const compactNum = new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+  });
+
+  if (cap == null) {
+    return <span ref={spanRef} className="dim">{loading ? "…" : "Unavailable"}</span>;
+  }
+  return <span>${compactNum.format(cap)}</span>;
 }
 
 const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
@@ -198,7 +242,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                       <HypeCell mentions={r.hypeMentions} collecting={r.hypeCollecting} />
                     </Link>
                   </td>
-                  <td role="cell" data-label="Market cap" className={`num ${styles.labeledCell}`}>{r.marketCap == null ? "Unavailable" : `$${compactNum.format(r.marketCap)}`}</td>
+                  <td role="cell" data-label="Market cap" className={`num ${styles.labeledCell}`}><MarketCapCell slug={r.slug} initialCap={r.marketCap} /></td>
                   <td role="cell" data-label="Notify" className={styles.labeledCell}>
                     <PushSubscribeToggle projectSlug={r.slug} label="Notify me" />
                   </td>
