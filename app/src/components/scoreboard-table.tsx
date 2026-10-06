@@ -59,6 +59,48 @@ function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) 
   return <span className="word dim">-</span>;
 }
 
+function LazyCodeCell({ slug }: { slug: string }) {
+  const [data, setData] = useState<{ code: string | null; note: string | null } | null>(null);
+  const [loading, setLoading] = useState(false);
+  const spanRef = useRef<HTMLSpanElement | null>(null);
+
+  useEffect(() => {
+    if (data || loading) return;
+    const el = spanRef.current;
+    if (!el) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          observer.disconnect();
+          setLoading(true);
+          fetch(`/api/vitals?slugs=${encodeURIComponent(slug)}`)
+            .then(r => r.json())
+            .then(json => {
+              if (json.vitals && json.vitals[slug]) {
+                const v = json.vitals[slug];
+                setData({ code: v.code, note: v.note });
+              } else {
+                setData({ code: null, note: "No commit data" });
+              }
+            })
+            .catch(() => setData({ code: null, note: "No commit data" }))
+            .finally(() => setLoading(false));
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [slug, data, loading]);
+
+  if (!data) {
+    return <span ref={spanRef} className="word dim">{loading ? "…" : "—"}</span>;
+  }
+  return <CodeWordCell code={data.code as CodeWord} note={data.note} />;
+}
+
 function MarketCapCell({ slug, initialCap }: { slug: string; initialCap: number | null }) {
   const [cap, setCap] = useState<number | null>(initialCap);
   const [loading, setLoading] = useState(false);
@@ -233,7 +275,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   <td role="cell" data-label="Code" className={styles.labeledCell}>
                     <Link href="/code" className="cell-link metric-btn" aria-label={`Code activity for ${r.name}`} title="See CODE activity ranking">
                       <GithubMark />
-                      <CodeWordCell code={r.code} note={r.codeNote} />
+                      <LazyCodeCell slug={r.slug} />
                     </Link>
                     {codeSub(r) ? <span className="cell-sub">{codeSub(r)}</span> : null}
                   </td>

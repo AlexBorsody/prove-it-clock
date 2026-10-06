@@ -4,11 +4,9 @@ import {
   readHypeSnapshots,
   latestHypeBySlug,
   hypeBaselineWeeks,
-  codeWord,
   useWord,
   type HypeSnapshot,
 } from "@/lib/heart-data";
-import { fetchVitals } from "@/lib/vitals";
 import type { CompareProject } from "@/components/compare-table";
 import ScoreboardTable, { type ScoreboardRow } from "@/components/scoreboard-table";
 import Icon from "@/components/chrome-icons";
@@ -47,7 +45,6 @@ export default async function Home() {
 
   const items = await Promise.all(
     projects.map(async (p) => {
-      const vitals = await fetchVitals(p.slug).catch(() => null);
       const promises: any[] = p.assessment?.promises ?? [];
       const nodes = atlas?.nodes.filter(node => node.projectSlug === p.slug) ?? [];
       const categoryByLineage = new Map(nodes.map(node => [node.lineageId, node.primaryCategory]));
@@ -61,17 +58,12 @@ export default async function Home() {
         earned: p.earned,
         capacity: p.capacity,
         filledPct,
-        code: codeWord(vitals ? { commits90d: vitals.commits90d } : null),
-        codeCommits: vitals?.commits90d ?? null,
-        codeStars: vitals?.stars ?? null,
+        code: "Unknown" as any,
+        codeCommits: null,
+        codeStars: null,
         marketCap: marketCapFor(p.slug,markets),
         delivery: atlas ? summarizeDelivery(atlas,p.slug) : null,
-        codeNote:
-          vitals == null
-            ? "No commit data"
-            : vitals.commits90d == null && vitals.partial
-              ? "Couldn't reach GitHub"
-              : null,
+        codeNote: null, // lazy-loaded client-side
         use: useWord(),
         hypeMentions: latest?.news_mentions_7d ?? null,
         hypeCollecting: baselineWeeks < 8,
@@ -90,7 +82,7 @@ export default async function Home() {
         slug: row.slug, name: row.name, symbol: row.symbol,
         earned: row.earned, capacity: row.capacity, filledPct: row.filledPct, assessmentAvailable: row.delivery != null,
         promiseCounts: { total: nodes.length, fulfilled: count("kept"), active: count("in_progress"), open: count("open"), lapsed: count("lapsed"), retired: count("retired"), unknown: count("unknown") },
-        code: { word: row.code, stars: row.codeStars, commits90d: row.codeCommits, lastCommitAt: vitals?.lastCommitAt ?? null, openPRs: vitals?.openPRs ?? null, unreachable: vitals != null && vitals.commits90d == null && vitals.partial },
+        code: { word: row.code, stars: null, commits90d: null, lastCommitAt: null, openPRs: null, unreachable: false },
         use: row.use, hype: { mentions: row.hypeMentions, collecting: row.hypeCollecting, baselineWeeks },
       };
       return { row, comparison };
