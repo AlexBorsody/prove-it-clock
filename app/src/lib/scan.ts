@@ -184,7 +184,7 @@ export interface AiJudgment {
 
 /** True when the AI judging endpoint is configured. Live scans require it. */
 export function aiConfigured(): boolean {
-  return Boolean(process.env.SCANNER_AI_URL && process.env.SCANNER_AI_API_KEY);
+  return Boolean(process.env.SCANNER_AI_API_KEY);
 }
 
 function aiModel(): string {
@@ -230,9 +230,9 @@ export async function aiJudgeBatch(
   fetcher: typeof fetch = fetch,
 ): Promise<Map<string, AiJudgment>> {
   const out = new Map<string, AiJudgment>();
-  const url = process.env.SCANNER_AI_URL;
+  const url = process.env.SCANNER_AI_URL || "https://api.openai.com/v1/chat/completions";
   const key = process.env.SCANNER_AI_API_KEY;
-  if (!url || !key || promises.length === 0) return out;
+  if (!key || promises.length === 0) return out;
   const promptPromises = promises
     .map((p, i) => `${i + 1}. [${p.lineage}] ${p.criteria}`)
     .join("\n");
