@@ -3,7 +3,6 @@
     "@supabase/supabase-js": "^2.45.0",
     "@types/swagger-ui-react": "^5.18.0",
     "driver.js": "^1.8.0",
-    "fastcomments-nextjs": "^1.0.3",
     "fuse.js": "^7.5.0",
     "linkedom": "0.18.13",
     "next": "^15.1.0",
