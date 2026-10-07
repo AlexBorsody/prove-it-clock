@@ -10,7 +10,7 @@ export function parseBoardSort(value:string|null,category:BoardCategory=''):Boar
   if(value==='verdict') return 'coin'; // Retired score URLs open the project browser.
   // Old overall-rank URLs now open the unranked project browser.
   if(value==='rank'&&!category) return 'coin';
-  return BOARD_SORTS.includes(value as BoardSort)?value as BoardSort:category?'rank':'coin';
+  return BOARD_SORTS.includes(value as BoardSort)?value as BoardSort:category?'rank':'market-cap';
 }
 export const parseBoardCategory=(value:string|null):BoardCategory=>CATEGORIES.some(c=>c.id===value)?value as CategoryId:'';
 interface RankingRow {
