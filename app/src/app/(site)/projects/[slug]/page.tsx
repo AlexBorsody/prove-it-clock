@@ -27,7 +27,6 @@ import { LazyCodeActivityChart as CodeActivityChart } from "@/components/lazy-ch
 import Icon from "@/components/chrome-icons";
 import InfoTip from "@/components/info-tip";
 import NotifyCard from "@/components/notify-card";
-import ProjectTimeline from '@/components/project-timeline';
 import ProjectAtlas from "@/components/atlas/project-atlas";
 import { searchMeta } from "@/lib/search-sections";
 import { projectFlags } from "@/lib/project-policy";
@@ -169,10 +168,6 @@ export default async function ProjectPage({ params, searchParams }: {
         />
         <DocumentedProblems slug={slug} name={latest.name} promises={promises} asOf={latest.as_of} available={latest.availability === "available"} />
       </div>
-
-      <Suspense fallback={<section className="panel"><h2>Promise timeline</h2><p role="status">Loading promise history…</p></section>}>
-        <ProjectTimeline slug={slug} name={latest.name} revisionId={query.history}/>
-      </Suspense>
 
       <section className={`panel ${styles.promiseUpdates}`} aria-label={`${latest.name} promise news and notifications`}>
         <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
