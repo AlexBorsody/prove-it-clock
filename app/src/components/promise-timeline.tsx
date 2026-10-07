@@ -47,7 +47,6 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
           <details id={`timeline-${event.id}`}>
             <summary><time dateTime={date(event)}>{eventDateLabel(date(event))}</time>
               <span className={styles.kind}>{EVENT_LABELS[event.kind]}{event.kind==='evidence'&&` · ${event.stance}`}{event.kind==='assessment'&&event.supersedes&&' · corrected'}</span>
-              <span className={styles.summary}>{event.summary}</span>
               <span className={styles.lineage}>{event.lineage}</span>
             </summary>
             <div className={styles.evidence}>
