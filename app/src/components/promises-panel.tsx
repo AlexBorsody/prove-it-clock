@@ -42,14 +42,22 @@ export default function PromisesPanel({
   categoryByLineage: Record<string, CategoryId | null>;
 }) {
   const [category, setCategory] = useState<CategoryId | "">("");
+  const [sort, setSort] = useState<"default" | "timeline">("default");
   const categoryOf = (pr: any): CategoryId =>
     (categoryByLineage[String(pr.lineage ?? "")] ?? "unclassified") as CategoryId;
 
-  const visible = promises.filter(
-    (pr) =>
-      matchesPromiseFilter(pr.state, filter) &&
-      (!category || categoryOf(pr) === category),
-  );
+  const visible = promises
+    .filter(
+      (pr) =>
+        matchesPromiseFilter(pr.state, filter) &&
+        (!category || categoryOf(pr) === category),
+    )
+    .sort((a, b) => {
+      if (sort !== "timeline") return 0;
+      const da = a.effective_at || "";
+      const db = b.effective_at || "";
+      return da.localeCompare(db);
+    });
   let filled = 0;
   for (const pr of visible) {
     try {
@@ -79,6 +87,19 @@ export default function PromisesPanel({
           onCategory={setCategory}
         />
       )}
+      <div style={{ margin: "8px 0" }}>
+        <label style={{ fontSize: "14px", color: "var(--text-dim)" }}>
+          Sort:{" "}
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as "default" | "timeline")}
+            style={{ marginLeft: "8px", padding: "4px 8px", borderRadius: "6px" }}
+          >
+            <option value="default">Default</option>
+            <option value="timeline">Timeline (oldest first)</option>
+          </select>
+        </label>
+      </div>
       {filter !== "all" && (
         <p className="promise-filter-status" role="status">
           {(() => {
