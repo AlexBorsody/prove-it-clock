@@ -8,7 +8,6 @@ import {
   hypeBaselineWeeks,
 } from "@/lib/heart-data";
 import { fetchVitals, VITALS_REPOS } from "@/lib/vitals";
-import { sortCodeRows } from "@/lib/code-ranking";
 import { fetchTeam, teamLine } from "@/lib/team";
 import { getPublishedLedger, getPublishedAtlas } from '@/lib/atlas/data';
 import { summarizeDelivery } from '@/lib/promise-verdict';
@@ -76,26 +75,8 @@ export default async function ProjectPage({ params, searchParams }: {
   }
   const filledPct = latest.capacity > 0 ? latest.earned / latest.capacity : 0;
 
-  // Supporting-context ranks: where this project stands among all tracked
-  // projects, using the exact default sort of the destination pages.
+  // Supporting-context ranks: disabled for performance (was fetching 263 GitHub repos per page view).
   // Context only: these never change promise states.
-  const codeRankRows = await Promise.all(
-    (ledger.projects as any[]).map(async (p: any) => {
-      const v = p.slug === slug ? vitals : await fetchVitals(p.slug).catch(() => null);
-      return {
-        slug: p.slug,
-        name: p.name,
-        stars: v?.stars ?? null,
-        forks: v?.forks ?? null,
-        watchers: v?.watchers ?? null,
-        commits90d: v?.commits90d ?? null,
-        failed: v == null,
-      };
-    })
-  );
-  const codeOrder = sortCodeRows(codeRankRows, "stars");
-  const codeRank = codeOrder.findIndex((r) => r.slug === slug) + 1;
-  const codeTotal = codeOrder.length;
 
   const hypeBySlug = latestHypeBySlug(allHypeSnaps);
   const hypeOrder = Object.keys(hypeBySlug)
@@ -167,6 +148,8 @@ export default async function ProjectPage({ params, searchParams }: {
         )}
       </div>
 
+      <NotifyCard projectSlug={slug} projectName={latest.name} />
+
       <span id="hearts" aria-hidden="true" />
 
       {/* All promise content lives in one consolidated panel below:
@@ -193,7 +176,6 @@ export default async function ProjectPage({ params, searchParams }: {
 
       <section className={`panel ${styles.promiseUpdates}`} aria-label={`${latest.name} promise news and notifications`}>
         <PromiseNews slug={slug} name={latest.name} symbol={latest.symbol} promises={promiseRefs} />
-        <NotifyCard projectSlug={slug} projectName={latest.name} />
       </section>
 
       <section className="panel atlas-section search-section" {...searchMeta({id:`project-${slug}-atlas`,title:`${latest.name} Promise Atlas`,kind:'Atlas',project:slug,keywords:'promise categories evidence'})}>
@@ -209,7 +191,6 @@ export default async function ProjectPage({ params, searchParams }: {
       </header>
       <section className="panel section-alt code-section search-section" data-tour="code" {...searchMeta({ id: `project-${slug}-code`, title: `${latest.name} Code`, kind: "Code", project: slug, keywords: `${latest.symbol} GitHub commits development` })}>
         <h2>Code <InfoTip text={`Who is actually working on ${latest.name}.`} /></h2>
-        <ContextRankBadge rank={codeRank} total={codeTotal} kind="Code" href="/code" basis="stars" />
         <div className="code-rows">
           <CodeRow
             row={codeRowData}

@@ -11,6 +11,7 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
   const [kind,setKind]=useState<EventKind|''>('');
   const [clock,setClock]=useState<'occurred'|'recorded'>('occurred');
   const [showAll,setShowAll]=useState(false);
+  const [expanded,setExpanded]=useState(false);
   const lineages=[...new Set(data.events.map(event=>event.lineage))];
   const date=(event:PromiseEvent)=>clock==='occurred'?event.occurredOn:event.recordedAt.slice(0,10);
   const events=data.events.filter(event=>(!lineage||event.lineage===lineage)&&(!kind||event.kind===kind))
@@ -23,7 +24,15 @@ export default function PromiseTimeline({data}:{data:PromiseTimelineData}) {
     });
   }
   const previous=(event:PromiseEvent)=>event.kind==='assessment'&&event.supersedes?data.events.find(p=>p.id===event.supersedes):undefined;
+  if (!expanded) {
+    return <button type="button" onClick={() => setExpanded(true)} className={styles.showMore}>
+      Show promise timeline ({events.length} events)
+    </button>;
+  }
   return <>
+    <button type="button" onClick={() => setExpanded(false)} className={styles.showMore}>
+      Hide promise timeline
+    </button>
     <div className={styles.controls}>
       <label title="Gaps mean missing coverage, not proof that nothing happened.">Promise<select value={lineage} onChange={event=>setLineage(event.target.value)}><option value="">All promises</option>{lineages.map(id=><option key={id} value={id}>{id}</option>)}</select></label>
       <label>Event<select value={kind} onChange={event=>setKind(event.target.value as EventKind|'')}><option value="">All events</option>{EVENT_KINDS.map(id=><option key={id} value={id}>{EVENT_LABELS[id]}</option>)}</select></label>
