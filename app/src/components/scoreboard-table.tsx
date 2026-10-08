@@ -46,7 +46,6 @@ const HEADERS: Array<{ key: BoardSort | null; label: string }> = [
   { key: "coin", label: "Coin" },
   { key: "hearts", label: "Promises" },
   { key: "commits", label: "Code" },
-  { key: null, label: "Usage" },
   { key: "hype", label: "Hype" },
   { key: "market-cap", label: "Market cap" },
   { key: null, label: "Notify" },
@@ -279,7 +278,6 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                     </Link>
                     {codeSub(r) ? <span className="cell-sub">{codeSub(r)}</span> : null}
                   </td>
-                  <td role="cell" data-label="Usage" className={styles.labeledCell}><span className="word dim">coming</span></td>
                   <td role="cell" data-label="Hype" className={`num ${styles.labeledCell}`}>
                     <Link href="/hype" className="cell-link metric-btn" title="See HYPE ranking">
                       <Icon name="megaphone" size={14} />
