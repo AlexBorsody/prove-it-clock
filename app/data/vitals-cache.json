@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T17:05:26.236316+00:00",
+  "updatedAt": "2026-10-09T17:10:38.266Z",
   "vitals": {
     "aave": {
       "stars": 1435,
@@ -387,7 +387,7 @@
       "partial": false
     },
     "sui": {
-      "stars": 7767,
+      "stars": 7768,
       "commits90d": 1008,
       "partial": false
     },
