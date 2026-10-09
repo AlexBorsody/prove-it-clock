@@ -185,7 +185,6 @@ export const MARKET_IDS: Record<string,string> = {
   'rocket-pool': 'rocket-pool',
   'ronin': 'ronin',
   'rune': 'thorchain',
-  's': 'solana',
   'safo': 'safo',
   'sanctum': 'sanctum-2',
   'sand': 'the-sandbox',

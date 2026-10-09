@@ -179,7 +179,9 @@ function ghHeaders(): HeadersInit {
     "User-Agent": "prove-it-vitals",
     "X-GitHub-Api-Version": "2022-11-28",
   };
-  if (process.env.GITHUB_TOKEN) h.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const token =
+    process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN ?? process.env.GITHUB_PAT ?? process.env.GH_PAT ?? "";
+  if (token) h.Authorization = `Bearer ${token}`;
   return h;
 }
 

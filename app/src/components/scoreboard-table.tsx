@@ -159,7 +159,7 @@ function HypeCell({ mentions, collecting }: { mentions: number | null; collectin
   return (
     <span>
       {mentions.toLocaleString()}
-      <span className="cell-sub">{collecting ? "collecting" : "mentions / 7d"}</span>
+      <span className={`cell-sub ${styles.hypeSub}`}>{collecting ? "collecting" : "mentions / 7d"}</span>
     </span>
   );
 }
@@ -286,7 +286,10 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   </td>
                   <td role="cell" data-label="Market cap" className={`num ${styles.labeledCell}`}><MarketCapCell slug={r.slug} initialCap={r.marketCap} /></td>
                   <td role="cell" data-label="Notify" className={styles.labeledCell}>
-                    <PushSubscribeToggle projectSlug={r.slug} label="Notify me" />
+                    <div className={styles.notifyTiers}>
+                      <PushSubscribeToggle projectSlug={r.slug} kind="news" label="News" subscribedLabel="News on" />
+                      <PushSubscribeToggle projectSlug={r.slug} label="Outcomes" subscribedLabel="Outcomes on" />
+                    </div>
                   </td>
                 </tr>
                 {expanded === r.slug ? (
