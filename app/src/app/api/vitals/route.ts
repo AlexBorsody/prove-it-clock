@@ -15,13 +15,11 @@ export const dynamic = "force-dynamic";
  */
 
 interface CachedVital { stars: number | null; commits90d: number | null; partial?: boolean }
-let cache: { updatedAt: string; vitals: Record<string, CachedVital> } | null = null;
-try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  cache = require("@/data/vitals-cache.json");
-} catch {
-  cache = null;
-}
+// Static import: bundled at build time. The vitals-refresh Action commits a
+// fresh file daily, which triggers a Vercel rebuild, so the bundle stays current.
+// (Relative path: this file is app/src/app/api/vitals/route.ts, cache is app/data/.)
+import vitalsCacheJson from "../../../../data/vitals-cache.json";
+const cache = vitalsCacheJson as { updatedAt: string; vitals: Record<string, CachedVital> } | null;
 
 function cacheFresh(): boolean {
   if (!cache?.updatedAt) return false;
