@@ -1,0 +1,32 @@
+name: Refresh GitHub vitals cache
+
+# Daily refresh of app/data/vitals-cache.json using the automatic GITHUB_TOKEN.
+# /api/vitals serves this cache, so production never needs a manually managed
+# GitHub token in Vercel env vars and never hits the anonymous rate limit.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Refresh vitals cache
+        run: node app/scripts/refresh-vitals.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit if changed
+        run: |
+          git config user.name "prove-it-bot"
+          git config user.email "bot@bubbleorbuild.com"
+          git add app/data/vitals-cache.json
+          git diff --cached --quiet || git commit -m "Habib Muse: daily vitals refresh" && git push
