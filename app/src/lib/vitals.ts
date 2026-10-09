@@ -180,7 +180,7 @@ function ghHeaders(): HeadersInit {
     "X-GitHub-Api-Version": "2022-11-28",
   };
   const token =
-    process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN ?? process.env.GITHUB_PAT ?? process.env.GH_PAT ?? "";
+    process.env.fuck_muse_git_again ?? process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN ?? process.env.GITHUB_PAT ?? process.env.GH_PAT ?? "";
   if (token) h.Authorization = `Bearer ${token}`;
   return h;
 }
