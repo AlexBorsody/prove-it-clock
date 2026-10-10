@@ -1,4 +1,4 @@
-/* The Prove-It Clock — research terminal aesthetic.
+/* Bubble or Build — research terminal aesthetic.
    Dark, dense, readable. Numbers are the visual hierarchy. */
 
 :root {
@@ -11,7 +11,7 @@
   --text: #d7dee9;
   --text-dim: #9aa5ba;
   --text-faint: #707b90;
-  --accent: #f0b429; /* prove-it amber */
+  --accent: #f0b429; /* brand amber */
   --green: #3fb950;
   --red: #f85149;
   --blue: #58a6ff;
@@ -70,11 +70,15 @@ a[href^="http"]::after {
 .appbar-inner { display: flex; align-items: center; gap: 8px; }
 .appbar-home {
   display: flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: 12px; flex: none;
+  min-width: 44px; min-height: 44px; gap: 8px; border-radius: 12px; flex: none;
+  font-size: clamp(13px, 3.4vw, 16px); font-weight: 600; white-space: nowrap;
   color: var(--text); text-decoration: none;
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
 }
 .appbar-home:active { transform: scale(0.92); }
+@media (max-width: 640px) {
+  .appbar-inner:has(.psearch-expanded) .appbar-home span { display: none; }
+}
 .appbar-left { flex: 1; min-width: 0; }
 .psearch { position: relative; }
 .psearch-expanded { flex: 1; min-width: 0; }

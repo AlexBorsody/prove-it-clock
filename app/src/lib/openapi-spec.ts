@@ -1,11 +1,11 @@
 /**
- * OpenAPI 3.0 spec for the public Prove-It v1 API.
+ * OpenAPI 3.0 spec for the public Bubble or Build v1 API.
  * Served at /api/v1/openapi.json and rendered by Swagger UI on /developers.
  */
 export const openApiSpec = {
   openapi: "3.0.3",
   info: {
-    title: "Prove Value Promise API",
+    title: "Bubble or Build Promise API",
     version: "1.1.0",
     description:
       "Did crypto projects actually deliver what they promised? Read-only access to published promise records, CODE activity and HYPE attention. No project-level warning score. No authentication. Fair use: keep request volume reasonable.",

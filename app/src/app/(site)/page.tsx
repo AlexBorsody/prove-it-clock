@@ -96,7 +96,7 @@ export default async function Home() {
   return (
     <>
       <p><Link href="/atlas" className="btn">Explore the Promise Atlas ↗</Link></p>
-      <h1 className="sr-only">Prove Value: did crypto projects actually deliver what they promised?</h1>
+      <h1 className="sr-only">Bubble or Build: did crypto projects actually deliver what they promised?</h1>
 
       {rows.length === 0 ? (
         <div className="panel search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "promises rankings" })}>

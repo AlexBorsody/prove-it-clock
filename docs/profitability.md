@@ -1,7 +1,7 @@
-# Prove Value: profitability plan
+# Bubble or Build: profitability plan
 2026-09-29. Companion to the governing moat decision.
 
-> Prove Value turns scattered crypto promises into a cited, versioned,
+> Bubble or Build turns scattered crypto promises into a cited, versioned,
 > machine-readable accountability record that funds, researchers, and AI
 > agents can use for faster, auditable diligence.
 
@@ -63,7 +63,7 @@ limits, bulk, feeds, snapshots, SLA, support, watchlists).
 
 ## The two empirical milestones
 
-1. Someone outside Prove Value cites a pv: object as the authoritative
+1. Someone outside Bubble or Build cites a pv: object as the authoritative
    record for a specific promise.
 2. Someone pays $5,000 for a pilot.
 

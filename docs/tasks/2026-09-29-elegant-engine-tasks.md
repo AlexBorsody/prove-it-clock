@@ -81,7 +81,7 @@ Rails:
 
 ## Parked (explicitly not in scope)
 
-- The five-coefficient ProveValue ranking (four of five inputs don't exist).
+- The five-coefficient Bubble or Build ranking (four of five inputs don't exist).
 - Monetary staking or prediction markets (regulatory complexity).
 - Cross-project sorting on the new meters until the methodology has sat in
   public with challenges.

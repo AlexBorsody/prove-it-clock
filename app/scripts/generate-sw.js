@@ -15,7 +15,7 @@ const path = require("path");
 
 const BUILD_ID = new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14); // YYYYMMDDHHMMSS
 
-const sw = `/* Prove Value service worker — generated at build time. Do not edit by hand. */
+const sw = `/* Bubble or Build service worker — generated at build time. Do not edit by hand. */
 /* Build: ${BUILD_ID} */
 const CACHE = "prove-value-${BUILD_ID}";
 
@@ -87,7 +87,7 @@ self.addEventListener("push", (event) => {
   } catch (err) {
     data = {};
   }
-  const title = typeof data.title === "string" && data.title ? data.title : "Prove Value";
+  const title = typeof data.title === "string" && data.title ? data.title : "Bubble or Build";
   const body = typeof data.body === "string" ? data.body : "";
   const url = typeof data.url === "string" && data.url.startsWith("/") ? data.url : "/";
   const tag = typeof data.tag === "string" ? data.tag : undefined;

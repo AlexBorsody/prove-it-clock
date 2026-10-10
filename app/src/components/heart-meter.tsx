@@ -72,42 +72,17 @@ export default function HeartMeter({
   );
 }
 
-/**
- * BrandMark: the 8-bit pixel heart on a filled green circle.
- * Header home button.
- */
+/** BrandMark uses the supplied Bubble or Build artwork without modification. */
 export function BrandMark({ size = 36 }: { size?: number }) {
-  const S = 4; // pixel size inside a 48x48 viewBox
-  const OX = (48 - 7 * S) / 2;
-  const OY = (48 - 6 * S) / 2;
-  const rects: Array<React.ReactNode> = [];
-  ROWS.forEach((row, y) => {
-    for (let x = 0; x < row.length; x++) {
-      if (row[x] === "X")
-        rects.push(
-          <rect
-            key={`${x}-${y}`}
-            x={OX + x * S}
-            y={OY + y * S}
-            width={S}
-            height={S}
-          />
-        );
-    }
-  });
   return (
-    <svg
-      viewBox="0 0 48 48"
+    <img
+      src="/bubble-or-build.svg"
       width={size}
       height={size}
+      alt=""
       aria-hidden="true"
-      style={{ display: "block" }}
-    >
-      <circle cx="24" cy="24" r="24" fill="var(--green)" />
-      <g fill="#101012" style={{ shapeRendering: "crispEdges" }}>
-        {rects}
-      </g>
-    </svg>
+      style={{ display: "block", maxWidth: "100%", height: "auto" }}
+    />
   );
 }
 

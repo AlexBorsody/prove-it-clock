@@ -1,5 +1,5 @@
 /**
- * Prove-It Clock — seed SQL generator.
+ * Bubble or Build — seed SQL generator.
  *
  * Reads the pipeline's local JSON snapshots + the frozen methodology config
  * and emits INSERT-only seed files (seed-01.sql, seed-02.sql, …) that can be
@@ -662,7 +662,7 @@ console.log("FK integrity: all references resolve. SQL sanity: quotes balanced."
 mkdirSync(HERE, { recursive: true });
 
 const HEADER = (n: number, total: number) => `-- ============================================================================
--- The Prove-It Clock — seed data (methodology v${METHODOLOGY_VERSION}, snapshot ${SNAPSHOT_DATE})
+-- Bubble or Build — seed data (methodology v${METHODOLOGY_VERSION}, snapshot ${SNAPSHOT_DATE})
 -- File ${n} of ${total}: apply ALL seed files in numeric order (seed-01.sql, seed-02.sql, ...).
 -- Each file is wrapped in its own transaction. Safe to re-run on an empty DB;
 -- on a DB that already has seed rows, INSERTs will conflict (no upsert).

@@ -2,12 +2,27 @@ import type { Metadata } from "next";
 import SwRegister from "@/components/sw-register";
 
 export const metadata: Metadata = {
-  title: "Prove Value: Crypto Accountability, Evidence-Driven",
+  title: "Bubble or Build: Crypto Accountability, Evidence-Driven",
   description:
     "Did the project do what it said it would? Promises count only while the evidence holds, with the full history on a graph.",
+  metadataBase: new URL("https://bubbleorbuild.com"),
+  applicationName: "Bubble or Build",
+  openGraph: {
+    title: "Bubble or Build: Crypto Accountability, Evidence-Driven",
+    description: "Did the project do what it said it would? Follow the promises, evidence, and outcomes.",
+    siteName: "Bubble or Build",
+    type: "website",
+    images: [{ url: "/icons/pwa/icon-512.png", width: 512, height: 512, alt: "Bubble or Build logo" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "Bubble or Build: Crypto Accountability, Evidence-Driven",
+    description: "Did the project do what it said it would? Follow the promises, evidence, and outcomes.",
+    images: [{ url: "/icons/pwa/icon-512.png", alt: "Bubble or Build logo" }],
+  },
   manifest: "/manifest.webmanifest",
   themeColor: "#0a0e14",
-  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Prove Value" },
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Bubble or Build" },
   icons: {
     icon: [
       { url: "/icons/pwa/favicon.svg", type: "image/svg+xml" },

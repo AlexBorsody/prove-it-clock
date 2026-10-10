@@ -1,5 +1,5 @@
 /**
- * Social metrics: Prove-It's own social data layer.
+ * Social metrics: Bubble or Build's own social data layer.
  *
  * DISPLAY ONLY. Social metrics never feed the hearts scoring algorithm.
  * They are our proprietary signal layer: instead of cloning CoinGecko's

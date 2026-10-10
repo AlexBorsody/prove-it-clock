@@ -24,7 +24,7 @@ supporting evidence, and dated assessment events. Repeated mentions,
 revised deadlines, deliveries, lapses, and corrections connect to that
 same promise history.
 
-Preserve both when an event happened and when Prove Value recorded it. A
+Preserve both when an event happened and when Bubble or Build recorded it. A
 historical event researched today is different from an observation
 captured at the time.
 

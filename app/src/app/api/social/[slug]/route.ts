@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { isSocialSlug, median, type SocialSnapshot } from "@/lib/social";
 
 /**
- * GET /api/social/[slug] - Prove-It's own social metrics for a project.
+ * GET /api/social/[slug] - Bubble or Build's own social metrics for a project.
  * Display only; never feeds the hearts score.
  *
  * Returns the two latest snapshots (for trend arrows) plus the

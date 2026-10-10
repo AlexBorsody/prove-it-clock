@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Prove-It Clock — v0.2.0 seed SQL generator (append-only).
+Bubble or Build — v0.2.0 seed SQL generator (append-only).
 
 Reads the v0.1.0 score_snapshot rows from db/seed/seed-01.sql and emits
 db/seed/v020/seed-01.sql, which inserts:
@@ -274,7 +274,7 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     lines = []
     lines.append("-- ============================================================================")
-    lines.append("-- The Prove-It Clock - seed data (methodology v0.2.0, snapshot 2026-09-21)")
+    lines.append("-- Bubble or Build - seed data (methodology v0.2.0, snapshot 2026-09-21)")
     lines.append("--")
     lines.append("-- APPEND-ONLY: inserts a genuine methodology_versions row for v0.2.0 and")
     lines.append("-- 84 score_snapshots rows (6 scored projects x 14 score codes). No existing")

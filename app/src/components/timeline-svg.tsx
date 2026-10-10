@@ -1,5 +1,5 @@
 /**
- * Prove-It timeline — pure presentational SVG, zero dependencies, no client JS.
+ * Bubble or Build timeline — pure presentational SVG, zero dependencies, no client JS.
  *
  * This is the shared renderer behind the server-rendered embeddable widget
  * (`app/(embed)/embed/projects/[slug]/timeline`).

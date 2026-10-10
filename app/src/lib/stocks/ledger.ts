@@ -26,7 +26,7 @@ export interface StockLedgerEvent {
   lineage: string;
   kind: string;
   occurredOn: string;
-  /** When Prove Value captured/researched the event. Never equals occurredOn by default. */
+  /** When Bubble or Build captured/researched the event. Never equals occurredOn by default. */
   recordedAt?: string;
   summary: string;
   author: string;

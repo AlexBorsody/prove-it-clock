@@ -1,6 +1,6 @@
 # Heart meter display: one meter, expands to per-category meters — review questions
 
-For ChatGPT review. Context: Prove Value scores crypto projects on whether
+For ChatGPT review. Context: Bubble or Build scores crypto projects on whether
 they kept their promises. Hearts are the per-promise inventory: one promise
 = one heart, capacity = promise count, tiers {5, 10, 20}, rewards {0, 1, 2},
 schema v3. Direction is locked: the single 1-10 leaderboard is dead, rankings

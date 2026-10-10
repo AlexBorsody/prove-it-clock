@@ -1,5 +1,5 @@
 -- ============================================================================
--- The Prove-It Clock — initial schema
+-- Bubble or Build — initial schema
 -- Migration 001
 --
 -- Design rules (from the build brief, enforced by convention):
@@ -214,7 +214,7 @@ CREATE TABLE score_component_values (
 );
 
 -- ============================================================================
--- The Prove-It Clock — migration 001 (continued)
+-- Bubble or Build — migration 001 (continued)
 -- Milestones, timeline events, explanations, later-phase stubs, RLS.
 -- ============================================================================
 

@@ -21,7 +21,7 @@ import {
 } from "@/components/icons";
 
 /**
- * Social subsection of the Vitals panel: Prove-It's own social data,
+ * Social subsection of the Vitals panel: Bubble or Build's own social data,
  * framed through the accountability lens. HYPE (social volume) sits next
  * to SUBSTANCE (hearts earned): massive hype with few hearts reads as
  * all sizzle, no steak. Display only, never scored.

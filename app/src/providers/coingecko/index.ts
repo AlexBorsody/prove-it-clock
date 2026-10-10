@@ -194,7 +194,7 @@ export async function ingestCoinGecko(
           // block timestamp, not the meaningful launch); keep the raw value
           // for audit.
           genesis_date: d.genesis_date,
-          note: "analyst-seeded launch_date used for Prove-It Age; genesis_date kept for audit",
+          note: "analyst-seeded launch_date used for project age; genesis_date kept for audit",
         }),
       );
       const dev = d.developer_data;

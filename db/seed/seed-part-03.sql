@@ -1,5 +1,5 @@
 -- ============================================================================
--- The Prove-It Clock — seed data (methodology v0.1.0, snapshot 2026-09-19)
+-- Bubble or Build — seed data (methodology v0.1.0, snapshot 2026-09-19)
 -- File 1 of 2: apply ALL seed files in numeric order (seed-01.sql, seed-02.sql, ...).
 -- Each file is wrapped in its own transaction. Safe to re-run on an empty DB;
 -- on a DB that already has seed rows, INSERTs will conflict (no upsert).

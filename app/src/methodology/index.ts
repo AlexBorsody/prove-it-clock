@@ -1,5 +1,5 @@
 /**
- * The Prove-It Clock — Scoring Model v0.1 (methodology-driven).
+ * Bubble or Build — Scoring Model v0.1 (methodology-driven).
  *
  * RULE: algorithms calculate. Nothing here is tuned per-project; every
  * number comes from (methodology config + observations + analyst seed data).

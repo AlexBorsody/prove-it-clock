@@ -28,8 +28,9 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
     <div className="shell">
       <header className="appbar">
         <div className="appbar-inner">
-          <Link href="/" className="appbar-home" aria-label="Home">
-            <BrandMark size={34} />
+          <Link href="/" className="appbar-home" aria-label="Bubble or Build home">
+            <BrandMark size={40} />
+            <span>Bubble or Build</span>
           </Link>
           <span className="appbar-left" aria-hidden="true" />
           <ProjectSearch paths={paths} />

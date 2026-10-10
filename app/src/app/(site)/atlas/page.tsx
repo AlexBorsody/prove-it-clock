@@ -3,7 +3,7 @@ import { readPublishedPromiseLedger } from '@/lib/heart-data';
 import { adaptAtlas } from '@/lib/atlas/adapter';
 import Link from 'next/link';
 export const dynamic = 'force-dynamic';
-export const metadata = { title:'Promise Atlas | Prove Value', description:'Explore the published promise ledger by subject, outcome and evidence.' };
+export const metadata = { title:'Promise Atlas | Bubble or Build', description:'Explore the published promise ledger by subject, outcome and evidence.' };
 export default async function AtlasPage() {
   let data;
   try { data=adaptAtlas(await readPublishedPromiseLedger()); }

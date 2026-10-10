@@ -8,7 +8,7 @@ import { STATE_LABELS, type AtlasSource } from '@/lib/atlas/types';
 import { categoryLabel } from '../../../../../../data/atlas-taxonomy';
 
 export const dynamic = 'force-dynamic';
-export const metadata = {title:'Promise evidence | Prove Value'};
+export const metadata = {title:'Promise evidence | Bubble or Build'};
 function Sources({sources}:{sources:AtlasSource[]}) {
   return <ul>{sources.map((source,index)=><li key={`${source.url}-${index}`}>
     <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title ?? source.url} ↗</a>

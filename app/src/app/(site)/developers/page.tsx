@@ -5,13 +5,13 @@ import { searchMeta } from "@/lib/search-sections";
 
 export const metadata: Metadata = {
   title: "API Docs",
-  description: "Prove Value API: read-only endpoints for promises, CODE, and HYPE.",
+  description: "Bubble or Build API: read-only endpoints for promises, CODE, and HYPE.",
 };
 
 export default function DevelopersPage() {
   return (
     <>
-      <div className="search-section" {...searchMeta({ id: "developers-overview", title: "Prove Value API", kind: "API", keywords: "OpenAPI developer scores endpoints" })}>
+      <div className="search-section" {...searchMeta({ id: "developers-overview", title: "Bubble or Build API", kind: "API", keywords: "OpenAPI developer scores endpoints" })}>
       <h1 className="page-title">API</h1>
       <p className="page-sub">
         Read-only promise records and supporting context, free to use.

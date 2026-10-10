@@ -3,7 +3,7 @@ Alex, 2026-09-27. Saved verbatim from his message; the stocks section brief.
 
 ## Product thesis
 
-The stock/tech version actually sharpens Prove Value because there is a real economic floor to compare the story against: revenue, profit, cash flow, margins, customers. Crypto mostly asks, "what has this thing actually proven?" Speculative tech asks, "how much of this valuation is supported by the current business, and how much depends on promises about the future?"
+The stock/tech version actually sharpens Bubble or Build because there is a real economic floor to compare the story against: revenue, profit, cash flow, margins, customers. Crypto mostly asks, "what has this thing actually proven?" Speculative tech asks, "how much of this valuation is supported by the current business, and how much depends on promises about the future?"
 
 > Crypto = proof versus speculation.
 > Speculative tech = fundamentals versus expectations.
@@ -51,7 +51,7 @@ Bloomberg, Yahoo, etc. already have price and financials. What they generally do
 
 > Here is what management told the world would happen, every revision they made, what actually happened, and how much of today's valuation still depends on outcomes that have not happened yet.
 
-That is the stock version of Prove Value.
+That is the stock version of Bubble or Build.
 
 ## Product direction (one line)
 

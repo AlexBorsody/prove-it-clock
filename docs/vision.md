@@ -1,4 +1,4 @@
-# Prove Value: Product Vision
+# Bubble or Build: Product Vision
 
 **Latest decision, 2026-09-29:** the Elegant Engine
 ([vision](#the-elegant-engine-2026-09-29),
@@ -497,7 +497,7 @@ The working product remains available; the homepage browses projects without
 an overall rank, and categories retain explicit delivery-share comparisons.
 No numerical impact weights, usage bonus or automatic decay are approved yet.
 
-## Prove Value Index: separate future work
+## Bubble or Build Index: separate future work
 
 The earlier 60/25/15 proposal is superseded as a build instruction. No Index
 formula or implementation is approved by the Atlas brief. New weights,
@@ -607,11 +607,11 @@ anything a failure. We can.
 - **Verdicts.** A 1-10 delivery-accountability meter backed by a published
   rule is something an aggregator funded by listings can never publish.
 
-One line: CoinMarketCap ranks by price. Prove Value ranks by proof.
+One line: CoinMarketCap ranks by price. Bubble or Build ranks by proof.
 
 The niche is the audience, not a feature. CMC serves people asking "what
 should I buy": every feature is a buy signal (price, momentum, sentiment,
-RSI). Prove Value serves people asking "should I believe this": verdicts,
+RSI). Bubble or Build serves people asking "should I believe this": verdicts,
 proof history, hype next to an empty meter. The burned skeptics, the
 journalists, the diligence analysts. Different job, different user, and
 CMC cannot follow without attacking its own customers.
@@ -625,7 +625,7 @@ CMC cannot follow without attacking its own customers.
 Not the dashboard (clonable in an afternoon) and not the ranking algo (the
 methodology has to be public for anyone to trust a verdict, and anything
 public gets cloned). Raw history can be backfilled; what cannot be recreated
-is the evidence available to Prove Value at the time, the assessment it
+is the evidence available to Bubble or Build at the time, the assessment it
 published from that evidence, the challenges raised before the outcome, and
 the correction chain that followed. Every month of contemporaneous
 adjudication creates historical state a later competitor cannot authentically
@@ -654,7 +654,7 @@ workflow tooling. The public record earns trust. Professional access,
 monitoring and infrastructure around that record generate revenue.
 
 The goal is researchers citing individual promise records, not "according
-to the Prove Value website." Cite, not visit.
+to the Bubble or Build website." Cite, not visit.
 
 ### Landscape: what is novel, what we borrow (Alex, 2026-09-29)
 

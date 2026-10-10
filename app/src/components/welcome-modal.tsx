@@ -101,7 +101,7 @@ export default function WelcomeModal() {
         >
           ✕
         </button>
-        <div className="welcome-kicker">Prove Value</div>
+        <div className="welcome-kicker">Bubble or Build</div>
         <h2 id="welcome-title" className="welcome-title">Did they deliver?</h2>
         <p className="welcome-sub">
           Every crypto project makes promises. We check them against what actually happened.

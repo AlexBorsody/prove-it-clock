@@ -1,5 +1,5 @@
 -- ============================================================================
--- The Prove-It Clock - seed data (methodology v0.2.0, snapshot 2026-09-21)
+-- Bubble or Build - seed data (methodology v0.2.0, snapshot 2026-09-21)
 --
 -- APPEND-ONLY: inserts a genuine methodology_versions row for v0.2.0 and
 -- 84 score_snapshots rows (6 scored projects x 14 score codes). No existing

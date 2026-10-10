@@ -50,7 +50,7 @@ export default function AtlasExplorer({ data, project }: { data:AtlasDataset; pr
   const categories=project?CATEGORIES.filter(c=>data.nodes.some(n=>(n.primaryCategory??'unclassified')===c.id||n.secondaryCategories.includes(c.id))):CATEGORIES;
   return <div className={`${styles.atlas}${project?' '+styles.embedded:''}`}>
     <header className={styles.header} {...searchMeta({id:`${prefix}-overview`,title:project?`${project.name} Promise Atlas`:'Promise Atlas',kind:'Atlas',project:project?.slug,keywords:'promise evidence categories subject map'})}>
-      {project?<><h2>{project.name} Promise Atlas</h2><p>Explore {project.name}’s promises by subject. Select a point to see the evidence.</p><Link href={fullAtlasHref} className={styles.fullAtlas}>Open full Atlas ↗</Link></>:<><span className={styles.eyebrow}>PROVE VALUE / THE PROMISE LEDGER</span>
+      {project?<><h2>{project.name} Promise Atlas</h2><p>Explore {project.name}’s promises by subject. Select a point to see the evidence.</p><Link href={fullAtlasHref} className={styles.fullAtlas}>Open full Atlas ↗</Link></>:<><span className={styles.eyebrow}>Bubble or Build / THE PROMISE LEDGER</span>
       <h1>Promise Atlas</h1><p>Explore what projects promised and what happened. Each point is a sourced promise, grouped by subject.</p></>}
     </header>
     <div className={styles.filters} aria-label="Filter promises">

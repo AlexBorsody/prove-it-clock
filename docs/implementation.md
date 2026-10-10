@@ -1,4 +1,4 @@
-# Prove Value: Implementation Plan
+# Bubble or Build: Implementation Plan
 
 **Updated 2026-09-29.** [vision.md](vision.md) is the product authority; the
 [Elegant Engine](#the-elegant-engine--build-plan-2026-09-29) below is the
@@ -1197,7 +1197,7 @@ rest waits in the plan.
 
 Currently gated:
 
-- **Prove Value Index**: separate future work requiring an approved
+- **Bubble or Build Index**: separate future work requiring an approved
   methodology/specification. Additional inputs alone do not authorize it.
 - **USAGE stat card / home row**: renders "metrics coming" until per-project
   USAGE metrics are defined. Never a number before that.
@@ -1212,7 +1212,7 @@ Currently gated:
   Parked means no spec and no build; gated means spec'd and waiting on
   data.
 
-## Phase 5: Prove Value Index (superseded; not authorized)
+## Phase 5: Bubble or Build Index (superseded; not authorized)
 
 The earlier composite formula, event-log schema and Index build order are
 superseded by Alex's Promise Atlas v1 brief (2026-09-26). Do not implement
@@ -1492,7 +1492,7 @@ with massive hype and few hearts reads as all sizzle, no steak. That
 contrast is the differentiator; raw community numbers are not.
 
 **Display only.** Hype metrics never feed the hearts scoring algorithm and
-carry 0% weight in the Prove Value Index. Hype is context: observed attention,
+carry 0% weight in the Bubble or Build Index. Hype is context: observed attention,
 never proof of support or adoption. Per [vision.md](vision.md), no trend
 percentages publish until 8 complete weeks of snapshots exist; until then,
 absolute mentions plus "baseline collecting, week N/8".

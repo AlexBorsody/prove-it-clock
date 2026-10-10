@@ -5,7 +5,7 @@ from a long-form input. Status: approved to build.**
 
 ## The one-paragraph version
 
-Prove Value is becoming an explanation layer for value, not just a
+Bubble or Build is becoming an explanation layer for value, not just a
 ranking dashboard. Three buildable features: (1) a real glossary with a
 shared definition schema used by inline help, (2) a `/learn/value`
 education page with five worked examples, (3) a "What gives this asset

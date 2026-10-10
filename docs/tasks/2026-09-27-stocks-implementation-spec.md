@@ -7,7 +7,7 @@ Author: Habib. Implementation: Codex. Working tree only, no commit, no push.
 
 ## 1. Goal
 
-Add a Speculative Tech domain where Prove Value tracks management promises against actual
+Add a Speculative Tech domain where Bubble or Build tracks management promises against actual
 delivery, current fundamentals, realized impact, and the expectations embedded in valuation.
 Tesla is the reference case. The schema must fit Nvidia, Broadcom, SpaceX, OpenAI, Anthropic
 and similar high-expectation companies without changing the core ledger.

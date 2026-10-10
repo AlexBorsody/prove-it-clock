@@ -184,7 +184,7 @@ export default function Vitals({ slug, earned, capacity }: { slug: string; earne
         </>
       )}
 
-      {/* Prove-It's own social layer: hype vs substance. Display only.
+      {/* Bubble or Build's own social layer: hype vs substance. Display only.
           Renders independently of the GitHub section above. */}
       <SocialVitals slug={slug} earned={earned} capacity={capacity} />
     </div>

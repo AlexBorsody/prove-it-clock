@@ -4,9 +4,9 @@ Paste to ChatGPT as-is. Returns structured notes; we grade, it doesn't.
 
 ---
 
-**Research brief: small-cap merit set for Prove Value**
+**Research brief: small-cap merit set for Bubble or Build**
 
-Context: Prove Value scores crypto projects on promise delivery, not price. We're adding a small-cap merit set: coins around $100-250M market cap whose real substance could merit top-50 consideration if ranked by proven value instead of market cap. Already being researched, do not repeat: BAT, TRAC (OriginTrail), NEO. Our tagline: "Truth fears no investigation."
+Context: Bubble or Build scores crypto projects on promise delivery, not price. We're adding a small-cap merit set: coins around $100-250M market cap whose real substance could merit top-50 consideration if ranked by proven value instead of market cap. Already being researched, do not repeat: BAT, TRAC (OriginTrail), NEO. Our tagline: "Truth fears no investigation."
 
 Your job: find additional candidates and report findings as structured notes. Questions, not conclusions. Give us the evidence; we grade it.
 

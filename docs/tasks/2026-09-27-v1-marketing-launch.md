@@ -1,4 +1,4 @@
-# Prove Value V1: Marketing and Launch Brief
+# Bubble or Build V1: Marketing and Launch Brief
 
 Date: 2026-09-27
 Status: draft for Alex's review
@@ -6,7 +6,7 @@ Status: draft for Alex's review
 ## The V1 call (locked)
 
 - V1 is free. No paywall on verdicts, methodology, timelines, or embeds.
-- The monetization strategy is deferred. The "special sauce" (valuation model, Prove Value Index, Pro/API tiers) ships later, and community input is part of building it well.
+- The monetization strategy is deferred. The "special sauce" (valuation model, Bubble or Build Index, Pro/API tiers) ships later, and community input is part of building it well.
 - The V1 game is SEO + links. The index is the asset: verdicts, promise-level pages, and methodology become indexable content nobody else has, and embed cards become the link machine.
 
 This fits the moat thesis: ledger history and the link graph compound over time and cannot be bought back. Paid access later sells data, never scores.

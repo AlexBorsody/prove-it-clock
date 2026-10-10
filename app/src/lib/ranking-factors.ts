@@ -1,4 +1,4 @@
-// Ranking factors for the Prove-It Clock.
+// Ranking factors for the Bubble or Build.
 //
 // The chart + card answer one question: is this project full of shit?
 // These are the factors that feed the ranking, in the order they lead the display.
@@ -82,7 +82,7 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
     status: "live",
     question: "How long have they been promising?",
     source:
-      "launch_date → snapshot date (prove-it age, years). The chart x-axis already " +
+      "launch_date → snapshot date (project age, years). The chart x-axis already " +
       "spans it; the card footer states it.",
     note: "XRP: 14.3y. BTC (control): 17.7y. Duration alone is neutral — it only " +
       "means something against promises kept.",
@@ -107,7 +107,7 @@ export const RANKING_FACTORS: RankingFactor[] = [  {
     status: "live",
     question: "How fast do they keep promises?",
     source:
-      "Computed from seed data, no new inputs: milestones kept / prove-it age " +
+      "Computed from seed data, no new inputs: milestones kept / project age " +
       "(years). Same series that draws promises_kept, divided by duration.",
     note:
       "Naive math on the examples — BTC: 4/17.7y = 0.23/yr; XRP: 2/14.3y = " +

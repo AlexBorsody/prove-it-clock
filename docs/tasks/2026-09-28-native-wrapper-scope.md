@@ -51,7 +51,7 @@ can happen anywhere with the SDK.
    TestFlight, and App Store. Cannot proceed on iOS without it.
 2. **Google Play** developer account ($25 one-time) if shipping to Play;
    sideload/APK distribution is the no-account fallback for Android.
-3. **Widget content call**: Prove Value Index number, followed projects'
+3. **Widget content call**: Bubble or Build Index number, followed projects'
    verdicts, or both? (Recommend: followed verdicts — personal, drives
    the return loop. Index alone is a billboard.)
 4. **Firebase project** for FCM (Android push) — free tier is fine.

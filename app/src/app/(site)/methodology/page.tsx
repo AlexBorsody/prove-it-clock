@@ -6,7 +6,7 @@ import styles from "./methodology.module.css";
 
 export const dynamic = "force-dynamic";
 export const metadata = {
-  title: "How Prove Value works",
+  title: "How Bubble or Build works",
   description: "What was promised, what happened, and the evidence behind each assessment.",
 };
 
@@ -36,10 +36,10 @@ function Section({ icon, title, id, open, children }: {
 export default function MethodologyPage() {
   return (
     <div className={`methodology-page ${styles.page}`}>
-      <section {...searchMeta({ id: "methodology-overview", title: "How Prove Value works", kind: "Methodology", keywords: "scoring evidence promises" })} className="search-section">
+      <section {...searchMeta({ id: "methodology-overview", title: "How Bubble or Build works", kind: "Methodology", keywords: "scoring evidence promises" })} className="search-section">
         <h1 className="page-title">Did they deliver?</h1>
         <p className="page-sub">
-          Prove Value checks what crypto projects promised against what they
+          Bubble or Build checks what crypto projects promised against what they
           delivered. Every assessment starts with a claim, a test and evidence.
         </p>
         <ol className={`panel ${styles.steps}`}>
@@ -158,7 +158,7 @@ export default function MethodologyPage() {
 
       <Section icon="book" title="Evidence, not a project score" id="publication">
         <p>
-          Prove Value presents claims, recorded outcomes and supporting context.
+          Bubble or Build presents claims, recorded outcomes and supporting context.
           The count tracks promises kept; it does not measure economic value.
           We do not combine importance weights, popularity or price into a
           project warning score.

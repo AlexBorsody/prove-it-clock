@@ -8,7 +8,7 @@ This copy includes Alex’s “Promise Fulfilled?” and PPI additions.
 
 ---
 
-# Prove-It Clock — Implementation
+# Bubble or Build — Implementation
 
 **Status:** 2026-09-22. v0.2.0 is active. Scope before further implementation. Muse is the existing build teammate; Codex owns backend architecture, schemas, ingestion, and API contracts. Alex approves methodology changes. A snapshot loader merged during this review; Part 2 includes its remaining gaps.
 

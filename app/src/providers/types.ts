@@ -1,5 +1,5 @@
 /**
- * Internal metric schema for the Prove-It Clock.
+ * Internal metric schema for the Bubble or Build.
  *
  * Provider adapters (coingecko/, defillama/) fetch vendor payloads and
  * normalize them into NormalizedMetric. Scoring code NEVER sees vendor

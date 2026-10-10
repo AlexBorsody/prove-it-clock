@@ -1,9 +1,9 @@
-# Codex build brief: Prove Value Speculative Tech / Stocks v1
+# Codex build brief: Bubble or Build Speculative Tech / Stocks v1
 2026-09-27. From Alex — the authoritative stocks v1 scope. Saved verbatim.
 
-## 1. What Prove Value is
+## 1. What Bubble or Build is
 
-Prove Value is an accountability and valuation-research product.
+Bubble or Build is an accountability and valuation-research product.
 
 The core idea is:
 
@@ -42,7 +42,7 @@ Changing valuation assumptions must never rewrite the historical promise record.
 
 ## 2. What we are building now
 
-Build the first **Speculative Tech / Stocks** domain inside Prove Value.
+Build the first **Speculative Tech / Stocks** domain inside Bubble or Build.
 
 This is not a separate product.
 
@@ -52,7 +52,7 @@ Reuse the same core architecture as crypto:
 
 The economic framing changes.
 
-For crypto, Prove Value asks:
+For crypto, Bubble or Build asks:
 
 > What was promised, what was delivered, what is actually used, and what remains speculation?
 
@@ -166,11 +166,11 @@ notes
 Definitions:
 
 occurred_at = when the real-world event happened
-recorded_at = when Prove Value captured or researched it
+recorded_at = when Bubble or Build captured or researched it
 
 These must remain separate.
 
-A historical event researched today must not appear as something Prove Value knew at the time.
+A historical event researched today must not appear as something Bubble or Build knew at the time.
 
 ---
 
@@ -698,7 +698,7 @@ Autonomy
 
 P/E is a discovery and context metric.
 
-It is not the Prove Value score.
+It is not the Bubble or Build score.
 
 ---
 
