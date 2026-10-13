@@ -1,0 +1,91 @@
+name: Verify X account (read only)
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Verify OAuth 1.0a identity
+        shell: python
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: |
+          import base64
+          import hashlib
+          import hmac
+          import http.client
+          import json
+          import os
+          import re
+          import secrets
+          import sys
+          import time
+          from urllib.parse import quote
+          
+          def fail(status):
+              print("status=" + status)
+              sys.exit(1)
+          
+          try:
+              names = ("X_API_KEY", "X_API_KEY_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET")
+              if any(not os.environ.get(name) for name in names):
+                  fail("missing_credentials")
+              encode = lambda value: quote(str(value), safe="~")
+              endpoint = "https://api.x.com/2/users/me"
+              oauth = {
+                  "oauth_consumer_key": os.environ["X_API_KEY"],
+                  "oauth_nonce": secrets.token_hex(16),
+                  "oauth_signature_method": "HMAC-SHA1",
+                  "oauth_timestamp": str(int(time.time())),
+                  "oauth_token": os.environ["X_ACCESS_TOKEN"],
+                  "oauth_version": "1.0",
+              }
+              normalized = "&".join(
+                  key + "=" + value
+                  for key, value in sorted((encode(k), encode(v)) for k, v in oauth.items())
+              )
+              base = "&".join(encode(part) for part in ("GET", endpoint, normalized))
+              signing_key = encode(os.environ["X_API_KEY_SECRET"]) + "&" + encode(os.environ["X_ACCESS_TOKEN_SECRET"])
+              oauth["oauth_signature"] = base64.b64encode(
+                  hmac.new(signing_key.encode(), base.encode(), hashlib.sha1).digest()
+              ).decode()
+              authorization = "OAuth " + ", ".join(
+                  encode(key) + '="' + encode(value) + '"'
+                  for key, value in sorted(oauth.items())
+              )
+              # One HTTPS GET only. http.client does not follow redirects.
+              connection = http.client.HTTPSConnection("api.x.com", timeout=30)
+              connection.request("GET", "/2/users/me", headers={
+                  "Authorization": authorization,
+                  "Accept": "application/json",
+              })
+              response = connection.getresponse()
+              print("http_status=" + str(response.status))
+              if response.status != 200:
+                  classifications = {401: "authentication_failed", 402: "billing_required",
+                                     403: "access_forbidden", 429: "rate_or_usage_limit"}
+                  fail(classifications.get(response.status, "http_error"))
+              payload = json.loads(response.read(65536))
+              connection.close()
+              data = payload.get("data", {})
+              username, user_id = data.get("username", ""), data.get("id", "")
+              if not isinstance(username, str) or not re.fullmatch(r"[A-Za-z0-9_]{1,15}", username):
+                  fail("invalid_identity_response")
+              if not isinstance(user_id, str) or not re.fullmatch(r"[0-9]{1,25}", user_id):
+                  fail("invalid_identity_response")
+              print("username=" + username)
+              print("user_id=" + user_id)
+              if username.lower() != "bubbleorbuild":
+                  fail("unexpected_account")
+              print("status=verified")
+          except Exception:
+              # Never print exception objects, request headers, or raw response bodies.
+              fail("request_or_response_error")
