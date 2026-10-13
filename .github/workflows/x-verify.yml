@@ -2,6 +2,11 @@ name: Verify X account (read only)
 
 on:
   workflow_dispatch:
+    inputs:
+      diagnostics_only:
+        description: Check credential formatting without making an X request
+        type: boolean
+        default: false
 
 permissions: {}
 
@@ -13,6 +18,7 @@ jobs:
       - name: Verify OAuth 1.0a identity
         shell: python
         env:
+          DIAGNOSTICS_ONLY: ${{ inputs.diagnostics_only }}
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
@@ -38,6 +44,15 @@ jobs:
               names = ("X_API_KEY", "X_API_KEY_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_TOKEN_SECRET")
               if any(not os.environ.get(name) for name in names):
                   fail("missing_credentials")
+              has_whitespace = any(
+                  any(character.isspace() for character in os.environ[name])
+                  for name in names
+              )
+              print("credentials_have_whitespace=" + str(has_whitespace).lower())
+              if os.environ.get("DIAGNOSTICS_ONLY") == "true":
+                  sys.exit(1 if has_whitespace else 0)
+              if has_whitespace:
+                  fail("credential_whitespace")
               encode = lambda value: quote(str(value), safe="~")
               endpoint = "https://api.x.com/2/users/me"
               oauth = {
