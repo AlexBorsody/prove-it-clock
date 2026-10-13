@@ -3437,7 +3437,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Mysten Labs plans to add private payments as a protocol-level primitive on Sui during 2026, private by default rather than an opt-in app feature, with selective disclosure preserved for compliance and audit needs.",
+          "claim_type": "technical",
+          "evidence_url": "https://bitcoinist.com/sui-plans-private-transactions-for-2026/",
+          "source_title": "Sui Plans Private Transactions For 2026: Mysten Labs Co-Founder",
+          "source_url": "https://bitcoinist.com/sui-plans-private-transactions-for-2026/",
+          "status": "open",
+          "date_observed": "2026-10-13"
+        },
+        {
+          "claim_text": "Sui announced on October 8, 2026 that Hashi, its native Bitcoin collateral infrastructure, will begin a phased mainnet rollout in October 2026, backed by more than $500 million in capital commitments from a launch coalition of more than 20 companies; BTC stays on the Bitcoin network while hBTC is minted on Sui, and Anchorage Digital joins as a day-one partner via its Atlas settlement infrastructure and Porto wallet.",
+          "claim_type": "milestone",
+          "evidence_url": "https://www.tradingview.com/news/chainwire:bd5c9682a094b:0-hashi-mainnet-to-launch-with-500m-in-capital-backing-adds-anchorage-digital-to-coalition/",
+          "source_title": "Hashi Mainnet to Launch With $500M in Capital Backing, Adds Anchorage Digital to Coalition",
+          "source_url": "https://www.tradingview.com/news/chainwire:bd5c9682a094b:0-hashi-mainnet-to-launch-with-500m-in-capital-backing-adds-anchorage-digital-to-coalition/",
+          "status": "open",
+          "date_observed": "2026-10-13"
+        },
+        {
+          "claim_text": "Sui plans post-quantum signatures using the NIST-standardized ML-DSA-65 scheme for native accounts and SLH-DSA-SHA2-128s inside Move smart contracts for high-value vaults, targeting quantum-safe vaults on mainnet in 2026, native ML-DSA-65 accounts on testnet by the end of 2026, and native account authentication on mainnet in Q1 2027, with timelines subject to independent audits and testnet feedback.",
+          "claim_type": "technical",
+          "evidence_url": "https://mpost.io/sui-to-deploy-quantum-safe-vaults-on-mainnet-in-2026-as-post-quantum-threat-timeline-accelerates/",
+          "source_title": "Sui To Deploy Quantum-Safe Vaults On Mainnet In 2026 As Post-Quantum Threat Timeline Accelerates",
+          "source_url": "https://mpost.io/sui-to-deploy-quantum-safe-vaults-on-mainnet-in-2026-as-post-quantum-threat-timeline-accelerates/",
+          "status": "open",
+          "date_observed": "2026-10-13"
+        },
+        {
+          "claim_text": "Mysten Labs plans zero-fee stablecoin transfers and private payments on Sui, positioning the network as a default rail for moving money, citing more than $1 trillion in stablecoin volume processed on Sui since August 2025.",
+          "claim_type": "economic",
+          "evidence_url": "https://www.theblock.co/news/ecosystems/2026-05-07-mysten-labs-abiodun-says-sui-processed-over-1-trillion-in-stablecoin-volume-since-august-as-it-eyes-free-private-payments-400396",
+          "source_title": "Mysten Labs' Abiodun says Sui processed over $1 trillion in stablecoin volume since August as it eyes free, private payments",
+          "source_url": "https://www.theblock.co/news/ecosystems/2026-05-07-mysten-labs-abiodun-says-sui-processed-over-1-trillion-in-stablecoin-volume-since-august-as-it-eyes-free-private-payments-400396",
+          "status": "open",
+          "date_observed": "2026-10-13"
+        },
+        {
+          "claim_text": "The DATA Network and its Trace registry for rights-cleared AI training data are joining the Sui stack, announced October 12, 2026: Walrus becomes the default storage layer for applications operated by the DATA Foundation, and the DATA Network will be upgraded to run as a protocol natively on Sui.",
+          "claim_type": "technical",
+          "evidence_url": "https://wisconsinbeacon.com/data-network-joins-sui-and-walrus-to-scale-the-supply-chain-for-ai-training-data/",
+          "source_title": "DATA Network joins Sui and Walrus to scale the supply chain for AI training data",
+          "source_url": "https://wisconsinbeacon.com/data-network-joins-sui-and-walrus-to-scale-the-supply-chain-for-ai-training-data/",
+          "status": "open",
+          "date_observed": "2026-10-13"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
