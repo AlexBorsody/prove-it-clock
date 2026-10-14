@@ -3220,7 +3220,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "A governance proposal from SVRN CEO Sal Ternullo would reduce NEAR Protocol's maximum annual token inflation from 2.5% to 1.6%, phased in per epoch over 24 months after a 90-day grace period, subject to a House of Stake vote expected in mid-October 2026 and subsequent validator adoption; staking yield would fall from about 5.4% to about 3.5%, the 90/10 staker/treasury split would be preserved, and roughly 66 million NEAR of new issuance would be avoided over six years.",
+          "claim_type": "economic",
+          "evidence_url": "https://bsc.news/news/near-inflation-reduction-svrn-proposal?utm_source=coingecko&utm_medium=feed",
+          "source_title": "NEAR could cut new token issuance by more than a third",
+          "source_url": "https://bsc.news/news/near-inflation-reduction-svrn-proposal?utm_source=coingecko&utm_medium=feed",
+          "status": "open",
+          "date_observed": "2026-10-14"
+        },
+        {
+          "claim_text": "NEAR's SPICE upgrade remains on the roadmap and not yet deployed as of July 2026: it would fully decouple consensus ordering from state execution, targeting a 200 millisecond block time (down from about 600 milliseconds) and about 0.4 second finality.",
+          "claim_type": "technical",
+          "evidence_url": "https://www.binance.com/en/square/post/370065372411214",
+          "source_title": "Behind NEAR's meteoric rise: the ambition of an \"AI chain,\" its paradoxes, and the unresolved questions",
+          "source_url": "https://www.binance.com/en/square/post/370065372411214",
+          "status": "open",
+          "date_observed": "2026-10-14"
+        },
+        {
+          "claim_text": "Co-founder Illia Polosukhin said at Digital Asset Summit 2026 in Singapore that near.com is almost ready and has a large roadmap of continuously added features, including bank withdrawals, transaction records for tax purposes, selective disclosure for confidential transactions, and fiat-related features launching soon; near.com also plans to add more tokenized stocks from global markets beyond the NVIDIA integration completed with Ondo Finance in September 2026, and the ultimate goal for NEAR Intents is to handle any asset to any asset, such as USD to EUR.",
+          "claim_type": "milestone",
+          "evidence_url": "https://www.cointime.ai/flash-news/near-co-40249",
+          "source_title": "NEAR Co-founder Polosukhin: Demand for Centralized Exchanges is Decreasing as On-chain Tools Expand",
+          "source_url": "https://www.cointime.ai/flash-news/near-co-40249",
+          "status": "open",
+          "date_observed": "2026-10-14"
+        },
+        {
+          "claim_text": "NEAR's 2026 roadmap emphasizes scaling chain abstraction with a larger Multi-Party Computation (MPC) network and multi-chain verifiable execution via Trusted Execution Environments (TEEs), alongside formal verification for autonomous AI system reliability, as NEAR Intents evolves from a cross-chain swap tool into a unified financial layer.",
+          "claim_type": "technical",
+          "evidence_url": "https://www.ainvest.com/news/protocol-advances-chain-abstraction-agentic-commerce-replace-legacy-bridges-2607/",
+          "source_title": "NEAR Protocol Advances Chain Abstraction and Agentic Commerce to Replace Legacy Bridges",
+          "source_url": "https://www.ainvest.com/news/protocol-advances-chain-abstraction-agentic-commerce-replace-legacy-bridges-2607/",
+          "status": "open",
+          "date_observed": "2026-10-14"
+        },
+        {
+          "claim_text": "NEAR Protocol plans to implement quantum-safe validator consensus by late 2027, extending its post-quantum work beyond the quantum-safe account signing introduced in the v2.13.0 mainnet upgrade in July 2026.",
+          "claim_type": "technical",
+          "evidence_url": "https://www.ainvest.com/news/protocol-targets-finality-spice-upgrade-etf-uncertainty-2609/",
+          "source_title": "NEAR Protocol Targets Sub-Second Finality With SPICE Upgrade Amid ETF Uncertainty",
+          "source_url": "https://www.ainvest.com/news/protocol-targets-finality-spice-upgrade-etf-uncertainty-2609/",
+          "status": "open",
+          "date_observed": "2026-10-14"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
