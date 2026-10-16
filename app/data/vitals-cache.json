@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T10:41:34.185Z",
+  "updatedAt": "2026-10-16T10:26:52.038Z",
   "vitals": {
     "aave": {
       "stars": 1434,
@@ -13,7 +13,7 @@
     },
     "algo": {
       "stars": 1437,
-      "commits90d": 71,
+      "commits90d": 72,
       "partial": false
     },
     "api3": {
@@ -22,7 +22,7 @@
       "partial": false
     },
     "ar": {
-      "stars": 1078,
+      "stars": 1077,
       "commits90d": 137,
       "partial": false
     },
@@ -33,7 +33,7 @@
     },
     "astar": {
       "stars": 768,
-      "commits90d": 36,
+      "commits90d": 39,
       "partial": false
     },
     "atom": {
@@ -48,7 +48,7 @@
     },
     "avax": {
       "stars": 2360,
-      "commits90d": 250,
+      "commits90d": 262,
       "partial": false
     },
     "balancer": {
@@ -57,8 +57,8 @@
       "partial": false
     },
     "bat": {
-      "stars": 23894,
-      "commits90d": 317,
+      "stars": 23900,
+      "commits90d": 322,
       "partial": false
     },
     "bch": {
@@ -67,7 +67,7 @@
       "partial": false
     },
     "beam": {
-      "stars": 717,
+      "stars": 716,
       "commits90d": 21,
       "partial": false
     },
@@ -87,8 +87,8 @@
       "partial": false
     },
     "btc": {
-      "stars": 90387,
-      "commits90d": 941,
+      "stars": 90395,
+      "commits90d": 951,
       "partial": false
     },
     "btt": {
@@ -127,7 +127,7 @@
       "partial": false
     },
     "dash": {
-      "stars": 1539,
+      "stars": 1538,
       "commits90d": 0,
       "partial": false
     },
@@ -157,8 +157,8 @@
       "partial": false
     },
     "eth": {
-      "stars": 51403,
-      "commits90d": 258,
+      "stars": 51404,
+      "commits90d": 262,
       "partial": false
     },
     "fet": {
@@ -168,7 +168,7 @@
     },
     "fil": {
       "stars": 2991,
-      "commits90d": 166,
+      "commits90d": 167,
       "partial": false
     },
     "frax": {
@@ -188,8 +188,8 @@
     },
     "gno": {
       "stars": 2184,
-      "commits90d": null,
-      "partial": true
+      "commits90d": 4,
+      "partial": false
     },
     "goldfinch": {
       "stars": 7,
@@ -257,8 +257,8 @@
       "partial": false
     },
     "link": {
-      "stars": 8246,
-      "commits90d": 569,
+      "stars": 8245,
+      "commits90d": 577,
       "partial": false
     },
     "liquity": {
@@ -272,7 +272,7 @@
       "partial": false
     },
     "ltc": {
-      "stars": 4605,
+      "stars": 4603,
       "commits90d": 0,
       "partial": false
     },
@@ -292,8 +292,8 @@
       "partial": false
     },
     "mina": {
-      "stars": 2127,
-      "commits90d": 950,
+      "stars": 2126,
+      "commits90d": 1008,
       "partial": false
     },
     "moonbeam": {
@@ -303,12 +303,12 @@
     },
     "near": {
       "stars": 2620,
-      "commits90d": 374,
+      "commits90d": 378,
       "partial": false
     },
     "neo": {
       "stars": 3535,
-      "commits90d": 48,
+      "commits90d": 49,
       "partial": false
     },
     "nexo": {
@@ -332,13 +332,13 @@
       "partial": false
     },
     "op": {
-      "stars": 6476,
-      "commits90d": 1057,
+      "stars": 6479,
+      "commits90d": 1077,
       "partial": false
     },
     "osmosis": {
       "stars": 960,
-      "commits90d": 7,
+      "commits90d": 9,
       "partial": false
     },
     "pendle": {
@@ -347,14 +347,14 @@
       "partial": false
     },
     "prl": {
-      "stars": 361,
-      "commits90d": 48,
+      "stars": 363,
+      "commits90d": 49,
       "partial": false
     },
     "rune": {
       "stars": 79,
-      "commits90d": 0,
-      "partial": false
+      "commits90d": null,
+      "partial": true
     },
     "sand": {
       "stars": 185,
@@ -367,13 +367,13 @@
       "partial": false
     },
     "sol": {
-      "stars": 1948,
+      "stars": 1954,
       "commits90d": 0,
       "partial": false
     },
     "storj": {
-      "stars": 3282,
-      "commits90d": 148,
+      "stars": 3283,
+      "commits90d": 158,
       "partial": false
     },
     "stride": {
@@ -387,12 +387,12 @@
       "partial": false
     },
     "sui": {
-      "stars": 7777,
-      "commits90d": 896,
+      "stars": 7778,
+      "commits90d": 904,
       "partial": false
     },
     "sushiswap": {
-      "stars": 1945,
+      "stars": 1944,
       "commits90d": 135,
       "partial": false
     },
@@ -428,8 +428,8 @@
     },
     "twt": {
       "stars": 3573,
-      "commits90d": null,
-      "partial": true
+      "commits90d": 21,
+      "partial": false
     },
     "usdc": {
       "stars": 808,
@@ -463,22 +463,22 @@
     },
     "xlm": {
       "stars": 3307,
-      "commits90d": 198,
+      "commits90d": 202,
       "partial": false
     },
     "xmr": {
-      "stars": 10928,
-      "commits90d": 528,
+      "stars": 10931,
+      "commits90d": 532,
       "partial": false
     },
     "xrp": {
-      "stars": 5230,
-      "commits90d": 502,
+      "stars": 5229,
+      "commits90d": 523,
       "partial": false
     },
     "xtz": {
       "stars": 113,
-      "commits90d": 815,
+      "commits90d": 816,
       "partial": false
     },
     "zec": {
