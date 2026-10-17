@@ -3776,7 +3776,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "EigenCompute, EigenCloud's verifiable offchain compute service, is targeted for a mainnet launch in the third quarter of 2026: developers would write application logic in languages such as Python or Rust, deploy it in containers, and have that offchain logic secured and verifiable on any blockchain, extending onchain security to complex applications such as onchain games and verifiable AI.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-17",
+          "evidence_url": "https://coinmarketcap.com:443/tr/cmc-ai/eigenlayer/latest-updates/",
+          "source_title": "Latest EigenCloud News - (EIGEN) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com:443/tr/cmc-ai/eigenlayer/latest-updates/",
+          "status": "open"
+        },
+        {
+          "claim_text": "The ELIP-12 tokenomics proposal, introduced in December 2025, would impose a 20 percent protocol fee on Actively Validated Service rewards that are subsidized by EIGEN incentives and direct all of EigenCloud's net fees into a contract that can be used for EIGEN buybacks, alongside a new Incentives Committee to direct EIGEN emissions; as of October 2026 the proposal had not yet been fully implemented and any buyback effect depends on EigenCloud generating meaningful fee revenue.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-17",
+          "evidence_url": "https://coinmarketcap.com/de/cmc-ai/eigenlayer/latest-updates/",
+          "source_title": "Latest EigenCloud News - (EIGEN) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com/de/cmc-ai/eigenlayer/latest-updates/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Eigen Labs launched EigenCloud as a developer platform intended to extend blockchain trust and verifiability to any application, onchain or offchain, alongside a 70 million dollar EIGEN token purchase by a16z crypto: an alpha release shipped the week of the announcement with major EigenDA upgrades and a gated preview of EigenVerify, a dispute and verification primitive using EIGEN forkability for slashing, while EigenCompute was placed on the future roadmap to simplify building Actively Validated Services, with developer access to be rolled out in stages over the following months.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-17",
+          "evidence_url": "https://www.ainvest.com/news/a16z-crypto-invests-70-million-eigenlayer-eigencloud-launch-2506/",
+          "source_title": "a16z Crypto Invests $70 Million in EigenLayer for EigenCloud Launch",
+          "source_url": "https://www.ainvest.com/news/a16z-crypto-invests-70-million-eigenlayer-eigencloud-launch-2506/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On February 17, 2026 Eigen Labs formally positioned EigenCloud as a verifiable cloud for the agentic era, infrastructure meant to make autonomous AI agents accountable when they handle money, data and sensitive operations: the stack rests on EigenLayer reaching protocol-complete status with slashing and redistribution in 2025, EigenDA for data availability, EigenCompute offering an AWS-style developer experience with onchain verifiability, and EigenAI delivering deterministic, auditable inference for open-source models, with early integrations with Google and Coinbase claimed but not detailed.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-17",
+          "evidence_url": "https://asiatokenfund.com/eigencloud-launches-verifiable-infrastructure-for-ai-agents-managing-real-assets/",
+          "source_title": "EigenCloud Launches Verifiable Infrastructure for AI Agents Managing Real Assets",
+          "source_url": "https://asiatokenfund.com/eigencloud-launches-verifiable-infrastructure-for-ai-agents-managing-real-assets/",
+          "status": "open"
+        },
+        {
+          "claim_text": "EigenCloud's 2026 ecosystem rollout included a partnership with Intel and Google Cloud announced on April 29, 2026 to build trusted-execution-environment based trust for verifiable AI agents, and a March 26, 2026 integration with Coinbase's AgentKit in beta, under which AI agents can publish content, interact and generate revenue; both are presented as early-stage steps toward verifiable agent infrastructure rather than sources of measurable token demand today.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-17",
+          "evidence_url": "https://www.ainvest.com/news/eigen-eigen-4-8-dip-aug-1-unlock-approaches-rebrand-momentum-offset-dilution-2607/",
+          "source_title": "EIGEN (EIGEN) | 4.8% Dip as Aug 1 Unlock Approaches -- Can the Rebrand Momentum Offset Dilution?",
+          "source_url": "https://www.ainvest.com/news/eigen-eigen-4-8-dip-aug-1-unlock-approaches-rebrand-momentum-offset-dilution-2607/",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
