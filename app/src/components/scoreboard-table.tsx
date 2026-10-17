@@ -154,14 +154,9 @@ function codeSub(row: ScoreboardRow): string | null {
   return parts.length ? parts.join(" · ") : null;
 }
 
-function HypeCell({ mentions, collecting }: { mentions: number | null; collecting: boolean }) {
+function HypeCell({ mentions }: { mentions: number | null }) {
   if (mentions == null) return <span style={{ color: "var(--text-faint)" }}>-</span>;
-  return (
-    <span style={{ whiteSpace: "nowrap" }}>
-      {mentions.toLocaleString()}
-      <span className="cell-sub">{collecting ? "collecting" : "mentions / 7d"}</span>
-    </span>
-  );
+  return <span>{mentions.toLocaleString()}</span>;
 }
 
 export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: ScoreboardRow[]; asOf?: string; compareProjects?: CompareProject[] }) {
@@ -281,12 +276,16 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   <td role="cell" data-label="Hype" className={`num ${styles.labeledCell}`}>
                     <Link href="/hype" className="cell-link metric-btn" title="See HYPE ranking">
                       <Icon name="megaphone" size={14} />
-                      <HypeCell mentions={r.hypeMentions} collecting={r.hypeCollecting} />
+                      <HypeCell mentions={r.hypeMentions} />
                     </Link>
+                    {r.hypeMentions != null ? <span className="cell-sub">{r.hypeCollecting ? "collecting" : "mentions / 7d"}</span> : null}
                   </td>
                   <td role="cell" data-label="Market cap" className={`num ${styles.labeledCell}`}><MarketCapCell slug={r.slug} initialCap={r.marketCap} /></td>
                   <td role="cell" data-label="Notify" className={styles.labeledCell}>
-                    <PushSubscribeToggle projectSlug={r.slug} label="Notify me" />
+                    <div className={styles.notifyTiers}>
+                      <PushSubscribeToggle projectSlug={r.slug} kind="news" label="News mentions" subscribedLabel="News on" />
+                      <PushSubscribeToggle projectSlug={r.slug} label="Promise outcomes" subscribedLabel="Outcomes on" />
+                    </div>
                   </td>
                 </tr>
                 {expanded === r.slug ? (
