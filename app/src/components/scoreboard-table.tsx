@@ -41,14 +41,14 @@ export interface ScoreboardRow {
   promises: PromiseBrief[];
 }
 
-const HEADERS: Array<{ key: BoardSort | null; label: string }> = [
+const HEADERS: Array<{ key: BoardSort | null; label: string; sub?: string }> = [
   { key: "rank", label: "#" },
   { key: "coin", label: "Coin" },
   { key: "hearts", label: "Promises" },
   { key: "commits", label: "Code" },
   { key: "hype", label: "Hype" },
   { key: "market-cap", label: "Market cap" },
-  { key: null, label: "Notify" },
+  { key: null, label: "Notify", sub: "news & outcomes" },
 ];
 
 function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) {
@@ -58,8 +58,8 @@ function CodeWordCell({ code, note }: { code: CodeWord; note?: string | null }) 
   return <span className="word dim">-</span>;
 }
 
-function LazyCodeCell({ slug }: { slug: string }) {
-  const [data, setData] = useState<{ code: string | null; note: string | null } | null>(null);
+function CodeCell({ slug, name }: { slug: string; name: string }) {
+  const [data, setData] = useState<{ code: string | null; note: string | null; commits: number | null; stars: number | null } | null>(null);
   const [loading, setLoading] = useState(false);
   const spanRef = useRef<HTMLSpanElement | null>(null);
 
@@ -67,7 +67,7 @@ function LazyCodeCell({ slug }: { slug: string }) {
     if (data || loading) return;
     const el = spanRef.current;
     if (!el) return;
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -78,27 +78,39 @@ function LazyCodeCell({ slug }: { slug: string }) {
             .then(json => {
               if (json.vitals && json.vitals[slug]) {
                 const v = json.vitals[slug];
-                setData({ code: v.code, note: v.note });
+                setData({ code: v.code, note: v.note, commits: v.commits, stars: v.stars });
               } else {
-                setData({ code: null, note: "No commit data" });
+                setData({ code: null, note: "No commit data", commits: null, stars: null });
               }
             })
-            .catch(() => setData({ code: null, note: "No commit data" }))
+            .catch(() => setData({ code: null, note: "No commit data", commits: null, stars: null }))
             .finally(() => setLoading(false));
         }
       },
       { rootMargin: "200px" }
     );
-    
+
     observer.observe(el);
     return () => observer.disconnect();
   }, [slug, data, loading]);
 
-  if (!data) {
-    return <span ref={spanRef} className="word dim">{loading ? "…" : "—"}</span>;
-  }
-  return <CodeWordCell code={data.code as CodeWord} note={data.note} />;
+  const sub = data && !data.note ? vitalsSub(data) : null;
+
+  return (
+    <>
+      <Link href="/code" className="cell-link metric-btn" aria-label={`Code activity for ${name}`} title="See CODE activity ranking">
+        <GithubMark />
+        {!data ? (
+          <span ref={spanRef} className="word dim">{loading ? "…" : "—"}</span>
+        ) : (
+          <CodeWordCell code={data.code as CodeWord} note={data.note} />
+        )}
+      </Link>
+      {sub ? <span className="cell-sub">{sub}</span> : null}
+    </>
+  );
 }
+
 
 function MarketCapCell({ slug, initialCap }: { slug: string; initialCap: number | null }) {
   const [cap, setCap] = useState<number | null>(initialCap);
@@ -147,16 +159,16 @@ function MarketCapCell({ slug, initialCap }: { slug: string; initialCap: number 
 const compactNum = new Intl.NumberFormat("en", { notation: "compact" });
 
 /** Homepage CODE sub-line: stars plus 90-day commits, omitting unknowns. */
-function codeSub(row: ScoreboardRow): string | null {
+function vitalsSub(v: { stars: number | null; commits: number | null }): string | null {
   const parts: string[] = [];
-  if (row.codeStars != null) parts.push(`★ ${compactNum.format(row.codeStars)}`);
-  if (row.codeCommits != null) parts.push(`${row.codeCommits.toLocaleString()} commits / 90d`);
+  if (v.stars != null) parts.push(`★ ${compactNum.format(v.stars)}`);
+  if (v.commits != null) parts.push(`${v.commits.toLocaleString()} commits / 90d`);
   return parts.length ? parts.join(" · ") : null;
 }
 
 function HypeCell({ mentions }: { mentions: number | null }) {
   if (mentions == null) return <span style={{ color: "var(--text-faint)" }}>-</span>;
-  return <span>{mentions.toLocaleString()}</span>;
+  return <span style={{ whiteSpace: "nowrap" }}>{mentions.toLocaleString()}</span>;
 }
 
 export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: ScoreboardRow[]; asOf?: string; compareProjects?: CompareProject[] }) {
@@ -192,7 +204,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
   return (
     <div className="search-section" {...searchMeta({ id: "scoreboard-overview", title: "Project scoreboard", kind: "Scoreboard", keywords: "promises rankings" })}>
       <h2>Browse projects</h2>
-      <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes.</p>
+      <p className={styles.note}>Explore promises by subject and inspect the evidence behind their recorded outcomes. Turn on Notify for any project to get push alerts: News mentions when it appears in the news, Promise outcomes when a promise verdict is recorded.</p>
       <div className={styles.controls}>
         <label htmlFor="scoreboard-sort">Sort by<select id="scoreboard-sort" value={sortKey} onChange={e => toggle(parseBoardSort(e.target.value))}>
           {BOARD_SORTS.filter(key => key !== 'use' && key !== 'rank').map(key => <option key={key} value={key}>{BOARD_SORT_LABELS[key]}{!['rank','coin'].includes(key) ? ' · highest first' : ''}</option>)}
@@ -202,7 +214,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
         <table className={`board ${styles.table}`} role="table">
           <colgroup>
             <col className={styles.coinColumn} /><col className={styles.heartsColumn} />
-            <col className={styles.codeColumn} /><col className={styles.usageColumn} />
+            <col className={styles.codeColumn} />
             <col className={styles.hypeColumn} /><col className={styles.marketColumn} />
             <col className={styles.notifyColumn} />
           </colgroup>
@@ -215,7 +227,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                   role="columnheader"
                   aria-sort={h.key === sortKey ? (["rank","coin"].includes(sortKey) ? "ascending" : "descending") : undefined}
                 >
-                  {h.label}{h.key === sortKey ? (['rank','coin'].includes(sortKey) ? ' ↑' : ' ↓') : ''}
+                  {h.label}{h.key === sortKey ? (['rank','coin'].includes(sortKey) ? ' ↑' : ' ↓') : ''}{h.sub ? <span className="cell-sub">{h.sub}</span> : null}
                 </th>
               ))}
             </tr>
@@ -267,11 +279,7 @@ export default function ScoreboardTable({ rows, compareProjects = [] }: { rows: 
                     </div>
                   </td>
                   <td role="cell" data-label="Code" className={styles.labeledCell}>
-                    <Link href="/code" className="cell-link metric-btn" aria-label={`Code activity for ${r.name}`} title="See CODE activity ranking">
-                      <GithubMark />
-                      <LazyCodeCell slug={r.slug} />
-                    </Link>
-                    {codeSub(r) ? <span className="cell-sub">{codeSub(r)}</span> : null}
+                    <CodeCell slug={r.slug} name={r.name} />
                   </td>
                   <td role="cell" data-label="Hype" className={`num ${styles.labeledCell}`}>
                     <Link href="/hype" className="cell-link metric-btn" title="See HYPE ranking">
