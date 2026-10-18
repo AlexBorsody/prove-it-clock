@@ -3436,7 +3436,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "DTCC's Tokenization Service is scheduled to launch commercially at the end of October 2026 with Canton as its public network, following a completed pilot and July 15, 2026 production trades in which more than 30 firms ran collateral pledging, securities lending, U.S. Treasury repo, and equity token transfer workflows; the service creates tokenized representations of DTC-held securities, starting from a base that includes U.S. Treasuries, Russell 1000 constituents, and major-index ETFs under a December 2025 SEC no-action letter.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-18",
+          "evidence_url": "https://www.morningstar.com/news/pr-newswire/20261014ny71910/canton-strategic-holdings-inc-delivers-third-quarter-canton-network-ecosystem-update",
+          "source_title": "Canton Strategic Holdings, Inc. Delivers Third Quarter Canton Network Ecosystem Update",
+          "source_url": "https://www.morningstar.com/news/pr-newswire/20261014ny71910/canton-strategic-holdings-inc-delivers-third-quarter-canton-network-ecosystem-update",
+          "status": "open"
+        },
+        {
+          "claim_text": "J.P. Morgan is executing a phased rollout throughout 2026 to issue its JPM Coin (JPMD) deposit token natively on the Canton Network, so that JPMD can take part in Canton's private, permissioned delivery-versus-payment and payment-versus-payment settlement workflows and support intraday liquidity.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-18",
+          "evidence_url": "https://www.ainvest.com/news/canton-network-cc-secures-2b-valuation-etf-institutional-push-2605/",
+          "source_title": "Canton Network (CC) Secures $2B Valuation and First U.S. ETF Amid Institutional Push",
+          "source_url": "https://www.ainvest.com/news/canton-network-cc-secures-2b-valuation-etf-institutional-push-2605/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Zenith, a tier-1 Canton Super Validator, is building the first native Ethereum Virtual Machine (EVM) and Solana Virtual Machine (SVM) execution layer for Canton, scheduled for mainnet launch in the third quarter of 2026, intended to let developers familiar with Ethereum and Solana build privacy-preserving institutional applications on the network.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-18",
+          "evidence_url": "https://www.ainvest.com/news/canton-network-cc-secures-2b-valuation-etf-institutional-push-2605/",
+          "source_title": "Canton Network (CC) Secures $2B Valuation and First U.S. ETF Amid Institutional Push",
+          "source_url": "https://www.ainvest.com/news/canton-network-cc-secures-2b-valuation-etf-institutional-push-2605/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Canton has implemented Logical Synchronizer Upgrades (LSU) that move the network from Protocol 3.4 to 3.5 and allow core protocol upgrades with zero downtime, without pausing transaction processing and while preserving historical data; alongside this, the Canton Foundation launched a Protocol Development Fund dedicating 5 percent of future CC token emissions to open-source tools, security audits, and infrastructure.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-18",
+          "evidence_url": "https://www.ainvest.com/news/canton-network-cc-secures-2b-valuation-etf-institutional-push-2605/",
+          "source_title": "Canton Network (CC) Secures $2B Valuation and First U.S. ETF Amid Institutional Push",
+          "source_url": "https://www.ainvest.com/news/canton-network-cc-secures-2b-valuation-etf-institutional-push-2605/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Canton's Mainnet Extension Burn CIP, formerly the subnets proposal, was expected to land by October 4, 2026, writing a protocol-level token burn mechanism for CC directly into the protocol as a standing supply-reduction feature; the source announcing it did not specify the magnitude of the burn, so its practical effect on circulating supply depends on implementation details and published burn volumes.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-18",
+          "evidence_url": "https://www.tradingview.com/news/coinmarketcal:04790c3b7094b:0-canton-mainnet-burn-cip-lands-introducing-a-token-burn-mechanism-by-04-oct-2026/",
+          "source_title": "Canton: Mainnet burn CIP lands, introducing a token burn mechanism - By 04 Oct 2026",
+          "source_url": "https://www.tradingview.com/news/coinmarketcal:04790c3b7094b:0-canton-mainnet-burn-cip-lands-introducing-a-token-burn-mechanism-by-04-oct-2026/",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
