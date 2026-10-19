@@ -37,11 +37,13 @@ interface Props {
   subscribedLabel?: string;
   /** Explain why push is unavailable in contexts where that matters. */
   showUnavailable?: boolean;
+  /** Let users remove the older decisive-news preference during the scope cleanup. */
+  showLegacyResolutionCleanup?: boolean;
   /** Big blue primary treatment for the hero placement. */
   big?: boolean;
 }
 
-export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", showUnavailable = false, big = false }: Props) {
+export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", showUnavailable = false, showLegacyResolutionCleanup = false, big = false }: Props) {
   const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
   const [supported] = useState(
     () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && vapidKey.length > 0,
@@ -50,6 +52,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
   const [busy, setBusy] = useState(false);
   const [denied, setDenied] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [legacyResolutionSubscribed, setLegacyResolutionSubscribed] = useState(false);
   const endpointRef = useRef<string | null>(null);
 
   const refresh = useCallback(async () => {
@@ -79,10 +82,13 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
               : !s.lineage && !s.kind,
         ),
       );
+      if (showLegacyResolutionCleanup) {
+        setLegacyResolutionSubscribed(data.scopes.some((s) => s.kind === "resolution" && !s.lineage));
+      }
     } catch {
       setErrorMessage("Couldn't check notification status. Try again.");
     }
-  }, [projectSlug, lineage, kind]);
+  }, [projectSlug, lineage, kind, showLegacyResolutionCleanup]);
 
   useEffect(() => {
     if (!supported) return;
@@ -99,6 +105,28 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         : "Push notifications are not supported in this browser.";
     return <span role="status" className="push-toggle-unavailable">{message}</span>;
   }
+
+  const disableLegacyResolution = async () => {
+    if (busy || !endpointRef.current) return;
+    setErrorMessage("");
+    setBusy(true);
+    try {
+      const res = await fetch("/api/push/unsubscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          endpoint: endpointRef.current,
+          scope: { project_slug: projectSlug, kind: "resolution" },
+        }),
+      });
+      if (!res.ok) throw new Error("unsubscribe failed");
+      setLegacyResolutionSubscribed(false);
+    } catch {
+      setErrorMessage("Couldn't turn off the older decisive-news alert. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const toggle = async () => {
     if (busy) return;
@@ -165,6 +193,12 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
       >
         {busy ? "Working" : subscribed ? subscribedLabel : label}
       </button>
+      {showLegacyResolutionCleanup && legacyResolutionSubscribed ? (
+        <span role="status" className="push-toggle-legacy">
+          Older decisive-news alerts are still on.{" "}
+          <button type="button" onClick={disableLegacyResolution} disabled={busy}>Turn them off</button>
+        </span>
+      ) : null}
       {errorMessage ? <span role="status" className="push-toggle-error">{errorMessage}</span> : null}
     </span>
   );
