@@ -31,6 +31,7 @@ export default function NotifyCard({ projectSlug, projectName }: { projectSlug: 
             label="Promise outcomes"
             subscribedLabel="Outcomes on"
             showUnavailable
+            showLegacyResolutionCleanup
           />
           <InfoTip text="Alerts when a human publishes a promise status change in the ledger." />
         </div>
