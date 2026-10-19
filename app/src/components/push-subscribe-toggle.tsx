@@ -150,6 +150,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         const permission = await Notification.requestPermission();
         if (permission !== "granted") {
           if (permission === "denied") setDenied(true);
+          else setErrorMessage("Allow notifications in your browser to subscribe.");
           return;
         }
         const registration = await navigator.serviceWorker.ready;
@@ -188,6 +189,13 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         className={`btn push-toggle${big ? " push-toggle-big" : ""}`}
         data-subscribed={subscribed ? "true" : "false"}
         aria-pressed={subscribed}
+        title={
+          kind === "news"
+            ? "News mentions: alerts when our scanner matches an article to a promise."
+            : lineage
+              ? "Promise news: alerts when news matches this promise."
+              : "Promise outcomes: alerts when a human publishes a promise status change."
+        }
         disabled={busy}
         onClick={toggle}
       >
