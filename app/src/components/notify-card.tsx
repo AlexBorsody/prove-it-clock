@@ -13,7 +13,7 @@ export default function NotifyCard({ projectSlug, projectName }: { projectSlug: 
     <div className={`panel ${styles.card}`}>
       <h2 className={styles.title}>Promise notifications</h2>
       <p className={styles.lede}>
-        Get a push alert when news touches one of {projectName}&apos;s promises. Two tiers, pick either or both.
+        Choose which {projectName} promise updates should reach you: matching news, published promise outcomes, or both.
       </p>
       <div className={styles.tiers}>
         <div className={styles.tier}>
@@ -28,25 +28,25 @@ export default function NotifyCard({ projectSlug, projectName }: { projectSlug: 
         <div className={styles.tier}>
           <PushSubscribeToggle
             projectSlug={projectSlug}
-            kind="resolution"
-            label="Decisive news only"
-            subscribedLabel="Decisive alerts on"
+            label="Promise outcomes"
+            subscribedLabel="Outcomes on"
+            showUnavailable
+            showLegacyResolutionCleanup
           />
-          <InfoTip text="Only articles that look like they settle a promise." />
+          <InfoTip text="Alerts when a human publishes a promise status change in the ledger." />
         </div>
       </div>
       <details className={styles.how}>
         <summary>How this works</summary>
         <div className={styles.howBody}>
           <p>
-            <strong>Any news mention.</strong> Our scanner checks fresh articles against every open promise.
-            When an article matches, you get the headline and the publisher. A mention is an observed fact,
+            <strong>News mentions.</strong> Our scanner checks fresh articles against open promises.
+            When an article matches, you get the headline and publisher. A mention is an observed fact,
             not a judgment.
           </p>
           <p>
-            <strong>Decisive news only.</strong> When a headline carries explicit delivery or failure language,
-            the scanner drafts a fulfilled or lapsed assessment and you get alerted at that point. The published
-            ledger only changes after a human verifies the source, so treat the alert as a heads up, not a verdict.
+            <strong>Promise outcomes.</strong> When a human publishes a promise status change in the ledger,
+            you get an alert. The scanner can suggest an assessment, but it cannot change the published ledger.
           </p>
           <p>
             <strong>What you will never get.</strong> Price moves, market data, or hype. Notifications cover

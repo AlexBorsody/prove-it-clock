@@ -7,8 +7,8 @@
  * - news tier:   { project_slug, kind }          ("news": any mention,
  *                                                "resolution": likely decisive)
  *
- * Renders nothing when push is unsupported or the VAPID public key is not
- * configured. Quiet styling: a small text button, no urgency treatment.
+ * Reports unsupported/blocked push on the project page and keeps toggle errors
+ * visible so subscription failures are not silent.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -35,11 +35,15 @@ interface Props {
   label: string;
   /** Shown when subscribed; defaults to "Notifications on". */
   subscribedLabel?: string;
+  /** Explain why push is unavailable in contexts where that matters. */
+  showUnavailable?: boolean;
+  /** Let users remove the older decisive-news preference during the scope cleanup. */
+  showLegacyResolutionCleanup?: boolean;
   /** Big blue primary treatment for the hero placement. */
   big?: boolean;
 }
 
-export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", big = false }: Props) {
+export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", showUnavailable = false, showLegacyResolutionCleanup = false, big = false }: Props) {
   const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
   const [supported] = useState(
     () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && vapidKey.length > 0,
@@ -47,6 +51,8 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
   const [subscribed, setSubscribed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [denied, setDenied] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [legacyResolutionSubscribed, setLegacyResolutionSubscribed] = useState(false);
   const endpointRef = useRef<string | null>(null);
 
   const refresh = useCallback(async () => {
@@ -61,7 +67,11 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         `/api/push/status?endpoint=${encodeURIComponent(sub.endpoint)}&project_slug=${encodeURIComponent(projectSlug)}`,
         { cache: "no-store" },
       );
-      if (!res.ok) return;
+      if (!res.ok) {
+        setErrorMessage("Couldn't check notification status. Try again.");
+        return;
+      }
+      setErrorMessage("");
       const data = (await res.json()) as { scopes: Array<{ lineage?: string; kind?: string }> };
       setSubscribed(
         data.scopes.some((s) =>
@@ -72,10 +82,13 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
               : !s.lineage && !s.kind,
         ),
       );
+      if (showLegacyResolutionCleanup) {
+        setLegacyResolutionSubscribed(data.scopes.some((s) => s.kind === "resolution" && !s.lineage));
+      }
     } catch {
-      /* status check failed; leave toggle off rather than lie */
+      setErrorMessage("Couldn't check notification status. Try again.");
     }
-  }, [projectSlug, lineage, kind]);
+  }, [projectSlug, lineage, kind, showLegacyResolutionCleanup]);
 
   useEffect(() => {
     if (!supported) return;
@@ -83,10 +96,41 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
     void refresh();
   }, [supported, refresh]);
 
-  if (!supported || denied) return null;
+  if (!supported || denied) {
+    if (!showUnavailable) return null;
+    const message = denied
+      ? "Notifications are blocked in your browser settings."
+      : vapidKey.length === 0
+        ? "Push notifications are not configured on this site."
+        : "Push notifications are not supported in this browser.";
+    return <span role="status" className="push-toggle-unavailable">{message}</span>;
+  }
+
+  const disableLegacyResolution = async () => {
+    if (busy || !endpointRef.current) return;
+    setErrorMessage("");
+    setBusy(true);
+    try {
+      const res = await fetch("/api/push/unsubscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          endpoint: endpointRef.current,
+          scope: { project_slug: projectSlug, kind: "resolution" },
+        }),
+      });
+      if (!res.ok) throw new Error("unsubscribe failed");
+      setLegacyResolutionSubscribed(false);
+    } catch {
+      setErrorMessage("Couldn't turn off the older decisive-news alert. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const toggle = async () => {
     if (busy) return;
+    setErrorMessage("");
     setBusy(true);
     try {
       const scope: { project_slug: string; lineage?: string; kind?: "news" | "resolution" } = { project_slug: projectSlug };
@@ -106,6 +150,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         const permission = await Notification.requestPermission();
         if (permission !== "granted") {
           if (permission === "denied") setDenied(true);
+          else setErrorMessage("Allow notifications in your browser to subscribe.");
           return;
         }
         const registration = await navigator.serviceWorker.ready;
@@ -131,22 +176,38 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         setSubscribed(true);
       }
     } catch {
-      /* network or push failure: leave the toggle in its prior state */
+      setErrorMessage("Couldn't update notifications. Check browser settings and try again.");
     } finally {
       setBusy(false);
     }
   };
 
   return (
-    <button
-      type="button"
-      className={`btn push-toggle${big ? " push-toggle-big" : ""}`}
-      data-subscribed={subscribed ? "true" : "false"}
-      aria-pressed={subscribed}
-      disabled={busy}
-      onClick={toggle}
-    >
-      {busy ? "Working" : subscribed ? subscribedLabel : label}
-    </button>
+    <span className="push-toggle-wrap">
+      <button
+        type="button"
+        className={`btn push-toggle${big ? " push-toggle-big" : ""}`}
+        data-subscribed={subscribed ? "true" : "false"}
+        aria-pressed={subscribed}
+        title={
+          kind === "news"
+            ? "News mentions: alerts when our scanner matches an article to a promise."
+            : lineage
+              ? "Promise news: alerts when news matches this promise."
+              : "Promise outcomes: alerts when a human publishes a promise status change."
+        }
+        disabled={busy}
+        onClick={toggle}
+      >
+        {busy ? "Working" : subscribed ? subscribedLabel : label}
+      </button>
+      {showLegacyResolutionCleanup && legacyResolutionSubscribed ? (
+        <span role="status" className="push-toggle-legacy">
+          Older decisive-news alerts are still on.{" "}
+          <button type="button" onClick={disableLegacyResolution} disabled={busy}>Turn them off</button>
+        </span>
+      ) : null}
+      {errorMessage ? <span role="status" className="push-toggle-error">{errorMessage}</span> : null}
+    </span>
   );
 }
