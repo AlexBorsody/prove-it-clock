@@ -3698,7 +3698,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Pavel Durov's seven-step Make TON Great Again (MTONGA) plan, launched April 9, 2026 to make The Open Network the payment and application layer for Telegram's roughly one billion users, had shipped four steps by June 2026 — the Catchain 2.0 speed upgrade, a roughly sixfold fee cut, Telegram becoming the network's largest validator, and the rename of the token from Toncoin to Gram — while steps five, six and seven remained undisclosed and still to be delivered.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-19",
+          "evidence_url": "https://en.cryptonomist.ch/2026/06/17/make-ton-great-again-roadmap/",
+          "source_title": "Make TON Great Again roadmap hits step 4 — why is Gram back at $1.67?",
+          "source_url": "https://en.cryptonomist.ch/2026/06/17/make-ton-great-again-roadmap/",
+          "status": "open"
+        },
+        {
+          "claim_text": "TON's official roadmap for the first half of 2026 listed as still ahead, after already shipping WalletKit, AppKit Alpha, TON Pay 1.0 and Builders Portal 2.0, a set of developer and protocol releases: AgenticKit, Rust Node v1, TON Factory, TON Pay 2.0, the full AppKit release, Tolk developer tools, and a new TON consensus layer.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-19",
+          "evidence_url": "https://bsc.news/post/ton-2026-telegram-validator-fee-cuts",
+          "source_title": "TON Ecosystem Shows Strong Momentum in 2026",
+          "source_url": "https://bsc.news/post/ton-2026-telegram-validator-fee-cuts",
+          "status": "open"
+        },
+        {
+          "claim_text": "TON's 2026 roadmap includes TON Pay 2.0, a full AppKit release and the TON Teleport Bridge, described as a trustless Bitcoin bridge intended to bring Bitcoin liquidity directly into TON's DeFi ecosystem by mid-2026 so BTC can be held and used inside Telegram and TON mini-apps without exchanges or custodians.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-19",
+          "evidence_url": "https://cryptonews.net/news/analytics/32837666/",
+          "source_title": "Telegram’s TON Strategy Is Working — What Comes Next for the Token?",
+          "source_url": "https://cryptonews.net/news/analytics/32837666/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Cocoon, the Confidential Compute Open Network unveiled by Pavel Durov at Blockchain Life 2025 in Dubai and live from late November 2025, is presented as a decentralized AI compute marketplace on TON in which GPU owners contribute processing power through trusted execution environments and earn the network's token, while developers pay in that token for confidential AI inference in which neither GPU providers nor other intermediaries can see the data being processed; AlphaTON is scaling the network under a 46 million dollar NVIDIA GPU deal.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-19",
+          "evidence_url": "https://www.coingabbar.com/en/crypto-blogs-details/telegram-cocoon-ton-blockchain-decentralized-ai-2026",
+          "source_title": "Telegram Cocoon on TON: AI Project Gains Attention",
+          "source_url": "https://www.coingabbar.com/en/crypto-blogs-details/telegram-cocoon-ton-blockchain-decentralized-ai-2026",
+          "status": "open"
+        },
+        {
+          "claim_text": "As step two of the MTONGA plan, Durov said TON transaction fees would fall roughly sixfold to a flat 0.00039 TON per transaction, about $0.0005, holding regardless of network load, and that most transactions would eventually move to zero commission to support micropayment use cases inside Telegram.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-19",
+          "evidence_url": "https://bsc.news/post/ton-2026-telegram-validator-fee-cuts",
+          "source_title": "TON Ecosystem Shows Strong Momentum in 2026",
+          "source_url": "https://bsc.news/post/ton-2026-telegram-validator-fee-cuts",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
