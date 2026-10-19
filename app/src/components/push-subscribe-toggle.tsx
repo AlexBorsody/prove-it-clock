@@ -7,8 +7,8 @@
  * - news tier:   { project_slug, kind }          ("news": any mention,
  *                                                "resolution": likely decisive)
  *
- * Renders nothing when push is unsupported or the VAPID public key is not
- * configured. Quiet styling: a small text button, no urgency treatment.
+ * Reports unsupported/blocked push on the project page and keeps toggle errors
+ * visible so subscription failures are not silent.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -35,11 +35,13 @@ interface Props {
   label: string;
   /** Shown when subscribed; defaults to "Notifications on". */
   subscribedLabel?: string;
+  /** Explain why push is unavailable in contexts where that matters. */
+  showUnavailable?: boolean;
   /** Big blue primary treatment for the hero placement. */
   big?: boolean;
 }
 
-export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", big = false }: Props) {
+export default function PushSubscribeToggle({ projectSlug, lineage, kind, label, subscribedLabel = "Notifications on", showUnavailable = false, big = false }: Props) {
   const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
   const [supported] = useState(
     () => typeof window !== "undefined" && "serviceWorker" in navigator && "PushManager" in window && vapidKey.length > 0,
@@ -47,6 +49,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
   const [subscribed, setSubscribed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [denied, setDenied] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const endpointRef = useRef<string | null>(null);
 
   const refresh = useCallback(async () => {
@@ -61,7 +64,11 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         `/api/push/status?endpoint=${encodeURIComponent(sub.endpoint)}&project_slug=${encodeURIComponent(projectSlug)}`,
         { cache: "no-store" },
       );
-      if (!res.ok) return;
+      if (!res.ok) {
+        setErrorMessage("Couldn't check notification status. Try again.");
+        return;
+      }
+      setErrorMessage("");
       const data = (await res.json()) as { scopes: Array<{ lineage?: string; kind?: string }> };
       setSubscribed(
         data.scopes.some((s) =>
@@ -73,7 +80,7 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         ),
       );
     } catch {
-      /* status check failed; leave toggle off rather than lie */
+      setErrorMessage("Couldn't check notification status. Try again.");
     }
   }, [projectSlug, lineage, kind]);
 
@@ -83,10 +90,19 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
     void refresh();
   }, [supported, refresh]);
 
-  if (!supported || denied) return null;
+  if (!supported || denied) {
+    if (!showUnavailable) return null;
+    const message = denied
+      ? "Notifications are blocked in your browser settings."
+      : vapidKey.length === 0
+        ? "Push notifications are not configured on this site."
+        : "Push notifications are not supported in this browser.";
+    return <span role="status" className="push-toggle-unavailable">{message}</span>;
+  }
 
   const toggle = async () => {
     if (busy) return;
+    setErrorMessage("");
     setBusy(true);
     try {
       const scope: { project_slug: string; lineage?: string; kind?: "news" | "resolution" } = { project_slug: projectSlug };
@@ -131,22 +147,25 @@ export default function PushSubscribeToggle({ projectSlug, lineage, kind, label,
         setSubscribed(true);
       }
     } catch {
-      /* network or push failure: leave the toggle in its prior state */
+      setErrorMessage("Couldn't update notifications. Check browser settings and try again.");
     } finally {
       setBusy(false);
     }
   };
 
   return (
-    <button
-      type="button"
-      className={`btn push-toggle${big ? " push-toggle-big" : ""}`}
-      data-subscribed={subscribed ? "true" : "false"}
-      aria-pressed={subscribed}
-      disabled={busy}
-      onClick={toggle}
-    >
-      {busy ? "Working" : subscribed ? subscribedLabel : label}
-    </button>
+    <span className="push-toggle-wrap">
+      <button
+        type="button"
+        className={`btn push-toggle${big ? " push-toggle-big" : ""}`}
+        data-subscribed={subscribed ? "true" : "false"}
+        aria-pressed={subscribed}
+        disabled={busy}
+        onClick={toggle}
+      >
+        {busy ? "Working" : subscribed ? subscribedLabel : label}
+      </button>
+      {errorMessage ? <span role="status" className="push-toggle-error">{errorMessage}</span> : null}
+    </span>
   );
 }
