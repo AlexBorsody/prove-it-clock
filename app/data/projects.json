@@ -3837,7 +3837,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Akash's official 2026 roadmap lists Virtual Machines under AEP-49 with an estimated completion date of August 30, 2026, promising full virtual machine support on its decentralized cloud so tenants can deploy, manage and scale VMs securely and cost-effectively alongside containers, including legacy workloads that cannot easily be containerized.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-20",
+          "evidence_url": "https://akash.network/roadmap/2026/",
+          "source_title": "Akash Network Roadmap - 2026",
+          "source_url": "https://akash.network/roadmap/2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Akash's 2026 roadmap targets August 30, 2026 for both Reserved Instances and a Spot Instance Marketplace, intended to let enterprises reserve and commit to compute capacity in advance and buy spot capacity in a dedicated market, closing a feature gap with traditional cloud providers for predictable long-term workloads.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-20",
+          "evidence_url": "https://cryptoaianalysis.com/akash-network-akt-2026/",
+          "source_title": "Akash Network (AKT): GPU Compute, BME Burn, Cosmos Exit",
+          "source_url": "https://cryptoaianalysis.com/akash-network-akt-2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Akash's official 2026 roadmap lists a Managed Services Market under AEP-11 with an estimated completion date of December 15, 2026, promising a permissionless market for managed backend services such as databases to reduce the operational burden on tenants deploying on the network.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-20",
+          "evidence_url": "https://akash.network/roadmap/2026/",
+          "source_title": "Akash Network Roadmap - 2026",
+          "source_url": "https://akash.network/roadmap/2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Akash's official 2026 roadmap lists Onchain Provider Incentives under AEP-53 with an estimated completion date of December 31, 2026, promising an on-chain system to incentivize users to provide compute resources to the network.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-20",
+          "evidence_url": "https://akash.network/roadmap/2026/",
+          "source_title": "Akash Network Roadmap - 2026",
+          "source_url": "https://akash.network/roadmap/2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Akash's official 2026 roadmap lists Akash on Shared Security under AEP-79 with an estimated completion date of December 31, 2026, covering a migration away from its self-built Cosmos chain to a shared-security chain; as of October 2026 no destination chain had been formally selected and no governance vote on the move itself had been held, with Solana discussed publicly as a contender.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-20",
+          "evidence_url": "https://akash.network/roadmap/2026/",
+          "source_title": "Akash Network Roadmap - 2026",
+          "source_url": "https://akash.network/roadmap/2026/",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
