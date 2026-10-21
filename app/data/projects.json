@@ -4115,7 +4115,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Synthetix's 2026 roadmap commits all trading revenue to buybacks, initially split 50/50 between SNX and sUSD starting in Q1 2026, with a target of restoring the sUSD peg by the end of Q2 2026, after which Perps revenue is to shift entirely to SNX buybacks.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-21",
+          "evidence_url": "https://www.bitget.com/bg/news/detail/12560605262816",
+          "source_title": "Synthetix 2026 roadmap: All trading revenue will be used to buy back SNX and sUSD, and plans to restore sUSD peg in Q2",
+          "source_url": "https://www.bitget.com/bg/news/detail/12560605262816",
+          "status": "open"
+        },
+        {
+          "claim_text": "Synthetix's 2026 roadmap plans a multi-collateral trading feature in April 2026, allowing users to deposit assets such as ETH and cbBTC natively as margin on Synthetix Perps instead of converting to a single collateral asset.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-21",
+          "evidence_url": "https://www.bitget.com/bg/news/detail/12560605262816",
+          "source_title": "Synthetix 2026 roadmap: All trading revenue will be used to buy back SNX and sUSD, and plans to restore sUSD peg in Q2",
+          "source_url": "https://www.bitget.com/bg/news/detail/12560605262816",
+          "status": "open"
+        },
+        {
+          "claim_text": "Synthetix's 2026 roadmap targets Q2 2026 for both Basis Trading Vaults, giving users access to delta-neutral basis trading strategies, and the public release of the Synthetix Liquidity Pool (SLP), a community-owned market-making vault with no management or performance fees that was in private beta at announcement.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-21",
+          "evidence_url": "https://www.weex.com/it/news/detail/synthetix-releases-the-2026-roadmap-focusing-on-six-major-directions-including-stock-buybacks-and-multi-collateral-trading-369044",
+          "source_title": "Synthetix releases the 2026 roadmap, focusing on six major directions including stock buybacks and multi-collateral trading",
+          "source_url": "https://www.weex.com/it/news/detail/synthetix-releases-the-2026-roadmap-focusing-on-six-major-directions-including-stock-buybacks-and-multi-collateral-trading-369044",
+          "status": "open"
+        },
+        {
+          "claim_text": "Synthetix's 2026 roadmap schedules market expansion beyond crypto, with a commodities market beginning in April 2026 and a foreign exchange market starting in June 2026, alongside pre-release perpetual contracts for highly anticipated tokens.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-21",
+          "evidence_url": "https://www.weex.com/it/news/detail/synthetix-releases-the-2026-roadmap-focusing-on-six-major-directions-including-stock-buybacks-and-multi-collateral-trading-369044",
+          "source_title": "Synthetix releases the 2026 roadmap, focusing on six major directions including stock buybacks and multi-collateral trading",
+          "source_url": "https://www.weex.com/it/news/detail/synthetix-releases-the-2026-roadmap-focusing-on-six-major-directions-including-stock-buybacks-and-multi-collateral-trading-369044",
+          "status": "open"
+        },
+        {
+          "claim_text": "Synthetix's 2026 roadmap states that starting in the second half of 2026, sUSD will transition into a fully decentralized stablecoin supported by delta-hedged / basis-trading crypto collateral, under its Digital Dollar vision backed by its own perpetuals exchange.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-21",
+          "evidence_url": "https://www.bitget.com/bg/news/detail/12560605262816",
+          "source_title": "Synthetix 2026 roadmap: All trading revenue will be used to buy back SNX and sUSD, and plans to restore sUSD peg in Q2",
+          "source_url": "https://www.bitget.com/bg/news/detail/12560605262816",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
