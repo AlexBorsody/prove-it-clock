@@ -1,21 +1,19 @@
 "use client";
+import Link from 'next/link';
 
 /**
  * Per-promise challenge threads.
- * FastComments integration temporarily disabled (package build issue).
- * Renders the toggle UI; thread content coming soon.
+ * Source-backed contributions use stable project and promise lineage IDs.
  */
 
 export default function PromiseChallenges({
-  threadId,
-  pageTitle,
-  pageUrl,
+  projectSlug,
+  lineage,
   open,
   onToggle,
 }: {
-  threadId: string;
-  pageTitle: string;
-  pageUrl: string;
+  projectSlug: string;
+  lineage?: string;
   open: boolean;
   onToggle: () => void;
 }) {
@@ -28,11 +26,15 @@ export default function PromiseChallenges({
         onClick={onToggle}
       >
         <span className="challenge-chev" aria-hidden="true">{open ? "▼" : "▶"}</span>
-        Challenge this assessment
+        Add evidence or challenge this assessment
       </button>
       {open && (
         <div className="challenge-thread">
-          <p className="dim">Challenge threads coming soon.</p>
+          <p className="dim">Have a source we missed? Submit it for review. Community submissions do not automatically change this assessment.</p>
+          {lineage ? <p style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            <Link href={`/community?${new URLSearchParams({ project: projectSlug, promise: lineage, kind: 'evidence' })}`}>Add evidence →</Link>
+            <Link href={`/community?${new URLSearchParams({ project: projectSlug, promise: lineage, kind: 'challenge' })}`}>Challenge with a source →</Link>
+          </p> : <p className="dim">This record does not have a stable promise reference yet.</p>}
         </div>
       )}
     </div>

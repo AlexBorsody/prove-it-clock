@@ -1,5 +1,24 @@
 # Bubble or Build: Implementation Plan
 
+## Community contributions (2026-10-22)
+
+Alex requested building community promise submissions and evidence review, then
+promoting the working flow on X. This is the current bounded delivery task.
+Implementation and release checks are recorded in
+[the community contribution task](tasks/2026-10-22-community-contributions.md).
+
+`/community` accepts a sourced new promise (including a project not yet listed),
+evidence for a stable existing promise, or a challenge to an assessment. Pending
+submissions have an unlisted tracking receipt. Only accepted sources enter the
+public contribution board. Acceptance reviews the source; it does not change
+published promise outcomes. Review decisions append to a separate history.
+No scoring, methodology, ranking or Bitcoin assessment change is included.
+
+The deprecated ideas board stays disabled. This flow reuses its trusted network
+and origin helpers but has its own tokens, database tables, limits and review
+queue. Apply only additive migration 013 before launch. Do not promote the
+contribution link on X until live persistence and review have been verified.
+
 **Updated 2026-09-29.** [vision.md](vision.md) is the product authority; the
 [Elegant Engine](#the-elegant-engine--build-plan-2026-09-29) below is the
 current build target. It supersedes the 2026-09-27 parking of qualitative

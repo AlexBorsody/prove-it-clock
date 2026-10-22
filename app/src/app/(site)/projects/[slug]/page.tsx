@@ -156,6 +156,7 @@ export default async function ProjectPage({ params, searchParams }: {
           problems, and the stats. */}
       <div className="panel search-section" data-tour="promises" {...searchMeta({ id: `project-${slug}-promises`, title: `${latest.name} promises`, kind: "Promises", project: slug, keywords: `${latest.symbol} delivery health evidence` })}>
         <span id="promises" aria-hidden="true" />
+        <p><Link href={`/community?${new URLSearchParams({ project: slug, kind: "promise" })}`}>Know another public promise? Submit it with a source →</Link></p>
         <PromisesPanel
           slug={slug}
           name={latest.name}

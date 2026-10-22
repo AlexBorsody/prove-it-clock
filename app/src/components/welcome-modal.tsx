@@ -43,6 +43,8 @@ export default function WelcomeModal() {
   const previewRef = useRef(false);
 
   useEffect(() => {
+    // Visitors arriving to contribute should reach their form without an overlay.
+    if (window.location.pathname.startsWith('/community')) return;
     try {
       if (new URLSearchParams(window.location.search).get("welcome") === "1") {
         previewRef.current = true;

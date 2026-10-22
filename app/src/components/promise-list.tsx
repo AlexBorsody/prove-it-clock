@@ -123,9 +123,8 @@ function PromiseRow({
             {evidenceList(pr)}
           </details>
           <PromiseChallenges
-            threadId={`promise-${slug}-${String(pr.lineage ?? i)}`}
-            pageTitle={`${name}: ${pr.criteria ?? "Promise"}`}
-            pageUrl={`${typeof window === "undefined" ? "" : window.location.origin}/projects/${slug}#${anchor}`}
+            projectSlug={slug}
+            lineage={pr.lineage != null ? String(pr.lineage) : undefined}
             open={challengeOpen}
             onToggle={onToggleChallenge}
           />
@@ -188,9 +187,8 @@ function PromiseCard({
         {evidenceList(pr)}
       </details>
       <PromiseChallenges
-        threadId={`promise-${slug}-${String(pr.lineage ?? i)}`}
-        pageTitle={`${name}: ${pr.criteria ?? "Promise"}`}
-        pageUrl={`${typeof window === "undefined" ? "" : window.location.origin}/projects/${slug}#${anchor}`}
+        projectSlug={slug}
+        lineage={pr.lineage != null ? String(pr.lineage) : undefined}
         open={challengeOpen}
         onToggle={onToggleChallenge}
       />
