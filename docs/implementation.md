@@ -18,8 +18,10 @@ The deprecated ideas board stays disabled. This flow reuses its trusted network
 and origin helpers but has its own tokens, database tables, limits and review
 queue. Migration 013 and PR #28 are deployed. Hosted transaction checks verified
 saving and review, then rolled back their fixture; the live form is available.
-The X launch and the remaining optional saved-record browser check are recorded
-in the task note.
+The approved production browser check also passed: one labeled test was saved,
+its receipt verified, and the same record rejected with an appended review note.
+It never appeared on the public board. The X launch and verification receipt are
+recorded in the task note.
 
 **Updated 2026-09-29.** [vision.md](vision.md) is the product authority; the
 [Elegant Engine](#the-elegant-engine--build-plan-2026-09-29) below is the
