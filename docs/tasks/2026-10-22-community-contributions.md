@@ -81,18 +81,28 @@ tools. It does not trigger notifications or award a kept result.
   Hosted checks confirm RLS on all three private tables, no anonymous reads or
   writes, and no direct service-role updates. The migration explicitly resets
   Supabase's inherited grants, including service-role grants; the SQL test now
-  reproduces those broad defaults. Live browser submission remains a release check.
+  reproduces those broad defaults. A hosted transaction using `service_role`
+  exercised submission, pending privacy, review, public visibility and denied
+  anonymous execution; it passed and rolled back without retaining a fixture.
 - Vercel project: `prove-it-clock`, `prj_7h0H3H8mFgSe9Q95XokoHdZktSUp`, team
   `team_sIDyJixhuv6S6PW3klgdawN7`. Connector inspection returned team access denied.
   Normal GitHub sign-in restored Supabase access. The authenticated Vercel browser
   confirms the service-role key is Production-only; preview correctly disables
   submissions. No secret was copied and no environment access was expanded.
-- Release through the normal GitHub PR path after the database is ready.
-  Vercel also built the branch preview successfully; production uses `main`.
-- Publish the X announcement only after the live community route and persistence
-  work. Start by asking for one project, one promise and the original source.
+- PR #28 merged as `e1af7225a30934d679a584d5a2489863bd4636af`; Vercel production
+  deployment `9XePaWeCXLmv3SsF9FbarmE1sySk` succeeded. The live `/community`
+  page enables intake, reads the reviewed board and resolves Bitcoin's published
+  promises in evidence mode. Existing local browser integration checks cover the
+  save and receipt flow; a retained production browser submission was not made.
+- Automatic approval review blocked a duplicate launch-test submission because
+  it would leave a permanent receipt/review record. Explicit approval for that
+  optional retained test was requested; absent approval, it was left unsaved.
+  No workaround or alternate persistent fixture was used.
+- The authorized launch post is published and verified on `@bubbleorbuild`:
+  https://x.com/bubbleorbuild/status/2113361204504859096
+  It links to https://bubbleorbuild.com/community. No paid promotion was started.
 
-## X launch copy, held until verified live
+## Published X launch copy
 
 You asked to help track the receipts. Now you can.
 
