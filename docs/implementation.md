@@ -16,8 +16,10 @@ No scoring, methodology, ranking or Bitcoin assessment change is included.
 
 The deprecated ideas board stays disabled. This flow reuses its trusted network
 and origin helpers but has its own tokens, database tables, limits and review
-queue. Apply only additive migration 013 before launch. Do not promote the
-contribution link on X until live persistence and review have been verified.
+queue. Migration 013 and PR #28 are deployed. Hosted transaction checks verified
+saving and review, then rolled back their fixture; the live form is available.
+The X launch and the remaining optional saved-record browser check are recorded
+in the task note.
 
 **Updated 2026-09-29.** [vision.md](vision.md) is the product authority; the
 [Elegant Engine](#the-elegant-engine--build-plan-2026-09-29) below is the
