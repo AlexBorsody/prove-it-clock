@@ -4022,7 +4022,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Compound's DAO-approved program announced on August 17, 2026 commits $52 million over two years to build institutional onchain credit, split roughly $28 million for operations and $24 million for growth, with about $14 million released upfront and the remaining roughly $38 million held in reserve for milestone-gated release under a five-of-seven multisig treasury committee.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-22",
+          "evidence_url": "https://w3rooster.com/compounds-52m-institutional-pivot-can-defis-pioneer-rebuild-its-place-in-onchain-credit/",
+          "source_title": "Compound’s $52M Institutional Pivot: Can DeFi’s Pioneer Rebuild Its Place in Onchain Credit?",
+          "source_url": "https://w3rooster.com/compounds-52m-institutional-pivot-can-defis-pioneer-rebuild-its-place-in-onchain-credit/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Compound said its first institutional-grade products from the $52 million program would be released in the coming weeks after the August 17, 2026 announcement, as part of a shift from retail liquidity incentives toward backend services that banks, asset managers and fintechs can embed in their own products.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-22",
+          "evidence_url": "https://www.ainvest.com/news/compound-launches-52m-program-target-institutional-onchain-credit-2608/",
+          "source_title": "Compound Launches $52M Program To Target Institutional Onchain Credit",
+          "source_url": "https://www.ainvest.com/news/compound-launches-52m-program-target-institutional-onchain-credit-2608/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Compound V4 is presented as the program's main build: its design was described as nearly final and heading into external audit, with later funding releases tied to engineering deliverables and an eventual public V4 testnet, alongside completion of a V3 integration kit and new liquidation infrastructure.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-22",
+          "evidence_url": "https://www.ainvest.com/news/compound-puts-52m-institutional-reboot-tvl-90-peak-2608/",
+          "source_title": "Compound Puts $52M Behind an Institutional Reboot - But TVL Is Still 90% Off Its Peak",
+          "source_url": "https://www.ainvest.com/news/compound-puts-52m-institutional-reboot-tvl-90-peak-2608/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Compound's V4 roadmap includes native support for real-world assets and tokenized equities as collateral, plus institutional tooling described as permissioned vaults with KYC and AML controls, integration tools for brokerages and fintechs, portfolio-aware risk management and dynamically adjustable loan-to-value parameters.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-22",
+          "evidence_url": "https://w3rooster.com/compounds-52m-institutional-pivot-can-defis-pioneer-rebuild-its-place-in-onchain-credit/",
+          "source_title": "Compound’s $52M Institutional Pivot: Can DeFi’s Pioneer Rebuild Its Place in Onchain Credit?",
+          "source_url": "https://w3rooster.com/compounds-52m-institutional-pivot-can-defis-pioneer-rebuild-its-place-in-onchain-credit/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Compound committed to greater transparency for the $52 million program, including monthly reports, community calls and more detailed quarterly reviews, with program wallet activity visible onchain, so later releases can be judged against engineering deliverables, institutional integrations and curator onboarding.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-22",
+          "evidence_url": "https://cryptodaily.co.uk/2026/08/compound-v4-52m-institutional-lending",
+          "source_title": "Can $52M Make Compound an Institutional Lender?",
+          "source_url": "https://cryptodaily.co.uk/2026/08/compound-v4-52m-institutional-lending",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
