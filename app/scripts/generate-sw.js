@@ -71,6 +71,8 @@ self.addEventListener("fetch", (event) => {
     return;
   }
   if (url.pathname.startsWith("/api/")) return; // network only, never stale
+  // A contribution receipt is an unlisted tracking link, not an offline page.
+  if (url.pathname.startsWith("/community")) return;
   if (request.mode === "navigate") {
     event.respondWith(networkFirst(request));
     return;

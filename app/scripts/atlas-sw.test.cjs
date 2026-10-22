@@ -6,5 +6,8 @@ test('service worker only caches immutable assets; RSC and API data reach networ
   async function read(url,headers={}){const request=new Request(url,{headers});let response;listeners.fetch({request,respondWith:p=>response=p});return response?(await response).text():'network';}
   assert.equal(await read('https://local.test/atlas?_rsc=123',{RSC:'1'}),'network');
   assert.equal(await read('https://local.test/api/hearts'),'network');
+  let intercepted=false;
+  listeners.fetch({request:{url:'https://local.test/community/receipt/private-id',method:'GET',mode:'navigate'},respondWith(){intercepted=true;}});
+  assert.equal(intercepted,false,'community receipts must never enter the offline navigation cache');
   assert.equal(await read('https://local.test/_next/static/a.js'),'1');assert.equal(await read('https://local.test/_next/static/a.js'),'1');assert.equal(fetches,1);
 });

@@ -37,6 +37,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         </div>
       </header>
       <main className="with-bottomnav"><LedgerNav />{children}
+        <footer className={supportStyles.footer}><Link href="/community">Submit a promise or bring the receipts</Link></footer>
         {feedbackEnabled() && <footer className={supportStyles.footer}><Link href="/support">Share an idea</Link></footer>}
         <TipJar />
       </main>
