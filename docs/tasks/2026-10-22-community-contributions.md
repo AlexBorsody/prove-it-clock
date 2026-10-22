@@ -92,12 +92,19 @@ tools. It does not trigger notifications or award a kept result.
 - PR #28 merged as `e1af7225a30934d679a584d5a2489863bd4636af`; Vercel production
   deployment `9XePaWeCXLmv3SsF9FbarmE1sySk` succeeded. The live `/community`
   page enables intake, reads the reviewed board and resolves Bitcoin's published
-  promises in evidence mode. Existing local browser integration checks cover the
-  save and receipt flow; a retained production browser submission was not made.
-- Automatic approval review blocked a duplicate launch-test submission because
-  it would leave a permanent receipt/review record. Explicit approval for that
-  optional retained test was requested; absent approval, it was left unsaved.
-  No workaround or alternate persistent fixture was used.
+  promises in evidence mode. Local browser integration checks cover the save and
+  receipt flow; the approved retained production check below also passed.
+- After automatic approval review blocked an unapproved permanent test record,
+  Alex explicitly approved one test submission and its rejection. On October 22,
+  the live browser form saved exactly one labeled Bitcoin launch-test submission:
+  `efc320b4-a0a0-4d1f-97b1-0048f60c68ee`. Its unlisted receipt first showed
+  "Awaiting review" and matched the persisted database row. Codex then rejected
+  that same record using the review function. Readback confirmed `rejected`,
+  exactly one review entry, and zero rows for it in the public contribution view.
+  Reloading the receipt showed "Not accepted" and the stored review note.
+  It was never accepted or displayed on the public board. The original test text
+  and audit history remain retained as authorized; no promise assessment changed.
+  Receipt: https://bubbleorbuild.com/community/receipt/efc320b4-a0a0-4d1f-97b1-0048f60c68ee
 - The authorized launch post is published and verified on `@bubbleorbuild`:
   https://x.com/bubbleorbuild/status/2113361204504859096
   It links to https://bubbleorbuild.com/community. No paid promotion was started.
