@@ -36,13 +36,14 @@ CREATE TABLE public.community_reviews (
 ALTER TABLE public.community_contributions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.community_submission_activity ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.community_reviews ENABLE ROW LEVEL SECURITY;
-REVOKE ALL ON public.community_contributions, public.community_submission_activity, public.community_reviews FROM PUBLIC, anon, authenticated;
+-- Supabase can grant service_role all table privileges by default; reset them too.
+REVOKE ALL ON public.community_contributions, public.community_submission_activity, public.community_reviews FROM PUBLIC, anon, authenticated, service_role;
 GRANT SELECT, INSERT ON public.community_contributions, public.community_submission_activity, public.community_reviews TO service_role;
 -- Submission text and review history are not writable through the service REST API.
 CREATE VIEW public.community_contributions_public WITH (security_barrier = true) AS
   SELECT id,kind,project_slug,project_name,lineage,claim,detail,source_url,source_date,deadline,
     created_at,status,review_note FROM public.community_contributions WHERE status = 'accepted';
-REVOKE ALL ON public.community_contributions_public FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON public.community_contributions_public FROM PUBLIC, anon, authenticated, service_role;
 GRANT SELECT ON public.community_contributions_public TO anon, authenticated, service_role;
 
 CREATE FUNCTION public.submit_community_contribution(p_nonce uuid, p_ip_hash text, p_elapsed_ms integer, p_payload jsonb)

@@ -39,6 +39,8 @@ test('database keeps submissions private, retries idempotent, limits durable and
   const db = new PGlite();
   try {
     await db.exec('CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;');
+    // Hosted Supabase projects may start with broad default table grants.
+    await db.exec('ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO anon, authenticated, service_role;');
     await db.exec(readFileSync('../db/migrations/013_community_contributions.sql', 'utf8'));
     const submit = async (payload = source, nonce = randomUUID(), ip = 'a'.repeat(64), elapsed = 3000) => {
       const result = await db.query<{ result: { outcome: string; id: string } }>('SELECT submit_community_contribution($1,$2,$3,$4) AS result', [nonce, ip, elapsed, JSON.stringify(payload)]);
@@ -66,6 +68,7 @@ test('database keeps submissions private, retries idempotent, limits durable and
     assert.equal('ip_hash' in visible[0], false);
     await assert.rejects(db.query("UPDATE community_contributions SET claim='changed' WHERE id=$1", [first.id]), /permission denied/);
     await assert.rejects(db.query('DELETE FROM community_reviews'), /permission denied/);
+    await assert.rejects(db.query("UPDATE community_contributions_public SET claim='changed' WHERE id=$1", [first.id]), /permission denied/);
     await db.query("SELECT review_community_contribution($1,'needs_info','Correction: the source lacks the full release context.','Test reviewer')", [first.id]);
     assert.equal((await db.query('SELECT * FROM community_reviews')).rows.length, 2);
     assert.equal((await db.query('SELECT * FROM community_contributions_public')).rows.length, 0);
