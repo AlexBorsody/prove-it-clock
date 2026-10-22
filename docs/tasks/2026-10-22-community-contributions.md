@@ -77,13 +77,18 @@ tools. It does not trigger notifications or award a kept result.
   selected promise, and challenge links prefilled the correct project/lineage.
   Layouts at 390px and 1280px had no horizontal overflow. This is local integration
   evidence, not hosted Supabase acceptance.
-- Production still needs the confirmed Supabase target, migration 013 and a
-  live submission/review check. No production record or score has been changed.
+- Migration 013 is applied to confirmed Supabase project `tbigzpztybuvogpeflao`.
+  Hosted checks confirm RLS on all three private tables, no anonymous reads or
+  writes, and no direct service-role updates. The migration explicitly resets
+  Supabase's inherited grants, including service-role grants; the SQL test now
+  reproduces those broad defaults. Live browser submission remains a release check.
 - Vercel project: `prove-it-clock`, `prj_7h0H3H8mFgSe9Q95XokoHdZktSUp`, team
   `team_sIDyJixhuv6S6PW3klgdawN7`. Connector inspection returned team access denied.
-  Supabase browser was signed out at the release check.
+  Normal GitHub sign-in restored Supabase access. The authenticated Vercel browser
+  confirms the service-role key is Production-only; preview correctly disables
+  submissions. No secret was copied and no environment access was expanded.
 - Release through the normal GitHub PR path after the database is ready.
-  The existing Vercel configuration deploys `main` only.
+  Vercel also built the branch preview successfully; production uses `main`.
 - Publish the X announcement only after the live community route and persistence
   work. Start by asking for one project, one promise and the original source.
 
