@@ -3775,7 +3775,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Maple's 2026 plan shifts its priority from scaling assets under management toward revenue generation, with an internal target of $100 million in annual recurring revenue for 2026, described as roughly four times its level at the time of the Q4 ecosystem call.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-23",
+          "evidence_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
+          "source_title": "What Lies Ahead for Maple in 2026.",
+          "source_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple projects the crypto lending market will reach about $300 billion and aims to capture more than 10 percent of it within three to five years, which the team translates into roughly $30 billion in active loans, $75 billion in assets under management and $300-400 million in annual recurring revenue.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-23",
+          "evidence_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
+          "source_title": "What Lies Ahead for Maple in 2026.",
+          "source_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple's 2026 distribution plan for its syrupUSDC and syrupUSDT yield products includes a first exchange-earn program described as imminent, a goal of signing three fintech partners by the end of Q1 2026, and a projection of $500 million to $1 billion of fintech-sourced capital by the end of 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-23",
+          "evidence_url": "https://blockworks-research.beehiiv.com/p/maple-s-2026-catalysts",
+          "source_title": "Maple's 2026 catalysts",
+          "source_url": "https://blockworks-research.beehiiv.com/p/maple-s-2026-catalysts",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple said in its 2026 catalysts that it would launch its first onchain-originated securitization vehicle in the coming months, arranging and structuring the deal and serving as senior financier, alongside building in-house trading capabilities such as stablecoin arbitrage as it evolves from a lender into a more diversified asset manager during 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-23",
+          "evidence_url": "https://blockworks-research.beehiiv.com/p/maple-s-2026-catalysts",
+          "source_title": "Maple's 2026 catalysts",
+          "source_url": "https://blockworks-research.beehiiv.com/p/maple-s-2026-catalysts",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple's 2026 roadmap says it will focus exclusively on creating, managing and distributing its own products, releasing new yield-generating and risk-adjusted products throughout 2026 including basis trading, stablecoin arbitrage and other market-neutral strategies designed to perform across market environments, while continuing to expand syrupUSDC and syrupUSDT access across major chains and protocols and pursuing neobank and fintech integrations.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-23",
+          "evidence_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
+          "source_title": "What Lies Ahead for Maple in 2026.",
+          "source_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
