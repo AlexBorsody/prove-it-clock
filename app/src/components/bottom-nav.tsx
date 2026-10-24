@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import Icon, { type ChromeIconName } from "@/components/chrome-icons";
 
 /**
- * Bottom tab bar, app-style: Scoreboard / Search / Methodology / API.
+ * Bottom tab bar, app-style: Scoreboard / Search / Methodology / API / Tip jar.
  * Tour is a button, not a route, so it stays out of the TABS list.
  */
 const TABS: Array<{ href: string; label: string; shortLabel?: string; icon: ChromeIconName }> = [
   { href: "/", label: "Scoreboard", shortLabel: "Scores", icon: "grid" },
   { href: "/methodology", label: "Methodology", shortLabel: "Method", icon: "book" },
   { href: "/developers", label: "API", icon: "code" },
+  { href: "/tip", label: "Tip jar", shortLabel: "Tip", icon: "qr" },
 ];
 
 function TabLink({ tab, pathname }: { tab: (typeof TABS)[number]; pathname: string }) {
@@ -44,6 +45,7 @@ export default function BottomNav() {
       </button>
       <TabLink tab={TABS[1]} pathname={pathname} />
       <TabLink tab={TABS[2]} pathname={pathname} />
+      <TabLink tab={TABS[3]} pathname={pathname} />
       <button
         type="button"
         className="tabbtn"

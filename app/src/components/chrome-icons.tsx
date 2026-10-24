@@ -42,6 +42,7 @@ export type ChromeIconName =
   | "code"
   | "use"
   | "hype"
+  | "qr"
   | "external";
 
 const PATHS: Record<ChromeIconName, ReactNode> = {
@@ -196,6 +197,19 @@ const PATHS: Record<ChromeIconName, ReactNode> = {
       <path d="M6.5 3.5H3.5v9h9V9.5" />
       <path d="M9.5 3.5h3v3" />
       <path d="M12.5 3.5L7.5 8.5" />
+    </>
+  ),
+  qr: (
+    <>
+      <rect x="1.5" y="1.5" width="5" height="5" rx="1" />
+      <path d="M4 4v.01" />
+      <rect x="9.5" y="1.5" width="5" height="5" rx="1" />
+      <path d="M12 4v.01" />
+      <rect x="1.5" y="9.5" width="5" height="5" rx="1" />
+      <path d="M4 12v.01" />
+      <rect x="9.5" y="9.5" width="2" height="2" />
+      <path d="M13.75 9.5v.01M9.5 13.75v.01" />
+      <rect x="12.5" y="12.5" width="2" height="2" />
     </>
   ),
 };

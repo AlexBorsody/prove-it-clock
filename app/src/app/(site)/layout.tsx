@@ -9,7 +9,6 @@ import WelcomeModal from "@/components/welcome-modal";
 import ProjectSearch from "@/components/project-search";
 import { BrandMark } from "@/components/heart-meter";
 import SearchAnchor from "@/components/search-anchor";
-import TipJar from "@/components/tip-jar";
 import { siteSearchPaths } from "@/lib/search-sections";
 import { CASE_STUDY_DOCUMENTS } from "@/lib/case-studies";
 import { HEARTS_METHODOLOGY, readHeartRankings } from "@/lib/heart-data";
@@ -39,7 +38,6 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <main className="with-bottomnav"><LedgerNav />{children}
         <footer className={supportStyles.footer}><Link href="/community">Submit a promise or bring the receipts</Link></footer>
         {feedbackEnabled() && <footer className={supportStyles.footer}><Link href="/support">Share an idea</Link></footer>}
-        <TipJar />
       </main>
       <BottomNav />
       <Walkthrough />

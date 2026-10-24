@@ -19,7 +19,7 @@ export function searchMeta(section: {
 /** Public HTML pages only. No API, query-string variants, or arbitrary crawling. */
 export function siteSearchPaths(projectSlugs: string[], caseStudySlugs: string[]): string[] {
   return [...new Set([
-    '/', '/atlas', '/methodology', '/code', '/hype', '/compare', '/developers', '/case-studies',
+    '/', '/atlas', '/methodology', '/code', '/hype', '/compare', '/developers', '/case-studies', '/tip',
     ...projectSlugs.filter(s => /^[a-z0-9-]+$/.test(s)).map(s => `/projects/${s}`),
     ...caseStudySlugs.filter(s => s !== 'overview' && /^[a-z0-9-]+$/.test(s)).map(s => `/case-studies/${s}`),
   ])];
