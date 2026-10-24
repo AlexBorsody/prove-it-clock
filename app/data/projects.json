@@ -4145,7 +4145,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Kaia's 2026 roadmap prioritizes an upgrade to KaiaBFT, targeting 10,000 transactions per second and 1-second block times to provide institutional-grade high availability, alongside continued work on EVM compatibility, performance scaling and identity solutions.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-24",
+          "evidence_url": "https://blog.kaia.io/from-infrastructure-to-onchain-finance-kaias-2025-recap-and-2026-direction/",
+          "source_title": "From Infrastructure to Onchain Finance: Kaia's 2025 Recap and 2026 Direction",
+          "source_url": "https://blog.kaia.io/from-infrastructure-to-onchain-finance-kaias-2025-recap-and-2026-direction/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Kaia's PGT transition to a fully permissionless network runs in two phases: Phase 1 in April 2026 replaces application-based permission with automated self-registration on Kaia Square and criteria-based governance onboarding, and Phase 2 concluding in late September 2026 completes full implementation of the new validator and governance policies with autonomous onboarding and offboarding and a node evaluation system intended to guarantee IBFT finality and speed.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-24",
+          "evidence_url": "https://blog.kaia.io/pgt-part-1-kaias-structural-transition-to-a-permissionless-performance-based-network/",
+          "source_title": "PGT Part 1: Kaia's Structural Transition to a Permissionless & Performance-Based Network",
+          "source_url": "https://blog.kaia.io/pgt-part-1-kaias-structural-transition-to-a-permissionless-performance-based-network/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Between the PGT phases, in July 2026, Kaia planned to launch its Contribution Reward model: performance-based distribution of rewards coupled with a burn mechanism for rewards tied to unachieved targets, so that unallocated tokens are burned rather than distributed and supply expansion is tied to measured network growth.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-24",
+          "evidence_url": "https://blog.kaia.io/pgt-part-1-kaias-structural-transition-to-a-permissionless-performance-based-network/",
+          "source_title": "PGT Part 1: Kaia's Structural Transition to a Permissionless & Performance-Based Network",
+          "source_url": "https://blog.kaia.io/pgt-part-1-kaias-structural-transition-to-a-permissionless-performance-based-network/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Kaia's 2026 roadmap includes integrating zkKYC and confidential transactions directly into the protocol, aimed at meeting the privacy and compliance needs of stablecoin issuers and real-world asset markets.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-24",
+          "evidence_url": "https://blog.kaia.io/from-infrastructure-to-onchain-finance-kaias-2025-recap-and-2026-direction/",
+          "source_title": "From Infrastructure to Onchain Finance: Kaia's 2025 Recap and 2026 Direction",
+          "source_url": "https://blog.kaia.io/from-infrastructure-to-onchain-finance-kaias-2025-recap-and-2026-direction/",
+          "status": "open"
+        },
+        {
+          "claim_text": "For the second half of 2026 and beyond, Kaia's DeFi roadmap says it is developing dedicated lending markets for JPYC after onboarding over 250 million circulating JPYC, pursuing top-tier institutional pilots to bring Korean liquidity onchain, and, through Kaia Investment Partners, advancing experimental pilots for real-world assets, tokenized treasuries and private credit toward infrastructure-grade issuance with onchain yields and T+0 settlement efficiency.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-24",
+          "evidence_url": "https://blog.kaia.io/kaia-defi-ecosystem-recap-roadmap-architecting-asias-onchain-capital-markets/",
+          "source_title": "Kaia DeFi Ecosystem Recap & Roadmap: Architecting Asia's Onchain Capital Markets",
+          "source_url": "https://blog.kaia.io/kaia-defi-ecosystem-recap-roadmap-architecting-asias-onchain-capital-markets/",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
