@@ -3852,7 +3852,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "THORChain's widening roadmap has groundwork in place for native support for Polygon, Cardano, Sui and Zcash, with Monero and TAO also in progress, extending its native cross-chain swap coverage beyond the chains already live.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-25",
+          "evidence_url": "https://www.yolowire.com/latestarticles/articledetail.aspx?id=24034",
+          "source_title": "THORChain Reports $2.82 Billion in Q1 Volume as Solana Integration Goes Live",
+          "source_url": "https://www.yolowire.com/latestarticles/articledetail.aspx?id=24034",
+          "status": "open"
+        },
+        {
+          "claim_text": "A proposed burn of Reserve-held RUNE would bring total supply closer to roughly 360 million RUNE, while new protocol-owned liquidity mechanisms are being discussed to allocate capital toward higher-fee pools.",
+          "claim_type": "economic",
+          "date_observed": "2026-10-25",
+          "evidence_url": "https://www.yolowire.com/latestarticles/articledetail.aspx?id=24034",
+          "source_title": "THORChain Reports $2.82 Billion in Q1 Volume as Solana Integration Goes Live",
+          "source_url": "https://www.yolowire.com/latestarticles/articledetail.aspx?id=24034",
+          "status": "open"
+        },
+        {
+          "claim_text": "After the May 15, 2026 exploit that drained about $10.7 million from one of its five vaults, THORChain set an 11-step restart plan requiring validator approval of v3.19.0, which patches the exploited GG20 threshold signature scheme, adds a compromised-vault quarantine and temporary keyshare checks before signing resumes, and implements the ADR-028 loss-recovery plan. Under ADR-028, initial losses are absorbed using protocol-owned liquidity, remaining losses are distributed across synth holders, and no new RUNE is minted, alongside a 10% bounty offered to the attacker for return of the stolen funds and a follow-up report once the investigation is complete.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-25",
+          "evidence_url": "https://www.ainvest.com/news/thorchain-unveils-11-step-plan-restart-network-10-7m-hack-2606/",
+          "source_title": "THORChain Unveils 11-Step Plan to Restart Network After $10.7M Hack",
+          "source_url": "https://www.ainvest.com/news/thorchain-unveils-11-step-plan-restart-network-10-7m-hack-2606/",
+          "status": "open"
+        },
+        {
+          "claim_text": "THORChain's v3.21 network upgrade was scheduled for October 23, 2026 at block 28,366,100, aiming to fix the bugs that paused Solana and Zcash trading and to patch a recent Rujira exploit, with successful activation resuming full swap activity.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-25",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/thorchain/price-prediction/",
+          "source_title": "THORChain (RUNE) Price Prediction For 2026 & Beyond",
+          "source_url": "https://coinmarketcap.com/cmc-ai/thorchain/price-prediction/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Monero is the next major asset in line for THORChain: as of June 2026 it was still in testing and expected to go live on mainnet after the network's restart, which would let users swap native BTC, ETH or other supported assets directly to XMR without a centralised exchange or KYC requirement, making THORChain the first major decentralised protocol to support Monero as a native asset.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-25",
+          "evidence_url": "https://pegasusswap.com/blog/what-is-thorchain",
+          "source_title": "What Is THORChain? How Cross-Chain Swaps Work in 2026",
+          "source_url": "https://pegasusswap.com/blog/what-is-thorchain",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
