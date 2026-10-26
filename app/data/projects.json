@@ -4407,7 +4407,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "OriginTrail's roadmap lists an October 2026 mainnet release for its NeuroSymbolic Marketplace, moving the marketplace from testnet and a completed private beta onto the live protocol as a step separate from the DKG v10.0.25 software update, and formally activating TRAC-denominated settlement so node operators can buy and sell metered AI inference and knowledge graph queries in TRAC.",
+          "claim_type": "milestone",
+          "source_url": "https://in.tradingview.com/news/coinmarketcal:88a146b98094b:0-origintrail-neurosymbolic-marketplace-moves-to-mainnet-oct-2026/",
+          "source_title": "OriginTrail: NeuroSymbolic Marketplace moves to mainnet - Oct 2026",
+          "status": "open",
+          "evidence_url": "https://in.tradingview.com/news/coinmarketcal:88a146b98094b:0-origintrail-neurosymbolic-marketplace-moves-to-mainnet-oct-2026/",
+          "date_observed": "2026-10-26"
+        },
+        {
+          "claim_text": "OT-RFC-27, proposed on September 6, 2026, introduces a paid inference mechanism for the Decentralized Knowledge Graph under which nodes can charge TRAC for processing AI inference requests, complementing the existing paid publishing model, with community input sought on how metered node-to-node AI queries are settled and rewarded.",
+          "claim_type": "economic",
+          "source_url": "https://coinmarketcap.com/cmc-ai/origintrail/latest-updates/",
+          "source_title": "Latest OriginTrail News - (TRAC) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/origintrail/latest-updates/",
+          "date_observed": "2026-10-26"
+        },
+        {
+          "claim_text": "Following the marketplace mainnet release, OriginTrail's roadmap schedules UX/UI enhancements for November 2026 to make the Decentralized Knowledge Graph and its tools more accessible, with mobile app and desktop app rollouts also listed for November 2026.",
+          "claim_type": "technical",
+          "source_url": "https://coinmarketcap.com/cmc-ai/origintrail/latest-updates/",
+          "source_title": "Latest OriginTrail News - (TRAC) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/origintrail/latest-updates/",
+          "date_observed": "2026-10-26"
+        },
+        {
+          "claim_text": "OriginTrail confirmed the September 25, 2026 kickoff of the AURORAI initiative, an approximately 7 million euro EU-funded AI platform involving 14 partners across 10 countries, focused on pandemic preparedness and using the Decentralized Knowledge Graph to organize and verify critical health and scientific data.",
+          "claim_type": "milestone",
+          "source_url": "https://ourcryptotalk.com/news/why-origintrail-trac-up-10-12837-percent-today",
+          "source_title": "Why OriginTrail (TRAC) Is Up 10.12837% Today?",
+          "status": "open",
+          "evidence_url": "https://ourcryptotalk.com/news/why-origintrail-trac-up-10-12837-percent-today",
+          "date_observed": "2026-10-26"
+        },
+        {
+          "claim_text": "The Metcalfe phase of OriginTrail's roadmap targets a 100,000-fold scalability expansion of the Decentralized Knowledge Graph, aiming to accommodate 100 billion autonomously mined Knowledge Assets.",
+          "claim_type": "technical",
+          "source_url": "https://stoic.ai/coin-price-chart/origintrail",
+          "source_title": "OriginTrail price today, TRAC to USD live chart | Stoic AI",
+          "status": "open",
+          "evidence_url": "https://stoic.ai/coin-price-chart/origintrail",
+          "date_observed": "2026-10-26"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
