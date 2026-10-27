@@ -3590,7 +3590,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Ethena's governance-approved fee switch will direct 95% of net revenue from its branded businesses, including USDe savings and white-label stablecoins, to programmatic ENA buybacks once the 14-day average USDe supply crosses $7.5 billion, with buyback intensity scaling at further $10 billion, $15 billion and $20 billion milestones; as of late October 2026 USDe supply was about $4.6 billion, so the trigger was not yet active.",
+          "claim_type": "economic",
+          "source_url": "https://coinmarketcap.com:443/cmc-ai/ethena-usde/latest-updates/",
+          "source_title": "Latest Ethena USDe News - (USDe) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com:443/cmc-ai/ethena-usde/latest-updates/",
+          "date_observed": "2026-10-27"
+        },
+        {
+          "claim_text": "Ethena Pay, Ethena's self-custodial consumer app for holding, sending and spending USDe, launched in beta on September 1, 2026 for about 400 users and is planned to expand weekly across 49 countries, initially excluding the US, EU, UK and Canada, offering tiered rewards of up to 6% on balances and AVAX cashback on Visa card purchases, with higher tiers requiring locked ENA.",
+          "claim_type": "milestone",
+          "source_url": "https://coinmarketcap.com:443/cmc-ai/ethena-usde/latest-updates/",
+          "source_title": "Latest Ethena USDe News - (USDe) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com:443/cmc-ai/ethena-usde/latest-updates/",
+          "date_observed": "2026-10-27"
+        },
+        {
+          "claim_text": "In late 2026 Ethena is expanding USDe's delta-neutral yield strategy beyond crypto into equity perpetual futures, pairing long positions in tokenized stocks such as Binance bStocks with short positions in their corresponding perpetual derivatives, a rollout that began with Binance as the first partner in late September 2026.",
+          "claim_type": "technical",
+          "source_url": "https://coinmarketcap.com:443/cmc-ai/ethena-usde/latest-updates/",
+          "source_title": "Latest Ethena USDe News - (USDe) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com:443/cmc-ai/ethena-usde/latest-updates/",
+          "date_observed": "2026-10-27"
+        },
+        {
+          "claim_text": "Ethena announced it would entirely eliminate token incentives and cease new inflation tied to USDe growth by the end of September 2026, removing the remaining roughly 15% of incentives after an approximately 85% reduction earlier in 2026, so that future USDe supply growth would no longer be driven by ENA distributions.",
+          "claim_type": "economic",
+          "source_url": "https://cryptofox.news/news/ethena-to-cease-usde-token-incentives-and-end-inflation-by-october",
+          "source_title": "Ethena to End Token Incentives by September 2026",
+          "status": "open",
+          "evidence_url": "https://cryptofox.news/news/ethena-to-cease-usde-token-incentives-and-end-inflation-by-october",
+          "date_observed": "2026-10-27"
+        },
+        {
+          "claim_text": "Converge, the blockchain Ethena announced with Securitize in March 2025 to host open DeFi alongside permissioned institutional products with USDe and USDtb as gas tokens and ENA staked to secure it, was targeted for mainnet in the second quarter of 2025; that date passed, a Converge-based exchange said in December 2025 the chain had been indefinitely postponed, and no Converge mainnet had appeared as of October 2026, with Ethena's current roadmap instead describing an Ethena Chain to follow.",
+          "claim_type": "milestone",
+          "source_url": "https://whatisethena.com/",
+          "source_title": "What is Ethena?",
+          "status": "open",
+          "evidence_url": "https://whatisethena.com/",
+          "date_observed": "2026-10-27"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
