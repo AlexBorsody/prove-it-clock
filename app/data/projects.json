@@ -4129,7 +4129,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Trust Wallet's roadmap, unveiled September 18, 2025, targets growing the wallet from about 210 million users to 1 billion users, organized in four layers covering everyday finance, advanced trading, earning mechanisms, and future innovations such as identity and embedded DeFi, with TWT positioned as the central utility token powering access, rewards, and ecosystem participation.",
+          "claim_type": "milestone",
+          "source_url": "https://www.gate.com/news/detail/13869887",
+          "source_title": "Trust Wallet Roadmap Targets 1 Billion Users: TWT's Role in Massive Growth",
+          "status": "open",
+          "evidence_url": "https://www.gate.com/news/detail/13869887",
+          "date_observed": "2026-10-28"
+        },
+        {
+          "claim_text": "Trust Wallet's product roadmap includes a self-custodial advanced trading hub with perpetual futures markets offering up to 100x leverage and prediction markets, with prediction markets to be integrated through credible third-party protocols providing liquidity and proven prediction models rather than built in-house.",
+          "claim_type": "technical",
+          "source_url": "https://news.superex.com/articles/27775.html",
+          "source_title": "TWT Soars Nearly 40% as Trust Wallet Reveals Plans to Add 100X Perps, Prediction Markets",
+          "status": "open",
+          "evidence_url": "https://news.superex.com/articles/27775.html",
+          "date_observed": "2026-10-28"
+        },
+        {
+          "claim_text": "Under the September 2025 TWT litepaper, new utility benefits roll out in phases: holders who lock TWT gain Trust Premium tiered loyalty benefits (tiers named Seeker, Explorer, and Moonwalker, earning XP toward perks such as airdrops, boosted staking yields, and transaction discounts), FlexGas lets users pay gas fees across chains with TWT with those fees burned, and all holders paying gas with TWT receive a 10% cut on gas fees, with TWT also proposed as possible collateral across supported DeFi protocols.",
+          "claim_type": "economic",
+          "source_url": "https://paragraph.com/@web3life/trust-wallet-token-twt-boom-or-bust",
+          "source_title": "Trust Wallet Token (TWT) – Boom or Bust?",
+          "status": "open",
+          "evidence_url": "https://paragraph.com/@web3life/trust-wallet-token-twt-boom-or-bust",
+          "date_observed": "2026-10-28"
+        },
+        {
+          "claim_text": "Key features scheduled through 2026 under the September 2025 roadmap include Trust Card, a crypto debit card for spending, Trust Pay as a wallet-native on-chain payment layer for gasless peer-to-peer transfers, merchant payments, and potentially subscriptions while users keep custody of funds, real-world-asset and tokenised stock access, gas fee abstraction, and AI agent trading via the TWAK kit.",
+          "claim_type": "milestone",
+          "source_url": "https://paragraph.com/@web3life/trust-wallet-token-twt-boom-or-bust",
+          "source_title": "Trust Wallet Token (TWT) – Boom or Bust?",
+          "status": "open",
+          "evidence_url": "https://paragraph.com/@web3life/trust-wallet-token-twt-boom-or-bust",
+          "date_observed": "2026-10-28"
+        },
+        {
+          "claim_text": "Trust Wallet has announced an upcoming integration with Robinhood Crypto, teased as coming soon in a September 2026 announcement, that will let users buy, sell, and hold tokenized equities directly from their self-custodial Trust Wallet app, building on its existing real-world-asset offerings such as the partnership with Ondo Finance.",
+          "claim_type": "milestone",
+          "source_url": "https://CoinMarketCap.com/cmc-ai/trust-wallet-token/latest-updates/",
+          "source_title": "Latest Trust Wallet Token News - (TWT) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://CoinMarketCap.com/cmc-ai/trust-wallet-token/latest-updates/",
+          "date_observed": "2026-10-28"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
