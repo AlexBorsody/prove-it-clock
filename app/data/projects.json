@@ -4468,7 +4468,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "1inch's Aqua protocol is a shared liquidity layer that lets a single wallet balance back multiple DeFi strategies at the same time, instead of capital being locked in one pool or strategy. After a developer release in November 2025, Aqua launched publicly on July 28, 2026 on 13 EVM chains following eight security audits, with liquidity providers keeping custody of tokens until execution.",
+          "claim_type": "technical",
+          "source_url": "https://blockchainreporter.net/exchanges/1inch/",
+          "source_title": "1inch Review 2026: Fees, Safety And Aggregator Comparison",
+          "status": "open",
+          "evidence_url": "https://blockchainreporter.net/exchanges/1inch/",
+          "date_observed": "2026-10-29"
+        },
+        {
+          "claim_text": "On March 3, 2026, 1inch launched Trade Mode in its app for classic swaps with custom gas and slippage settings and limit orders, and renamed its Pro mode to Terminal. 1inch says the update cut median Fusion intent-swap execution time from 26 seconds to 14 seconds, about twice as fast, through resolver competition and Dutch auction settlement optimisation.",
+          "claim_type": "technical",
+          "source_url": "https://www.ccn.com/education/crypto/1inch-cross-chain-dex-aggregator-altcoin-traders-explained/",
+          "source_title": "1inch Q1 2026: Trading Volume Falls 60%, but RWAs and Fusion Show Resilience",
+          "status": "open",
+          "evidence_url": "https://www.ccn.com/education/crypto/1inch-cross-chain-dex-aggregator-altcoin-traders-explained/",
+          "date_observed": "2026-10-29"
+        },
+        {
+          "claim_text": "On March 30, 2026, 1inch launched Model Context Protocol (MCP) access through 1inch Business, letting AI agents run classic, intent-based and cross-chain swaps and read portfolio data through 1inch infrastructure. Through the integration agents can access 15 APIs including Swap, Balance, Portfolio, Token, Gas Price and Transaction endpoints within policy limits set by developers.",
+          "claim_type": "technical",
+          "source_url": "https://blockchainreporter.net/exchanges/1inch/",
+          "source_title": "1inch Review 2026: Fees, Safety And Aggregator Comparison",
+          "status": "open",
+          "evidence_url": "https://blockchainreporter.net/exchanges/1inch/",
+          "date_observed": "2026-10-29"
+        },
+        {
+          "claim_text": "On August 14, 2026, 1inch added pay-per-call API pricing, letting developers pay for 1inch API calls in USDC on Base through the x402 standard, so software agents and developers can pay per request without a subscription.",
+          "claim_type": "economic",
+          "source_url": "https://blockchainreporter.net/exchanges/1inch/",
+          "source_title": "1inch Review 2026: Fees, Safety And Aggregator Comparison",
+          "status": "open",
+          "evidence_url": "https://blockchainreporter.net/exchanges/1inch/",
+          "date_observed": "2026-10-29"
+        },
+        {
+          "claim_text": "1inch said in January 2026 it would review its tokenomics during 2026 to address how protocol value flows to 1INCH stakers and resilience in low-liquidity periods. A related Staking v2 proposal to replace decaying staking power with a lock-based model has been under discussion since October 2025 but had not gone to a vote as of October 2026, and the tokenomics review had not yet produced a concrete proposal.",
+          "claim_type": "economic",
+          "source_url": "https://plisio.net/crypto/1inch-network",
+          "source_title": "What Is 1inch? DEX Aggregator, Fusion Mode & Token Guide",
+          "status": "open",
+          "evidence_url": "https://plisio.net/crypto/1inch-network",
+          "date_observed": "2026-10-29"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
