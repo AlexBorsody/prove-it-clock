@@ -4360,7 +4360,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Immutable is merging its original Immutable X chain and its newer zkEVM chain into a single unified Immutable Chain, consolidating liquidity, tooling and user activity into one canonical environment so developers no longer navigate parallel systems and the project can focus its roadmap on one core infrastructure.",
+          "claim_type": "milestone",
+          "source_url": "https://playtoearn.com/news/immutable-nears-completion-of-its-major-network-merge-as-immutable-x-and-zkevm-come-together",
+          "source_title": "Immutable Nears Completion of Its Major Network Merge as Immutable X and zkEVM Come Together",
+          "status": "open",
+          "evidence_url": "https://playtoearn.com/news/immutable-nears-completion-of-its-major-network-merge-as-immutable-x-and-zkevm-come-together",
+          "date_observed": "2026-10-30"
+        },
+        {
+          "claim_text": "To finalise the merge, Immutable will upgrade the Immutable X bridge contract with February 11, 2026 as the earliest upgrade date, followed by a mandatory two-week delay. Assets that are not withdrawn before the upgrade will be migrated automatically, with February 25, 2026 as the earliest date for completed automatic migrations, no user action required and Immutable not taking custody of funds at any point.",
+          "claim_type": "technical",
+          "source_url": "https://playtoearn.com/news/immutable-nears-completion-of-its-major-network-merge-as-immutable-x-and-zkevm-come-together",
+          "source_title": "Immutable Nears Completion of Its Major Network Merge as Immutable X and zkEVM Come Together",
+          "status": "open",
+          "evidence_url": "https://playtoearn.com/news/immutable-nears-completion-of-its-major-network-merge-as-immutable-x-and-zkevm-come-together",
+          "date_observed": "2026-10-30"
+        },
+        {
+          "claim_text": "As part of the merge, Immutable X is being deprecated: all write operations through Immutable X APIs and RPCs will be blocked starting February 11, 2026 and the chain will operate in read-only mode from that point. Immutable Link is also being phased out, with Immutable Passport handling user authentication and transactions and Immutable Play serving as the primary access layer.",
+          "claim_type": "technical",
+          "source_url": "https://playtoearn.com/news/immutable-nears-completion-of-its-major-network-merge-as-immutable-x-and-zkevm-come-together",
+          "source_title": "Immutable Nears Completion of Its Major Network Merge as Immutable X and zkEVM Come Together",
+          "status": "open",
+          "evidence_url": "https://playtoearn.com/news/immutable-nears-completion-of-its-major-network-merge-as-immutable-x-and-zkevm-come-together",
+          "date_observed": "2026-10-30"
+        },
+        {
+          "claim_text": "Immutable and Polygon Labs' Gaming on Polygon hub on Immutable Play is presented as the front door for Polygon PoS and Agglayer CDK-powered titles, with all five launch titles live with full questlines, shared quests and leaderboards, 500 Gems for completing all quests in any single title and 2,500 Gems for clearing all five, a $100,000 community reward pool, and a further joint prize pool campaign still to come.",
+          "claim_type": "milestone",
+          "source_url": "https://www.webull.com/news/13936666940122112",
+          "source_title": "Immutable and Polygon Labs Announce Next Phase of Partnership: 5 Live Titles and Quest Rewards",
+          "status": "open",
+          "evidence_url": "https://www.webull.com/news/13936666940122112",
+          "date_observed": "2026-10-30"
+        },
+        {
+          "claim_text": "Immutable Chain's canonical bridge currently uses Axelar for cross-chain messaging, and the project plans to add zero-knowledge proofs to the bridge in the future, so the bridge should not be assumed to already use validity proofs despite the chain's earlier zkEVM branding.",
+          "claim_type": "technical",
+          "source_url": "https://www.securities.io/investing-in-immutable-x/",
+          "source_title": "Investing in Immutable (IMX) – Everything You Need to Know",
+          "status": "open",
+          "evidence_url": "https://www.securities.io/investing-in-immutable-x/",
+          "date_observed": "2026-10-30"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
