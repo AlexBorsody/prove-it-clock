@@ -3297,7 +3297,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Bitcoin Cash's May 2026 Layla upgrade was presented as completing the restoration of Bitcoin Script in CashVM, bundling four improvement proposals: bounded loops, reusable functions defined and invoked inside a script, re-enabled bitwise operations including inversion and shifts, and Pay-to-Script outputs made standard with longer token commitments and a unified unlocking-bytecode limit.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-31",
+          "evidence_url": "https://blog.bitjson.com/bitcoin-cash-upgrade-2026/",
+          "source_title": "Bitcoin Cash Upgrade 2026",
+          "source_url": "https://blog.bitjson.com/bitcoin-cash-upgrade-2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "The 2026 upgrade case study presents Quantumroot as a quantum-secure vault design offering 256-bit classical and 128-bit quantum security strength, possible since May 2025 but made 10 to 100 times more efficient by the 2026 upgrade, with sweep transactions said to be 15 percent smaller per UTXO than ordinary pay-to-public-key-hash wallets.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-31",
+          "evidence_url": "https://blog.bitjson.com/bitcoin-cash-upgrade-2026/",
+          "source_title": "Bitcoin Cash Upgrade 2026",
+          "source_url": "https://blog.bitjson.com/bitcoin-cash-upgrade-2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "CHIP-2025-01 Transaction Version 5 was proposed for Chipnet lock-in in November 2026 and mainnet deployment in May 2027, promising zero-overhead covenants, detached signatures that multiple inputs can reference, comprehensive malleability protection, efficient covenant UTXO recycling, fractional satoshis, and fractional CashTokens with up to 19 additional decimal places of precision.",
+          "claim_type": "milestone",
+          "date_observed": "2026-10-31",
+          "evidence_url": "https://blog.bitjson.com/2027-txv5/",
+          "source_title": "2027 Proposal: Transaction Version 5",
+          "source_url": "https://blog.bitjson.com/2027-txv5/",
+          "status": "open"
+        },
+        {
+          "claim_text": "CHIP-2025-03 Faster Blocks proposes cutting Bitcoin Cash's block target time from 10 minutes to 1 minute, claiming 95 percent of single-confirmation transactions would clear in under 3 minutes, with a tick system to measure block height in finer units so future target changes stay compatible with the halving schedule, locktimes, difficulty adjustment and adaptive blocksize limit.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-31",
+          "evidence_url": "https://bitcoincashresearch.org/t/chip-2025-03-faster-blocks-for-bitcoin-cash/1513",
+          "source_title": "CHIP-2025-03 Faster Blocks for Bitcoin Cash",
+          "source_url": "https://bitcoincashresearch.org/t/chip-2025-03-faster-blocks-for-bitcoin-cash/1513",
+          "status": "open"
+        },
+        {
+          "claim_text": "A post-Layla tooling review checked on September 8, 2026 found only partial delivery in released tools: CashScript's stable 0.13.2 release supports loops, the new bitwise operators and Pay-to-Script contracts, while user-defined reusable functions remained only in 0.14 prereleases, and Quantumroot's initial wallet template had not yet received independent review in its developer preview.",
+          "claim_type": "technical",
+          "date_observed": "2026-10-31",
+          "evidence_url": "https://buyhodlsell.com/articles/bitcoin-cash-after-layla",
+          "source_title": "Bitcoin Cash After Layla: Tools, Experiments, and Open Work",
+          "source_url": "https://buyhodlsell.com/articles/bitcoin-cash-after-layla",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
