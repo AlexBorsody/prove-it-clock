@@ -3451,7 +3451,53 @@
       },
       "milestones": [],
       "events": [],
-      "promises": [],
+      "promises": [
+        {
+          "claim_text": "Greywick Digital and the Litecoin Foundation signed a memorandum of understanding on October 1, 2026 to deploy cLTC, a reserve-backed tokenized version of Litecoin, on the Canton Network. Real LTC is to be held in reserve while cLTC circulates on Canton under the CIP-56 token standard, with publicly disclosed reserves and independent attestation, and the Foundation has endorsed cLTC as the official version of Litecoin for institutional applications. Mainnet launch is targeted for late 2026, contingent on completing testnet validation and publishing the public reserve disclosures, with no exact date set.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-01",
+          "evidence_url": "https://cryptobriefing.com/litecoin-foundation-cltc-canton-network/",
+          "source_title": "Litecoin Foundation signs MOU with Greywick Digital to bring cLTC to Canton Network",
+          "source_url": "https://cryptobriefing.com/litecoin-foundation-cltc-canton-network/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Luxxfolio Holdings signed a non-binding letter of intent dated October 27, 2026 with Greywick Digital to explore institutional liquidity solutions for cLTC, becoming its inaugural ecosystem partner. Luxxfolio intends to explore locking part of its mined LTC treasury into Greywick's proposed reserve, using published addresses and independent attestation, in return for cLTC issued 1 to 1 against the locked LTC, plus a proposed seed liquidity role and joint exploration of borrowing applications. Commercial commitments require a further signed agreement, and Greywick's mainnet target remains late 2026 subject to publishing reserve addresses, the attestation format and the launch sequence.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-01",
+          "evidence_url": "https://www.cantechletter.com/newswires/luxxfolio-partners-with-greywick-digital-to-pioneer-institutional-liquidity-for-cltc-on-the-canton-network/",
+          "source_title": "Luxxfolio Partners with Greywick Digital to Pioneer Institutional Liquidity for cLTC on the Canton Network",
+          "source_url": "https://www.cantechletter.com/newswires/luxxfolio-partners-with-greywick-digital-to-pioneer-institutional-liquidity-for-cltc-on-the-canton-network/",
+          "status": "open"
+        },
+        {
+          "claim_text": "A Litecoin Core developer postmortem by David Burkett, published April 28, 2026, states that in March 2026 a block producer exploited a missing check at block connection at height 3,073,882, pairing an MWEB input worth no more than about 1.21 LTC with fake commitment data to back a peg-out of about 85,034 LTC. Emergency releases 0.21.5 and 0.21.5.1 went to miners and blocked spending of the outputs holding the funds; the attacker then signed a recovery transaction in exchange for an 850 LTC bounty, which Charlie Lee covered, the full amount was re-pegged into MWEB at block 3,078,098 and frozen, and the postmortem reports no confirmed user funds lost in the March incident.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-01",
+          "evidence_url": "https://zipmex.com/blog/litecoin-mimblewimble-upgrade/",
+          "source_title": "Litecoin MWEB: Privacy Upgrade, Delistings and the Exploit",
+          "source_url": "https://zipmex.com/blog/litecoin-mimblewimble-upgrade/",
+          "status": "open"
+        },
+        {
+          "claim_text": "After the 2026 MWEB incidents, Litecoin Core shipped stricter MWEB consensus rules through soft forks in the 0.21.5.x series: version 0.21.5.6 on August 2, 2026 added a soft-fork rule at mainnet height 3,154,440 rejecting blocks with a peg-out-signalling kernel but an empty peg-out list, and version 0.21.5.8 on September 12, 2026 added a soft-fork rule at mainnet height 3,172,640 rejecting kernels that signal extra data but carry an empty payload, with miners and pools told to upgrade before activation. Version 0.21.5.7 was described as a security fix sent only to mining pools.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-01",
+          "evidence_url": "https://zipmex.com/blog/litecoin-mimblewimble-upgrade/",
+          "source_title": "Litecoin MWEB: Privacy Upgrade, Delistings and the Exploit",
+          "source_url": "https://zipmex.com/blog/litecoin-mimblewimble-upgrade/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Litecoin's fourth halving is scheduled by protocol arithmetic at block 3,360,000, projected for around July 27 to 28, 2027, when the block reward falls from 6.25 LTC to 3.125 LTC. The exact calendar date moves with block production times, and the halving will cut Litecoin's own contribution to the shared merged-mining budget with Dogecoin roughly in half at unchanged prices.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-01",
+          "evidence_url": "https://litecoinunpacked.com/",
+          "source_title": "What is Litecoin?",
+          "source_url": "https://litecoinunpacked.com/",
+          "status": "open"
+        }
+      ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
