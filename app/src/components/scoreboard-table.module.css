@@ -65,6 +65,11 @@ table.table { min-width:880px;table-layout:fixed; }
 /* List stays a table on phones: it keeps its columns and scrolls horizontally. */
 @media(max-width:640px) {
   .tableWrap { overflow-x:auto; }
+  /* The project column stays pinned to the left edge while the rest of the
+     row scrolls, so the name is never off-screen on a phone. */
+  .table thead th:first-child { position:sticky; left:0; z-index:3; }
+  .table tbody td:first-child { position:sticky; left:0; z-index:2; background:var(--bg-panel); box-shadow:10px 0 10px -10px rgba(0,0,0,.65); }
+  .genesisRow td:first-child { background:#172b20; }
 }
 .heartsWrap { position: relative; display: inline-block; }
 .heartsChev { position: absolute; right: 0; bottom: 0; min-width: 44px; min-height: 44px; }
