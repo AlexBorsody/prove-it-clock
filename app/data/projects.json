@@ -3804,6 +3804,51 @@
           "source_url": "https://wisconsinbeacon.com/data-network-joins-sui-and-walrus-to-scale-the-supply-chain-for-ai-training-data/",
           "status": "open",
           "date_observed": "2026-10-13"
+        },
+        {
+          "claim_text": "Samsung Wallet is integrating USDC transfers over Sui on 82 million US Galaxy devices, announced at Sui Basecamp on October 8, 2026: users will be able to hold and send USDC without network fees and without buying SUI first, with the rollout planned for the last week of October 2026, US only at launch and USDC as the only supported asset, with SUI itself not supported in the wallet at launch.",
+          "claim_type": "milestone",
+          "evidence_url": "https://beincrypto.com/sui-developments-outlook-2027/",
+          "source_title": "3 Major Sui Developments To Watch Heading Into 2027",
+          "source_url": "https://beincrypto.com/sui-developments-outlook-2027/",
+          "status": "open",
+          "date_observed": "2026-11-03"
+        },
+        {
+          "claim_text": "Mysten Labs and Google Cloud are co-developing Verifiable Agent Arbiter, announced October 6, 2026, to prove whether an AI agent acted within its authority: an agent's detailed activity records stay private in the company's own storage, while cryptographic proofs that the records are intact are written to Walrus and coordinated on Sui, so a disputed workflow can be replayed against the receipts. As of the announcement it is being co-developed, not launched, with no customers or launch date named.",
+          "claim_type": "technical",
+          "evidence_url": "https://emnaas.medium.com/suis-40-million-tps-isn-t-the-story-the-rules-for-ai-agents-are-257298f7d57c",
+          "source_title": "Sui's 40 Million TPS Isn't the Story. The Rules for AI Agents Are.",
+          "source_url": "https://emnaas.medium.com/suis-40-million-tps-isn-t-the-story-the-rules-for-ai-agents-are-257298f7d57c",
+          "status": "open",
+          "date_observed": "2026-11-03"
+        },
+        {
+          "claim_text": "At Basecamp on October 7-8, 2026 Mysten Labs announced three agent-control tools, Sui Agent Pass (owner-set onchain limits on which assets an agent can touch, who it can pay and what it can do), Warrant (programmable permissions that can grow with an agent's track record) and Rooms (protocol-enforced shared spaces for agent coordination), all targeted for Q4 2026 in some form, with no public specifications or testnet available as of October 15, 2026.",
+          "claim_type": "technical",
+          "evidence_url": "https://emnaas.medium.com/suis-40-million-tps-isn-t-the-story-the-rules-for-ai-agents-are-257298f7d57c",
+          "source_title": "Sui's 40 Million TPS Isn't the Story. The Rules for AI Agents Are.",
+          "source_url": "https://emnaas.medium.com/suis-40-million-tps-isn-t-the-story-the-rules-for-ai-agents-are-257298f7d57c",
+          "status": "open",
+          "date_observed": "2026-11-03"
+        },
+        {
+          "claim_text": "On October 7, 2026 Sui ran a live Basecamp stress test reporting 40,614,180 transactions per second through programmable offchain tunnels that settle to Sui, more than double its stated 20 million target; reviewer CertiK reported a peak of 40,682,328 and counted 7,680 tunnels, against Sui's announcement of more than 10,000 tunnels opened, and CertiK stated the figure is tunnel throughput, not a measurement of Sui's on-chain transaction capacity.",
+          "claim_type": "technical",
+          "evidence_url": "https://emnaas.medium.com/suis-40-million-tps-isn-t-the-story-the-rules-for-ai-agents-are-257298f7d57c",
+          "source_title": "Sui's 40 Million TPS Isn't the Story. The Rules for AI Agents Are.",
+          "source_url": "https://emnaas.medium.com/suis-40-million-tps-isn-t-the-story-the-rules-for-ai-agents-are-257298f7d57c",
+          "status": "open",
+          "date_observed": "2026-11-03"
+        },
+        {
+          "claim_text": "On October 29, 2026 Mercado Bitcoin, Brazil's largest crypto exchange with 4.5 million clients, announced a multi-step Sui partnership: it now offers purchases, sales and transfers of SUI, USDC and USDsui over Sui, with USDsui usable as collateral in its lending products, and it plans to migrate its regulated tokenized real-world asset platform (more than 800 tokenized assets issued since 2019) to Sui with a connection to Brazil's PIX payment system, and to explore a Hashi integration for native Bitcoin lending after Hashi's mainnet launch.",
+          "claim_type": "milestone",
+          "evidence_url": "https://cryptobriefing.com/mercado-bitcoin-sui-asset-transfers-brazil/",
+          "source_title": "Mercado Bitcoin opens Sui asset transfers to its 4.5 million clients in Brazil",
+          "source_url": "https://cryptobriefing.com/mercado-bitcoin-sui-asset-transfers-brazil/",
+          "status": "open",
+          "date_observed": "2026-11-03"
         }
       ],
       "provisional": true,
