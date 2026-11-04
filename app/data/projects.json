@@ -3265,6 +3265,51 @@
           "source_url": "https://www.ainvest.com/news/protocol-targets-finality-spice-upgrade-etf-uncertainty-2609/",
           "status": "open",
           "date_observed": "2026-10-14"
+        },
+        {
+          "claim_text": "NEAR's Multi-Party Computation network is live on mainnet with 17 active operators as of mid-October 2026, funded directly from protocol emissions under House of Stake proposal HSP-007, which was approved by governance to make the chain-abstraction signing layer economically self-sustaining rather than dependent on third-party operators.",
+          "claim_type": "technical",
+          "evidence_url": "https://bitrss.com/why-is-near-up-10-four-protocol-catalysts-behind-the-30-day-120-rally-261538",
+          "source_title": "Why Is NEAR Up 10%? Four Protocol Catalysts Behind the 30-Day 120% Rally",
+          "source_url": "https://bitrss.com/why-is-near-up-10-four-protocol-catalysts-behind-the-30-day-120-rally-261538",
+          "status": "open",
+          "date_observed": "2026-11-04"
+        },
+        {
+          "claim_text": "Brave's Leo AI assistant now runs private AI inference through NEAR AI Cloud, using Trusted Execution Environments to deliver end-to-end encrypted chat with hardware-level isolation, no logging and no training on user queries, putting NEAR infrastructure in front of Brave's more than 60 million monthly active users.",
+          "claim_type": "milestone",
+          "evidence_url": "https://bitrss.com/why-is-near-up-10-four-protocol-catalysts-behind-the-30-day-120-rally-261538",
+          "source_title": "Why Is NEAR Up 10%? Four Protocol Catalysts Behind the 30-Day 120% Rally",
+          "source_url": "https://bitrss.com/why-is-near-up-10-four-protocol-catalysts-behind-the-30-day-120-rally-261538",
+          "status": "open",
+          "date_observed": "2026-11-04"
+        },
+        {
+          "claim_text": "NEAR is now listed on Sunrise with NEAR Intents powering canonical bridging between NEAR and Solana: NEAR on Solana is a protocol-recognized canonical asset rather than a wrapped synthetic token, with solvers competing to fulfill cross-chain transactions.",
+          "claim_type": "technical",
+          "evidence_url": "https://bitrss.com/why-is-near-up-10-four-protocol-catalysts-behind-the-30-day-120-rally-261538",
+          "source_title": "Why Is NEAR Up 10%? Four Protocol Catalysts Behind the 30-Day 120% Rally",
+          "source_url": "https://bitrss.com/why-is-near-up-10-four-protocol-catalysts-behind-the-30-day-120-rally-261538",
+          "status": "open",
+          "date_observed": "2026-11-04"
+        },
+        {
+          "claim_text": "Confidential Intents reached general availability on July 7, 2026, opening confidential cross-chain execution to any builder using the NEAR Intents 1Click Swap API after more than $2.6 billion in ZEC had settled across NEAR Intents, with Confidential Intents total value locked reaching about $160 million by the end of Q3 2026 and near.com making confidentiality the default across holdings, trades, payments and yield on September 1, 2026.",
+          "claim_type": "technical",
+          "evidence_url": "https://nansen.ai/post/near-q3-2026-report",
+          "source_title": "NEAR Q3 2026 Report",
+          "source_url": "https://nansen.ai/post/near-q3-2026-report",
+          "status": "open",
+          "date_observed": "2026-11-04"
+        },
+        {
+          "claim_text": "NEAR said on October 9, 2026 that its accounts already support the post-quantum ML-DSA signature scheme with no asset migration required, that NEP-655 committed implicit accounts are live on testnet with mainnet deployment expected in the coming weeks, and that custom signing extensions for NEAR Intents wallet contracts and a Q-day recovery registry for other blockchains remain in development with no launch dates announced.",
+          "claim_type": "technical",
+          "evidence_url": "https://www.cryptotimes.io/2026/10/10/near-says-accounts-support-ml-dsa-post-quantum-signatures/",
+          "source_title": "NEAR Says Accounts Support ML-DSA Post-Quantum Signatures",
+          "source_url": "https://www.cryptotimes.io/2026/10/10/near-says-accounts-support-ml-dsa-post-quantum-signatures/",
+          "status": "open",
+          "date_observed": "2026-11-04"
         }
       ],
       "provisional": true,
