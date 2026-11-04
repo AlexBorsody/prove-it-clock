@@ -9,7 +9,7 @@
   "crons": [
     {
       "path": "/api/cron/scan-news",
-      "schedule": "0 * * * *"
+      "schedule": "0 13 * * *"
     }
   ]
 }
