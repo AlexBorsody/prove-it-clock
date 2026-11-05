@@ -4202,6 +4202,51 @@
           "source_title": "Akash Network Roadmap - 2026",
           "source_url": "https://akash.network/roadmap/2026/",
           "status": "open"
+        },
+        {
+          "claim_text": "Akash's core team selected Solana on October 26, 2026 as the next home for the network, replacing its sovereign Cosmos chain akashnet-2, and opened governance Proposal 346, Migrate the Akash Protocol to Solana, for a vote running October 26 to November 2, 2026 with a 33.4 percent quorum; an early on-chain tally on October 26 showed roughly 98 percent yes votes.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-05",
+          "evidence_url": "https://solanacompass.com/news/akash-network-picks-solana-to-replace-its-cosmos-chain-as-akt-stakers-vote-on-prop-346",
+          "source_title": "Akash Network Picks Solana to Replace Its Cosmos Chain as AKT Stakers Vote on Prop 346",
+          "source_url": "https://solanacompass.com/news/akash-network-picks-solana-to-replace-its-cosmos-chain-as-akt-stakers-vote-on-prop-346",
+          "status": "open"
+        },
+        {
+          "claim_text": "Under Proposal 346, AKT is to launch on Solana as a native SPL token at a 1 to 1 conversion rate, with total supply unchanged, the AKT ticker kept and six decimal places preserved, expected about two to three weeks after the proposal passes and only after two independent audits of the token and migration portal clear; conversion runs through a one-way portal planned to stay open for two years from token launch, with no path back to the Cosmos token.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-05",
+          "evidence_url": "https://cryptobriefing.com/akash-network-migrates-solana-akt-spl-token/",
+          "source_title": "Akash Network proposal to leave Cosmos for Solana shows ~98% support, AKT to become SPL token",
+          "source_url": "https://cryptobriefing.com/akash-network-migrates-solana-akt-spl-token/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Moving the Akash compute marketplace itself is gated behind a separate later governance vote that sets a cutover date: before that vote, a provider testnet is to run for at least six weeks with 25 or more operators, followed by two more audit rounds and a public audit contest, and a 14 day community dress rehearsal.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-05",
+          "evidence_url": "https://solanacompass.com/news/akash-network-picks-solana-to-replace-its-cosmos-chain-as-akt-stakers-vote-on-prop-346",
+          "source_title": "Akash Network Picks Solana to Replace Its Cosmos Chain as AKT Stakers Vote on Prop 346",
+          "source_url": "https://solanacompass.com/news/akash-network-picks-solana-to-replace-its-cosmos-chain-as-akt-stakers-vote-on-prop-346",
+          "status": "open"
+        },
+        {
+          "claim_text": "After a marketplace cutover, existing workloads on the old chain are to keep running for a 90 day wind-down period and the Cosmos chain is to halt about 13 weeks after cutover; staking rewards end at cutover, validator roles and validator income end when the old chain halts, and nothing changes for live workloads until the cutover itself.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-05",
+          "evidence_url": "https://www.mytokencap.com/news/603777.html",
+          "source_title": "Akash Network Selects Solana for Its Blockchain Migration as AKT Rises 4%",
+          "source_url": "https://www.mytokencap.com/news/603777.html",
+          "status": "open"
+        },
+        {
+          "claim_text": "The Solana choice closes the AEP-79 chain migration process: an open request for proposals begun in December 2025 weighed seven options and by August 2026 had narrowed to two finalists that cleared its hard requirements, Solana mainnet and an existing EVM layer 2; Akash's own cost modeling put total marketplace network fees on Solana at about 0.075 SOL per day at current volume, with a bid costing about $0.0008 on Solana against about $0.007 on an EVM layer 2 on a calm day.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-05",
+          "evidence_url": "https://www.mytokencap.com/news/603777.html",
+          "source_title": "Akash Network Selects Solana for Its Blockchain Migration as AKT Rises 4%",
+          "source_url": "https://www.mytokencap.com/news/603777.html",
+          "status": "open"
         }
       ],
       "provisional": true,
