@@ -3695,6 +3695,51 @@
           "source_title": "Hedera (HBAR) as a Long-Term Value Play in Enterprise Web3 Adoption",
           "source_url": "https://www.ainvest.com/news/hedera-hbar-long-term-play-enterprise-web3-adoption-2601/",
           "status": "open"
+        },
+        {
+          "claim_text": "Hedera v0.77 reached mainnet on September 29, 2026 after testnet on September 15, adding Ethereum Pectra support under HIP-1341 in the Smart Contract Service, including the BLS12-381 precompile matching EIP-2537, higher calldata gas costs under EIP-7623, access lists under EIP-2930 and contract creation code size validation under EIP-3860, while HIP-1340 EOA code delegation shipped deactivated for a later release.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-06",
+          "evidence_url": "https://www.nftpush.net/article/hedera-network-rolls-out-v0-77-mainnet-changes-for-contract-tools",
+          "source_title": "Hedera Network Rolls Out v0.77 Mainnet Changes for Contract Tools",
+          "source_url": "https://www.nftpush.net/article/hedera-network-rolls-out-v0-77-mainnet-changes-for-contract-tools",
+          "status": "open"
+        },
+        {
+          "claim_text": "Hedera v0.77 completes the HIP-1261 Simple Fees migration that began in v0.73: every transaction now uses the new model of a base fee plus extras stored in system file 0.0.113, the legacy fee calculation system has been removed entirely, and the legacy AccountBalanceQuery was also removed from mainnet, with developers directed to MirrorNodeAccountBalanceQuery or the Mirror Node REST API, available in the JavaScript, Java and Go SDKs at no query fee.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-06",
+          "evidence_url": "https://www.nftpush.net/article/hedera-network-rolls-out-v0-77-mainnet-changes-for-contract-tools",
+          "source_title": "Hedera Network Rolls Out v0.77 Mainnet Changes for Contract Tools",
+          "source_url": "https://www.nftpush.net/article/hedera-network-rolls-out-v0-77-mainnet-changes-for-contract-tools",
+          "status": "open"
+        },
+        {
+          "claim_text": "Hedera's transition to make block streams the canonical network output format during November 2026 introduces network-aggregated threshold signatures and requires mirror node operators to deploy compatible software version 0.163.0 or later before the cutover; Hedera cancelled its planned November 4, 2026 testnet upgrade to v0.79 on November 2, 2026 with no technical explanation or replacement date given in that report, while testnet remained on v0.78.0 and mainnet ran v0.78.2 after a successful October 28 deployment.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-06",
+          "evidence_url": "https://ethnews.com/hedera-cancels-v0-79-upgrade-as-hbar-tests-critical-support/",
+          "source_title": "Hedera Cancels v0.79 Upgrade as HBAR Tests Critical Support",
+          "source_url": "https://ethnews.com/hedera-cancels-v0-79-upgrade-as-hbar-tests-critical-support/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On September 24, 2026 Hedera contributed the Hashgraph-developed Cross-Ledger Protocol, CLPR, to Linux Foundation Decentralized Trust Labs, with stated uses including cross-border payments and cross-ledger settlement, moving the bridgeless protocol from its earlier closed beta and draft proposal stage into an open foundation labs setting.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-06",
+          "evidence_url": "https://coinstats.app/ai/a/fundamental-analysis-hedera-hashgraph",
+          "source_title": "What Is Hedera (HBAR)? Fundamentals Explained (November 2026)",
+          "source_url": "https://coinstats.app/ai/a/fundamental-analysis-hedera-hashgraph",
+          "status": "open"
+        },
+        {
+          "claim_text": "Hedera's Agent Lab, launched in March 2026 as a browser-based no-code environment for building onchain AI agents with LangChain and Vercel AI SDK integrations through the Hedera Agent Kit, has planned updates to introduce Stablecoin Studio plugins supporting token swaps, lending operations and automated financial workflows for enterprise systems.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-06",
+          "evidence_url": "https://bitrss.com/hbar-ecosystem-expands-in-2026-with-mclaren-entry-and-tokenization-rise-206765",
+          "source_title": "HBAR Ecosystem Expands in 2026 With McLaren Entry and Tokenization Rise",
+          "source_url": "https://bitrss.com/hbar-ecosystem-expands-in-2026-with-mclaren-entry-and-tokenization-rise-206765",
+          "status": "open"
         }
       ],
       "provisional": true,
