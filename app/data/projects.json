@@ -3464,6 +3464,51 @@
           "source_title": "Uniswap Labs Plans OUSD Rewards Hook for Liquidity Providers",
           "source_url": "https://cryptonews.net/news/defi/33521718/",
           "status": "open"
+        },
+        {
+          "claim_text": "Uniswap Labs launched Aggregator Hooks on October 22, 2026, live in the Uniswap Web App and API on Ethereum mainnet, Base and Robinhood Chain: each hook wraps an external liquidity source so Uniswap routing treats it as a native v4 pool, seven sources are supported at launch including Curve, Fluid and PancakeSwap and covering more than 90 percent of DEX activity on those chains, the router pulls fresh quotes each block and settles the whole route in a single transaction with nothing new for a user to approve, and swaps routed through external sources still pay Uniswap protocol fees that feed into UNI burns.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-07",
+          "evidence_url": "https://cryptocompass.com/articles/uniswap-v4-now-pulls-in-liquidity-from-rival-dexs-through-new-aggregator-hooks",
+          "source_title": "Uniswap v4 Now Pulls In Liquidity From Rival DEXs Through New Aggregator Hooks",
+          "source_url": "https://cryptocompass.com/articles/uniswap-v4-now-pulls-in-liquidity-from-rival-dexs-through-new-aggregator-hooks",
+          "status": "open"
+        },
+        {
+          "claim_text": "Proposal 100, executed on Monday July 27, 2026, extended Uniswap's existing protocol fee machinery to v4 pools across seven networks at once, Ethereum, Arbitrum, Base, BNB Chain, Polygon, OP Mainnet and Robinhood Chain, passing with 46.6 million UNI in favour against 1.27 million opposed; daily protocol revenue routed to UNI burns was reported at roughly $114,000 a day earlier in July 2026 and roughly $325,000 a day after July 27.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-07",
+          "evidence_url": "https://phemex.com/blogs/uniswap-fee-switch-revenue",
+          "source_title": "How the Uniswap Fee Switch Changed Its Revenue Model",
+          "source_url": "https://phemex.com/blogs/uniswap-fee-switch-revenue",
+          "status": "open"
+        },
+        {
+          "claim_text": "A February 2026 Uniswap governance vote, structured as two separate onchain proposals for transaction-limit reasons, sought to expand protocol fee capture to eight additional chains beyond Ethereum and to automate fee collection across all v3 liquidity pools by default through a new tier-based v3OpenFeeAdapter, replacing case-by-case pool activation; estimates pointed to about $27 million in additional annualized revenue on top of an annualized burn pace of about $34 million, with more than $5.5 million of UNI already burned since the fee switch first rolled out in late 2025.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-07",
+          "evidence_url": "https://www.binance.com/en/square/post/295959594254369",
+          "source_title": "Uniswap Fee Switch Vote Gains Momentum, Pushing UNI Higher by 15% in a Single Day",
+          "source_url": "https://www.binance.com/en/square/post/295959594254369",
+          "status": "open"
+        },
+        {
+          "claim_text": "Uniswap Labs launched TJAR on October 29, 2026, an open-source tool that lets applications deposit fees collected in many different tokens into a Token Jar, where searchers compete to convert them so the application automatically receives a single chosen token; it is built on the Token Jar framework Uniswap developed for its own protocol fees, which processed more than $15.3 million in conversions in September 2026, it is live across seven blockchains with code, deployment addresses and audit reports published, Robinhood is the first partner, using it across its supported chains to convert Uniswap API fees into USDC and USDG, and Uniswap DAO governance may introduce an optional TJAR protocol fee, with none currently activated.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-07",
+          "evidence_url": "https://www.cryptotimes.io/2026/10/30/uniswap-labs-launches-tjar-with-robinhood-as-first-partner/",
+          "source_title": "Uniswap Labs launches TJAR with Robinhood as first partner",
+          "source_url": "https://www.cryptotimes.io/2026/10/30/uniswap-labs-launches-tjar-with-robinhood-as-first-partner/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 7, 2026 Uniswap confirmed it will support the v4 Hooks feature on Elysium, a Hyperliquid layer-2 project, so developers can use v4 Hooks to build customizable liquidity pools supporting dynamic fee rates and custom trading logic; the Elysium mainnet is expected to launch on November 9, 2026.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-07",
+          "evidence_url": "https://www.panews.io/articles/01a1b39f-fb16-7580-8c43-221f83c5e130",
+          "source_title": "Uniswap to Support V4 Hooks on Elysium",
+          "source_url": "https://www.panews.io/articles/01a1b39f-fb16-7580-8c43-221f83c5e130",
+          "status": "open"
         }
       ],
       "provisional": true,
