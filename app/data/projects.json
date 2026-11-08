@@ -4414,6 +4414,51 @@
           "source_title": "EIGEN (EIGEN) | 4.8% Dip as Aug 1 Unlock Approaches -- Can the Rebrand Momentum Offset Dilution?",
           "source_url": "https://www.ainvest.com/news/eigen-eigen-4-8-dip-aug-1-unlock-approaches-rebrand-momentum-offset-dilution-2607/",
           "status": "open"
+        },
+        {
+          "claim_text": "EigenCloud launched EigenAI and EigenCompute on mainnet alpha, with general availability planned in the coming months: EigenAI is a verifiable LLM inference API with an OpenAI-compatible interface for open-source models, EigenCompute runs complex agent logic offchain in trusted execution environments, and cryptoeconomic security and zero-knowledge proofs are planned for a later stage rather than present at alpha; the launch announcement also named a collaboration with Google on the Agents Payment Protocol (AP2), an extension of the Agent-to-Agent protocol, as a standard framework for verifiable onchain agent payments.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-08",
+          "evidence_url": "https://bitrss.com/eigencloud-launches-eigenai-and-eigencompute-for-verifiable-ai-on-mainnet-alpha-131395",
+          "source_title": "EigenCloud Launches EigenAI and EigenCompute for Verifiable AI on Mainnet Alpha",
+          "source_url": "https://bitrss.com/eigencloud-launches-eigenai-and-eigencompute-for-verifiable-ai-on-mainnet-alpha-131395",
+          "status": "open"
+        },
+        {
+          "claim_text": "EigenAI released on mainnet in January 2026 claiming bit-exact deterministic LLM inference on production GPUs: identical inputs produced identical outputs across 10,000 test runs with about 1.8 percent additional latency and 95 to 98 percent of standard cuBLAS throughput, operators and verifiers must use identical GPU models (100 percent match rate on the same architecture, 0 percent across architectures in its tests), and verification is optimistic, with encrypted results published to EigenDA, a challenge window, re-execution inside trusted execution environments, and slashing of bonded stake on a mismatch.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-08",
+          "evidence_url": "https://blockchain.news/news/eigenai-deterministic-inference-mainnet-launch",
+          "source_title": "EigenAI Launches Bit-Exact Deterministic AI Inference on Mainnet",
+          "source_url": "https://blockchain.news/news/eigenai-deterministic-inference-mainnet-launch",
+          "status": "open"
+        },
+        {
+          "claim_text": "EigenCompute mainnet alpha carries explicit limits in its current documentation as reviewed in November 2026: the alpha trusts the developer, does not yet provide fully trustless execution, offers no uptime SLA, and is not recommended for customer funds, while full trustless execution and the broader vision of forced inclusion, liveness guarantees and upgrade delays remain future work distinct from what the alpha delivers today.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-08",
+          "evidence_url": "https://www.cryptoia.ai/project/eigenlayer",
+          "source_title": "EigenCloud (prev. EigenLayer) (EIGEN) — Project research",
+          "source_url": "https://www.cryptoia.ai/project/eigenlayer",
+          "status": "open"
+        },
+        {
+          "claim_text": "Caldera integrated EigenDA V2 into its rollup engine as a one-click option for new rollup deployments, with existing Caldera chains able to elect to switch: the integration is presented as delivering 100 MB/s data throughput for rollups, and EigenDA is described as the only data availability solution offering data reservations that guarantee bandwidth at a fixed cost, a claim Caldera supported by pointing to a demonstration posting the live chain state of all layer 1 and layer 2 blockchains on EigenDA.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-08",
+          "evidence_url": "https://hackernoon.com/lite/caldera-announces-partnership-with-eigencloud-to-integrate-eigenda-v2?ref=hackernoon",
+          "source_title": "Caldera Announces Partnership With EigenCloud To Integrate EigenDA V2",
+          "source_url": "https://hackernoon.com/lite/caldera-announces-partnership-with-eigencloud-to-integrate-eigenda-v2?ref=hackernoon",
+          "status": "open"
+        },
+        {
+          "claim_text": "The Eigen Foundation's monthly unlock released 36.82 million EIGEN on October 31, 2026, about 3.62 percent of circulating supply and valued near $6.35 million at a $0.17 spot price, split 19.75 million to investors and 17.07 million to early contributors under a 4 percent monthly unlock rule on investor and early-contributor allocations over a three-year schedule, with monthly releases expected to continue until the final scheduled unlock on September 30, 2027; founder Sreeram Kannan pledged on February 27, 2026 not to sell his own EIGEN until after October 2027.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-08",
+          "evidence_url": "https://wisevoter.com/world/2026/10/30/eigen-foundation-unlocks-eigen-tokens",
+          "source_title": "Eigen Foundation Unlocks 36.82 Million EIGEN Tokens",
+          "source_url": "https://wisevoter.com/world/2026/10/30/eigen-foundation-unlocks-eigen-tokens",
+          "status": "open"
         }
       ],
       "provisional": true,
