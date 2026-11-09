@@ -3664,7 +3664,53 @@
           "source_url": "https://www.tradingview.com/news/coinmarketcal:04790c3b7094b:0-canton-mainnet-burn-cip-lands-introducing-a-token-burn-mechanism-by-04-oct-2026/",
           "status": "open"
         }
-      ],
+      ,
+    {
+        "claim_text": "Following its October 28, 2026 launch, the DTCC Tokenization Service runs on the Canton Network and DTCC's private Besu network, with Canton as the only public network at launch: 20 DTC participants including J.P. Morgan, Citi, Morgan Stanley, Fidelity Investments and BNP Paribas signed access agreements covering tokenized stocks, exchange-traded funds and U.S. Treasuries, and DTCC plans rolling onboarding of the remaining participants, an expanded set of eligible assets, and additional blockchain networks in 2027; early Canton activity in the service included BNP Paribas acting as lender in an intraday securities lending transaction with tokenized U.S. Treasuries and Societe Generale moving 10 million dollars of tokenized U.S. Treasuries as collateral.",
+        "claim_type": "milestone",
+        "date_observed": "2026-11-09",
+        "evidence_url": "https://coinranking.com/news/dtcc-tokenization-service-goes-live-canton-20-firms-signed",
+        "source_title": "DTCC Tokenization Service Goes Live on Canton Network",
+        "source_url": "https://coinranking.com/news/dtcc-tokenization-service-goes-live-canton-20-firms-signed",
+        "status": "open"
+    },
+    {
+        "claim_text": "On November 3, 2026, the SEC Division of Corporation Finance issued a no-action letter stating it views Canton Coin as a digital commodity on the facts presented and would not recommend enforcement if Super Validators, Validators and application providers mint CC programmatically without registration: Digital Asset's October 30, 2026 request rested on CC deriving value from the programmatic operation of the network rather than the managerial efforts of others, on there being no central party (roughly 60 Super Validators acting through 13 node operators, protocol changes requiring two-thirds operator approval), and on a burn and mint model in which dollar-priced network fees are destroyed and new issuance declines over ten years to a steady state; the letter states an enforcement position only, reaches no legal conclusion, and does not approve any exchange-traded product.",
+        "claim_type": "milestone",
+        "date_observed": "2026-11-09",
+        "evidence_url": "https://genfinity.io/2026/11/03/canton-coin-no-action-letter-digital-commodity-minting/",
+        "source_title": "Canton Coin No-Action Letter: SEC Staff Clears Minting by 60 Super Validators, 700+ Validators, and 120+ Apps",
+        "source_url": "https://genfinity.io/2026/11/03/canton-coin-no-action-letter-digital-commodity-minting/",
+        "status": "open"
+    },
+    {
+        "claim_text": "Super Validators approved CIP-0129 in October 2026, a universal burn and synchronizer pricing change under which dedicated synchronizers (private networks on Canton) will burn Canton Coin at 60 dollars per megabyte of traffic instead of paying license fees, with the start estimated for the first quarter of 2027 and volume discounts expected around the third quarter of 2027.",
+        "claim_type": "economic",
+        "date_observed": "2026-11-09",
+        "evidence_url": "https://cs.bscn-test-blogs.org/post/banks-firms-behind-canton",
+        "source_title": "The Banks And Firms Behind Canton: Who Governs It, And Who Uses It?",
+        "source_url": "https://cs.bscn-test-blogs.org/post/banks-firms-behind-canton",
+        "status": "open"
+    },
+    {
+        "claim_text": "Under CIP-0096, approved December 31, 2025, validator liveness rewards were phased down in stages from 3.33 dollars to 2.50, then 0.60, and set to zero on April 30, 2026, after measurement showed roughly 70 percent of validator pool minting (about 132 million CC between November 8 and December 7, 2025) came from uptime rather than activity: validators now earn only activity rewards in proportion to fees burned, capped at 0.20 dollars of minted CC per 1 dollar of eligible activity weight, and CIP-0104 (approved February 12, 2026, rolling out from March 2) replaced featured-app activity markers, which had over-claimed against traffic actually burned by roughly 150 percent, with reward weight measured directly from sequencer and mediator data.",
+        "claim_type": "economic",
+        "date_observed": "2026-11-09",
+        "evidence_url": "https://www.catalyx.solutions/blog-posts/canton-network-coin-validator-rewards",
+        "source_title": "Canton Network Coin: Do Validator Rewards Pay Back?",
+        "source_url": "https://www.catalyx.solutions/blog-posts/canton-network-coin-validator-rewards",
+        "status": "open"
+    },
+    {
+        "claim_text": "Two approved lockup regimes now gate Canton rewards status: under CIP-0116 (approved May 20, 2026) a featured application must keep Canton Coin locked to hold its status, 5,000,000 CC per PartyId rising to 25,000,000 CC for asset issuers, with falling below the threshold removing featured status immediately and withdrawn collateral released over 60 days; under CIP-0105 (approved March 2, 2026) Super Validators must lock a share of aggregate lifetime earnings beginning near 70 percent and stepping down toward 55 percent by the third year, with under-locked weight dropping to a reduced tier and weight still under-locked past the grace window forfeited permanently.",
+        "claim_type": "economic",
+        "date_observed": "2026-11-09",
+        "evidence_url": "https://www.catalyx.solutions/blog-posts/canton-network-coin-validator-rewards",
+        "source_title": "Canton Network Coin: Do Validator Rewards Pay Back?",
+        "source_url": "https://www.catalyx.solutions/blog-posts/canton-network-coin-validator-rewards",
+        "status": "open"
+    }
+  ],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
