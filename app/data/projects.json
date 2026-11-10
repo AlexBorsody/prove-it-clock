@@ -4107,8 +4107,52 @@
           "source_title": "TON Ecosystem Shows Strong Momentum in 2026",
           "source_url": "https://bsc.news/post/ton-2026-telegram-validator-fee-cuts",
           "status": "open"
-        }
-      ],
+        },
+        {
+          "claim_text": "Validators approved Config -123 and Config 30 in September 2026: Config -123 introduces a network-level smart contract architecture for Telegram's native Gram Wallet in which each wallet uses a small permanent contract referencing shared wallet logic that can be updated through validator governance without user migration, initially covering signature verification, transaction execution, replay protection and key rotation and designed to support two-factor authentication and recurring payments over time; Config 30 extends validator leader windows and is expected to increase network throughput by up to 30 percent.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-10",
+          "evidence_url": "https://lifestyle.thepointnews.com/story/840887/ton-strategy-company-highlights-ton-upgrade-establishing-network-level-infrastructure-for-telegrams-native-gram-wallet/",
+          "source_title": "TON Strategy Company Highlights TON Upgrade Establishing Network-Level Infrastructure for Telegram's Native Gram Wallet",
+          "source_url": "https://lifestyle.thepointnews.com/story/840887/ton-strategy-company-highlights-ton-upgrade-establishing-network-level-infrastructure-for-telegrams-native-gram-wallet/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Node software v2026.10 was released October 19, 2026 as a mandatory update (validators within 24 hours, full nodes by October 23 with the QUIC port operational), removing validators and collators from public overlays, adding configurable external-message mempool limits, and deprecating RLDP2; validators then voted October 21 to raise the global version to 16 and switch consensus to its second version using Plumtree block distribution in the public overlay, effective October 22, while the global Gram balance validation cited as a goal of the vote is coded only for global version 17, for which no vote had been announced as of October 22.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-10",
+          "evidence_url": "https://gramnews.org/articles/ton-global-version-16-consensus-v2",
+          "source_title": "TON Network Switches to Global Version 16 and Second Consensus Protocol Version",
+          "source_url": "https://gramnews.org/articles/ton-global-version-16-consensus-v2",
+          "status": "open"
+        },
+        {
+          "claim_text": "Telegram's built-in Gram Wallet, announced by Pavel Durov on August 31, 2026 as available to a select group with a gradual rollout planned over the following weeks, had by October 9, 2026 expanded under the renamed Money wallet to all Telegram users, supporting storing and sending Gram while trading and investment services remain separate.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-10",
+          "evidence_url": "https://www.binance.com/en-AE/square/post/376482519189012",
+          "source_title": "Telegram's Gram Just Got a Major Wallet Update",
+          "source_url": "https://www.binance.com/en-AE/square/post/376482519189012",
+          "status": "open"
+        },
+        {
+          "claim_text": "Gram Wallet access is gated by a server-side wallet_available flag activated in stages, but any funded wallet holder can instantly create a wallet for another user by sending at least 0.1 Gram to their Telegram username, with Telegram's server setting the wallet up automatically before processing the transfer and no app update required; more than 6,400 unique wallet addresses were recorded in the first seven hours of the public rollout on October 9, 2026, with Telegram covering network fees for over 14,000 transactions on the initial launch day.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-10",
+          "evidence_url": "https://tondrophub.com/get-gram-wallet-telegram/",
+          "source_title": "How to Get the Gram Wallet in Telegram",
+          "source_url": "https://tondrophub.com/get-gram-wallet-telegram/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 9, 2026 Pavel Durov reported that more than 700,000 self-custody wallets were created on Telegram in the preceding 48 hours, crediting a design that activates a wallet as soon as its recipient receives Grams; the announcement disclosed no methodology, no count of unique people, and no data on how many of those wallets continue transacting after activation.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-10",
+          "evidence_url": "https://coinscreamer.com/durov-telegram-700000-self-custody-wallets-gram-price/",
+          "source_title": "Telegram Adds 700,000 Self-Custody Wallets in 48 Hours, Durov Says",
+          "source_url": "https://coinscreamer.com/durov-telegram-700000-self-custody-wallets-gram-price/",
+          "status": "open"
+        }],
       "provisional": true,
       "provisional_reason": "Intake stub 2026-09-28: research dossier pending; listed for coverage, not scored."
     },
