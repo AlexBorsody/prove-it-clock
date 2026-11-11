@@ -4934,6 +4934,51 @@
           "source_title": "Synthetix 2026 roadmap: All trading revenue will be used to buy back SNX and sUSD, and plans to restore sUSD peg in Q2",
           "source_url": "https://www.bitget.com/bg/news/detail/12560605262816",
           "status": "open"
+        },
+        {
+          "claim_text": "SIP-423, created June 12, 2026 and approved later that month and listed as implemented, retires legacy sUSD: transfers, minting and burning are frozen, a holder snapshot was taken, and each sUSD entitlement converts to 4 SNX with a one-year lock plus a one-year vest, claims opening 365 days after activation through a receipt contract, with a maximum mint covering the recorded entitlement; this replaces the March 2026 roadmap plan to restore the peg by the end of Q2 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-11",
+          "evidence_url": "https://zipmex.com/blog/synthetix-snx-guide-2026/",
+          "source_title": "Synthetix (SNX): Perps on Ethereum Mainnet, sUSD Retired",
+          "source_url": "https://zipmex.com/blog/synthetix-snx-guide-2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Under SIP-423 the 420 Pool is closed entirely and staking no longer depends on holding sUSD, while stakers with remaining jubilee debt choose between a four-year lock followed by a one-year vest or repaying the full remaining debt; the SNX staking reform itself and the receipt-contract build are marked deferred, and the companion technical proposal SIP-424 had not yet been published in the June 2026 breakdown.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-11",
+          "evidence_url": "https://blog.thirdweb.com/synthetix-votes-to-retire-susd-what-the-defi-stablecoin-wind-down-means-for-developers/",
+          "source_title": "Synthetix Retires sUSD: SIP-423 Breakdown for DeFi Developers",
+          "source_url": "https://blog.thirdweb.com/synthetix-votes-to-retire-susd-what-the-defi-stablecoin-wind-down-means-for-developers/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Synthetix Perps opened in private beta on Ethereum mainnet on December 18, 2025 with BTC, ETH and SOL markets at up to 50x leverage, capped at 500 users and 40,000 USDT deposits per user with withdrawals enabled about a week after launch, and by May 1, 2026 listed 10 crypto markets while remaining invite-only, with TWAP and scaled orders added on May 8 and 11, 2026 and a referral programme launched June 17, 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-11",
+          "evidence_url": "https://zipmex.com/blog/synthetix-snx-guide-2026/",
+          "source_title": "Synthetix (SNX): Perps on Ethereum Mainnet, sUSD Retired",
+          "source_url": "https://zipmex.com/blog/synthetix-snx-guide-2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Synths on Optimism were deprecated on a dated wind-down: January 31, 2026 was the last day to swap Synths such as sETH and sBTC, oracle prices were frozen for treasury redemptions from February 1, 2026, a redemption discount starting April 30, 2026 grows by 12.5 percent of the frozen price each month, and redemptions close December 31, 2026.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-11",
+          "evidence_url": "https://zipmex.com/blog/synthetix-snx-guide-2026/",
+          "source_title": "Synthetix (SNX): Perps on Ethereum Mainnet, sUSD Retired",
+          "source_url": "https://zipmex.com/blog/synthetix-snx-guide-2026/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 3, 2026 Synthetix governance moved 428,000 SNX, worth approximately 76,000 dollars and identified by on-chain analyst Emmett Gallic as stolen in the Mercado Bitcoin hack, out of the attacker wallet to the Synthetix Protocol DAO address.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-11",
+          "evidence_url": "https://www.panews.io/articles/01a19ee1-630a-7255-9176-02208ee37a2d",
+          "source_title": "Synthetix Governance Moves 428,000 SNX Stolen in Mercado Bitcoin Hack to Protocol DAO Address",
+          "source_url": "https://www.panews.io/articles/01a19ee1-630a-7255-9176-02208ee37a2d",
+          "status": "open"
         }
       ],
       "provisional": true,
