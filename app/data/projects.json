@@ -4703,6 +4703,51 @@
           "source_title": "Can $52M Make Compound an Institutional Lender?",
           "source_url": "https://cryptodaily.co.uk/2026/08/compound-v4-52m-institutional-lending",
           "status": "open"
+        },
+        {
+          "claim_text": "Compound Foundation's September 2026 progress update said Compound V4 has moved from product and technical design into implementation: core product and technical specifications are complete, initial smart-contract development and code review have begun, and October work was to focus on development, code review and testing, Integration Kit security review and preparation for selected liquidation functions, with overall progress described as on schedule.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-12",
+          "evidence_url": "https://www.q323.com/html/defi-nft/2694.html",
+          "source_title": "Compound V4 Enters Implementation: $60M Deposits",
+          "source_url": "https://www.q323.com/html/defi-nft/2694.html",
+          "status": "open"
+        },
+        {
+          "claim_text": "Compound Foundation's October 2026 progress report, posted November 4, 2026, said V4 development remains on track, with the V4 interest-accrual specification and the escrow and spoke architecture both clearing internal engineering review during October, the Institutional Market holding 50.2 million dollars in combined deposits and collateral as of November 1, 2026 with 15.2 million dollars in outstanding USDC loans at 72.7 percent utilization, most markets reopened October 30, 2026 after a precautionary pause tied to the late-October Binance hot-wallet exploit, and Gauntlet's security fee restructured to approximately 2.15 million dollars per year, down roughly 4.2 million dollars from the prior package.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-12",
+          "evidence_url": "https://cryptocompass.com/articles/compound-s-institutional-market-crosses-50-million-as-its-v4-rebuild-clears-engineering-review",
+          "source_title": "Compound's Institutional Market Crosses $50 Million as Its V4 Rebuild Clears Engineering Review",
+          "source_url": "https://cryptocompass.com/articles/compound-s-institutional-market-crosses-50-million-as-its-v4-rebuild-clears-engineering-review",
+          "status": "open"
+        },
+        {
+          "claim_text": "Gauntlet's linked on-chain Proposals 622 and 623 would cut tBTC supply caps and borrow collateral factors to zero across seven Compound markets on Ethereum, Base and Arbitrum, effectively freezing new tBTC supply and borrowing after Threshold Network paused tBTC minting and redemption over a Linux kernel vulnerability with no confirmed tBTC exploit disclosed; a November 4, 2026 update showed quorum reached with 607,473 COMP for and zero against, voting closing around November 5, 2026, with roughly 101.5 tBTC worth about 7.84 million dollars as collateral across 73 accounts.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-12",
+          "evidence_url": "https://cryip.co/compound-is-about-to-zero-out-tbtcs-risk-parameters-after-a-security-scare-at-threshold-network/",
+          "source_title": "Compound Is About to Zero Out tBTC's Risk Parameters After a Security Scare at Threshold Network",
+          "source_url": "https://cryip.co/compound-is-about-to-zero-out-tbtcs-risk-parameters-after-a-security-scare-at-threshold-network/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Legacy COMP rewards claim deadlines set by the Compound Foundation migration to Merkl: V2 rewards on Ethereum, about 40,419 COMP allocated across 18 markets at the migration snapshot, had to be claimed by 5 p.m. ET on November 10, 2026, after which unclaimed tokens return to the Compound treasury with no reopening stated, while legacy V3 rewards on Ethereum, Arbitrum, Optimism, Base, Polygon and Unichain have a later deadline of March 10, 2027 at 5 p.m. ET.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-12",
+          "evidence_url": "https://www.thecryptoupdates.com/compound-v2-users-face-nov-10-2026-comp-claim-deadline/",
+          "source_title": "Compound V2 Users Face Nov. 10, 2026 COMP Claim Deadline",
+          "source_url": "https://www.thecryptoupdates.com/compound-v2-users-face-nov-10-2026-comp-claim-deadline/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Proposal 612, submitted October 2, 2026 by delegate Ugur Mersin, would give token-holder governance direct power to cancel pending Treasury Timelock operations by granting the Governor Timelock executor and canceller roles, extend treasury waiting periods from two days to ten days, and set a ten-day Treasury Escrow withdrawal cooldown with withdrawals expiring 17 days after initiation; at October 5, 2026 it showed about 1.75 million COMP for and 921,000 against, above the 400,000 COMP quorum, and even if passed the ten-day delay change would need a second execution step.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-12",
+          "evidence_url": "https://cryptonews.net/news/altcoins/33543178/",
+          "source_title": "Compound Votes on Giving Governance Power to Cancel Treasury Operations",
+          "source_url": "https://cryptonews.net/news/altcoins/33543178/",
+          "status": "open"
         }
       ],
       "provisional": true,
