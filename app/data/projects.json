@@ -4228,6 +4228,51 @@
           "source_title": "What Lies Ahead for Maple in 2026.",
           "source_url": "https://glcresearch.beehiiv.com/p/what-lies-ahead-for-maple-in-2026",
           "status": "open"
+        },
+        {
+          "claim_text": "MIP-021 went live on July 13, 2026, tying SYRUP buybacks by the SYRUP Strategic Fund to monthly revenue by rule rather than discretion: 10 percent of revenue below 1.5 million dollars, 20 percent from 1.5 to 2.0 million dollars, and 30 percent above 2.0 million dollars. September 2026 revenue crossed into the 20 percent tier, the fund bought 1.37 million SYRUP in September, about double August, and Q3 buybacks totaled 2.9 million SYRUP; Maple states the buybacks are not a dividend, distribution, profit share, or guaranteed return.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-13",
+          "evidence_url": "https://maple.finance/insights/maple-q3-ecosystem-update",
+          "source_title": "Maple Q3 2026 Ecosystem Update: Loans grew as DeFi shrank",
+          "source_url": "https://maple.finance/insights/maple-q3-ecosystem-update",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple's Q3 2026 shipped items: syrupUSDG went live on Arbitrum, Ink, and Solana, syrupUSDC launched on Circle's Arc as a day-one partner on September 16, 2026, and Robinhood Earn, backed by Maple's institutional loans, passed 100 million dollars in under 100 days and stood above 136 million dollars at the Q3 update on October 13, 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-13",
+          "evidence_url": "https://maple.finance/insights/maple-q3-ecosystem-update",
+          "source_title": "Maple Q3 2026 Ecosystem Update: Loans grew as DeFi shrank",
+          "source_url": "https://maple.finance/insights/maple-q3-ecosystem-update",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple announced three new allocation strategies on September 2, 2026, each capped at 5 percent of deposits at launch, run separately with its own risk limits and the same underwriting as the core loan book. Its November 2026 release adds the allocation-strategy contracts, Maple planned to start them in syrupUSDT, and the first funded strategy took 5,000 dollars from syrupUSDC on November 10, 2026 under a 10,000 dollar cap.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-13",
+          "evidence_url": "https://www.alearesearch.site/newsletters/maple-q3-2026-management-fee-buyback-tier",
+          "source_title": "Maple's buybacks climbed a tier",
+          "source_url": "https://www.alearesearch.site/newsletters/maple-q3-2026-management-fee-buyback-tier",
+          "status": "open"
+        },
+        {
+          "claim_text": "Kraken and Maple launched an onchain warehouse financing facility to fund Kraken's over-the-counter institutional lending: Maple provides senior financing in USDC through a bankruptcy-remote special purpose vehicle, Kraken affiliates originate, sell, and service the loans and retain a stake, Kraken Financial holds the Bitcoin and Ether collateral, and Zaria administers the SPV, with collateral and loan performance tracked onchain. The partners did not disclose the facility's size or financing terms.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-13",
+          "evidence_url": "https://bitrss.com/kraken-and-maple-introduce-onchain-warehouse-for-crypto-backed-loans-225328",
+          "source_title": "Kraken and Maple Introduce Onchain Warehouse for Crypto-Backed Loans",
+          "source_url": "https://bitrss.com/kraken-and-maple-introduce-onchain-warehouse-for-crypto-backed-loans-225328",
+          "status": "open"
+        },
+        {
+          "claim_text": "Maple's October 2026 memo set its next-12-months plan: scale distribution and broaden the assets it finances, starting with fintech receivables and lending against rated securities, while reporting loans outstanding, revenue, and risk every quarter in the same format, with the next quarterly Ecosystem Update call in January 2027. The memo also said Maple has partnered with IRACE Digital Bank for cash management, payments, and settlement with institutional counterparties.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-13",
+          "evidence_url": "https://maple.finance/insights/maple-memo-october-2026",
+          "source_title": "Maple Memo October 2026: Q3 Results and the Future of Banks",
+          "source_url": "https://maple.finance/insights/maple-memo-october-2026",
+          "status": "open"
         }
       ],
       "provisional": true,
