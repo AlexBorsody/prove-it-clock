@@ -4870,6 +4870,51 @@
           "source_title": "Kaia DeFi Ecosystem Recap & Roadmap: Architecting Asia's Onchain Capital Markets",
           "source_url": "https://blog.kaia.io/kaia-defi-ecosystem-recap-roadmap-architecting-asias-onchain-capital-markets/",
           "status": "open"
+        },
+        {
+          "claim_text": "Kaia's permissionless transition requires Public Delegation stakers to migrate manually to new staking contracts alongside a network hard fork, because existing positions do not transfer automatically: a detailed guide was scheduled for November 13, 2026, withdrawal requests open through a dedicated Migration menu on Kaia Portal from November 17, 2026, and withdrawals and re-deposits begin from November 26, 2026, with a seven-day waiting period after each withdrawal request.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-14",
+          "evidence_url": "https://blog.kaia.io/kaia-network-permissionless-migration-advance-notice/",
+          "source_title": "Kaia Network Permissionless Migration: Advance Notice",
+          "source_url": "https://blog.kaia.io/kaia-network-permissionless-migration-advance-notice/",
+          "status": "open"
+        },
+        {
+          "claim_text": "For Contribution Rewards Mission participants, Kaia will preserve staking recognition during the migration by fixing reference balances at block 232,552,000, expected around November 16, 2026, and honouring them until block 235,526,400, expected around December 20, 2026; KAIA left in the old contract after that final block stops qualifying, recognised contributions are capped at ten times the value of deposited stablecoins, and only pdKAIA held directly in a wallet counts.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-14",
+          "evidence_url": "https://crypto.news/kaia-asks-stakers-to-migrate-kaia-ahead-of-permissionless-network-upgrade/",
+          "source_title": "Kaia asks stakers to migrate KAIA ahead of permissionless network upgrade",
+          "source_url": "https://crypto.news/kaia-asks-stakers-to-migrate-kaia-ahead-of-permissionless-network-upgrade/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Kaia v3.0.0 introduces the Permissionless hardfork: validators join, pause, resume and leave through the AddressBookV2 contract under the KIP-286 lifecycle, performance is scored by VRank under KIP-227, peer admission and consensus-to-endpoint topology follow KIP-311 and the proxy node role is retired; the Kairos testnet hardfork is set for block 233,366,400, estimated November 18, 2026, while the mainnet hardfork block is to be specified in a later release.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-14",
+          "evidence_url": "https://newreleases.io/project/github/kaiachain/kaia/release/v3.0.0",
+          "source_title": "kaiachain/kaia v3.0.0 on GitHub",
+          "source_url": "https://newreleases.io/project/github/kaiachain/kaia/release/v3.0.0",
+          "status": "open"
+        },
+        {
+          "claim_text": "LINE NEXT and the Kaia DLT Foundation announced Project Unify, a stablecoin super-app planned to enter beta later in 2026 as both a standalone Kaia-powered service and a Mini Dapp inside LINE Messenger, combining yield, payments, remittances, on and off ramps and more than 100 Web3 apps, with support planned for stablecoins pegged to eight regional currencies including the US dollar, yen, won and baht, an Easy Saver instant-yield feature, a Visa card promising up to 5 percent payback, and a Unify SDK for issuers and developers.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-14",
+          "evidence_url": "https://bitrss.com/kaia-and-line-next-launch-unify-asia-s-stablecoin-super-app-128656",
+          "source_title": "Kaia and LINE NEXT Launch 'Unify,' Asia's Stablecoin Super-App",
+          "source_url": "https://bitrss.com/kaia-and-line-next-launch-unify-asia-s-stablecoin-super-app-128656",
+          "status": "open"
+        },
+        {
+          "claim_text": "On September 30, 2026 BTQ Technologies signed a three-year commercial agreement with the Kaia DLT Foundation to deploy its Quantum Secure Stablecoin Network across Kaia at the chain level, protecting stablecoins at the account level across transaction and settlement infrastructure and applications including LINE NEXT's Unifi Wallet, Mini DApps and stablecoin payments, without requiring issuer involvement or changes to the wallet; BTQ is to receive a share of transaction fees from secured activity and expects six-figure first-year revenue in US dollars.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-14",
+          "evidence_url": "https://quantumwire.com/article/17908513397652.html",
+          "source_title": "BTQ Technologies to Bring Post-Quantum Security to LINE NEXT's Unifi Wallet Under Commercial Agreement with Kaia DLT Foundation",
+          "source_url": "https://quantumwire.com/article/17908513397652.html",
+          "status": "open"
         }
       ],
       "provisional": true,
