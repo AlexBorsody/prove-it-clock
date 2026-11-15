@@ -4350,6 +4350,51 @@
           "source_title": "What Is THORChain? How Cross-Chain Swaps Work in 2026",
           "source_url": "https://pegasusswap.com/blog/what-is-thorchain",
           "status": "open"
+        },
+        {
+          "claim_text": "THORChain committed on November 12, 2026 to integrating Zano (ZANO) for native asset swaps, with the work conditional on Zano Gateway Addresses returning to mainnet; the commitment is not a confirmation that the integration is live.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-15",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/thorchain/latest-updates/",
+          "source_title": "Latest THORChain News - (RUNE) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com/cmc-ai/thorchain/latest-updates/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On October 31, 2026 at 11:34 UTC an Ethereum one-block reorganization dropped a block containing a 10 ETH deposit to a THORChain vault; THORChain had already credited the deposit, issued a refund when the related swap failed its price limit, and its automated solvency checker halted ETH swaps, with node operators then pausing outbound Ethereum signing within about two minutes and halting trading on nine further chains as a precaution; the recipient later returned the 10 ETH, restoring the vault balance.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-15",
+          "evidence_url": "https://www.cryptotimes.io/2026/11/04/thorchain-resumes-bitcoin-and-ethereum-swaps-after-v3-21-1-update/",
+          "source_title": "THORChain Resumes Bitcoin and Ethereum Swaps After v3.21.1 Update",
+          "source_url": "https://www.cryptotimes.io/2026/11/04/thorchain-resumes-bitcoin-and-ethereum-swaps-after-v3-21-1-update/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Version 3.21.1, announced November 4, 2026, restored swaps on 11 blockchains (AVAX, BASE, BCH, BTC, DOGE, ETH, LTC, RUNE, TRON, XRPL and ZEC) while ATOM, BSC and SOL remained halted with no restart date given; the release is a private Bifrost-only binary with additional security patches, no consensus change and no set upgrade height, and 103 of 111 active nodes were running it at 10:12 UTC, with all nodes required to update to fix swap performance issues.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-15",
+          "evidence_url": "https://en.coin-turk.com/thorchain-resumes-swaps-on-11-blockchains-after-upgrade-solana-and-bnb-chain-still-halted/",
+          "source_title": "THORChain resumes swaps on 11 blockchains after upgrade, Solana and BNB Chain still halted",
+          "source_url": "https://en.coin-turk.com/thorchain-resumes-swaps-on-11-blockchains-after-upgrade-solana-and-bnb-chain-still-halted/",
+          "status": "open"
+        },
+        {
+          "claim_text": "In the November 5, 2026 THORSday recap, THORChain said v3.21.1 completed all Monero work so the chain has everything needed to add XMR, but a working churn is still required to generate its new private key; hosts suggested holding real liquidity until the Binance hack news cycle passes, starting with a test pool of a few hundred dollars, with v3.21.2 (a Bifrost patch to restart Solana) expected within about a day and v3.22 (a consensus fix for the Base scanner pause after Base block times fell to around 200 milliseconds) expected in about two weeks, and removing the churn requirement for most new chains targeted for v3.23 or v3.24.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-15",
+          "evidence_url": "https://blog.thorchain.org/monero-is-ready-on-thorchain-bond-yield-and-swapkit-rev-share",
+          "source_title": "Monero Is Ready on THORChain, Bond Yield and SwapKit Rev-Share",
+          "source_url": "https://blog.thorchain.org/monero-is-ready-on-thorchain-bond-yield-and-swapkit-rev-share",
+          "status": "open"
+        },
+        {
+          "claim_text": "Node operators adopted ADR-031 in Q3 2026 confirming exclusive cooperation with Rujira on the App Layer, with THORChain providing base layer security and infrastructure and Rujira building App Layer products; Rujira revenue is split 33.34 percent to a POL Fund owned 50/50 by Rujira and THORChain, 33.33 percent to THORChain and 33.33 percent to RUJI stakers, and exploit responsibility is split so smart contract exploits fall to Rujira and base layer exploits affecting Secured Assets fall to THORChain.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-15",
+          "evidence_url": "https://blog.thorchain.org/thorchain-quarterly-report-q3-2026",
+          "source_title": "Q3 2026 Quarterly Report: Volume and Fees | THORChain",
+          "source_url": "https://blog.thorchain.org/thorchain-quarterly-report-q3-2026",
+          "status": "open"
         }
       ],
       "provisional": true,
