@@ -5313,6 +5313,51 @@
           "status": "open",
           "evidence_url": "https://stoic.ai/coin-price-chart/origintrail",
           "date_observed": "2026-10-26"
+        },
+        {
+          "claim_text": "OriginTrail's official roadmap lists Berlin, Sovereign AI in production, as the upcoming stage for Q1 2027: sovereign AI infrastructure deployments in pharma, international trade, business-to-government and manufacturing, most leading local and frontier AI models offered on the network, an nOS desktop workspace and mobile companion for managing sovereign knowledge and orchestrating agents under owner-defined permissions and budgets, and Edge Nodes buying reasoning within owner-assigned budgets without an on-chain transaction per request.",
+          "claim_type": "milestone",
+          "source_url": "https://origintrail.io/ecosystem/roadmap",
+          "source_title": "OriginTrail roadmap",
+          "status": "open",
+          "evidence_url": "https://origintrail.io/ecosystem/roadmap",
+          "date_observed": "2026-11-16"
+        },
+        {
+          "claim_text": "OriginTrail's Shanghai stage brought DKG V10 to mainnet in June 2026 as sovereign context for multi-agent AI, with continuous releases since: standardized Knowledge Assets that agents on different frameworks can publish, query and verify, native framework support for OpenClaw, ElizaOS, LangChain, AutoGen and CrewAI, knowledge signaling so high-signal memories are replicated with cryptographic proofs, and the roadmap's V10 random sampling proof system and stake-adjusted node scoring under OT-RFC-26.",
+          "claim_type": "technical",
+          "source_url": "https://totestek.com/2026/07/10/origintrail-dkg-v10-the-grid-awakes-with-multi-agent-memory-infrastructure-for-ai",
+          "source_title": "OriginTrail DKG V10: The Grid Awakes with Multi-Agent Memory Infrastructure for AI",
+          "status": "open",
+          "evidence_url": "https://totestek.com/2026/07/10/origintrail-dkg-v10-the-grid-awakes-with-multi-agent-memory-infrastructure-for-ai",
+          "date_observed": "2026-11-16"
+        },
+        {
+          "claim_text": "DKG v10.0.25 reached mainnet in October 2026 as a core protocol software update strengthening the network's shared-memory foundation, described as a separate step from, but essential for, the rollout of higher-level applications such as the NeuroSymbolic Marketplace, so the network can support more complex AI and data services in future releases.",
+          "claim_type": "technical",
+          "source_url": "https://coinmarketcap.com/cmc-ai/origintrail/latest-updates/",
+          "source_title": "Latest OriginTrail News - (TRAC) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/origintrail/latest-updates/",
+          "date_observed": "2026-11-16"
+        },
+        {
+          "claim_text": "On October 30, 2026 Umanitek Guardian went live for Claude users as a plugin in the Claude AI plugin directory, letting users create verifiable evidence on the OriginTrail Decentralized Knowledge Graph and file platform takedown requests in the same tool, with the evidence pack going on the DKG before the takedown request; the integration opens the evidence tools to more than 100 million monthly Claude users.",
+          "claim_type": "milestone",
+          "source_url": "https://www.tradingview.com/news/coinmarketcal:6e8ed5e30094b:0-origintrail-umanitek-guardian-goes-live-on-claude-30-oct-2026/",
+          "source_title": "OriginTrail: Umanitek Guardian goes live on Claude - 30 Oct 2026",
+          "status": "open",
+          "evidence_url": "https://www.tradingview.com/news/coinmarketcal:6e8ed5e30094b:0-origintrail-umanitek-guardian-goes-live-on-claude-30-oct-2026/",
+          "date_observed": "2026-11-16"
+        },
+        {
+          "claim_text": "Election Guardian launched across the Americas on August 21, 2026, powered by OriginTrail and deployed on the ground with Viva AI, to catch deepfakes and coordinated disinformation early, keep a verifiable record of what happened, and get harmful content taken down, giving the network a defined election-monitoring role whose significance depends on whether the verifiable record stays part of election-monitoring workflows in practice.",
+          "claim_type": "milestone",
+          "source_url": "https://www.tradingview.com/news/coinmarketcal:eb8c178e2094b:0-origintrail-election-guardian-launches-across-the-americas-21-aug-2026/",
+          "source_title": "OriginTrail: Election Guardian launches across the Americas - 21 Aug 2026",
+          "status": "open",
+          "evidence_url": "https://www.tradingview.com/news/coinmarketcal:eb8c178e2094b:0-origintrail-election-guardian-launches-across-the-americas-21-aug-2026/",
+          "date_observed": "2026-11-16"
         }
       ],
       "provisional": true,
