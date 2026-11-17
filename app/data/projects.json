@@ -3908,6 +3908,51 @@
           "status": "open",
           "evidence_url": "https://whatisethena.com/",
           "date_observed": "2026-10-27"
+        },
+        {
+          "claim_text": "Ethena Pay launched Earn+ on October 28, 2026, a yield vault advertising up to 12% APY by looping USDe and USDT at about 11 times leverage through Aave v4 on Avalanche, managed by Upshift and Steakhouse, with total deposits capped at $4.5 million, individual limits of $20,000 for Standard, $50,000 for Pro and $200,000 for VIP users, no Ethena Pay entry or exit fees, and withdrawals processed within 24 hours with no lockup.",
+          "claim_type": "technical",
+          "source_url": "https://cryptocompass.com/articles/ethena-pay-launches-earn-vault-with-11x-usde-leverage-on-aave",
+          "source_title": "Ethena Pay Launches Earn+ Vault With 11x USDe Leverage on Aave",
+          "status": "open",
+          "evidence_url": "https://cryptocompass.com/articles/ethena-pay-launches-earn-vault-with-11x-usde-leverage-on-aave",
+          "date_observed": "2026-11-17"
+        },
+        {
+          "claim_text": "USDe launched natively on X Layer on October 23, 2026 with Aave v3 as its first integration on that network, giving OKX Wallet users direct onchain access to USDe for the first time, with one-click USDe looping in OKX Wallet stated as coming soon.",
+          "claim_type": "milestone",
+          "source_url": "https://www.tradingview.com/news/coinmarketcal:52613ebf0094b:0-ethena-usde-launches-on-x-layer-through-aave-v3-23-oct-2026/",
+          "source_title": "Ethena: USDe launches on X Layer through Aave v3 - 23 Oct 2026",
+          "status": "open",
+          "evidence_url": "https://www.tradingview.com/news/coinmarketcal:52613ebf0094b:0-ethena-usde-launches-on-x-layer-through-aave-v3-23-oct-2026/",
+          "date_observed": "2026-11-17"
+        },
+        {
+          "claim_text": "On November 14, 2026 Ethena and Ink opened a $200 million USDe deposit cap on Tydro, an Aave v3 based lending market on Kraken's Ink network, where depositors can use USDe as collateral to borrow USDT0 in an isolated market.",
+          "claim_type": "milestone",
+          "source_url": "https://coinmarketcap.com/cmc-ai/ethena-usde/latest-updates/",
+          "source_title": "Latest Ethena USDe News - (USDe) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/ethena-usde/latest-updates/",
+          "date_observed": "2026-11-17"
+        },
+        {
+          "claim_text": "Ethena Labs and Securitize announced on November 12, 2026 a $100 million liquidity facility for eligible investors to swap BlackRock BUIDL fund shares and supported stablecoins around the clock, with $50 million of initial liquidity and the remaining capacity becoming available as the initial liquidity is used, subject to terms.",
+          "claim_type": "milestone",
+          "source_url": "https://coinmarketcap.com/cmc-ai/ethena/latest-updates/",
+          "source_title": "Latest Ethena News - (ENA) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/ethena/latest-updates/",
+          "date_observed": "2026-11-17"
+        },
+        {
+          "claim_text": "An October 2026 framework lets Ethena's trading team approve loans to qualifying institutions without a risk committee vote and with no overall cap, while USDe backing at September 30, 2026 was reported as about 74 percent liquid cash including stablecoins lent to DeFi markets and institutions, about 17 percent hedged bitcoin and ether, and about 6 percent tokenized AAA-rated credit funds added in June 2026.",
+          "claim_type": "economic",
+          "source_url": "https://www.cryptensive.com/projects/reviews/ethena-usde/",
+          "source_title": "Ethena USDe Review 2026",
+          "status": "open",
+          "evidence_url": "https://www.cryptensive.com/projects/reviews/ethena-usde/",
+          "date_observed": "2026-11-17"
         }
       ],
       "provisional": true,
