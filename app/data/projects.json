@@ -4761,6 +4761,51 @@
           "status": "open",
           "evidence_url": "https://CoinMarketCap.com/cmc-ai/trust-wallet-token/latest-updates/",
           "date_observed": "2026-10-28"
+        },
+        {
+          "claim_text": "Trust Wallet announced on October 7, 2026 that MoonPay Headless checkout is live for users in the United States, letting them buy crypto with cards and Apple Pay through a native in-app interface after connecting a MoonPay account once and saving a preferred card; Trust Wallet said it does not process the payments or hold user funds, additional regions are planned with no firm dates, and the announcement described no new TWT requirement, burn, distribution or revenue share for the checkout.",
+          "claim_type": "milestone",
+          "source_url": "https://netnapz.com/trust-wallet-moonpay-headless-us-checkout-twt-october-2026/",
+          "source_title": "Trust Wallet Adds MoonPay Headless Checkout for US Users; TWT Impact Is Unproven",
+          "status": "open",
+          "evidence_url": "https://netnapz.com/trust-wallet-moonpay-headless-us-checkout-twt-october-2026/",
+          "date_observed": "2026-11-18"
+        },
+        {
+          "claim_text": "In a team post reported September 10, 2026, Trust Wallet publicly admitted its meme coin trading experience lagged competitors and promised five upgrades within two to three weeks: unified pricing data so quotes stop varying across pages, a price refresh rate five times faster, lower trading fees with details in a separate announcement, a revamped intent-based Market and Search experience, and a cleaner, more readable transaction history.",
+          "claim_type": "technical",
+          "source_url": "https://themerkle.com/trust-wallet-admits-meme-trading-weakness-plans-major-upgrades-in-2-3-weeks",
+          "source_title": "Trust Wallet Admits Meme Trading Weakness, Plans Major Upgrades In 2-3 Weeks",
+          "status": "open",
+          "evidence_url": "https://themerkle.com/trust-wallet-admits-meme-trading-weakness-plans-major-upgrades-in-2-3-weeks",
+          "date_observed": "2026-11-18"
+        },
+        {
+          "claim_text": "On July 24, 2026 Trust Wallet reported shipping a bundle of app tools: an AI assistant that researches tokens, prepares transactions and flags potential risks before users approve them, a markets view for trending tokens, and ten additional bStocks tradable around the clock with zero fees; the report announced no direct change to TWT utility.",
+          "claim_type": "technical",
+          "source_url": "https://coinmarketcap.com/cmc-ai/trust-wallet-token/latest-updates/",
+          "source_title": "Latest Trust Wallet Token News - (TWT) Future Outlook, Trends & Market Insights",
+          "status": "open",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/trust-wallet-token/latest-updates/",
+          "date_observed": "2026-11-18"
+        },
+        {
+          "claim_text": "On November 12, 2026 Trust Wallet launched AI-powered support inside its app: with user permission the assistant checks wallet activity to explain swap status, network issues and next steps for stuck transactions, while human support remains available; the launch was described as an app support improvement with no direct effect on the TWT token.",
+          "claim_type": "technical",
+          "source_url": "https://coinmarketcal.com/event/ai-support-launch-03004005-1",
+          "source_title": "AI Support Launch",
+          "status": "open",
+          "evidence_url": "https://coinmarketcal.com/event/ai-support-launch-03004005-1",
+          "date_observed": "2026-11-18"
+        },
+        {
+          "claim_text": "On November 17, 2026 Trust Wallet introduced labels for cryptocurrency exchange deposit addresses, showing users information about the recipient address before they confirm a transfer so they can check the destination matches the intended exchange; the report noted labels are an added reference point and do not replace checking the full address, network and any required memo or destination tag.",
+          "claim_type": "technical",
+          "source_url": "https://coinomedia.com/trust-wallet-address-labels/",
+          "source_title": "Trust Wallet Address Labels Help Users Send Crypto Safely",
+          "status": "open",
+          "evidence_url": "https://coinomedia.com/trust-wallet-address-labels/",
+          "date_observed": "2026-11-18"
         }
       ],
       "provisional": true,
