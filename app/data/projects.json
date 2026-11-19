@@ -5326,6 +5326,51 @@
           "status": "open",
           "evidence_url": "https://plisio.net/crypto/1inch-network",
           "date_observed": "2026-10-29"
+        },
+        {
+          "claim_text": "On October 20, 2026, 1inch made Ondo tokenized stocks and ETFs swappable on Solana, the first non-EVM network where Ondo assets are accessible through 1inch. Ondo launched on Solana in January 2026 with more than 200 tokenized US stocks and ETFs and more than 450 are now available, including products linked to Apple, Tesla and Nvidia. Swaps are filled by Tokka Labs as an independent resolver, the tokens are Ondo-issued products rather than company-issued shares, and they are not available to US users.",
+          "claim_type": "milestone",
+          "source_url": "https://1inch.com/blog/post/ondo-tokenized-stocks-on-solana",
+          "source_title": "Ondo tokenized stocks on Solana now available via 1inch",
+          "status": "open",
+          "evidence_url": "https://1inch.com/blog/post/ondo-tokenized-stocks-on-solana",
+          "date_observed": "2026-11-19"
+        },
+        {
+          "claim_text": "On September 23, 2026, 1inch Business expanded its developer API coverage to four more networks: Monad, Cronos, HyperEVM and Arc. Developers can reach swaps, liquidity aggregation, blockchain data and related building blocks for wallets, dApps, fintech products and agentic applications through the same 1inch Business account and API key, with the suite including Swap, Balance, Spot Price, Token, Portfolio and Web3 RPC APIs, though availability varies by network.",
+          "claim_type": "technical",
+          "source_url": "https://1inch.com/blog/post/use-1inch-apis-across-4-new-networks",
+          "source_title": "1inch Business expands to Monad, Cronos, HyperEVM and Arc",
+          "status": "open",
+          "evidence_url": "https://1inch.com/blog/post/use-1inch-apis-across-4-new-networks",
+          "date_observed": "2026-11-19"
+        },
+        {
+          "claim_text": "1inch deprecated its resolver delegation farms from November 11, 2026 and closed new delegations. Users who delegated Unicorn Power to a Fusion resolver can still claim their 1INCH rewards and undelegate until November 27, 2026; after that date rewards cannot be claimed through the 1inch interface and may be lost. Plain 1INCH staking is unaffected. The 1inch help article states no reason for the change.",
+          "claim_type": "economic",
+          "source_url": "https://www.theonchainsupport.com/blog/1inch-delegation-farms-deprecated-claim-rewards-undelegate-november-27",
+          "source_title": "1inch Delegation Farms Closing: Claim by 27 November",
+          "status": "open",
+          "evidence_url": "https://www.theonchainsupport.com/blog/1inch-delegation-farms-deprecated-claim-rewards-undelegate-november-27",
+          "date_observed": "2026-11-19"
+        },
+        {
+          "claim_text": "The 1inch Card programme is being discontinued: 1inch's Card FAQ states new sign-ups are closed and the programme is winding down, and holders must move their balances out by December 18, 2026. 1inch gave no reason for the discontinuation and no separate closure date; the December 18 date is the balance move-out deadline reported from the official FAQ.",
+          "claim_type": "milestone",
+          "source_url": "https://sweepbase.net/discontinued-crypto-cards",
+          "source_title": "Discontinued Crypto Cards: Every Closure Listed",
+          "status": "open",
+          "evidence_url": "https://sweepbase.net/discontinued-crypto-cards",
+          "date_observed": "2026-11-19"
+        },
+        {
+          "claim_text": "As documented in 1inch's Aqua FAQ updated October 28, 2026, Aqua now runs on the SwapVM engine across 17 EVM networks, expanded from the 13 chains recorded at its July 2026 public launch, adding Robinhood Chain, Cronos, Monad, HyperEVM and Arc to the original set. Aqua v1 supports externally owned accounts only, not smart-contract or MPC wallets; the Aqua and SwapVM SDKs are live, and positions opened in the app only accept fills from the KYC-verified resolver network holding the Aqua access NFT.",
+          "claim_type": "technical",
+          "source_url": "https://help.1inch.com/en/articles/15799177-1inch-aqua-faq",
+          "source_title": "1inch Aqua FAQ",
+          "status": "open",
+          "evidence_url": "https://help.1inch.com/en/articles/15799177-1inch-aqua-faq",
+          "date_observed": "2026-11-19"
         }
       ],
       "provisional": true,
