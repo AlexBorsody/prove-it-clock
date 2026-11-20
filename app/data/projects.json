@@ -5127,6 +5127,51 @@
           "status": "open",
           "evidence_url": "https://www.securities.io/investing-in-immutable-x/",
           "date_observed": "2026-10-30"
+        },
+        {
+          "claim_text": "Immutable's November 6, 2026 engineering announcement plans to move Immutable Chain from its custom fork of Geth to an OP Stack-based Ethereum rollup around the middle of 2027. The chain is expected to keep the same state and chain ID, so accounts, balances, contracts and approvals carry over and almost all users and developers need no action; there will be advance notice before a brief pause in block production, and no confirmed migration date or final user instructions had been published as of November 11, 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-20",
+          "evidence_url": "https://phemex.com/blogs/immutable-op-stack-migration-users",
+          "source_title": "Immutable's OP Stack Migration: What Changes for Users?",
+          "source_url": "https://phemex.com/blogs/immutable-op-stack-migration-users",
+          "status": "open"
+        },
+        {
+          "claim_text": "Under the OP Stack plan, Immutable Chain's block time falls from two seconds to one second, Ethereum becomes the data availability and settlement layer, and the new stack runs one sequencer with an op-reth execution client and an op-node consensus client. Transaction costs are expected to rise slightly because transaction data is posted to Ethereum, while IMX continues to pay gas; no stable post-migration fee schedule has been published.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-20",
+          "evidence_url": "https://block2learn.com/2026/11/07/immutable-chain-op-stack-migration-security-liquidity-test/",
+          "source_title": "Immutable Chain OP Stack Migration: Security Trade",
+          "source_url": "https://block2learn.com/2026/11/07/immutable-chain-op-stack-migration-security-liquidity-test/",
+          "status": "open"
+        },
+        {
+          "claim_text": "The migration replaces the current Axelar-based canonical bridge with a native OP Stack route verified against state commitments posted to Ethereum. Native withdrawals are expected to take about seven days through three stages: initiation on Immutable Chain, proof on Ethereum, and finalisation after the challenge period. The proof system starts with permissioned fault proofs, with validity proofs to follow later; faster liquidity bridges may still operate with their own fees and provider risk.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-20",
+          "evidence_url": "https://block2learn.com/2026/11/07/immutable-chain-op-stack-migration-security-liquidity-test/",
+          "source_title": "Immutable Chain OP Stack Migration: Security Trade",
+          "source_url": "https://block2learn.com/2026/11/07/immutable-chain-op-stack-migration-security-liquidity-test/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Immutable's migration schedule is indicative and depends on testing and integrity checks: a public testnet migration is targeted for the first quarter of 2027 ahead of the mainnet move around mid-2027, with a pause in bridging and then block production at final cutover whose length is still to be confirmed. Separately, the current public testnet for ordinary game testing is planned to be deprecated by the end of 2026, with studios expected to use local chains or mainnet for most game workflows.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-20",
+          "evidence_url": "https://block2learn.com/2026/11/07/immutable-chain-op-stack-migration-security-liquidity-test/",
+          "source_title": "Immutable Chain OP Stack Migration: Security Trade",
+          "source_url": "https://block2learn.com/2026/11/07/immutable-chain-op-stack-migration-security-liquidity-test/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 5, 2026 Immutable Play concluded the final cycle of its legacy reward draw system: the Weekly Draw, Weekly Points scoring, and the Keys and Tiers mechanism including redeeming 500 Gems for a draw Key were all retired. Quests, earning Gems, and withdrawing previously earned IMX rewards stay available, and Immutable says the upcoming replacement system will focus much more on playtesting and community content creation, with no launch date given in the guide.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-20",
+          "evidence_url": "https://www.imxgamers.com/guides/immutable-play-gems-main-quest-guide",
+          "source_title": "Immutable Play & The Main Quest: 2026 Rewards Evolution, What's Staying, & Stacking Weekly Raffles",
+          "source_url": "https://www.imxgamers.com/guides/immutable-play-gems-main-quest-guide",
+          "status": "open"
         }
       ],
       "provisional": true,
