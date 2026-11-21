@@ -3387,6 +3387,51 @@
           "source_title": "Bitcoin Cash After Layla: Tools, Experiments, and Open Work",
           "source_url": "https://buyhodlsell.com/articles/bitcoin-cash-after-layla",
           "status": "open"
+        },
+        {
+          "claim_text": "CHIP-2026-06, published June 10, 2026 by developer mainnet_pat, was due for a November 15, 2026 lock-in decision for the May 15, 2027 upgrade: signature-checking opcodes would distinguish signature schemes by the first byte of a public key against a registry that initially holds only secp256k1, with post-quantum schemes added later, and a new OP_SIGHASH opcode would place the transaction signature hash on the script stack. The draft introduces no new cryptography itself, hybrid keys would require both a classical and a post-quantum signature to be valid and could still spend from ordinary P2PKH outputs, SPHINCS+ and Falcon-512 were discussed as candidate schemes, and holders would still need to move coins to a hybrid or quantum-resistant key themselves; an implementation exists only as an open Bitcoin Cash Node merge request, nothing is active.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-21",
+          "evidence_url": "https://coinstats.app/news/d4f73865c57a55124c78bc8885a7a59d6ce7ce53a6d0dc2123e4867e84f55102_Bitcoin-Cash-BCH-faces-a-November-15-decision-on-quantumresistant-signatures/",
+          "source_title": "Bitcoin Cash (BCH) faces a November 15 decision on quantum-resistant signatures",
+          "source_url": "https://coinstats.app/news/d4f73865c57a55124c78bc8885a7a59d6ce7ce53a6d0dc2123e4867e84f55102_Bitcoin-Cash-BCH-faces-a-November-15-decision-on-quantumresistant-signatures/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 14, 2026 the Bitcoin Cash Node maintainers formally committed to implementing CHIP-2025-03 Faster Blocks in the next node release for mainnet activation on May 15, 2027, calling it the most controversial BCH upgrade since 2021 because exchanges, explorers and wallets built on a 10-minute blocktime assumption face higher upgrade costs than in past upgrades. A preview release with the same consensus rules was made available for Chipnet only, Chipnet operators and miners were urged to upgrade and test proactively over the coming months, and mainnet and other testnet operators were told to wait a few weeks for a proper release.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-21",
+          "evidence_url": "https://bitcoincashnode.org/en/newsroom/2026-11-14_opinion_on_faster_blocktime",
+          "source_title": "BCHN maintainers' commitment to CHIP-2025-03 Faster Blocks for Bitcoin Cash",
+          "source_url": "https://bitcoincashnode.org/en/newsroom/2026-11-14_opinion_on_faster_blocktime",
+          "status": "open"
+        },
+        {
+          "claim_text": "The Chicago Mercantile Exchange began listing Bitcoin Cash futures on October 19, 2026, with standard contracts of 250 BCH and micro contracts of 25 BCH, giving institutional traders a regulated venue to hedge and speculate on BCH alongside its existing Bitcoin and Ethereum futures. Separately, the Grayscale Bitcoin Cash Trust reported 107.5 million dollars in assets under management as of October 23, 2026.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-21",
+          "evidence_url": "https://icrypto24.com/article/what-is-bitcoin-cash-bch-explained-2026",
+          "source_title": "What Is Bitcoin Cash (BCH)? The $240 Coin 93% Below Its $3,785 Peak — and Its 1-Minute Blocks Land November 15",
+          "source_url": "https://icrypto24.com/article/what-is-bitcoin-cash-bch-explained-2026",
+          "status": "open"
+        },
+        {
+          "claim_text": "CashScript launched a Flipstarter campaign seeking 420 BCH to fund a year of development and maintenance, following delivery of loops, reusable functions, bitwise operators and Pay-to-Script support in its 0.13 and 0.14 releases. Its stated roadmap adds structured data through structs, type-safe inline assembly, and formal verification of compiler optimisations through a new version of CashProof, and the project reports npm downloads more than doubled as systems such as Moria and ParyonUSD build more complex contracts with it.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-21",
+          "evidence_url": "https://thebchbullet.substack.com/p/the-bch-bullet-sunday-1st-november",
+          "source_title": "The BCH Bullet — Sunday 1st November 2026",
+          "source_url": "https://thebchbullet.substack.com/p/the-bch-bullet-sunday-1st-november",
+          "status": "open"
+        },
+        {
+          "claim_text": "CoinGate restored Bitcoin Cash support as of October 12, 2026, reversing its July 1, 2026 delisting of BCH with no public explanation for the reversal: BCH is again available for customer payments at checkout, merchant settlement, and crypto payouts and withdrawals across its payment services.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-21",
+          "evidence_url": "https://thebchbullet.substack.com/p/the-bch-bullet-sunday-1st-november",
+          "source_title": "The BCH Bullet — Sunday 1st November 2026",
+          "source_url": "https://thebchbullet.substack.com/p/the-bch-bullet-sunday-1st-november",
+          "status": "open"
         }
       ],
       "provisional": true,
