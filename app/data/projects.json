@@ -3631,6 +3631,51 @@
           "source_title": "What is Litecoin?",
           "source_url": "https://litecoinunpacked.com/",
           "status": "open"
+        },
+        {
+          "claim_text": "LitVM, an EVM-compatible zero-knowledge rollup built by ZK Innovations to add smart contracts and DeFi to Litecoin without changing its base layer, targets a mainnet launch in Q4 2026. The launch remains a roadmap objective rather than a fixed deadline and is pending completion of multiple independent security audits, after an earlier expectation of a launch later in 2026 following the April 2026 LiteForge testnet debut.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-22",
+          "evidence_url": "https://www.bitrue.com/blog/litecoin-litvm-smart-contracts-target-q4-2026-mainnet",
+          "source_title": "Litecoin LitVM: Smart Contracts Target Q4 2026 Mainnet",
+          "source_url": "https://www.bitrue.com/blog/litecoin-litvm-smart-contracts-target-q4-2026-mainnet",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 11, 2026 LitVM migrated its LiteForge testnet infrastructure from Caldera to Zeeve, its Rollup-as-a-Service provider, saying the move improves RPC performance, indexing and scalability ahead of mainnet. The Litecoin Foundation said on November 12, 2026 that the LitVM mainnet launch is coming soon but announced no date; the testnet chain ID remains 4441 and the gas token remains zkLTC, with mainnet connection details to be published once confirmed.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-22",
+          "evidence_url": "https://coinranking.com/news/litecoins-litvm-moves-liteforge-testnet-zeeve-ahead-mainnet",
+          "source_title": "LitVM Moves LiteForge Testnet to Zeeve Before Mainnet",
+          "source_url": "https://coinranking.com/news/litecoins-litvm-moves-liteforge-testnet-zeeve-ahead-mainnet",
+          "status": "open"
+        },
+        {
+          "claim_text": "LitVM's LiteForge testnet, live since April 2026, had processed more than 75 million transactions as of July 2026. The rollup is built on a modular stack of Arbitrum Orbit, Espresso decentralized sequencing, Succinct SP1 zero-knowledge validity proofs and BitcoinOS Grail Bridge for trustless LTC bridging, posts proofs to Litecoin with no hard fork or consensus change, and uses zkLTC, Litecoin trustlessly bridged to LitVM, as its native gas token.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-22",
+          "evidence_url": "https://bsc.news/news/litecoinvm-smart-contracts-zk-rollup-ltc",
+          "source_title": "Litecoin is about to get smart contracts for the first time",
+          "source_url": "https://bsc.news/news/litecoinvm-smart-contracts-zk-rollup-ltc",
+          "status": "open"
+        },
+        {
+          "claim_text": "Lite Strategy, Inc. (Nasdaq: LITS), described as the first US public company to adopt Litecoin as its primary treasury reserve asset, closed a 1.0 million dollar lead strategic investment in ZK Innovations Inc., the developer of LitVM, structured as a SAFE at a 50 million dollar post-money cap with a token warrant for up to 2 percent of LitVM supply at launch, governance rights and a Strategic Advisory Committee seat. Litecoin creator Charlie Lee backs LitVM as an adviser and investor, with Litecoin Foundation support.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-22",
+          "evidence_url": "https://bsc.news/news/litecoinvm-smart-contracts-zk-rollup-ltc",
+          "source_title": "Litecoin is about to get smart contracts for the first time",
+          "source_url": "https://bsc.news/news/litecoinvm-smart-contracts-zk-rollup-ltc",
+          "status": "open"
+        },
+        {
+          "claim_text": "Grayscale filed Amendment No. 1 to its S-3 registration on September 11, 2026 to convert the Grayscale Litecoin Trust (LTCN) into the Grayscale Litecoin Trust ETF listed on NYSE Arca. As of that filing the related 19b-4 application had not been approved by the SEC, Grayscale said it would not seek effectiveness until approval arrives or is no longer necessary, and the future ETF fee was left blank. The trust held about 82.3 million dollars in net assets and 1,969,057 LTC at June 30, 2026, charging 2.5 percent a year while it still trades over the counter.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-22",
+          "evidence_url": "https://chainandticker.com/learn/litecoin-etf/",
+          "source_title": "Litecoin ETF 2026: LTCC, Grayscale LTCN and What's Pending",
+          "source_url": "https://chainandticker.com/learn/litecoin-etf/",
+          "status": "open"
         }
       ],
       "provisional": true,
