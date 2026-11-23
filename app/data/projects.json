@@ -373,6 +373,51 @@
           "source_url": "https://bitcoinethereumnews.com/tech/solana-players-unveil-internet-capital-markets-roadmap/",
           "status": "open",
           "date_observed": "2026-10-12"
+        },
+        {
+          "claim_text": "Solana 1.0 was announced on November 16, 2026 at Breakpoint in London: the Solana Foundation retired the mainnet beta label, in use since the March 2020 launch, and introduced a shared protocol version across validator clients. The Foundation said the change is a naming and versioning simplification only, with balances, accounts and history unchanged, no migration required, and no network improvement activated by the label itself. Separately, Alpenglow Phase 1 (Votor) had already gone live on mainnet on October 21, 2026 in epoch 1064, replacing TowerBFT, cutting slots from 400ms to 200ms, removing vote transactions from blocks, and introducing a flat Validator Admission Ticket of 0.8 SOL per epoch that is burned, replacing about 1 SOL per epoch in vote fees. Observed finality on day one was about 202 milliseconds against the roughly 150 millisecond target, Phase 2 (Rotor) remained unscheduled, and the Alpenglow migration required Agave-based clients, with Firedancer and Frankendancer not supported for the migration.",
+          "claim_type": "milestone",
+          "evidence_url": "https://blockchainacademics.com/research/solana-10-is-a-label-alpenglow-is-the-upgrade-that-matters",
+          "source_title": "Solana 1.0 Is a Label; Alpenglow Is the Upgrade That Matters",
+          "source_url": "https://blockchainacademics.com/research/solana-10-is-a-label-alpenglow-is-the-upgrade-that-matters",
+          "status": "open",
+          "date_observed": "2026-11-23"
+        },
+        {
+          "claim_text": "At Breakpoint 2026, Anza CEO Brennan Watt presented a roadmap through 2027: double network compute capacity from 250 million to 500 million compute units per second, cut the resource requirements for associated token account operations by about 80 percent, simplify the protocol by phasing out legacy interfaces and overhauling data storage, and move more compute on chain, including support for complex on-chain computations such as options pricing and margin calculations. Named 2027 work includes Alpenglow.next (optimized leader handoffs and geographic distribution), replacing Turbine block propagation with Rotor, a Constellation upgrade for more transparent and predictable block production with protocol-level ordering rules and a second block proposer, and increasing the number of accounts that can take part in a single transaction.",
+          "claim_type": "technical",
+          "evidence_url": "https://hodl.press/anza-presents-solanas-2027-roadmap/",
+          "source_title": "Anza Presents Solana’s 2027 Roadmap",
+          "source_url": "https://hodl.press/anza-presents-solanas-2027-roadmap/",
+          "status": "open",
+          "date_observed": "2026-11-23"
+        },
+        {
+          "claim_text": "SIMD-0567 was merged into the Solana improvement proposal repository on November 2, 2026. It proposes replacing the long-standing Associated Token Account program with a new implementation called p-ATA built on the lightweight Pinocchio framework, keeping 100 percent compatibility with existing instruction interfaces so applications, wallets and aggregators need no code changes. Benchmarks in the proposal show weighted compute unit consumption about 81 percent lower than the old program, projected to cut overall network compute unit consumption by about 10 to 11 percent. The merge is a design-stage approval only: the proposal remains in formal community review, with peer review and formal verification on security, state boundaries and rollback logic still required before any testnet or mainnet deployment.",
+          "claim_type": "technical",
+          "evidence_url": "https://www.htx.com/en-us/news/525216/",
+          "source_title": "Solana Plans to Upgrade Token Account Underlying Program: Computational Overhead Reduced by 81%, Network-wide CU Consumption Expected to Drop Over 10%",
+          "source_url": "https://www.htx.com/en-us/news/525216/",
+          "status": "open",
+          "date_observed": "2026-11-23"
+        },
+        {
+          "claim_text": "SIMD-0437, written by Anza engineer Igor Durovic in December 2025, cuts Solana rent in five steps from 6,960 lamports per byte to 696. The first two steps are live, leaving the mainnet rate at 5,080 lamports per byte as confirmed on November 18, 2026. At Breakpoint on November 17, 2026, Anza CEO Brennan Watt said the final three steps (2,575, then 1,322, then 696) are next in line, with a Solana conference recap pointing to a window of roughly two weeks; exact activation dates are not fixed in the proposal and each step sits behind its own feature gate and a data-based risk check. If all three go live, the rate falls about 86 percent from the current level and a standard token account deposit shrinks from about 0.00149 SOL to about 0.00020 SOL.",
+          "claim_type": "economic",
+          "evidence_url": "https://www.dcforecasts.com/altcoin-news/solana-rent-cut-simd-0437-token-account-deposit/",
+          "source_title": "Solana Rent Set to Fall 86% in the Final SIMD-0437 Cuts",
+          "source_url": "https://www.dcforecasts.com/altcoin-news/solana-rent-cut-simd-0437-token-account-deposit/",
+          "status": "open",
+          "date_observed": "2026-11-23"
+        },
+        {
+          "claim_text": "DTCC said on November 12, 2026 that it plans to connect its Tokenization Service to Solana in the second half of 2027. The service launched on October 28, 2026 integrated with the Canton Network and DTCC's private Besu network, with 20 DTC Participants signed at launch, and the November 12 release gave no technical design for admitting wallets on an open network and did not name which assets Solana would receive, so retail access remains undefined. In the same Breakpoint roundup, MoneyGram Ramps on Solana (live since August 11, 2026) added Solflare as a distribution channel on November 16, 2026, letting eligible users convert USDC on Solana into local cash in more than 170 countries and territories with zero cash-out fees through December 31, 2026, after which standard pricing was not specified.",
+          "claim_type": "milestone",
+          "evidence_url": "https://www.bydfi.info/market-intelligence/article/solana-after-breakpoint-1/1676",
+          "source_title": "Solana Breakpoint 2026: What Is Live and What Is Planned",
+          "source_url": "https://www.bydfi.info/market-intelligence/article/solana-after-breakpoint-1/1676",
+          "status": "open",
+          "date_observed": "2026-11-23"
         }
       ]
     },
