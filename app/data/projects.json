@@ -6242,6 +6242,51 @@
           "source_url": "https://cryptoadventure.com/arbitrum-targets-compliance-privacy-and-faster-settlement-in-product-roadmap/",
           "status": "open",
           "date_observed": "2026-10-11"
+        },
+        {
+                  "claim_text": "ArbOS 51 Dia activated on Arbitrum One and Nova on January 8, 2026 after a governance vote passed on December 18, 2025. Dia replaced the single gas target and adjustment window with multiple higher targets across multiple longer windows, raised the default minimum L2 base fee from 0.01 gwei to 0.02 gwei, and changed the State Transition Function to track gas use separately for computation, storage access, storage growth and history growth as groundwork for later constraint-based dynamic pricing. Dia also aligned secp256r1 passkey support with Ethereum's post-Fusaka specification (EIP-7951), added the CLZ opcode and BLS12-381 operations, and added Native Token Mint and Burn so custom Arbitrum chains can delegate minting and burning of an interoperability-enabled native gas token to a trusted bridge provider; the mint and burn feature is not planned for Arbitrum One itself.",
+                  "claim_type": "technical",
+                  "date_observed": "2026-11-24",
+                  "evidence_url": "https://blog.arbitrum.io/arbos-dia/",
+                  "source_title": "ArbOS Dia: Smoother Fees, Higher Throughput",
+                  "source_url": "https://blog.arbitrum.io/arbos-dia/",
+                  "status": "open"
+        },
+        {
+                  "claim_text": "The Elara upgrade, ArbOS 60 on the blog and ArbOS 61 in the docs, went live on Arbitrum One and Nova on August 20, 2026. For owners of dedicated Arbitrum chains it added optional compliance filters and priority fees, it prepared Arbitrum One for priority ordering, it let Offchain Labs adjust the minimum base fee for two years within DAO-set limits of 0.01 to 0.10 gwei, and it raised the maximum Stylus contract size from 24 KB to 96 KB, renewing every active Stylus contract on Arbitrum One so none expires before August 20, 2027. In the same period the DAO minimization of Arbitrum Nova completed its migration window: projects had from June 4 to September 2, 2026 to migrate, after which Nova moved to maintenance-only support with tighter public RPC limits, while users can still move funds out.",
+                  "claim_type": "technical",
+                  "date_observed": "2026-11-24",
+                  "evidence_url": "https://www.coindaro.com/projects/arbitrum/",
+                  "source_title": "Arbitrum (ARB): layer 2, token, governance and risks",
+                  "source_url": "https://www.coindaro.com/projects/arbitrum/",
+                  "status": "open"
+        },
+        {
+                  "claim_text": "Priority Gas Auctions replaced the Timeboost ordering auction on Arbitrum One on September 23, 2026. Each 250 millisecond block holds two 125 millisecond rounds, transactions paying the highest priority fee go first within a round, and transactions paying nothing extra move up the longer they wait. A paid Fast Feed streams each transaction to subscribers as soon as it is ordered without letting them change the order. Priority Gas Auctions were proposed by Offchain Labs on June 3, 2026 with 97 percent of priority fees going to the DAO treasury and 3 percent to the Developer Guild. Timeboost, live since April 17, 2025, had earned about 7.46 million dollars by mid-June 2026 but captured only about 1.74 percent of atomic arbitrage revenue, with about 87 percent of atomic arbitrage and 98 percent of liquidations bypassing it and three entities winning about 97 percent of its auctions.",
+                  "claim_type": "economic",
+                  "date_observed": "2026-11-24",
+                  "evidence_url": "https://www.coindaro.com/projects/arbitrum/",
+                  "source_title": "Arbitrum (ARB): layer 2, token, governance and risks",
+                  "source_url": "https://www.coindaro.com/projects/arbitrum/",
+                  "status": "open"
+        },
+        {
+                  "claim_text": "On October 2, 2026 at 11:30 EST the Arbitrum Security Council carried out an emergency upgrade on Arbitrum One and Nova pausing all new activations of Stylus contracts on both chains, citing vulnerabilities in hand-crafted WebAssembly programs that could be used as denial-of-service vectors against chain liveness. Existing Stylus contracts were untouched and can still execute and be renewed, and the known issues were described as affecting liveness, not the safety of user funds. The same upgrade added a permissionless guard on the BoLD one-step proof on Arbitrum One only: if contradictory proofs are ever accepted, the guard allows settlements to be paused, which could delay unconfirmed withdrawals. As of November 18, 2026 new Stylus activations remained paused under review, and the Foundation said it will work with the DAO to determine when activations can resume.",
+                  "claim_type": "technical",
+                  "date_observed": "2026-11-24",
+                  "evidence_url": "https://cryptobriefing.com/arbitrum-pauses-new-stylus-activations/",
+                  "source_title": "Arbitrum pauses new Stylus activations in emergency security action",
+                  "source_url": "https://cryptobriefing.com/arbitrum-pauses-new-stylus-activations/",
+                  "status": "open"
+        },
+        {
+                  "claim_text": "An on-chain proposal closing November 12, 2026 would adopt Paxos USDG as a core strategic initiative for the ArbitrumDAO after Arbitrum joined the Global Dollar Network and USDG went live on Arbitrum. The proposal would bolster the DRIP incentive budget with an additional 100 million ARB from the DAO treasury, adjust the DRIP season structure, broaden its permitted activities and extend its timeline, enable the Arbitrum Treasury Management Committee to deploy assets in support of USDG growth under existing oversight with Foundation custody, route Arbitrum Expansion Program fees net of the 20 percent allocated to the Developer Guild to the Treasury Management Portfolio for conversion into USDG, and confirm the USDG initiative as a Special Project under Entropy's existing Year 2 to 3 scope of work.",
+                  "claim_type": "economic",
+                  "date_observed": "2026-11-24",
+                  "evidence_url": "https://forum.arbitrum.foundation/t/11-november-2026-roundup-of-active-upcoming-votes/31691",
+                  "source_title": "11 November, 2026 - Roundup of Active/Upcoming Votes",
+                  "source_url": "https://forum.arbitrum.foundation/t/11-november-2026-roundup-of-active-upcoming-votes/31691",
+                  "status": "open"
         }
       ],
       "provisional_reason": "Intake 2026-10-04: research dossier pending; listed for coverage, not scored.",
