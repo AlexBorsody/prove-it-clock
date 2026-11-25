@@ -3355,6 +3355,51 @@
           "source_url": "https://www.cryptotimes.io/2026/10/10/near-says-accounts-support-ml-dsa-post-quantum-signatures/",
           "status": "open",
           "date_observed": "2026-11-04"
+        },
+        {
+          "claim_text": "House of Stake ratified proposal HSP-029 on November 16, 2026, with a reported 99.96 percent approval from veNEAR holders and no Security Council veto, cutting NEAR's maximum annual token issuance from 2.5 percent to 1.6 percent. The reduction is not live yet: it applies gradually, epoch by epoch, starting February 16, 2027 after a one-quarter grace period, phases in over 24 months, and binds only once validators adopt a protocol upgrade. The 90/10 split of new issuance between stakers and the treasury is unchanged. Staking provider Everstake projected staking APR falling from about 5.27 percent to roughly 3.37 percent as the schedule takes effect, and the proposal's own model flagged 24 validator pools that could lose financial self-sufficiency at the target rate.",
+          "claim_type": "economic",
+          "evidence_url": "https://coinstats.app/ai/a/latest-news-for-near",
+          "source_title": "NEAR Protocol News Today (25 Nov 2026): Why NEAR Is Down",
+          "source_url": "https://coinstats.app/ai/a/latest-news-for-near",
+          "status": "open",
+          "date_observed": "2026-11-25"
+        },
+        {
+          "claim_text": "On November 23, 2026 NEAR announced that NEAR Intents had crossed 40 billion dollars in all-time volume, spanning more than 35 chains and 100 assets, with nearly 1 billion dollars processed in the preceding seven days. NEAR Foundation VP Alex Scharrer said Intents had generated 12.5 million dollars in net revenue directed to open-market NEAR buybacks since the protocol fee switch was turned on. Talos has also gone live with NEAR Intents inside its Order and Execution Management System for institutional clients.",
+          "claim_type": "economic",
+          "evidence_url": "https://coinstats.app/ai/a/latest-news-for-near",
+          "source_title": "NEAR Protocol News Today (25 Nov 2026): Why NEAR Is Down",
+          "source_url": "https://coinstats.app/ai/a/latest-news-for-near",
+          "status": "open",
+          "date_observed": "2026-11-25"
+        },
+        {
+          "claim_text": "NEAR's protocol 2.14 upgrade, put to validator votes from November 4, 2026, went live on mainnet and implemented governance proposal HSP-027, ending the 30 percent share of gas fees that smart contracts previously received as a rebate; that share is now burned instead. A 2.14.1 security release followed on November 11, 2026 fixing flaws that could crash nodes or enable denial of service, and by November 16 mainnet was running protocol version 88 with node operators urged to upgrade promptly.",
+          "claim_type": "technical",
+          "evidence_url": "https://blockchainreporter.net/price-prediction/near-protocol/",
+          "source_title": "NEAR Protocol Price Prediction 2026-2030: Can NEAR Hit $10?",
+          "source_url": "https://blockchainreporter.net/price-prediction/near-protocol/",
+          "status": "open",
+          "date_observed": "2026-11-25"
+        },
+        {
+          "claim_text": "NEAR's published roadmap targets SPICE V1 on mainnet in Q1 2027, alongside heterogeneous trusted execution environments and block times of roughly 200 milliseconds, down from about 600 milliseconds today. The following milestone, targeted for Q2 2027, is single-block cross-shard transactions, letting activity that spans multiple shards complete within one block instead of across several. Both are roadmap targets rather than confirmed delivery dates, and completion depends on testing and deployment.",
+          "claim_type": "milestone",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/near-protocol/latest-updates/",
+          "source_title": "Latest NEAR Protocol News - (NEAR) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com/cmc-ai/near-protocol/latest-updates/",
+          "status": "open",
+          "date_observed": "2026-11-25"
+        },
+        {
+          "claim_text": "Reports on November 24, 2026 said NEAR had become the first AI solution to join NVIDIA's Open Secure AI Alliance, an initiative co-signed by the Linux Foundation. The reports gave no detail on NEAR's responsibilities in the alliance, any planned applications, or an implementation timeline, and as of November 25, 2026 the membership had not been confirmed by a primary source from NEAR or NVIDIA, so it stands as an announced connection rather than confirmed product adoption.",
+          "claim_type": "milestone",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/near-protocol/latest-updates/",
+          "source_title": "Latest NEAR Protocol News - (NEAR) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com/cmc-ai/near-protocol/latest-updates/",
+          "status": "open",
+          "date_observed": "2026-11-25"
         }
       ],
       "provisional": true,
