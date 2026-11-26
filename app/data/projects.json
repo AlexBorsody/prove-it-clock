@@ -4742,6 +4742,51 @@
           "source_title": "Akash Network Selects Solana for Its Blockchain Migration as AKT Rises 4%",
           "source_url": "https://www.mytokencap.com/news/603777.html",
           "status": "open"
+        },
+        {
+          "claim_text": "Proposal 346, Migrate the Akash Protocol to Solana, closed on November 2, 2026 with 97.27 percent of votes in favour: about 61.66 million AKT voted across four options, with 59,979,682 AKT voting yes, 796,071 voting no, 888,416 abstaining and 765 using the veto option. Turnout reached 69.39 percent of staked AKT against a 33.40 percent quorum requirement. This final tally replaces the roughly 98 percent early tally recorded while the vote was still open.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-26",
+          "evidence_url": "https://coinranking.com/news/akash-network-approves-migration-solana-proposal-346-governance-vote",
+          "source_title": "Akash Solana Migration Approved With 97.27% of Votes",
+          "source_url": "https://coinranking.com/news/akash-network-approves-migration-solana-proposal-346-governance-vote",
+          "status": "open"
+        },
+        {
+          "claim_text": "Akash opened its Solana migration portal on November 12, 2026, ten days after Proposal 346 passed: holders lock AKT on the Cosmos chain and receive SPL AKT on Solana at 1 to 1 through migrate.akash.network, one way only, with the portal open for two years and relayers covering Solana fees so no SOL is needed. The official SPL AKT mint address posted by Akash is 5d3fjPDdkYbtYcAMR9PC2TANaEyhzuyP8JxTEwqjVgBZ, Sunrise listed SPL AKT for trading within minutes of the announcement, and about 1.6 million SPL AKT existed on Solana by 19:23 UTC on launch day against roughly $244,000 of pool liquidity. On November 17 the team temporarily paused portal transfers below 1,000 AKT to ease congestion, saying smaller transfers would resume soon with no confirmed date.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-26",
+          "evidence_url": "https://solanacompass.com/news/akashs-solana-migration-portal-is-live-akt-moves-11-to-spl-akt-one-way-for-two-years",
+          "source_title": "Akash Solana Migration Portal Live: How to Migrate AKT to SPL AKT, Mint Address and Staking",
+          "source_url": "https://solanacompass.com/news/akashs-solana-migration-portal-is-live-akt-moves-11-to-spl-akt-one-way-for-two-years",
+          "status": "open"
+        },
+        {
+          "claim_text": "Migration gaps disclosed at portal launch: staked AKT must complete the 21-day unbonding period before it can move, a step back from the one-step flow the governance proposal described, and founder Greg Osuri said staking on Solana would not be live for a few months, so early migrators give up Cosmos staking rewards with no Solana staking yet and migrated AKT no longer counts in the later cutover vote held on the Cosmos chain. No major exchange had announced a conversion date as of November 13, a 2-of-5 multisig with no time lock can currently upgrade the Solana programs per Akash's own docs, and reports from the two audits promised before launch were not public yet, with the plan giving them 30 days.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-26",
+          "evidence_url": "https://www.bankless.com/read/news/akash-opens-one-way-akt-migration-to-solana",
+          "source_title": "Akash Opens One-Way AKT Migration to Solana",
+          "source_url": "https://www.bankless.com/read/news/akash-opens-one-way-akt-migration-to-solana",
+          "status": "open"
+        },
+        {
+          "claim_text": "Akash Mainnet 19 went live on November 6, 2026 at block 29,399,482, moving the network to version 2.2. The upgrade lays groundwork for AKT on Solana, tightens checks on Pyth AKT price data used for AKT/USD pricing, and cleans up billing records for leases that have ended. It introduces no major new user-facing feature.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-26",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/akash-network/latest-updates/",
+          "source_title": "Latest Akash Network News - (AKT) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com/cmc-ai/akash-network/latest-updates/",
+          "status": "open"
+        },
+        {
+          "claim_text": "On November 17, 2026 Akash outlined a planned GPU forward market on Solana, called Akash Forwards, where AI companies could reserve future GPU hours at fixed prices under contracts intended for delivery of compute rather than cash settlement. An initial pilot is planned for Q1 2027 limited to certified participants; the product is not yet publicly available and adoption is unproven.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-26",
+          "evidence_url": "https://coinmarketcap.com/cmc-ai/akash-network/latest-updates/",
+          "source_title": "Latest Akash Network News - (AKT) Future Outlook, Trends & Market Insights",
+          "source_url": "https://coinmarketcap.com/cmc-ai/akash-network/latest-updates/",
+          "status": "open"
         }
       ],
       "provisional": true,
