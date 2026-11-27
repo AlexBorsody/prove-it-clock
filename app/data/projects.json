@@ -4011,6 +4011,51 @@
           "source_title": "HBAR Ecosystem Expands in 2026 With McLaren Entry and Tokenization Rise",
           "source_url": "https://bitrss.com/hbar-ecosystem-expands-in-2026-with-mclaren-entry-and-tokenization-rise-206765",
           "status": "open"
+        },
+        {
+          "claim_text": "Hedera mainnet upgraded to consensus node version 0.79.2 on November 18, 2026: the network returned to service at 18:07 UTC and the maintenance window closed at 18:40 UTC with no incident reported the next day. That software upgrade was not itself the canonical Block Stream cutover, and mirror nodes could keep ingesting the legacy record format while running it.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-27",
+          "evidence_url": "https://block2learn.com/2026/11/19/hedera-v079-upgrade-block-stream-cutover-january-2027/",
+          "source_title": "Hedera v0.79 Was Not the Block Stream Cutover",
+          "source_url": "https://block2learn.com/2026/11/19/hedera-v079-upgrade-block-stream-cutover-january-2027/",
+          "status": "open"
+        },
+        {
+          "claim_text": "Current Hiero Mirror Node operator guidance, described as authoritative, now schedules the canonical Block Stream cutover for testnet on January 6, 2027 and mainnet on January 27, 2027, both under consensus node version 0.80, and raises the minimum compatible mirror node release to v0.167.0. This supersedes the June 2026 guidance that tied the mainnet cutover to version 0.79 in November 2026 with mirror node v0.163.0 as the minimum. Under HIP-1193 the cutover must link the final legacy record hash to the first native block so the new history provably continues the old one, and an unprepared mirror node may silently stop ingesting new data rather than crash.",
+          "claim_type": "technical",
+          "date_observed": "2026-11-27",
+          "evidence_url": "https://block2learn.com/2026/11/19/hedera-v079-upgrade-block-stream-cutover-january-2027/",
+          "source_title": "Hedera v0.79 Was Not the Block Stream Cutover",
+          "source_url": "https://block2learn.com/2026/11/19/hedera-v079-upgrade-block-stream-cutover-january-2027/",
+          "status": "open"
+        },
+        {
+          "claim_text": "WaterLedger's SWaN platform on Hedera was reported live on November 25, 2026 as a shared, auditable recordkeeping system for Virginia's mitigation and nutrient credit market, a mandatory market that previously had no unified system for tracking credits. The platform has been running with the Virginia Department of Environmental Quality since January 2026, and regulators and market participants are meant to share a single tamper resistant log of credits; broader rollout and integration details remain undisclosed.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-27",
+          "evidence_url": "https://finance.biggo.com/news/739384f5-bd23-41a8-b462-c12c3bb1c4ec",
+          "source_title": "Hedera's HBAR Climbs 4.9% as Mainnet Upgrade, Virginia Credit Platform Go Live",
+          "source_url": "https://finance.biggo.com/news/739384f5-bd23-41a8-b462-c12c3bb1c4ec",
+          "status": "open"
+        },
+        {
+          "claim_text": "Canary Capital marked the one year anniversary of its Canary HBAR ETF (Nasdaq: HBR) on November 23, 2026: the fund, launched in October or November 2025 alongside XRPC, LTCC and SOLC, had gathered more than $60 million in assets as of November 4, 2026 and offers HBAR exposure through a traditional brokerage account without direct wallet or private key management.",
+          "claim_type": "economic",
+          "date_observed": "2026-11-27",
+          "evidence_url": "https://www.globenewswire.com/news-release/2026/11/23/3408939/0/en/canary-capital-celebrates-one-year-anniversaries-of-hbr-xrpc-ltcc-and-solc-etfs-marking-a-milestone-in-expanding-access-to-digital-assets.html",
+          "source_title": "Canary Capital Celebrates One-Year Anniversaries of HBR, XRPC, LTCC and SOLC ETFs, Marking a Milestone in Expanding Access to Digital Assets",
+          "source_url": "https://www.globenewswire.com/news-release/2026/11/23/3408939/0/en/canary-capital-celebrates-one-year-anniversaries-of-hbr-xrpc-ltcc-and-solc-etfs-marking-a-milestone-in-expanding-access-to-digital-assets.html",
+          "status": "open"
+        },
+        {
+          "claim_text": "Aberdeen and Lloyds Bank executed the United Kingdom's first foreign exchange trades using tokenized real world assets as collateral, according to a Hedera announcement reported November 2, 2026: the trades used a tokenized money market fund and tokenized UK gilts, were facilitated by Archax, and ran on the Hedera network.",
+          "claim_type": "milestone",
+          "date_observed": "2026-11-27",
+          "evidence_url": "https://www.gate.com/news/detail/lloyds-and-aberdeen-execute-first-tokenized-fx-trades-in-uk-using-rwas-25364884",
+          "source_title": "Lloyds and Aberdeen Execute First Tokenized FX Trades in UK Using RWAs",
+          "source_url": "https://www.gate.com/news/detail/lloyds-and-aberdeen-execute-first-tokenized-fx-trades-in-uk-using-rwas-25364884",
+          "status": "open"
         }
       ],
       "provisional": true,
